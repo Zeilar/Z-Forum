@@ -1,3 +1,7 @@
 * {
 	color: white;
 }
+
+::selection {
+	background: $pink;
+}
