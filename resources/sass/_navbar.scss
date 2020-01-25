@@ -1,0 +1,21 @@
+.navbar {
+	border-bottom: 2px solid $pink;
+	background: $gray;
+
+	.dropdown-menu {
+		border: 2px solid $pink;
+		background: $gray;
+		color: white;
+		padding: 0;
+		top: 115%;
+
+		.dropdown-item {
+			text-transform: uppercase;
+			padding: 0.8rem;
+			color: white;
+			&:hover {
+				background: #383838;
+			}
+		}
+	}
+}
