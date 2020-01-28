@@ -2,12 +2,32 @@
 	border-bottom: 2px solid $pink;
 	background: $gray;
 
+	.navbar-toggler {
+		.navbar-toggler-icon {
+			width: 100%;
+
+			img {
+				height: 100%;
+			}
+		}
+	}
+
 	.dropdown-menu {
+		border-radius: 0 0 5px 5px;
+		-webkit-border-radius: 0 0 5px 5px;
+		-moz-border-radius: 0 0 5px 5px;
+		-ms-border-radius: 0 0 5px 5px;
+		-o-border-radius: 0 0 5px 5px;
 		border: 2px solid $pink;
 		background: $gray;
 		color: white;
+		border-top: 0;
 		padding: 0;
-		top: 115%;
+		top: 114%;
+
+		@media (max-width: 767px) {
+			border: 0;
+		}
 
 		.dropdown-item {
 			text-transform: uppercase;
