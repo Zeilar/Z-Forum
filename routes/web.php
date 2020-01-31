@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/profile/{user}', 'ProfileController@index')->name('profile.show');
+Route::resource('posts', 'PostsController');

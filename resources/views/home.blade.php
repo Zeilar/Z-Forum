@@ -8,23 +8,5 @@
     </head>
     <body>
         @extends('layouts.app')
-
-		@section('content')
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col">
-					<div class="row post">
-						1
-					</div>
-					<div class="row post">
-						2
-					</div>
-					<div class="row post">
-						3
-					</div>
-				</div>
-			</div>
-		</div>
-		@endsection
     </body>
 </html>
