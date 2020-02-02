@@ -2,6 +2,7 @@
 
 @section('content')
 	<h1>Home</h1>
+
 	@if ($threads)
 		@foreach ($threads as $thread)
 			<div class="bg-dark mb-4">

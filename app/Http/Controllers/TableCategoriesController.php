@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\TableSubcategory;
+use App\TableCategory;
 
-class CategoriesController extends Controller
+class TableCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,22 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+		return view('tables.index', [
+			'tableCategories' => TableCategory::all(),
+			'tableSubcategories' => TableSubcategory::all(),
+		]);
+
+		$tables = [];
+		foreach (TableCategory::all() as $table_category) {
+			$table_subcategories = TableSubcategory::where('table_category_id', $table_category->id)->get();
+			array_push($tables, [
+				'table_category' => $table_category,
+				'table_subcategories' => $table_subcategories,
+			]);
+		}
+        return view('tables.index', [
+			'tables' => $tables,
+		]);
     }
 
     /**
@@ -46,7 +62,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

@@ -5,3 +5,19 @@
 ::selection {
 	background: $pink;
 }
+
+.bg-pink {
+	background: $pink !important;
+}
+
+.bg-dark {
+	background: $gray !important;
+}
+
+.color-dark {
+	color: $gray !important;
+}
+
+.color-pink {
+	color: $pink !important;
+}

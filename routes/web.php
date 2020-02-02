@@ -15,4 +15,4 @@ Auth::routes();
 
 Route::resource('post', 'PostsController');
 Route::resource('thread', 'ThreadsController');
-Route::get('/', 'ThreadsController@index');
+Route::get('/', 'TableCategoriesController@index');
