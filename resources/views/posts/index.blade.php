@@ -7,7 +7,7 @@
 			<div class="card bg-dark mb-4">
 				<h3>{{ $post->content }}</h3>
 				<span>Posted at: {{ $post->created_at }}</span>
-				<a href="/posts/{{$post->id}}">Visit</a>
+				<a href="/post/{{$post->id}}">Visit</a>
 			</div>
 		@endforeach
 		{{ $posts->links() }}

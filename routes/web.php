@@ -13,8 +13,6 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::resource('posts', 'PostsController');
+Route::resource('post', 'PostsController');
+Route::resource('thread', 'ThreadsController');
+Route::get('/', 'ThreadsController@index');
