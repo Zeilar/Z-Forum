@@ -43,7 +43,14 @@
 		@endforeach
 	@endforeach --}}
 
-	@foreach ($tableSubcategories as $cat)
-		{{var_dump($cat->tableCategory->title)}}
+	@foreach ($tableCategories as $category)
+		
+		@foreach ($category->tableSubcategories as $subcategory)
+			<p>{{ $subcategory->title }}</p>
+		@endforeach
+	@endforeach
+
+	@foreach ($tableSubcategories as $subcategory)
+		{{var_dump($subcategory->tableCategory->title)}}
 	@endforeach
 @endsection

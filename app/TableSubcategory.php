@@ -10,4 +10,9 @@ class TableSubcategory extends Model
 	{
 		return $this->belongsTo(TableCategory::class);
 	}
+
+	public function threads()
+	{
+		return $this->hasMany(Thread::class);
+	}
 }
