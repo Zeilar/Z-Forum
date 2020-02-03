@@ -11427,3 +11427,15 @@ a.text-dark:focus {
   background: #383838;
 }
 
+.table {
+  border: 1px solid #dee2e6;
+}
+
+.table thead th {
+  border: 0;
+}
+
+.table tbody tr:not(.table-category) {
+  background: #444444;
+}
+

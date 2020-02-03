@@ -2,55 +2,29 @@
 
 @section('content')
 	<table class="table">
-		<thead class="bg-pink">
-			<tr>
-				<th>{{ __('Sub category') }}</th>
-				<th>{{ __('Latest post') }}</th>
-				<th>{{ __('Threads') }}</th>
-				<th>{{ __('Posts') }}</th>
+		<thead>
+			<tr class="table-header bg-pink">
+				<th class="py-3">{{ __('Sub category') }}</th>
+				<th class="py-3">{{ __('Latest post') }}</th>
+				<th class="py-3">{{ __('Threads') }}</th>
+				<th class="py-3">{{ __('Posts') }}</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="bg-dark">
-				<th>{{ __('Computers') }}</th>
-				<th></th><th></th><th></th> <!-- to make sure the row is full width, becaues tables -->
-			</tr>
-			<tr>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-				<td>@mdo</td>
-			</tr>
-			<tr>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-				<td>@mdo</td>
-			</tr>
-			<tr>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-				<td>@mdo</td>
-			</tr>
+			@foreach ($tables as $table)
+				<tr class="table-category bg-dark">
+					<th>{{ __($table['table_category']->title) }}</th>
+					<th></th><th></th><th></th> <!-- to make sure the row is full width, becaues tables -->
+				</tr>
+				@foreach ($table['table_subcategories'] as $table_subcategory)
+					<tr>
+						<td><a href="/category/{{$table_subcategory->title}}-{{$table_subcategory->id}}">{{ __($table_subcategory->title) }}</a></td>
+						<td>Otto</td> <!-- latest post -->
+						<td>@mdo</td> <!-- threads -->
+						<td>@mdo</td> <!-- posts -->
+					</tr>
+				@endforeach
+			@endforeach
 		</tbody>
 	</table>
-
-	{{-- @foreach ($tableCategories as $table)
-		<h2>{{ $table['table_category']->title }}</h2>
-		@foreach ($table['table_subcategories'] as $table_subcategory)
-			<p>{{ $table_subcategory->title }}</p>
-		@endforeach
-	@endforeach --}}
-
-	@foreach ($tableCategories as $category)
-		
-		@foreach ($category->tableSubcategories as $subcategory)
-			<p>{{ $subcategory->title }}</p>
-		@endforeach
-	@endforeach
-
-	@foreach ($tableSubcategories as $subcategory)
-		{{var_dump($subcategory->tableCategory->title)}}
-	@endforeach
 @endsection

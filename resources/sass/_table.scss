@@ -1,0 +1,17 @@
+.table {
+	border: 1px solid #dee2e6;
+
+	thead {
+		th {
+			border: 0;
+		}
+	}
+
+	tbody {
+		tr {
+			&:not(.table-category) {
+				background: #444444;
+			}
+		}
+	}
+}

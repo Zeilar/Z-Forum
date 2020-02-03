@@ -47,12 +47,10 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($title, $id)
     {
-		$thread = Thread::find($id);
-        return view('threads.single', [
-			'thread' => $thread,
-			'posts' => Post::where('thread_id', $thread->id)->get(),
+		return view('threads.single', [
+			'posts' => Thread::find($id)->posts,
 		]);
     }
 

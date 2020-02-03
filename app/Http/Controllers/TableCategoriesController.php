@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TableSubcategory;
 use App\TableCategory;
+use App\Thread;
 
 class TableCategoriesController extends Controller
 {
@@ -15,21 +16,21 @@ class TableCategoriesController extends Controller
      */
     public function index()
     {
-		return view('tables.index', [
-			'tableCategories' => TableCategory::all(),
-			'tableSubcategories' => TableSubcategory::all(),
-		]);
+		$test = TableSubcategory::find(3)->threads;
 
 		$tables = [];
+		$threads = [];
 		foreach (TableCategory::all() as $table_category) {
 			$table_subcategories = TableSubcategory::where('table_category_id', $table_category->id)->get();
 			array_push($tables, [
-				'table_category' => $table_category,
 				'table_subcategories' => $table_subcategories,
+				'table_category' => $table_category,
+				'threads' => $threads
 			]);
 		}
         return view('tables.index', [
 			'tables' => $tables,
+			'test' => $test
 		]);
     }
 
@@ -62,7 +63,7 @@ class TableCategoriesController extends Controller
      */
     public function show($id)
     {
-
+		//
     }
 
     /**
