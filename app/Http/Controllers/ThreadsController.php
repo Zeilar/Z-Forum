@@ -15,9 +15,7 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        return view('home', [
-			'threads' => Thread::all(),
-		]);
+        
     }
 
     /**
@@ -27,7 +25,7 @@ class ThreadsController extends Controller
      */
     public function create()
     {
-        //
+        return view('threads.create');
     }
 
     /**
@@ -38,7 +36,18 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$data = request()->validate([
+			'title' => 'required|regex:/^[a-zA-Z0-9]+$/u|max:100'
+		]);
+
+        $thread = new Thread();
+
+		$thread->title = request('title');
+		$thread->user_id = 1;
+		$thread->table_subcategory_id = 2;
+		$thread->save();
+
+		return redirect("/thread/$thread->title-$thread->id");
     }
 
     /**

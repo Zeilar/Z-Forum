@@ -23,4 +23,5 @@
 			@endforeach
 		</tbody>
 	</table>
+	<a href="{{url()->current()}}/new">New</a>
 @endsection

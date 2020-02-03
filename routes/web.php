@@ -13,7 +13,9 @@
 
 Auth::routes();
 
-Route::resource('post', 'PostsController');
 Route::get('/', 'TableCategoriesController@index');
 Route::get('/thread/{title}-{id}', 'ThreadsController@show');
+Route::get('/category/{subcategory}-{id}/new', 'ThreadsController@create');
 Route::get('/category/{subcategory}-{id}', 'TableSubcategoriesController@show');
+
+Route::post('/thread/create', 'ThreadsController@store');
