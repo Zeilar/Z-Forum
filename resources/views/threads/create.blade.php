@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('pageTitle') Create new thread @endsection
+
 @section('content')
 	<h1>Create new thread</h1>
 
@@ -10,5 +12,5 @@
 		
 		<button type="submit">Submit</button>
 	</form>
-	@error('title') {{ $message }} @enderror
+	@error('title') <p class="form-error">{{ $message }}</p> @enderror
 @endsection

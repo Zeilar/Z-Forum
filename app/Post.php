@@ -14,7 +14,7 @@ class Post extends Model
 		return $this->belongsTo(Thread::class);
 	}
 
-	public function author()
+	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}
