@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TableSubcategory;
 use App\Thread;
 use App\Post;
+use Auth;
 
 class ThreadsController extends Controller
 {
@@ -23,9 +25,17 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($title, $id)
     {
-        return view('threads.create');
+		if (!auth()->user()) abort(403);
+
+		// if the found subcategory doesn't match the URI title, or if it doesn't exist at all, throw 404
+		$subcategory = TableSubcategory::find($id);
+		if (($subcategory && $subcategory->title !== $title) || !$subcategory) return abort(404);
+
+        return view('threads.create', [
+			'subcategory' => TableSubcategory::find($id),
+		]);
     }
 
     /**
@@ -34,7 +44,7 @@ class ThreadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
 		$data = request()->validate([
 			'title' => 'required|regex:/^[a-zA-Z0-9]+$/u|max:100'

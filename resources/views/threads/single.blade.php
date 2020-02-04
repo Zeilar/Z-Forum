@@ -5,6 +5,6 @@
 
 	@foreach ($posts as $post)
 		<p>{{ $post->content }}</p>
-		<p>{{ $post->user }}</p>
 	@endforeach
+	<a href="{{url()->current()}}/new">Reply</a>
 @endsection

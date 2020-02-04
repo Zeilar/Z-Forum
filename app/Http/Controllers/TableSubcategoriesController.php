@@ -46,6 +46,10 @@ class TableSubcategoriesController extends Controller
      */
     public function show($title, $id)
     {
+		// if the found subcategory doesn't match the URI title, or if it doesn't exist at all, throw 404
+		$subcategory = TableSubcategory::find($id);
+		if (($subcategory && $subcategory->title !== $title) || !$subcategory) return abort(404);
+
         return view('threads.index', [
 			'threads' => TableSubcategory::find($id)->threads,
 			'subcategory' => TableSubcategory::find($id),

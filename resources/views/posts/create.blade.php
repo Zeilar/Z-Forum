@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('pageTitle') Create new thread @endsection
+@section('pageTitle') Post comment @endsection
 
 @section('content')
-	<h1>Create new thread in: {{ $subcategory->title }}</h1>
+	<h1>Post comment</h1>
 
 	<form action="/thread/create" method="POST">
 		@csrf
