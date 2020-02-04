@@ -16,21 +16,8 @@ class TableCategoriesController extends Controller
      */
     public function index()
     {
-		$test = TableSubcategory::find(3)->threads;
-
-		$tables = [];
-		$threads = [];
-		foreach (TableCategory::all() as $table_category) {
-			$table_subcategories = TableSubcategory::where('table_category_id', $table_category->id)->get();
-			array_push($tables, [
-				'table_subcategories' => $table_subcategories,
-				'table_category' => $table_category,
-				'threads' => $threads
-			]);
-		}
-        return view('table.show', [
-			'tables' => $tables,
-			'test' => $test
+        return view('index', [
+			'tableCategories' => TableCategory::all(),
 		]);
     }
 

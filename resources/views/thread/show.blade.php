@@ -20,14 +20,14 @@
 						<a class="thread-link d-flex" href="/thread/{{$thread->title}}-{{$thread->id}}">{{ __($thread->title) }}</a>
 						<p>
 							<span>{{ __('By ') }}</span>
-							<a class="thread-author-link" href="#">{{ $thread->user->username }}</a>
+							<a class="thread-author-link" href="/user/{{$thread->user->id}}">{{ $thread->user->username }}</a>
 						</p>
 					</td>
 					<td>
 						<!-- latest post -->
 						@foreach ($thread->posts->sortByDesc('created_at')->take(1) as $post)
 							<p class="post-created-at">{{ $post->created_at }}</p>
-							<p class="post-created-by">{{ __('By ') }}<a href="#">{{ $post->user->username }}</a></p>
+							<p class="post-created-by">{{ __('By ') }}<a href="/user/{{$post->user->id}}">{{ $post->user->username }}</a></p>
 						@endforeach
 					</td> 
 					<td>{{ count($thread->posts) }}</td> <!-- posts -->
