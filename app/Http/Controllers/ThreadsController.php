@@ -32,7 +32,7 @@ class ThreadsController extends Controller
 		$subcategory = TableSubcategory::find($id);
 		if (($subcategory && $subcategory->title !== $title) || !$subcategory) return abort(404);
 
-        return view('threads.create', [
+        return view('thread.create', [
 			'subcategory' => TableSubcategory::find($id),
 		]);
     }
@@ -75,7 +75,7 @@ class ThreadsController extends Controller
      */
     public function show($title, $id)
     {
-		return view('threads.single', [
+		return view('thread.single', [
 			'posts' => Thread::find($id)->posts,
 		]);
     }

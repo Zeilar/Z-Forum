@@ -5,6 +5,7 @@
 
 	@foreach ($posts as $post)
 		<p>{{ $post->content }}</p>
+		<p><a href="/post/{{$post->id}}">Visit</a></p>
 	@endforeach
 	<a href="{{url()->current()}}/new">Reply</a>
 @endsection

@@ -28,7 +28,7 @@ class TableCategoriesController extends Controller
 				'threads' => $threads
 			]);
 		}
-        return view('tables.index', [
+        return view('table.show', [
 			'tables' => $tables,
 			'test' => $test
 		]);

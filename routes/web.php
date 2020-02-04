@@ -19,6 +19,7 @@ Route::get('/thread/{title}-{id}/new', 'PostsController@create');
 Route::get('/thread/{title}-{id}', 'ThreadsController@show');
 Route::get('/category/{subcategory}-{id}/new', 'ThreadsController@create');
 Route::get('/category/{subcategory}-{id}', 'TableSubcategoriesController@show');
+Route::get('/user/{id}', 'UsersController@show');
 
 Route::post('/thread/{title}-{id}/create', 'PostsController@store');
 Route::post('/category/{subcategory}-{id}/create', 'ThreadsController@store');
