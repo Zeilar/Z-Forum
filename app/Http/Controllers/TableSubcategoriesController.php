@@ -51,7 +51,6 @@ class TableSubcategoriesController extends Controller
 		if (($subcategory && $subcategory->title !== $title) || !$subcategory) return abort(404);
 
         return view('threads.index', [
-			'threads' => TableSubcategory::find($id)->threads,
 			'subcategory' => TableSubcategory::find($id),
 		]);
     }

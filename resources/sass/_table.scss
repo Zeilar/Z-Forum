@@ -12,6 +12,10 @@
 			&:not(.table-category) {
 				background: #444444;
 			}
+
+			td {
+				vertical-align: middle;
+			}
 		}
 	}
 }

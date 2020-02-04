@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\TableSubcategory;
 use App\Thread;
 use App\Post;
-use Auth;
 
 class ThreadsController extends Controller
 {
@@ -44,18 +43,26 @@ class ThreadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $title, $id)
     {
+		if (!auth()->user()) abort(403);
+
 		$data = request()->validate([
-			'title' => 'required|regex:/^[a-zA-Z0-9]+$/u|max:100'
+			'title' => 'required|max:100',
+			'content' => 'required|max:500',
 		]);
 
         $thread = new Thread();
-
 		$thread->title = request('title');
-		$thread->user_id = 1;
-		$thread->table_subcategory_id = 2;
+		$thread->user_id = auth()->user()->id;
+		$thread->table_subcategory_id = TableSubcategory::find($id)->id;
 		$thread->save();
+
+		$post = new Post();
+		$post->content = request('content');
+		$post->user_id = auth()->user()->id;
+		$post->thread_id = $thread->id;
+		$post->save();
 
 		return redirect("/thread/$thread->title-$thread->id");
     }

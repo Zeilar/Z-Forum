@@ -3,14 +3,14 @@
 @section('pageTitle') Post comment @endsection
 
 @section('content')
-	<h1>Post comment</h1>
+	<h1>Post comment in thread: {{ $thread->title }}</h1>
 
-	<form action="/thread/create" method="POST">
+	<form action="{{explode('new' ,url()->current())[0]}}create" method="POST">
 		@csrf
 
-		<input class="bg-dark" type="text" name="title" id="title">
+		<textarea class="bg-dark" name="content" id="content" value="Content"></textarea>
 		
 		<button type="submit">Submit</button>
 	</form>
-	@error('title') <p class="form-error">{{ $message }}</p> @enderror
+	@error('content') <p class="form-error">{{ $message }}</p> @enderror
 @endsection

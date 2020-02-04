@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Thread;
 use App\Post;
 
 class PostsController extends Controller
@@ -24,9 +25,17 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($title, $id)
     {
-        return view('posts.create');
+        if (!auth()->user()) abort(403);
+
+		// if the found thread doesn't match the URI title, or if it doesn't exist at all, throw 404
+		$thread = Thread::find($id);
+		if (($thread && $thread->title !== $title) || !$thread) return abort(404);
+
+        return view('posts.create', [
+			'thread' => Thread::find($id),
+		]);
     }
 
     /**
@@ -35,9 +44,22 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $title, $id)
     {
-        //
+        if (!auth()->user()) abort(403);
+
+		$data = request()->validate([
+			'content' => 'required|max:500'
+		]);
+
+        $post = new Post();
+
+		$post->content = request('content');
+		$post->user_id = auth()->user()->id;
+		$post->thread_id = Thread::find($id)->id;
+		$post->save();
+
+		return redirect("/post/$post->id");
     }
 
     /**

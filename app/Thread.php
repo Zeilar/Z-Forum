@@ -16,7 +16,7 @@ class Thread extends Model
 		return $this->belongsTo(TableSubcategory::class);
 	}
 
-	public function author()
+	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}

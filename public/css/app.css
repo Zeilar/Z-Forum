@@ -11356,8 +11356,14 @@ a.text-dark:focus {
   }
 }
 
-* {
-  color: white;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 ::-moz-selection {
@@ -11382,6 +11388,10 @@ a.text-dark:focus {
 
 .color-pink {
   color: #b30039 !important;
+}
+
+.color-white {
+  color: white !important;
 }
 
 .navbar {
@@ -11437,5 +11447,9 @@ a.text-dark:focus {
 
 .table tbody tr:not(.table-category) {
   background: #444444;
+}
+
+.table tbody tr td {
+  vertical-align: middle;
 }
 
