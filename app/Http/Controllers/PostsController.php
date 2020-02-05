@@ -15,9 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('post.show', [
-			'posts' => Post::orderBy('id', 'desc')->paginate(1),
-		]);
+        
     }
 
     /**

@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableSubcategory;
 use App\TableCategory;
-use App\Thread;
 
 class TableCategoriesController extends Controller
 {
@@ -50,7 +48,7 @@ class TableCategoriesController extends Controller
      */
     public function show($id)
     {
-		//
+
     }
 
     /**

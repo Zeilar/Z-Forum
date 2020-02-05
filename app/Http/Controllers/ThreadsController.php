@@ -76,7 +76,7 @@ class ThreadsController extends Controller
     public function show($title, $id)
     {
 		return view('thread.single', [
-			'posts' => Thread::find($id)->posts,
+			'thread' => Thread::find($id),
 		]);
     }
 

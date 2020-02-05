@@ -18,7 +18,7 @@
 				</tr>
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 					<tr>
-						<td><a href="/category/{{$tableSubcategory->title}}-{{$tableSubcategory->id}}">{{ $tableSubcategory->title }}</a></td>
+						<td><a href="/subcategory/{{$tableSubcategory->title}}-{{$tableSubcategory->id}}">{{ $tableSubcategory->title }}</a></td>
 						<?php
 							foreach ($tableSubcategory->threads as $thread) {
 								$postAmount = count($thread->posts);

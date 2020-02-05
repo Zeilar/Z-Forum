@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+	<p class="breadcrumb">
+		<a href="/">Home</a> 
+		<span class="mx-1">&raquo;</span>
+		<a href="#">{{ $tableSubcategory->tableCategory->title }}</a>
+		<span class="mx-1">&raquo;</span>
+		<span>{{ $tableSubcategory->title }}</span> 
+	</p>
+
 	<table class="table">
 		<thead>
 			<tr class="table-header bg-pink">
@@ -11,10 +19,10 @@
 		</thead>
 		<tbody>
 			<tr class="table-category bg-dark">
-				<th><h5>{{ __($subcategory->title) }}</h5></th>
+				<th><h5>{{ __($tableSubcategory->title) }}</h5></th>
 				<th></th><th></th> <!-- to make sure the row is full width, becaues tables -->
 			</tr>
-			@foreach ($subcategory->threads as $thread)
+			@foreach ($tableSubcategory->threads as $thread)
 				<tr>
 					<td>
 						<a class="thread-link d-flex" href="/thread/{{$thread->title}}-{{$thread->id}}">{{ __($thread->title) }}</a>
