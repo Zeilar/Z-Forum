@@ -22,16 +22,20 @@
 							{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}
 						">{{ $tableSubcategory->title }}</a></td>
 						<?php
-							foreach ($tableSubcategory->threads as $thread) {
-								$postAmount = count($thread->posts);
-								foreach ($thread->posts->sortBy('created_at')->take(1) as $p) {
-									$post = $p;
+							if (count($tableSubcategory->threads)) {
+								foreach ($tableSubcategory->threads as $thread) {
+									$postAmount = count($thread->posts);
+									foreach ($thread->posts->sortBy('created_at')->take(1) as $p) {
+										$post = $p;
+									}
 								}
 							}
 						?>
 						<td>
-							<p class="post-created-at">{{ $post->created_at }}</p>
-							<p class="post-created-by">{{ __('By ') }}<a href="{{route('user_show', [$post->user->id])}}">{{ $post->user->username }}</a></p>
+							@if (isset($post))
+								<p class="post-created-at">{{ $post->created_at }}</p>
+								<p class="post-created-by">{{ __('By ') }}<a href="{{route('user_show', [$post->user->id])}}">{{ $post->user->username }}</a></p>
+							@endif
 						</td>
 						<td>{{ count($tableSubcategory->threads) }}</td>
 						<td>{{ $postAmount ?? 0 }}</td>
