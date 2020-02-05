@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.head')
 
 @section('content')
 	<table class="table">
@@ -13,8 +13,10 @@
 		<tbody>
 			@foreach ($tableCategories as $tableCategory)
 				<tr class="table-category bg-dark">
-					<th class="color-white">{{ __($tableCategory->title) }}</th>
-					<th></th><th></th><th></th> <!-- to make sure the row is full width, because tables -->
+					<th class="color-white">
+						<a href="{{route('tablecategory_show', [$tableCategory->title, $tableCategory->id])}}">{{ __($tableCategory->title) }}</a>
+					</th>
+					<th></th> <th></th> <th></th> <!-- to make sure the row is full width, because tables -->
 				</tr>
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 					<tr>

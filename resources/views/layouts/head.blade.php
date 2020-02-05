@@ -19,6 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+	<!-- Summernote.JS CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+
 	<!-- Any -->
 	@yield('head')
 </head>
@@ -78,7 +81,7 @@
             </div>
         </nav>
 
-        <main class="p-4" id="content">
+        <main class="container py-4" id="content">
             @yield('content')
         </main>
     </div>

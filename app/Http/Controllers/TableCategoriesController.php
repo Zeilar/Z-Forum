@@ -26,7 +26,8 @@ class TableCategoriesController extends Controller
      */
     public function create()
     {
-        //
+		if (auth()->user()->role !== 'Superadmin') abort(403);
+        return view('table_category.create');
     }
 
     /**
@@ -37,7 +38,17 @@ class TableCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (auth()->user()->role !== 'Superadmin') abort(403);
+
+		$data = request()->validate([
+			'title' => 'required|max:30',
+		]);
+
+        $tableCategory = new TableCategory();
+		$tableCategory->title = request('title');
+		$tableCategory->save();
+
+		return redirect(route('index'));
     }
 
     /**

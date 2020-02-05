@@ -68,7 +68,6 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-		return 'hdf';
         return view('post.single', [
 			'post' => Post::find($id),
 		]);

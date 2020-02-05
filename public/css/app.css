@@ -11356,6 +11356,10 @@ a.text-dark:focus {
   }
 }
 
+.note-toolbar {
+  background: #dfdfdf;
+}
+
 p,
 h1,
 h2,

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.head')
 
 @section('pageTitle') Post comment @endsection
 
