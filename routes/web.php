@@ -37,4 +37,5 @@ Route::post('/thread/{title}-{id}/store', 'PostsController@store')->name('post_s
 Route::get('/thread/{title}-{id}/new', 'PostsController@create')->name('post_create');
 
 // Users
+Route::get('/dashboard', 'UsersController@index')->name('user_dashboard');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
