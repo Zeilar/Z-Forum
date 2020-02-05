@@ -22,10 +22,12 @@ Route::post('/category/store', 'TableCategoriesController@store')->name('tableca
 Route::get('/category/new', 'TableCategoriesController@create')->name('tablecategory_create');
 
 // Table subcategories
+Route::post('/subcategory/{subcategory}-{id}/store', 'TableSubcategoriesController@store')->name('tablesubcategory_store');
+Route::get('/category/{category}-{id}/new', 'TableSubcategoriesController@create')->name('tablesubcategory_create');
 Route::get('/subcategory/{subcategory}-{id}', 'TableSubcategoriesController@show')->name('tablesubcategory_show');
 
 // Threads
-Route::post('/subcategory/{subcategory}-{id}/store', 'ThreadsController@store')->name('thread_store');
+Route::post('/subcategory/{subcategory}-{id}/thread/store', 'ThreadsController@store')->name('thread_store');
 Route::get('/subcategory/{subcategory}-{id}/new', 'ThreadsController@create')->name('thread_create');
 Route::get('/thread/{title}-{id}', 'ThreadsController@show')->name('thread_show');
 

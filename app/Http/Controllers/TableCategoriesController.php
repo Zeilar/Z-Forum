@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TableCategory;
+use App\TableSubcategory;
 
 class TableCategoriesController extends Controller
 {
@@ -24,10 +25,12 @@ class TableCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($title, $id)
     {
 		if (auth()->user()->role !== 'Superadmin') abort(403);
-        return view('table_category.create');
+        return view('table_category.create', [
+			'tableCategory' => TableCategory::find($id),
+		]);
     }
 
     /**
@@ -59,7 +62,11 @@ class TableCategoriesController extends Controller
      */
     public function show($title, $id)
     {
-		return view('table_category.index', [
+		// if the found subcategory doesn't match the URI title, or if it doesn't exist at all, throw 404
+		$tableCategory = TableCategory::find($id);
+		if (($tableCategory && $tableCategory->title !== $title) || !$tableCategory) return abort(404);
+
+		return view('table_category.single', [
 			'tableCategory' => TableCategory::find($id),
 		]);
     }

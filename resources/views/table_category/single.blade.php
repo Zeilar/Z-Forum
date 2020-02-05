@@ -41,5 +41,5 @@
 			@endforeach
 		</tbody>
 	</table>
-	<a href="{{route('thread_create', [$tableCategory->title, $tableCategory->id])}}">New</a>
+	<a href="{{route('tablesubcategory_create', [$tableCategory->title, $tableCategory->id])}}">New</a>
 @endsection
