@@ -7,5 +7,5 @@
 		<p>{{ $post->content }}</p>
 		<p><a href="/post/{{$post->id}}">Visit</a></p>
 	@endforeach
-	<a href="{{url()->current()}}/new">Reply</a>
+	<a href="{{route('post_create', [$thread->title, $thread->id])}}">Reply</a>
 @endsection

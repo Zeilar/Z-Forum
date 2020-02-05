@@ -18,7 +18,9 @@
 				</tr>
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 					<tr>
-						<td><a href="/subcategory/{{$tableSubcategory->title}}-{{$tableSubcategory->id}}">{{ $tableSubcategory->title }}</a></td>
+						<td><a href="
+							{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}
+						">{{ $tableSubcategory->title }}</a></td>
 						<?php
 							foreach ($tableSubcategory->threads as $thread) {
 								$postAmount = count($thread->posts);
@@ -29,7 +31,7 @@
 						?>
 						<td>
 							<p class="post-created-at">{{ $post->created_at }}</p>
-							<p class="post-created-by">{{ __('By ') }}<a href="/user/{{$post->user->id}}">{{ $post->user->username }}</a></p>
+							<p class="post-created-by">{{ __('By ') }}<a href="{{route('user_show', [$post->user->id])}}">{{ $post->user->username }}</a></p>
 						</td>
 						<td>{{ count($tableSubcategory->threads) }}</td>
 						<td>{{ $postAmount ?? 0 }}</td>
