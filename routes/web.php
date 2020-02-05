@@ -28,9 +28,9 @@ Route::get('/subcategory/{subcategory}-{id}/new', 'ThreadsController@create')->n
 Route::get('/thread/{title}-{id}', 'ThreadsController@show')->name('thread_show');
 
 // Posts
+Route::get('/thread/{title}-{thread-id}#post-{post-id}', 'PostsController@show')->name('post_show');
 Route::post('/thread/{title}-{id}/create', 'PostsController@store')->name('post_store');
 Route::get('/thread/{title}-{id}/new', 'PostsController@create')->name('post_create');
-Route::get('/post/{id}', 'PostsController@show')->name('post_show');
 
 // Users
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');

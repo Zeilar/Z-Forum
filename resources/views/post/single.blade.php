@@ -2,7 +2,7 @@
 
 @section('content')
 	@if ($post)
-		<div class="card mb-4">
+		<div class="card mb-4" id="post-{{$post->id}}">
 			<h3>{{ $post->content }}</h3>
 			<span>Posted at: {{ $post->created_at }}</span>
 		</div>

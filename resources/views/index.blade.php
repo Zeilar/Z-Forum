@@ -24,7 +24,7 @@
 						<?php
 							foreach ($tableSubcategory->threads as $thread) {
 								$postAmount = count($thread->posts);
-								foreach ($thread->posts->sortByDesc('created_at')->take(1) as $p) {
+								foreach ($thread->posts->sortBy('created_at')->take(1) as $p) {
 									$post = $p;
 								}
 							}
