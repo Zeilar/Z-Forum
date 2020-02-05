@@ -46,9 +46,11 @@ class TableCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($title, $id)
     {
-
+		return view('table_category.index', [
+			'tableCategory' => TableCategory::find($id),
+		]);
     }
 
     /**

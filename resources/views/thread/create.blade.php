@@ -5,7 +5,7 @@
 @section('content')
 	<h1>Create new thread in: {{ $subcategory->title }}</h1>
 
-	<form action="{{explode('new', url()->current())[0]}}create" method="POST">
+	<form action="{{route('thread_store', [$subcategory->title, $subcategory->id])}}" method="POST">
 		@csrf
 
 		<input class="bg-dark" type="text" name="title" id="title">

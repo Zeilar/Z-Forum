@@ -50,13 +50,14 @@ class PostsController extends Controller
 			'content' => 'required|max:500'
 		]);
 
+		$thread = Thread::find($id);
         $post = new Post();
 		$post->content = request('content');
 		$post->user_id = auth()->user()->id;
-		$post->thread_id = Thread::find($id)->id;
+		$post->thread_id = $thread->id;
 		$post->save();
 
-		return redirect("/post/$post->id");
+		return redirect(route('thread_show', [$thread->title, $thread->id]));
     }
 
     /**

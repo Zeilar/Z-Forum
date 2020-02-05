@@ -4,7 +4,9 @@
 	<p class="breadcrumb">
 		<a href="/">Home</a> 
 		<span class="mx-1">&raquo;</span>
-		<a href="#">{{ $tableSubcategory->tableCategory->title }}</a>
+		<a href="
+			{{route('tablecategory_show', [$tableSubcategory->tableCategory->title, $tableSubcategory->tableCategory->id])}}
+		">{{ $tableSubcategory->tableCategory->title }}</a>
 		<span class="mx-1">&raquo;</span>
 		<span>{{ $tableSubcategory->title }}</span> 
 	</p>

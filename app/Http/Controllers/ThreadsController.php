@@ -64,7 +64,7 @@ class ThreadsController extends Controller
 		$post->thread_id = $thread->id;
 		$post->save();
 
-		return redirect("/thread/$thread->title-$thread->id");
+		return redirect(route('thread_show', [$thread->title, $thread->id]));
     }
 
     /**
