@@ -14,7 +14,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard');
+		if (logged_in()) {
+        	return view('user.dashboard');
+		}
     }
 
     /**

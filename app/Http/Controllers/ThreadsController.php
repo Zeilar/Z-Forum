@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TableSubcategory;
 use App\Thread;
 use App\Post;
+use App\TableCategory;
 
 class ThreadsController extends Controller
 {
@@ -26,15 +27,13 @@ class ThreadsController extends Controller
      */
     public function create($title, $id)
     {
-		if (!auth()->user()) abort(403);
-
-		// if the found subcategory doesn't match the URI title, or if it doesn't exist at all, throw 404
-		$subcategory = TableSubcategory::find($id);
-		if (($subcategory && $subcategory->title !== $title) || !$subcategory) return abort(404);
-
-        return view('thread.create', [
-			'subcategory' => TableSubcategory::find($id),
-		]);
+		if (logged_in()) {
+			if (item_exists(TableSubcategory::find($id), $title)) {
+				return view('thread.create', [
+					'subcategory' => TableSubcategory::find($id),
+				]);
+			}
+		}
     }
 
     /**
@@ -45,26 +44,26 @@ class ThreadsController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-		if (!auth()->user()) abort(403);
+		if (logged_in()) {
+			$data = request()->validate([
+				'title' => 'required|max:100',
+				'content' => 'required|max:500',
+			]);
 
-		$data = request()->validate([
-			'title' => 'required|max:100',
-			'content' => 'required|max:500',
-		]);
+			$thread = new Thread();
+			$thread->title = request('title');
+			$thread->user_id = auth()->user()->id;
+			$thread->table_subcategory_id = TableSubcategory::find($id)->id;
+			$thread->save();
 
-        $thread = new Thread();
-		$thread->title = request('title');
-		$thread->user_id = auth()->user()->id;
-		$thread->table_subcategory_id = TableSubcategory::find($id)->id;
-		$thread->save();
+			$post = new Post();
+			$post->content = request('content');
+			$post->user_id = auth()->user()->id;
+			$post->thread_id = $thread->id;
+			$post->save();
 
-		$post = new Post();
-		$post->content = request('content');
-		$post->user_id = auth()->user()->id;
-		$post->thread_id = $thread->id;
-		$post->save();
-
-		return redirect(route('thread_show', [$thread->title, $thread->id]));
+			return redirect(route('thread_show', [$thread->title, $thread->id]));
+		}
     }
 
     /**

@@ -25,10 +25,13 @@ class TableSubcategoriesController extends Controller
      */
     public function create($title, $id)
     {
-        if (auth()->user()->role !== 'Superadmin') abort(403);
-        return view('table_subcategory.create', [
-			'tableCategory' => TableCategory::find($id),
-		]);
+		if (is_role('superadmin')) {
+			if (item_exists(TableCategory::find($id), $title)) {
+				return view('table_subcategory.create', [
+					'tableCategory' => TableCategory::find($id),
+				]);
+			}
+		}
     }
 
     /**
@@ -39,18 +42,18 @@ class TableSubcategoriesController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-        if (auth()->user()->role !== 'Superadmin') abort(403);
+		if (is_role('superadmin')) {
+			$data = request()->validate([
+				'title' => 'required|max:30',
+			]);
 
-		$data = request()->validate([
-			'title' => 'required|max:30',
-		]);
+			$tableSubcategory = new TableSubcategory();
+			$tableSubcategory->title = request('title');
+			$tableSubcategory->table_category_id = TableCategory::find($id)->id;
+			$tableSubcategory->save();
 
-        $tableSubcategory = new TableSubcategory();
-		$tableSubcategory->title = request('title');
-		$tableSubcategory->table_category_id = TableCategory::find($id)->id;
-		$tableSubcategory->save();
-
-		return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
+			return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
+		}
     }
 
     /**
@@ -61,15 +64,13 @@ class TableSubcategoriesController extends Controller
      */
     public function show($title, $id)
     {
-		// if the found subcategory doesn't match the URI title, or if it doesn't exist at all, throw 404
-		$subcategory = TableSubcategory::find($id);
-		if (($subcategory && $subcategory->title !== $title) || !$subcategory) return abort(404);
-
-        return view('table_subcategory.single', [
-			'tableSubcategory' => TableSubcategory::find($id),
-		]);
+		if (item_exists(TableSubcategory::find($id), $title)) {
+			return view('table_subcategory.single', [
+				'tableSubcategory' => TableSubcategory::find($id),
+			]);
+		}
     }
-
+	
     /**
      * Show the form for editing the specified resource.
      *

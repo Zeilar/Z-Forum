@@ -25,15 +25,13 @@ class PostsController extends Controller
      */
     public function create($title, $id)
     {
-        if (!auth()->user()) abort(403);
-
-		// if the found thread doesn't match the URI title, or if it doesn't exist at all, throw 404
-		$thread = Thread::find($id);
-		if (($thread && $thread->title !== $title) || !$thread) return abort(404);
-
-        return view('post.create', [
-			'thread' => Thread::find($id),
-		]);
+        if (logged_in()) {
+			if (item_exists(Thread::find($id), $title)) {
+				return view('post.create', [
+					'thread' => Thread::find($id),
+				]);
+			}
+		}
     }
 
     /**
@@ -44,20 +42,20 @@ class PostsController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-        if (!auth()->user()) abort(403);
+        if (logged_in()) {
+			$data = request()->validate([
+				'content' => 'required|max:500'
+			]);
 
-		$data = request()->validate([
-			'content' => 'required|max:500'
-		]);
+			$thread = Thread::find($id);
+			$post = new Post();
+			$post->content = request('content');
+			$post->user_id = auth()->user()->id;
+			$post->thread_id = $thread->id;
+			$post->save();
 
-		$thread = Thread::find($id);
-        $post = new Post();
-		$post->content = request('content');
-		$post->user_id = auth()->user()->id;
-		$post->thread_id = $thread->id;
-		$post->save();
-
-		return redirect(route('thread_show', [$thread->title, $thread->id]));
+			return redirect(route('thread_show', [$thread->title, $thread->id]));
+		}
     }
 
     /**
