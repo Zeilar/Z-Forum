@@ -42,7 +42,7 @@
 								<p class="post-created-by">
 									<span>{{ __('By ') }}</span>
 									<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
-									<span>{{ $post->created_at }}</span>
+									<span>{{ pretty_date($post->created_at) }}</span>
 								</p>
 							@endif
 						</td>

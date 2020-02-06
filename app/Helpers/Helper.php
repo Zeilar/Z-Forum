@@ -23,3 +23,17 @@ if (!function_exists('is_role')) {
 		if (logged_in()) return (strtolower(auth()->user()->role) === strtolower($role)) ? true : abort(403, __('Unauthorized'));
 	}
 }
+
+if (!function_exists('prettydate')) {
+	function pretty_date($date) {
+		$difference = [
+			'sec' => date('s', strtotime($date)) - date('s'),
+			'min' => date('i', strtotime($date)) - date('i'),
+			'hour' => date('H', strtotime($date)) - date('H'),
+			'day' => date('d', strtotime($date)) - date('d'),
+			'week' => date('m', strtotime($date)) - date('m'),
+			'year' => date('y', strtotime($date)) - date('y'),
+		];
+		return date('H:i') . ' ' . date('H:i', strtotime($date));
+	}
+}
