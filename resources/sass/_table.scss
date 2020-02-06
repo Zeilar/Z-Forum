@@ -1,20 +1,37 @@
 .table {
-	border: 1px solid #dee2e6;
+	tr:not(.table-splitter) {
+		border: 1px solid #dee2e6;
+	}
 
 	thead {
+		color: white;
+
 		th {
 			border: 0;
+		}
+
+		.threads-counter, .posts-counter {
+			text-align: center;
 		}
 	}
 
 	tbody {
 		tr {
-			&:not(.table-category) {
+			&:not(.tablecategory) {
 				background: #444444;
+			}
+
+			&.table-splitter {
+				height: 3vh;
 			}
 
 			td {
 				vertical-align: middle;
+				color: white;
+
+				&.threads-counter, &.posts-counter {
+					text-align: center;
+				}
 			}
 		}
 	}

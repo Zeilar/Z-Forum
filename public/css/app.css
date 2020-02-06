@@ -11441,19 +11441,38 @@ h6 {
   background: #383838;
 }
 
-.table {
+.table tr:not(.table-splitter) {
   border: 1px solid #dee2e6;
+}
+
+.table thead {
+  color: white;
 }
 
 .table thead th {
   border: 0;
 }
 
-.table tbody tr:not(.table-category) {
+.table thead .threads-counter,
+.table thead .posts-counter {
+  text-align: center;
+}
+
+.table tbody tr:not(.tablecategory) {
   background: #444444;
+}
+
+.table tbody tr.table-splitter {
+  height: 3vh;
 }
 
 .table tbody tr td {
   vertical-align: middle;
+  color: white;
+}
+
+.table tbody tr td.threads-counter,
+.table tbody tr td.posts-counter {
+  text-align: center;
 }
 

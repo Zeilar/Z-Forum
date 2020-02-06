@@ -4,28 +4,28 @@
 	<table class="table">
 		<thead>
 			<tr class="table-header bg-pink">
-				<th class="py-3">{{ __('Forum section') }}</th>
-				<th class="py-3">{{ __('Latest post') }}</th>
-				<th class="py-3">{{ __('Threads') }}</th>
-				<th class="py-3">{{ __('Posts') }}</th>
+				<th class="py-3 forum-section">{{ __('Forum section') }}</th>
+				<th class="py-3 latest-post">{{ __('Latest post') }}</th>
+				<th class="py-3 threads-counter">{{ __('Threads') }}</th>
+				<th class="py-3 posts-counter">{{ __('Posts') }}</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($tableCategories as $tableCategory)
-				<tr class="table-category bg-dark">
-					<th class="color-white">
-						<a href="{{route('tablecategory_show', [$tableCategory->title, $tableCategory->id])}}">{{ __($tableCategory->title) }}</a>
+				<tr class="table-splitter"></tr>
+				<tr class="tablecategory bg-dark pt-2">
+					<th class="tablecategory-title color-white">
+						<p>{{ __($tableCategory->title) }}</p>
 					</th>
-					<th></th> <th></th> <th></th> <!-- to make sure the row is full width, because tables -->
+					<th></th> <th></th> <th></th> {{-- to make sure the row is full width, because tables --}}
 				</tr>
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 					<tr>
 						<td>
 							<a href="
 								{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}
-							">{{ $tableSubcategory->title }}</a>
+							">{{ __($tableSubcategory->title) }}</a>
 						</td>
-						
 						<td>
 							@if (count($tableSubcategory->threads))
 								<?php
@@ -46,8 +46,8 @@
 								</p>
 							@endif
 						</td>
-						<td>{{ count($tableSubcategory->threads) }}</td>
-						<td>{{ $postAmount ?? 0 }}</td>
+						<td class="threads-counter">{{ count($tableSubcategory->threads) }}</td>
+						<td class="posts-counter">{{ $postAmount ?? 0 }}</td>
 						<?php unset($postAmount); ?>
 					</tr>
 				@endforeach

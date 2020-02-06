@@ -2,6 +2,7 @@
 
 /**
  * Custom functions
+ * 
  * @author Philip Angelin
  */
 
