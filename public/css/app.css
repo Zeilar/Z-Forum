@@ -11372,10 +11372,12 @@ h6 {
 
 ::-moz-selection {
   background: #b30039;
+  color: white;
 }
 
 ::selection {
   background: #b30039;
+  color: white;
 }
 
 .bg-pink {
@@ -11386,7 +11388,7 @@ h6 {
   background: #1f1f1f !important;
 }
 
-.color-dark {
+.color-gray {
   color: #1f1f1f !important;
 }
 
