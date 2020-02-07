@@ -1,34 +1,64 @@
 <?php
-
 /**
  * Custom functions
  * 
  * @author Philip Angelin
  */
 
+/**
+ * Check if item exists, it should have a title and id
+ * Recommended usage is inside a REST Controller
+ * 
+ * @param object item - Object of the item (required)
+ * @param string title - Title to compare the item title propety with (required)
+ * 
+ * @return mixed
+ */
 if (!function_exists('item_exists')) {
-	function item_exists($item, $title) {
+	function item_exists(object $item, string $title) {
 		return (($item && strtolower($item->title) === strtolower($title))) ? true : abort(404);
 	}
 }
 
+/**
+ * Check if user is logged in
+ * 
+ * @return mixed
+ */
 if (!function_exists('logged_in')) {
 	function logged_in() {
 		return (auth()->user()) ? true : abort(403, __('User Not Found'));
 	}
 }
 
+/**
+ * Check if user is logged in and if their role matches the given one
+ * @see function logged_in()
+ * 
+ * @param string $role
+ * 
+ * @return mixed
+ */
 if (!function_exists('is_role')) {
-	function is_role($role) {
+	function is_role(string $role) {
 		return (logged_in()
-			? (strtolower(auth()->user()->role) === strtolower($role)) ? true : abort(403, __('Unauthorized'))
+			? (strtolower(auth()->user()->role) === strtolower($role)) 
+				? true 
+				: abort(403, __('Unauthorized'))
 			: false
 		);
 	}
 }
 
+/**
+ * Calculate difference between now and given timestamp
+ *
+ * @param string $date
+ *
+ * @return array
+ */
 if (!function_exists('time_difference')) {
-	function time_difference($date) {
+	function time_difference(string $date) {
 		return $difference = [
 			'sec' => date('s', strtotime($date)) - date('s'),
 			'min' => date('i', strtotime($date)) - date('i'),
@@ -41,8 +71,15 @@ if (!function_exists('time_difference')) {
 	}
 }
 
+/**
+ * Write out date in a prettier format
+ *
+ * @param string $date
+ *
+ * @return date
+ */
 if (!function_exists('prettydate')) {
-	function pretty_date($date) {
+	function pretty_date(string $date) {
 		$diff = time_difference($date);
 		$date = strtotime($date);
 
