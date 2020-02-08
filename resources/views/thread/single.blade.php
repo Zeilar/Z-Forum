@@ -43,7 +43,12 @@
 			@endif
 		@endforeach
 	</div>
+	<form action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
+		@csrf
+		<textarea name="content" id="form-content" rows="40"></textarea>
+		<button class="btn btn-danger" type="submit">{{ __('Send') }}</button>
+	</form>
 	<a href="{{route('post_create', [$thread->title, $thread->id])}}">
-		<button class="btn btn-danger color-white" type="button">{{ __('Reply') }}</button>
+		<button class="btn mt-4 btn-danger color-white" type="button">{{ __('Reply') }}</button>
 	</a>
 @endsection
