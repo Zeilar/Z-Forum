@@ -44,6 +44,6 @@
 		@endforeach
 	</div>
 	<a href="{{route('post_create', [$thread->title, $thread->id])}}">
-		<button class="btn btn-primary color-white" type="button">{{ __('Reply') }}</button>
+		<button class="btn btn-danger color-white" type="button">{{ __('Reply') }}</button>
 	</a>
 @endsection
