@@ -15,10 +15,14 @@
 		<span>{{ $thread->title }}</span>
 	</p>
 
+	<div class="thread-title bg-dark mb-2">
+		<h5 class="text-white">{{ $thread->title }}</h5>
+	</div>
+
 	<div class="thread">
 		@foreach ($thread->posts as $post)
-		<?php if (!isset($i)) $i = 0; ?>
-		<?php $i++; ?>
+			<?php if (!isset($i)) $i = 0; ?>
+			<?php $i++; ?>
 			<div class="post <?php if ($thread->user->id === $post->user->id) echo 'is_author'; ?>" id="post-{{$post->id}}">
 				<div class="post-banner row m-0 justify-content-between">
 					<span class="post-date px-2 color-white">
@@ -45,7 +49,7 @@
 	</div>
 	<form action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
 		@csrf
-		<textarea name="content" id="form-content" rows="40"></textarea>
+		<textarea name="content" id="form-content"></textarea>
 		<button class="btn btn-danger" type="submit">{{ __('Send') }}</button>
 	</form>
 	<a href="{{route('post_create', [$thread->title, $thread->id])}}">

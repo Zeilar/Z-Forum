@@ -44,7 +44,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 $(document).ready(function() {
 	$('#form-content').summernote({
-		height: 300,
+		height: 150,
 		focus: true,
 	});
 });

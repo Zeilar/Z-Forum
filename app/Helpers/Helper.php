@@ -78,7 +78,7 @@ if (!function_exists('time_difference')) {
  *
  * @return date
  */
-if (!function_exists('prettydate')) {
+if (!function_exists('pretty_date')) {
 	function pretty_date(string $date) {
 		$diff = time_difference($date);
 		$date = strtotime($date);

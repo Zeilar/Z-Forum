@@ -10,7 +10,7 @@
 
 		<input class="bg-dark" type="text" name="title" id="title">
 
-		<textarea name="content" id="content" value="Post"></textarea>
+		<textarea name="content" id="form-content" value="Post"></textarea>
 		
 		<button type="submit">Submit</button>
 	</form>
