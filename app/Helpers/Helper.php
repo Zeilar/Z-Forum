@@ -23,30 +23,39 @@ if (!function_exists('item_exists')) {
 /**
  * Check if user is logged in
  * 
+ * @param int $exception = null - SHOULD ONLY BE USED OUTSIDE VIEWS
+ * 
  * @return mixed
  */
 if (!function_exists('logged_in')) {
 	function logged_in() {
-		return (auth()->user()) ? true : abort(403, __('User Not Found'));
+		if (auth()->user()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 
 /**
  * Check if user is logged in and if their role matches the given one
- * @see function logged_in()
  * 
  * @param string $role
+ * @param int $exception = null - SHOULD ONLY BE USED OUTSIDE VIEWS
  * 
  * @return mixed
  */
 if (!function_exists('is_role')) {
-	function is_role(string $role) {
-		return (logged_in()
-			? (strtolower(auth()->user()->role) === strtolower($role)) 
-				? true 
-				: abort(403, __('Unauthorized'))
-			: false
-		);
+	function is_role(string $role, $exception = null) {
+		if (strtolower(auth()->user()->role) === strtolower($role)) {
+			return true;
+		} else {
+			if ($exception) {
+				return abort($exception);
+			} else {
+				return false;
+			}
+		}
 	}
 }
 

@@ -55,4 +55,8 @@
 	<a href="{{route('post_create', [$thread->title, $thread->id])}}">
 		<button class="btn mt-4 btn-danger color-white" type="button">{{ __('Reply') }}</button>
 	</a>
+
+	@if (session('error'))
+		<p class="text-white">{{ session('error') }}</p>
+	@endif
 @endsection

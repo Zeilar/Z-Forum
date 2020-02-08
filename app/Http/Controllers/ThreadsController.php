@@ -27,7 +27,7 @@ class ThreadsController extends Controller
      */
     public function create($title, $id)
     {
-		if (logged_in()) {
+		if (logged_in(403)) {
 			if (item_exists(TableSubcategory::find($id), $title)) {
 				return view('thread.create', [
 					'subcategory' => TableSubcategory::find($id),
@@ -44,7 +44,7 @@ class ThreadsController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-		if (logged_in()) {
+		if (logged_in(403)) {
 			$data = request()->validate([
 				'title' => 'required|max:100',
 				'content' => 'required|max:500',

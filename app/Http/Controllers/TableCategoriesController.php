@@ -27,8 +27,10 @@ class TableCategoriesController extends Controller
      */
     public function create()
     {
-		if (is_role('superadmin')) {
-			return view('table_category.create');
+		if (logged_in(403)) {
+			if (is_role('superadmin', 403)) {
+				return view('table_category.create');
+			}
 		}
     }
 
@@ -40,16 +42,18 @@ class TableCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        if (is_role('superadmin')) {
-			$data = request()->validate([
-				'title' => 'required|max:30',
-			]);
+		if (logged_in(403)) {
+			if (is_role('superadmin', 403)) {
+				$data = request()->validate([
+					'title' => 'required|max:30',
+				]);
 
-			$tableCategory = new TableCategory();
-			$tableCategory->title = request('title');
-			$tableCategory->save();
+				$tableCategory = new TableCategory();
+				$tableCategory->title = request('title');
+				$tableCategory->save();
 
-			return redirect(route('index'));
+				return redirect(route('index'));
+			}
 		}
     }
 

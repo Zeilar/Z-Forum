@@ -25,11 +25,13 @@ class TableSubcategoriesController extends Controller
      */
     public function create($title, $id)
     {
-		if (is_role('superadmin')) {
-			if (item_exists(TableCategory::find($id), $title)) {
-				return view('table_subcategory.create', [
-					'tableCategory' => TableCategory::find($id),
-				]);
+		if (logged_in(403)) {
+			if (is_role('superadmin', 403)) {
+				if (item_exists(TableCategory::find($id), $title)) {
+					return view('table_subcategory.create', [
+						'tableCategory' => TableCategory::find($id),
+					]);
+				}
 			}
 		}
     }
@@ -42,17 +44,19 @@ class TableSubcategoriesController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-		if (is_role('superadmin')) {
-			$data = request()->validate([
-				'title' => 'required|max:30',
-			]);
+		if (logged_in(403)) {
+			if (is_role('superadmin', 403)) {
+				$data = request()->validate([
+					'title' => 'required|max:30',
+				]);
 
-			$tableSubcategory = new TableSubcategory();
-			$tableSubcategory->title = request('title');
-			$tableSubcategory->table_category_id = TableCategory::find($id)->id;
-			$tableSubcategory->save();
+				$tableSubcategory = new TableSubcategory();
+				$tableSubcategory->title = request('title');
+				$tableSubcategory->table_category_id = TableCategory::find($id)->id;
+				$tableSubcategory->save();
 
-			return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
+				return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
+			}
 		}
     }
 

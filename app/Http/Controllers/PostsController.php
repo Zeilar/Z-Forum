@@ -28,7 +28,13 @@ class PostsController extends Controller
      */
     public function create($title, $id)
     {
-        if (logged_in()) if (item_exists(Thread::find($id), $title)) return view('post.create', ['thread' => Thread::find($id)]);
+        if (logged_in()) {
+			if (item_exists(Thread::find($id), $title)) {
+				return view('post.create', ['thread' => Thread::find($id)]);
+			}
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
+		}
     }
 
     /**
@@ -39,7 +45,7 @@ class PostsController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-        if (logged_in()) {
+        if (logged_in(403)) {
 			$data = request()->validate([
 				'content' => 'required|max:500'
 			]);
