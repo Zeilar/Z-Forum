@@ -11,7 +11,7 @@
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #b30039;
+  --pink: #91002e;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -535,7 +535,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #b30039;
+  color: #91002e;
   word-wrap: break-word;
 }
 
@@ -11371,17 +11371,17 @@ h6 {
 }
 
 ::-moz-selection {
-  background: #b30039;
+  background: #91002e;
   color: white;
 }
 
 ::selection {
-  background: #b30039;
+  background: #91002e;
   color: white;
 }
 
 .bg-pink {
-  background: #b30039 !important;
+  background: #91002e !important;
 }
 
 .bg-dark {
@@ -11393,7 +11393,7 @@ h6 {
 }
 
 .color-pink {
-  color: #b30039 !important;
+  color: #91002e !important;
 }
 
 .color-white {
@@ -11401,7 +11401,7 @@ h6 {
 }
 
 .navbar {
-  border-bottom: 2px solid #b30039;
+  border-bottom: 2px solid #91002e;
   background: #1f1f1f;
 }
 
@@ -11419,7 +11419,7 @@ h6 {
   -moz-border-radius: 0 0 5px 5px;
   -ms-border-radius: 0 0 5px 5px;
   -o-border-radius: 0 0 5px 5px;
-  border: 2px solid #b30039;
+  border: 2px solid #91002e;
   background: #1f1f1f;
   color: white;
   border-top: 0;
@@ -11476,5 +11476,52 @@ h6 {
 .table tbody tr td.threads-counter,
 .table tbody tr td.posts-counter {
   text-align: center;
+}
+
+.post {
+  border: 2px solid black;
+  background: #e9ecef;
+}
+
+.post .post-banner {
+  background: #1f1f1f;
+}
+
+.post .post-banner .post-permalink a {
+  color: white;
+}
+
+.post.is_author .post-banner {
+  background: #91002e;
+}
+
+.post-dividers {
+  width: 100%;
+  height: 1vh;
+}
+
+.post-dividers .post-divider {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+.post-dividers .post-divider:first-child {
+  border-right: 2px solid black;
+}
+
+.post-dividers .post-divider:last-child {
+  border-left: 2px solid black;
+}
+
+.post-dividers .post-divider-small {
+  background: #91002e;
+  width: 2px;
+}
+
+.post-dividers .post-divider-middle {
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  -webkit-box-flex: 7;
+          flex: 7;
 }
 

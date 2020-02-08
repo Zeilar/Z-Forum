@@ -84,9 +84,9 @@ if (!function_exists('prettydate')) {
 		$date = strtotime($date);
 
 		if ($diff['day'] === 0 && $diff['month'] === 0 && $diff['week'] === 0 && $diff['year'] === 0) {
-			return __('Today') . ' ' . '<span class="color-gray">' . date('H:i', $date) . '</span>';
+			return __('Today') . ', ' . date('H:i', $date);
 		} else if ($diff['day'] === -1 && $diff['month'] === 0 && $diff['week'] === 0 && $diff['year'] === 0) {
-			return __('Yesterday') . ' ' . '<span class="color-gray">' . date('H:i', $date) . '</span>';
+			return __('Yesterday') . ', ' . date('H:i', $date);
 		} else {
 			return date('Y-m-d', $date);
 		}

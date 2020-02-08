@@ -13,9 +13,12 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        
+		return (Post::find($id)
+			? view('post.single', ['post' => Post::find($id)])
+			: abort(404)
+		);
     }
 
     /**
@@ -25,13 +28,7 @@ class PostsController extends Controller
      */
     public function create($title, $id)
     {
-        if (logged_in()) {
-			if (item_exists(Thread::find($id), $title)) {
-				return view('post.create', [
-					'thread' => Thread::find($id),
-				]);
-			}
-		}
+        if (logged_in()) if (item_exists(Thread::find($id), $title)) return view('post.create', ['thread' => Thread::find($id)]);
     }
 
     /**

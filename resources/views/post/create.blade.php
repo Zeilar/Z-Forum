@@ -8,7 +8,7 @@
 	<form action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
 		@csrf
 
-		<textarea class="bg-dark" name="content" id="content" value="Content"></textarea>
+		<textarea class="bg-dark" name="content" id="form-content"></textarea>
 		
 		<button type="submit">Submit</button>
 	</form>
