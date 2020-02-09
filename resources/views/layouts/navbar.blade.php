@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md shadow-sm">
-	<div class="container">
+<nav class="navbar navbar-expand-md bg-dark">
+	<div class="container-fluid" id="navbar-container">
 		<a class="navbar-brand" href="{{ route('index') }}">Z-Forum</a>
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
@@ -18,7 +18,7 @@
 			<ul class="navbar-nav ml-auto">
 				<!-- Authentication Links -->
 				@guest
-					<li class="nav-item">
+					<li class="nav-item mr-3">
 						<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
 					</li>
 					@if (Route::has('register'))

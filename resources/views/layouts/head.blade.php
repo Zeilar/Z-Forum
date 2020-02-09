@@ -30,7 +30,7 @@
     <div id="app">
         @include('layouts.navbar')
 
-        <main class="container py-3" id="content">
+        <main class="container-fluid py-3" id="content">
 			@if (session('error'))
 				<div class="popup">
 					<div class="unauthorized error bg-pink text-white my-3">
@@ -42,6 +42,8 @@
 			@endif
 
             @yield('content')
+
+			@include('layouts.sidebar')
         </main>
     </div>
 </body>

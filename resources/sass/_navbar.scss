@@ -1,6 +1,5 @@
 .navbar {
 	border-bottom: 2px solid $pink;
-	background: $gray;
 
 	.navbar-toggler {
 		.navbar-toggler-icon {
@@ -12,12 +11,22 @@
 		}
 	}
 
+	.nav-link {
+		border: 2px solid $pink;
+		color: white;
+
+		&:hover {
+			transition: background 0.05s ease-out;
+			background: $pink;
+		}
+	}
+
 	.dropdown-menu {
-		border-radius: 0 0 5px 5px;
 		-webkit-border-radius: 0 0 5px 5px;
 		-moz-border-radius: 0 0 5px 5px;
 		-ms-border-radius: 0 0 5px 5px;
 		-o-border-radius: 0 0 5px 5px;
+		border-radius: 0 0 5px 5px;
 		border: 2px solid $pink;
 		background: $gray;
 		color: white;

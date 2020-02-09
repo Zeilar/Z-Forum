@@ -46,3 +46,20 @@
 	-ms-border-radius: 0;
 	-o-border-radius: 0;
 }
+
+.container-fluid#content, .navbar {
+	padding: 0.5% 10%;
+}
+
+#navbar-container {
+	padding: 0;
+}
+
+.form-control {
+	border-radius: 0;
+
+	&:focus {
+		box-shadow: 0 0 0 0.2rem $pink;
+		border-color: white;
+	}
+}
