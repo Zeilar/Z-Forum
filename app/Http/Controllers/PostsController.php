@@ -45,7 +45,7 @@ class PostsController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-        if (logged_in(403)) {
+        if (logged_in()) {
 			$data = request()->validate([
 				'content' => 'required|max:500'
 			]);
@@ -58,6 +58,8 @@ class PostsController extends Controller
 			$post->save();
 
 			return redirect(route('thread_show', [$thread->title, $thread->id]));
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 

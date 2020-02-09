@@ -47,16 +47,18 @@
 			@endif
 		@endforeach
 	</div>
-	<form action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
-		@csrf
-		<textarea name="content" id="form-content"></textarea>
-		<button class="btn btn-danger" type="submit">{{ __('Send') }}</button>
-	</form>
-	<a href="{{route('post_create', [$thread->title, $thread->id])}}">
-		<button class="btn mt-4 btn-danger color-white" type="button">{{ __('Reply') }}</button>
-	</a>
+	@if (logged_in())
+		<form class="quick-reply" action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
+			@csrf
+			<textarea name="content" id="form-content"></textarea>
+			<button class="btn btn-danger" type="submit">{{ __('Send') }}</button>
+		</form>
+		<a href="{{route('post_create', [$thread->title, $thread->id])}}">
+			<button class="btn mt-4 btn-danger color-white" type="button">{{ __('Reply') }}</button>
+		</a>
+	@endif
 
 	@if (session('error'))
-		<p class="text-white">{{ session('error') }}</p>
+		<p class="text-white">{{ __(session('error')) }}</p>
 	@endif
 @endsection

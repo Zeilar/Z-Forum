@@ -14,8 +14,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-		if (logged_in(403)) {
+		if (logged_in()) {
         	return view('user.dashboard');
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 

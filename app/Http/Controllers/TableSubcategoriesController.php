@@ -25,14 +25,18 @@ class TableSubcategoriesController extends Controller
      */
     public function create($title, $id)
     {
-		if (logged_in(403)) {
-			if (is_role('superadmin', 403)) {
+		if (logged_in()) {
+			if (is_role('superadmin')) {
 				if (item_exists(TableCategory::find($id), $title)) {
 					return view('table_subcategory.create', [
 						'tableCategory' => TableCategory::find($id),
 					]);
 				}
+			} else {
+				return redirect()->back()->with('error', 'You do not have permissions to do that');
 			}
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 
@@ -44,8 +48,8 @@ class TableSubcategoriesController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-		if (logged_in(403)) {
-			if (is_role('superadmin', 403)) {
+		if (logged_in()) {
+			if (is_role('superadmin')) {
 				$data = request()->validate([
 					'title' => 'required|max:30',
 				]);
@@ -56,7 +60,11 @@ class TableSubcategoriesController extends Controller
 				$tableSubcategory->save();
 
 				return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
+			} else {
+				return redirect()->back()->with('error', 'You do not have permissions to do that');
 			}
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 

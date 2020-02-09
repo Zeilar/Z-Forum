@@ -27,10 +27,14 @@ class TableCategoriesController extends Controller
      */
     public function create()
     {
-		if (logged_in(403)) {
-			if (is_role('superadmin', 403)) {
+		if (logged_in()) {
+			if (is_role('superadmin')) {
 				return view('table_category.create');
+			} else {
+				return redirect()->back()->with('error', 'You do not have permissions in to do that');
 			}
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 
@@ -42,8 +46,8 @@ class TableCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-		if (logged_in(403)) {
-			if (is_role('superadmin', 403)) {
+		if (logged_in()) {
+			if (is_role('superadmin')) {
 				$data = request()->validate([
 					'title' => 'required|max:30',
 				]);
@@ -53,7 +57,11 @@ class TableCategoriesController extends Controller
 				$tableCategory->save();
 
 				return redirect(route('index'));
+			} else {
+				return redirect()->back()->with('error', 'You do not have permissions to do that');
 			}
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 

@@ -27,12 +27,14 @@ class ThreadsController extends Controller
      */
     public function create($title, $id)
     {
-		if (logged_in(403)) {
+		if (logged_in()) {
 			if (item_exists(TableSubcategory::find($id), $title)) {
 				return view('thread.create', [
 					'subcategory' => TableSubcategory::find($id),
 				]);
 			}
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 
@@ -44,7 +46,7 @@ class ThreadsController extends Controller
      */
     public function store(Request $request, $title, $id)
     {
-		if (logged_in(403)) {
+		if (logged_in()) {
 			$data = request()->validate([
 				'title' => 'required|max:100',
 				'content' => 'required|max:500',
@@ -63,6 +65,8 @@ class ThreadsController extends Controller
 			$post->save();
 
 			return redirect(route('thread_show', [$thread->title, $thread->id]));
+		} else {
+			return redirect()->back()->with('error', 'You must be logged in to do that');
 		}
     }
 

@@ -46,15 +46,11 @@ if (!function_exists('logged_in')) {
  * @return mixed
  */
 if (!function_exists('is_role')) {
-	function is_role(string $role, $exception = null) {
+	function is_role(string $role) {
 		if (strtolower(auth()->user()->role) === strtolower($role)) {
 			return true;
 		} else {
-			if ($exception) {
-				return abort($exception);
-			} else {
-				return false;
-			}
+			return false;
 		}
 	}
 }
