@@ -25,6 +25,8 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.12.1",
+        "font-awesome": "^4.7.0",
         "gulp": "^4.0.2",
         "summernote": "^0.8.15"
     }

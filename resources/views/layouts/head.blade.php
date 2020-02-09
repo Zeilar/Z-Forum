@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+	<script src="{{ asset('js/styles.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -29,7 +30,17 @@
     <div id="app">
         @include('layouts.navbar')
 
-        <main class="container py-4" id="content">
+        <main class="container py-3" id="content">
+			@if (session('error'))
+				<div class="popup">
+					<div class="unauthorized error bg-pink text-white my-3">
+						<i class="fas fa-times close-button"></i>
+						<i class="fas mr-2 color-white fa-exclamation-triangle"></i>
+						<span>{{ session('error') }}</span>
+					</div>
+				</div>
+			@endif
+
             @yield('content')
         </main>
     </div>

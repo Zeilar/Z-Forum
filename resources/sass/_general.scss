@@ -13,6 +13,10 @@ html {
 
 .bg-pink {
 	background: $pink !important;
+	::selection {
+		background: white;
+		color: $pink;
+	}
 }
 
 .bg-dark {
@@ -30,4 +34,60 @@ html {
 
 .color-white {
 	color: white !important;
+}
+
+
+.popup {
+	background: rgba(0, 0, 0, 0.5);
+	animation: popup-filter 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	left: 0;
+	top: 0;
+
+	@keyframes popup-filter {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.unauthorized {
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		animation: fly-in 1s;
+		animation-iteration-count: 1;
+		animation-fill-mode: forwards;
+		border: 1px solid white;
+		position: absolute;
+		padding: 1.5%;
+		left: 50%;
+
+		.fa-times {
+			position: absolute;
+			right: 1%;
+			top: 1%;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		@keyframes fly-in {
+			0% {
+				top: -10%;
+			}
+			100% {
+				top: 35%;
+			}
+		}
+	}
 }

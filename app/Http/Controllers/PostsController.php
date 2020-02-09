@@ -71,9 +71,13 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return view('post.single', [
-			'post' => Post::find($id),
-		]);
+		if (Post::find($id)) {
+			return view('post.single', [
+				'post' => Post::find($id),
+			]);
+		} else {
+			return abort(404);
+		}
     }
 
     /**

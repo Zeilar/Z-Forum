@@ -78012,6 +78012,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
+__webpack_require__(/*! ./styles */ "./resources/js/styles.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -78105,6 +78107,24 @@ function Example() {
 if (document.getElementById('example')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('example'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/styles.js":
+/*!********************************!*\
+  !*** ./resources/js/styles.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  if ($('.popup .unauthorized').length) {
+    $('.popup .unauthorized').children('.close-button').click(function () {
+      $('.popup .unauthorized').remove();
+      $('.popup').remove();
+    });
+  }
+});
 
 /***/ }),
 

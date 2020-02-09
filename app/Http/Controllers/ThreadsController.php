@@ -78,9 +78,11 @@ class ThreadsController extends Controller
      */
     public function show($title, $id)
     {
-		return view('thread.single', [
-			'thread' => Thread::find($id),
-		]);
+		if (item_exists(Thread::find($id), $title)) {
+			return view('thread.single', [
+				'thread' => Thread::find($id),
+			]);
+		}
     }
 
     /**

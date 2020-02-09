@@ -22,10 +22,8 @@ if (!function_exists('item_exists')) {
 
 /**
  * Check if user is logged in
- * 
- * @param int $exception = null - SHOULD ONLY BE USED OUTSIDE VIEWS
- * 
- * @return mixed
+ *  * 
+ * @return boolean
  */
 if (!function_exists('logged_in')) {
 	function logged_in() {
@@ -41,9 +39,8 @@ if (!function_exists('logged_in')) {
  * Check if user is logged in and if their role matches the given one
  * 
  * @param string $role
- * @param int $exception = null - SHOULD ONLY BE USED OUTSIDE VIEWS
  * 
- * @return mixed
+ * @return boolean
  */
 if (!function_exists('is_role')) {
 	function is_role(string $role) {
