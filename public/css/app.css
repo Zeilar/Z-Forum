@@ -11427,7 +11427,7 @@ a.text-dark:focus {
 }
 
 .form-control:focus {
-  box-shadow: 0 0 0 0.2rem #91002e;
+  box-shadow: 0 0 0 0.1rem #91002e;
   border-color: white;
 }
 
