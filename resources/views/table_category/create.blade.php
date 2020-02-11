@@ -8,6 +8,6 @@
 			<input class="form-control" type="text" placeholder="Title" name="title" id="title" />
 		</div>
 		
-		<button type="submit" class="btn btn-danger">Submit</button>
+		<button type="submit" class="btn btn-success">Submit</button>
 	</form>
 @endsection

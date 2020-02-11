@@ -3,6 +3,7 @@
 
 	.navbar-brand {
 		color: $green;
+		padding: 0;
 	}
 
 	.navbar-toggler {
@@ -46,6 +47,7 @@
 			text-transform: uppercase;
 			padding: 0.8rem;
 			color: white;
+			
 			&:hover {
 				background: #383838;
 			}
