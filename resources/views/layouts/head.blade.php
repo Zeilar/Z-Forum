@@ -33,7 +33,7 @@
         <main class="container-fluid py-3" id="content">
 			@if (session('error'))
 				<div class="popup">
-					<div class="unauthorized error bg-pink text-white my-3">
+					<div class="unauthorized error bg-green text-white my-3">
 						<i class="fas fa-times close-button"></i>
 						<i class="fas mr-2 color-white fa-exclamation-triangle"></i>
 						<span>{{ session('error') }}</span>

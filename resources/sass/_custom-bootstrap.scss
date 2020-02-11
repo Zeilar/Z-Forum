@@ -59,7 +59,15 @@
 	border-radius: 0;
 
 	&:focus {
-		box-shadow: 0 0 0 0.1rem $pink;
+		box-shadow: 0 0 0 0.1rem $green;
 		border-color: white;
 	}
+}
+
+.breadcrumb {
+	border: 2px solid $green;
+	background: $gray;
+	border-radius: 0;
+	padding: 0.5rem 0.75rem;
+	color: white;
 }

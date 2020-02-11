@@ -3,11 +3,11 @@
 @section('content')
 	<table class="table">
 		<thead>
-			<tr class="table-header bg-pink">
-				<th class="py-3 forum-section">{{ __('Forum section') }}</th>
-				<th class="py-3 latest-post">{{ __('Latest post') }}</th>
-				<th class="py-3 threads-counter">{{ __('Threads') }}</th>
-				<th class="py-3 posts-counter">{{ __('Posts') }}</th>
+			<tr class="table-header bg-green">
+				<th class="py-3 forum-section"><h4>{{ __('Forum section') }}</h4></th>
+				<th class="py-3 latest-post"><h4>{{ __('Latest post') }}</h4></th>
+				<th class="py-3 text-center"><h4>{{ __('Threads') }}</h4></th>
+				<th class="py-3 text-center"><h4>{{ __('Posts') }}</h4></<h4>
 			</tr>
 		</thead>
 		<tbody>
@@ -15,7 +15,7 @@
 				<tr class="table-splitter"></tr>
 				<tr class="tablecategory bg-dark pt-2">
 					<th class="tablecategory-title color-white">
-						<p>{{ __($tableCategory->title) }}</p>
+						<h5>{{ __($tableCategory->title) }}</h5>
 					</th>
 					<th></th> <th></th> <th></th> {{-- to make sure the row is full width, because tables --}}
 				</tr>
@@ -42,12 +42,12 @@
 								<p class="post-created-by">
 									<span>{{ __('By ') }}</span>
 									<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
-									<?php echo pretty_date($post->created_at); ?>
+									{{ pretty_date($post->created_at) }}
 								</p>
 							@endif
 						</td>
-						<td class="threads-counter">{{ count($tableSubcategory->threads) }}</td>
-						<td class="posts-counter">{{ $postAmount ?? 0 }}</td>
+						<td class="text-center">{{ count($tableSubcategory->threads) }}</td>
+						<td class="text-center">{{ $postAmount ?? 0 }}</td>
 						<?php unset($postAmount); ?>
 					</tr>
 				@endforeach

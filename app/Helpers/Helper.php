@@ -94,3 +94,21 @@ if (!function_exists('pretty_date')) {
 		}
 	}
 }
+
+/**
+ * Add a comma between numeric date and time
+ * 
+ * @param string $timestamp
+ * 
+ * @return mixed
+ */
+if (!function_exists('date_comma')) {
+	function date_comma(string $timestamp) {
+		if ($timestamp) {
+			$formatted = explode(' ', $timestamp); 
+			return $formatted[0] . ', ' . $formatted[1];
+		} else {
+			return date('Y-m-d, H:i:s');
+		}
+	}
+}

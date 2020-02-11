@@ -26,7 +26,7 @@
 			<div class="post <?php if ($thread->user->id === $post->user->id) echo 'is_author'; ?>" id="post-{{$post->id}}">
 				<div class="post-banner row m-0 justify-content-between">
 					<span class="post-date px-2 color-white">
-						<?php $formatted = explode(' ', $post->created_at); echo $formatted[0] . ', ' . $formatted[1]; ?>
+						{{ date_comma($post->created_at) }}
 					</span>
 					<span class="post-permalink px-2">
 						<a href="{{route('post_permalink', [$post->id])}}">Permalink</a>

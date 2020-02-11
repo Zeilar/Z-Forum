@@ -1,7 +1,6 @@
-$(document).ready(function() {
+$(document).ready(() => {
 	if ($('.popup .unauthorized').length) {
-		$('.popup .unauthorized').children('.close-button').click(function() {
-			$('.popup .unauthorized').remove();
+		$('.popup .unauthorized').children('.close-button').click(() => {
 			$('.popup').remove();
 		});
 	}

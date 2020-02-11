@@ -17,7 +17,7 @@
 				<th><h5 class="text-white">{{ __($tableSubcategory->title) }}</h5></th>
 				<th></th><th></th> <!-- to make sure the row is full width, becaues tables -->
 			</tr>
-			<tr class="table-header bg-pink">
+			<tr class="table-header bg-green">
 				<th class="py-3"><h4>{{ __('Thread') }}</h4></th>
 				<th class="py-3"><h4>{{ __('Latest post') }}</h4></th>
 				<th class="py-3 text-center"><h4>{{ __('Posts') }}</h4></th>
@@ -42,7 +42,7 @@
 							<p class="post-created-by">
 								<span>{{ __('By ') }}</span>
 								<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
-								<span><?php $formatted = explode(' ', $post->created_at); echo $formatted[0] . ', ' . $formatted[1]; ?></span>
+								<span>{{ date_comma($post->created_at) }}</span>
 							</p>
 						@endforeach
 					</td> 

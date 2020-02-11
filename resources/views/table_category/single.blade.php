@@ -11,12 +11,13 @@
 		<thead>
 			<tr class="table-category bg-dark">
 				<th><h5 class="text-white">{{ __($tableCategory->title) }}</h5></th>
-				<th></th><th></th> <!-- to make sure the row is full width, becaues tables -->
+				<th></th ><th></th> <th></th> <!-- to make sure the row is full width, because tables -->
 			</tr>
-			<tr class="table-header bg-pink">
+			<tr class="table-header bg-green">
 				<th class="py-3"><h4>{{ __('Subcategory') }}</h4></th>
 				<th class="py-3"><h4>{{ __('Latest post') }}</h4></th>
 				<th class="py-3"><h4 class="text-center">{{ __('Threads') }}</h4></th>
+				<th class="py-3"><h4 class="text-center">{{ __('Posts') }}</h4></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,10 +28,6 @@
 							<a class="subcategory-link" href="{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}">
 								{{ __($tableSubcategory->title) }}
 							</a>
-							<p>
-								<span>{{ __('By ') }}</span>
-								<a class="thread-author-link" href="{{route('user_show', [$thread->user->id])}}">{{ $thread->user->username }}</a>
-							</p>
 						</td>
 						<td>
 							<!-- latest post -->
@@ -41,11 +38,12 @@
 								<p class="post-created-by">
 									<span>{{ __('By ') }}</span>
 									<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
-									<span><?php $formatted = explode(' ', $post->created_at); echo $formatted[0] . ', ' . $formatted[1]; ?></span>
+									<span>{{ date_comma($post->created_at) }}</span>
 								</p>
 							@endforeach
 						</td> 
-						<td class="text-center">{{ count($thread->posts) }}</td> <!-- posts -->
+						<td class="text-center">{{ count($tableSubcategory->threads) }}</td>
+						<td class="text-center">{{ count($thread->posts) }}</td>
 					</tr>
 				@endforeach
 			@endforeach
