@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableCategory;
 use App\TableSubcategory;
+use App\TableCategory;
 
 class TableCategoriesController extends Controller
 {

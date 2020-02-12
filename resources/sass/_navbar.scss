@@ -7,6 +7,38 @@
 		padding: 0;
 	}
 
+	.nav-search {
+		background: black;
+		height: 100%;
+
+		input {
+			border: 2px solid $green;
+			background: black;
+			color: $green;
+
+			&:focus {
+				outline: 0;
+			}
+		}
+
+		button {
+			border-bottom: 2px solid $green;
+			border-right: 2px solid $green;
+			border-top: 2px solid $green;
+			background: black;
+			border-left: 0;
+
+			&:focus {
+				outline: 0;
+			}
+
+			i {
+				align-self: center;
+				font-size: 2rem;
+			}
+		}
+	}
+
 	.navbar-toggler {
 		.navbar-toggler-icon {
 			width: 100%;
@@ -20,8 +52,9 @@
 	.nav-link {
 		padding: 0.5rem 1rem !important;
 		border: 2px solid $green;
+		background: black;
 		user-select: none;
-		color: white;
+		color: $green;
 
 		&:hover {
 			transition: background 0.05s ease-out;

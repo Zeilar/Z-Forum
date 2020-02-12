@@ -41,6 +41,8 @@ Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');
 Route::get('/dashboard', 'UsersController@index')->name('user_dashboard');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 
+// Search
+Route::get('/search', 'SearchController@search')->name('search');
 
 // Custom logout path (also change LoginController)
 //Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -11675,6 +11675,38 @@ a:visited:hover {
   padding: 0;
 }
 
+.navbar .nav-search {
+  background: black;
+  height: 100%;
+}
+
+.navbar .nav-search input {
+  border: 2px solid #00c26e;
+  background: black;
+  color: #00c26e;
+}
+
+.navbar .nav-search input:focus {
+  outline: 0;
+}
+
+.navbar .nav-search button {
+  border-bottom: 2px solid #00c26e;
+  border-right: 2px solid #00c26e;
+  border-top: 2px solid #00c26e;
+  background: black;
+  border-left: 0;
+}
+
+.navbar .nav-search button:focus {
+  outline: 0;
+}
+
+.navbar .nav-search button i {
+  align-self: center;
+  font-size: 2rem;
+}
+
 .navbar .navbar-toggler .navbar-toggler-icon {
   width: 100%;
 }
@@ -11686,11 +11718,12 @@ a:visited:hover {
 .navbar .nav-link {
   padding: 0.5rem 1rem !important;
   border: 2px solid #00c26e;
+  background: black;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  color: white;
+  color: #00c26e;
 }
 
 .navbar .nav-link:hover {

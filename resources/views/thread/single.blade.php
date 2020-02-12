@@ -1,7 +1,7 @@
 @extends('layouts.head')
 
 @section('content')
-	<p class="breadcrumb">
+	<div class="breadcrumb">
 		<a href="/">Home</a> 
 		<span class="mx-1">&raquo;</span>
 		<a href="
@@ -13,7 +13,7 @@
 		</a>
 		<span class="mx-1">&raquo;</span>
 		<span>{{ $thread->title }}</span>
-	</p>
+	</div>
 
 	<div class="thread-title bg-dark mb-3">
 		<h5 class="text-white">{{ $thread->title }}</h5>
@@ -21,22 +21,12 @@
 
 	<div class="thread">
 		@foreach ($posts as $post)
-			<article class="post <?php if ($thread->user->id === $post->user->id) echo 'is_author'; ?> mb-2" id="post-{{$post->id}}">
-				<div class="post-banner row m-0 justify-content-between">
-					<span class="post-date px-2 color-white">
-						{{ date_comma($post->created_at) }}
-					</span>
-					<span class="post-permalink px-2">
-						<a href="{{route('post_permalink', [$post->id])}}">Permalink</a>
-					</span>
-				</div>
-				<div class="post-content p-2">
-					<?= $post->content ?>
-				</div>
-			</article>
+			@component('components.post', ['post' => $post])
+				
+			@endcomponent
 		@endforeach
 	</div>
-	@if (logged_in())
+	@auth
 		<form class="quick-reply" action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
 			@csrf
 			<textarea name="content" id="form-content"></textarea>
@@ -45,11 +35,7 @@
 		<a href="{{route('post_create', [$thread->title, $thread->id])}}">
 			<button class="btn mt-4 btn-success color-white" type="button">{{ __('Reply') }}</button>
 		</a>
-	@endif
-
-	@if (session('error'))
-		<p class="text-white">{{ __(session('error')) }}</p>
-	@endif
+	@endauth
 
 	{{ $posts->links() }}
 @endsection

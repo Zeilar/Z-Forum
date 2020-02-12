@@ -17,6 +17,17 @@
 
 			<!-- Right Side Of Navbar -->
 			<ul class="navbar-nav ml-auto">
+				<!-- Search form -->
+				<form action="/search" method="get">
+					@csrf
+					<div class="nav-search mr-3 d-flex">
+						<input class="p-1" type="text" name="search" id="search" />
+						<button type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</form>
+
 				<!-- Authentication Links -->
 				@guest
 					<li class="nav-item mr-3">
