@@ -76,7 +76,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #333333;
+  background-color: #000;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -516,7 +516,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #333333;
+  background-color: #000;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4495,15 +4495,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #333333, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #000, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #333333, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #000, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #333333, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #000, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4712,8 +4712,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #333333;
-  border-color: #dee2e6 #dee2e6 #333333;
+  background-color: #000;
+  border-color: #dee2e6 #dee2e6 #000;
 }
 
 .nav-tabs .dropdown-menu {
@@ -11470,9 +11470,9 @@ a.text-dark:focus {
 
 .breadcrumb {
   border: 2px solid #00c26e;
+  padding: 0.5rem 0.75rem;
   background: #1f1f1f;
   border-radius: 0;
-  padding: 0.5rem 0.75rem;
   color: white;
 }
 
@@ -11503,6 +11503,10 @@ a:hover {
   color: #007c46;
 }
 
+.fas {
+  color: #00c26e;
+}
+
 ::-moz-selection {
   color: #00ffff;
 }
@@ -11519,6 +11523,14 @@ a:hover {
 .bg-dark {
   box-shadow: inset 0 0 15px 0px rgba(0, 0, 0, 0.5);
   background: #1f1f1f !important;
+}
+
+.bg-dark a {
+  color: white;
+}
+
+.bg-dark a:hover {
+  color: #00c26e;
 }
 
 .bg-green {
@@ -11640,6 +11652,7 @@ a:hover {
 }
 
 .navbar .nav-link {
+  padding: 0.5rem 1rem !important;
   border: 2px solid #00c26e;
   color: white;
 }
@@ -11721,12 +11734,16 @@ a:hover {
   background: #1f1f1f;
 }
 
-.post .post-banner .post-permalink a {
+.post.is_author .post-banner {
+  background: #00c26e;
+}
+
+.post.is_author .post-banner a {
   color: white;
 }
 
-.post.is_author .post-banner {
-  background: #00c26e;
+.post.is_author .post-banner a:hover {
+  color: #007c46;
 }
 
 .post-dividers {

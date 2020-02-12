@@ -22,6 +22,7 @@
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 					<tr>
 						<td>
+							<i class="fas fa-folder-open mr-1"></i>
 							<a href="
 								{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}
 							">{{ __($tableSubcategory->title) }}</a>
@@ -40,7 +41,7 @@
 									<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
 								</p>
 								<p class="post-created-by">
-									<span>{{ __('By ') }}</span>
+									<span>{{ __('By') }}</span>
 									<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
 									{{ pretty_date($post->created_at) }}
 								</p>

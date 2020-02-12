@@ -34,7 +34,7 @@
 			@if (session('error'))
 				<div class="popup">
 					<div class="unauthorized error bg-green text-white my-3">
-						<i class="fas fa-times close-button"></i>
+						<i class="fas fa-times close-button color-white"></i>
 						<i class="fas mr-2 color-white fa-exclamation-triangle"></i>
 						<span>{{ session('error') }}</span>
 					</div>
@@ -42,8 +42,6 @@
 			@endif
 
             @yield('content')
-
-			@include('layouts.sidebar')
         </main>
     </div>
 </body>

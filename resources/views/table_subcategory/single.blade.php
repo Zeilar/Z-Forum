@@ -29,7 +29,7 @@
 					<td>
 						<a class="thread-link" href="{{route('thread_show', [$thread->title, $thread->id])}}">{{ __($thread->title) }}</a>
 						<p>
-							<span>{{ __('By ') }}</span>
+							<span>{{ __('By') }}</span>
 							<a class="thread-author-link" href="{{route('user_show', [$thread->user->id])}}">{{ $thread->user->username }}</a>
 						</p>
 					</td>
@@ -40,7 +40,7 @@
 								<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
 							</p>
 							<p class="post-created-by">
-								<span>{{ __('By ') }}</span>
+								<span>{{ __('By') }}</span>
 								<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
 								<span>{{ date_comma($post->created_at) }}</span>
 							</p>

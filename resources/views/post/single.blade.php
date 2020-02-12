@@ -7,11 +7,11 @@
 				{{ date_comma($post->created_at) }}
 			</span>
 			<span class="post-thread px-2">
-				<a class="color-white" href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ __('Thread') }}</a>
+				<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ __('View in thread') }} &raquo;</a>
 			</span>
 		</div>
 		<div class="post-content px-2">
-			<?php echo $post->content ?>
+			<?= $post->content ?>
 		</div>
 	</div>
 @endsection

@@ -2,17 +2,23 @@
 	border: 2px solid black;
 	background: #e9ecef;
 
+	
+
 	.post-banner {
 		box-shadow: inset 0 0 15px 0px rgba(0, 0, 0, 0.5);
 		background: $gray;
-
-		.post-permalink a {
-			color: white;
-		}
 	}
 
 	&.is_author .post-banner {
 		background: $green;
+
+		a {
+		color: white;
+
+		&:hover {
+			color: $dark-green;
+		}
+	}
 	}
 }
 
