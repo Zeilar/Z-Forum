@@ -8,22 +8,20 @@
 			{{route('tablecategory_show', [$thread->tableSubcategory->tableCategory->title, $thread->tableSubcategory->tableCategory->id])}}
 		">{{ $thread->tableSubcategory->tableCategory->title }}</a>
 		<span class="mx-1">&raquo;</span>
-		<a href="
-			{{route('tablesubcategory_show', [$thread->tableSubcategory->title, $thread->tableSubcategory->id])}}
-		">{{ $thread->tableSubcategory->title }}</a>
+		<a href="{{route('tablesubcategory_show', [$thread->tableSubcategory->title, $thread->tableSubcategory->id])}}">
+			{{ $thread->tableSubcategory->title }}
+		</a>
 		<span class="mx-1">&raquo;</span>
 		<span>{{ $thread->title }}</span>
 	</p>
 
-	<div class="thread-title bg-dark mb-2">
+	<div class="thread-title bg-dark mb-3">
 		<h5 class="text-white">{{ $thread->title }}</h5>
 	</div>
 
 	<div class="thread">
 		@foreach ($thread->posts as $post)
-			<?php if (!isset($i)) $i = 0; ?>
-			<?php $i++; ?>
-			<div class="post <?php if ($thread->user->id === $post->user->id) echo 'is_author'; ?>" id="post-{{$post->id}}">
+			<article class="post <?php if ($thread->user->id === $post->user->id) echo 'is_author'; ?> mb-2" id="post-{{$post->id}}">
 				<div class="post-banner row m-0 justify-content-between">
 					<span class="post-date px-2 color-white">
 						{{ date_comma($post->created_at) }}
@@ -33,18 +31,9 @@
 					</span>
 				</div>
 				<div class="post-content px-2">
-					<?php echo $post->content ?>
+					<?= $post->content ?>
 				</div>
-			</div>
-			@if ($i < count($thread->posts))
-				<div class="post-dividers d-flex">
-					<div class="post-divider"></div>
-					<div class="post-divider-small"></div>
-					<div class="post-divider-middle"></div>
-					<div class="post-divider-small"></div>
-					<div class="post-divider"></div>
-				</div>
-			@endif
+			</article>
 		@endforeach
 	</div>
 	@if (logged_in())

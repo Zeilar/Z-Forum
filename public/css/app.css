@@ -11508,11 +11508,11 @@ a:hover {
 }
 
 ::-moz-selection {
-  color: #00ffff;
+  color: #0059ff;
 }
 
 ::selection {
-  color: #00ffff;
+  color: #0059ff;
 }
 
 .bg-pink {
@@ -11639,6 +11639,10 @@ a:hover {
 }
 
 .navbar .navbar-brand {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: #00c26e;
   padding: 0;
 }
@@ -11654,6 +11658,10 @@ a:hover {
 .navbar .nav-link {
   padding: 0.5rem 1rem !important;
   border: 2px solid #00c26e;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: white;
 }
 
@@ -11661,6 +11669,7 @@ a:hover {
   -webkit-transition: background 0.05s ease-out;
   transition: background 0.05s ease-out;
   background: #00c26e;
+  color: white;
 }
 
 .navbar .dropdown-menu {
