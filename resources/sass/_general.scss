@@ -13,6 +13,14 @@ a {
 		text-decoration: none;
 		color: $dark-green;
 	}
+
+	&:visited {
+		color: $dark-green;
+
+		&:hover {
+			color: $green;
+		}
+	}
 }
 
 .fas {

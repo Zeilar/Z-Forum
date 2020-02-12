@@ -11523,6 +11523,14 @@ a:hover {
   color: #007c46;
 }
 
+a:visited {
+  color: #007c46;
+}
+
+a:visited:hover {
+  color: #00c26e;
+}
+
 .fas {
   color: #00c26e;
 }
