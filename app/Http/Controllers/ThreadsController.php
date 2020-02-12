@@ -81,6 +81,7 @@ class ThreadsController extends Controller
 		if (item_exists(Thread::find($id), $title)) {
 			return view('thread.single', [
 				'thread' => Thread::find($id),
+				'posts' => Post::where('thread_id', $id)->paginate(1),
 			]);
 		}
     }

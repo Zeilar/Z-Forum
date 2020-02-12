@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="thread">
-		@foreach ($thread->posts as $post)
+		@foreach ($posts as $post)
 			<article class="post <?php if ($thread->user->id === $post->user->id) echo 'is_author'; ?> mb-2" id="post-{{$post->id}}">
 				<div class="post-banner row m-0 justify-content-between">
 					<span class="post-date px-2 color-white">
@@ -30,7 +30,7 @@
 						<a href="{{route('post_permalink', [$post->id])}}">Permalink</a>
 					</span>
 				</div>
-				<div class="post-content px-2">
+				<div class="post-content p-2">
 					<?= $post->content ?>
 				</div>
 			</article>
@@ -50,4 +50,6 @@
 	@if (session('error'))
 		<p class="text-white">{{ __(session('error')) }}</p>
 	@endif
+
+	{{ $posts->links() }}
 @endsection

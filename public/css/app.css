@@ -11476,6 +11476,26 @@ a.text-dark:focus {
   color: white;
 }
 
+.pagination .page-item.active .page-link {
+  background: #00c26e;
+  color: white;
+}
+
+.pagination .page-item:not(.active) .page-link:hover {
+  background: #007c46;
+}
+
+.pagination .page-item .page-link {
+  border-color: white;
+  background: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 0;
+  color: #00c26e;
+}
+
 .note-toolbar {
   background: #dfdfdf;
 }
@@ -11753,35 +11773,5 @@ a:hover {
 
 .post.is_author .post-banner a:hover {
   color: #007c46;
-}
-
-.post-dividers {
-  width: 100%;
-  height: 1vh;
-}
-
-.post-dividers .post-divider {
-  -webkit-box-flex: 1;
-          flex: 1;
-}
-
-.post-dividers .post-divider:first-child {
-  border-right: 2px solid black;
-}
-
-.post-dividers .post-divider:last-child {
-  border-left: 2px solid black;
-}
-
-.post-dividers .post-divider-small {
-  background: #00c26e;
-  width: 2px;
-}
-
-.post-dividers .post-divider-middle {
-  border-right: 2px solid black;
-  border-left: 2px solid black;
-  -webkit-box-flex: 7;
-          flex: 7;
 }
 

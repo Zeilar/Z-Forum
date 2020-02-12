@@ -112,3 +112,30 @@
 	border-radius: 0;
 	color: white;
 }
+
+.pagination {
+	.page-item {
+		&.active {
+			.page-link {
+				background: $green;
+				color: white;
+			}
+		}
+
+		&:not(.active) {
+			.page-link {
+				&:hover {
+					background: $dark-green;
+				}
+			}
+		}
+
+		.page-link {
+			border-color: white;
+			background: black;
+			user-select: none;
+			border-radius: 0;
+			color: $green;
+		}
+	}
+}
