@@ -1,5 +1,6 @@
 .navbar {
 	border-bottom: 2px solid $green;
+	background: $transparent-gray;
 
 	.navbar-brand {
 		user-select: none;
@@ -14,7 +15,11 @@
 		input {
 			border: 2px solid $green;
 			background: black;
-			color: $green;
+			color: white;
+
+			&::placeholder {
+				color: $transparent-green;
+			}
 
 			&:focus {
 				outline: 0;

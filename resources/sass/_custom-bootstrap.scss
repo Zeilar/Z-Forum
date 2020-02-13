@@ -56,14 +56,14 @@
 .btn-success:hover {
   color: #fff;
   background-color: $green;
-  border-color: $dark-green;
+  border-color: $darkgreen;
 }
 
 .btn-success:focus,
 .btn-success.focus {
   color: #fff;
   background-color: $green;
-  border-color: $dark-green;
+  border-color: $darkgreen;
   box-shadow: 0 0 0 0.1rem $transparent-green;
 }
 
@@ -78,8 +78,8 @@
 .btn-success:not(:disabled):not(.disabled).active,
 .show > .btn-success.dropdown-toggle {
   color: #fff;
-  background-color: $dark-green;
-  border-color: $dark-green;
+  background-color: $darkgreen;
+  border-color: $darkgreen;
 }
 
 .btn-success:not(:disabled):not(.disabled):active:focus,
@@ -125,7 +125,7 @@
 		&:not(.active) {
 			.page-link {
 				&:hover {
-					background: $dark-green;
+					background: $darkgreen;
 				}
 			}
 		}

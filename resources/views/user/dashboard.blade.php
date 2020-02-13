@@ -1,6 +1,7 @@
 @extends('layouts.head')
 
 @section('content')
-	<?php $role = strtolower(Auth::user()->role); ?>
-	@include("layouts.user.$role")
+	@component('components.dashboard')
+		
+	@endcomponent
 @endsection

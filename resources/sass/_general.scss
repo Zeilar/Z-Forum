@@ -1,5 +1,10 @@
-p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6, ul, ol {
 	margin: 0;
+}
+
+ul, ol {
+	list-style: none;
+	padding: 0;
 }
 
 body {
@@ -12,11 +17,11 @@ a {
 
 	&:hover {
 		text-decoration: none;
-		color: $dark-green;
+		color: $darkgreen;
 	}
 
 	&:visited {
-		color: $dark-green;
+		color: $darkgreen;
 
 		&:hover {
 			color: $green;
@@ -44,7 +49,7 @@ a {
 
 .bg-darkgreen {
 	box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.5);
-	background: $dark-green !important;
+	background: $darkgreen !important;
 }
 
 .bg-black {

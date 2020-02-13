@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md bg-dark">
+<nav class="navbar navbar-expand-md">
 	<div class="container-fluid" id="navbar-container">
-		<a class="navbar-brand" href="{{ route('index') }}">Z-Forum <i class="fas fa-rocket"></i></a>
+		<a class="navbar-brand" href="{{ route('index') }}">Z-Forum <i class="ml-1 fas fa-rocket"></i></a>
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}"
