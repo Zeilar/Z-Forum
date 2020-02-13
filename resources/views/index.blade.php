@@ -3,7 +3,7 @@
 @section('content')
 	<table class="table">
 		<thead>
-			<tr class="table-header bg-green">
+			<tr class="table-header bg-black">
 				<th class="py-3 forum-section"><h4>{{ __('Forum section') }}</h4></th>
 				<th class="py-3 latest-post"><h4>{{ __('Latest post') }}</h4></th>
 				<th class="py-3 text-center"><h4>{{ __('Threads') }}</h4></th>
@@ -12,14 +12,14 @@
 		</thead>
 		<tbody>
 			@foreach ($tableCategories as $tableCategory)
-				<tr class="tablecategory bg-dark">
+				<tr class="tablecategory bg-green">
 					<th class="tablecategory-title color-white">
 						<h5>{{ __($tableCategory->title) }}</h5>
 					</th>
 					<th></th> <th></th> <th></th> {{-- to make sure the row is full width, because tables --}}
 				</tr>
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
-					<tr>
+					<tr class="bg-dark">
 						<td>
 							<div class="d-flex">
 								<i class="fas fa-folder-open mr-2"></i>

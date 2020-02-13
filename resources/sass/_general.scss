@@ -37,12 +37,14 @@ a {
 	background: $gray !important;
 
 	a {
-		color: white;
-
 		&:hover {
 			color: $green;
 		}
 	}
+}
+
+.bg-black {
+	background: black;
 }
 
 .bg-green {

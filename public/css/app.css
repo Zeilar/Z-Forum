@@ -11547,12 +11547,12 @@ a:visited:hover {
   background: #1f1f1f !important;
 }
 
-.bg-dark a {
-  color: white;
-}
-
 .bg-dark a:hover {
   color: #00c26e;
+}
+
+.bg-black {
+  background: black;
 }
 
 .bg-green {
