@@ -11543,21 +11543,22 @@ a:visited:hover {
 }
 
 .bg-dark {
-  box-shadow: inset 0 0 50px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.5);
   background: #1f1f1f !important;
 }
 
-.bg-dark a:hover {
-  color: #00c26e;
+.bg-green {
+  box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  background: #00c26e !important;
+}
+
+.bg-darkgreen {
+  box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  background: #007c46 !important;
 }
 
 .bg-black {
   background: black;
-}
-
-.bg-green {
-  box-shadow: inset 0 0 50px 0px rgba(0, 0, 0, 0.75);
-  background: #00c26e;
 }
 
 .color-green {
@@ -11759,8 +11760,25 @@ a:visited:hover {
   font-size: 1.5rem;
 }
 
-.table tr:not(.table-splitter) {
-  border: 1px solid #dee2e6;
+.table th,
+.table td {
+  border: 0;
+}
+
+.table .table-header {
+  background: rgba(31, 31, 31, 0.75);
+}
+
+.table .table-category {
+  background: rgba(0, 194, 110, 0.5);
+}
+
+.table .table-subcategory {
+  background: #1f1f1f;
+}
+
+.table .table-subcategory:nth-child(even) {
+  background: #272727;
 }
 
 .table td {
@@ -11773,14 +11791,6 @@ a:visited:hover {
 
 .table thead th {
   border: 0;
-}
-
-.table tbody tr:not(.tablecategory) {
-  background: #444444;
-}
-
-.table tbody tr.table-splitter {
-  height: 1vh;
 }
 
 .table tbody tr td {

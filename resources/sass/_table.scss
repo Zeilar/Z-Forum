@@ -3,8 +3,24 @@
 		font-size: 1.5rem;
 	}
 
-	tr:not(.table-splitter) {
-		border: 1px solid #dee2e6;
+	th, td {
+		border: 0;
+	}
+
+	.table-header {
+		background: rgba(31, 31, 31, 0.75);
+	}
+
+	.table-category {
+		background: $transparent-green;
+	}
+
+	.table-subcategory {
+		background: $gray;
+
+		&:nth-child(even) {
+			background: $light-gray;
+		}
 	}
 
 	td {
@@ -14,6 +30,10 @@
 	thead {
 		color: white;
 
+		tr {
+			//background: $transparent-green;
+		}
+
 		th {
 			border: 0;
 		}
@@ -21,14 +41,6 @@
 
 	tbody {
 		tr {
-			&:not(.tablecategory) {
-				background: #444444;
-			}
-
-			&.table-splitter {
-				height: 1vh;
-			}
-
 			td {
 				vertical-align: middle;
 				color: white;
