@@ -11512,6 +11512,7 @@ h6 {
 
 body {
   background: url(/images/background.jpg?eb2705e4ee424447056e829b06574655);
+  overflow-x: hidden;
 }
 
 a {
@@ -11694,6 +11695,7 @@ a:visited:hover {
   border-bottom: 2px solid #00c26e;
   border-right: 2px solid #00c26e;
   border-top: 2px solid #00c26e;
+  padding: 0.5rem 0.75rem;
   background: black;
   border-left: 0;
 }
@@ -11704,7 +11706,7 @@ a:visited:hover {
 
 .navbar .nav-search button i {
   align-self: center;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .navbar .navbar-toggler .navbar-toggler-icon {
@@ -11768,17 +11770,16 @@ a:visited:hover {
   border: 1px solid #dee2e6;
 }
 
+.table h4 {
+  text-shadow: 0px 0px 5px black;
+}
+
 .table thead {
   color: white;
 }
 
 .table thead th {
   border: 0;
-}
-
-.table thead .threads-counter,
-.table thead .posts-counter {
-  text-align: center;
 }
 
 .table tbody tr:not(.tablecategory) {
@@ -11792,6 +11793,15 @@ a:visited:hover {
 .table tbody tr td {
   vertical-align: middle;
   color: white;
+}
+
+.ql-container {
+  background: white;
+}
+
+.ql-toolbar {
+  background: #1f1f1f;
+  color: #00c26e;
 }
 
 .post {

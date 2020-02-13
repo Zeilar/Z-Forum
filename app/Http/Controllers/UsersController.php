@@ -17,7 +17,7 @@ class UsersController extends Controller
 		if (logged_in()) {
         	return view('user.dashboard');
 		} else {
-			return redirect()->back()->with('error', 'You must be logged in to do that');
+			return redirect()->back()->with('error', __('Please log in and try again'));
 		}
     }
 

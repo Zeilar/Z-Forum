@@ -11,6 +11,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+	<!-- To grant access to jQuery in Blade -->
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+		crossorigin="anonymous">
+  	</script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -38,6 +44,8 @@
 						<span>{{ session('error') }}</span>
 					</div>
 				</div>
+			@elseif (session('success'))
+				{{ session('success') }}
 			@endif
 
             @yield('content')

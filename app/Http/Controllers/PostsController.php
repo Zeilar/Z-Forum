@@ -33,7 +33,7 @@ class PostsController extends Controller
 				return view('post.create', ['thread' => Thread::find($id)]);
 			}
 		} else {
-			return redirect()->back()->with('error', 'You must be logged in to do that');
+			return redirect()->back()->with('error', __('Please log in and try again'));
 		}
     }
 
@@ -46,20 +46,24 @@ class PostsController extends Controller
     public function store(Request $request, $title, $id)
     {
         if (logged_in()) {
-			$data = request()->validate([
-				'content' => 'required|max:500'
-			]);
+			if (Thread::find($id)) {
+				$data = request()->validate([
+					'content' => 'required|max:500'
+				]);
 
-			$thread = Thread::find($id);
-			$post = new Post();
-			$post->content = request('content');
-			$post->user_id = auth()->user()->id;
-			$post->thread_id = $thread->id;
-			$post->save();
+				$thread = Thread::find($id);
+				$post = new Post();
+				$post->content = request('content');
+				$post->user_id = auth()->user()->id;
+				$post->thread_id = $thread->id;
+				$post->save();
 
-			return redirect(route('thread_show', [$thread->title, $thread->id]));
+				return redirect(route('thread_show', [$thread->title, $thread->id]));
+			} else {
+				return abort(404);
+			}
 		} else {
-			return redirect()->back()->with('error', 'You must be logged in to do that');
+			return redirect()->back()->with('error', __('Please log in and try again'));
 		}
     }
 
@@ -88,7 +92,21 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+		if (logged_in()) {
+			if (Post::find($id)) {
+				if (Post::find($id)->user_id === auth()->user()->id) {
+					return vieW('post.edit', [
+						'post' => Post::find($id),
+					]);
+				} else {
+					return redirect()->back()->with('error', __('Insufficient permissions'));
+				}
+			} else {
+				return abort(404);
+			}
+		} else {
+			return redirect()->back()->with('error', __('Please log in and try again'));
+		}
     }
 
     /**
@@ -100,7 +118,27 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (logged_in()) {
+			if (Post::find($id)) {
+				if (Post::find($id)->user_id === auth()->user()->id) {
+					$data = request()->validate([
+						'content' => 'required|max:500'
+					]);
+
+					$post = Post::find($id);
+					$post->content = request('content');
+					$post->save();
+
+					return redirect(route('post_show', [$post->thread->title, $post->thread->id, $post->id]))->with('success', __('Post updated'));
+				} else {
+					return redirect()->back()->with('error', __('Insufficient permissions'));
+				}
+			} else {
+				return abort(404);
+			}
+		} else {
+			return redirect()->back()->with('error', __('Please log in and try again'));
+		}
     }
 
     /**
@@ -111,6 +149,21 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (logged_in()) {
+			if (Post::find($id)) {
+				if (Post::find($id)->user_id === auth()->user()->id) {
+					$post = Post::find($id);
+					$thread = $post->thread;
+					$post->delete();
+					return redirect(route('thread_show', [$thread->title, $thread->id]))->with('success', __('Post was successfully deleted'));
+				} else {
+					return redirect()->back()->with('error', __('Insufficient permissions'));
+				}
+			} else {
+				return abort(404);
+			}
+		} else {
+			return redirect()->back()->with('error', __('Please log in and try again'));
+		}
     }
 }

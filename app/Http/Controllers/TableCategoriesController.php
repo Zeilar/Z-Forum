@@ -31,10 +31,10 @@ class TableCategoriesController extends Controller
 			if (is_role('superadmin')) {
 				return view('table_category.create');
 			} else {
-				return redirect()->back()->with('error', 'You do not have permissions in to do that');
+				return redirect()->back()->with('error', __('Insufficient permissions'));
 			}
 		} else {
-			return redirect()->back()->with('error', 'You must be logged in to do that');
+			return redirect()->back()->with('error', __('Please log in and try again'));
 		}
     }
 
@@ -58,10 +58,10 @@ class TableCategoriesController extends Controller
 
 				return redirect(route('index'));
 			} else {
-				return redirect()->back()->with('error', 'You do not have permissions to do that');
+				return redirect()->back()->with('error', __('Insufficient permissions'));
 			}
 		} else {
-			return redirect()->back()->with('error', 'You must be logged in to do that');
+			return redirect()->back()->with('error', __('Please log in and try again'));
 		}
     }
 

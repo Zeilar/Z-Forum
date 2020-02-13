@@ -35,7 +35,10 @@ Route::get('/thread/{title}-{id}', 'ThreadsController@show')->name('thread_show'
 Route::get('/thread/{title}-{thread-id}#post-{post-id}', 'PostsController@show')->name('post_show');
 Route::post('/thread/{title}-{id}/store', 'PostsController@store')->name('post_store');
 Route::get('/thread/{title}-{id}/new', 'PostsController@create')->name('post_create');
+Route::delete('/post/{id}/delete', 'PostsController@destroy')->name('post_delete');
+Route::put('/post/{id}/update', 'PostsController@update')->name('post_update');
 Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');
+Route::get('/post/{id}/edit', 'PostsController@edit')->name('post_edit');
 
 // Users
 Route::get('/dashboard', 'UsersController@index')->name('user_dashboard');

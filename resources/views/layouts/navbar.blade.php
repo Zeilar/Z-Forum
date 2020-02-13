@@ -21,7 +21,7 @@
 				<form action="/search" method="get">
 					@csrf
 					<div class="nav-search mr-3 d-flex">
-						<input class="p-1" type="text" name="search" id="search" />
+						<input class="py-1 px-2" type="text" name="search" id="search" />
 						<button type="submit">
 							<i class="fas fa-search"></i>
 						</button>
