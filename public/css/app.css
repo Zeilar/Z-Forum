@@ -11502,10 +11502,10 @@ a.text-dark:focus {
 
 #settings .settings-nav {
   padding: 1rem 0;
+  background: rgba(0, 0, 0, 0.85);
   border-right: 2px solid #00c26e;
   padding-right: 1rem;
   margin-right: 1rem;
-  background: rgba(0, 0, 0, 0.75);
 }
 
 #settings .settings-nav .settings-item {
@@ -11517,6 +11517,14 @@ a.text-dark:focus {
   display: flex;
 }
 
+#settings .settings-nav .settings-item#logout {
+  border-color: #a50707;
+}
+
+#settings .settings-nav .settings-item#logout .settings-link {
+  color: #a50707;
+}
+
 #settings .settings-nav .settings-item.active,
 #settings .settings-nav .settings-item.active-hover {
   border-color: white;
@@ -11525,6 +11533,16 @@ a.text-dark:focus {
 #settings .settings-nav .settings-item.active .settings-link,
 #settings .settings-nav .settings-item.active-hover .settings-link {
   color: white;
+}
+
+#settings .settings-nav .settings-item.active#logout,
+#settings .settings-nav .settings-item.active-hover#logout {
+  border-color: #eb0909;
+}
+
+#settings .settings-nav .settings-item.active#logout .settings-link,
+#settings .settings-nav .settings-item.active-hover#logout .settings-link {
+  color: #eb0909;
 }
 
 #settings .settings-nav .settings-item .settings-link {
@@ -11538,7 +11556,7 @@ a.text-dark:focus {
 }
 
 #settings .settings-display {
-  background: rgba(31, 31, 31, 0.9);
+  background: rgba(0, 0, 0, 0.85);
   border-radius: 0.25rem;
   margin: 1rem 0;
   -webkit-box-flex: 1;

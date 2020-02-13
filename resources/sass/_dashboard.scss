@@ -1,10 +1,10 @@
 #settings {
 	.settings-nav {
 		padding: 1rem 0;
+		background: rgba(0, 0, 0, 0.85);
 		border-right: 2px solid $green;
 		padding-right: 1rem;
 		margin-right: 1rem;
-		background: rgba(0, 0, 0, 0.75);
 
 		.settings-item {
 			border-bottom: 2px solid $green;
@@ -13,13 +13,30 @@
 			cursor: pointer;
 			display: flex;
 
+			&#logout {
+				border-color: rgb(165, 7, 7);
+
+				.settings-link {
+					color: rgb(165, 7, 7);
+				}
+			}
+
 			&.active, &.active-hover {
 				border-color: white;
 
 				.settings-link {
 					color: white;
 				}
+
+				&#logout {
+					border-color: rgb(235, 9, 9);
+	
+					.settings-link {
+						color: rgb(235, 9, 9);
+					}
+				}
 			}
+
 
 			.settings-link {
 				color: $green;
@@ -33,7 +50,7 @@
 	}
 
 	.settings-display {
-		background: $transparent-gray;
+		background: rgba(0, 0, 0, 0.85);
 		border-radius: 0.25rem;
 		margin: 1rem 0;
 		flex: 1;

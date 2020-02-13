@@ -15,7 +15,13 @@ class DashboardController extends Controller
 {
 	public function superadmin()
 	{
-		return view('dashboard.superadmin');
+		return view('dashboard.superadmin', [
+			'tableSubcategories' => TableSubcategory::all(),
+			'tableCategories' => TableCategory::all(),
+			'threads' => Thread::all(),
+			'posts' => Post::all(),
+			'users' => User::all(),
+		]);
 	}
 
 	public function account()
