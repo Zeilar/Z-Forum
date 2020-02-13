@@ -1,59 +1,32 @@
 #settings {
 	.settings-nav {
+		padding: 1rem 0;
+		border-right: 2px solid $green;
+		padding-right: 1rem;
 		margin-right: 1rem;
-
-		.superadmin-item {
-			background: $transparent-gray;
-			border: 1px solid $green;
-			
-			.settings-link {
-				padding: 1rem;
-				display: flex;
-				color: white;
-				
-				&.active {
-					background: $green !important;
-				}
-
-				&:not(.active) {
-					&:hover {
-						background: $lightgray;
-					}
-				}
-			}
-		}
+		background: rgba(0, 0, 0, 0.75);
 
 		.settings-item {
-			background: $transparent-gray;
-			border: 1px solid $green;
-			border-top: 0;
+			border-bottom: 2px solid $green;
+			margin: 0.75rem 0;
+			padding: 0.25rem;
+			cursor: pointer;
+			display: flex;
 
-			&.rounded-top {
-				border-top: 1px solid $green;
-			}
-			
-			.settings-link {
-				padding: 1rem;
-				display: flex;
-				color: white;
+			&.active, &.active-hover {
+				border-color: white;
 
-				&.active {
-					background: $green;
+				.settings-link {
+					color: white;
 				}
-				
-				&:not(.active) {
-					&:hover {
-						background: $lightgray;
-					}
-	
-					&#logout {
-						background: rgb(202, 12, 31);
-						color: white;
-	
-						&:hover {
-							background: rgb(143, 6, 20);
-						}
-					}
+			}
+
+			.settings-link {
+				color: $green;
+				flex: 1;
+
+				&:hover {
+					color: white;
 				}
 			}
 		}
@@ -62,6 +35,7 @@
 	.settings-display {
 		background: $transparent-gray;
 		border-radius: 0.25rem;
+		margin: 1rem 0;
 		flex: 1;
 	}
 }

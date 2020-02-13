@@ -78123,6 +78123,13 @@ $(document).ready(function () {
       $('.popup').remove();
     });
   }
+
+  $('.settings-item').mouseenter(function () {
+    $(this).addClass('active-hover');
+    $(this).mouseleave(function () {
+      $(this).removeClass('active-hover');
+    });
+  });
 });
 
 /***/ }),
