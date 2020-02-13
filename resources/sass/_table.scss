@@ -1,6 +1,14 @@
 .table {
+	.fas {
+		font-size: 1.5rem;
+	}
+
 	tr:not(.table-splitter) {
 		border: 1px solid #dee2e6;
+	}
+
+	td {
+		padding: 0.5rem;
 	}
 
 	h4 {

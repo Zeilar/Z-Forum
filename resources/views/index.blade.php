@@ -22,10 +22,12 @@
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 					<tr>
 						<td>
-							<i class="fas fa-folder-open mr-1"></i>
-							<a href="
-								{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}
-							">{{ __($tableSubcategory->title) }}</a>
+							<div class="d-flex">
+								<i class="fas fa-folder-open mr-2"></i>
+								<a href="{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}">
+									{{ __($tableSubcategory->title) }}
+								</a>
+							</div>
 						</td>
 						<td>
 							@if (count($tableSubcategory->threads))

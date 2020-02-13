@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark">
 	<div class="container-fluid" id="navbar-container">
-		</button>
 		<a class="navbar-brand" href="{{ route('index') }}">Z-Forum <i class="fas fa-rocket"></i></a>
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
@@ -21,8 +20,8 @@
 				<form action="/search" method="get">
 					@csrf
 					<div class="nav-search mr-3 d-flex">
-						<input class="py-1 px-2" type="text" name="search" id="search" />
-						<button type="submit">
+						<input class="rounded-left py-1 px-2" type="text" name="search" id="search" placeholder="Search" />
+						<button class="rounded-right" type="submit">
 							<i class="fas fa-search"></i>
 						</button>
 					</div>
@@ -31,11 +30,11 @@
 				<!-- Authentication Links -->
 				@guest
 					<li class="nav-item mr-3">
-						<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+						<a class="nav-link rounded" href="{{ route('login') }}">{{ __('Login') }}</a>
 					</li>
 					@if (Route::has('register'))
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+							<a class="nav-link rounded" href="{{ route('register') }}">{{ __('Register') }}</a>
 						</li>
 					@endif
 				@else

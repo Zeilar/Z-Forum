@@ -14,8 +14,10 @@
 	<table class="table">
 		<thead>
 			<tr class="table-subcategory bg-dark">
-				<th><h5 class="text-white">{{ __($tableSubcategory->title) }}</h5></th>
-				<th></th><th></th> <!-- to make sure the row is full width, becaues tables -->
+				<th>
+					<h5 class="text-white">{{ __($tableSubcategory->title) }}</h5>
+				</th>
+				<th></th> <th></th> <!-- to make sure the row is full width, becaues tables -->
 			</tr>
 			<tr class="table-header bg-green">
 				<th class="py-3"><h4>{{ __('Thread') }}</h4></th>
@@ -27,11 +29,18 @@
 			@foreach ($tableSubcategory->threads as $thread)
 				<tr>
 					<td>
-						<a class="thread-link" href="{{route('thread_show', [$thread->title, $thread->id])}}">{{ __($thread->title) }}</a>
-						<p>
-							<span>{{ __('By') }}</span>
-							<a class="thread-author-link" href="{{route('user_show', [$thread->user->id])}}">{{ $thread->user->username }}</a>
-						</p>
+						<div class="d-flex">
+							<div class="d-flex">
+								<i class="fas fa-clipboard fa-2x my-auto mr-2"></i>
+							</div>
+							<div class="d-flex flex-column">
+								<a class="thread-link" href="{{route('thread_show', [$thread->title, $thread->id])}}">{{ __($thread->title) }}</a>
+								<div>
+									<span>{{ __('By') }}</span>
+									<a class="thread-author-link" href="{{route('user_show', [$thread->user->id])}}">{{ $thread->user->username }}</a>
+								</div>
+							</div>
+						</div>
 					</td>
 					<td>
 						<!-- latest post -->
