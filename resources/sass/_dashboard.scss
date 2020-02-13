@@ -1,49 +1,53 @@
 #settings {
 	.settings-nav {
-		padding: 1rem 0;
 		background: rgba(0, 0, 0, 0.85);
 		border-right: 2px solid $green;
-		padding-right: 1rem;
+		padding: 1rem 1rem 1rem 0;
 		margin-right: 1rem;
 
 		.settings-item {
 			border-bottom: 2px solid $green;
+			padding: 0.5rem 1rem;
 			margin: 0.75rem 0;
-			padding: 0.25rem;
 			cursor: pointer;
 			display: flex;
 
-			&#logout {
-				border-color: rgb(165, 7, 7);
+			&:first-child {
+				padding-top: 0;
+				margin-top: 0;
+			}
 
-				.settings-link {
-					color: rgb(165, 7, 7);
-				}
+			&:last-child {
+				margin-bottom: 0;
 			}
 
 			&.active, &.active-hover {
 				border-color: white;
 
-				.settings-link {
-					color: white;
-				}
+				h4 {
+					transition: transform 0.5s ease-out;
+					transform: scale(1.05);
 
-				&#logout {
-					border-color: rgb(235, 9, 9);
-	
 					.settings-link {
-						color: rgb(235, 9, 9);
+						color: white;
 					}
 				}
+
 			}
 
+			h4 {
+				transition: transform 0.25s ease-out;
+				transform: scale(1);
+				margin: auto;
 
-			.settings-link {
-				color: $green;
-				flex: 1;
+				.settings-link {
+					text-align: center;
+					color: $green;
+					flex: 1;
 
-				&:hover {
-					color: white;
+					&:hover {
+						color: white;
+					}
 				}
 			}
 		}
@@ -54,5 +58,36 @@
 		border-radius: 0.25rem;
 		margin: 1rem 0;
 		flex: 1;
+
+		#superadmin {
+			.superadmin-select {
+
+				.form-group {
+					height: 100%;
+					margin: 0;
+
+					select {
+						background: black;
+						overflow-y: auto;
+
+						option {
+							white-space: normal;
+						}
+
+						&::-webkit-scrollbar {
+							width: 0.5rem;
+						}
+
+						&::-webkit-scrollbar-track {
+							background: black;
+						}
+
+						&::-webkit-scrollbar-thumb {
+							background: $green;
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -7,6 +7,10 @@ ul, ol {
 	padding: 0;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background: url('../images/background.jpg');
 	overflow-x: hidden;
