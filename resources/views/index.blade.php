@@ -12,8 +12,7 @@
 		</thead>
 		<tbody>
 			@foreach ($tableCategories as $tableCategory)
-				<tr class="table-splitter"></tr>
-				<tr class="tablecategory bg-dark pt-2">
+				<tr class="tablecategory bg-dark">
 					<th class="tablecategory-title color-white">
 						<h5>{{ __($tableCategory->title) }}</h5>
 					</th>
