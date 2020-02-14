@@ -16,6 +16,7 @@
 
 			<!-- Right Side Of Navbar -->
 			<ul class="navbar-nav ml-auto">
+				
 				<!-- Search form -->
 				<form action="/search" method="get">
 					@csrf

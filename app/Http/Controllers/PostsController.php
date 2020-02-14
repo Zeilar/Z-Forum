@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
 		return (Post::find($id)
 			? view('post.single', ['post' => Post::find($id)])
-			: view('layouts.404')
+			: view('errors.404')
 		);
     }
 
@@ -32,7 +32,7 @@ class PostsController extends Controller
 			if (item_exists(Thread::find($id), $title)) {
 				return view('post.create', ['thread' => Thread::find($id)]);
 			} else {
-				return view('layouts.404');
+				return view('errors.404');
 			}
 		} else {
 			return msg_error('login');
@@ -62,7 +62,7 @@ class PostsController extends Controller
 
 				return redirect(route('thread_show', [$thread->title, $thread->id]));
 			} else {
-				return view('layouts.404');
+				return view('errors.404');
 			}
 		} else {
 			return msg_error('login');
@@ -82,7 +82,7 @@ class PostsController extends Controller
 				'post' => Post::find($id),
 			]);
 		} else {
-			return view('layouts.404');
+			return view('errors.404');
 		}
     }
 
@@ -104,7 +104,7 @@ class PostsController extends Controller
 					return msg_error('role');
 				}
 			} else {
-				return view('layouts.404');
+				return view('errors.404');
 			}
 		} else {
 			return msg_error('login');
@@ -136,7 +136,7 @@ class PostsController extends Controller
 					return msg_error('role');
 				}
 			} else {
-				return view('layouts.404');
+				return view('errors.404');
 			}
 		} else {
 			return msg_error('login');
@@ -162,7 +162,7 @@ class PostsController extends Controller
 					return msg_error('role');
 				}
 			} else {
-				return view('layouts.404');
+				return view('errors.404');
 			}
 		} else {
 			return msg_error('login');

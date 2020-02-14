@@ -33,7 +33,7 @@ class ThreadsController extends Controller
 					'subcategory' => TableSubcategory::find($id),
 				]);
 			} else {
-				return view('layouts.404');
+				return view('errors.404');
 			}
 		} else {
 			return msg_error('login');
@@ -86,7 +86,7 @@ class ThreadsController extends Controller
 				'posts' => Post::where('thread_id', $id)->paginate(1),
 			]);
 		} else {
-			return view('layouts.404');
+			return view('errors.404');
 		}
     }
 

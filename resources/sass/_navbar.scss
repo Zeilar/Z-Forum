@@ -18,7 +18,8 @@
 			color: white;
 
 			&::placeholder {
-				color: $transparent-green;
+				color: white;
+				opacity: 0.25;
 			}
 
 			&:focus {

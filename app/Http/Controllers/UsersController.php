@@ -55,7 +55,7 @@ class UsersController extends Controller
 				'user' => User::find($id) ?? User::where('username', $id)->get(),
 			]);
 		} else {
-			return view('layouts.404');
+			return view('errors.404');
 		}
     }
 

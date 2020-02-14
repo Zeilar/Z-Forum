@@ -11791,23 +11791,28 @@ a:visited:hover {
 }
 
 .navbar .nav-search input::-webkit-input-placeholder {
-  color: rgba(0, 194, 110, 0.9);
+  color: white;
+  opacity: 0.25;
 }
 
 .navbar .nav-search input::-moz-placeholder {
-  color: rgba(0, 194, 110, 0.9);
+  color: white;
+  opacity: 0.25;
 }
 
 .navbar .nav-search input:-ms-input-placeholder {
-  color: rgba(0, 194, 110, 0.9);
+  color: white;
+  opacity: 0.25;
 }
 
 .navbar .nav-search input::-ms-input-placeholder {
-  color: rgba(0, 194, 110, 0.9);
+  color: white;
+  opacity: 0.25;
 }
 
 .navbar .nav-search input::placeholder {
-  color: rgba(0, 194, 110, 0.9);
+  color: white;
+  opacity: 0.25;
 }
 
 .navbar .nav-search input:focus {
@@ -11950,5 +11955,86 @@ a:visited:hover {
 
 .post.is_author .post-banner a:hover {
   color: #00a05b;
+}
+
+#not-found h1 {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 4rem;
+  left: 50%;
+  top: 25%;
+}
+
+#not-found .search {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 2px solid #00c26e;
+  background: none;
+  border-radius: 5rem;
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  height: 5%;
+  left: 50%;
+  top: 40%;
+}
+
+#not-found .search input {
+  padding-right: 1.75rem;
+  padding-left: 1.75rem;
+  border-radius: 5rem;
+  background: black;
+  font-size: 2rem;
+  color: white;
+  width: 100%;
+  border: 0;
+}
+
+#not-found .search input::-webkit-input-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#not-found .search input::-moz-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#not-found .search input:-ms-input-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#not-found .search input::-ms-input-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#not-found .search input::placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#not-found .search input:focus {
+  outline: 0;
+}
+
+#not-found .search button {
+  border: 0;
+  padding: 0.5rem 1.5rem 0.5rem 1.2rem;
+  border-bottom-right-radius: 5rem;
+  border-top-right-radius: 5rem;
+  border-left: 2px solid #00c26e;
+  background: black;
+}
+
+#not-found .search button:focus {
+  outline: 0;
+}
+
+#not-found .search button i {
+  align-self: center;
+  font-size: 1.5rem;
 }
 
