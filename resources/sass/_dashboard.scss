@@ -25,18 +25,17 @@
 				border-color: white;
 
 				h4 {
-					transition: transform 0.5s ease-out;
+					transition: transform 0.25s ease-out;
 					transform: scale(1.05);
 
 					.settings-link {
 						color: white;
 					}
 				}
-
 			}
 
 			h4 {
-				transition: transform 0.25s ease-out;
+				transition: transform 0.25s linear;
 				transform: scale(1);
 				margin: auto;
 

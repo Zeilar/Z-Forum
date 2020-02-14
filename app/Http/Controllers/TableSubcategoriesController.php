@@ -33,10 +33,10 @@ class TableSubcategoriesController extends Controller
 					]);
 				}
 			} else {
-				return redirect()->back()->with('error', __('Insufficient permissions'));
+				return msg_error('role');
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -61,10 +61,10 @@ class TableSubcategoriesController extends Controller
 
 				return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
 			} else {
-				return redirect()->back()->with('error', __('Insufficient permissions'));
+				return msg_error('role');
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 

@@ -17,7 +17,7 @@ class UsersController extends Controller
 		if (logged_in()) {
         	return view('user.dashboard');
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -50,9 +50,13 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('user.single', [
-			'user' => User::find($id),
-		]);
+		if (User::find($id) || User::where('username', $id)) {
+			return view('user.single', [
+				'user' => User::find($id) ?? User::where('username', $id)->get(),
+			]);
+		} else {
+			return abort(404);
+		}
     }
 
     /**

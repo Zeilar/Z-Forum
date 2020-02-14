@@ -11,7 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-	<!-- To grant access to jQuery in Blade -->
+
+	<!-- To grant access to jQuery where not already available -->
 	<script
 		src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
@@ -37,11 +38,24 @@
 
         <main class="container-fluid py-3" id="content">
 			@if (session('error'))
-				<div class="popup">
-					<div class="unauthorized error bg-green text-white my-3">
-						<i class="fas fa-times close-button color-white"></i>
-						<i class="fas mr-2 color-white fa-exclamation-triangle"></i>
-						<span>{{ session('error') }}</span>
+				<h1 class="color-white">Error: {{ session('error') }}</h1>
+				<div class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Modal body text goes here.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary">Save changes</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+						</div>
 					</div>
 				</div>
 			@elseif (session('success'))

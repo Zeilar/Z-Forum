@@ -49,7 +49,7 @@ Route::get('/search', 'SearchController@search')->name('search');
 // Dashboard
 Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('dashboard_superadmin');
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
-Route::get('/dashboard', 'UsersController@index')->name('user_dashboard');
+Route::get('/dashboard', 'UsersController@index')->name('dashboard');
 
 // Custom logout path (also change LoginController)
 //Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -44,8 +44,12 @@ if (!function_exists('logged_in')) {
  */
 if (!function_exists('is_role')) {
 	function is_role(string $role) {
-		if (strtolower(auth()->user()->role) === strtolower($role)) {
-			return true;
+		if (Auth::user()) {
+			if (strtolower(auth()->user()->role) === strtolower($role)) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -109,6 +113,19 @@ if (!function_exists('date_comma')) {
 			return $formatted[0] . ', ' . $formatted[1];
 		} else {
 			return date('Y-m-d, H:i:s');
+		}
+	}
+}
+
+if (!function_exists('msg_error')) {
+	function msg_error(string $type) {
+		switch ($type) {
+			case 'login':
+				return redirect()->route('index')->with('error', __('Please log in and try again'));
+			case 'role':
+				return redirect()->back()->with('error', __('Insufficient permissions'));
+			default:
+				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 		}
 	}
 }

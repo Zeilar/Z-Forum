@@ -33,7 +33,7 @@ class PostsController extends Controller
 				return view('post.create', ['thread' => Thread::find($id)]);
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -63,7 +63,7 @@ class PostsController extends Controller
 				return abort(404);
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -94,18 +94,18 @@ class PostsController extends Controller
     {
 		if (logged_in()) {
 			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id) {
+				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin')) {
 					return vieW('post.edit', [
 						'post' => Post::find($id),
 					]);
 				} else {
-					return redirect()->back()->with('error', __('Insufficient permissions'));
+					return msg_error('role');
 				}
 			} else {
 				return abort(404);
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -120,7 +120,7 @@ class PostsController extends Controller
     {
         if (logged_in()) {
 			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id) {
+				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin')) {
 					$data = request()->validate([
 						'content' => 'required|max:500'
 					]);
@@ -131,13 +131,13 @@ class PostsController extends Controller
 
 					return redirect(route('post_show', [$post->thread->title, $post->thread->id, $post->id]))->with('success', __('Post updated'));
 				} else {
-					return redirect()->back()->with('error', __('Insufficient permissions'));
+					return msg_error('role');
 				}
 			} else {
 				return abort(404);
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -151,19 +151,19 @@ class PostsController extends Controller
     {
         if (logged_in()) {
 			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id) {
+				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin')) {
 					$post = Post::find($id);
 					$thread = $post->thread;
 					$post->delete();
 					return redirect(route('thread_show', [$thread->title, $thread->id]))->with('success', __('Post was successfully deleted'));
 				} else {
-					return redirect()->back()->with('error', __('Insufficient permissions'));
+					return msg_error('role');
 				}
 			} else {
 				return abort(404);
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 }

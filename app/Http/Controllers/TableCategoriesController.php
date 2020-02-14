@@ -31,10 +31,10 @@ class TableCategoriesController extends Controller
 			if (is_role('superadmin')) {
 				return view('table_category.create');
 			} else {
-				return redirect()->back()->with('error', __('Insufficient permissions'));
+				return msg_error('role');
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -56,12 +56,12 @@ class TableCategoriesController extends Controller
 				$tableCategory->title = request('title');
 				$tableCategory->save();
 
-				return redirect(route('index'));
+				return redirect()->back()->with('success', 'Created Table category');
 			} else {
-				return redirect()->back()->with('error', __('Insufficient permissions'));
+				return msg_error('role');
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 

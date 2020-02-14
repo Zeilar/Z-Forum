@@ -11530,10 +11530,10 @@ a.text-dark:focus {
 
 #settings .settings-nav .settings-item.active h4,
 #settings .settings-nav .settings-item.active-hover h4 {
-  -webkit-transition: -webkit-transform 0.5s ease-out;
-  transition: -webkit-transform 0.5s ease-out;
-  transition: transform 0.5s ease-out;
-  transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
@@ -11544,10 +11544,10 @@ a.text-dark:focus {
 }
 
 #settings .settings-nav .settings-item h4 {
-  -webkit-transition: -webkit-transform 0.25s ease-out;
-  transition: -webkit-transform 0.25s ease-out;
-  transition: transform 0.25s ease-out;
-  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+  -webkit-transition: -webkit-transform 0.25s linear;
+  transition: -webkit-transform 0.25s linear;
+  transition: transform 0.25s linear;
+  transition: transform 0.25s linear, -webkit-transform 0.25s linear;
   -webkit-transform: scale(1);
           transform: scale(1);
   margin: auto;

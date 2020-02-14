@@ -34,7 +34,7 @@ class ThreadsController extends Controller
 				]);
 			}
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
@@ -66,7 +66,7 @@ class ThreadsController extends Controller
 
 			return redirect(route('thread_show', [$thread->title, $thread->id]));
 		} else {
-			return redirect()->back()->with('error', __('Please log in and try again'));
+			return msg_error('login');
 		}
     }
 
