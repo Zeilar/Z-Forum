@@ -37,7 +37,7 @@
 								<a class="thread-link" href="{{route('thread_show', [$thread->title, $thread->id])}}">{{ __($thread->title) }}</a>
 								<div>
 									<span>{{ __('By') }}</span>
-									<a class="thread-author-link" href="{{route('user_show', [$thread->user->id])}}">{{ $thread->user->username }}</a>
+									<a class="thread-author-link" href="{{route('user_show', [$thread->user->username])}}">{{ $thread->user->username }}</a>
 								</div>
 							</div>
 						</div>
@@ -50,7 +50,7 @@
 							</p>
 							<p class="post-created-by">
 								<span>{{ __('By') }}</span>
-								<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
+								<a href="{{route('user_show', [$post->user->username])}}"> {{ $post->user->username }}</a>
 								<span>{{ date_comma($post->created_at) }}</span>
 							</p>
 						@endforeach

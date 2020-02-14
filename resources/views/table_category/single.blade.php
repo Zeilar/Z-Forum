@@ -40,7 +40,7 @@
 								</p>
 								<p class="post-created-by">
 									<span>{{ __('By') }}</span>
-									<a href="{{route('user_show', [$thread->user->id])}}"> {{ $post->user->username }}</a>
+									<a href="{{route('user_show', [$post->user->username])}}"> {{ $post->user->username }}</a>
 									<span>{{ date_comma($post->created_at) }}</span>
 								</p>
 							@endforeach
