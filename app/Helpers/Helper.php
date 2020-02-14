@@ -16,7 +16,7 @@
  */
 if (!function_exists('item_exists')) {
 	function item_exists(object $item, string $title) {
-		return (($item && strtolower($item->title) === strtolower($title))) ? true : abort(404);
+		return (($item && strtolower($item->title) === strtolower($title))) ? true : false;
 	}
 }
 

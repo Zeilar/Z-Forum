@@ -32,6 +32,8 @@ class ThreadsController extends Controller
 				return view('thread.create', [
 					'subcategory' => TableSubcategory::find($id),
 				]);
+			} else {
+				return view('layouts.404');
 			}
 		} else {
 			return msg_error('login');
@@ -83,6 +85,8 @@ class ThreadsController extends Controller
 				'thread' => Thread::find($id),
 				'posts' => Post::where('thread_id', $id)->paginate(1),
 			]);
+		} else {
+			return view('layouts.404');
 		}
     }
 

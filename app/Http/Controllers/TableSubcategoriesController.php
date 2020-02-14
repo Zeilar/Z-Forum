@@ -31,6 +31,8 @@ class TableSubcategoriesController extends Controller
 					return view('table_subcategory.create', [
 						'tableCategory' => TableCategory::find($id),
 					]);
+				} else {
+					return view('layouts.404');
 				}
 			} else {
 				return msg_error('role');
@@ -80,6 +82,8 @@ class TableSubcategoriesController extends Controller
 			return view('table_subcategory.single', [
 				'tableSubcategory' => TableSubcategory::find($id),
 			]);
+		} else {
+			return view('layouts.404');
 		}
     }
 	

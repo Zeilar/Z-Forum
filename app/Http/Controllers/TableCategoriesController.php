@@ -77,6 +77,8 @@ class TableCategoriesController extends Controller
 			return view('table_category.single', [
 				'tableCategory' => TableCategory::find($id),
 			]);
+		} else {
+			return view('layouts.404');
 		}
     }
 
