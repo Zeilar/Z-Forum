@@ -117,6 +117,13 @@ if (!function_exists('date_comma')) {
 	}
 }
 
+/**
+ * Redirect with session error message
+ * 
+ * @param string $type
+ * 
+ * @return redirect
+ */
 if (!function_exists('msg_error')) {
 	function msg_error(string $type) {
 		switch ($type) {
@@ -126,6 +133,26 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error', __('Insufficient permissions'));
 			default:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
+		}
+	}
+}
+
+/**
+ * Redirect with session success message
+ * 
+ * @param string $type
+ * 
+ * @return redirect
+ */
+if (!function_exists('msg_success')) {
+	function msg_success(string $type) {
+		switch ($type) {
+			case 'login':
+				return redirect()->route('index')->with('success', __('Successfully logged in!'));
+			case 'update':
+				return redirect()->back()->with('success', __('Changes were made!'));
+			default:
+				return redirect()->route('index')->with('success', __('Success!'));
 		}
 	}
 }
