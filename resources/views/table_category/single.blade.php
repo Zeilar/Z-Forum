@@ -34,14 +34,14 @@
 						</td>
 						<td>
 							<!-- latest post -->
-							@foreach ($thread->posts->sortBy('created_at')->take(1) as $post)
+							@foreach ($thread->posts->sortByDesc('created_at')->take(1) as $post)
 								<p>
 									<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
 								</p>
 								<p class="post-created-by">
 									<span>{{ __('By') }}</span>
 									<a href="{{route('user_show', [$post->user->username])}}"> {{ $post->user->username }}</a>
-									<span>{{ date_comma($post->created_at) }}</span>
+									{{ pretty_date($post->created_at) }}
 								</p>
 							@endforeach
 						</td> 

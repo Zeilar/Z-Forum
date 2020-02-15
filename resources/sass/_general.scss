@@ -17,19 +17,9 @@ body {
 }
 
 a {
-	color: $green;
-
 	&:hover {
 		text-decoration: none;
-		color: $darkgreen;
-	}
-
-	&:visited {
-		color: $darkgreen;
-
-		&:hover {
-			color: $green;
-		}
+		color: $green;
 	}
 }
 

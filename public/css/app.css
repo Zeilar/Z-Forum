@@ -11646,20 +11646,8 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  color: #00c26e;
-}
-
 a:hover {
   text-decoration: none;
-  color: #00a05b;
-}
-
-a:visited {
-  color: #00a05b;
-}
-
-a:visited:hover {
   color: #00c26e;
 }
 
@@ -11881,21 +11869,34 @@ a:visited:hover {
   background: #e9ecef;
 }
 
-.post .post-banner {
-  box-shadow: inset 0 0 15px 0px rgba(0, 0, 0, 0.5);
+.post .post-header {
+  box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
   background: #1f1f1f;
 }
 
-.post.is_author .post-banner {
+.post.is_author .post-header {
   background: #00c26e;
 }
 
-.post.is_author .post-banner a {
+.post.is_author .post-header a {
   color: white;
 }
 
-.post.is_author .post-banner a:hover {
-  color: #00a05b;
+.post.is_author .post-header a:hover {
+  color: black;
+}
+
+.post .post-body .user-meta {
+  background: #d7d7d7;
+}
+
+.post .post-body .user-meta p {
+  padding: 0.15rem 0;
+}
+
+.post .post-body .post-content {
+  -webkit-box-flex: 5;
+          flex: 5;
 }
 
 #not-found h1 {

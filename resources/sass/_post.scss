@@ -1,20 +1,34 @@
 .post {
 	background: #e9ecef;
 
-	.post-banner {
-		box-shadow: inset 0 0 15px 0px rgba(0, 0, 0, 0.5);
+	.post-header {
+		box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
 		background: $gray;
 	}
 
-	&.is_author .post-banner {
+	&.is_author .post-header {
 		background: $green;
 
 		a {
 			color: white;
 
 			&:hover {
-				color: $darkgreen;
+				color: black;
 			}
+		}
+	}
+
+	.post-body {
+		.user-meta {
+			background: rgb(215, 215, 215);
+
+			p {
+				padding: 0.15rem 0;
+			}
+		}
+
+		.post-content {
+			flex: 5;
 		}
 	}
 }
