@@ -1,10 +1,5 @@
 $(document).ready(() => {
-	if ($('.popup .unauthorized').length) {
-		$('.popup .unauthorized').children('.close-button').click(() => {
-			$('.popup').remove();
-		});
-	}
-
+	// Dashboard settings menu size animation
 	$('.settings-item').mouseenter(function() {
 		$(this).addClass('active-hover');
 
@@ -12,4 +7,9 @@ $(document).ready(() => {
 			$(this).removeClass('active-hover');
 		});
 	});
+
+	// Open modal if a session error is found
+	if ($('#errorModal')) {
+		$('#errorModal').modal('show');
+	}
 });

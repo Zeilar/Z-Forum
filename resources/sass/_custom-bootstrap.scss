@@ -139,3 +139,26 @@
 		}
 	}
 }
+
+#errorModal {
+	.modal-header {
+		background: red;
+		border: 0;
+
+		.modal-title {
+			color: white;
+		}
+
+		.close {
+			opacity: 1;
+
+			&:focus {
+				outline: 0;
+			}
+
+			span {
+				color: white;
+			}
+		} 
+	}
+}
