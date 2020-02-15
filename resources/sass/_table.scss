@@ -23,7 +23,7 @@
 		}
 	}
 
-	.table-subcategory {
+	.table-row {
 		background: $transparent-gray;
 
 		&:nth-child(even) {
@@ -40,6 +40,10 @@
 
 		th {
 			border: 0;
+
+			&.posts, &.threads {
+				width: 7%;
+			}
 		}
 	}
 

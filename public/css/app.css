@@ -11507,6 +11507,85 @@ a.text-dark:focus {
   color: white;
 }
 
+.modal-login {
+  width: 25rem;
+}
+
+.modal-login .modal-content {
+  border-radius: 1px;
+  border: none;
+}
+
+.modal-login .modal-header {
+  -webkit-box-pack: center;
+          justify-content: center;
+  background: #00c26e;
+  position: relative;
+}
+
+.modal-title {
+  color: white;
+}
+
+.modal-login .modal-body {
+  padding: 30px;
+}
+
+.modal-login .modal-footer {
+  background: #f2f2f2;
+}
+
+.modal-login h4 {
+  text-align: center;
+  font-size: 26px;
+}
+
+.modal-login label {
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.modal-login .form-control,
+.modal-login .btn {
+  border-radius: 2px;
+  min-height: 38px;
+}
+
+.modal-login .hint-text {
+  text-align: center;
+}
+
+.modal-login .close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.modal-login .checkbox-inline {
+  margin-right: auto;
+  margin-top: 12px;
+  display: -webkit-box;
+  display: flex;
+}
+
+.modal-login input[type="checkbox"] {
+  margin: auto 0.35rem auto auto;
+}
+
+.modal-login .btn {
+  line-height: normal;
+  min-width: 100px;
+  border: none;
+}
+
+.modal-login .hint-text a {
+  color: #999;
+}
+
+.trigger-btn {
+  display: inline-block;
+}
+
 .note-toolbar {
   background: #dfdfdf;
 }
@@ -11848,11 +11927,11 @@ a:hover {
   text-decoration: underline;
 }
 
-.table .table-subcategory {
+.table .table-row {
   background: rgba(31, 31, 31, 0.9);
 }
 
-.table .table-subcategory:nth-child(even) {
+.table .table-row:nth-child(even) {
   background: rgba(39, 39, 39, 0.9);
 }
 
@@ -11866,6 +11945,11 @@ a:hover {
 
 .table thead th {
   border: 0;
+}
+
+.table thead th.posts,
+.table thead th.threads {
+  width: 7%;
 }
 
 .table tbody tr td {

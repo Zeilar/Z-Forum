@@ -11,7 +11,7 @@
 		<thead>
 			<tr class="table-category bg-dark">
 				<th><h5 class="text-white">{{ __($tableCategory->title) }}</h5></th>
-				<th></th ><th></th> <th></th> <!-- to make sure the row is full width, because tables -->
+				<th></th> <th class="threads"></th> <th class="posts"></th> <!-- to make sure the row is full width, because tables -->
 			</tr>
 			<tr class="table-header bg-green">
 				<th class="py-3"><h4>{{ __('Subcategory') }}</h4></th>
@@ -23,7 +23,7 @@
 		<tbody>
 			@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 				@foreach ($tableSubcategory->threads as $thread)
-					<tr>
+					<tr class="table-row">
 						<td>
 							<div class="d-flex">
 								<i class="fas fa-folder-open mr-2"></i>

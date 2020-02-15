@@ -6,8 +6,8 @@
 			<tr class="table-header">
 				<th class="py-3 forum-section"><h4>{{ __('Forum section') }}</h4></th>
 				<th class="py-3 latest-post"><h4>{{ __('Latest post') }}</h4></th>
-				<th class="py-3 text-center"><h4>{{ __('Threads') }}</h4></th>
-				<th class="py-3 text-center"><h4>{{ __('Posts') }}</h4></<h4>
+				<th class="py-3 threads text-center"><h4>{{ __('Threads') }}</h4></th>
+				<th class="py-3 posts text-center"><h4>{{ __('Posts') }}</h4></<h4>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,7 +23,7 @@
 					<th></th> <th></th> <th></th> {{-- to make sure the row is full width, because tables --}}
 				</tr>
 				@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
-					<tr class="table-subcategory">
+					<tr class="table-row">
 						<td>
 							<div class="d-flex">
 								<i class="fas fa-folder-open mr-2"></i>

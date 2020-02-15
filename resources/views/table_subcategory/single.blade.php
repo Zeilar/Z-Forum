@@ -11,7 +11,7 @@
 				<th>
 					<h5 class="text-white">{{ __($tableSubcategory->title) }}</h5>
 				</th>
-				<th></th> <th></th> <!-- to make sure the row is full width, because tables -->
+				<th></th> <th class="posts"></th> <!-- to make sure the row is full width, because tables -->
 			</tr>
 			<tr class="table-header bg-green">
 				<th class="py-3"><h4>{{ __('Thread') }}</h4></th>
@@ -21,7 +21,7 @@
 		</thead>
 		<tbody>
 			@foreach ($tableSubcategory->threads as $thread)
-				<tr>
+				<tr class="table-row">
 					<td>
 						<div class="d-flex">
 							<div class="d-flex">

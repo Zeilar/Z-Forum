@@ -11,15 +11,3 @@
 		@endif
 	@endforeach
 </div>
-
-{{-- 
-<div class="breadcrumbs d-flex flex-row">
-	<a href="/">{{ __('Home') }}</a> 
-	<span class="mx-2"><i class="fas fa-angle-double-right"></i></span>
-	<a href="
-		{{route('tablecategory_show', [$tableSubcategory->tableCategory->title, $tableSubcategory->tableCategory->id])}}
-	">{{ $tableSubcategory->tableCategory->title }}</a>
-	<span class="mx-2"><i class="fas fa-angle-double-right"></i></span>
-	<span>{{ __($tableSubcategory->title) }}</span> 
-</div>
- --}}
