@@ -13,6 +13,14 @@
 
 	.table-category {
 		background: $transparent-green;
+
+		a {
+			color: white;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	.table-subcategory {

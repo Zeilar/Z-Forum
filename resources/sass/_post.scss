@@ -4,18 +4,18 @@
 	.post-header {
 		box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
 		background: $gray;
-	}
-
-	&.is_author .post-header {
-		background: $green;
 
 		a {
 			color: white;
 
 			&:hover {
-				color: black;
+				text-decoration: underline;
 			}
 		}
+	}
+
+	&.is_author .post-header {
+		background: $green;
 	}
 
 	.post-body {

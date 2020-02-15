@@ -11840,6 +11840,14 @@ a:hover {
   background: rgba(0, 194, 110, 0.9);
 }
 
+.table .table-category a {
+  color: white;
+}
+
+.table .table-category a:hover {
+  text-decoration: underline;
+}
+
 .table .table-subcategory {
   background: rgba(31, 31, 31, 0.9);
 }
@@ -11874,16 +11882,16 @@ a:hover {
   background: #1f1f1f;
 }
 
-.post.is_author .post-header {
-  background: #00c26e;
-}
-
-.post.is_author .post-header a {
+.post .post-header a {
   color: white;
 }
 
-.post.is_author .post-header a:hover {
-  color: black;
+.post .post-header a:hover {
+  text-decoration: underline;
+}
+
+.post.is_author .post-header {
+  background: #00c26e;
 }
 
 .post .post-body .user-meta {

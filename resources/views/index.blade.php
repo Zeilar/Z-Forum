@@ -13,8 +13,12 @@
 		<tbody>
 			@foreach ($tableCategories as $tableCategory)
 				<tr class="table-category">
-					<th class="tablecategory-title color-white">
-						<h5>{{ __($tableCategory->title) }}</h5>
+					<th class="tablecategory-title">
+						<h5>
+							<a href="{{route('tablecategory_show', [$tableCategory->title, $tableCategory->id])}}">
+								{{ __($tableCategory->title) }}
+							</a>
+						</h5>
 					</th>
 					<th></th> <th></th> <th></th> {{-- to make sure the row is full width, because tables --}}
 				</tr>
