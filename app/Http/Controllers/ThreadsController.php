@@ -56,6 +56,7 @@ class ThreadsController extends Controller
 
 			$thread = new Thread();
 			$thread->title = request('title');
+			$thread->slug = str_replace('?', '%3F', request('title'));
 			$thread->user_id = auth()->user()->id;
 			$thread->table_subcategory_id = TableSubcategory::find($id)->id;
 			$thread->save();
@@ -66,7 +67,7 @@ class ThreadsController extends Controller
 			$post->thread_id = $thread->id;
 			$post->save();
 
-			return redirect(route('thread_show', [$thread->title, $thread->id]));
+			return redirect(route('thread_show', [$thread->slug, $thread->id]));
 		} else {
 			return msg_error('login');
 		}
@@ -78,12 +79,12 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($title, $id)
+    public function show($slug, $id)
     {
-		if (item_exists(Thread::find($id), $title)) {
+		if (item_exists(Thread::find($id), $slug)) {
 			return view('thread.single', [
 				'thread' => Thread::find($id),
-				'posts' => Post::where('thread_id', $id)->paginate(1),
+				'posts' => Post::where('thread_id', $id)->paginate(3),
 			]);
 		} else {
 			return view('errors.404');

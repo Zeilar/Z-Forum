@@ -53,3 +53,5 @@ Route::get('/dashboard', 'UsersController@index')->name('dashboard');
 
 // Custom logout path (also change LoginController)
 //Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+// TODO: Ta bort ? från URL för att undvika GET bugg (url/html encoding?)

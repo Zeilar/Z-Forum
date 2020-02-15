@@ -54,9 +54,10 @@ class TableCategoriesController extends Controller
 
 				$tableCategory = new TableCategory();
 				$tableCategory->title = request('title');
+				$tableCategory->slug = str_replace('?', '%3F', request('title'));
 				$tableCategory->save();
 
-				return redirect()->back()->with('success', 'Created Table category');
+				return redirect()->route('tablecategory_show', [$tableCategory->slug, $tableCategory->id]);
 			} else {
 				return msg_error('role');
 			}

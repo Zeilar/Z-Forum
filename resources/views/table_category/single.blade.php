@@ -27,7 +27,7 @@
 						<td>
 							<div class="d-flex">
 								<i class="fas fa-folder-open mr-2"></i>
-								<a class="subcategory-link" href="{{route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id])}}">
+								<a class="subcategory-link" href="{{route('tablesubcategory_show', [$tableSubcategory->slug, $tableSubcategory->id])}}">
 									{{ __($tableSubcategory->title) }}
 								</a>
 							</div>
@@ -36,7 +36,7 @@
 							<!-- latest post -->
 							@foreach ($thread->posts->sortByDesc('created_at')->take(1) as $post)
 								<p>
-									<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
+									<a href="{{route('post_show', [$post->thread->slug, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
 								</p>
 								<p class="post-created-by">
 									<span>{{ __('By') }}</span>

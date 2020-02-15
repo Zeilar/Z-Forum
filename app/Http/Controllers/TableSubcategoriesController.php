@@ -58,10 +58,11 @@ class TableSubcategoriesController extends Controller
 
 				$tableSubcategory = new TableSubcategory();
 				$tableSubcategory->title = request('title');
+				$tableSubcategory->slug = str_replace('?', '%3F', request('title'));
 				$tableSubcategory->table_category_id = TableCategory::find($id)->id;
 				$tableSubcategory->save();
 
-				return redirect(route('tablesubcategory_show', [$tableSubcategory->title, $tableSubcategory->id]));
+				return redirect(route('tablesubcategory_show', [$tableSubcategory->slug, $tableSubcategory->id]));
 			} else {
 				return msg_error('role');
 			}

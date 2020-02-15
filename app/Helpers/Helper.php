@@ -7,16 +7,24 @@
 
 /**
  * Check if item exists, it should have a title and id
- * Recommended usage is inside a REST Controller
+ * Do not use in views
  * 
- * @param object item - Object of the item (required)
- * @param string title - Title to compare the item title propety with (required)
+ * @param object item - Object of the item
+ * @param string slug - Compare URL slug with item slug
  * 
  * @return mixed
  */
 if (!function_exists('item_exists')) {
-	function item_exists(object $item, string $title) {
-		return (($item && strtolower($item->title) === strtolower($title))) ? true : false;
+	function item_exists(object $item, string $slug) {
+		if ($item) {
+			if (strtolower(str_replace('?', '%3F', $slug)) === strtolower($item->slug)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 }
 
@@ -180,7 +188,7 @@ function breadcrumb_guesser(object $position) {
 				[
 					$position->tableCategory,
 					'route' => route('tablecategory_show', [
-						$position->tableCategory->title,
+						$position->tableCategory->slug,
 						$position->tableCategory->id
 					]),
 				],
@@ -194,14 +202,14 @@ function breadcrumb_guesser(object $position) {
 				[
 					$position->tableSubcategory->tableCategory,
 					'route' => route('tablecategory_show', [
-						$position->tableSubcategory->tableCategory->title,
+						$position->tableSubcategory->tableCategory->slug,
 						$position->tableSubcategory->tableCategory->id
 					]),
 				],
 				[
 					$position->tableSubcategory,
 					'route' => route('tablesubcategory_show', [
-						$position->tableSubcategory->title,
+						$position->tableSubcategory->slug,
 						$position->tableSubcategory->id
 					]),
 				],

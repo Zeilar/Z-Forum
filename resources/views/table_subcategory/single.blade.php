@@ -28,7 +28,7 @@
 								<i class="fas fa-clipboard fa-2x my-auto mr-2"></i>
 							</div>
 							<div class="d-flex flex-column">
-								<a class="thread-link" href="{{route('thread_show', [$thread->title, $thread->id])}}">{{ __($thread->title) }}</a>
+								<a class="thread-link" href="{{route('thread_show', [$thread->slug, $thread->id])}}">{{ __($thread->title) }}</a>
 								<div>
 									<span>{{ __('By') }}</span>
 									<a class="thread-author-link" href="{{route('user_show', [$thread->user->username])}}">{{ $thread->user->username }}</a>
