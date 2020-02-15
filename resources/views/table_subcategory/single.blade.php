@@ -1,15 +1,9 @@
 @extends('layouts.head')
 
 @section('content')
-	<p class="breadcrumb">
-		<a href="/">{{ __('Home') }}</a> 
-		<span class="mx-1 d-flex"><i class="fas m-auto fa-angle-double-right"></i></span>
-		<a href="
-			{{route('tablecategory_show', [$tableSubcategory->tableCategory->title, $tableSubcategory->tableCategory->id])}}
-		">{{ $tableSubcategory->tableCategory->title }}</a>
-		<span class="mx-1 d-flex"><i class="fas m-auto fa-angle-double-right"></i></span>
-		<span>{{ __($tableSubcategory->title) }}</span> 
-	</p>
+	@component('components.breadcrumbs', ['position' => $tableSubcategory])
+		
+	@endcomponent
 
 	<table class="table">
 		<thead>

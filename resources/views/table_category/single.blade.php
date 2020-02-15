@@ -1,11 +1,11 @@
+{{-- Passed variables: $tableCategory --}}
+
 @extends('layouts.head')
 
 @section('content')
-	<p class="breadcrumb">
-		<a href="/">{{ __('Home') }}</a> 
-		<span class="mx-1">&raquo;</span>
-		<a>{{ __($tableCategory->title) }}</a>
-	</p>
+	@component('components.breadcrumbs', ['position' => $tableCategory])
+		
+	@endcomponent
 
 	<table class="table">
 		<thead>

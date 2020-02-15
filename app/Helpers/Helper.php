@@ -57,7 +57,7 @@ if (!function_exists('is_role')) {
 }
 
 /**
- * Calculate difference between now and given timestamp
+ * Calculate difference between UNIX and given timestamp
  *
  * @param string $date
  *
@@ -78,7 +78,8 @@ if (!function_exists('time_difference')) {
 }
 
 /**
- * Write out date in a prettier format
+ * Render date with "Today" or "Yesterday" instead of numerics
+ * Will use numerics if date is more than 1 day in the past
  *
  * @param string $date
  *
@@ -104,7 +105,7 @@ if (!function_exists('pretty_date')) {
  * 
  * @param string $timestamp
  * 
- * @return mixed
+ * @return date
  */
 if (!function_exists('date_comma')) {
 	function date_comma(string $timestamp) {
@@ -128,7 +129,7 @@ if (!function_exists('msg_error')) {
 	function msg_error(string $type) {
 		switch ($type) {
 			case 'login':
-				return redirect()->route('index')->with('error', __('Please log in and try again'));
+				return redirect()->back()->with('error', __('Please log in and try again'));
 			case 'role':
 				return redirect()->back()->with('error', __('Insufficient permissions'));
 			default:
@@ -150,9 +151,67 @@ if (!function_exists('msg_success')) {
 			case 'login':
 				return redirect()->route('index')->with('success', __('Successfully logged in!'));
 			case 'update':
-				return redirect()->back()->with('success', __('Changes were made!'));
+				return redirect()->back()->with('success', __('Changes were successful!'));
 			default:
 				return redirect()->route('index')->with('success', __('Success!'));
 		}
+	}
+}
+
+/**
+ * Calculate breadcrumbs from your position and upwards in the hierarchy
+ * The breadcrumb at your current position will by defualt not be a hyperlink
+ * 
+ * @param object $position
+ * 
+ * @return array
+ */
+function breadcrumb_guesser(object $position) {
+	if ($position) {
+		if (isset($position->tableSubcategories)) {
+			return [
+				[
+					$position,
+					'route' => false,
+				],
+			];
+		} else if (isset($position->tableCategory)) {
+			return [
+				[
+					$position->tableCategory,
+					'route' => route('tablecategory_show', [
+						$position->tableCategory->title,
+						$position->tableCategory->id
+					]),
+				],
+				[
+					$position,
+					'route' => false,
+				],
+			];
+		} else if (isset($position->tableSubcategory)) {
+			return [
+				[
+					$position->tableSubcategory->tableCategory,
+					'route' => route('tablecategory_show', [
+						$position->tableSubcategory->tableCategory->title,
+						$position->tableSubcategory->tableCategory->id
+					]),
+				],
+				[
+					$position->tableSubcategory,
+					'route' => route('tablesubcategory_show', [
+						$position->tableSubcategory->title,
+						$position->tableSubcategory->id
+					]),
+				],
+				[
+					$position,
+					'route' => false,
+				],
+			];
+		}
+	} else {
+		return null;
 	}
 }

@@ -1,19 +1,9 @@
 @extends('layouts.head')
 
 @section('content')
-	<div class="breadcrumb">
-		<a href="/">Home</a> 
-		<span class="mx-1">&raquo;</span>
-		<a href="
-			{{route('tablecategory_show', [$thread->tableSubcategory->tableCategory->title, $thread->tableSubcategory->tableCategory->id])}}
-		">{{ $thread->tableSubcategory->tableCategory->title }}</a>
-		<span class="mx-1">&raquo;</span>
-		<a href="{{route('tablesubcategory_show', [$thread->tableSubcategory->title, $thread->tableSubcategory->id])}}">
-			{{ $thread->tableSubcategory->title }}
-		</a>
-		<span class="mx-1">&raquo;</span>
-		<span>{{ $thread->title }}</span>
-	</div>
+	@component('components.breadcrumbs', ['position' => $thread])
+		
+	@endcomponent
 
 	<div class="thread-title bg-dark mb-3">
 		<h5 class="text-white">{{ $thread->title }}</h5>

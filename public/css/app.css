@@ -11466,14 +11466,6 @@ a.text-dark:focus {
   border-color: white;
 }
 
-.breadcrumb {
-  border: 2px solid #00c26e;
-  padding: 0.5rem 0.75rem;
-  background: #1f1f1f;
-  border-radius: 0;
-  color: white;
-}
-
 .pagination .page-item.active .page-link {
   background: #00c26e;
   color: white;
@@ -11517,6 +11509,14 @@ a.text-dark:focus {
 
 .note-toolbar {
   background: #dfdfdf;
+}
+
+.breadcrumbs {
+  border: 2px solid #00c26e;
+  padding: 0.5rem 0.75rem;
+  background: #1f1f1f;
+  border-radius: 0;
+  color: white;
 }
 
 #settings .settings-nav {
