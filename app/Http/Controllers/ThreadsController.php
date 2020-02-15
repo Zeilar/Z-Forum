@@ -56,7 +56,7 @@ class ThreadsController extends Controller
 
 			$thread = new Thread();
 			$thread->title = request('title');
-			$thread->slug = str_replace('?', '%3F', request('title'));
+			$thread->slug = urlencode(request('title'));
 			$thread->user_id = auth()->user()->id;
 			$thread->table_subcategory_id = TableSubcategory::find($id)->id;
 			$thread->save();

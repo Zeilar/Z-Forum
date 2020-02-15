@@ -17,7 +17,7 @@
 if (!function_exists('item_exists')) {
 	function item_exists(object $item, string $slug) {
 		if ($item) {
-			if (strtolower(str_replace('?', '%3F', $slug)) === strtolower($item->slug)) {
+			if (strtolower(urldecode($slug)) === strtolower(urldecode($item->slug))) {
 				return true;
 			} else {
 				return false;

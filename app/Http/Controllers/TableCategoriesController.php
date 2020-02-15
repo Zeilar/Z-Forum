@@ -54,7 +54,7 @@ class TableCategoriesController extends Controller
 
 				$tableCategory = new TableCategory();
 				$tableCategory->title = request('title');
-				$tableCategory->slug = str_replace('?', '%3F', request('title'));
+				$tableCategory->slug = urlencode(request('title'));
 				$tableCategory->save();
 
 				return redirect()->route('tablecategory_show', [$tableCategory->slug, $tableCategory->id]);
@@ -72,9 +72,9 @@ class TableCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($title, $id)
+    public function show($slug, $id)
     {
-		if (item_exists(TableCategory::find($id), $title)) {
+		if (item_exists(TableCategory::find($id), $slug)) {
 			return view('table_category.single', [
 				'tableCategory' => TableCategory::find($id),
 			]);

@@ -14,12 +14,15 @@ class TableCategoriesTableSeeder extends Seeder
     {
         TableCategory::create([
 			'title' => 'Gaming',
+			'slug' => 'Gaming',
 		]);
 		TableCategory::create([
 			'title' => 'Computers',
+			'slug' => 'Computers',
 		]);
 		TableCategory::create([
 			'title' => 'General',
+			'slug' => 'General',
 		]);
     }
 }

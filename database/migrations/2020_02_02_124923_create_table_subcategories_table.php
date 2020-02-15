@@ -16,7 +16,7 @@ class CreateTableSubcategoriesTable extends Migration
         Schema::create('table_subcategories', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('title');
-			$table->string('slug')->nullable();
+			$table->string('slug');
 			$table->unsignedInteger('table_category_id');
             $table->timestamps();
         });

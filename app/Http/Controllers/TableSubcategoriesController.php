@@ -58,7 +58,7 @@ class TableSubcategoriesController extends Controller
 
 				$tableSubcategory = new TableSubcategory();
 				$tableSubcategory->title = request('title');
-				$tableSubcategory->slug = str_replace('?', '%3F', request('title'));
+				$tableSubcategory->slug = urlencode(request('title'));
 				$tableSubcategory->table_category_id = TableCategory::find($id)->id;
 				$tableSubcategory->save();
 
