@@ -10,7 +10,7 @@
 				<div class="modal-body">				
 					<div class="form-group">
 						<label>{{ __('Username or email') }}</label>
-						<input type="text" id="login_email" name="email" class="form-control" required>
+						<input type="text" id="login_email" name="id" class="form-control" value="{{ old('username') ?: old('email') }}" required>
 					</div>
 					<div class="form-group">
 						<div class="clearfix">

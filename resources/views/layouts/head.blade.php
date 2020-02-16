@@ -46,14 +46,10 @@
 				{{ session('success') }}
 			@endif
 
-			@error('email')
+			@error('login')
 				{{ $message }}
 			@enderror
-
-			@error('password')
-				{{ $message }}
-			@enderror
-
+			
             @yield('content')
         </main>
     </div>
