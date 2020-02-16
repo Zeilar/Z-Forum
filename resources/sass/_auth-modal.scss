@@ -25,27 +25,30 @@
 
 		.modal-body {
 			padding: 30px;
+
+			.checkbox-inline {
+				margin: 0 auto 0 0;				
+				user-select: none;
+
+				input[type="checkbox"] {
+					margin: auto 0.25rem auto 0;
+					vertical-align: middle;
+					position: static;
+				}
+			}
 		}
 
 		.modal-footer {
 			background: #f2f2f2;
 
-			.checkbox-inline {
-				margin-right: auto;
-				margin-top: 12px;
-				display: flex;
-
-				input[type="checkbox"] {
-					margin: auto 0.35rem auto auto;
-					position: static;
-				}
+			p {
+				margin: 0.5rem auto;
 			}
 		}
 	}
 
 	.btn {
 		line-height: normal;
-		border-radius: 2px; 
 		min-height: 38px;
 		min-width: 100px;
 		border: none;

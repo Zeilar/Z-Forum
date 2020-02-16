@@ -15,18 +15,23 @@
 					<div class="form-group">
 						<div class="clearfix">
 							<label>{{ __('Password') }}</label>
-							<a href="{{route('index')}}" class="pull-right text-muted"><small>{{ __('Forgot?') }}</small></a>
 						</div>
 						<input type="password" id="login_password" name="password" class="form-control" required>
 					</div>
+					<div class="d-flex flex-row">
+						<label class="checkbox-inline pull-left">
+							<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
+							{{ __('Remember me') }}
+						</label>
+						<a class="ml-auto" href="{{route('index')}}" class="pull-right">{{ __('Forgot Password?') }}</a>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<label class="checkbox-inline pull-left">
-						<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
-						{{ __('Remember me') }}
-					</label>
-					
-					<input type="submit" class="btn btn-success pull-right" value="{{__('Login')}}">
+					<input type="submit" class="btn rounded btn-block btn-success pull-right" value="{{__('Login')}}">
+					<p>
+						{{ __('Not a member?') }}
+						<a data-toggle="modal" data-dismiss="modal" href="#registerModal">{{ __('Sign up') }}</a>
+					</p>
 				</div>
 			</form>
 		</div>

@@ -26,7 +26,11 @@
 					</div>
 				</div>
 				<div class="modal-footer">		
-					<input type="submit" class="btn btn-block btn-success pull-right" value="{{__('Register')}}">
+					<input type="submit" class="btn rounded btn-block btn-success pull-right" value="{{__('Register')}}">
+					<p>
+						{{ __('Already a member?') }}
+						<a data-toggle="modal" data-dismiss="modal" href="#loginModal">{{ __('Sign in') }}</a>
+					</p>
 				</div>
 			</form>
 		</div>

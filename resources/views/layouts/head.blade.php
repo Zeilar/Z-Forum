@@ -42,7 +42,9 @@
         <main class="container-fluid py-3" id="content">
 			@if (session('error'))
 				@include('modals.error')
-			@elseif (session('success'))
+			@endif
+			
+			@if (session('success'))
 				{{ session('success') }}
 			@endif
 
