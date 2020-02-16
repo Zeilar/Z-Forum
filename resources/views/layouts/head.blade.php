@@ -40,18 +40,6 @@
         @include('layouts.navbar')
 
         <main class="container-fluid py-3" id="content">
-			{{-- @if (session('error'))
-				@include('modals.error')
-			@endif
-			
-			@if (session('success'))
-				{{ session('success') }}
-			@endif --}}
-			
-			@error('username') <p id="">{{ $message }}</p> @enderror
-			@error('email') <p id="">{{ $message }}</p> @enderror
-			@error('password') <p id="">{{ $message }}</p> @enderror
-			@error('password_confirmation') <p id="">{{ $message }}</p> @enderror
 
             @yield('content')
         </main>

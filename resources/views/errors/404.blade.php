@@ -2,12 +2,15 @@
 
 @section('content')
 	<div id="not-found">
-		<h1 class="not-found color-green">404 Not Found</h1>
+		<div class="header">
+			<i class="fas mb-4 fa-ghost"></i>
+			<h1 class="color-green">404 Not Found</h1>
+		</div>
 
-		<form action="/search" method="get">
+		<form class="mt-4" action="/search" method="get">
 			@csrf
 			<div class="search d-flex">
-				<input type="text" name="search" id="search" placeholder="What are you looking for?" />
+				<input class="py-2" type="text" name="search" id="search" placeholder="What are you looking for?" />
 				<button type="submit">
 					<i class="fas fa-search"></i>
 				</button>
