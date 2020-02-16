@@ -28,7 +28,7 @@
 								<i class="fas fa-clipboard fa-2x my-auto mr-2"></i>
 							</div>
 							<div class="d-flex flex-column">
-								<a class="thread-link" href="{{route('thread_show', [$thread->slug, $thread->id])}}">{{ __($thread->title) }}</a>
+								<a class="thread-link" href="{{route('thread_show', [$thread->id, $thread->slug])}}">{{ __($thread->title) }}</a>
 								<div>
 									<span>{{ __('By') }}</span>
 									<a class="thread-author-link" href="{{route('user_show', [$thread->user->username])}}">{{ $thread->user->username }}</a>
@@ -40,7 +40,7 @@
 						<!-- latest post -->
 						@foreach ($thread->posts->sortByDesc('created_at')->take(1) as $post)
 							<p>
-								<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
+								<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">{{ $post->thread->title }}</a>
 							</p>
 							<p class="post-created-by">
 								<span>{{ __('By') }}</span>
@@ -54,5 +54,5 @@
 			@endforeach
 		</tbody>
 	</table>
-	<a href="{{route('thread_create', [$tableSubcategory->title, $tableSubcategory->id])}}">New</a>
+	<a href="{{route('thread_create', [$tableSubcategory->id, $tableSubcategory->slug])}}">New</a>
 @endsection

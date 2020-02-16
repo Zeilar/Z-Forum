@@ -5,7 +5,7 @@
 @section('content')
 	<h1>Post comment in thread: {{ $thread->title }}</h1>
 
-	<form action="{{route('post_store', [$thread->title, $thread->id])}}" method="POST">
+	<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 		@csrf
 
 		<textarea class="bg-dark" name="content" id="form-content"></textarea>

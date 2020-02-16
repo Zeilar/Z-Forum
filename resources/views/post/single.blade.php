@@ -7,7 +7,7 @@
 				{{ date_comma($post->created_at) }}
 			</span>
 			<span class="post-thread px-2">
-				<a href="{{route('post_show', [$post->thread->title, $post->thread->id, $post->id])}}">{{ __('View in thread') }} &raquo;</a>
+				<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">{{ __('View in thread') }} &raquo;</a>
 			</span>
 		</div>
 		<div class="post-content px-2">

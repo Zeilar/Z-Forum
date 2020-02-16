@@ -72,7 +72,7 @@ class TableCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug, $id)
+    public function show($id, $slug)
     {
 		if (item_exists(TableCategory::find($id), $slug)) {
 			return view('table_category.single', [

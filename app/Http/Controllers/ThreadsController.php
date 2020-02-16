@@ -28,7 +28,7 @@ class ThreadsController extends Controller
     public function create($title, $id)
     {
 		if (logged_in()) {
-			if (item_exists(TableSubcategory::find($id), $title)) {
+			if (item_exists(TableSubcategory::find($id), $slug)) {
 				return view('thread.create', [
 					'subcategory' => TableSubcategory::find($id),
 				]);
@@ -46,7 +46,7 @@ class ThreadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $title, $id)
+    public function store(Request $request, $id, $slug)
     {
 		if (logged_in()) {
 			$data = request()->validate([
@@ -67,7 +67,7 @@ class ThreadsController extends Controller
 			$post->thread_id = $thread->id;
 			$post->save();
 
-			return redirect(route('thread_show', [$thread->slug, $thread->id]));
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
 		} else {
 			return msg_error('login');
 		}
@@ -79,7 +79,7 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug, $id)
+    public function show($id, $slug)
     {
 		if (item_exists(Thread::find($id), $slug)) {
 			return view('thread.single', [

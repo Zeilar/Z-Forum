@@ -15,7 +15,7 @@
 				<tr class="table-category">
 					<th class="tablecategory-title">
 						<h5>
-							<a href="{{route('tablecategory_show', [$tableCategory->slug, $tableCategory->id])}}">
+							<a href="{{route('tablecategory_show', [$tableCategory->id, $tableCategory->slug])}}">
 								{{ __($tableCategory->title) }}
 							</a>
 						</h5>
@@ -27,7 +27,7 @@
 						<td>
 							<div class="d-flex">
 								<i class="fas fa-folder-open mr-2"></i>
-								<a href="{{route('tablesubcategory_show', [$tableSubcategory->slug, $tableSubcategory->id])}}">
+								<a href="{{route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug])}}">
 									{{ __($tableSubcategory->title) }}
 								</a>
 							</div>
@@ -43,7 +43,7 @@
 									}
 								?>
 								<p>
-									<a href="{{route('post_show', [$post->thread->slug, $post->thread->id, $post->id])}}">{{ $post->thread->title }}</a>
+									<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">{{ $post->thread->title }}</a>
 								</p>
 								<p class="post-created-by">
 									<span>{{ __('By') }}</span>

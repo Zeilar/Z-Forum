@@ -26,10 +26,10 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($title, $id)
+    public function create($id, $slug)
     {
         if (logged_in()) {
-			if (item_exists(Thread::find($id), $title)) {
+			if (item_exists(Thread::find($id), $slug)) {
 				return view('post.create', ['thread' => Thread::find($id)]);
 			} else {
 				return view('errors.404');
@@ -45,7 +45,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $title, $id)
+    public function store(Request $request, $id, $slug)
     {
         if (logged_in()) {
 			if (Thread::find($id)) {

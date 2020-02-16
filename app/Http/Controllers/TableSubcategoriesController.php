@@ -23,11 +23,11 @@ class TableSubcategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($title, $id)
+    public function create($id, $slug)
     {
 		if (logged_in()) {
 			if (is_role('superadmin')) {
-				if (item_exists(TableCategory::find($id), $title)) {
+				if (item_exists(TableCategory::find($id), $slug)) {
 					return view('table_subcategory.create', [
 						'tableCategory' => TableCategory::find($id),
 					]);
@@ -48,7 +48,7 @@ class TableSubcategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $title, $id)
+    public function store(Request $request, $id, $slug)
     {
 		if (logged_in()) {
 			if (is_role('superadmin')) {
@@ -62,7 +62,7 @@ class TableSubcategoriesController extends Controller
 				$tableSubcategory->table_category_id = TableCategory::find($id)->id;
 				$tableSubcategory->save();
 
-				return redirect(route('tablesubcategory_show', [$tableSubcategory->slug, $tableSubcategory->id]));
+				return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
 			} else {
 				return msg_error('role');
 			}
@@ -77,9 +77,9 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($title, $id)
+    public function show($id, $slug)
     {
-		if (item_exists(TableSubcategory::find($id), $title)) {
+		if (item_exists(TableSubcategory::find($id), $slug)) {
 			return view('table_subcategory.single', [
 				'tableSubcategory' => TableSubcategory::find($id),
 			]);
