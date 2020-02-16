@@ -11539,18 +11539,61 @@ a.text-dark:focus {
   padding: 30px;
 }
 
-.modal-auth .modal-content .modal-body .checkbox-inline {
-  margin: 0 auto 0 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+.modal-auth .modal-content .modal-body .remember-row {
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
 }
 
-.modal-auth .modal-content .modal-body .checkbox-inline input[type="checkbox"] {
-  margin: auto 0.25rem auto 0;
-  vertical-align: middle;
-  position: static;
+.modal-auth .modal-content .modal-body .remember-row .remember-me {
+  margin-left: 2rem;
+}
+
+.modal-auth .modal-content .modal-body .remember-row input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.modal-auth .modal-content .modal-body .remember-row .checkmark {
+  background-color: #eee;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+}
+
+.modal-auth .modal-content .modal-body .remember-row :hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.modal-auth .modal-content .modal-body .remember-row input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.modal-auth .modal-content .modal-body .remember-row .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.modal-auth .modal-content .modal-body .remember-row input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.modal-auth .modal-content .modal-body .remember-row .checkmark:after {
+  -webkit-transform: rotate(45deg);
+  left: 9px;
+  top: 7px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 .modal-auth .modal-content .modal-footer {

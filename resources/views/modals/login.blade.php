@@ -18,10 +18,11 @@
 						</div>
 						<input type="password" id="login_password" name="password" class="form-control" required>
 					</div>
-					<div class="d-flex flex-row">
+					<div class="remember-row d-flex flex-row">
 						<label class="checkbox-inline pull-left">
 							<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
-							{{ __('Remember me') }}
+							<span class="checkmark"></span>
+							<span class="remember-me">{{ __('Remember me') }}</span>
 						</label>
 						<a class="ml-auto" href="{{route('index')}}" class="pull-right">{{ __('Forgot Password?') }}</a>
 					</div>
