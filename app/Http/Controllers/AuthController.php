@@ -16,12 +16,13 @@ class AuthController extends Controller
 			'password' => 'required',
 		]);
 
-		$user_data = [
+		$user = [
 			//'username' => request('username'),
 			'email'	   => request('email'),
+			'password' => request('password'),
 		];
 
-		if (Auth::attempt(request('email'))) {
+		if (Auth::attempt($user)) {
 			return msg_success('login');
 		} else {
 			return msg_error('invalid');
@@ -30,7 +31,8 @@ class AuthController extends Controller
 
 	public function logout()
 	{
-		return 'logout';
+		Auth::logout();
+		return redirect(route('index'));
 	}
 
 	/* Register

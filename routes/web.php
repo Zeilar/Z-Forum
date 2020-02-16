@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+
 
 // Index
 Route::get('/', 'TableCategoriesController@index')->name('index');
@@ -52,8 +52,6 @@ Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard
 Route::get('/dashboard', 'UsersController@index')->name('dashboard');
 
 // Auth
+Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::get('/login', 'AuthController@login')->name('login');
-
-// Custom logout path (also change LoginController)
-//Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/login', 'AuthController@login')->name('login');

@@ -1,7 +1,7 @@
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-login">
+<div id="loginModal" class="modal fade">
+	<div class="modal-dialog modal-auth">
 		<div class="modal-content">
-			<form method="POST" action="{{ route('login') }}">
+			<form method="POST" action="{{route('login')}}">
 				@csrf
 				<div class="modal-header">				
 					<h4 class="modal-title">{{ __('Login') }}</h4>
@@ -9,15 +9,15 @@
 				</div>
 				<div class="modal-body">				
 					<div class="form-group">
-						<label>{{ __('Username or e-mail') }}</label>
-						<input type="text" id="email" name="email" class="form-control" required>
+						<label>{{ __('Username or email') }}</label>
+						<input type="text" id="login_email" name="email" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<div class="clearfix">
 							<label>{{ __('Password') }}</label>
-							<a href="{{route('password.request')}}" class="pull-right text-muted"><small>{{ __('Forgot?') }}</small></a>
+							<a href="{{route('index')}}" class="pull-right text-muted"><small>{{ __('Forgot?') }}</small></a>
 						</div>
-						<input type="password" id="password" name="password" class="form-control" required>
+						<input type="password" id="login_password" name="password" class="form-control" required>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -26,7 +26,7 @@
 						{{ __('Remember me') }}
 					</label>
 					
-					<input type="submit" class="btn btn-success pull-right" value="Login">
+					<input type="submit" class="btn btn-success pull-right" value="{{__('Login')}}">
 				</div>
 			</form>
 		</div>

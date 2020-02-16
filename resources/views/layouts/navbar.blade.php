@@ -18,7 +18,7 @@
 			<ul class="navbar-nav ml-auto">
 
 				<!-- Search form -->
-				<form action="/search" method="get">
+				<form action="{{route('search')}}" method="get">
 					@csrf
 					<div class="nav-search mr-3 d-flex">
 						<input class="rounded-left py-1 px-2" type="text" name="search" id="search" placeholder="Search" />
@@ -31,13 +31,11 @@
 				<!-- Authentication Links -->
 				@guest
 					<li class="nav-item mr-3">
-						<a class="nav-link rounded" data-toggle="modal" href="#myModal">{{ __('Login') }}</a>
+						<a class="nav-link rounded" data-toggle="modal" href="#loginModal">{{ __('Login') }}</a>
 					</li>
-					@if (Route::has('register'))
-						<li class="nav-item">
-							<a class="nav-link rounded" href="{{ route('register') }}">{{ __('Register') }}</a>
-						</li>
-					@endif
+					<li class="nav-item">
+						<a class="nav-link rounded" data-toggle="modal" href="#registerModal">{{ __('Register') }}</a>
+					</li>
 				@else
 					<li class="nav-item dropdown">
 						<a id="navbarDropdown" class="nav-link rounded dropdown-toggle" 
@@ -51,15 +49,9 @@
 								{{ __('Dashboard') }}
 							</a>
 
-							<a class="dropdown-item" href="{{ route('logout') }}"
-								onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-							>
+							<a class="dropdown-item" href="{{route('logout')}}">
 								{{ __('Logout') }}
 							</a>
-
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-								@csrf
-							</form>
 						</div>
 					</li>
 				@endguest

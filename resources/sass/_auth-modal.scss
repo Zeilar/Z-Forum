@@ -1,5 +1,5 @@
-.modal-login {
-	width: 25rem;
+.modal-auth {
+	width: 35rem;
 	
 	.modal-content {
 		border-radius: 1px;
@@ -12,7 +12,7 @@
 
 			.modal-title {
 				text-align: center;
-				font-size: 26px;
+				font-size: 1.5rem;
 				color: white;
 			}
 
@@ -25,11 +25,6 @@
 
 		.modal-body {
 			padding: 30px;
-			
-			label {
-				font-weight: normal;
-				font-size: 13px;
-			}
 		}
 
 		.modal-footer {

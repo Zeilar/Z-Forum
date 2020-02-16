@@ -34,6 +34,7 @@
 </head>
 <body>
     <div id="app">
+		@include('modals.register')
 		@include('modals.login')
 
         @include('layouts.navbar')
