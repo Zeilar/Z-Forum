@@ -140,6 +140,8 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error', __('Please log in and try again'));
 			case 'role':
 				return redirect()->back()->with('error', __('Insufficient permissions'));
+			case 'invalid':
+				return redirect()->back()->with('error', __('Incorrect credentials, please try again'));
 			default:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 		}

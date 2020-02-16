@@ -10,14 +10,14 @@
 				<div class="modal-body">				
 					<div class="form-group">
 						<label>{{ __('Username or e-mail') }}</label>
-						<input type="text" class="form-control" required="required">
+						<input type="text" id="email" name="email" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<div class="clearfix">
 							<label>{{ __('Password') }}</label>
 							<a href="{{route('password.request')}}" class="pull-right text-muted"><small>{{ __('Forgot?') }}</small></a>
 						</div>
-						<input type="password" class="form-control" required="required">
+						<input type="password" id="password" name="password" class="form-control" required>
 					</div>
 				</div>
 				<div class="modal-footer">

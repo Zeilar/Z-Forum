@@ -51,5 +51,9 @@ Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('das
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
 Route::get('/dashboard', 'UsersController@index')->name('dashboard');
 
+// Auth
+Route::get('/logout', 'AuthController@logout')->name('logout');
+Route::get('/login', 'AuthController@login')->name('login');
+
 // Custom logout path (also change LoginController)
 //Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
