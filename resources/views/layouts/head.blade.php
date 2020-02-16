@@ -46,10 +46,6 @@
 				{{ session('success') }}
 			@endif
 
-			@error('login')
-				{{ $message }}
-			@enderror
-			
             @yield('content')
         </main>
     </div>

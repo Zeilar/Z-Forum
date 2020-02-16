@@ -134,7 +134,7 @@ if (!function_exists('date_comma')) {
  * @return redirect
  */
 if (!function_exists('msg_error')) {
-	function msg_error(string $type) {
+	function msg_error(string $type = null) {
 		switch ($type) {
 			case 'login':
 				return redirect()->back()->with('error', __('Please log in and try again'));
@@ -142,6 +142,8 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error', __('Insufficient permissions'));
 			case 'invalid':
 				return redirect()->back()->with('error', __('Incorrect credentials, please try again'));
+			case null:
+				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 		}
@@ -160,6 +162,8 @@ if (!function_exists('msg_success')) {
 		switch ($type) {
 			case 'login':
 				return redirect()->route('index')->with('success', __('Successfully logged in!'));
+			case 'registered':
+				return redirect()->route('index')->with('success', __('Your account has been created!'));
 			case 'update':
 				return redirect()->back()->with('success', __('Changes were successful!'));
 			default:

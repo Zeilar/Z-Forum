@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Validator;
+use App\User;
 use Auth;
 
 class AuthController extends Controller
@@ -36,13 +38,6 @@ class AuthController extends Controller
 		}
 	}
 
-	// Log out
-	public function logout()
-	{
-		Auth::logout();
-		return redirect(route('index'));
-	}
-
 	// Register
 	public function register(Request $request)
 	{
@@ -53,7 +48,32 @@ class AuthController extends Controller
 			'password' => 'required|string|min:6|max:255|confirmed',
 		]);
 
-		User::create($request);
-		return msg_success('login');
+		// Prepare the user data
+		$data = [
+			'username' => request('username'),
+			'email'	   => request('email'),
+			'password' => Hash::make(request('password')),
+		];
+
+		// If validation checks out, create our new user
+		User::create($data);
+
+		// Try to log in with the newly created user - careful to not use the hashed password when attempting to authenticate
+		$data = [
+			'email'	   => request('email'),
+			'password' => request('password'),
+		];
+		if (Auth::attempt($data)) {
+			return msg_success('login');
+		} else {
+			return msg_error();
+		}
+	}
+
+	// Log out
+	public function logout()
+	{
+		Auth::logout();
+		return redirect(route('index'));
 	}
 }

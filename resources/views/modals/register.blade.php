@@ -22,7 +22,7 @@
 					</div>
 					<div class="form-group">
 						<label>{{ __('Repeat password') }}</label>
-						<input type="password" id="register_password_repeat" name="password_repeat" class="form-control" required>
+						<input type="password" id="register_password_repeat" name="password_confirmation" class="form-control" required>
 					</div>
 				</div>
 				<div class="modal-footer">		
