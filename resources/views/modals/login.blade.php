@@ -18,7 +18,12 @@
 						<div class="clearfix">
 							<label>{{ __('Password') }}</label>
 						</div>
-						<input type="password" id="login_password" name="password" class="form-control" required>
+						<div class="password-row">
+							<input type="password" id="login_password" name="password" class="form-control" required>
+							<button class="password-revealer" type="button">
+								<i class="far fa-eye"></i>
+							</button>
+						</div>
 					</div>
 					<div class="remember-row d-flex flex-row">
 						<label class="checkbox-inline pull-left">

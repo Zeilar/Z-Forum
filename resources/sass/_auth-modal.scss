@@ -31,6 +31,17 @@
 		.modal-body {
 			padding: 30px;
 
+			.password-row {
+				display: flex;
+
+				.password-revealer {
+					border: 1px solid #ced4da;
+					background: none;
+					border-left: 0;
+					width: 3rem;
+				}
+			}
+
 			.remember-row {
 				.checkbox-inline {
 					user-select: none;

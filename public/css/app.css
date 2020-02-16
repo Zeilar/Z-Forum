@@ -11486,27 +11486,6 @@ a.text-dark:focus {
   color: #00c26e;
 }
 
-#errorModal .modal-header {
-  background: red;
-  border: 0;
-}
-
-#errorModal .modal-header .modal-title {
-  color: white;
-}
-
-#errorModal .modal-header .close {
-  opacity: 1;
-}
-
-#errorModal .modal-header .close:focus {
-  outline: 0;
-}
-
-#errorModal .modal-header .close span {
-  color: white;
-}
-
 .modal-auth {
   width: 35rem;
 }
@@ -11561,6 +11540,18 @@ a.text-dark:focus {
 
 .modal-auth .modal-content .modal-body {
   padding: 30px;
+}
+
+.modal-auth .modal-content .modal-body .password-row {
+  display: -webkit-box;
+  display: flex;
+}
+
+.modal-auth .modal-content .modal-body .password-row .password-revealer {
+  border: 1px solid #ced4da;
+  background: none;
+  border-left: 0;
+  width: 3rem;
 }
 
 .modal-auth .modal-content .modal-body .remember-row .checkbox-inline {
