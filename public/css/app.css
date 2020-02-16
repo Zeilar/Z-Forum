@@ -11511,6 +11511,26 @@ a.text-dark:focus {
   width: 35rem;
 }
 
+.modal-auth ::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.modal-auth ::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.modal-auth :-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.modal-auth ::-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.modal-auth ::placeholder {
+  opacity: 0.5;
+}
+
 .modal-auth .modal-content {
   border-radius: 1px;
   border: none;
@@ -11525,6 +11545,10 @@ a.text-dark:focus {
 
 .modal-auth .modal-content .modal-header .modal-title {
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 1.5rem;
   color: white;
 }
@@ -11539,7 +11563,12 @@ a.text-dark:focus {
   padding: 30px;
 }
 
-.modal-auth .modal-content .modal-body .remember-row {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
   /* Create a custom checkbox */
   /* On mouse-over, add a grey background color */
   /* When the checkbox is checked, add a blue background */
@@ -11548,11 +11577,12 @@ a.text-dark:focus {
   /* Style the checkmark/indicator */
 }
 
-.modal-auth .modal-content .modal-body .remember-row .remember-me {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline .remember-me {
+  vertical-align: middle;
   margin-left: 2rem;
 }
 
-.modal-auth .modal-content .modal-body .remember-row input {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -11560,32 +11590,32 @@ a.text-dark:focus {
   width: 0;
 }
 
-.modal-auth .modal-content .modal-body .remember-row .checkmark {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline .checkmark {
   background-color: #eee;
   position: absolute;
   height: 25px;
   width: 25px;
 }
 
-.modal-auth .modal-content .modal-body .remember-row :hover input ~ .checkmark {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline :hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-.modal-auth .modal-content .modal-body .remember-row input:checked ~ .checkmark {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
-.modal-auth .modal-content .modal-body .remember-row .checkmark:after {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.modal-auth .modal-content .modal-body .remember-row input:checked ~ .checkmark:after {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline input:checked ~ .checkmark:after {
   display: block;
 }
 
-.modal-auth .modal-content .modal-body .remember-row .checkmark:after {
+.modal-auth .modal-content .modal-body .remember-row .checkbox-inline .checkmark:after {
   -webkit-transform: rotate(45deg);
   left: 9px;
   top: 7px;

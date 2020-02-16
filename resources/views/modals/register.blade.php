@@ -10,11 +10,15 @@
 				<div class="modal-body">				
 					<div class="form-group">
 						<label>{{ __('Username') }}</label>
-						<input type="text" id="register_username" name="username" class="form-control" required>
+						<input type="text" id="register_username" name="username" class="form-control" autocomplete="off" 
+							value="{{old('username')}}" required placeholder="John"
+						/>
 					</div>
 					<div class="form-group">
 						<label>{{ __('Email') }}</label>
-						<input type="email" id="register_email" name="email" class="form-control" required>
+						<input type="email" id="register_email" name="email" class="form-control" 
+							value="{{old('email')}}" autocomplete="off" required placeholder="john_doe@gmail.com"
+						/>
 					</div>
 					<div class="form-group">
 						<label>{{ __('Password') }}</label>
