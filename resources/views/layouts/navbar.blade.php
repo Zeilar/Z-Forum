@@ -16,14 +16,7 @@
 
 			<!-- Right Side Of Navbar -->
 			<ul class="navbar-nav ml-auto">
-				
-				<div class="text-center">
-					<!-- Button HTML (to Trigger Modal) -->
-					<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
-				</div>
 
-				
-				
 				<!-- Search form -->
 				<form action="/search" method="get">
 					@csrf
@@ -38,7 +31,7 @@
 				<!-- Authentication Links -->
 				@guest
 					<li class="nav-item mr-3">
-						<a class="nav-link rounded" href="{{ route('login') }}">{{ __('Login') }}</a>
+						<a class="nav-link rounded" data-toggle="modal" href="#myModal">{{ __('Login') }}</a>
 					</li>
 					@if (Route::has('register'))
 						<li class="nav-item">

@@ -11516,74 +11516,56 @@ a.text-dark:focus {
   border: none;
 }
 
-.modal-login .modal-header {
+.modal-login .modal-content .modal-header {
   -webkit-box-pack: center;
           justify-content: center;
   background: #00c26e;
   position: relative;
 }
 
-.modal-title {
+.modal-login .modal-content .modal-header .modal-title {
+  text-align: center;
+  font-size: 26px;
   color: white;
 }
 
-.modal-login .modal-body {
-  padding: 30px;
-}
-
-.modal-login .modal-footer {
-  background: #f2f2f2;
-}
-
-.modal-login h4 {
-  text-align: center;
-  font-size: 26px;
-}
-
-.modal-login label {
-  font-weight: normal;
-  font-size: 13px;
-}
-
-.modal-login .form-control,
-.modal-login .btn {
-  border-radius: 2px;
-  min-height: 38px;
-}
-
-.modal-login .hint-text {
-  text-align: center;
-}
-
-.modal-login .close {
+.modal-login .modal-content .modal-header .close {
   position: absolute;
   right: 15px;
   top: 15px;
 }
 
-.modal-login .checkbox-inline {
+.modal-login .modal-content .modal-body {
+  padding: 30px;
+}
+
+.modal-login .modal-content .modal-body label {
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.modal-login .modal-content .modal-footer {
+  background: #f2f2f2;
+}
+
+.modal-login .modal-content .modal-footer .checkbox-inline {
   margin-right: auto;
   margin-top: 12px;
   display: -webkit-box;
   display: flex;
 }
 
-.modal-login input[type="checkbox"] {
+.modal-login .modal-content .modal-footer .checkbox-inline input[type="checkbox"] {
   margin: auto 0.35rem auto auto;
+  position: static;
 }
 
 .modal-login .btn {
   line-height: normal;
+  border-radius: 2px;
+  min-height: 38px;
   min-width: 100px;
   border: none;
-}
-
-.modal-login .hint-text a {
-  color: #999;
-}
-
-.trigger-btn {
-  display: inline-block;
 }
 
 .note-toolbar {

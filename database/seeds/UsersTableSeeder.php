@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
 			'username' => 'Superadmin',
-			'email' => 'admin@zforum.nu',
+			'email' => 'superadmin@zforum.nu',
 			'password' => Hash::make('123'),
 			'role' => 'Superadmin',
 			'remember_token' => null,
