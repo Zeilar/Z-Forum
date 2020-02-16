@@ -1,3 +1,19 @@
+// Dashboard settings menu size animation
+$('.settings-item').mouseenter(function() {
+	$(this).addClass('active-hover');
+
+	$(this).mouseleave(function() {
+		$(this).removeClass('active-hover');
+	});
+});
+
+// Open modal if a session error/success message is found
+if ($('#errorModal')) {
+	$('#errorModal').modal('show');
+} else if ($('#successModal')) {
+	$('#successModal').modal('show');
+}
+
 // Password revealer button
 $('.password-revealer').click(function() {
 	if ($(this).siblings('input').attr('type') === 'password') {
@@ -21,4 +37,11 @@ $('#register_password_repeat').on('change', function() {
 		$(this).removeClass('is-invalid');
 		$('#passwords-no-match').remove();
 	}
-})
+});
+
+// Open auth modal if an error was found in either of them (after using has been redirected back)
+if ($('#registerModal .is-invalid').length) {
+	$('#registerModal').modal('show');
+} else if ($('#loginModal .is-invalid').length) {
+	$('#loginModal').modal('show');
+}

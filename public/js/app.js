@@ -78012,9 +78012,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
-__webpack_require__(/*! ./styles */ "./resources/js/styles.js");
-
-__webpack_require__(/*! ./inputs */ "./resources/js/inputs.js");
+__webpack_require__(/*! ./events */ "./resources/js/events.js");
 
 /***/ }),
 
@@ -78112,14 +78110,28 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
-/***/ "./resources/js/inputs.js":
+/***/ "./resources/js/events.js":
 /*!********************************!*\
-  !*** ./resources/js/inputs.js ***!
+  !*** ./resources/js/events.js ***!
   \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// Password revealer button
+// Dashboard settings menu size animation
+$('.settings-item').mouseenter(function () {
+  $(this).addClass('active-hover');
+  $(this).mouseleave(function () {
+    $(this).removeClass('active-hover');
+  });
+}); // Open modal if a session error/success message is found
+
+if ($('#errorModal')) {
+  $('#errorModal').modal('show');
+} else if ($('#successModal')) {
+  $('#successModal').modal('show');
+} // Password revealer button
+
+
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
     $(this).siblings('input').attr('type', 'text');
@@ -78139,32 +78151,13 @@ $('#register_password_repeat').on('change', function () {
     $(this).removeClass('is-invalid');
     $('#passwords-no-match').remove();
   }
-});
+}); // Open auth modal if an error was found in either of them (after using has been redirected back)
 
-/***/ }),
-
-/***/ "./resources/js/styles.js":
-/*!********************************!*\
-  !*** ./resources/js/styles.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // Dashboard settings menu size animation
-  $('.settings-item').mouseenter(function () {
-    $(this).addClass('active-hover');
-    $(this).mouseleave(function () {
-      $(this).removeClass('active-hover');
-    });
-  }); // Open modal if a session error/success message is found
-
-  if ($('#errorModal')) {
-    $('#errorModal').modal('show');
-  } else if ($('#successModal')) {
-    $('#successModal').modal('show');
-  }
-});
+if ($('#registerModal .is-invalid').length) {
+  $('#registerModal').modal('show');
+} else if ($('#loginModal .is-invalid').length) {
+  $('#loginModal').modal('show');
+}
 
 /***/ }),
 

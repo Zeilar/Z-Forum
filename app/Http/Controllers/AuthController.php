@@ -14,10 +14,17 @@ class AuthController extends Controller
     public function login(Request $request)
 	{
 		// Validation - since user is already created nothing is required except the field not being empty
-		$this->validate($request, [
-			'id'	   => 'required',
-			'password' => 'required',
-		]);
+		$this->validate(
+			$request,
+			[
+				'id'	   => 'required',
+				'password' => 'required',
+			],
+			[
+				'id.required' 		=> __('Username or email is required'),
+				'password.required' => __('Password is required'),
+			]
+		);
 
 		// Determine if input is email or username
 		$id = request()->input('id');
@@ -42,11 +49,31 @@ class AuthController extends Controller
 	public function register(Request $request)
 	{
 		// Validation
-		$this->validate($request, [
-			'username' => 'required|string|min:3|max:255|unique:users|alpha_dash',
-			'email'	   => 'required|string|min:3|max:255|unique:users|email',
-			'password' => 'required|string|min:6|max:255|confirmed',
-		]);
+		$this->validate(
+			$request,
+			[
+				// The rules
+				'username' => 'required|string|min:3|max:30|unique:users|alpha_dash',
+				'email'	   => 'required|string|min:3|max:30|unique:users|email',
+				'password' => 'required|string|min:6|max:30|confirmed',
+			],
+			[
+				// Custom error messages, ordered by priority
+				'username.required' 	=> __('Username is required'),
+				'password.required' 	=> __('Password is required'),
+				'email.required' 		=> __('Email is required'),
+				'username.unique:users' => __('That username is already taken'),
+				'email.unique:users' 	=> __('That email is already taken'),
+				'username.alpha_dash'	=> __('Username must consist of alphabetic and numeric characters'),
+				'username.min:3' 		=> __('Password must be at least 3 character long'),
+				'password.min:6' 		=> __('Password must be at least 6 character long'),
+				'email.min:3' 			=> __('Email must be at least 3 character long'),
+				'username.max:30'		=> __('Username may not exceed 30 characters'),
+				'password.max:30'		=> __('Password may not exceed 30 characters'),
+				'email.max:30'			=> __('Email may not exceed 30 characters'),
+				'password.confirmed'	=> __('Passwords do not match'),
+			]
+		);
 
 		// Prepare the user data
 		$data = [
@@ -63,6 +90,7 @@ class AuthController extends Controller
 			'email'	   => request('email'),
 			'password' => request('password'),
 		];
+		
 		if (Auth::attempt($data)) {
 			return msg_success('login');
 		} else {

@@ -13,7 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/Example');
-
-require('./styles');
-
-require('./inputs');
+require('./events');
