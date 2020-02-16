@@ -23,12 +23,17 @@ a {
 	}
 }
 
+input::placeholder {
+	user-select: none;
+}
+
 .fas {
 	color: $green;
 }
 
 ::selection {
-	color: #0059ff;
+	background: black;
+	color: $green;
 }
 
 .bg-dark {
