@@ -55,29 +55,3 @@ Route::get('/dashboard', 'UsersController@index')->name('dashboard');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');
-
-// Throw 404 in case user tries to access a non-GET Route via GET, to prevent them getting an exception
-Route::get('/subcategory/{id}-{slug}/thread/store', function() {
-	return view('errors.404');
-});
-Route::get('/subcategory/{id}-{slug}/store', function() {
-	return view('errors.404');
-});
-Route::get('/thread/{id}-{slug}/store', function() {
-	return view('errors.404');
-});
-Route::get('/post/{id}/delete', function() {
-	return view('errors.404');
-});
-Route::put('/post/{id}/update', function() {
-	return view('errors.404');
-});
-Route::get('/category/store', function() {
-	return view('errors.404');
-});
-Route::get('/register', function() {
-	return view('errors.404');
-});
-Route::get('/login', function() {
-	return view('errors.404');
-});
