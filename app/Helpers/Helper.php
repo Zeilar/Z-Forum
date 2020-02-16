@@ -188,8 +188,8 @@ function breadcrumb_guesser(object $position) {
 				[
 					$position->tableCategory,
 					'route' => route('tablecategory_show', [
-						$position->tableCategory->slug,
-						$position->tableCategory->id
+						$position->tableCategory->id,
+						$position->tableCategory->slug
 					]),
 				],
 				[
@@ -202,15 +202,15 @@ function breadcrumb_guesser(object $position) {
 				[
 					$position->tableSubcategory->tableCategory,
 					'route' => route('tablecategory_show', [
-						$position->tableSubcategory->tableCategory->slug,
-						$position->tableSubcategory->tableCategory->id
+						$position->tableSubcategory->tableCategory->id,
+						$position->tableSubcategory->tableCategory->slug
 					]),
 				],
 				[
 					$position->tableSubcategory,
 					'route' => route('tablesubcategory_show', [
-						$position->tableSubcategory->slug,
-						$position->tableSubcategory->id
+						$position->tableSubcategory->id,
+						$position->tableSubcategory->slug
 					]),
 				],
 				[

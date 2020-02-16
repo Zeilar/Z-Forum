@@ -57,7 +57,7 @@ class TableCategoriesController extends Controller
 				$tableCategory->slug = urlencode(request('title'));
 				$tableCategory->save();
 
-				return redirect()->route('tablecategory_show', [$tableCategory->slug, $tableCategory->id]);
+				return redirect()->route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]);
 			} else {
 				return msg_error('role');
 			}

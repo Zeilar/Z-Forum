@@ -60,7 +60,7 @@ class PostsController extends Controller
 				$post->thread_id = $thread->id;
 				$post->save();
 
-				return redirect(route('thread_show', [$thread->slug, $thread->id]));
+				return redirect(route('thread_show', [$thread->id, $thread->slug]));
 			} else {
 				return view('errors.404');
 			}
@@ -131,7 +131,7 @@ class PostsController extends Controller
 					$post->content = request('content');
 					$post->save();
 
-					return redirect(route('post_show', [$post->thread->slug, $post->thread->id, $post->id]))->with('success', __('Post updated'));
+					return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
 				} else {
 					return msg_error('role');
 				}
@@ -157,7 +157,7 @@ class PostsController extends Controller
 					$post = Post::find($id);
 					$thread = $post->thread;
 					$post->delete();
-					return redirect(route('thread_show', [$thread->slug, $thread->id]))->with('success', __('Post was successfully deleted'));
+					return redirect(route('thread_show', [$thread->id, $thread->slug]));
 				} else {
 					return msg_error('role');
 				}
