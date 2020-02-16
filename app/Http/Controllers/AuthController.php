@@ -46,10 +46,14 @@ class AuthController extends Controller
 	// Register
 	public function register(Request $request)
 	{
+		// Validation
 		$this->validate($request, [
 			'username' => 'required|string|min:3|max:255|unique:users|alpha_dash',
-			'email'	   => 'required|string|email|max:255|unique:users',
-			'password' => 'required|string|min:8|confirmed',
+			'email'	   => 'required|string|min:3|max:255|unique:users|email',
+			'password' => 'required|string|min:6|max:255|confirmed',
 		]);
+
+		User::create($request);
+		return msg_success('login');
 	}
 }
