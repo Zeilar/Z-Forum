@@ -62,16 +62,16 @@ class AuthController extends Controller
 				'username.required' 	=> __('Username is required'),
 				'password.required' 	=> __('Password is required'),
 				'email.required' 		=> __('Email is required'),
-				'username.unique:users' => __('That username is already taken'),
-				'email.unique:users' 	=> __('That email is already taken'),
+				'username.unique' 		=> __('That username has already been taken'),
+				'email.unique' 			=> __('That email has already been taken'),
 				'username.alpha_dash'	=> __('Username must consist of alphabetic and numeric characters'),
-				'username.min:3' 		=> __('Password must be at least 3 character long'),
-				'password.min:6' 		=> __('Password must be at least 6 character long'),
-				'email.min:3' 			=> __('Email must be at least 3 character long'),
-				'username.max:30'		=> __('Username may not exceed 30 characters'),
-				'password.max:30'		=> __('Password may not exceed 30 characters'),
-				'email.max:30'			=> __('Email may not exceed 30 characters'),
-				'password.confirmed'	=> __('Passwords do not match'),
+				'username.min'	 		=> __('Password must be at least 3 character long'),
+				'password.min'	 		=> __('Password must be at least 6 character long'),
+				'email.min'	 			=> __('Email must be at least 3 character long'),
+				'username.max'			=> __('Username must not exceed 30 characters'),
+				'password.max'			=> __('Password must not exceed 30 characters'),
+				'email.max'				=> __('Email must not exceed 30 characters'),
+				'password.confirmed'	=> __('Passwords did not match'),
 			]
 		);
 
@@ -90,7 +90,7 @@ class AuthController extends Controller
 			'email'	   => request('email'),
 			'password' => request('password'),
 		];
-		
+
 		if (Auth::attempt($data)) {
 			return msg_success('login');
 		} else {
