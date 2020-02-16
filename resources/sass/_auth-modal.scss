@@ -43,6 +43,8 @@
 			}
 
 			.remember-row {
+				margin-top: 2rem;
+
 				.checkbox-inline {
 					user-select: none;
 					cursor: pointer;
@@ -60,7 +62,6 @@
 						width: 0;
 					}
 
-					/* Create a custom checkbox */
 					.checkmark {
 						background-color: #eee;
 						position: absolute;
@@ -68,29 +69,24 @@
 						width: 25px;
 					}
 
-					/* On mouse-over, add a grey background color */
 					:hover input ~ .checkmark {
 						background-color: #ccc;
 					}
 
-					/* When the checkbox is checked, add a blue background */
 					input:checked ~ .checkmark {
-						background-color: #2196F3;
+						background-color: $green;
 					}
 
-					/* Create the checkmark/indicator (hidden when not checked) */
-						.checkmark:after {
+					.checkmark:after {
 						content: "";
 						position: absolute;
 						display: none;
 					}
 
-					/* Show the checkmark when checked */
-						input:checked ~ .checkmark:after {
+					input:checked ~ .checkmark:after {
 						display: block;
 					}
 
-					/* Style the checkmark/indicator */
 					.checkmark:after {
 						-webkit-transform: rotate(45deg);
 						left: 9px;
