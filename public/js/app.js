@@ -78014,6 +78014,8 @@ __webpack_require__(/*! ./components/Example */ "./resources/js/components/Examp
 
 __webpack_require__(/*! ./styles */ "./resources/js/styles.js");
 
+__webpack_require__(/*! ./inputs */ "./resources/js/inputs.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -78110,6 +78112,37 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
+/***/ "./resources/js/inputs.js":
+/*!********************************!*\
+  !*** ./resources/js/inputs.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Password revealer button
+$('.password-revealer').click(function () {
+  if ($(this).siblings('input').attr('type') === 'password') {
+    $(this).siblings('input').attr('type', 'text');
+    $(this).children('i').attr('class', 'far fa-eye-slash');
+  } else {
+    $(this).siblings('input').attr('type', 'password');
+    $(this).children('i').attr('class', 'far fa-eye');
+  }
+}); // Error visuals when password_repeat doesn't match password
+
+$('#register_password_repeat').on('change', function () {
+  if ($(this).val() !== $('#register_password').val()) {
+    $(this).addClass('is-invalid');
+    console.log($(this).parent());
+    $(this).parent().siblings('label').append("\n\t\t\t<p class=\"color-red\" id=\"passwords-no-match\">Passwords don't match</p>\n\t\t");
+  } else {
+    $(this).removeClass('is-invalid');
+    $('#passwords-no-match').remove();
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/styles.js":
 /*!********************************!*\
   !*** ./resources/js/styles.js ***!
@@ -78124,22 +78157,13 @@ $(document).ready(function () {
     $(this).mouseleave(function () {
       $(this).removeClass('active-hover');
     });
-  }); // Open modal if a session error is found
+  }); // Open modal if a session error/success message is found
 
   if ($('#errorModal')) {
     $('#errorModal').modal('show');
-  } // Password revealer button
-
-
-  $('.password-revealer').click(function () {
-    if ($(this).siblings('input').attr('type') === 'password') {
-      $(this).siblings('input').attr('type', 'text');
-      $(this).children('i').attr('class', 'far fa-eye-slash');
-    } else {
-      $(this).siblings('input').attr('type', 'password');
-      $(this).children('i').attr('class', 'far fa-eye');
-    }
-  });
+  } else if ($('#successModal')) {
+    $('#successModal').modal('show');
+  }
 });
 
 /***/ }),

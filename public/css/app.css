@@ -11848,6 +11848,10 @@ input::placeholder {
   color: white !important;
 }
 
+.color-red {
+  color: red !important;
+}
+
 .navbar {
   border-bottom: 2px solid #00c26e;
   background: rgba(31, 31, 31, 0.95);

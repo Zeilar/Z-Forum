@@ -22,11 +22,21 @@
 					</div>
 					<div class="form-group">
 						<label>{{ __('Password') }}</label>
-						<input type="password" id="register_password" name="password" class="form-control" required>
+						<div class="password-row">
+							<input type="password" id="register_password" name="password" class="form-control" required>
+							<button class="password-revealer" type="button">
+								<i class="far fa-eye"></i>
+							</button>
+						</div>
 					</div>
 					<div class="form-group">
 						<label>{{ __('Repeat password') }}</label>
-						<input type="password" id="register_password_repeat" name="password_confirmation" class="form-control" required>
+						<div class="password-row">
+							<input type="password" id="register_password_repeat" name="password_confirmation" class="form-control" required>
+							<button class="password-revealer" type="button">
+								<i class="far fa-eye"></i>
+							</button>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">		
