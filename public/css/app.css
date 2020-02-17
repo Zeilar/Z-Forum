@@ -11494,8 +11494,8 @@ a.text-dark:focus {
   position: relative;
   display: -webkit-box;
   display: flex;
-  width: 70rem;
   height: 2rem;
+  width: 100%;
 }
 
 #posts-slider .latest-post {
