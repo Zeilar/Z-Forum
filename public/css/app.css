@@ -12004,57 +12004,66 @@ input::placeholder {
   padding: 0.75rem;
 }
 
-.table .fas {
-  font-size: 1.5rem;
-}
-
-.table th,
-.table td {
-  border: 0;
-}
-
-.table .table-header {
-  background: rgba(39, 39, 39, 0.95);
-}
-
-.table .table-category {
-  background: rgba(0, 194, 110, 0.95);
-}
-
-.table .table-category a {
-  color: white;
-}
-
-.table .table-category a:hover {
-  text-decoration: underline;
-}
-
-.table .table-row {
-  background: rgba(31, 31, 31, 0.95);
-}
-
-.table .table-row:nth-child(even) {
-  background: rgba(39, 39, 39, 0.95);
-}
-
-.table td {
+.table-wrapper {
+  background: rgba(31, 31, 31, 0.55);
   padding: 0.5rem;
 }
 
-.table thead {
-  color: white;
+.table-wrapper .table {
+  margin: 0;
 }
 
-.table thead th {
+.table-wrapper .table .fas {
+  font-size: 1.5rem;
+}
+
+.table-wrapper .table th,
+.table-wrapper .table td {
   border: 0;
 }
 
-.table thead th.posts,
-.table thead th.threads {
+.table-wrapper .table .table-header {
+  background: rgba(39, 39, 39, 0.95);
+}
+
+.table-wrapper .table .table-category {
+  background: rgba(0, 194, 110, 0.95);
+}
+
+.table-wrapper .table .table-category a {
+  color: white;
+}
+
+.table-wrapper .table .table-category a:hover {
+  text-decoration: underline;
+}
+
+.table-wrapper .table .table-row {
+  background: rgba(31, 31, 31, 0.95);
+}
+
+.table-wrapper .table .table-row:nth-child(even) {
+  background: rgba(39, 39, 39, 0.95);
+}
+
+.table-wrapper .table td {
+  padding: 0.5rem;
+}
+
+.table-wrapper .table thead {
+  color: white;
+}
+
+.table-wrapper .table thead th {
+  border: 0;
+}
+
+.table-wrapper .table thead th.posts,
+.table-wrapper .table thead th.threads {
   width: 7%;
 }
 
-.table tbody tr td {
+.table-wrapper .table tbody tr td {
   vertical-align: middle;
   color: white;
 }
