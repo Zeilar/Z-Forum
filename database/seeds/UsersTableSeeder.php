@@ -13,15 +13,15 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-			'username' => 'Superadmin',
-			'email' => 'superadmin@zforum.nu',
+			'username' => 'Philip',
+			'email' => 'philip@zforum.nu',
 			'password' => Hash::make('123'),
 			'role' => 'Superadmin',
 			'remember_token' => null,
 		]);
 		User::create([
-			'username' => 'Moderator',
-			'email' => 'moderator@zforum.nu',
+			'username' => 'Mod',
+			'email' => 'mod@zforum.nu',
 			'password' => Hash::make('123'),
 			'role' => 'Moderator',
 			'remember_token' => null,

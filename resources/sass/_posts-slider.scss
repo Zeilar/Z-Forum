@@ -4,12 +4,13 @@
 	overflow-x: hidden;
 	position: relative;
 	display: flex;
-	width: 60rem;
+	width: 70rem;
 	height: 2rem;
 
 	.latest-post {
 		position: absolute;
 		text-align: center;
+		user-select: none;
 		color: white;
 		width: 100%;
 	}
