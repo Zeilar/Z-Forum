@@ -13,4 +13,5 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./latest-posts');
 require('./events');

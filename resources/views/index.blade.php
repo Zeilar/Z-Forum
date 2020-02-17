@@ -37,7 +37,7 @@
 								<?php
 									foreach ($tableSubcategory->threads as $thread) {
 										$postAmount = count($thread->posts);
-										foreach ($thread->posts->sortByDesc('created_at')->take(1) as $p) {
+										foreach ($thread->posts->sortByDesc('updated_at')->take(1) as $p) {
 											$post = $p;
 										}
 									}
@@ -48,7 +48,7 @@
 								<p class="post-created-by">
 									<span>{{ __('By') }}</span>
 									<a href="{{route('user_show', [$post->user->username])}}">{{ $post->user->username }}</a>
-									{{ pretty_date($post->created_at) }}
+									{{ pretty_date($post->updated_at) }}
 								</p>
 							@endif
 						</td>

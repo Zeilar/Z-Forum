@@ -10,17 +10,24 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<!-- Left Side Of Navbar -->
-			<ul class="navbar-nav mr-auto">
-				
+			<ul class="navbar-nav w-100 m-auto">
+				<!-- Sliding latest posts -->
+				<div class="m-auto" id="posts-slider">
+					@foreach ($latest_posts as $latest_post)
+						<div class="latest-post">
+							{{ $latest_post->thread->title }}
+						</div>
+					@endforeach
+				</div>
 			</ul>
 
 			<!-- Right Side Of Navbar -->
-			<ul class="navbar-nav ml-auto">
+			<ul class="navbar-nav">
 
 				<!-- Search form -->
 				<form action="{{route('search')}}" method="get">
 					@csrf
-					<div class="nav-search mr-3 d-flex">
+					<div class="nav-search ml-auto mr-3 d-flex">
 						<input class="rounded-left py-1 px-2" type="text" name="search" id="search" placeholder="Search" />
 						<button class="rounded-right" type="submit">
 							<i class="fas fa-search"></i>

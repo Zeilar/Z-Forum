@@ -98,6 +98,8 @@ if (!function_exists('pretty_date')) {
 		$diff = time_difference($date);
 		$date = strtotime($date);
 
+		// TODO: jämför istället UNIX på datumet med UNIX nu
+
 		if ($diff['day'] === 0 && $diff['month'] === 0 && $diff['week'] === 0 && $diff['year'] === 0) {
 			return __('Today') . ', ' . date('H:i', $date);
 		} else if ($diff['day'] === -1 && $diff['month'] === 0 && $diff['week'] === 0 && $diff['year'] === 0) {

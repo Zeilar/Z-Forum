@@ -11486,6 +11486,25 @@ a.text-dark:focus {
   color: #00c26e;
 }
 
+#posts-slider {
+  white-space: nowrap;
+  -webkit-box-align: center;
+          align-items: center;
+  overflow-x: hidden;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  width: 60rem;
+  height: 2rem;
+}
+
+#posts-slider .latest-post {
+  position: absolute;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
 .modal-auth {
   width: 35rem;
 }
@@ -12089,6 +12108,10 @@ input::placeholder {
 #not-found .header .fas {
   background: rgba(0, 0, 0, 0.75);
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 4rem;
   margin: auto;
 }
