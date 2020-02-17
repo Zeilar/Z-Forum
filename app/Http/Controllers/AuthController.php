@@ -41,7 +41,7 @@ class AuthController extends Controller
 		if (Auth::attempt($data)) {
 			return msg_success('login');
 		} else {
-			return msg_error('invalid');
+			return msg_error('incorrect');
 		}
 	}
 
@@ -94,7 +94,7 @@ class AuthController extends Controller
 		if (Auth::attempt($data)) {
 			return msg_success('login');
 		} else {
-			return msg_error();
+			return msg_error('incorrect');
 		}
 	}
 
