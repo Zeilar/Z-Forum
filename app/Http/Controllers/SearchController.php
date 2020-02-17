@@ -17,4 +17,6 @@ class SearchController extends Controller
 	{
 		return view('layouts.search');
 	}
+
+	// TODO: Search
 }
