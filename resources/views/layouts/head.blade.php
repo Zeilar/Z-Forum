@@ -42,7 +42,12 @@
         <main class="container-fluid py-3" id="content">
 
             @yield('content')
-        </main>
+		</main>
+		
+		<h2 class="color-white">Online users:</h2>
+		@foreach (get_online_users() as $user)
+			<p class="color-white">{{ $user->username }}</p>
+		@endforeach
     </div>
 </body>
 </html>
