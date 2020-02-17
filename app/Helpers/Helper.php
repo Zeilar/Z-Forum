@@ -231,3 +231,20 @@ function breadcrumb_guesser(object $position) {
 		return null;
 	}
 }
+
+/**
+ * Check if user is online
+ * 
+ * @param int $id
+ * 
+ * @return boolean
+ */
+if (!function_exists('is_user_online')) {
+	function is_user_online($id) {
+		if (Illuminate\Support\Facades\Cache::has('user-online-' . $id)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
