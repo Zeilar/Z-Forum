@@ -48,10 +48,13 @@ $(document).ready(() => {
 	}
 	
 	// Put spinning wheel on submits buttons when pressed
-	if ($('button[type=submit]')) {
-		$('button[type=submit]').click(function() {
+	if ($('a.spin')) {
+		$('a.spin').click(function(e) {
 			if (!$(this).hasClass('loading')) {
-				$(this).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+				$(this)
+					.css('width', `${$(this).outerWidth()}px`) // Do this first to preserve original button width
+					.addClass('loading')
+					.html('<i class="fas fa-circle-notch"></i>');
 			}
 		});
 	}

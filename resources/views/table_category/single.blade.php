@@ -53,8 +53,6 @@
 				@endforeach
 			</tbody>
 		</table>
-		<a class="d-flex mt-1 justify-content-end" href="{{route('tablecategory_create')}}">
-			<button class="btn btn-success">{{ __('New category') }}</button>
-		</a>
+		<a class="btn spin btn-success" href="{{route('tablecategory_create')}}">{{ __('New category') }}</a>
 	</div>
 @endsection

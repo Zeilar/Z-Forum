@@ -12,7 +12,7 @@
 			@csrf
 			<div class="search d-flex">
 				<input class="py-2" type="text" name="search" id="search" placeholder="What are you looking for?"
-					@if ($value) value="{{$value}}" @endif
+					@if (isset($value)) value="{{$value}}" @endif
 				/>
 				<button type="submit">
 					<i class="fas fa-search"></i>

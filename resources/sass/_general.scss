@@ -17,9 +17,13 @@ body {
 }
 
 a {
-	&:hover {
-		text-decoration: none;
-		color: $green;
+	color: white;
+
+	&:not(.btn) {
+		&:hover {
+			text-decoration: none;
+			color: $green;
+		}
 	}
 }
 
@@ -27,11 +31,7 @@ input::placeholder {
 	user-select: none;
 }
 
-button {
-	&.btn {
-		width: 4rem;
-	}
-	
+.spin {
 	&.loading {
 		background: black !important;
 

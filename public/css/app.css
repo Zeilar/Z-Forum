@@ -11794,7 +11794,11 @@ body {
   overflow-x: hidden;
 }
 
-a:hover {
+a {
+  color: white;
+}
+
+a:not(.btn):hover {
   text-decoration: none;
   color: #00c26e;
 }
@@ -11826,15 +11830,11 @@ input::placeholder {
           user-select: none;
 }
 
-button.btn {
-  width: 4rem;
-}
-
-button.loading {
+.spin.loading {
   background: black !important;
 }
 
-button.loading .fas {
+.spin.loading .fas {
   -webkit-animation-name: spin;
           animation-name: spin;
   -webkit-animation-duration: 1s;
@@ -11869,9 +11869,9 @@ button.loading .fas {
   }
 }
 
-button.loading:hover,
-button.loading:active,
-button.loading:focus {
+.spin.loading:hover,
+.spin.loading:active,
+.spin.loading:focus {
   background: black !important;
   box-shadow: none !important;
   cursor: default;
