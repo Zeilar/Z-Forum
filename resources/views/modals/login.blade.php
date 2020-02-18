@@ -10,18 +10,21 @@
 				<div class="modal-body">				
 					<div class="form-group">
 						<label>{{ __('Username or email') }}</label>
-						@if (session('error')) <p class="color-red" id="error-id">{{ session('error') }}</p> @endif
+						@if (session('error-id')) <p class="color-red" id="error-id">{{ session('error-id') }}</p> @endif
 						<input type="text" id="login_email" name="id" autocomplete="off" 
-							class="form-control @if (session('error')) is-invalid @endif"
+							class="form-control @if (session('error-id')) is-invalid @endif"
 							value="{{ old('username') ?: old('email') }}" required
 						/>
 					</div>
 					<div class="form-group">
 						<div class="clearfix">
 							<label>{{ __('Password') }}</label>
+							@if (session('error-password')) <p class="color-red" id="error-password">{{ session('error-password') }}</p> @endif
 						</div>
 						<div class="password-row">
-							<input type="password" id="login_password" name="password" class="form-control" required />
+							<input type="password" id="login_password" name="password" required
+								class="form-control @if (session('error-password')) is-invalid @endif" 
+							/>
 							<button class="password-revealer" type="button">
 								<i class="far fa-eye"></i>
 							</button>

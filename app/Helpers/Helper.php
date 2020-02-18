@@ -118,8 +118,10 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error', __('Please log in and try again'));
 			case 'role':
 				return redirect()->back()->with('error', __('Insufficient permissions'));
-			case 'incorrect':
-				return redirect()->back()->with('error', __('Incorrect credentials'));
+			case 'incorrect-id':
+				return redirect()->back()->with('error', __('That user does not exist'));
+			case 'incorrect-password':
+				return redirect()->back()->with('error', __('Incorrect password'));
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
