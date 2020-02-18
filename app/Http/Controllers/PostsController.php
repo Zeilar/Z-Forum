@@ -32,7 +32,7 @@ class PostsController extends Controller
 			if (item_exists(Thread::find($id), $slug)) {
 				return view('post.create', ['thread' => Thread::find($id)]);
 			} else {
-				return view('errors.404', ['value' => $slug]);
+				return view('errors.404', ['value' => urldecode($slug)]);
 			}
 		} else {
 			return msg_error('login');
@@ -62,7 +62,7 @@ class PostsController extends Controller
 
 				return redirect(route('thread_show', [$thread->id, $thread->slug]));
 			} else {
-				return view('errors.404', ['value' => $slug]);
+				return view('errors.404', ['value' => urldecode($slug)]);
 			}
 		} else {
 			return msg_error('login');

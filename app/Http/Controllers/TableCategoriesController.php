@@ -81,7 +81,7 @@ class TableCategoriesController extends Controller
 				'tableCategory' => TableCategory::find($id),
 			]);
 		} else {
-			return view('errors.404', ['value' => $slug]);
+			return view('errors.404', ['value' => urldecode($slug)]);
 		}
     }
 

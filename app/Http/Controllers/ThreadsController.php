@@ -33,7 +33,7 @@ class ThreadsController extends Controller
 					'subcategory' => TableSubcategory::find($id),
 				]);
 			} else {
-				return view('errors.404', ['value' => $slug]);
+				return view('errors.404', ['value' => urldecode($slug)]);
 			}
 		} else {
 			return msg_error('login');
@@ -87,7 +87,7 @@ class ThreadsController extends Controller
 				'posts' => Post::where('thread_id', $id)->paginate(3),
 			]);
 		} else {
-			return view('errors.404', ['value' => $slug]);
+			return view('errors.404', ['value' => urldecode($slug)]);
 		}
     }
 
