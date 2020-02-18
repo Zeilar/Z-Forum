@@ -11794,13 +11794,14 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  color: white;
-}
-
-a:not(.btn):hover {
+a:not(.btn):hover,
+a:not(.btn):visited:hover {
   text-decoration: none;
   color: #00c26e;
+}
+
+a:not(.btn):visited {
+  color: #135386;
 }
 
 input::-webkit-input-placeholder {
@@ -11931,7 +11932,7 @@ input::placeholder {
   background: rgba(31, 31, 31, 0.95);
 }
 
-.navbar .navbar-brand {
+.navbar a.navbar-brand {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

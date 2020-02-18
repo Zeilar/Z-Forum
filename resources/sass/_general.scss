@@ -17,12 +17,14 @@ body {
 }
 
 a {
-	color: white;
-
+	
 	&:not(.btn) {
-		&:hover {
+		&:hover, &:visited:hover {
 			text-decoration: none;
 			color: $green;
+		}
+		&:visited {
+			color: rgb(19, 83, 134);
 		}
 	}
 }
