@@ -14,7 +14,7 @@
 				<a href="{{route('user_show', [$post->user->username])}}">{{ $post->user->username }}</a>
 			</p>
 			<p class="user-role">{{ __(ucfirst($post->user->role)) }}</p>
-			<p class="user-date">{{ __('Member since: ' . pretty_date($post->user->created_at)) }}</p>
+			<p class="user-date">{{ __('Member since: ' . date('M Y', strtotime($post->user->created_at))) }}</p>
 			{{-- TODO: user profile --}}
 		</div>
 		<div class="col px-2 post-content px-2">
