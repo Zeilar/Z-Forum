@@ -86,8 +86,7 @@ if (!function_exists('time_difference')) {
 }
 
 /**
- * Render date with "Today" or "Yesterday" instead of numerics
- * Will use numerics if date is more than 1 day in the past
+ * Render date with "Today" or "Yesterday" instead of numerics, when applicable
  *
  * @param string $date
  *
@@ -95,14 +94,12 @@ if (!function_exists('time_difference')) {
  */
 if (!function_exists('pretty_date')) {
 	function pretty_date(string $date) {
-		$diff = time_difference($date);
 		$date = strtotime($date);
+		$day = 60 * 60 * 24;
 
-		// TODO: jämför istället UNIX på datumet med UNIX nu
-
-		if ($diff['day'] === 0 && $diff['month'] === 0 && $diff['week'] === 0 && $diff['year'] === 0) {
+		if ((time() - $date < $day)) {
 			return __('Today') . ', ' . date('H:i', $date);
-		} else if ($diff['day'] === -1 && $diff['month'] === 0 && $diff['week'] === 0 && $diff['year'] === 0) {
+		} else if ((time() - $date) > 60 * 60 * 24 && (time() - $date) < $day * 2) {
 			return __('Yesterday') . ', ' . date('H:i', $date);
 		} else {
 			return date('Y-m-d', $date);
