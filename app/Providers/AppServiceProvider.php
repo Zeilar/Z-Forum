@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use App\Post;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 		// Share this variable across all views
-        view()->share('latest_posts', Post::orderBy('updated_at')->take(5)->get());
+		if (Schema::hasTable('posts')) {
+			view()->share('latest_posts', Post::orderBy('updated_at')->take(5)->get());
+		}
     }
 }
