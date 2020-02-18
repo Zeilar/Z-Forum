@@ -12,8 +12,7 @@
 						<label>{{ __('Username or email') }}</label>
 						@if (session('error-id')) <p class="color-red" id="error-id">{{ session('error-id') }}</p> @endif
 						<input type="text" id="login_id" name="id" autocomplete="off" 
-							class="form-control @if (session('error-id')) is-invalid @else value="{{@old('id')}}" @endif"
-							value="{{ old('username') ?: old('email') }}" required
+							class="form-control @if (session('error-id')) is-invalid @endif" value="{{old('id')}}" required 
 						/>
 					</div>
 					<div class="form-group">

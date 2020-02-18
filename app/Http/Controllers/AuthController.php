@@ -43,7 +43,7 @@ class AuthController extends Controller
 		} else {
 			// If a user exists with the input username/email and the login failed, the password was incorrect
 			if (isset(User::where('username', request('id'))->orWhere('email', request('id'))->get()[0])) {
-				return redirect()->back()->with('error-password', __('Incorrect password'));
+				return redirect()->back()->with('error-password', __('Incorrect password'))->withInput($request->except('password'));
 			}
 			return redirect()->back()->with('error-id', __('That user does not exist'));
 		}
