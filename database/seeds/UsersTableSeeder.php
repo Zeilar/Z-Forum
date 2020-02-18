@@ -16,21 +16,21 @@ class UsersTableSeeder extends Seeder
 			'username' => 'Philip',
 			'email' => 'philip@zforum.nu',
 			'password' => Hash::make('123'),
-			'role' => 'Superadmin',
+			'role' => 'superadmin',
 			'remember_token' => null,
 		]);
 		User::create([
 			'username' => 'Mod',
 			'email' => 'mod@zforum.nu',
 			'password' => Hash::make('123'),
-			'role' => 'Moderator',
+			'role' => 'moderator',
 			'remember_token' => null,
 		]);
 		User::create([
 			'username' => 'Pleb',
 			'email' => 'pleb@zforum.nu',
 			'password' => Hash::make('123'),
-			'role' => 'User',
+			'role' => 'member',
 			'remember_token' => null,
 		]);
     }
