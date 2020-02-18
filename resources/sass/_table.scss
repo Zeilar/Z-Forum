@@ -1,6 +1,6 @@
 .table-wrapper {
-	background: rgba(31, 31, 31, 0.55);
-	padding: 0.5rem;
+	background: $transparent-lightgray;
+	padding: 0.25rem;
 
 	.table {
 		margin: 0;
@@ -14,12 +14,14 @@
 		}
 	
 		.table-header {
-			background: $transparent-lightgray;
+			background: rgba(10, 10, 10, 0.9);
+		}
+
+		.table-category, .table-subcategory {
+			background: $transparent-green;
 		}
 	
 		.table-category {
-			background: $transparent-green;
-	
 			a {
 				color: white;
 	

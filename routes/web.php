@@ -11,8 +11,6 @@
 |
 */
 
-
-
 // Index
 Route::get('/', 'TableCategoriesController@index')->name('index');
 
@@ -23,12 +21,12 @@ Route::get('/category/new', 'TableCategoriesController@create')->name('tablecate
 
 // Table subcategories
 Route::post('/subcategory/{id}-{slug}/store', 'TableSubcategoriesController@store')->name('tablesubcategory_store');
-Route::get('/category/{id}-{slug}/new', 'TableSubcategoriesController@create')->name('tablesubcategory_create');
+Route::get('/subcategory/{id}-{slug}/new', 'TableSubcategoriesController@create')->name('tablesubcategory_create');
 Route::get('/subcategory/{id}-{slug}', 'TableSubcategoriesController@show')->name('tablesubcategory_show');
 
 // Threads
 Route::post('/subcategory/{id}-{slug}/thread/store', 'ThreadsController@store')->name('thread_store');
-Route::get('/subcategory/{id}-{slug}/new', 'ThreadsController@create')->name('thread_create');
+Route::get('/subcategory/{id}-{slug}/thread/new', 'ThreadsController@create')->name('thread_create');
 Route::get('/thread/{id}-{slug}', 'ThreadsController@show')->name('thread_show');
 
 // Posts

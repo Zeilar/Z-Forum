@@ -27,9 +27,9 @@ class TableSubcategoriesController extends Controller
     {
 		if (logged_in()) {
 			if (is_role('superadmin')) {
-				if (item_exists(TableCategory::find($id), $slug)) {
+				if (item_exists(TableSubcategory::find($id), $slug)) {
 					return view('table_subcategory.create', [
-						'tableCategory' => TableCategory::find($id),
+						'tableCategory' => TableSubcategory::find($id)->tableCategory,
 					]);
 				} else {
 					return view('errors.404');

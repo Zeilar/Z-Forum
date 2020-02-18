@@ -34,7 +34,7 @@
 								</div>
 							</td>
 							<td>
-								@if (count($tableSubcategory->threads))
+								@if (isset($tableSubcategory->threads))
 									<?php
 										foreach ($tableSubcategory->threads as $thread) {
 											$postAmount = count($thread->posts);

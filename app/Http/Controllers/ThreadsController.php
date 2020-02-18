@@ -25,7 +25,7 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($title, $id)
+    public function create($id, $slug)
     {
 		if (logged_in()) {
 			if (item_exists(TableSubcategory::find($id), $slug)) {
