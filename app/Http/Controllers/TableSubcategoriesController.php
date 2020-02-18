@@ -32,7 +32,7 @@ class TableSubcategoriesController extends Controller
 						'tableCategory' => TableSubcategory::find($id)->tableCategory,
 					]);
 				} else {
-					return view('errors.404');
+					return view('errors.404', ['value' => $slug]);
 				}
 			} else {
 				return msg_error('role');
@@ -84,7 +84,7 @@ class TableSubcategoriesController extends Controller
 				'tableSubcategory' => TableSubcategory::find($id),
 			]);
 		} else {
-			return view('errors.404');
+			return view('errors.404', ['value' => $slug]);
 		}
     }
 	

@@ -1,3 +1,4 @@
+{{-- Passed variables: $value --}}
 @extends('layouts.head')
 
 @section('content')
@@ -10,7 +11,9 @@
 		<form class="mt-4" action="/search" method="get">
 			@csrf
 			<div class="search d-flex">
-				<input class="py-2" type="text" name="search" id="search" placeholder="What are you looking for?" />
+				<input class="py-2" type="text" name="search" id="search" placeholder="What are you looking for?"
+					@if ($value) value="{{$value}}" @endif
+				/>
 				<button type="submit">
 					<i class="fas fa-search"></i>
 				</button>
