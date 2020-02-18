@@ -65,27 +65,6 @@ if (!function_exists('is_role')) {
 }
 
 /**
- * Calculate difference between UNIX and given timestamp
- *
- * @param string $date
- *
- * @return array
- */
-if (!function_exists('time_difference')) {
-	function time_difference(string $date) {
-		return $difference = [
-			'sec' => date('s', strtotime($date)) - date('s'),
-			'min' => date('i', strtotime($date)) - date('i'),
-			'hour' => date('H', strtotime($date)) - date('H'),
-			'day' => date('j', strtotime($date)) - date('j'),
-			'week' => date('W', strtotime($date)) - date('W'),
-			'month' => date('n', strtotime($date)) - date('n'),
-			'year' => date('Y', strtotime($date)) - date('Y'),
-		];
-	}
-}
-
-/**
  * Render date with "Today" or "Yesterday" instead of numerics, when applicable
  *
  * @param string $date
