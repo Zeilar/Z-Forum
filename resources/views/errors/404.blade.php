@@ -19,5 +19,9 @@
 				</button>
 			</div>
 		</form>
+
+		<iframe class="m-auto pt-5" width="550" height="400" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" frameborder="0" 
+			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
+		</iframe>
 	</div>
 @endsection

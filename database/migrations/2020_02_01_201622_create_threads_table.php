@@ -17,6 +17,7 @@ class CreateThreadsTable extends Migration
             $table->bigIncrements('id');
 			$table->string('title');
 			$table->string('slug');
+			$table->boolean('locked');
 			$table->unsignedInteger('table_subcategory_id');
 			$table->unsignedInteger('user_id');
             $table->timestamps();

@@ -117,8 +117,23 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $slug)
     {
-        //
+		if (item_exists(TableSubcategory::find($id), $slug)) {
+			if (logged_in()) {
+				if (is_role('superadmin')) {
+					$tableSubcategory = TableSubcategory::find($id);
+					$tableCategory = $tableSubcategory->tableCategory;
+					$tableSubcategory->delete();
+					return redirect(route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]));
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return msg_error('login');
+			}
+		} else {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		}
     }
 }

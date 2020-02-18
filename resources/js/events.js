@@ -32,7 +32,7 @@ $(document).ready(() => {
 			$(this).addClass('is-invalid');
 			console.log($(this).parent());
 			$(this).parent().siblings('label').append(`
-				<p class="color-red" id="passwords-no-match">{{ __('Passwords don't match') }}</p>
+				<p class="color-red" id="passwords-no-match">Passwords don't match</p>
 			`);
 		} else {
 			$(this).removeClass('is-invalid');

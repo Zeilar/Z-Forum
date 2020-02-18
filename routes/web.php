@@ -20,8 +20,10 @@ Route::post('/category/store', 'TableCategoriesController@store')->name('tableca
 Route::get('/category/new', 'TableCategoriesController@create')->name('tablecategory_create');
 
 // Table subcategories
+Route::delete('/subcategory/{id}-{slug}/destroy', 'TableSubcategoriesController@destroy')->name('tablesubcategory_delete');
 Route::post('/subcategory/{id}-{slug}/store', 'TableSubcategoriesController@store')->name('tablesubcategory_store');
 Route::get('/subcategory/{id}-{slug}/new', 'TableSubcategoriesController@create')->name('tablesubcategory_create');
+Route::get('/subcategory/{id}-{slug}/edit', 'TableSubcategoriesController@edit')->name('tablesubcategory_edit');
 Route::get('/subcategory/{id}-{slug}', 'TableSubcategoriesController@show')->name('tablesubcategory_show');
 
 // Threads
