@@ -1,3 +1,4 @@
+{{-- Passed variables: $tableCategories --}}
 @extends('layouts.head')
 
 @section('content')
@@ -21,7 +22,7 @@
 								</a>
 							</h5>
 						</th>
-						<th></th> <th></th> <th></th> {{-- to make sure the row is full width, because tables --}}
+						<th></th> <th></th> <th></th> {{-- To make sure the row is full width, because tables --}}
 					</tr>
 					@foreach ($tableCategory->tableSubcategories as $tableSubcategory)
 						<tr class="table-row">
@@ -35,27 +36,23 @@
 							</td>
 							<td>
 								@if (isset($tableSubcategory->threads))
-									<?php
-										foreach ($tableSubcategory->threads as $thread) {
-											$postAmount = count($thread->posts);
-											foreach ($thread->posts->sortByDesc('updated_at')->take(1) as $p) {
-												$post = $p;
-											}
-										}
-									?>
-									<p>
-										<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">{{ $post->thread->title }}</a>
-									</p>
-									<p class="post-created-by">
-										<span>{{ __('By') }}</span>
-										<a href="{{route('user_show', [$post->user->username])}}">{{ $post->user->username }}</a>
-										{{ pretty_date($post->updated_at) }}
-									</p>
+									@foreach ($tableSubcategory->threads as $thread)
+										<?php $post = $thread->posts->sortByDesc('updated_at')->take(1)[0]; ?>
+										<p>
+											<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">
+												{{ $post->thread->title }}
+											</a>
+										</p>
+										<p class="post-created-by">
+											<span>{{ __('By') }}</span>
+											<a href="{{route('user_show', [$post->user->username])}}">{{ $post->user->username }}</a>
+											{{ pretty_date($post->updated_at) }}
+										</p>
+									@endforeach
+									<td class="text-center">{{ count($tableSubcategory->threads) ?? 0 }}</td>
+									<td class="text-center">{{ $test ?? 0 }}</td>
 								@endif
 							</td>
-							<td class="text-center">{{ count($tableSubcategory->threads) }}</td>
-							<td class="text-center">{{ $postAmount ?? 0 }}</td>
-							<?php unset($postAmount); ?>
 						</tr>
 					@endforeach
 				@endforeach

@@ -22,7 +22,7 @@
 				<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
 					@csrf
 					<input type="hidden" name="_method" value="DELETE">
-					<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}">
+					<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}" type="submit">
 						<i class="fas color-white fa-trash-alt"></i>
 					</button>
 				</form>

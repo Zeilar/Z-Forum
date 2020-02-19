@@ -153,8 +153,23 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $slug)
     {
-        //
+        if (item_exists(Thread::find($id), $slug)) {
+			if (logged_in()) {
+				if (is_role('superadmin', 'moderator')) {
+					$thread = Thread::find($id);
+					$tableSubcategory = $thread->tableSubcategory;
+					$thread->delete();
+					return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return msg_error('login');
+			}
+		} else {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		}
     }
 }
