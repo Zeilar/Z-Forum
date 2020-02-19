@@ -43,9 +43,6 @@
 					<tr class="table-row">
 						<td>
 							<div class="d-flex">
-								<div class="d-flex">
-									<i class="fas fa-clipboard fa-2x my-auto mr-2"></i>
-								</div>
 								<div class="d-flex flex-column">
 									<a class="thread-link" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 										{{ __($thread->title) }}

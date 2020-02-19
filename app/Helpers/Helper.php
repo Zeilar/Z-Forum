@@ -51,13 +51,14 @@ if (!function_exists('logged_in')) {
  * @return boolean
  */
 if (!function_exists('is_role')) {
-	function is_role(string $role) {
-		if (Auth::user()) {
-			if (strtolower(auth()->user()->role) === strtolower($role)) {
-				return true;
-			} else {
-				return false;
+	function is_role(...$role) {
+		if (auth()->user()) {
+			foreach ($role as $key) {
+				if (strtolower(auth()->user()->role) === strtolower($key)) {
+					return true;
+				}
 			}
+			return false;
 		} else {
 			return false;
 		}
