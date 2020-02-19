@@ -160,6 +160,9 @@ class ThreadsController extends Controller
 				if (is_role('superadmin', 'moderator')) {
 					$thread = Thread::find($id);
 					$tableSubcategory = $thread->tableSubcategory;
+					foreach ($thread->posts as $post) {
+						$post->delete();
+					}
 					$thread->delete();
 					return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
 				} else {
