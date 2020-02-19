@@ -23,7 +23,7 @@ class TableSubcategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id, $slug)
+    public function create(int $id, string $slug)
     {
 		if (logged_in()) {
 			if (is_role('superadmin')) {
@@ -48,7 +48,7 @@ class TableSubcategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id, $slug)
+    public function store(Request $request, int $id, string $slug)
     {
 		if (logged_in()) {
 			if (is_role('superadmin')) {
@@ -77,7 +77,7 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $slug)
+    public function show(int $id, string $slug)
     {
 		if (item_exists(TableSubcategory::find($id), $slug)) {
 			return view('table_subcategory.single', [
@@ -94,7 +94,7 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $slug)
+    public function edit(int $id, string $slug)
     {
         if (item_exists(TableSubcategory::find($id), $slug)) {
 			if (logged_in()) {
@@ -118,7 +118,7 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $slug)
+    public function update(Request $request, int $id, string $slug)
     {
         if (logged_in()) {
 			if (item_exists(TableSubcategory::find($id), $slug)) {
@@ -150,13 +150,23 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $slug)
+    public function destroy(int $id, string $slug)
     {
 		if (item_exists(TableSubcategory::find($id), $slug)) {
 			if (logged_in()) {
 				if (is_role('superadmin')) {
 					$tableSubcategory = TableSubcategory::find($id);
 					$tableCategory = $tableSubcategory->tableCategory;
+
+					if ($tableSubcategory->threads) {
+						foreach ($tableSubcategory->threads as $thread) {
+							foreach ($thread->posts as $post) {
+								$post->delete();
+							}
+							$thread->delete();
+						}
+					}
+
 					$tableSubcategory->delete();
 					return redirect(route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]));
 				} else {

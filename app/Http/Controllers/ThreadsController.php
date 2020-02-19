@@ -25,7 +25,7 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id, $slug)
+    public function create(int $id, string $slug)
     {
 		if (logged_in()) {
 			if (item_exists(TableSubcategory::find($id), $slug)) {
@@ -46,7 +46,7 @@ class ThreadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id, $slug)
+    public function store(Request $request, int $id, string $slug)
     {
 		if (logged_in()) {
 			$data = request()->validate([
@@ -79,7 +79,7 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $slug)
+    public function show(int $id, string $slug)
     {
 		if (item_exists(Thread::find($id), $slug)) {
 			return view('thread.single', [
@@ -121,7 +121,7 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $slug)
+    public function update(Request $request, int $id, string $slug)
     {
         if (logged_in()) {
 			if (item_exists(Thread::find($id), $slug)) {
@@ -153,7 +153,7 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $slug)
+    public function destroy(int $id, string $slug)
     {
         if (item_exists(Thread::find($id), $slug)) {
 			if (logged_in()) {

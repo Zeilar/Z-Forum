@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableSubcategory;
 use App\TableCategory;
 use App\Post;
 
@@ -74,7 +73,7 @@ class TableCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $slug)
+    public function show(int $id, string $slug)
     {
 		if (item_exists(TableCategory::find($id), $slug)) {
 			return view('table_category.single', [
@@ -103,7 +102,7 @@ class TableCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id, string $slug)
     {
         //
     }
@@ -114,7 +113,7 @@ class TableCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id, string $slug)
     {
         //
     }

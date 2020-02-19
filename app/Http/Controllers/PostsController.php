@@ -26,7 +26,7 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id, $slug)
+    public function create(int $id, string $slug)
     {
         if (logged_in()) {
 			if (item_exists(Thread::find($id), $slug)) {
@@ -45,7 +45,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id, $slug)
+    public function store(Request $request, int $id, string $slug)
     {
         if (logged_in()) {
 			if (Thread::find($id)) {
@@ -75,7 +75,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
 		if (Post::find($id)) {
 			return view('post.single', [
@@ -92,7 +92,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
 		if (logged_in()) {
 			if (Post::find($id)) {
@@ -118,7 +118,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         if (logged_in()) {
 			if (Post::find($id)) {
@@ -149,7 +149,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         if (logged_in()) {
 			if (Post::find($id)) {

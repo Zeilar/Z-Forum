@@ -15,9 +15,7 @@ class DashboardController extends Controller
 {
 	public function index()
 	{
-		if ($reqest->ajax()) {
-			
-		}
+
 	}
 
 	public function superadmin()

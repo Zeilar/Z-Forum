@@ -78126,14 +78126,7 @@ $(document).ready(function () {
     $(this).mouseleave(function () {
       $(this).removeClass('active-hover');
     });
-  }); // Open modal if a session error/success message is found
-
-  if ($('#errorModal')) {
-    $('#errorModal').modal('show');
-  } else if ($('#successModal')) {
-    $('#successModal').modal('show');
-  } // Password revealer button
-
+  }); // Password revealer button
 
   $('.password-revealer').click(function () {
     if ($(this).siblings('input').attr('type') === 'password') {
@@ -78154,12 +78147,14 @@ $(document).ready(function () {
       $(this).removeClass('is-invalid');
       $('#passwords-no-match').remove();
     }
-  }); // Open auth modal if an error was found in either of them (after using has been redirected back)
+  }); // Open modals depending on which error element has been spawned
 
   if ($('#registerModal .is-invalid').length) {
     $('#registerModal').modal('show');
   } else if ($('#loginModal .is-invalid').length) {
     $('#loginModal').modal('show');
+  } else if ($('#errorModal #error-any').length) {
+    $('#errorModal').modal('show');
   } // Put spinning wheel on submits buttons when pressed
 
 

@@ -1,16 +1,17 @@
-<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+<div class="modal fade" id="errorModal">
 	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="errorModalLabel">
-					{{ __('An error occurred') }}
-				</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  	<div class="modal-content">
+			<div class="modal-header bg-danger">
+				<h5 class="modal-title color-white" id="errorModalLabel">{{ __('Error') }}</h5>
+		  		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
-				</button>
+		  		</button>
 			</div>
 			<div class="modal-body">
-				{{ __(session('error')) }}
+				@if (session('error')) <p id="error-any">{{ session('error') }}</p> @endif
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">{{ __('Close') }}</button>
 			</div>
 		</div>
 	</div>
