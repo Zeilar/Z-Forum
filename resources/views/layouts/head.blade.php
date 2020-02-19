@@ -37,7 +37,9 @@
 		@include('modals.register')
 		@include('modals.login')
 
-        @include('layouts.navbar')
+		@include('layouts.navbar')
+		
+		@if (session('error')) <h1 class="color-white">{{ session('error') }}</h1> @endif
 
         <main class="container-fluid py-3" id="content">
             @yield('content')

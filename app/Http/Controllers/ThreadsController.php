@@ -125,13 +125,14 @@ class ThreadsController extends Controller
     {
         if (logged_in()) {
 			if (item_exists(Thread::find($id), $slug)) {
-				if (is_role('superadmin')) {
+				if (is_role('superadmin', 'moderator')) {
 					$data = request()->validate([
 						'title' => 'required|max:30'
 					]);
 
 					$thread = Thread::find($id);
 					$thread->title = request('title');
+					$thread->slug = urlencode(request('title'));
 					$thread->save();
 
 					return redirect(route('thread_show', [$thread->id, $thread->slug]));

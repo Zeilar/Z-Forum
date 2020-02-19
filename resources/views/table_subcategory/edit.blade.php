@@ -8,7 +8,7 @@
 	<form action="{{route('tablesubcategory_update', [$tableSubcategory->id, $tableSubcategory->slug])}}" method="POST">
 		@csrf
 		<input type="hidden" name="_method" value="PUT">
-		<textarea name="title" id="form-content"></textarea>
+		<input type="text" name="title" id="title" />
 		<button class="btn btn-success" type="submit">Submit</button>
 	</form>
 

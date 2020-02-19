@@ -129,6 +129,7 @@ class TableSubcategoriesController extends Controller
 
 					$tableSubcategory = TableSubcategory::find($id);
 					$tableSubcategory->title = request('title');
+					$tableSubcategory->slug = urlencode(request('title'));
 					$tableSubcategory->save();
 
 					return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
