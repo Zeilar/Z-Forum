@@ -97,9 +97,21 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id, string $slug)
     {
-        //
+        if (item_exists(Thread::find($id), $slug)) {
+			if (logged_in()) {
+				if (is_role('superadmin', 'moderator')) {
+					return view('thread.edit', ['thread' => Thread::find($id)]);
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return msg_error('login');
+			}
+		} else {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		}
     }
 
     /**
@@ -109,9 +121,29 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $slug)
     {
-        //
+        if (logged_in()) {
+			if (item_exists(Thread::find($id), $slug)) {
+				if (is_role('superadmin')) {
+					$data = request()->validate([
+						'title' => 'required|max:30'
+					]);
+
+					$thread = Thread::find($id);
+					$thread->title = request('title');
+					$thread->save();
+
+					return redirect(route('thread_show', [$thread->id, $thread->slug]));
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return view('errors.404');
+			}
+		} else {
+			return msg_error('login');
+		}
     }
 
     /**

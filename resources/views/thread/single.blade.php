@@ -13,7 +13,22 @@
 	@endcomponent
 
 	<div class="thread-title bg-dark mb-3">
-		<h5 class="text-white">{{ $thread->title }}</h5>
+		<div class="d-flex flex-row">
+			@if (is_role('superadmin'))
+				<a class="btn mr-2 spin btn-warning" 
+					href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
+					<i class="fas color-black fa-pen"></i>
+				</a>
+				<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
+					@csrf
+					<input type="hidden" name="_method" value="DELETE">
+					<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}">
+						<i class="fas color-white fa-trash-alt"></i>
+					</button>
+				</form>
+			@endif
+			<h5 class="text-white my-auto">{{ $thread->title }}</h5>
+		</div>
 	</div>
 
 	<div class="thread">

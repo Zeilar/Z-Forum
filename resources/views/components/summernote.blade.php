@@ -3,9 +3,9 @@
 	$(document).ready(() => {
 		$('#form-content').summernote(
 			{
-				'code': '{!! $value ?? null !!}',
 				'placeholder': '{!! $placeholder ?? null !!}',
-				'height': '{!! $height ?? null !!}',
+				'height'	 : '{!! $height ?? 200 !!}',
+				'code'		 : '{!! $value ?? null !!}',
 			}
 		);
 	});

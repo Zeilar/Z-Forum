@@ -30,6 +30,9 @@ Route::get('/subcategory/{id}-{slug}', 'TableSubcategoriesController@show')->nam
 // Threads
 Route::post('/subcategory/{id}-{slug}/thread/store', 'ThreadsController@store')->name('thread_store');
 Route::get('/subcategory/{id}-{slug}/thread/new', 'ThreadsController@create')->name('thread_create');
+Route::delete('/thread/{id}-{slug}/delete', 'ThreadsController@delete')->name('thread_delete');
+Route::put('/thread/{id}-{slug}/update', 'ThreadsController@update')->name('thread_update');
+Route::get('/thread/{id}-{slug}/edit', 'ThreadsController@edit')->name('thread_edit');
 Route::get('/thread/{id}-{slug}', 'ThreadsController@show')->name('thread_show');
 
 // Posts
