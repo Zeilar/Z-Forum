@@ -49,7 +49,7 @@ $(document).ready(() => {
 	
 	// Put spinning wheel on submits buttons when pressed
 	if ($('a.spin')) {
-		$('a.spin').click(function(e) {
+		$('a.spin').click(function() {
 			if (!$(this).hasClass('loading')) {
 				$(this)
 					.css('width', `${$(this).outerWidth()}px`) // Do this first to preserve original button width

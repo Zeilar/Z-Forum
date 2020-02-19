@@ -78164,7 +78164,7 @@ $(document).ready(function () {
 
 
   if ($('a.spin')) {
-    $('a.spin').click(function (e) {
+    $('a.spin').click(function () {
       if (!$(this).hasClass('loading')) {
         $(this).css('width', "".concat($(this).outerWidth(), "px")) // Do this first to preserve original button width
         .addClass('loading').html('<i class="fas fa-circle-notch"></i>');
