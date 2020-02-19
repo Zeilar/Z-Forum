@@ -153,7 +153,7 @@ class PostsController extends Controller
     {
         if (logged_in()) {
 			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin')) {
+				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin', 'moderator')) {
 					$post = Post::find($id);
 					$thread = $post->thread;
 					$post->delete();

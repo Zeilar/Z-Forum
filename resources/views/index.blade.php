@@ -62,6 +62,4 @@
 			</tbody>
 		</table>
 	</div>
-
-	{!! var_dump(is_role('superadmin', 'user')); !!}
 @endsection
