@@ -12,7 +12,7 @@
 		<button class="btn btn-success" type="submit">Submit</button>
 	</form>
 
-	@component('components.content-value', ['value' => $tableSubcategory->title])
+	@component('components.summernote', ['value' => $tableSubcategory->title])
 		
 	@endcomponent
 @endsection

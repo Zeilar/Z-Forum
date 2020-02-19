@@ -1,7 +1,14 @@
+{{-- Passed variables: $thread --}}
 @extends('layouts.head')
 
 @section('content')
 	@component('components.breadcrumbs', ['position' => $thread])
+		
+	@endcomponent
+	@component('components.summernote', [
+		'placeholder' => 'Quick reply',
+		'height'	  => 100,
+	])
 		
 	@endcomponent
 
@@ -19,7 +26,7 @@
 	@auth
 		<form class="quick-reply" action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 			@csrf
-			<textarea name="content" id="form-content"></textarea>
+			<input type="text" name="content" id="form-content" />
 			<button class="btn btn-success" type="submit">{{ __('Send') }}</button>
 		</form>
 		<a href="{{route('post_create', [$thread->id, $thread->slug])}}">
