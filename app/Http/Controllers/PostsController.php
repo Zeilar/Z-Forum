@@ -122,7 +122,7 @@ class PostsController extends Controller
     {
         if (logged_in()) {
 			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin')) {
+				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin', 'moderator')) {
 					$data = request()->validate([
 						'content' => 'required|max:500'
 					]);

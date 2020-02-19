@@ -11910,6 +11910,10 @@ input::placeholder {
   color: #00c26e !important;
 }
 
+.color-black {
+  color: black !important;
+}
+
 .color-gray {
   color: #1f1f1f !important;
 }

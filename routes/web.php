@@ -21,6 +21,7 @@ Route::get('/category/new', 'TableCategoriesController@create')->name('tablecate
 
 // Table subcategories
 Route::delete('/subcategory/{id}-{slug}/destroy', 'TableSubcategoriesController@destroy')->name('tablesubcategory_delete');
+Route::put('/subcategory/{id}-{slug}/update', 'TableSubcategoriesController@update')->name('tablesubcategory_update');
 Route::post('/subcategory/{id}-{slug}/store', 'TableSubcategoriesController@store')->name('tablesubcategory_store');
 Route::get('/subcategory/{id}-{slug}/new', 'TableSubcategoriesController@create')->name('tablesubcategory_create');
 Route::get('/subcategory/{id}-{slug}/edit', 'TableSubcategoriesController@edit')->name('tablesubcategory_edit');

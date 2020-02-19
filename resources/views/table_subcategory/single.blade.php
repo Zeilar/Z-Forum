@@ -15,14 +15,14 @@
 							@if (is_role('superadmin'))
 								<a class="btn mr-2 spin btn-warning" 
 									href="{{route('tablesubcategory_edit', [$tableSubcategory->id, $tableSubcategory->slug])}}">
-									{{ __('Edit') }}
+									<i class="fas color-black fa-pen"></i>
 								</a>
 								<form action="{{route('tablesubcategory_delete', [$tableSubcategory->id, $tableSubcategory->slug])}}" method="post">
 									@csrf
 									<input type="hidden" name="_method" value="DELETE">
 									<button class="btn mr-2 spin btn-danger" 
 										href="{{route('tablesubcategory_delete', [$tableSubcategory->id, $tableSubcategory->slug])}}">
-										{{ __('Delete') }}
+										<i class="fas color-white fa-trash-alt"></i>
 									</button>
 								</form>
 							@endif

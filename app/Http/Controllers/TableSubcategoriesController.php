@@ -94,9 +94,21 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $slug)
     {
-        //
+        if (item_exists(TableSubcategory::find($id), $slug)) {
+			if (logged_in()) {
+				if (is_role('superadmin')) {
+					return view('table_subcategory.edit', ['tableSubcategory' => TableSubcategory::find($id)]);
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return msg_error('login');
+			}
+		} else {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		}
     }
 
     /**
@@ -106,9 +118,29 @@ class TableSubcategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $slug)
     {
-        //
+        if (logged_in()) {
+			if (item_exists(TableSubcategory::find($id), $slug)) {
+				if (is_role('superadmin')) {
+					$data = request()->validate([
+						'title' => 'required|max:30'
+					]);
+
+					$tableSubcategory = TableSubcategory::find($id);
+					$tableSubcategory->title = request('title');
+					$tableSubcategory->save();
+
+					return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return view('errors.404');
+			}
+		} else {
+			return msg_error('login');
+		}
     }
 
     /**
