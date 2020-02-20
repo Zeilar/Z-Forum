@@ -1,5 +1,4 @@
 {{-- Passed variables: $tableCategory --}}
-
 @extends('layouts.head')
 
 @section('content')
@@ -33,7 +32,7 @@
 								</div>
 							</td>
 							<td>
-								<!-- latest post -->
+								{{-- Latest Post --}}
 								@foreach ($tableSubcategory->threads as $thread)
 									@foreach ($thread->posts->sortByDesc('updated_at')->take(1) as $post)
 										<p>
@@ -48,7 +47,11 @@
 								@endforeach
 							</td> 
 							<td class="text-center">{{ count($tableSubcategory->threads) }}</td>
-							<td class="text-center">{{ count($thread->posts) }}</td>
+							<td class="text-center">
+								@if (count($thread->posts))
+									{{ count($thread->posts) }}
+								@endif
+							</td>
 						</tr>
 				@endforeach
 			</tbody>

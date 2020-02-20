@@ -71,7 +71,11 @@
 								</p>
 							@endforeach
 						</td> 
-						<td class="text-center">{{ count($thread->posts) }}</td> {{-- Posts --}}
+						<td class="text-center">
+							@if (count($thread->posts))
+								{{ count($thread->posts) }}
+							@endif
+						</td>
 					</tr>
 				@endforeach
 			</tbody>
