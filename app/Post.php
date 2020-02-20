@@ -15,4 +15,14 @@ class Post extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
+
+	public function tableSubcategory()
+	{
+		return $this->belongsTo(TableSubcategory::class);
+	}
+
+	public function tableCategory()
+	{
+		return $this->belongsTo(TableCategory::class);
+	}
 }

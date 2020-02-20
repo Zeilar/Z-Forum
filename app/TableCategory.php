@@ -10,4 +10,14 @@ class TableCategory extends Model
 	{
 		return $this->hasMany(TableSubcategory::class);
 	}
+
+	public function threads()
+	{
+		return $this->hasMany(Thread::class);
+	}
+
+	public function posts()
+	{
+		return $this->hasMany(Post::class);
+	}
 }

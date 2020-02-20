@@ -11,6 +11,11 @@ class Thread extends Model
 		return $this->hasMany(Post::class);
 	}
 
+	public function tableCategory()
+	{
+		return $this->belongsTo(TableCategory::class);
+	}
+
 	public function tableSubcategory()
 	{
 		return $this->belongsTo(TableSubcategory::class);

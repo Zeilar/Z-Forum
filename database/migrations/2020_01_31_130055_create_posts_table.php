@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
 			$table->text('content');
 			$table->unsignedInteger('thread_id');
 			$table->unsignedInteger('user_id');
+			$table->unsignedInteger('table_subcategory_id');
+			$table->unsignedInteger('table_category_id');
             $table->timestamps();
         });
     }

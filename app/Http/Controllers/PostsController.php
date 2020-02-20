@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TableSubcategory;
+use App\TableCategory;
 use App\Thread;
 use App\Post;
 
@@ -58,6 +60,8 @@ class PostsController extends Controller
 				$post->content = request('content');
 				$post->user_id = auth()->user()->id;
 				$post->thread_id = $thread->id;
+				$post->table_subcategory_id = $thread->tableSubcategory->id;
+				$post->table_category_id = $thread->tableCategory->id;
 				$post->save();
 
 				return redirect(route('thread_show', [$thread->id, $thread->slug]));

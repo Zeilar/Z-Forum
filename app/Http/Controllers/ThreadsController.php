@@ -54,17 +54,23 @@ class ThreadsController extends Controller
 				'content' => 'required|max:500',
 			]);
 
+			$tableCategory = TableSubcategory::find($id)->tableCategory;
+			$tableSubcategory = TableSubcategory::find($id);
+
 			$thread = new Thread();
 			$thread->title = request('title');
 			$thread->slug = urlencode(request('title'));
 			$thread->user_id = auth()->user()->id;
-			$thread->table_subcategory_id = TableSubcategory::find($id)->id;
+			$thread->table_category_id = $tableCategory->id;
+			$thread->table_subcategory_id = $tableSubcategory->id;
 			$thread->save();
 
 			$post = new Post();
 			$post->content = request('content');
 			$post->user_id = auth()->user()->id;
 			$post->thread_id = $thread->id;
+			$post->table_category_id = $tableCategory->id;
+			$post->table_subcategory_id = $tableSubcategory->id;
 			$post->save();
 
 			return redirect(route('thread_show', [$thread->id, $thread->slug]));
