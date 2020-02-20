@@ -36,7 +36,6 @@
 							</td>
 							<td>
 								@foreach ($tableSubcategory->posts->sortByDesc('updated_at')->take(1) as $post)
-									<h1>{{ $post->id }}</h1>
 									<p>
 										<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">
 											{{ $post->thread->title }}
