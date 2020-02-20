@@ -53,4 +53,22 @@ $(document).ready(() => {
 			}
 		});
 	}
+
+	// Spawn scroll to top button
+	$(document).on('scroll', function() {
+		if ($(window).scrollTop() > $(window).height()) {
+			if (!$('#scroller').hasClass('show')) {
+				$('#scroller').addClass('show');
+			}
+		} else {
+			if ($('#scroller').hasClass('show')) {
+				$('#scroller').removeClass('show');
+			}
+		}
+	});
+
+	// Scroll to top
+	$('#scroller').click(function() {
+		window.scrollTo(0, 0);
+	});
 });

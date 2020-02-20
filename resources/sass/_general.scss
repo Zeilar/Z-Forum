@@ -121,3 +121,28 @@ input::placeholder {
 		color: $green !important;
 	}
 }
+
+#scroller {
+	transition: opacity 0.25s linear;
+	pointer-events: none;
+	background: $green;
+	user-select: none;
+	position: fixed;
+	cursor: pointer;
+	display: flex;
+	bottom: 3.5%;
+	height: 3rem;
+	width: 3rem;
+	right: 3.5%;
+	opacity: 0;
+
+	i {
+		color: white;
+		margin: auto;
+	}
+
+	&.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+}

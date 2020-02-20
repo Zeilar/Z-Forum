@@ -11903,6 +11903,36 @@ input::placeholder {
   color: #00c26e !important;
 }
 
+#scroller {
+  -webkit-transition: opacity 0.25s linear;
+  transition: opacity 0.25s linear;
+  pointer-events: none;
+  background: #00c26e;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: fixed;
+  cursor: pointer;
+  display: -webkit-box;
+  display: flex;
+  bottom: 3.5%;
+  height: 3rem;
+  width: 3rem;
+  right: 3.5%;
+  opacity: 0;
+}
+
+#scroller i {
+  color: white;
+  margin: auto;
+}
+
+#scroller.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+
 .navbar {
   border-bottom: 2px solid #00c26e;
   background: rgba(31, 31, 31, 0.95);

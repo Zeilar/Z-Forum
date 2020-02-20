@@ -49,6 +49,10 @@
 		@foreach (get_online_users() as $user)
 			<p class="color-white">{{ $user->username }}</p>
 		@endforeach
+
+		<div id="scroller">
+			<i class="fas fa-arrow-up"></i>
+		</div>
     </div>
 </body>
 </html>
