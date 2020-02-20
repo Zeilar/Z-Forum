@@ -49,7 +49,8 @@
 									</a>
 									<div>
 										<span>{{ __('By') }}</span>
-										<a class="thread-author-link" href="{{route('user_show', [$thread->user->username])}}">
+										<a class="thread-author-link {{ link_role_coloring($thread->user->role) }}" 
+											href="{{route('user_show', [$thread->user->username])}}">
 											{{ $thread->user->username }}
 										</a>
 									</div>
@@ -60,10 +61,17 @@
 							{{-- Latest Post --}}
 							@foreach ($thread->posts->sortByDesc('updated_at')->take(1) as $post)
 							@endforeach
+							<p>
+								<a href="{{route('post_show', [$thread->id, $thread->slug, $post->id])}}">
+									{{ pretty_date($post->updated_at) }}
+									<i class="fas fa-sign-in-alt"></i>
+								</a>
+							</p>
 							<p class="post-created-by">
 								<span>{{ __('By') }}</span>
-								<a href="{{route('user_show', [$post->user->username])}}"> {{ $post->user->username }}</a>
-								{{ pretty_date($post->updated_at) }}
+								<a class="{{ link_role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
+									{{ $post->user->username }}
+								</a>
 							</p>
 						</td> 
 						<td class="text-center">

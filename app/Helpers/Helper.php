@@ -244,3 +244,23 @@ if (!function_exists('get_online_users')) {
 		return $online_users;
 	}
 }
+
+/**
+ * Decide text color of a user link based on that user's role
+ * 
+ * @param string $role
+ * 
+ * @return string
+ */
+if (!function_exists('link_role_coloring')) {
+	function link_role_coloring(string $role) {
+		switch ($role) {
+			case 'superadmin':
+				return 'is-superadmin';
+			case 'moderator':
+				return 'is-moderator';
+			default:
+				return '';
+		}
+	}
+}

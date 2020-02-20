@@ -105,3 +105,19 @@ input::placeholder {
 .color-red {
 	color: red !important;
 }
+
+.is-superadmin {
+	color: rgb(255, 0, 0) !important;
+	
+	&:hover {
+		color: $green !important;
+	}
+}
+
+.is-moderator {
+	color: rgb(255, 255, 0) !important;
+	
+	&:hover {
+		color: $green !important;
+	}
+}

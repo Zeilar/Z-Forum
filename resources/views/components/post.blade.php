@@ -11,7 +11,9 @@
 	<div class="post-body d-flex flex-row">
 		<div class="col px-2 user-meta">
 			<p class="user-link">
-				<a href="{{route('user_show', [$post->user->username])}}">{{ $post->user->username }}</a>
+				<a class="{{ link_role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
+					{{ $post->user->username }}
+				</a>
 			</p>
 			<p class="user-role">{{ __(ucfirst($post->user->role)) }}</p>
 			<p class="user-date">{{ __('Member since: ' . date('M Y', strtotime($post->user->created_at))) }}</p>
