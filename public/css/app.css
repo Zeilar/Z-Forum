@@ -11896,7 +11896,7 @@ input::placeholder {
 }
 
 .is-moderator {
-  color: yellow !important;
+  color: #ff7f00 !important;
 }
 
 .is-moderator:hover {
