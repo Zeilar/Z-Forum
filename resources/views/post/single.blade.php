@@ -1,7 +1,7 @@
 @extends('layouts.head')
 
 @section('content')
-	<article class="post <?php if (logged_in()) if ($post->user->id === auth()->user()->id) echo 'is_author'; ?>" id="post-{{$post->id}}">
+	<article class="post <?php if (logged_in()) if ($post->user->id === auth()->user()->id) echo 'is_author'; ?>" id="{{$post->id}}">
 		<div class="post-banner row m-0 justify-content-between">
 			<span class="post-date px-2 color-white">
 				{{ date_comma($post->created_at) }}

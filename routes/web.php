@@ -36,7 +36,7 @@ Route::get('/thread/{id}-{slug}/edit', 'ThreadsController@edit')->name('thread_e
 Route::get('/thread/{id}-{slug}', 'ThreadsController@show')->name('thread_show');
 
 // Posts
-Route::get('/thread/{id}-{slug}#post-{post-id}', 'PostsController@show')->name('post_show');
+Route::get('/thread/{id}-{slug}#{post-id}', 'PostsController@show')->name('post_show');
 Route::post('/thread/{id}-{slug}/store', 'PostsController@store')->name('post_store');
 Route::get('/thread/{id}-{slug}/new', 'PostsController@create')->name('post_create');
 Route::delete('/post/{id}/delete', 'PostsController@destroy')->name('post_delete');
