@@ -11,7 +11,7 @@
 		<form class="mt-4" action="/search" method="get">
 			@csrf
 			<div class="search d-flex">
-				<input class="py-2" type="text" name="search" id="search" placeholder="What are you looking for?"
+				<input class="py-2" type="text" name="search" id="search-big" placeholder="What are you looking for?"
 					@if (isset($value)) value="{{$value}}" @endif
 				/>
 				<button type="submit">
