@@ -69,6 +69,7 @@ class AccountController extends Controller
     public function update(Request $request)
     {
 		return var_dump($request->file('img'));
+		
         $path = $request->file('img')->store('images');
 
         return $path;
