@@ -50,8 +50,16 @@
 										{{ pretty_date($post->updated_at) }}
 									</p>
 								@endforeach
-								<td class="text-center">{{ count($tableSubcategory->threads) ?? 0 }}</td>
-								<td class="text-center">{{ count($tableSubcategory->posts) }}</td>
+								<td class="text-center">
+									@if (count($tableSubcategory->threads))
+										{{ count($tableSubcategory->threads) }}
+									@endif
+								</td>
+								<td class="text-center">
+									@if (count($tableSubcategory->posts))
+										{{ count($tableSubcategory->posts) }}
+									@endif
+								</td>
 							</td>
 						</tr>
 					@endforeach
