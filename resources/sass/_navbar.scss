@@ -1,11 +1,21 @@
 .navbar {
 	border-bottom: 2px solid $green;
 	background: $transparent-gray;
+	height: 5rem;
 
 	a.navbar-brand {
 		user-select: none;
 		color: $green;
 		padding: 0;
+		flex: 0.25;
+		
+		img {
+			object-fit: cover;
+		}
+
+		i {
+			vertical-align: middle;
+		}
 	}
 
 	.nav-search {

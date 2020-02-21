@@ -11853,6 +11853,7 @@ input::placeholder {
 .navbar {
   border-bottom: 2px solid #00c26e;
   background: rgba(31, 31, 31, 0.95);
+  height: 5rem;
 }
 
 .navbar a.navbar-brand {
@@ -11862,6 +11863,17 @@ input::placeholder {
           user-select: none;
   color: #00c26e;
   padding: 0;
+  -webkit-box-flex: 0.25;
+          flex: 0.25;
+}
+
+.navbar a.navbar-brand img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.navbar a.navbar-brand i {
+  vertical-align: middle;
 }
 
 .navbar .nav-search {
