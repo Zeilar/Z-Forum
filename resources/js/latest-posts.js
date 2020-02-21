@@ -3,7 +3,7 @@ $(document).ready(function() {
 	// Init the slides' positions and the index value
 	let slidesIndex = 0;
 	$('#posts-slider .latest-post').each(function(i) {
-		$(this).attr('style', `transform: translateX(${i * 100}%);`);
+		$(this).attr('style', `transform: translateY(${i * 100}%);`);
 	});
 
 	// Latest posts carousel slider
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 		// Move the slides
 		$('#posts-slider .latest-post').each(function(i) {
-			$(this).attr('style', `transition: transform 1s linear; transform: translateX(${(i - 1) * 100}%);`);
+			$(this).attr('style', `transition: transform 1s linear; transform: translateY(${(i - 1) * 100}%);`);
 		});
 
 		// To make sure the first code block runs every iteration after the first

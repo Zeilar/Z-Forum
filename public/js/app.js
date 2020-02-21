@@ -78203,7 +78203,7 @@ $(document).ready(function () {
   // Init the slides' positions and the index value
   var slidesIndex = 0;
   $('#posts-slider .latest-post').each(function (i) {
-    $(this).attr('style', "transform: translateX(".concat(i * 100, "%);"));
+    $(this).attr('style', "transform: translateY(".concat(i * 100, "%);"));
   }); // Latest posts carousel slider
 
   function posts_slide() {
@@ -78216,7 +78216,7 @@ $(document).ready(function () {
 
 
     $('#posts-slider .latest-post').each(function (i) {
-      $(this).attr('style', "transition: transform 1s linear; transform: translateX(".concat((i - 1) * 100, "%);"));
+      $(this).attr('style', "transition: transform 1s linear; transform: translateY(".concat((i - 1) * 100, "%);"));
     }); // To make sure the first code block runs every iteration after the first
 
     slidesIndex++;
