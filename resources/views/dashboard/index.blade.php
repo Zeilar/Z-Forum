@@ -10,10 +10,13 @@ $users
 @extends('layouts.head')
 
 @section('content')
-	<div class="d-flex flex-row" id="settings">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
+	<div id="settings">
+		<ul class="nav nav-tabs" id="dashboard-tabs" role="tablist">
 			<li class="nav-item">
-				<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+				<a class="nav-link active" id="accout-tab" data-toggle="tab" 
+					href="#account" role="tab" aria-controls="home" aria-selected="true">
+					{{ __('Account') }}
+				</a>
 			</li>
 			@if (is_role('superadmin'))
 				<li class="nav-item">
@@ -24,15 +27,18 @@ $users
 				</li>
 			@endif
 			<li class="nav-item">
-				<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+				<a class="nav-link" id="contact-tab" data-toggle="tab" 
+					href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+					
+				</a>
 			</li>
 		</ul>
-		<div class="tab-content" id="dashboard-tabs">
-			<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="accout-tab">
 				@include('dashboard.account')
 			</div>
 			@if (is_role('superadmin'))
-				<div class="tab-pane fade" id="superadmin" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="tab-pane fade" id="superadmin" role="tabpanel" aria-labelledby="superadmin-tab">
 					@include('dashboard.superadmin')
 				</div>
 			@endif

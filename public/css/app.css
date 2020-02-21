@@ -11626,104 +11626,21 @@ a.text-dark:focus {
   color: white;
 }
 
-#settings .settings-nav {
-  background: rgba(0, 0, 0, 0.85);
-  border-right: 2px solid #00c26e;
-  padding: 1rem 1rem 1rem 0;
-  margin-right: 1rem;
+#settings #dashboard-tabs {
+  width: 100%;
 }
 
-#settings .settings-nav .settings-item {
-  border-bottom: 2px solid #00c26e;
-  padding: 0.5rem 1rem;
-  margin: 0.75rem 0;
-  cursor: pointer;
-  display: -webkit-box;
-  display: flex;
-}
-
-#settings .settings-nav .settings-item:first-child {
-  padding-top: 0;
-  margin-top: 0;
-}
-
-#settings .settings-nav .settings-item:last-child {
-  margin-bottom: 0;
-}
-
-#settings .settings-nav .settings-item.active,
-#settings .settings-nav .settings-item.active-hover {
-  border-color: white;
-}
-
-#settings .settings-nav .settings-item.active h4,
-#settings .settings-nav .settings-item.active-hover h4 {
-  -webkit-transition: -webkit-transform 0.25s ease-out;
-  transition: -webkit-transform 0.25s ease-out;
-  transition: transform 0.25s ease-out;
-  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-}
-
-#settings .settings-nav .settings-item.active h4 .settings-link,
-#settings .settings-nav .settings-item.active-hover h4 .settings-link {
-  color: white;
-}
-
-#settings .settings-nav .settings-item h4 {
-  -webkit-transition: -webkit-transform 0.25s linear;
-  transition: -webkit-transform 0.25s linear;
-  transition: transform 0.25s linear;
-  transition: transform 0.25s linear, -webkit-transform 0.25s linear;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  margin: auto;
-}
-
-#settings .settings-nav .settings-item h4 .settings-link {
-  text-align: center;
+#settings #dashboard-tabs .nav-link {
   color: #00c26e;
-  -webkit-box-flex: 1;
-          flex: 1;
 }
 
-#settings .settings-nav .settings-item h4 .settings-link:hover {
+#settings #dashboard-tabs .nav-link.active {
   color: white;
 }
 
-#settings .settings-display {
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 0.25rem;
-  margin: 1rem 0;
-  -webkit-box-flex: 1;
-          flex: 1;
-}
-
-#settings .settings-display #superadmin .superadmin-select .form-group {
-  height: 100%;
-  margin: 0;
-}
-
-#settings .settings-display #superadmin .superadmin-select .form-group select {
-  background: black;
-  overflow-y: auto;
-}
-
-#settings .settings-display #superadmin .superadmin-select .form-group select option {
-  white-space: normal;
-}
-
-#settings .settings-display #superadmin .superadmin-select .form-group select::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-#settings .settings-display #superadmin .superadmin-select .form-group select::-webkit-scrollbar-track {
-  background: black;
-}
-
-#settings .settings-display #superadmin .superadmin-select .form-group select::-webkit-scrollbar-thumb {
-  background: #00c26e;
+#settings .tab-content .tab-pane.active {
+  border: 1px solid white;
+  border-top: 0;
 }
 
 p,
@@ -11753,13 +11670,13 @@ body {
   overflow-x: hidden;
 }
 
-a:not(.btn):hover,
-a:not(.btn):visited:hover {
+a:not([data-toggle=tab]):not(.btn):hover,
+a:not([data-toggle=tab]):not(.btn):visited:hover {
   text-decoration: none;
   color: #00c26e;
 }
 
-a:not(.btn):visited {
+a:not([data-toggle=tab]):not(.btn):visited {
   color: #135386;
 }
 

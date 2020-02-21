@@ -46,7 +46,7 @@ $(document).ready(() => {
 	// Bootstrap modal autofocus
 	$('.modal').on('shown.bs.modal', function() {
 		$(this).find('[autofocus]').focus();
-	  });
+	});
 	
 	// Put spinning wheel on submits buttons when pressed
 	if ($('.spin')) {

@@ -1,91 +1,24 @@
 #settings {
-	.settings-nav {
-		background: rgba(0, 0, 0, 0.85);
-		border-right: 2px solid $green;
-		padding: 1rem 1rem 1rem 0;
-		margin-right: 1rem;
+	
 
-		.settings-item {
-			border-bottom: 2px solid $green;
-			padding: 0.5rem 1rem;
-			margin: 0.75rem 0;
-			cursor: pointer;
-			display: flex;
+	#dashboard-tabs {
+		width: 100%;
 
-			&:first-child {
-				padding-top: 0;
-				margin-top: 0;
-			}
+		.nav-link {
+			color: $green;
 
-			&:last-child {
-				margin-bottom: 0;
-			}
-
-			&.active, &.active-hover {
-				border-color: white;
-
-				h4 {
-					transition: transform 0.25s ease-out;
-					transform: scale(1.05);
-
-					.settings-link {
-						color: white;
-					}
-				}
-			}
-
-			h4 {
-				transition: transform 0.25s linear;
-				transform: scale(1);
-				margin: auto;
-
-				.settings-link {
-					text-align: center;
-					color: $green;
-					flex: 1;
-
-					&:hover {
-						color: white;
-					}
-				}
+			&.active {
+				color: white;
 			}
 		}
 	}
 
-	.settings-display {
-		background: rgba(0, 0, 0, 0.85);
-		border-radius: 0.25rem;
-		margin: 1rem 0;
-		flex: 1;
+	.tab-content {
 
-		#superadmin {
-			.superadmin-select {
-
-				.form-group {
-					height: 100%;
-					margin: 0;
-
-					select {
-						background: black;
-						overflow-y: auto;
-
-						option {
-							white-space: normal;
-						}
-
-						&::-webkit-scrollbar {
-							width: 0.5rem;
-						}
-
-						&::-webkit-scrollbar-track {
-							background: black;
-						}
-
-						&::-webkit-scrollbar-thumb {
-							background: $green;
-						}
-					}
-				}
+		.tab-pane {
+			&.active {
+				border: 1px solid white;
+				border-top: 0;
 			}
 		}
 	}

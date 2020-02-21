@@ -17,8 +17,7 @@ body {
 }
 
 a {
-	
-	&:not(.btn) {
+	&:not([data-toggle=tab]):not(.btn) {
 		&:hover, &:visited:hover {
 			text-decoration: none;
 			color: $green;
