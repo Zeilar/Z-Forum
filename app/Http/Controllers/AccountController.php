@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AccountController extends Controller
 {
@@ -68,11 +69,11 @@ class AccountController extends Controller
      */
     public function update(Request $request)
     {
-		return var_dump($request->file('img'));
-		
-        $path = $request->file('img')->store('images');
+		$path = $request->file('img')->store('public/avatars');
+		auth()->user()->avatar = $request->file('img')->store('avatars');
+		auth()->user()->save();
 
-        return $path;
+        return msg_success('update');
     }
 
     /**

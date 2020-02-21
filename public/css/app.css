@@ -11856,6 +11856,10 @@ input::placeholder {
   height: 5rem;
 }
 
+.navbar .navbar-nav .nav-item.dropdown {
+  max-width: 5rem;
+}
+
 .navbar a.navbar-brand {
   -webkit-user-select: none;
      -moz-user-select: none;

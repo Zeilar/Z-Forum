@@ -53,6 +53,7 @@
 						<a id="navbarDropdown" class="nav-link rounded dropdown-toggle" 
 							href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
 						>
+							<img class="img-fluid" src="/storage/{{auth()->user()->avatar}}"
 							{{ Auth::user()->username }} <span class="caret"></span>
 						</a>
 

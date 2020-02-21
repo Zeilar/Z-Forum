@@ -3,6 +3,12 @@
 	background: $transparent-gray;
 	height: 5rem;
 
+	.navbar-nav {
+		.nav-item.dropdown {
+			max-width: 5rem;
+		}
+	}
+
 	a.navbar-brand {
 		user-select: none;
 		color: $green;

@@ -1,4 +1,4 @@
-<form action="{{route('dashboard_account_update')}}" method="post">
+<form action="{{route('dashboard_account_update')}}" method="post" enctype="multipart/form-data">
 	@csrf
 	<div class="form-group">
 		<label for="img">Select image:</label>
