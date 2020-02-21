@@ -41,10 +41,16 @@ $(document).ready(() => {
 	} else if ($('#errorModal #error-any').length) {
 		$('#errorModal').modal('show');
 	}
+
+
+	// Bootstrap modal autofocus
+	$('.modal').on('shown.bs.modal', function() {
+		$(this).find('[autofocus]').focus();
+	  });
 	
 	// Put spinning wheel on submits buttons when pressed
-	if ($('a.spin')) {
-		$('a.spin').click(function() {
+	if ($('.spin')) {
+		$('.spin').click(function() {
 			if (!$(this).hasClass('loading')) {
 				$(this)
 					.css('width', `${$(this).outerWidth()}px`) // Do this first to preserve original button width

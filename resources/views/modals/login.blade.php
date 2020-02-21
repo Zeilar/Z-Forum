@@ -11,8 +11,8 @@
 					<div class="form-group">
 						<label>{{ __('Username or email') }}</label>
 						@if (session('error-id')) <p class="color-red" id="error-id">{{ session('error-id') }}</p> @endif
-						<input type="text" id="login_id" name="id" autocomplete="off" 
-							class="form-control @if (session('error-id')) is-invalid @endif" value="{{old('id')}}" required 
+						<input type="text" id="login_id" name="id" autocomplete="off"
+							class="form-control @if (session('error-id')) is-invalid @endif" value="{{old('id')}}" required autofocus
 						/>
 					</div>
 					<div class="form-group">

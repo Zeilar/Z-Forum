@@ -78155,11 +78155,15 @@ $(document).ready(function () {
     $('#loginModal').modal('show');
   } else if ($('#errorModal #error-any').length) {
     $('#errorModal').modal('show');
-  } // Put spinning wheel on submits buttons when pressed
+  } // Bootstrap modal autofocus
 
 
-  if ($('a.spin')) {
-    $('a.spin').click(function () {
+  $('.modal').on('shown.bs.modal', function () {
+    $(this).find('[autofocus]').focus();
+  }); // Put spinning wheel on submits buttons when pressed
+
+  if ($('.spin')) {
+    $('.spin').click(function () {
       if (!$(this).hasClass('loading')) {
         $(this).css('width', "".concat($(this).outerWidth(), "px")) // Do this first to preserve original button width
         .addClass('loading').html('<i class="fas fa-circle-notch"></i>');

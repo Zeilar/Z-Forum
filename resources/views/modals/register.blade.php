@@ -12,7 +12,7 @@
 						<label>{{ __('Username') }}</label>
 						@error('username') <p class="color-red" id="error-username">{{ $message }}</p> @enderror
 						<input type="text" id="register_username" name="username" 
-							class="form-control @error('username') is-invalid @enderror" autocomplete="off" 
+							class="form-control @error('username') is-invalid @enderror" autocomplete="off" autofocus
 							value="{{old('username')}}" required placeholder="John"
 						/>
 					</div>
