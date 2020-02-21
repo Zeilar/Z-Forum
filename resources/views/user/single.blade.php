@@ -1,5 +1,4 @@
 {{-- Passed variables: $user --}}
-
 @extends('layouts.head')
 
 @section('content')
@@ -8,7 +7,7 @@
 	@else
 		<?php $users = $user; ?>
 		@foreach ($users as $user)
-			@include('layouts.user-single')
+			<h1>{{ $user->username }}</h1>
 		@endforeach
 	@endif
 @endsection

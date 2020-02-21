@@ -53,7 +53,7 @@ Route::get('/search', 'SearchController@search')->name('search');
 // Dashboard
 Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('dashboard_superadmin');
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
-Route::get('/dashboard', 'UsersController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 // Auth
 Route::post('/register', 'AuthController@register')->name('register');
