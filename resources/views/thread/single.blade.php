@@ -41,7 +41,7 @@
 	@auth
 		<form class="quick-reply" action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 			@csrf
-			<input type="text" name="content" id="form-content" />
+			<textarea type="text" name="content" id="form-content"></textarea>
 			<button class="btn btn-success" type="submit">{{ __('Send') }}</button>
 		</form>
 		<a href="{{route('post_create', [$thread->id, $thread->slug])}}">
