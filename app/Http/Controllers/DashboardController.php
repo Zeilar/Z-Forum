@@ -16,13 +16,7 @@ class DashboardController extends Controller
 	public function index()
 	{
 		if (logged_in()) {
-			return view('dashboard.index', [
-				'tableSubcategories' => TableSubcategory::all(),
-				'tableCategories' => TableCategory::all(),
-				'threads' => Thread::all(),
-				'posts' => Post::all(),
-				'users' => User::all(),
-			]);
+			return view('dashboard.account');
 		} else {
 			return msg_error('login');
 		}

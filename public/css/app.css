@@ -11840,8 +11840,6 @@ input::placeholder {
           user-select: none;
   cursor: pointer;
   color: white;
-  display: -webkit-box;
-  display: flex;
   margin: 0;
 }
 
