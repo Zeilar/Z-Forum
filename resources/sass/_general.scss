@@ -156,17 +156,22 @@ input::placeholder {
 
 	&.slide {
 		span {
+			transition: opacity 0.05s linear;
 			opacity: 0;
+		}
+
+		i {
+			transition: transform 0.5s ease-out;
 		}
 	}
 
 	span {
-		transition: opacity 0.05s linear;
+		transition: opacity 0.25s linear;
 		opacity: 1;
 	}
 
 	i {
-		transition: transform 0.5s ease-out;
+		transition: transform 0.25s linear;
 		margin-right: 0.25rem;
 		align-self: center;
 		transform: none;
