@@ -69,8 +69,8 @@ class AccountController extends Controller
      */
     public function update(Request $request)
     {
-		$path = $request->file('img')->store('public/avatars');
-		auth()->user()->avatar = $request->file('img')->store('avatars');
+		$path = $request->file('avatar')->store('public/avatars');
+		auth()->user()->avatar = $request->file('avatar')->store('avatars');
 		auth()->user()->save();
 
         return msg_success('update');

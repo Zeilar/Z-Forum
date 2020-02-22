@@ -145,3 +145,27 @@ input::placeholder {
 		opacity: 1;
 	}
 }
+
+.file-upload {
+	padding: 0.5rem 0.75rem;
+	background: $green;
+	cursor: pointer;
+	color: white;
+
+	.fas, .far {
+		margin-right: 0.25rem;
+	}
+
+	&:hover {
+		background: $darkgreen;
+	}
+}
+
+input[type=file] {
+	position: absolute;
+	overflow: hidden;
+	height: 0.1px;
+	width: 0.1px;
+	z-index: -1;
+	opacity: 0;
+}
