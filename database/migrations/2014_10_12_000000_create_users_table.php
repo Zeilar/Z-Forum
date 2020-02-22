@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 			$table->enum('role', ['member', 'moderator', 'superadmin'])->default('member');
-			$table->string('avatar')->default('images/user-avatars/default.png');
+			$table->string('avatar')->default('user-avatars/default.png');
 			$table->json('settings')->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();

@@ -77,4 +77,14 @@ $(document).ready(() => {
 	$('#scroller').click(function() {
 		window.scrollTo(0, 0);
 	});
+
+	$('.file-upload').mouseenter(function() {
+		$(this).children('i').attr('style', `transform: translateX(${$(this).width() / 2 - $(this).children('i').width() / 2}px);`);
+		$(this).addClass('slide');
+
+		$(this).mouseleave(function() {
+			$(this).children('i').removeAttr('style');
+			$(this).removeClass('slide');
+		});
+	});
 });

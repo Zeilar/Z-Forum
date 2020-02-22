@@ -1,24 +1,3 @@
 #settings {
-	
 
-	#dashboard-tabs {
-		width: 100%;
-
-		.nav-link {
-			color: $green;
-
-			&.active {
-				color: white;
-			}
-		}
-	}
-
-	.tab-content {
-		.tab-pane {
-			&.active {
-				border: 1px solid white;
-				border-top: 0;
-			}
-		}
-	}
 }

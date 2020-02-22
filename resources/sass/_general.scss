@@ -151,14 +151,35 @@ input::placeholder {
 	background: $green;
 	cursor: pointer;
 	color: white;
+	display: flex;
+	margin: 0;
 
-	.fas, .far {
+	&.slide {
+		span {
+			opacity: 0;
+		}
+	}
+
+	span {
+		transition: opacity 0.05s linear;
+		opacity: 1;
+	}
+
+	i {
+		transition: transform 0.5s ease-out;
 		margin-right: 0.25rem;
+		align-self: center;
+		transform: none;
 	}
 
-	&:hover {
+	&:hover, &:focus {
 		background: $darkgreen;
+
+		span {
+			
+		}
 	}
+
 }
 
 input[type=file] {

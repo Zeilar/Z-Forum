@@ -4,7 +4,7 @@
 		<input type="hidden" name="_method" value="PUT" />
 		<label class="file-upload" for="avatar-upload">
 			<i class="fas color-white fa-upload"></i>
-			{{ __('Choose a file') }}
+			<span>{{ __('Choose a file') }}</span>
 		</label>
 		<input type="file" id="avatar-upload" name="avatar" />
 	</div>

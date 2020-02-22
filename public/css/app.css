@@ -11624,23 +11624,6 @@ a.text-dark:focus {
   color: white;
 }
 
-#settings #dashboard-tabs {
-  width: 100%;
-}
-
-#settings #dashboard-tabs .nav-link {
-  color: #00c26e;
-}
-
-#settings #dashboard-tabs .nav-link.active {
-  color: white;
-}
-
-#settings .tab-content .tab-pane.active {
-  border: 1px solid white;
-  border-top: 0;
-}
-
 p,
 h1,
 h2,
@@ -11853,14 +11836,34 @@ input::placeholder {
   background: #00c26e;
   cursor: pointer;
   color: white;
+  display: -webkit-box;
+  display: flex;
+  margin: 0;
 }
 
-.file-upload .fas,
-.file-upload .far {
+.file-upload.slide span {
+  opacity: 0;
+}
+
+.file-upload span {
+  -webkit-transition: opacity 0.05s linear;
+  transition: opacity 0.05s linear;
+  opacity: 1;
+}
+
+.file-upload i {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
   margin-right: 0.25rem;
+  align-self: center;
+  -webkit-transform: none;
+          transform: none;
 }
 
-.file-upload:hover {
+.file-upload:hover,
+.file-upload:focus {
   background: #00a05b;
 }
 
