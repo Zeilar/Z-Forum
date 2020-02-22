@@ -149,6 +149,7 @@ input::placeholder {
 .file-upload {
 	padding: 0.5rem 0.75rem;
 	background: $green;
+	user-select: none;
 	cursor: pointer;
 	color: white;
 	display: flex;
@@ -175,12 +176,7 @@ input::placeholder {
 
 	&:hover, &:focus {
 		background: $darkgreen;
-
-		span {
-			
-		}
 	}
-
 }
 
 input[type=file] {
