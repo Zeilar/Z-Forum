@@ -14,8 +14,8 @@
 
 .btn-success:hover {
   color: #fff;
-  background-color: $green;
-  border-color: $darkgreen;
+  background-color: $darkgreen;
+  border-color: $green;
 }
 
 .btn-success:focus,
@@ -31,6 +31,14 @@
   color: #fff;
   background-color: $green;
   border-color: $green;
+}
+
+.btn-success:visited {
+	color: white;
+}
+
+.btn-success:visited:hover {
+	color: white;
 }
 
 .btn-success:not(:disabled):not(.disabled):active,
@@ -66,6 +74,10 @@
 
 .pagination {
 	.page-item {
+		&.disabled {
+			display: none;
+		}
+
 		&.active {
 			.page-link {
 				background: $green;
@@ -87,6 +99,10 @@
 			user-select: none;
 			border-radius: 0;
 			color: $green;
+
+			&:hover {
+				color: white;
+			}
 		}
 	}
 }

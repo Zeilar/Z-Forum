@@ -9,17 +9,19 @@
 		</span>
 	</div>
 	<div class="post-body d-flex flex-row">
-		<div class="col px-2 user-meta">
+		<div class="col p-2 user-meta">
 			<p class="user-link">
 				<a class="{{ link_role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
 					{{ $post->user->username }}
 				</a>
 			</p>
 			<p class="user-role">{{ __(ucfirst($post->user->role)) }}</p>
+			<div class="w-50">
+				<img class="img-fluid py-2" src="/storage/{{$post->user->avatar}}" />
+			</div>
 			<p class="user-date">{{ __('Member since: ' . date('M Y', strtotime($post->user->created_at))) }}</p>
-			{{-- TODO: user profile --}}
 		</div>
-		<div class="col px-2 post-content px-2">
+		<div class="col p-2 post-content">
 			{!! $post->content !!}
 		</div>
 	</div>

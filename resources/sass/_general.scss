@@ -16,15 +16,17 @@ body {
 	overflow-x: hidden;
 }
 
+img {
+	user-select: none;
+}
+
 a {
-	&:not([data-toggle=tab]):not(.btn) {
-		&:hover, &:visited:hover {
-			text-decoration: none;
-			color: $green;
-		}
-		&:visited {
-			color: rgb(19, 83, 134);
-		}
+	&:hover, &:visited:hover {
+		text-decoration: none;
+		color: $green;
+	}
+	&:visited {
+		color: rgb(19, 83, 134);
 	}
 }
 
@@ -77,6 +79,10 @@ input::placeholder {
 	background: $green !important;
 }
 
+.bg-light {
+	background: $lightgray !important;
+}
+
 .bg-darkgreen {
 	background: $darkgreen !important;
 }
@@ -93,9 +99,6 @@ input::placeholder {
 	color: black !important;
 }
 
-.color-gray {
-	color: $gray !important;
-}
 
 .color-white {
 	color: white !important;

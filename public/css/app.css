@@ -11370,8 +11370,8 @@ a.text-dark:focus {
 
 .btn-success:hover {
   color: #fff;
-  background-color: #00c26e;
-  border-color: #00a05b;
+  background-color: #00a05b;
+  border-color: #00c26e;
 }
 
 .btn-success:focus,
@@ -11387,6 +11387,14 @@ a.text-dark:focus {
   color: #fff;
   background-color: #00c26e;
   border-color: #00c26e;
+}
+
+.btn-success:visited {
+  color: white;
+}
+
+.btn-success:visited:hover {
+  color: white;
 }
 
 .btn-success:not(:disabled):not(.disabled):active,
@@ -11425,6 +11433,10 @@ a.text-dark:focus {
   border-color: white;
 }
 
+.pagination .page-item.disabled {
+  display: none;
+}
+
 .pagination .page-item.active .page-link {
   background: #00c26e;
   color: white;
@@ -11443,6 +11455,10 @@ a.text-dark:focus {
           user-select: none;
   border-radius: 0;
   color: #00c26e;
+}
+
+.pagination .page-item .page-link:hover {
+  color: white;
 }
 
 #posts-slider {
@@ -11612,7 +11628,7 @@ a.text-dark:focus {
   border: none;
 }
 
-.note-toolbar {
+.note-editor .note-toolbar {
   background: #dfdfdf;
 }
 
@@ -11651,13 +11667,20 @@ body {
   overflow-x: hidden;
 }
 
-a:not([data-toggle=tab]):not(.btn):hover,
-a:not([data-toggle=tab]):not(.btn):visited:hover {
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+a:hover,
+a:visited:hover {
   text-decoration: none;
   color: #00c26e;
 }
 
-a:not([data-toggle=tab]):not(.btn):visited {
+a:visited {
   color: #135386;
 }
 
@@ -11757,6 +11780,10 @@ input::placeholder {
   background: #00c26e !important;
 }
 
+.bg-light {
+  background: #dfdfdf !important;
+}
+
 .bg-darkgreen {
   background: #00a05b !important;
 }
@@ -11771,10 +11798,6 @@ input::placeholder {
 
 .color-black {
   color: black !important;
-}
-
-.color-gray {
-  color: #1f1f1f !important;
 }
 
 .color-white {
@@ -12021,7 +12044,6 @@ input[type=file] {
 }
 
 .thread-title {
-  border: 1px solid #dee2e6;
   padding: 0.75rem;
 }
 
@@ -12100,11 +12122,16 @@ input[type=file] {
 }
 
 .post .post-header a {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: white;
 }
 
 .post .post-header a:hover {
   text-decoration: underline;
+  color: white;
 }
 
 .post.is_author .post-header {
@@ -12113,10 +12140,6 @@ input[type=file] {
 
 .post .post-body .user-meta {
   background: #d7d7d7;
-}
-
-.post .post-body .user-meta p {
-  padding: 0.15rem 0;
 }
 
 .post .post-body .post-content {

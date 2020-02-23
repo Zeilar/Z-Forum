@@ -5,6 +5,7 @@
 	@component('components.breadcrumbs', ['position' => $thread])
 		
 	@endcomponent
+
 	@component('components.summernote', [
 		'placeholder' => 'Quick reply',
 		'height'	  => 100,
@@ -12,11 +13,10 @@
 		
 	@endcomponent
 
-	<div class="thread-title bg-dark mb-3">
+	<div class="thread-title bg-dark">
 		<div class="d-flex flex-row">
 			@if (is_role('superadmin'))
-				<a class="btn mr-2 spin btn-warning" 
-					href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
+				<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
 					<i class="fas color-black fa-pen"></i>
 				</a>
 				<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
@@ -38,14 +38,20 @@
 			@endcomponent
 		@endforeach
 	</div>
+
 	@auth
-		<form class="quick-reply" action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
-			@csrf
-			<textarea type="text" name="content" id="form-content"></textarea>
-			<button class="btn btn-success" type="submit">{{ __('Send') }}</button>
-		</form>
-		<a href="{{route('post_create', [$thread->id, $thread->slug])}}">
-			<button class="btn mt-4 btn-success color-white" type="button">{{ __('Reply') }}</button>
+		<div class="w-50 mx-auto my-2 bg-light" id="quick-reply">
+			<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
+				@csrf
+				<textarea type="text" name="content" id="form-content"></textarea>
+				<button class="btn spin btn-success m-2" type="submit">{{ __('Send') }}</button>
+				<a class="btn spin btn-success my-2" href="#">
+					{{ __('Preview') }}
+				</a>
+			</form>
+		</div>
+		<a class="btn spin mt-4 btn-success" href="{{route('post_create', [$thread->id, $thread->slug])}}">
+			{{ __('Reply') }}
 		</a>
 	@endauth
 

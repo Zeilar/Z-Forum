@@ -6,10 +6,12 @@
 		background: $gray;
 
 		a {
+			user-select: none;
 			color: white;
 
 			&:hover {
 				text-decoration: underline;
+				color: white;
 			}
 		}
 	}
@@ -21,10 +23,6 @@
 	.post-body {
 		.user-meta {
 			background: rgb(215, 215, 215);
-
-			p {
-				padding: 0.15rem 0;
-			}
 		}
 
 		.post-content {
