@@ -5,9 +5,10 @@
 			{{ __(pretty_date($post->created_at)) }}
 		</span>
 		<span class="post-thread px-2">
-			{{ $banner_link }}
+			{{ $banner_link ?? '' }}
 		</span>
 	</div>
+	{{ $thread_title ?? '' }}
 	<div class="post-body d-flex flex-row">
 		<div class="col p-2 user-meta">
 			<p class="user-link">

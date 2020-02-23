@@ -13,31 +13,36 @@
 		
 	@endcomponent
 
-	<div class="thread-title bg-dark">
-		<div class="d-flex flex-row">
-			@if (is_role('superadmin'))
-				<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
-					<i class="fas color-black fa-pen"></i>
-				</a>
-				<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
-					@csrf
-					<input type="hidden" name="_method" value="DELETE">
-					<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}" type="submit">
-						<i class="fas color-white fa-trash-alt"></i>
-					</button>
-				</form>
-			@endif
-			<h5 class="text-white my-auto">{{ $thread->title }}</h5>
-		</div>
-	</div>
-
 	<div class="thread">
+		<?php $i = 0; ?>
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post])
+				@if ($i === 0)
+					@slot('thread_title')
+						<div class="thread-title bg-dark">
+							<div class="d-flex flex-row">
+								@if (is_role('superadmin'))
+									<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
+										<i class="fas color-black fa-pen"></i>
+									</a>
+									<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
+										@csrf
+										<input type="hidden" name="_method" value="DELETE">
+										<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}" type="submit">
+											<i class="fas color-white fa-trash-alt"></i>
+										</button>
+									</form>
+								@endif
+								<h5 class="text-white my-auto">{{ $thread->title }}</h5>
+							</div>
+						</div>
+					@endslot
+				@endif
 				@slot('banner_link')
 					<a href="{{route('post_permalink', [$post->id])}}">{{ __('Permalink') }} &raquo;</a>
 				@endslot
 			@endcomponent
+			<?php $i++; ?>
 		@endforeach
 	</div>
 
