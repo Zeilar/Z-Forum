@@ -5,7 +5,7 @@
 			{{ __(pretty_date($post->created_at)) }}
 		</span>
 		<span class="post-thread px-2">
-			<a href="{{route('post_permalink', [$post->id])}}">{{ __('Permalink') }} &raquo;</a>
+			{{ $banner_link }}
 		</span>
 	</div>
 	<div class="post-body d-flex flex-row">

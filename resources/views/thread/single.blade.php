@@ -34,7 +34,9 @@
 	<div class="thread">
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post])
-				
+				@slot('banner_link')
+					<a href="{{route('post_permalink', [$post->id])}}">{{ __('Permalink') }} &raquo;</a>
+				@endslot
 			@endcomponent
 		@endforeach
 	</div>
