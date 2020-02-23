@@ -65,7 +65,7 @@
 								{{ date('H:i') }}
 							</span>
 							<span class="post-thread px-2">
-								<a href="#">{{ __('Permalink') }} &raquo;</a>
+								<a>{{ __('Permalink') }} &raquo;</a>
 							</span>
 						</div>
 						<div class="post-body d-flex flex-row">
