@@ -1,6 +1,6 @@
 {{-- Passed variables: $post --}}
-<article class="post<?php if (logged_in()) if ($post->user->id === auth()->user()->id) echo ' is_author'; ?>" id="{{$post->id}}">
-	<div class="post-header row m-0 justify-content-between">
+<article class="post<?php if (logged_in()) if ($post->user->id === auth()->user()->id) echo ' is_author'; ?> mb-4" id="{{$post->id}}">
+	<div class="post-header d-flex flex-row justify-content-between">
 		<span class="post-date px-2 color-white">
 			{{ __(pretty_date($post->created_at)) }}
 		</span>

@@ -1,5 +1,5 @@
-{{-- Passed variables: Model collection instance --}}
-<div class="breadcrumbs rounded mb-3 d-flex flex-row">
+{{-- Passed variables: $position --}}
+<div class="breadcrumbs mb-4 d-flex flex-row">
 	<a href="{{route('index')}}">{{ __('Home') }}</a>
 	<i class="fas mx-2 my-auto fa-angle-double-right"></i>
 	@foreach (breadcrumb_guesser($position) as $breadcrumb)
