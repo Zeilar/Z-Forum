@@ -116,13 +116,13 @@ if (!function_exists('msg_error')) {
 	function msg_error(string $type = null) {
 		switch ($type) {
 			case 'login':
-				return redirect()->back()->with('error', __('Please log in and try again'));
+				return redirect()->back()->with('error-id', __('Please log in and try again'));
 			case 'role':
 				return redirect()->back()->with('error', __('Insufficient permissions'));
 			case 'incorrect-id':
-				return redirect()->back()->with('error', __('That user does not exist'));
+				return redirect()->back()->with('error-id', __('That user does not exist'));
 			case 'incorrect-password':
-				return redirect()->back()->with('error', __('Incorrect password'));
+				return redirect()->back()->with('error-password', __('Incorrect password'));
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
