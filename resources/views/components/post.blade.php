@@ -20,7 +20,7 @@
 			<div class="w-50">
 				<img class="img-fluid py-2" src="/storage/{{$post->user->avatar}}" />
 			</div>
-			<p class="user-date">{{ __('Registeted: ' . date('M Y', strtotime($post->user->created_at))) }}</p>
+			<p class="user-date">{{ __('Registered : ' . date('M Y', strtotime($post->user->created_at))) }}</p>
 		</div>
 		<div class="col p-2 post-content">
 			{!! $post->content !!}
