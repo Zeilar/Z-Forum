@@ -33,7 +33,10 @@
 				<form action="{{route('search')}}" method="get">
 					@csrf
 					<div class="nav-search ml-auto mr-3 d-flex">
-						<input class="rounded-left py-1 px-2" type="text" name="search" id="search" placeholder="Search" />
+						<div class="search-wrapper">
+							<input class="rounded-left py-1 px-2" type="text" name="search" id="search" placeholder="Search" />
+							<i class="fas fa-times"></i>
+						</div>
 						<button class="rounded-right" type="submit">
 							<i class="fas fa-search"></i>
 						</button>

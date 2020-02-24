@@ -11914,6 +11914,34 @@ input[type=file] {
   opacity: 0;
 }
 
+.search-wrapper {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+}
+
+.search-wrapper input {
+  padding-right: 1.75rem !important;
+}
+
+.search-wrapper.has-input i {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: black;
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  right: 0.75rem;
+  top: 50%;
+}
+
+.search-wrapper i {
+  display: none;
+}
+
 .navbar {
   border-bottom: 2px solid #00c26e;
   background: rgba(31, 31, 31, 0.95);

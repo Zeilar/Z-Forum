@@ -192,3 +192,29 @@ input[type=file] {
 	z-index: -1;
 	opacity: 0;
 }
+
+.search-wrapper {
+	flex-direction: row;
+	position: relative;
+	display: flex;
+
+	input {
+		padding-right: 1.75rem !important;
+	}
+
+	&.has-input {
+		i {
+			transform: translateY(-50%);
+			background: black;
+			position: absolute;
+			cursor: pointer;
+			display: block;
+			right: 0.75rem;
+			top: 50%;
+		}
+	}
+
+	i {
+		display: none;
+	}
+}
