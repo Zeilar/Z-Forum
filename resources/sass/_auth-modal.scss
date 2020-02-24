@@ -23,8 +23,14 @@
 
 			.close {
 				position: absolute;
+				color: white;
 				right: 15px;
+				opacity: 1;
 				top: 15px;
+
+				&:focus {
+					outline: 0;
+				}
 			}
 		}
 

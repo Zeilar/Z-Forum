@@ -38,11 +38,8 @@
 					</div>
 					<div class="form-group">
 						<label>{{ __('Repeat password') }}</label>
-						@error('password_confirmation') <p class="color-red" id="error-password-confirmation">{{ $message }}</p> @enderror
 						<div class="password-row">
-							<input type="password" id="register_password_repeat" name="password_confirmation" required
-								class="form-control @error('password_confirmation') is-invalid @enderror" 
-							/>
+							<input class="form-control" type="password" id="register_password_repeat" name="password_confirmation" required />
 							<button class="password-revealer" type="button">
 								<i class="far fa-eye"></i>
 							</button>

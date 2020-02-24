@@ -36,17 +36,21 @@ $(document).ready(() => {
 	// Open modals depending on which error element has been spawned
 	if ($('#registerModal .is-invalid').length) {
 		$('#registerModal').modal('show');
+		$('.modal').on('shown.bs.modal', function() {
+			$('#registerModal .is-invalid').focus();
+		});
 	} else if ($('#loginModal .is-invalid').length) {
 		$('#loginModal').modal('show');
+		$('.modal').on('shown.bs.modal', function() {
+			$('#loginModal .is-invalid').focus();
+		});
 	} else if ($('#errorModal #error-any').length) {
 		$('#errorModal').modal('show');
+	} else {
+		$('.modal').on('shown.bs.modal', function() {
+			$(this).find('[autofocus]').focus();
+		});
 	}
-
-
-	// Bootstrap modal autofocus
-	$('.modal').on('shown.bs.modal', function() {
-		$(this).find('[autofocus]').focus();
-	});
 	
 	// Put spinning wheel on submits buttons when pressed
 	if ($('.spin')) {
@@ -89,7 +93,7 @@ $(document).ready(() => {
 	});
 
 	// Spawn button in input to remove the value
-	$('input[type=text]').on('input change', function() {
+	$('.search-wrapper input[type=text]').on('input change', function() {
 		if ($(this).val() !== '') {
 			$(this).parent().addClass('has-input');
 		} else {

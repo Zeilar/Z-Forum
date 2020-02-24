@@ -1,3 +1,33 @@
+.dashboard-nav {
+	.nav-item {
+		&.active {
+			border-bottom: 4px solid $green;
+		}
+
+		.nav-link {
+			font-size: 2rem;
+			color: white;
+
+			&:visited {
+				color: white;
+			}
+
+			&:hover {
+				// animation: slide 1s linear;
+
+				// @keyframes slide {
+				// 	from {
+				// 		background-position: 100%;
+				// 	}
+				// 	to {
+				// 		background-position: 100%;
+				// 	}
+				// }
+			}
+		}
+	}
+}
+
 #settings {
-	
+	padding: 1rem;
 }

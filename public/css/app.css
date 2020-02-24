@@ -11534,8 +11534,14 @@ a.text-dark:focus {
 
 .modal-auth .modal-content .modal-header .close {
   position: absolute;
+  color: white;
   right: 15px;
+  opacity: 1;
   top: 15px;
+}
+
+.modal-auth .modal-content .modal-header .close:focus {
+  outline: 0;
 }
 
 .modal-auth .modal-content .modal-body {
@@ -11643,6 +11649,23 @@ a.text-dark:focus {
   background: #1f1f1f;
   color: white;
   border-top: 0;
+}
+
+.dashboard-nav .nav-item.active {
+  border-bottom: 4px solid #00c26e;
+}
+
+.dashboard-nav .nav-item .nav-link {
+  font-size: 2rem;
+  color: white;
+}
+
+.dashboard-nav .nav-item .nav-link:visited {
+  color: white;
+}
+
+#settings {
+  padding: 1rem;
 }
 
 p,
@@ -12090,7 +12113,7 @@ input[type=file] {
 #footer {
   background: rgba(31, 31, 31, 0.95);
   border-top: 2px solid #00c26e;
-  padding: 2rem 5rem;
+  padding: 0.5% 10%;
   margin-top: auto;
   color: white;
 }
