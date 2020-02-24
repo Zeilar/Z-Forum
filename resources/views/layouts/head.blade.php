@@ -53,6 +53,8 @@
 		<div id="scroller">
 			<i class="fas fa-arrow-up"></i>
 		</div>
+		
     </div>
+	@include('layouts.footer')
 </body>
 </html>

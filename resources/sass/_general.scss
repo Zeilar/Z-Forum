@@ -13,7 +13,10 @@ html {
 
 body {
 	background: url('../images/background.jpg');
+    flex-direction: column;
 	overflow-x: hidden;
+    min-height: 100vh;
+	display: flex;
 }
 
 img {

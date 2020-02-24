@@ -7,7 +7,7 @@
 		flex-direction: column;
 		display: flex;
 
-		h1, .fas {
+		h1, i {
 			background: rgba(0, 0, 0, 0.75);
 			text-align: center;
 			user-select: none;
@@ -20,7 +20,9 @@
 		border: 2px solid $green;
 		border-radius: 5rem;
 		background: none;
+		margin: auto;
 		height: 5%;
+		width: 75%;
 
 		input {
 			padding-right: 1.75rem;
