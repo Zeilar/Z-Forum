@@ -1,115 +1,90 @@
 .navbar {
 	border-bottom: 2px solid $green;
 	background: $transparent-gray;
+	display: flex;
 	height: 5rem;
 
-	.navbar-nav {
-		.nav-item.dropdown {
-			max-width: 5rem;
-		}
+	.navbar-brand {
+		margin-right: 0.5rem;
+		width: 10rem;
 	}
 
-	a.navbar-brand {
-		user-select: none;
-		color: $green;
-		padding: 0;
-		flex: 0.25;
-		
-		img {
-			object-fit: cover;
-		}
-
-		i {
-			vertical-align: middle;
-		}
-	}
-
-	.nav-search {
-		background: black;
-		height: 100%;
-
-		input {
-			border: 2px solid $green;
-			background: black;
-			color: white;
-
-			&::placeholder {
-				color: white;
-				opacity: 0.25;
-			}
-
-			&:focus {
-				outline: 0;
-			}
-		}
-
-		button {
+	form {
+		.nav-search {
 			border-bottom: 2px solid $green;
-			border-right: 2px solid $green;
-			border-top: 2px solid $green;
-			padding: 0.5rem 0.75rem;
-			background: black;
-			border-left: 0;
+			background: transparent;
+			display: flex;
+			height: 100%;
 
-			&:focus {
-				outline: 0;
+			input {
+				border: 0;
+				background: transparent;
+				padding: 0.35rem 0;
+				color: white;
+
+				&::placeholder {
+					color: white;
+					opacity: 0.25;
+				}
+
+				&:focus {
+					outline: 0;
+				}
 			}
 
-			i {
-				align-self: center;
-				font-size: 1rem;
+			button {
+				border: 0;
+				background: transparent;
+				padding: 0.35rem 0;
+
+				&:focus {
+					outline: 0;
+				}
+
+				i {
+					align-self: center;
+					font-size: 1rem;
+				}
 			}
 		}
 	}
 
-	.navbar-toggler {
-		.navbar-toggler-icon {
-			width: 100%;
+	.nav-list {
+		flex-direction: row-reverse;
+		display: flex;
 
-			img {
-				height: 100%;
-			}
-		}
-	}
-
-	.nav-link {
-		padding: 0.5rem 1rem !important;
-		border: 2px solid $green;
-		background: black;
-		user-select: none;
-		color: $green;
-
-		&:hover {
-			transition: background 0.05s ease-out;
-			background: $green;
-			color: white;
-		}
-	}
-
-	.dropdown-menu {
-		-webkit-border-radius: 0 0 5px 5px;
-		-moz-border-radius: 0 0 5px 5px;
-		-ms-border-radius: 0 0 5px 5px;
-		-o-border-radius: 0 0 5px 5px;
-		border-radius: 0 0 5px 5px;
-		border: 2px solid $green;
-		background: $gray;
-		color: white;
-		border-top: 0;
-		padding: 0;
-		top: 115%;
-
-		@media (max-width: 767px) {
-			border: 0;
+		.nav-avatar {
+			border: 2px solid $green;
+			width: 2.5rem;
 		}
 
-		.dropdown-item {
-			text-transform: uppercase;
-			padding: 0.8rem;
-			color: white;
-			
-			&:hover {
-				background: #383838;
+		.nav-items {
+			flex-direction: row-reverse;
+			display: flex;
+
+			.nav-item {
+				margin-left: 1.5rem;
+
+				.nav-link {
+					padding: 0.5rem 1.5rem;
+					border: 2px solid $green;
+					background: black;
+					user-select: none;
+					color: $green;
+
+					&:hover {
+						transition: background 0.1s ease-out;
+						background: $green;
+						color: white;
+					}
+
+					&#login-button {
+						text-decoration: underline;
+						background: none;
+						padding: 0.5rem;
+						border: 0;
+					}
+				}
 			}
 		}
 	}

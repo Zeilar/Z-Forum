@@ -81,7 +81,7 @@
 								<div class="w-50">
 									<img class="img-fluid py-2" src="/storage/{{auth()->user()->avatar}}" />
 								</div>
-								<p class="user-date">{{ __('Member since: ' . date('M Y', strtotime(auth()->user()->created_at))) }}</p>
+								<p class="user-date">{{ __('Registered: ' . date('M Y', strtotime(auth()->user()->created_at))) }}</p>
 							</div>
 							<div class="col p-2 post-content">
 								

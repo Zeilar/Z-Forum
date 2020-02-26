@@ -91,19 +91,4 @@ $(document).ready(() => {
 			$(this).removeClass('slide');
 		});
 	});
-
-	// Spawn button in input to remove the value
-	$('.search-wrapper input[type=text]').on('input change', function() {
-		if ($(this).val() !== '') {
-			$(this).parent().addClass('has-input');
-		} else {
-			$(this).parent().removeClass('has-input');
-		}
-	});
-
-	// Button to remove the input value
-	$('.search-wrapper .fa-times').click(function() {
-		$(this).parent().removeClass('has-input');
-		$(this).siblings('input').val('');
-	});
 });

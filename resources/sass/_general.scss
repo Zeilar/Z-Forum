@@ -199,22 +199,10 @@ input[type=file] {
 	display: flex;
 
 	input {
-		padding-right: 1.75rem !important;
+		padding-left: 0;
 	}
 
-	&.has-input {
-		i {
-			transform: translateY(-50%);
-			background: black;
-			position: absolute;
-			cursor: pointer;
-			display: block;
-			right: 0.75rem;
-			top: 50%;
-		}
-	}
-
-	i {
-		display: none;
+	button {
+		padding-right: 0;
 	}
 }

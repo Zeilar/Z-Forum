@@ -1,18 +1,28 @@
 .modal-auth {
 	width: 35rem;
 
+	a {
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
 	::placeholder {
 		opacity: 0.5;
 	}
 	
 	.modal-content {
 		border-radius: 1px;
-		border: none;
+		border: 0;
 
 		.modal-header {
 			justify-content: center;
 			background: $green;
 			position: relative;
+			border-radius: 0;
+			border: 0;
 
 			.modal-title {
 				text-align: center;
@@ -110,6 +120,8 @@
 
 		.modal-footer {
 			background: #f2f2f2;
+			padding: 0.75rem 30px;
+			border-radius: 0;
 
 			p {
 				margin: 0.5rem auto;
