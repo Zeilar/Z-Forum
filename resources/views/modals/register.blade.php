@@ -19,7 +19,7 @@
 					<div class="form-group">
 						<label>{{ __('Email') }}</label>
 						@error('email') <p class="color-red" id="error-email">{{ $message }}</p> @enderror
-						<input type="email" id="register_email" name="email" 
+						<input id="register_email" name="email" 
 							class="form-control @error('email') is-invalid @enderror" 
 							value="{{old('email')}}" autocomplete="off" placeholder="john_doe@gmail.com"
 						/>
@@ -47,7 +47,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">		
-					<button type="submit" class="btn spin rounded btn-block btn-success pull-right">
+					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
 						{{__('Register')}}
 					</button>
 					<p>

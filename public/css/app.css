@@ -11364,6 +11364,10 @@ a.text-dark:focus {
   border-radius: 0.25rem;
 }
 
+.btn:disabled {
+  cursor: auto;
+}
+
 .btn-success {
   color: #fff;
   background-color: #00c26e;

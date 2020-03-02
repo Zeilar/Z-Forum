@@ -78143,15 +78143,22 @@ $(document).ready(function () {
   $('#register_password_repeat').on('change', function () {
     if ($(this).val() !== $('#register_password').val()) {
       $(this).addClass('is-invalid');
-      console.log($(this).parent());
-      $(this).parent().siblings('label').append("\n\t\t\t\t<p class=\"color-red\" id=\"passwords-no-match\">Passwords don't match</p>\n\t\t\t");
+
+      if (!$('#passwords-no-match').length) {
+        $(this).parent().siblings('label').append("\n\t\t\t\t\t<p class=\"color-red\" id=\"passwords-no-match\">Passwords don't match</p>\n\t\t\t\t");
+      }
     } else {
       $(this).removeClass('is-invalid');
       $('#passwords-no-match').remove();
     }
   });
   $('.modal-auth input').change(function () {
-    var test = $(this).closest('form'); //console.log(test.children());
+    var modal = $(this).closest('form');
+    var emptyFields = modal.find('input').not('[name=_token]').length;
+    modal.find('input').not('[name=_token]').each(function () {
+      if ($(this).val() !== '') emptyFields -= 1;
+    });
+    if (emptyFields === 0) modal.find('[disabled]').removeAttr('disabled');
   }); // Open modals depending on which error element has been spawned
 
   if ($('#registerModal .is-invalid').length) {

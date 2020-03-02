@@ -4,6 +4,10 @@
 	-ms-border-radius: 0.25rem;
 	-o-border-radius: 0.25rem;
 	border-radius: 0.25rem;
+
+	&:disabled {
+		cursor: auto;
+	}
 }
 
 .btn-success {

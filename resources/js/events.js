@@ -23,10 +23,11 @@ $(document).ready(() => {
 	$('#register_password_repeat').on('change', function() {
 		if ($(this).val() !== $('#register_password').val()) {
 			$(this).addClass('is-invalid');
-			console.log($(this).parent());
-			$(this).parent().siblings('label').append(`
-				<p class="color-red" id="passwords-no-match">Passwords don't match</p>
-			`);
+			if (!$('#passwords-no-match').length) {
+				$(this).parent().siblings('label').append(`
+					<p class="color-red" id="passwords-no-match">Passwords don't match</p>
+				`);
+			}
 		} else {
 			$(this).removeClass('is-invalid');
 			$('#passwords-no-match').remove();
@@ -34,8 +35,12 @@ $(document).ready(() => {
 	});
 
 	$('.modal-auth input').change(function() {
-		let test = $(this).closest('form');
-		//console.log(test.children());
+		let modal = $(this).closest('form');
+		let emptyFields = modal.find('input').not('[name=_token]').length;
+		modal.find('input').not('[name=_token]').each(function() {
+			if ($(this).val() !== '') emptyFields -= 1;
+		});
+		if (emptyFields === 0) modal.find('[disabled]').removeAttr('disabled');
 	});
 	
 	// Open modals depending on which error element has been spawned
