@@ -13,5 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./jquery-plugins');
 require('./latest-posts');
 require('./events');

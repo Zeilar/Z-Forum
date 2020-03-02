@@ -82,6 +82,7 @@ $(document).ready(() => {
 		window.scrollTo(0, 0);
 	});
 
+	// File upload button animation
 	$('.file-upload').mouseenter(function() {
 		$(this).children('i').attr('style', `transform: translateX(${$(this).width() / 2 - $(this).children('i').width() / 2}px);`);
 		$(this).addClass('slide');
@@ -90,5 +91,9 @@ $(document).ready(() => {
 			$(this).children('i').removeAttr('style');
 			$(this).removeClass('slide');
 		});
+	});
+
+	$('.navbar-toggle').click(function() {
+		
 	});
 });

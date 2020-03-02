@@ -42,7 +42,7 @@
 							</p>
 							<p class="post-created-by">
 								<span>{{ __('By') }}</span>
-								<a class="{{ link_role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
+								<a class="{{ role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
 									{{ $post->user->username }}
 								</a>
 								{{ pretty_date($post->updated_at) }}

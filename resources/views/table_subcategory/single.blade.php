@@ -49,7 +49,7 @@
 									</a>
 									<div>
 										<span>{{ __('By') }}</span>
-										<a class="thread-author-link {{ link_role_coloring($thread->user->role) }}" 
+										<a class="thread-author-link {{ role_coloring($thread->user->role) }}" 
 											href="{{route('user_show', [$thread->user->username])}}">
 											{{ $thread->user->username }}
 										</a>
@@ -69,7 +69,7 @@
 							</p>
 							<p class="post-created-by">
 								<span>{{ __('By') }}</span>
-								<a class="{{ link_role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
+								<a class="{{ role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
 									{{ $post->user->username }}
 								</a>
 							</p>

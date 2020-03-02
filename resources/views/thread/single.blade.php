@@ -73,7 +73,7 @@
 						<div class="post-body d-flex flex-row">
 							<div class="col p-2 user-meta">
 								<p class="user-link">
-									<a class="{{ link_role_coloring(auth()->user()->role) }}" href="#">
+									<a class="{{ role_coloring(auth()->user()->role) }}" href="#">
 										{{ auth()->user()->username }}
 									</a>
 								</p>

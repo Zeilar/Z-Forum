@@ -252,13 +252,13 @@ if (!function_exists('get_online_users')) {
  * 
  * @return string
  */
-if (!function_exists('link_role_coloring')) {
-	function link_role_coloring(string $role) {
+if (!function_exists('role_coloring')) {
+	function role_coloring(string $role) {
 		switch ($role) {
 			case 'superadmin':
-				return 'is-superadmin';
+				return 'is_superadmin';
 			case 'moderator':
-				return 'is-moderator';
+				return 'is_moderator';
 			default:
 				return '';
 		}

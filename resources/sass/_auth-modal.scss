@@ -1,12 +1,8 @@
 .modal-auth {
 	width: 35rem;
 
-	a {
-		text-decoration: underline;
-
-		&:hover {
-			text-decoration: underline;
-		}
+	a:visited {
+		color: $link;
 	}
 
 	::placeholder {

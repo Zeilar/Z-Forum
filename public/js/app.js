@@ -78012,6 +78012,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
+__webpack_require__(/*! ./jquery-plugins */ "./resources/js/jquery-plugins.js");
+
 __webpack_require__(/*! ./latest-posts */ "./resources/js/latest-posts.js");
 
 __webpack_require__(/*! ./events */ "./resources/js/events.js");
@@ -78192,7 +78194,8 @@ $(document).ready(function () {
 
   $('#scroller').click(function () {
     window.scrollTo(0, 0);
-  });
+  }); // File upload button animation
+
   $('.file-upload').mouseenter(function () {
     $(this).children('i').attr('style', "transform: translateX(".concat($(this).width() / 2 - $(this).children('i').width() / 2, "px);"));
     $(this).addClass('slide');
@@ -78201,7 +78204,27 @@ $(document).ready(function () {
       $(this).removeClass('slide');
     });
   });
+  $('.navbar-toggle').click(function () {});
 });
+
+/***/ }),
+
+/***/ "./resources/js/jquery-plugins.js":
+/*!****************************************!*\
+  !*** ./resources/js/jquery-plugins.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function ($) {// $.fn.navbarOpen = function() {
+  //     this.css( "color", "red" );
+  //     return this;
+  // };
+  // $.fn.navbarClose = function() {
+  //     this.css( "color", "red" );
+  //     return this;
+  // };
+})(jQuery);
 
 /***/ }),
 

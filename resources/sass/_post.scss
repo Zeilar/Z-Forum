@@ -1,8 +1,13 @@
 .post {
 	background: #e9ecef;
 
+	&.is_author .post-header {
+		background: $green;
+	}
+
 	.post-header {
 		box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+		padding: 0.25rem 0;
 		background: $gray;
 
 		a {
@@ -14,10 +19,6 @@
 				color: white;
 			}
 		}
-	}
-
-	&.is_author .post-header {
-		background: $green;
 	}
 
 	.post-body {
