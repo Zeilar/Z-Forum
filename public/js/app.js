@@ -78149,17 +78149,20 @@ $(document).ready(function () {
       $(this).removeClass('is-invalid');
       $('#passwords-no-match').remove();
     }
+  });
+  $('.modal-auth input').change(function () {
+    var test = $(this).closest('form'); //console.log(test.children());
   }); // Open modals depending on which error element has been spawned
 
   if ($('#registerModal .is-invalid').length) {
     $('#registerModal').modal('show');
     $('.modal').on('shown.bs.modal', function () {
-      $('#registerModal .is-invalid').focus();
+      $('#registerModal .is-invalid').first().focus();
     });
   } else if ($('#loginModal .is-invalid').length) {
     $('#loginModal').modal('show');
     $('.modal').on('shown.bs.modal', function () {
-      $('#loginModal .is-invalid').focus();
+      $('#loginModal .is-invalid').first().focus();
     });
   } else if ($('#errorModal #error-any').length) {
     $('#errorModal').modal('show');

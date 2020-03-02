@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function login(Request $request)
 	{
 		// Validation - since user is already created nothing is required except the field not being empty
-		$test = $this->validate(
+		$this->validate(
 			$request,
 			[
 				'id'	   => 'required',
@@ -25,7 +25,6 @@ class AuthController extends Controller
 				'password.required' => __('Password is required'),
 			]
 		);
-		dd($test);
 
 		// Determine if input is email or username
 		$id = request()->input('id');
