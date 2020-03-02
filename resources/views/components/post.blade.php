@@ -18,7 +18,7 @@
 			</p>
 			<p class="user-role">{{ __(ucfirst($post->user->role)) }}</p>
 			<div class="w-50">
-				<img class="img-fluid py-2" src="/storage/{{$post->user->avatar}}" />
+				<img class="img-fluid py-2" src="/storage/user-avatars/{{$post->user->avatar}}" />
 			</div>
 			<p class="user-date">{{ __('Registered: ' . date('M Y', strtotime($post->user->created_at))) }}</p>
 		</div>

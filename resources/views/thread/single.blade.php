@@ -79,7 +79,7 @@
 								</p>
 								<p class="user-role">{{ __(ucfirst(auth()->user()->role)) }}</p>
 								<div class="w-50">
-									<img class="img-fluid py-2" src="/storage/{{auth()->user()->avatar}}" />
+									<img class="img-fluid py-2" src="/storage/user-avatars/{{auth()->user()->avatar}}" />
 								</div>
 								<p class="user-date">{{ __('Registered: ' . date('M Y', strtotime(auth()->user()->created_at))) }}</p>
 							</div>

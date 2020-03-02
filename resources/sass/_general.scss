@@ -111,14 +111,14 @@ input::placeholder {
 }
 
 .is_superadmin {
-	color: rgb(255, 0, 0) !important;
+	color: rgb(148, 48, 98) !important;
 	
 	&:hover {
 		color: $green !important;
 	}
 }
 div.is_superadmin {
-	background: linear-gradient(90deg, rgb(150, 0, 0) 65%, $gray 100%) !important;
+	background: linear-gradient(90deg, rgb(0, 144, 180) 30%, black 100%) !important;
 }
 
 .is_moderator {
