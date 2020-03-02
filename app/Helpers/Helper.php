@@ -1,4 +1,7 @@
 <?php
+
+require_once 'Variables.php';
+
 /**
  * Custom functions
  * 
@@ -75,11 +78,10 @@ if (!function_exists('is_role')) {
 if (!function_exists('pretty_date')) {
 	function pretty_date(string $date) {
 		$date = strtotime($date);
-		$day = 60 * 60 * 24;
 
-		if ((time() - $date < $day)) {
+		if ((time() - $date < DAY_IN_SECONDS)) {
 			return __('Today') . ', ' . date('H:i', $date);
-		} else if ((time() - $date) > 60 * 60 * 24 && (time() - $date) < $day * 2) {
+		} else if ((time() - $date) > 60 * 60 * 24 && (time() - $date) < DAY_IN_SECONDS * 2) {
 			return __('Yesterday') . ', ' . date('H:i', $date);
 		} else {
 			return date('Y-m-d', $date);

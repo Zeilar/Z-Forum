@@ -12,7 +12,7 @@
 						<label>{{ __('Username or email') }}</label>
 						@if (session('error-id')) <p class="color-red" id="error-id">{{ session('error-id') }}</p> @endif
 						<input type="text" id="login_id" name="id" autocomplete="off"
-							class="form-control @if (session('error-id')) is-invalid @endif" value="{{old('id')}}" required autofocus
+							class="form-control @if (session('error-id')) is-invalid @endif" value="{{old('id')}}" autofocus
 						/>
 					</div>
 					<div class="form-group">
@@ -21,7 +21,7 @@
 							@if (session('error-password')) <p class="color-red" id="error-password">{{ session('error-password') }}</p> @endif
 						</div>
 						<div class="password-row">
-							<input type="password" id="login_password" name="password" required
+							<input type="password" id="login_password" name="password"
 								class="form-control @if (session('error-password')) is-invalid @endif" 
 							/>
 							<button class="password-revealer" type="button">
@@ -39,7 +39,9 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" class="btn rounded btn-block btn-success pull-right" value="{{__('Login')}}">
+					<button type="submit" class="btn spin rounded btn-block btn-success pull-right">
+						{{__('Login')}}
+					</button>
 					<p>
 						{{ __('Not a member?') }}
 						<a data-toggle="modal" data-dismiss="modal" href="#registerModal">{{ __('Sign up') }}</a>
