@@ -46,7 +46,7 @@
 				@else
 					<ul class="nav-items">
 						<li class="nav-item">
-							<a class="nav-link" data-toggle="modal" href="#registerModal">{{ __('Register') }}</a>
+							<a class="nav-link" id="register-button" data-toggle="modal" href="#registerModal">{{ __('Register') }}</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" id="login-button" data-toggle="modal" href="#loginModal">{{ __('Login') }}</a>

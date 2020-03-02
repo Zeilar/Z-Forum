@@ -32,12 +32,12 @@
 	</div>
 
 	<div class="thread">
+		<?php $i = 1; ?>
 		@foreach ($posts as $post)
-			@component('components.post', ['post' => $post])
-				@slot('banner_link')
-					<a href="{{route('post_permalink', [$post->id])}}">{{ __('Permalink') }} &raquo;</a>
-				@endslot
+			@component('components.post', ['post' => $post, 'i' => $i])
+
 			@endcomponent
+			<?php $i++; ?>
 		@endforeach
 	</div>
 
@@ -67,7 +67,7 @@
 								{{ date('H:i') }}
 							</span>
 							<span class="post-thread px-2">
-								<a>{{ __('Permalink') }} &raquo;</a>
+								<a>{{ __('Permalink') }}</a>
 							</span>
 						</div>
 						<div class="post-body d-flex flex-row">
