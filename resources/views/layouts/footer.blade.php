@@ -1,3 +1,3 @@
 <footer class="container-fluid" id="footer">
-	Footer
+	Z-Forum © 2020 {{ __('All Rights Reserved') }}
 </footer>

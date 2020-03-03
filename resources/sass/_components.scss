@@ -1,5 +1,5 @@
 ::selection {
-	background: black;
+	background: $body-bg;
 	color: $green;
 }
 
@@ -86,7 +86,7 @@ input[type=file] {
 
 .spin {
 	&.loading {
-		background: black !important;
+		background: black;
 
 		.fas {
 			animation-name: spin;
@@ -105,8 +105,8 @@ input[type=file] {
 		}
 
 		&:hover, &:active, &:focus {
-			background: black !important;
-			box-shadow: none !important;
+			background: black;
+			box-shadow: none;
 			cursor: default;
 		}
 	}

@@ -11383,7 +11383,7 @@ a.text-dark:focus {
   color: #fff;
   background-color: #00c26e;
   border-color: #00a05b;
-  box-shadow: 0 0 0 0.1rem rgba(0, 194, 110, 0.95);
+  box-shadow: 0 0 0 0.1rem #00c26e;
 }
 
 .btn-success.disabled,
@@ -11412,7 +11412,7 @@ a.text-dark:focus {
 .btn-success:not(:disabled):not(.disabled):active:focus,
 .btn-success:not(:disabled):not(.disabled).active:focus,
 .show > .btn-success.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem rgba(0, 194, 110, 0.95);
+  box-shadow: 0 0 0 0.1rem #00c26e;
 }
 
 .container-fluid#content,
@@ -11653,12 +11653,12 @@ a.text-dark:focus {
 }
 
 ::-moz-selection {
-  background: black;
+  background: #18171c;
   color: #00c26e;
 }
 
 ::selection {
-  background: black;
+  background: #18171c;
   color: #00c26e;
 }
 
@@ -11757,7 +11757,7 @@ input[type=file] {
 }
 
 .spin.loading {
-  background: black !important;
+  background: black;
 }
 
 .spin.loading .fas {
@@ -11798,8 +11798,8 @@ input[type=file] {
 .spin.loading:hover,
 .spin.loading:active,
 .spin.loading:focus {
-  background: black !important;
-  box-shadow: none !important;
+  background: black;
+  box-shadow: none;
   cursor: default;
 }
 
@@ -11911,26 +11911,6 @@ a:visited:hover {
 
 a:visited {
   color: #135386;
-}
-
-.bg-dark {
-  background: #1f1f1f !important;
-}
-
-.bg-green {
-  background: #00c26e !important;
-}
-
-.bg-light {
-  background: #dfdfdf !important;
-}
-
-.bg-darkgreen {
-  background: #00a05b !important;
-}
-
-.bg-black {
-  background: black !important;
 }
 
 .color-green {
@@ -12126,15 +12106,16 @@ a:visited {
 }
 
 #footer {
-  background: rgba(31, 31, 31, 0.95);
   border-top: 2px solid #00c26e;
-  padding: 0.5% 10%;
+  background: black;
+  text-align: center;
+  padding: 1% 10%;
   margin-top: auto;
   color: white;
 }
 
 .table-wrapper {
-  background: rgba(39, 39, 39, 0.95);
+  background: #1f1f1f;
   padding: 0.25rem;
 }
 
@@ -12157,7 +12138,7 @@ a:visited {
 
 .table-wrapper .table .table-category,
 .table-wrapper .table .table-subcategory {
-  background: rgba(0, 194, 110, 0.95);
+  background: #00c26e;
 }
 
 .table-wrapper .table .table-category a {
@@ -12169,11 +12150,11 @@ a:visited {
 }
 
 .table-wrapper .table .table-row {
-  background: rgba(31, 31, 31, 0.95);
+  background: #1f1f1f;
 }
 
-.table-wrapper .table .table-row:nth-child(even) {
-  background: rgba(39, 39, 39, 0.95);
+.table-wrapper .table .table-row:nth-child(odd) {
+  background: #2b2b34e6;
 }
 
 .table-wrapper .table td {

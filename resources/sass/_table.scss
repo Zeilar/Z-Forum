@@ -1,5 +1,5 @@
 .table-wrapper {
-	background: $transparent-lightgray;
+	background: $gray;
 	padding: 0.25rem;
 
 	.table {
@@ -18,7 +18,7 @@
 		}
 
 		.table-category, .table-subcategory {
-			background: $transparent-green;
+			background: $green;
 		}
 	
 		.table-category {
@@ -32,10 +32,10 @@
 		}
 	
 		.table-row {
-			background: $transparent-gray;
+			background: $gray;
 	
-			&:nth-child(even) {
-				background: $transparent-lightgray;
+			&:nth-child(odd) {
+				background: $darkindigo;
 			}
 		}
 	

@@ -39,7 +39,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn spin rounded btn-block btn-success pull-right">
+					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
 						{{__('Login')}}
 					</button>
 					<p>
