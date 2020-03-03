@@ -111,12 +111,14 @@ $(document).ready(() => {
 		
 	});
 
-	// Copy link instead of opening it, and spawn a little bubble notification
+	// Copy link instead of opening it, and spawn a small bubble notification
 	$('.post-link a').click(function(e) {
 		e.preventDefault();
 
-		console.log($(this).siblings('.copy-notification'))
-		if ($(this).siblings('.copy-notification').length) $(this).siblings('.copy-notification').remove();
+		// Remove all other currently displayed notifications before we start
+		$('.copy-notification').each(function() {
+			$(this).remove();
+		});
 
 		// Need some sort of text to copy
 		$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`).attr('id', 'tooltip');
