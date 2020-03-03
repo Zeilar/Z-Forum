@@ -68,6 +68,7 @@ class AuthController extends Controller
 				'email.required' 		=> __('Email is required'),
 				'username.unique' 		=> __('That username has already been taken'),
 				'email.unique' 			=> __('That email has already been taken'),
+				'email.email'			=> __('Invalid email'),
 				'username.alpha_dash'	=> __('Username must consist of alphabetic and numeric characters'),
 				'username.min'	 		=> __('Password must be at least 3 character long'),
 				'password.min'	 		=> __('Password must be at least 6 character long'),

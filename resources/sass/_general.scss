@@ -62,3 +62,9 @@ a {
 		padding-right: 0;
 	}
 }
+
+[disabled] {
+	&::after {
+		
+	}
+}
