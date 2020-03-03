@@ -1,6 +1,5 @@
 ::selection {
-	background: $body-bg;
-	color: $green;
+	color: rgb(0, 255, 255);
 }
 
 .fas {
@@ -16,6 +15,10 @@
 	background: $gray;
 	color: white;
 	border-top: 0;
+
+	a, a:visited {
+		color: $green;
+	}
 }
 
 #scroller {

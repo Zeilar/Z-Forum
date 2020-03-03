@@ -24,12 +24,13 @@ img, input::placeholder {
 }
 
 a {
+	color: $green;
 	&:hover, &:visited:hover {
 		text-decoration: none;
-		color: $green;
+		color: white;
 	}
 	&:visited {
-		color: rgb(19, 83, 134);
+		color: rgb(0, 134, 29);
 	}
 }
 
@@ -60,11 +61,5 @@ a {
 
 	button {
 		padding-right: 0;
-	}
-}
-
-[disabled] {
-	&::after {
-		
 	}
 }
