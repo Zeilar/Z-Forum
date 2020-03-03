@@ -40,7 +40,11 @@ $(document).ready(() => {
 		modal.find('input').not('[name=_token]').each(function() {
 			if ($(this).val() !== '') emptyFields -= 1;
 		});
-		if (emptyFields === 0) modal.find('[disabled]').removeAttr('disabled');
+		if (emptyFields === 0) {
+			modal.find('[disabled]').removeAttr('disabled');
+		} else {
+			modal.find('[type=submit]').attr('disabled', true);
+		}
 	});
 	
 	// Open modals depending on which error element has been spawned
