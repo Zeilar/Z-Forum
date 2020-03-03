@@ -75,16 +75,28 @@
 				}
 
 				.copy-notification {
-					transition: opacity 1s ease-out;
-					box-shadow: 0 0 5px 0px black;
 					transform: translate(-50%, -50%);
+					box-shadow: 0 0 5px 0px black;
+					animation: fade-in 2s;
 					padding: 0.5rem 0.65rem;
 					background: #141414;
 					border-radius: 10px;
 					position: absolute;
-					opacity: 1;
+					opacity: 0;
 					top: -160%;
 					left: 50%;
+
+					@keyframes fade-in {
+						10% {
+							opacity: 1;
+						}
+						80% {
+							opacity: 1;
+						}
+						100% {
+							opacity: 0;
+						}
+					}
 
 					span {
 						user-select: none;

@@ -12284,18 +12284,46 @@ a:visited {
 }
 
 .post .post-header .post-meta .post-link .copy-notification {
-  -webkit-transition: opacity 1s ease-out;
-  transition: opacity 1s ease-out;
-  box-shadow: 0 0 5px 0px black;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px 0px black;
+  -webkit-animation: fade-in 2s;
+          animation: fade-in 2s;
   padding: 0.5rem 0.65rem;
   background: #141414;
   border-radius: 10px;
   position: absolute;
-  opacity: 1;
+  opacity: 0;
   top: -160%;
   left: 50%;
+}
+
+@-webkit-keyframes fade-in {
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .post .post-header .post-meta .post-link .copy-notification span {
