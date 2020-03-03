@@ -111,12 +111,27 @@ $(document).ready(() => {
 		
 	});
 
-	// Copy link instead of opening it
+	// Copy link instead of opening it, and spawn a little bubble notification
 	$('.post-link a').click(function(e) {
 		e.preventDefault();
+
+		console.log($(this).siblings('.copy-notification'))
+		if ($(this).siblings('.copy-notification').length) $(this).siblings('.copy-notification').remove();
+
+		// Need some sort of text to copy
 		$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`).attr('id', 'tooltip');
+
+		// Copy the text and remove the dummy element
 		$('#copy').select();
 		document.execCommand('copy');
 		$('#copy').remove();
+
+		// Create the tooltip, and save its parent so we know which to remove automatically afterwards, in case user spawns multiple
+		let tooltip = $(this).parent().append('<div class="copy-notification"><span>Copied!</span></div>');
+
+		// Remove the targeted tooltip
+		setTimeout(() => {
+			tooltip.find('.copy-notification').remove();
+		}, 2000);
 	});
 });
