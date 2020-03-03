@@ -110,4 +110,13 @@ $(document).ready(() => {
 	$('.navbar-toggle').click(function() {
 		
 	});
+
+	// Copy link instead of opening it
+	$('.post-link a').click(function(e) {
+		e.preventDefault();
+		$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`)
+		$('#copy').select();
+		document.execCommand('copy');
+		$('#copy').remove();
+	});
 });
