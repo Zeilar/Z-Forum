@@ -78223,7 +78223,7 @@ $(document).ready(function () {
 
   $('.post-link a').click(function (e) {
     e.preventDefault();
-    $(this).append("<textarea id=\"copy\">".concat($(this).attr('href'), "</textarea>"));
+    $(this).append("<textarea id=\"copy\">".concat($(this).attr('href'), "</textarea>")).attr('id', 'tooltip');
     $('#copy').select();
     document.execCommand('copy');
     $('#copy').remove();

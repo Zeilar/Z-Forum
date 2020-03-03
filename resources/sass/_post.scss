@@ -56,6 +56,7 @@
 
 			.post-link {
 				a {
+					position: relative;
 					color: white;
 
 					&:hover {
@@ -68,6 +69,18 @@
 
 					i.fas {
 						color: white;
+					}
+
+					&#tooltip {
+						&::after {
+							transform: translateX(-50%);
+							pointer-events: none;
+							position: absolute;
+							content: 'Copied!';
+							color: white;
+							top: -2rem;
+							left: 50%;
+						}
 					}
 				}
 			}

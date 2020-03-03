@@ -114,7 +114,7 @@ $(document).ready(() => {
 	// Copy link instead of opening it
 	$('.post-link a').click(function(e) {
 		e.preventDefault();
-		$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`)
+		$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`).attr('id', 'tooltip');
 		$('#copy').select();
 		document.execCommand('copy');
 		$('#copy').remove();
