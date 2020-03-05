@@ -42,7 +42,7 @@
 	</div>
 
 	@auth
-		<div class="w-50 mx-auto my-2 bg-light" id="quick-reply">
+		<div class="mx-auto my-2 bg-light" id="quick-reply">
 			<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 				@csrf
 				<textarea type="text" name="content" id="form-content"></textarea>
@@ -59,41 +59,15 @@
 		<script>
 			$('.preview-button').click(function() {
 				let content = $('.note-editable').html();
-				let postFormat = `
-					<article class="post is_author" id="preview">
-						<div class="post-header row m-0 justify-content-between">
-							<span class="post-date px-2 color-white">
-								{{ __('Today,') }}
-								{{ date('H:i') }}
-							</span>
-							<span class="post-thread px-2">
-								<a>{{ __('Permalink') }}</a>
-							</span>
-						</div>
-						<div class="post-body d-flex flex-row">
-							<div class="col p-2 user-meta">
-								<p class="user-link">
-									<a class="{{ role_coloring(auth()->user()->role) }}" href="#">
-										{{ auth()->user()->username }}
-									</a>
-								</p>
-								<p class="user-role">{{ __(ucfirst(auth()->user()->role)) }}</p>
-								<div class="w-50">
-									<img class="img-fluid py-2" src="/storage/user-avatars/{{auth()->user()->avatar}}" />
-								</div>
-								<p class="user-date">{{ __('Registered: ' . date('M Y', strtotime(auth()->user()->created_at))) }}</p>
-							</div>
-							<div class="col p-2 post-content">
-								
-							</div>
-						</div>
-					</article>
-				`;
 
 				if (!$('#preview').length) {
-					$('.thread').append(postFormat);
+					$('.thread').append(`
+						@component('components.post', ['post' => 'preview'])
+
+						@endcomponent
+					`);
 				}
-				$('#preview .post-content').html(content);
+				$('#preview .post-body').html(content);
 			});
 		</script>
 	@endauth

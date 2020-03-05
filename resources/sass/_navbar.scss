@@ -6,6 +6,12 @@
 	height: 5rem;
 	top: 0;
 
+	.nav-avatar {
+		border: 2px solid $green;
+		margin-left: 1rem;
+		width: 2.5rem;
+	}
+
 	#navbar-container {
 		position: relative;
 
@@ -15,7 +21,9 @@
 		}
 
 		form {
+
 			.nav-search {
+				border-top: 2px solid transparent;
 				border-bottom: 2px solid $green;
 				background: transparent;
 				margin-left: 2rem;
@@ -62,11 +70,6 @@
 				flex-direction: row-reverse;
 				display: flex;
 
-				.nav-avatar {
-					border: 2px solid $green;
-					width: 2.5rem;
-				}
-
 				.nav-items {
 					flex-direction: row-reverse;
 					display: flex;
@@ -92,25 +95,13 @@
 								background: $green;
 
 								&:hover {
-									border-color: rgb(0, 200, 200);
-									background: rgb(0, 200, 200);
+									border-color: $darkturqoise;
+									background: $darkturqoise;
 								}
 							}
 						}
 					}
 				}
-			}
-		}
-
-		.extra-nav-items {
-			border: 2px solid transparent;
-			flex-direction: row;
-			position: absolute;
-			display: flex;
-			width: 100%;
-
-			.extra-nav-item {
-				opacity: 0;
 			}
 		}
 	}

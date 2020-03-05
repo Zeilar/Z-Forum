@@ -78218,8 +78218,7 @@ $(document).ready(function () {
       $(this).children('i').removeAttr('style');
       $(this).removeClass('slide');
     });
-  });
-  $('.navbar-toggle').click(function () {}); // Copy link instead of opening it, and spawn a small bubble notification
+  }); // Copy link instead of opening it, and spawn a small bubble notification
 
   $('.permalink').click(function (e) {
     e.preventDefault(); // Remove all other currently displayed notifications before we start

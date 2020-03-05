@@ -11974,6 +11974,12 @@ a:visited {
   top: 0;
 }
 
+.navbar .nav-avatar {
+  border: 2px solid #00c26e;
+  margin-left: 1rem;
+  width: 2.5rem;
+}
+
 .navbar #navbar-container {
   position: relative;
 }
@@ -11984,6 +11990,7 @@ a:visited {
 }
 
 .navbar #navbar-container form .nav-search {
+  border-top: 2px solid transparent;
   border-bottom: 2px solid #00c26e;
   background: transparent;
   margin-left: 2rem;
@@ -12057,11 +12064,6 @@ a:visited {
   display: flex;
 }
 
-.navbar #navbar-container .navbar-content .nav-list .nav-avatar {
-  border: 2px solid #00c26e;
-  width: 2.5rem;
-}
-
 .navbar #navbar-container .navbar-content .nav-list .nav-items {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
@@ -12099,21 +12101,6 @@ a:visited {
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button:hover {
   border-color: #00c8c8;
   background: #00c8c8;
-}
-
-.navbar #navbar-container .extra-nav-items {
-  border: 2px solid transparent;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  position: absolute;
-  display: -webkit-box;
-  display: flex;
-  width: 100%;
-}
-
-.navbar #navbar-container .extra-nav-items .extra-nav-item {
-  opacity: 0;
 }
 
 .thread-title {
@@ -12226,7 +12213,7 @@ a:visited {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
-  color: #a5abaf;
+  color: white;
   padding: 1rem;
   display: -webkit-box;
   display: flex;
@@ -12240,22 +12227,35 @@ a:visited {
 }
 
 .post .post-header .post-meta .post-meta-text.is_author {
-  background: #00c26e;
+  background: -webkit-gradient(linear, left top, right top, from(#00a05b), to(#2b2b34e6));
+  background: linear-gradient(to right, #00a05b, #2b2b34e6);
+}
+
+.post .post-header .post-meta .post-meta-text.is_author .post-meta-left .post-author a:hover,
+.post .post-header .post-meta .post-meta-text.is_author .post-meta-right .post-link:hover {
+  color: #00ffff;
+}
+
+.post .post-header .post-meta .post-meta-text.is_author .post-meta-left .post-author a:hover i,
+.post .post-header .post-meta .post-meta-text.is_author .post-meta-left .post-author a:hover .permalink,
+.post .post-header .post-meta .post-meta-text.is_author .post-meta-right .post-link:hover i,
+.post .post-header .post-meta .post-meta-text.is_author .post-meta-right .post-link:hover .permalink {
+  color: #00ffff;
+}
+
+.post .post-header .post-meta .post-meta-text .post-author a,
+.post .post-header .post-meta .post-meta-text .post-author a:visited {
+  color: white;
+}
+
+.post .post-header .post-meta .post-meta-text .post-author a:hover,
+.post .post-header .post-meta .post-meta-text .post-author a:visited:hover {
+  color: #00c26e;
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-left,
 .post .post-header .post-meta .post-meta-text .post-meta-right {
   margin: auto 0;
-}
-
-.post .post-header .post-meta .post-meta-text .post-meta-left .post-author a,
-.post .post-header .post-meta .post-meta-text .post-meta-left .post-author a:visited {
-  color: white;
-}
-
-.post .post-header .post-meta .post-meta-text .post-meta-left .post-author a:hover,
-.post .post-header .post-meta .post-meta-text .post-meta-left .post-author a:visited:hover {
-  color: #00c26e;
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-left .post-author-role {

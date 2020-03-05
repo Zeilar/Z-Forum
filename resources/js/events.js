@@ -107,10 +107,6 @@ $(document).ready(() => {
 		});
 	});
 
-	$('.navbar-toggle').click(function() {
-		
-	});
-
 	// Copy link instead of opening it, and spawn a small bubble notification
 	$('.permalink').click(function(e) {
 		e.preventDefault();
