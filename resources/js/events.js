@@ -34,7 +34,8 @@ $(document).ready(() => {
 		}
 	});
 
-	$('.modal-auth input').change(function() {
+	// Turn disabled off if all inputs are filled, otherwise turn it on
+	$('.modal-auth input').on('input', function() {
 		let modal = $(this).closest('form');
 		let emptyFields = modal.find('input').not('[name=_token]').length;
 		modal.find('input').not('[name=_token]').each(function() {

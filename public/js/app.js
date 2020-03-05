@@ -78151,8 +78151,9 @@ $(document).ready(function () {
       $(this).removeClass('is-invalid');
       $('#passwords-no-match').remove();
     }
-  });
-  $('.modal-auth input').change(function () {
+  }); // Turn disabled off if all inputs are filled, otherwise turn it on
+
+  $('.modal-auth input').on('input', function () {
     var modal = $(this).closest('form');
     var emptyFields = modal.find('input').not('[name=_token]').length;
     modal.find('input').not('[name=_token]').each(function () {
