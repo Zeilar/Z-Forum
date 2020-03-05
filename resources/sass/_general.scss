@@ -2,6 +2,10 @@ p, h1, h2, h3, h4, h5, h6, ul, ol {
 	margin: 0;
 }
 
+p, a, span {
+	font-size: $font-size-base;
+}
+
 ul, ol {
 	list-style: none;
 	padding: 0;

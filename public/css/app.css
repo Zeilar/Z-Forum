@@ -11665,14 +11665,8 @@ a.text-dark:focus {
 }
 
 .breadcrumbs {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-  border: 2px solid #00c26e;
-  padding: 0.5rem 0.75rem;
-  margin-top: -1rem;
-  background: #1f1f1f;
+  padding: 0.5rem 1rem;
   color: white;
-  border-top: 0;
 }
 
 .breadcrumbs a,
@@ -11865,6 +11859,12 @@ h6,
 ul,
 ol {
   margin: 0;
+}
+
+p,
+a,
+span {
+  font-size: 1rem;
 }
 
 ul,
@@ -12258,8 +12258,16 @@ a:visited {
   color: #00c26e;
 }
 
+.post .post-header .post-meta .post-meta-text .post-meta-left .post-author-role {
+  font-size: 0.8rem;
+}
+
 .post .post-header .post-meta .post-meta-text .post-meta-right {
   text-align: right;
+}
+
+.post .post-header .post-meta .post-meta-text .post-meta-right .post-i {
+  font-size: 0.8rem;
 }
 
 .post .post-header .post-meta .post-link {
