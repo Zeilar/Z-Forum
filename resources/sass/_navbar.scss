@@ -76,16 +76,9 @@
 						padding: 0;
 
 						.nav-link {
-							border: 2px solid $green;
 							padding: 0.5rem 1.5rem;
 							user-select: none;
-							color: $green;
-
-							&:hover {
-								transition: background 0.1s ease-out;
-								background: $green;
-								color: white;
-							}
+							color: white;
 
 							&#login-button {
 								background: none;
@@ -94,7 +87,14 @@
 							}
 
 							&#register-button {
+								border: 2px solid $green;
 								border-radius: 2rem;
+								background: $green;
+
+								&:hover {
+									border-color: rgb(0, 200, 200);
+									background: rgb(0, 200, 200);
+								}
 							}
 						}
 					}

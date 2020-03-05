@@ -8,7 +8,7 @@
 	<form action="{{route('thread_store', [$subcategory->id, $subcategory->slug])}}" method="POST">
 		@csrf
 
-		<input class="bg-dark" type="text" name="title" id="title">
+		<input type="text" name="title" id="title">
 
 		<textarea name="content" id="form-content" value="Post"></textarea>
 		

@@ -13,7 +13,7 @@
 
 	@endcomponent
 
-	<div class="thread-title mt-4 mb-2 bg-dark">
+	<div class="thread-title">
 		<div class="d-flex flex-row">
 			@if (is_role('superadmin'))
 				<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">

@@ -112,7 +112,7 @@ $(document).ready(() => {
 	});
 
 	// Copy link instead of opening it, and spawn a small bubble notification
-	$('.post-link a').click(function(e) {
+	$('.permalink').click(function(e) {
 		e.preventDefault();
 
 		// Remove all other currently displayed notifications before we start

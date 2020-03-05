@@ -12076,19 +12076,11 @@ a:visited {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link {
-  border: 2px solid #00c26e;
   padding: 0.5rem 1.5rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  color: #00c26e;
-}
-
-.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link:hover {
-  -webkit-transition: background 0.1s ease-out;
-  transition: background 0.1s ease-out;
-  background: #00c26e;
   color: white;
 }
 
@@ -12099,7 +12091,14 @@ a:visited {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button {
+  border: 2px solid #00c26e;
   border-radius: 2rem;
+  background: #00c26e;
+}
+
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button:hover {
+  border-color: #00c8c8;
+  background: #00c8c8;
 }
 
 .navbar #navbar-container .extra-nav-items {
@@ -12118,8 +12117,9 @@ a:visited {
 }
 
 .thread-title {
-  border: 2px solid #00c26e;
-  padding: 0.75rem;
+  background: #2b2b34e6;
+  margin-bottom: 2px;
+  padding: 1rem;
 }
 
 #footer {

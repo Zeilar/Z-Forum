@@ -34,7 +34,7 @@
 						@isset ($banner_link) 
 							{{ $banner_link }}
 						@else
-							<a href="{{route('post_permalink', [$post->id])}}">
+							<a class="permalink" href="{{route('post_permalink', [$post->id])}}">
 								{{ pretty_date($post->created_at) }}
 								<i class="fas fa-link"></i>	
 							</a>
