@@ -16,8 +16,17 @@
 		position: relative;
 
 		.navbar-brand {
-			margin-right: 0.5rem;
-			width: 10rem;
+			display: flex;
+			width: 13rem;
+
+			img {
+				margin-right: 5px;
+				width: 10rem;
+			}
+
+			i {
+				width: 3rem;
+			}
 		}
 
 		form {

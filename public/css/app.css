@@ -11985,8 +11985,18 @@ a:visited {
 }
 
 .navbar #navbar-container .navbar-brand {
-  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  width: 13rem;
+}
+
+.navbar #navbar-container .navbar-brand img {
+  margin-right: 5px;
   width: 10rem;
+}
+
+.navbar #navbar-container .navbar-brand i {
+  width: 3rem;
 }
 
 .navbar #navbar-container form .nav-search {

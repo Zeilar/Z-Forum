@@ -2,8 +2,8 @@
 	<div class="container-fluid" id="navbar-container">
 		<a class="navbar-brand" href="{{route('index')}}">
 			<img class="img-fluid" src="/images/zforum-logo.png" alt="{{ __('Navigation bar brand logo') }}" />
+			<i class="fas fa-2x fa-rocket"></i>
 		</a>
-		<i class="fas fa-2x fa-rocket"></i>
 
 		<div class="navbar-content">
 			<nav class="nav-list @guest ml-auto @endguest">
