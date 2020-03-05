@@ -49,7 +49,7 @@ class UsersController extends Controller
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)) {
 			return view('user.single', [
-				'user' => User::find($id) ?? User::where('username', $id)->get(),
+				'user' => User::find($id) ?? User::where('username', $id)->get()[0],
 			]);
 		} else {
 			return view('errors.404');

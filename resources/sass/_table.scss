@@ -37,6 +37,12 @@
 			&:nth-child(odd) {
 				background: $darkindigo;
 			}
+
+			a {
+				&:hover {
+					color: $turqoise;
+				}	
+			}
 		}
 	
 		td {

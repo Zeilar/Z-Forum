@@ -87,6 +87,10 @@
 								background: none;
 								padding: 0.5rem;
 								border: 0;
+
+								&:hover {
+									color: $darkturqoise;
+								}
 							}
 
 							&#register-button {

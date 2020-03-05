@@ -11653,11 +11653,11 @@ a.text-dark:focus {
 }
 
 ::-moz-selection {
-  color: cyan;
+  color: #005aff;
 }
 
 ::selection {
-  color: cyan;
+  color: #005aff;
 }
 
 .fas {
@@ -12092,6 +12092,10 @@ a:visited {
   border: 0;
 }
 
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button:hover {
+  color: #00c8c8;
+}
+
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button {
   border: 2px solid #00c26e;
   border-radius: 2rem;
@@ -12159,6 +12163,10 @@ a:visited {
 
 .table-wrapper .table .table-row:nth-child(odd) {
   background: #2b2b34e6;
+}
+
+.table-wrapper .table .table-row a:hover {
+  color: #00ffff;
 }
 
 .table-wrapper .table td {
