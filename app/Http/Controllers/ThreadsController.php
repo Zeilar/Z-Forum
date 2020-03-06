@@ -90,7 +90,7 @@ class ThreadsController extends Controller
 		if (item_exists(Thread::find($id), $slug)) {
 			return view('thread.single', [
 				'thread' => Thread::find($id),
-				'posts' => Post::where('thread_id', $id)->paginate(5),
+				'posts' => Post::where('thread_id', $id)->paginate(1),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);
