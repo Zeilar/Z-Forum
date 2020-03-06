@@ -72,5 +72,5 @@
 		</script>
 	@endauth
 
-	{{ $posts->links('vendor.pagination.semantic-ui') }}
+	{{ $posts->links('layouts.pagination') }}
 @endsection

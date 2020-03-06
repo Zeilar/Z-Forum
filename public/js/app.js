@@ -78239,18 +78239,53 @@ $(document).ready(function () {
     setTimeout(function () {
       tooltip.find('.copy-notification').remove();
     }, 2000);
-  });
+  }); // Spawn pagination input box
+
   $('.pagination .dots').click(function () {
-    if (!$(this).children('.pagination-go').length) {
-      $(this).append("\n\t\t\t\t<div class=\"pagination-go\">\n\t\t\t\t\t<input type=\"number\" />\n\t\t\t\t\t<a class=\"btn\" href=\"#\">\n\t\t\t\t\t\tGo\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t");
+    // Toggle input box when clicking on the triple dots, if the box already exists
+    if ($('.pagination-go').length) {
+      if ($('.pagination-go').hasClass('hide')) {
+        $('.pagination-go').removeClass('hide');
+      } else {
+        $('.pagination-go').addClass('hide');
+      }
+    } else {
+      // Add the input box if it doesn't exist
+      $(this).parent().append("\n\t\t\t\t<div class=\"pagination-go\" id=\"pagination-go\">\n\t\t\t\t\t<i class=\"fas fa-minus\" id=\"pagination-minus\"></i>\n\t\t\t\t\t<input type=\"tel\" id=\"pagination-input\" value=\"".concat($('.pagination').attr('data-current-page'), "\" />\n\t\t\t\t\t<i class=\"fas fa-plus\" id=\"pagination-plus\"></i>\n\t\t\t\t\t<a class=\"btn\" href=\"#\" id=\"pagination-submit\">\n\t\t\t\t\t\tGo\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t")); // Pagination input incrementers
+
+      $('#pagination-minus').mousedown(function () {
+        var interval = setInterval(function () {
+          $('#pagination-input').val($('#pagination-input').val() - 1);
+        }, 200);
+        $(this).mouseup(function () {
+          clearInterval(interval);
+        });
+      });
+      $('#pagination-plus').mousedown(function () {
+        var interval = setInterval(function () {
+          $('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+        }, 200);
+        $(this).mouseup(function () {
+          clearInterval(interval);
+        });
+      }); // Autofocus when the input box spawns
+
+      $('#pagination-input').focus(); // Handle the submitted page dynamically and redirect to that page
+
       $('.pagination-go a').click(function () {
         window.location.href = "?page=".concat($('.pagination-go input').val());
       });
-    }
+    } // Put cursor at the end of the text
 
-    $('body').click(function (e) {
-      if (e !== $('.pagination-go, .pagination-go input, .pagination-go a')) console.log('do it');
-    });
+
+    document.getElementById('pagination-input').setSelectionRange(100, 100);
+  }); // Hide pagination input box when clicking outside of it or the triple dots
+
+  $(window).click(function (e) {
+    if ( // Only hide it if user does not click on these elements, and if .pagination-go is not already hidden
+    $(e.target).attr('id') !== 'pagination-submit' && $(e.target).attr('id') !== 'pagination-input' && $(e.target).attr('id') !== 'pagination-minus' && $(e.target).attr('id') !== 'pagination-plus' && $(e.target).attr('id') !== 'pagination-dots' && $(e.target).attr('id') !== 'pagination-go' && !$('.pagination-go').hasClass('hide')) {
+      $('.pagination-go').addClass('hide');
+    }
   });
 });
 

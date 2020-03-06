@@ -120,55 +120,83 @@ input[type=file] {
 }
 
 .pagination {
-	.item {
-		margin-right: 0.5rem;
+	.item-wrapper {
 		position: relative;
-		color: $silver;
 
-		&.active {
-			color: $turqoise;
-		}
+		.item {
+			margin-right: 0.5rem;
+			color: $silver;
+			display: flex;
 
-		&:not(.active):hover {
-			color: white;
+			&.active {
+				color: $turqoise;
+			}
+
+			&:not(.active):hover {
+				color: white;
+
+				i {
+					color: white;
+				}
+			}
 
 			i {
-				color: white;
+				font-size: 0.65rem;
+				color: $silver;
+				margin: auto;
 			}
-		}
-
-		i {
-			vertical-align: middle;
-			font-size: 0.75rem;
-			color: $silver;
 		}
 
 		.pagination-go {
 			animation: slide-in 0.25s ease-out 0s 1 normal forwards;
+			transition: opacity 0.25s ease-out;
 			transform: translateX(-50%);
+			background: $darkindigo;
 			flex-direction: row;
 			position: absolute;
+			padding: 0.5rem;
 			display: flex;
-			width: 10rem;
+			width: 12rem;
+			opacity: 1;
+			z-index: 5;
 			left: 50%;
- 
+			top: 100%;
+
+			&.hide {
+				transition: opacity 0.25s ease-in;
+				pointer-events: none;
+				opacity: 0;
+			}
+
 			@keyframes slide-in {
 				to {
-					margin-top: 0.25rem;
+					margin-top: 0.5rem;
 				}
 			}
 
 			input {
+				text-align: center;
+				background: none;
+				margin: 0 10px;
+				color: white;
+				width: 100%;
+				outline: 0;
+				border: 0;
+				
 				&::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
 					appearance: none;
 				}
+			}
 
-				width: 100%;
-				outline: 0;
+			i {
+				font-size: 1.5rem;
+				cursor: pointer;
+				margin: auto;
 			}
 
 			a {
 				background: $green;
+				margin-left: 1rem;
 				color: white;
 			}
 		}
