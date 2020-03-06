@@ -118,3 +118,29 @@ input[type=file] {
 	left: 0; 
 	top: 0;
 }
+
+.pagination {
+
+	.item {
+		margin-right: 0.5rem;
+		color: $silver;
+
+		&.active {
+			color: $turqoise;
+		}
+
+		&:not(.active):hover {
+			color: white;
+
+			i {
+				color: white;
+			}
+		}
+
+		i {
+			vertical-align: middle;
+			font-size: 0.75rem;
+			color: $silver;
+		}
+	}
+}

@@ -75,34 +75,3 @@
 		border-color: white;
 	}
 }
-
-.pagination {
-	.page-item {
-		&.disabled {
-			display: none;
-		}
-
-		&.active {
-			&:hover .page-link, .page-link {
-				color: $turqoise;
-			}
-		}
-
-		&:hover {
-			.page-link {
-				color: white;
-			}
-		}
-
-		.page-link {
-			user-select: none;
-			background: none;
-			color: $silver;
-			border: 0;
-
-			&:focus {
-				box-shadow: none;
-			}
-		}
-	}
-}
