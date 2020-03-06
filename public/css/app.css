@@ -11786,6 +11786,7 @@ input[type=file] {
 
 .pagination .item {
   margin-right: 0.5rem;
+  position: relative;
   color: #a5abaf;
 }
 
@@ -11805,6 +11806,49 @@ input[type=file] {
   vertical-align: middle;
   font-size: 0.75rem;
   color: #a5abaf;
+}
+
+.pagination .item .pagination-go {
+  -webkit-animation: slide-in 0.25s ease-out 0s 1 normal forwards;
+          animation: slide-in 0.25s ease-out 0s 1 normal forwards;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  position: absolute;
+  display: -webkit-box;
+  display: flex;
+  width: 10rem;
+  left: 50%;
+}
+
+@-webkit-keyframes slide-in {
+  to {
+    margin-top: 0.25rem;
+  }
+}
+
+@keyframes slide-in {
+  to {
+    margin-top: 0.25rem;
+  }
+}
+
+.pagination .item .pagination-go input {
+  width: 100%;
+  outline: 0;
+}
+
+.pagination .item .pagination-go input::-webkit-outer-spin-button,
+.pagination .item .pagination-go input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.pagination .item .pagination-go a {
+  background: #00c26e;
+  color: white;
 }
 
 .dashboard-nav .nav-item {
@@ -12310,10 +12354,10 @@ a:visited {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   box-shadow: 0 0 5px 0px black;
-  -webkit-animation: fade-in 2s;
-          animation: fade-in 2s;
   padding: 0.5rem 0.65rem;
   background: #141414;
+  -webkit-animation: fade-in 2s;
+          animation: fade-in 2s;
   border-radius: 10px;
   position: absolute;
   opacity: 0;

@@ -12,7 +12,7 @@
         @foreach ($elements as $element)
             {{-- "Three Dots" Separator --}}
             @if (is_string($element))
-                <a class="item disabled" href="#">{{ $element }}</a>
+                <a class="item dots" href="#">{{ $element }}</a>
             @endif
 
             {{-- Array Of Links --}}

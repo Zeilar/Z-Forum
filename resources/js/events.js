@@ -133,4 +133,25 @@ $(document).ready(() => {
 			tooltip.find('.copy-notification').remove();
 		}, 2000);
 	});
+
+	$('.pagination .dots').click(function() {
+		if (!$(this).children('.pagination-go').length) {
+			$(this).append(`
+				<div class="pagination-go">
+					<input type="number" />
+					<a class="btn" href="#">
+						Go
+					</a>
+				</div>
+			`);
+
+			$('.pagination-go a').click(function() {
+				window.location.href = `?page=${$('.pagination-go input').val()}`;
+			});
+		}
+
+		$('body').click(function(e) {
+			if (e !== $('.pagination-go, .pagination-go input, .pagination-go a')) console.log('do it');
+		});
+	});
 });

@@ -4,14 +4,6 @@
 @section('content')
 	<div class="table-wrapper">
 		<table class="table">
-			<thead>
-				<tr class="table-header">
-					<th class="py-3 forum-section"><h4>{{ __('Forum section') }}</h4></th>
-					<th class="py-3 latest-post"><h4>{{ __('Latest post') }}</h4></th>
-					<th class="py-3 threads text-center"><h4>{{ __('Threads') }}</h4></th>
-					<th class="py-3 posts text-center"><h4>{{ __('Posts') }}</h4></<h4>
-				</tr>
-			</thead>
 			<tbody>
 				@foreach ($tableCategories as $tableCategory)
 					<tr class="table-category">
@@ -32,6 +24,12 @@
 									<a href="{{route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug])}}">
 										{{ __($tableSubcategory->title) }}
 									</a>
+									@foreach ($tableSubcategory->posts as $post)
+										@if ($post->user->role === 'superadmin')
+											<i class="fas color-white fa-rocket"></i>
+											@break
+										@endif
+									@endforeach
 								</div>
 							</td>
 							<td>

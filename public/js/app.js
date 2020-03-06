@@ -78240,6 +78240,18 @@ $(document).ready(function () {
       tooltip.find('.copy-notification').remove();
     }, 2000);
   });
+  $('.pagination .dots').click(function () {
+    if (!$(this).children('.pagination-go').length) {
+      $(this).append("\n\t\t\t\t<div class=\"pagination-go\">\n\t\t\t\t\t<input type=\"number\" />\n\t\t\t\t\t<a class=\"btn\" href=\"#\">\n\t\t\t\t\t\tGo\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t");
+      $('.pagination-go a').click(function () {
+        window.location.href = "?page=".concat($('.pagination-go input').val());
+      });
+    }
+
+    $('body').click(function (e) {
+      if (e !== $('.pagination-go, .pagination-go input, .pagination-go a')) console.log('do it');
+    });
+  });
 });
 
 /***/ }),

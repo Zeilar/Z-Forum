@@ -120,9 +120,9 @@ input[type=file] {
 }
 
 .pagination {
-
 	.item {
 		margin-right: 0.5rem;
+		position: relative;
 		color: $silver;
 
 		&.active {
@@ -141,6 +141,36 @@ input[type=file] {
 			vertical-align: middle;
 			font-size: 0.75rem;
 			color: $silver;
+		}
+
+		.pagination-go {
+			animation: slide-in 0.25s ease-out 0s 1 normal forwards;
+			transform: translateX(-50%);
+			flex-direction: row;
+			position: absolute;
+			display: flex;
+			width: 10rem;
+			left: 50%;
+ 
+			@keyframes slide-in {
+				to {
+					margin-top: 0.25rem;
+				}
+			}
+
+			input {
+				&::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+					appearance: none;
+				}
+
+				width: 100%;
+				outline: 0;
+			}
+
+			a {
+				background: $green;
+				color: white;
+			}
 		}
 	}
 }
