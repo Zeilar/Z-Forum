@@ -165,6 +165,9 @@ $(document).ready(() => {
 				$(this).mouseup(function() {
 					clearInterval(interval);
 				});
+			})
+			.click(function() {
+				$('#pagination-input').val($('#pagination-input').val() - 1);
 			});
 			$('#pagination-plus').mousedown(function() {
 				let interval = setInterval(() => {
@@ -174,6 +177,9 @@ $(document).ready(() => {
 				$(this).mouseup(function() {
 					clearInterval(interval);
 				});
+			})
+			.click(function() {
+				$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
 			});
 
 			// Autofocus when the input box spawns
