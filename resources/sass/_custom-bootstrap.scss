@@ -83,29 +83,25 @@
 		}
 
 		&.active {
-			.page-link {
-				background: $green;
-				color: white;
+			&:hover .page-link, .page-link {
+				color: $turqoise;
 			}
 		}
 
-		&:not(.active) {
+		&:hover {
 			.page-link {
-				&:hover {
-					background: $darkgreen;
-				}
+				color: white;
 			}
 		}
 
 		.page-link {
-			border-color: white;
-			background: black;
 			user-select: none;
-			border-radius: 0;
-			color: $green;
+			background: none;
+			color: $silver;
+			border: 0;
 
-			&:hover {
-				color: white;
+			&:focus {
+				box-shadow: none;
 			}
 		}
 	}

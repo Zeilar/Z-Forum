@@ -8,14 +8,14 @@
 
 	@component('components.summernote', [
 		'placeholder' => 'Quick reply',
-		'height'	  => 100,
+		'height'	  => 150,
 	])
 
 	@endcomponent
 
 	<div class="thread-title">
 		<div class="d-flex flex-row">
-			@if (is_role('superadmin'))
+			@if (is_role('superadmin', 'moderator'))
 				<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
 					<i class="fas color-black fa-pen"></i>
 				</a>
