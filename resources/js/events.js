@@ -1,4 +1,10 @@
 $(document).ready(() => {
+	// Summernote default values
+	$('#form-content').summernote({
+		height: 150,
+		focus: true,
+	});
+	
 	// Dashboard settings menu size animation
 	$('.settings-item').mouseenter(function() {
 		$(this).addClass('active-hover');
@@ -157,29 +163,37 @@ $(document).ready(() => {
 			`);
 
 			// Pagination input incrementers
+			let interval = null;
 			$('#pagination-minus').mousedown(function() {
-				let interval = setInterval(() => {
+				interval = setInterval(() => {
+					if (Number($('#pagination-input').val()) > 1) {
+						$('#pagination-input').val($('#pagination-input').val() - 1);
+					} 
+				}, 200);
+			})
+			.click(function() {
+				if (Number($('#pagination-input').val()) > 1) {
 					$('#pagination-input').val($('#pagination-input').val() - 1);
-				}, 200);
-
-				$(this).mouseup(function() {
-					clearInterval(interval);
-				});
+				}
 			})
-			.click(function() {
-				$('#pagination-input').val($('#pagination-input').val() - 1);
+			.mouseup(function() {
+				clearInterval(interval);
 			});
-			$('#pagination-plus').mousedown(function() {
-				let interval = setInterval(() => {
-					$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
-				}, 200);
 
-				$(this).mouseup(function() {
-					clearInterval(interval);
-				});
+			$('#pagination-plus').mousedown(function() {
+				interval = setInterval(() => {
+					if ($('#pagination-input').val() < Number($('.pagination .item-wrapper').last().prev().children('.item').html())) {
+						$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+					}
+				}, 200);
 			})
 			.click(function() {
-				$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+				if ($('#pagination-input').val() < Number($('.pagination .item-wrapper').last().prev().children('.item').html())) {
+					$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+				}
+			})
+			.mouseup(function() {
+				clearInterval(interval);
 			});
 
 			// Autofocus when the input box spawns

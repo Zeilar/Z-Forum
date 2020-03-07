@@ -78065,13 +78065,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     encrypted: true
 // });
 
-$(document).ready(function () {
-  $('#form-content').summernote({
-    height: 150,
-    focus: true
-  });
-});
-
 /***/ }),
 
 /***/ "./resources/js/components/Example.js":
@@ -78122,7 +78115,12 @@ if (document.getElementById('example')) {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // Dashboard settings menu size animation
+  // Summernote default values
+  $('#form-content').summernote({
+    height: 150,
+    focus: true
+  }); // Dashboard settings menu size animation
+
   $('.settings-item').mouseenter(function () {
     $(this).addClass('active-hover');
     $(this).mouseleave(function () {
@@ -78253,25 +78251,32 @@ $(document).ready(function () {
       // Add the input box if it doesn't exist
       $(this).parent().append("\n\t\t\t\t<div class=\"pagination-go\" id=\"pagination-go\">\n\t\t\t\t\t<i class=\"fas fa-minus\" id=\"pagination-minus\"></i>\n\t\t\t\t\t<input type=\"tel\" id=\"pagination-input\" value=\"".concat($('.pagination').attr('data-current-page'), "\" />\n\t\t\t\t\t<i class=\"fas fa-plus\" id=\"pagination-plus\"></i>\n\t\t\t\t\t<a class=\"btn\" href=\"#\" id=\"pagination-submit\">\n\t\t\t\t\t\tGo\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t")); // Pagination input incrementers
 
+      var interval = null;
       $('#pagination-minus').mousedown(function () {
-        var interval = setInterval(function () {
-          $('#pagination-input').val($('#pagination-input').val() - 1);
+        interval = setInterval(function () {
+          if (Number($('#pagination-input').val()) > 1) {
+            $('#pagination-input').val($('#pagination-input').val() - 1);
+          }
         }, 200);
-        $(this).mouseup(function () {
-          clearInterval(interval);
-        });
       }).click(function () {
-        $('#pagination-input').val($('#pagination-input').val() - 1);
+        if (Number($('#pagination-input').val()) > 1) {
+          $('#pagination-input').val($('#pagination-input').val() - 1);
+        }
+      }).mouseup(function () {
+        clearInterval(interval);
       });
       $('#pagination-plus').mousedown(function () {
-        var interval = setInterval(function () {
-          $('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+        interval = setInterval(function () {
+          if ($('#pagination-input').val() < Number($('.pagination .item-wrapper').last().prev().children('.item').html())) {
+            $('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+          }
         }, 200);
-        $(this).mouseup(function () {
-          clearInterval(interval);
-        });
       }).click(function () {
-        $('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+        if ($('#pagination-input').val() < Number($('.pagination .item-wrapper').last().prev().children('.item').html())) {
+          $('#pagination-input').val(Number($('#pagination-input').val()) + 1);
+        }
+      }).mouseup(function () {
+        clearInterval(interval);
       }); // Autofocus when the input box spawns
 
       $('#pagination-input').focus(); // Handle the submitted page dynamically and redirect to that page
