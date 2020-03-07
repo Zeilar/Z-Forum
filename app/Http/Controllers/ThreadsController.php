@@ -10,6 +10,25 @@ use App\Post;
 
 class ThreadsController extends Controller
 {
+	/**
+	 * Error handling for various thread actions
+	 * 
+	 * @param  int $id
+	 * @return mixed
+	 */
+	public function thread_validation(int $id, string $slug) 
+	{
+		if (!logged_in()) {
+			return msg_error('login');
+		} elseif (!item_exists(Thread::find($id), $slug)) {
+			return view('errors.404');
+		} else if (!is_role('superadmin', 'moderator')) {
+			return msg_error('role');
+		} else {
+			return true;
+		}
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -27,16 +46,14 @@ class ThreadsController extends Controller
      */
     public function create(int $id, string $slug)
     {
-		if (logged_in()) {
-			if (item_exists(TableSubcategory::find($id), $slug)) {
-				return view('thread.create', [
-					'subcategory' => TableSubcategory::find($id),
-				]);
-			} else {
-				return view('errors.404', ['value' => urldecode($slug)]);
-			}
-		} else {
+		if (!logged_in()) {
 			return msg_error('login');
+		} elseif (!item_exists(TableSubcategory::find($id), $slug)) {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		} else {
+			return view('thread.create', [
+				'subcategory' => TableSubcategory::find($id),
+			]);
 		}
     }
 
@@ -105,18 +122,10 @@ class ThreadsController extends Controller
      */
     public function edit(int $id, string $slug)
     {
-        if (item_exists(Thread::find($id), $slug)) {
-			if (logged_in()) {
-				if (is_role('superadmin', 'moderator')) {
-					return view('thread.edit', ['thread' => Thread::find($id)]);
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return msg_error('login');
-			}
+		if ($this->thread_validation($id, $slug) !== true) {
+			return $this->thread_validation($id, $slug);
 		} else {
-			return view('errors.404', ['value' => urldecode($slug)]);
+			return view('thread.edit', ['thread' => Thread::find($id)]);
 		}
     }
 
@@ -129,27 +138,19 @@ class ThreadsController extends Controller
      */
     public function update(Request $request, int $id, string $slug)
     {
-        if (logged_in()) {
-			if (item_exists(Thread::find($id), $slug)) {
-				if (is_role('superadmin', 'moderator')) {
-					$data = request()->validate([
-						'title' => 'required|max:30'
-					]);
-
-					$thread = Thread::find($id);
-					$thread->title = request('title');
-					$thread->slug = urlencode(request('title'));
-					$thread->save();
-
-					return redirect(route('thread_show', [$thread->id, $thread->slug]));
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return view('errors.404');
-			}
+		if ($this->thread_validation($id, $slug) !== true) {
+			return $this->thread_validation($id, $slug);
 		} else {
-			return msg_error('login');
+			$data = request()->validate([
+				'title' => 'required|max:30'
+			]);
+
+			$thread = Thread::find($id);
+			$thread->title = request('title');
+			$thread->slug = urlencode(request('title'));
+			$thread->save();
+
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
 		}
     }
 
@@ -161,24 +162,16 @@ class ThreadsController extends Controller
      */
     public function destroy(int $id, string $slug)
     {
-        if (item_exists(Thread::find($id), $slug)) {
-			if (logged_in()) {
-				if (is_role('superadmin', 'moderator')) {
-					$thread = Thread::find($id);
-					$tableSubcategory = $thread->tableSubcategory;
-					foreach ($thread->posts as $post) {
-						$post->delete();
-					}
-					$thread->delete();
-					return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return msg_error('login');
-			}
+		if ($this->thread_validation($id, $slug) !== true) {
+			return $this->thread_validation($id, $slug);
 		} else {
-			return view('errors.404', ['value' => urldecode($slug)]);
+			$thread = Thread::find($id);
+			$tableSubcategory = $thread->tableSubcategory;
+			foreach ($thread->posts as $post) {
+				$post->delete();
+			}
+			$thread->delete();
+			return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
 		}
     }
 
@@ -191,22 +184,14 @@ class ThreadsController extends Controller
      */
     public function lock(Request $request, int $id, string $slug)
     {
-        if (logged_in()) {
-			if (item_exists(Thread::find($id), $slug)) {
-				if (is_role('superadmin', 'moderator')) {
-					$thread = Thread::find($id);
-					$thread->locked = 1;
-					$thread->save();
-
-					return redirect(route('thread_show', [$thread->id, $thread->slug]));
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return view('errors.404');
-			}
+		if ($this->thread_validation($id, $slug) !== true) {
+			return $this->thread_validation($id, $slug);
 		} else {
-			return msg_error('login');
+			$thread = Thread::find($id);
+			$thread->locked = 1;
+			$thread->save();
+
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
 		}
     }
 
@@ -219,22 +204,14 @@ class ThreadsController extends Controller
      */
     public function unlock(Request $request, int $id, string $slug)
     {
-        if (logged_in()) {
-			if (item_exists(Thread::find($id), $slug)) {
-				if (is_role('superadmin', 'moderator')) {
-					$thread = Thread::find($id);
-					$thread->locked = 0;
-					$thread->save();
-
-					return redirect(route('thread_show', [$thread->id, $thread->slug]));
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return view('errors.404');
-			}
+		if ($this->thread_validation($id, $slug) !== true) {
+			return $this->thread_validation($id, $slug);
 		} else {
-			return msg_error('login');
+			$thread = Thread::find($id);
+			$thread->locked = 0;
+			$thread->save();
+
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
 		}
     }
 }
