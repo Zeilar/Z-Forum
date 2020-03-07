@@ -67,7 +67,7 @@ class ThreadsController extends Controller
     {
 		if (logged_in()) {
 			$data = request()->validate([
-				'title' => 'required|max:100',
+				'title'   => 'required|max:100',
 				'content' => 'required|max:500',
 			]);
 
@@ -107,7 +107,7 @@ class ThreadsController extends Controller
 		if (item_exists(Thread::find($id), $slug)) {
 			return view('thread.single', [
 				'thread' => Thread::find($id),
-				'posts' => Post::where('thread_id', $id)->paginate(1),
+				'posts'  => Post::where('thread_id', $id)->paginate(1),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);
@@ -178,17 +178,17 @@ class ThreadsController extends Controller
 	/**
      * Lock the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+	 * @param  string $slug
+     * @return mixed
      */
-    public function lock(Request $request, int $id, string $slug)
+    public function lock(int $id, string $slug)
     {
 		if ($this->thread_validation($id, $slug) !== true) {
 			return $this->thread_validation($id, $slug);
 		} else {
 			$thread = Thread::find($id);
-			$thread->locked = 1;
+			$thread->locked = true;
 			$thread->save();
 
 			return redirect(route('thread_show', [$thread->id, $thread->slug]));
@@ -198,17 +198,17 @@ class ThreadsController extends Controller
 	/**
      * Unlock the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+	 * @param  string $slug
+     * @return mixed
      */
-    public function unlock(Request $request, int $id, string $slug)
+    public function unlock(int $id, string $slug)
     {
 		if ($this->thread_validation($id, $slug) !== true) {
 			return $this->thread_validation($id, $slug);
 		} else {
 			$thread = Thread::find($id);
-			$thread->locked = 0;
+			$thread->locked = false;
 			$thread->save();
 
 			return redirect(route('thread_show', [$thread->id, $thread->slug]));
