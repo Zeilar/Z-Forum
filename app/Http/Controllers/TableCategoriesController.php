@@ -8,6 +8,23 @@ use App\Post;
 
 class TableCategoriesController extends Controller
 {
+	/**
+	 * Error handling for various table category actions
+	 * 
+	 * @param  int $id
+	 * @return mixed
+	 */
+	public function tablecategory_validation() 
+	{
+		if (!logged_in()) {
+			return msg_error('login');
+		} elseif (!is_role('superadmin')) {
+			return msg_error('role');
+		} else {
+			return true;
+		}
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -28,14 +45,10 @@ class TableCategoriesController extends Controller
      */
     public function create()
     {
-		if (logged_in()) {
-			if (is_role('superadmin')) {
-				return view('table_category.create');
-			} else {
-				return msg_error('role');
-			}
+		if ($this->tablecategory_validation() !== true) {
+			return $this->tablecategory_validation();
 		} else {
-			return msg_error('login');
+			return view('table_category.create');
 		}
     }
 
@@ -47,23 +60,19 @@ class TableCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-		if (logged_in()) {
-			if (is_role('superadmin')) {
-				$data = request()->validate([
-					'title' => 'required|max:30',
-				]);
-
-				$tableCategory = new TableCategory();
-				$tableCategory->title = request('title');
-				$tableCategory->slug = urlencode(request('title'));
-				$tableCategory->save();
-
-				return redirect()->route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]);
-			} else {
-				return msg_error('role');
-			}
+		if ($this->tablecategory_validation() !== true) {
+			return $this->tablecategory_validation();
 		} else {
-			return msg_error('login');
+			$data = request()->validate([
+				'title' => 'required|max:30',
+			]);
+
+			$tableCategory = new TableCategory();
+			$tableCategory->title = request('title');
+			$tableCategory->slug = urlencode(request('title'));
+			$tableCategory->save();
+
+			return redirect()->route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]);
 		}
     }
 
