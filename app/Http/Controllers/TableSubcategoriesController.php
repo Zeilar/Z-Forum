@@ -8,6 +8,23 @@ use App\TableCategory;
 
 class TableSubcategoriesController extends Controller
 {
+	/**
+	 * Error handling for various table subcategory actions
+	 * 
+	 * @param  int $id
+	 * @return mixed
+	 */
+	public function tablesubcategory_validation() 
+	{
+		if (!logged_in()) {
+			return msg_error('login');
+		} elseif (!is_role('superadmin')) {
+			return msg_error('role');
+		} else {
+			return true;
+		}
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -25,20 +42,16 @@ class TableSubcategoriesController extends Controller
      */
     public function create(int $id, string $slug)
     {
-		if (logged_in()) {
-			if (is_role('superadmin')) {
-				if (item_exists(TableSubcategory::find($id), $slug)) {
-					return view('table_subcategory.create', [
-						'tableCategory' => TableSubcategory::find($id)->tableCategory,
-					]);
-				} else {
-					return view('errors.404', ['value' => urldecode($slug)]);
-				}
-			} else {
-				return msg_error('role');
-			}
+		if ($this->tablesubcategory_validation() !== true) {
+			return $this->tablesubcategory_validation();
 		} else {
-			return msg_error('login');
+			if (item_exists(TableSubcategory::find($id), $slug)) {
+				return view('table_subcategory.create', [
+					'tableCategory' => TableSubcategory::find($id)->tableCategory,
+				]);
+			} else {
+				return view('errors.404', ['value' => urldecode($slug)]);
+			}
 		}
     }
 
@@ -50,24 +63,20 @@ class TableSubcategoriesController extends Controller
      */
     public function store(Request $request, int $id, string $slug)
     {
-		if (logged_in()) {
-			if (is_role('superadmin')) {
-				$data = request()->validate([
-					'title' => 'required|max:30',
-				]);
-
-				$tableSubcategory = new TableSubcategory();
-				$tableSubcategory->title = request('title');
-				$tableSubcategory->slug = urlencode(request('title'));
-				$tableSubcategory->table_category_id = TableCategory::find($id)->id;
-				$tableSubcategory->save();
-
-				return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
-			} else {
-				return msg_error('role');
-			}
+		if ($this->tablesubcategory_validation() !== true) {
+			return $this->tablesubcategory_validation();
 		} else {
-			return msg_error('login');
+			$data = request()->validate([
+				'title' => 'required|max:30',
+			]);
+
+			$tableSubcategory = new TableSubcategory();
+			$tableSubcategory->title = request('title');
+			$tableSubcategory->slug = urlencode(request('title'));
+			$tableSubcategory->table_category_id = TableCategory::find($id)->id;
+			$tableSubcategory->save();
+
+			return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
 		}
     }
 
@@ -96,18 +105,14 @@ class TableSubcategoriesController extends Controller
      */
     public function edit(int $id, string $slug)
     {
-        if (item_exists(TableSubcategory::find($id), $slug)) {
-			if (logged_in()) {
-				if (is_role('superadmin')) {
-					return view('table_subcategory.edit', ['tableSubcategory' => TableSubcategory::find($id)]);
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return msg_error('login');
-			}
+		if ($this->tablesubcategory_validation() !== true) {
+			return $this->tablesubcategory_validation();
 		} else {
-			return view('errors.404', ['value' => urldecode($slug)]);
+			if (item_exists(TableSubcategory::find($id), $slug)) {
+				return view('table_subcategory.edit', ['tableSubcategory' => TableSubcategory::find($id)]);
+			} else {
+				return view('errors.404', ['value' => urldecode($slug)]);
+			}
 		}
     }
 
