@@ -181,4 +181,60 @@ class ThreadsController extends Controller
 			return view('errors.404', ['value' => urldecode($slug)]);
 		}
     }
+
+	/**
+     * Lock the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function lock(Request $request, int $id, string $slug)
+    {
+        if (logged_in()) {
+			if (item_exists(Thread::find($id), $slug)) {
+				if (is_role('superadmin', 'moderator')) {
+					$thread = Thread::find($id);
+					$thread->locked = 1;
+					$thread->save();
+
+					return redirect(route('thread_show', [$thread->id, $thread->slug]));
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return view('errors.404');
+			}
+		} else {
+			return msg_error('login');
+		}
+    }
+
+	/**
+     * Unlock the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function unlock(Request $request, int $id, string $slug)
+    {
+        if (logged_in()) {
+			if (item_exists(Thread::find($id), $slug)) {
+				if (is_role('superadmin', 'moderator')) {
+					$thread = Thread::find($id);
+					$thread->locked = 0;
+					$thread->save();
+
+					return redirect(route('thread_show', [$thread->id, $thread->slug]));
+				} else {
+					return msg_error('role');
+				}
+			} else {
+				return view('errors.404');
+			}
+		} else {
+			return msg_error('login');
+		}
+    }
 }

@@ -1,5 +1,4 @@
 {{-- Passed variables: $post, $i --}}
-
 @if ($post === 'preview')
 	<article class="post" id="preview">
 		<div class="post-header">

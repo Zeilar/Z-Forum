@@ -78187,8 +78187,7 @@ $(document).ready(function () {
   if ($('.spin')) {
     $('.spin').click(function () {
       if (!$(this).hasClass('loading')) {
-        $(this).css('width', "".concat($(this).outerWidth(), "px")) // Do this first to preserve original button width
-        .addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+        $(this).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
       }
     });
   } // Spawn scroll to top button

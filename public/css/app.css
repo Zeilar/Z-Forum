@@ -11729,7 +11729,7 @@ input[type=file] {
   background: black;
 }
 
-.spin.loading .fas {
+.spin.loading i {
   -webkit-animation-name: spin;
           animation-name: spin;
   -webkit-animation-duration: 1s;
@@ -11770,6 +11770,10 @@ input[type=file] {
   background: black;
   box-shadow: none;
   cursor: default;
+}
+
+.spin i {
+  pointer-events: none;
 }
 
 #copy {

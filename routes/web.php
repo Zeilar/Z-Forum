@@ -32,6 +32,8 @@ Route::post('/subcategory/{id}-{slug}/thread/store', 'ThreadsController@store')-
 Route::get('/subcategory/{id}-{slug}/thread/new', 'ThreadsController@create')->name('thread_create');
 Route::delete('/thread/{id}-{slug}/delete', 'ThreadsController@destroy')->name('thread_delete');
 Route::put('/thread/{id}-{slug}/update', 'ThreadsController@update')->name('thread_update');
+Route::put('/thread/{id}-{slug}/unlock', 'ThreadsController@unlock')->name('thread_unlock');
+Route::put('/thread/{id}-{slug}/lock', 'ThreadsController@lock')->name('thread_lock');
 Route::get('/thread/{id}-{slug}/edit', 'ThreadsController@edit')->name('thread_edit');
 Route::get('/thread/{id}-{slug}', 'ThreadsController@show')->name('thread_show');
 

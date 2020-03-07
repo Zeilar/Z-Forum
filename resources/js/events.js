@@ -77,10 +77,7 @@ $(document).ready(() => {
 	if ($('.spin')) {
 		$('.spin').click(function() {
 			if (!$(this).hasClass('loading')) {
-				$(this)
-					.css('width', `${$(this).outerWidth()}px`) // Do this first to preserve original button width
-					.addClass('loading')
-					.html('<i class="fas fa-circle-notch"></i>');
+				$(this).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
 			}
 		});
 	}
