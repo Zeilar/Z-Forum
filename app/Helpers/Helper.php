@@ -125,10 +125,12 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error-id', __('That user does not exist'));
 			case 'incorrect-password':
 				return redirect()->back()->with('error-password', __('Incorrect password'));
+			case 'locked':
+				return redirect()->back()->with('error', __('The thread is locked, please contact a moderator'));
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
-				return redirect()->route('index')->with('error', __($type));
+				return redirect()->back()->with('error', __($type));
 		}
 	}
 }

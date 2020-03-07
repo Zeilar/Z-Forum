@@ -10,6 +10,35 @@ use App\Post;
 
 class PostsController extends Controller
 {
+	/**
+	 * Error handling for various post actions
+	 * 
+	 * @param  int $id
+	 * @return mixed
+	 */
+	public function post_validation(int $id) 
+	{
+		if (!logged_in()) {
+			return msg_error('login');
+		} elseif (!Post::find($id)) {
+			return view('errors.404');
+		} elseif (Post::find($id)->user_id !== auth()->user()->id) {
+			if (is_role('superadmin', 'moderator')) {
+				return true;
+			} else {
+				return msg_error('That post does not belong to you');
+			}
+		} elseif (Post::find($id)->thread->locked) {
+			if (is_role('superadmin', 'moderator')) {
+				return true;
+			} else {
+				return msg_error('locked');
+			}
+		} else {
+			return true;
+		}
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -26,18 +55,19 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+	 * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function create(int $id, string $slug)
     {
-        if (logged_in()) {
-			if (item_exists(Thread::find($id), $slug)) {
-				return view('post.create', ['thread' => Thread::find($id)]);
-			} else {
-				return view('errors.404', ['value' => urldecode($slug)]);
-			}
-		} else {
+		if (!logged_in()) {
 			return msg_error('login');
+		} elseif (!item_exists(Thread::find($id), $slug)) {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		} elseif (Thread::find($id)->locked) {
+			return msg_error('locked');
+		} else {
+			return view('post.create', ['thread' => Thread::find($id)]);
 		}
     }
 
@@ -49,27 +79,27 @@ class PostsController extends Controller
      */
     public function store(Request $request, int $id, string $slug)
     {
-        if (logged_in()) {
-			if (Thread::find($id)) {
-				$data = request()->validate([
-					'content' => 'required|max:500'
-				]);
-
-				$thread = Thread::find($id);
-				$post = new Post();
-				$post->content = request('content');
-				$post->user_id = auth()->user()->id;
-				$post->thread_id = $thread->id;
-				$post->table_subcategory_id = $thread->tableSubcategory->id;
-				$post->table_category_id = $thread->tableCategory->id;
-				$post->save();
-
-				return redirect(route('thread_show', [$thread->id, $thread->slug]));
-			} else {
-				return view('errors.404', ['value' => urldecode($slug)]);
-			}
-		} else {
+		if (!logged_in()) {
 			return msg_error('login');
+		} elseif (!Thread::find($id)) {
+			return view('errors.404', ['value' => urldecode($slug)]);
+		} elseif (Thread::find($id)->locked) {
+			return msg_error('locked');
+		} else {
+			$data = request()->validate([
+				'content' => 'required|max:500'
+			]);
+
+			$thread = Thread::find($id);
+			$post = new Post();
+			$post->content = request('content');
+			$post->user_id = auth()->user()->id;
+			$post->thread_id = $thread->id;
+			$post->table_subcategory_id = $thread->tableSubcategory->id;
+			$post->table_category_id = $thread->tableCategory->id;
+			$post->save();
+
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
 		}
     }
 
@@ -98,20 +128,12 @@ class PostsController extends Controller
      */
     public function edit(int $id)
     {
-		if (logged_in()) {
-			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin')) {
-					return vieW('post.edit', [
-						'post' => Post::find($id),
-					]);
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return view('errors.404');
-			}
+		if ($this->post_validation($id) !== true) {
+			return $this->post_validation($id);
 		} else {
-			return msg_error('login');
+			return view('post.edit', [
+				'post' => Post::find($id),
+			]);
 		}
     }
 
@@ -124,26 +146,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        if (logged_in()) {
-			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin', 'moderator')) {
-					$data = request()->validate([
-						'content' => 'required|max:500'
-					]);
-
-					$post = Post::find($id);
-					$post->content = request('content');
-					$post->save();
-
-					return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return view('errors.404');
-			}
+		if ($this->post_validation($id) !== true) {
+			return $this->post_validation($id);
 		} else {
-			return msg_error('login');
+			$data = request()->validate([
+				'content' => 'required|max:500'
+			]);
+
+			$post = Post::find($id);
+			$post->content = request('content');
+			$post->save();
+
+			return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
 		}
     }
 
@@ -155,21 +169,14 @@ class PostsController extends Controller
      */
     public function destroy(int $id)
     {
-        if (logged_in()) {
-			if (Post::find($id)) {
-				if (Post::find($id)->user_id === auth()->user()->id || is_role('superadmin', 'moderator')) {
-					$post = Post::find($id);
-					$thread = $post->thread;
-					$post->delete();
-					return redirect(route('thread_show', [$thread->id, $thread->slug]));
-				} else {
-					return msg_error('role');
-				}
-			} else {
-				return view('errors.404');
-			}
+		if ($this->post_validation($id) !== true) {
+			return $this->post_validation($id);
 		} else {
-			return msg_error('login');
+			$post = Post::find($id);
+			$thread = $post->thread;
+			$post->delete();
+			
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
 		}
     }
 }
