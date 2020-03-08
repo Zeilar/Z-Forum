@@ -34,7 +34,6 @@ class TableCategoriesController extends Controller
     {
         return view('index', [
 			'tableCategories' => TableCategory::all(),
-			'latest_posts' => Post::orderBy('updated_at')->take(5)->get(),
 		]);
     }
 
