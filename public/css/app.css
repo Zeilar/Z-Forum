@@ -11621,7 +11621,39 @@ a.text-dark:focus {
 }
 
 .note-editor .note-toolbar {
-  background: #dfdfdf;
+  background: #2b2b34e6;
+}
+
+.note-editor .note-toolbar i,
+.note-editor .note-toolbar span {
+  color: white;
+}
+
+.note-editor .note-toolbar .note-dropdown-menu {
+  min-width: 200px;
+  padding: 0;
+}
+
+.note-editor .note-toolbar .note-dropdown-menu li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.note-editor .note-toolbar .note-dropdown-menu li:hover {
+  background: #dadada;
+}
+
+.note-editor .note-toolbar .note-dropdown-menu li a {
+  color: black;
+}
+
+.note-editor .note-toolbar .note-dropdown-menu li blockquote,
+.note-editor .note-toolbar .note-dropdown-menu li pre {
+  padding: 0;
+}
+
+.note-editor .note-toolbar button::after {
+  content: none;
 }
 
 ::-moz-selection {
@@ -12352,6 +12384,10 @@ a:visited {
   border: 2px solid #2b2b34e6;
   margin-right: 2px;
   width: 5rem;
+}
+
+.post .post-header .post-meta .post-avatar.is_online {
+  border-color: #00c26e;
 }
 
 .post .post-header .post-meta .post-meta-text {

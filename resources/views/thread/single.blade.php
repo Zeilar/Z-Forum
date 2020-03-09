@@ -60,7 +60,7 @@
 
 	@auth
 		@if (!$thread->locked || is_role('superadmin', 'moderator'))
-			<div class="mx-auto my-2 bg-light" id="quick-reply">
+			<div id="quick-reply">
 				<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
