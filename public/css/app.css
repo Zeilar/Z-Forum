@@ -11661,6 +11661,12 @@ a.text-dark:focus {
   content: none;
 }
 
+.note-editor .note-editing-area ul,
+.note-editor .note-editing-area ol {
+  padding-left: 1rem;
+  list-style: unset;
+}
+
 .note-editor .note-statusbar {
   border-radius: 0 !important;
 }
@@ -12571,6 +12577,12 @@ a:visited {
 
 .post .post-body table {
   margin: 0;
+}
+
+.post .post-body ul,
+.post .post-body ol {
+  padding-left: 1rem;
+  list-style: unset;
 }
 
 .post .post-body * {

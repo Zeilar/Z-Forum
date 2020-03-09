@@ -154,6 +154,11 @@
 			margin: 0;
 		}
 
+		ul, ol {
+			padding-left: 1rem;
+			list-style: unset;
+		}
+
 		* {
 			color: white;
 		}

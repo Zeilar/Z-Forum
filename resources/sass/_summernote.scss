@@ -37,6 +37,13 @@
 		}
 	}
 
+	.note-editing-area {
+		ul, ol {
+			padding-left: 1rem;
+			list-style: unset;
+		}
+	}
+
 	.note-statusbar {
 		border-radius: 0 !important;
 
