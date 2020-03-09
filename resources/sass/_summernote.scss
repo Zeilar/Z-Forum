@@ -36,4 +36,16 @@
 			content: none;
 		}
 	}
+
+	.note-statusbar {
+		border-radius: 0 !important;
+
+		.note-resizebar {
+			background: $darkindigo;
+
+			.note-icon-bar {
+				border-color: white;
+			}
+		}
+	}
 }

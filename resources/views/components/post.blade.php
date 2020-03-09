@@ -45,7 +45,13 @@
 	<article class="post">
 		<div class="post-header">
 			<div class="post-meta">
-				<div class="post-avatar @if (is_user_online($post->user->id)) is_online @endif">
+				<div class="post-avatar 
+					@if (is_user_online($post->user->id))
+						is_online 
+					@else
+						{{role_coloring($post->user->role)}}
+					@endif
+				">
 					<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" />
 				</div>
 					

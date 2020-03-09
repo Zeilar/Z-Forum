@@ -11660,6 +11660,18 @@ a.text-dark:focus {
   content: none;
 }
 
+.note-editor .note-statusbar {
+  border-radius: 0 !important;
+}
+
+.note-editor .note-statusbar .note-resizebar {
+  background: #2b2b34e6;
+}
+
+.note-editor .note-statusbar .note-resizebar .note-icon-bar {
+  border-color: white;
+}
+
 ::-moz-selection {
   color: #00d2d2;
 }
@@ -12392,6 +12404,14 @@ a:visited {
 
 .post .post-header .post-meta .post-avatar.is_online {
   border-color: #00c26e;
+}
+
+.post .post-header .post-meta .post-avatar.is_superadmin {
+  border-color: #00b0e066;
+}
+
+.post .post-header .post-meta .post-avatar.is_moderator {
+  border-color: #f6993f;
 }
 
 .post .post-header .post-meta .post-meta-text {

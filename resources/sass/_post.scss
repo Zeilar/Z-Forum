@@ -17,6 +17,14 @@
 				&.is_online {
 					border-color: $green;
 				}
+
+				&.is_superadmin {
+					border-color: $superadmin;
+				}
+
+				&.is_moderator {
+					border-color: $moderator;
+				}
 			}
 
 			.post-meta-text {
