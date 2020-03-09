@@ -38,7 +38,10 @@
 			</div>
 		</form>
 		@auth
-			<img class="nav-avatar img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+			<img 
+				class="nav-avatar img-fluid {{role_coloring(auth()->user()->role)}}" 
+				src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}"
+			/>
 		@endauth
 	</div>
 </nav>

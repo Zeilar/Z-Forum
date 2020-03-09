@@ -11,6 +11,12 @@
 |
 */
 
+// Route::middleware('auth:api', 'throttle:60,1')->group(function () {
+//     Route::get('/test', function () {
+//         return 'Hello world';
+//     });
+// });
+
 // Index
 Route::get('/', 'TableCategoriesController@index')->name('index');
 

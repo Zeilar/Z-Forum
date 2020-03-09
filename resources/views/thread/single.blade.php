@@ -2,9 +2,7 @@
 @extends('layouts.head')
 
 @section('content')
-	@component('components.breadcrumbs', ['position' => $thread])
-		
-	@endcomponent
+	@include('layouts.breadcrumbs', ['position' => $thread])
 
 	@component('components.summernote', [
 		'placeholder' => 'Quick reply',

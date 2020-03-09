@@ -11,6 +11,10 @@
 		border: 2px solid $green;
 		margin-left: 1rem;
 		width: 2.5rem;
+
+		&.is_superadmin {
+			border-color: $superadmin;
+		}
 	}
 
 	#navbar-container {

@@ -34,12 +34,24 @@
 			background: rgba(65, 65, 80, 0.5);
 
 			&.admin-post {
-				background: linear-gradient(to right, #00b0e066, #2b2b34e6);
+				background: linear-gradient(to right, #00c8ff66, #2b2b34e6);
 			}
 		}
 
 		&.admin-post {
 			background: linear-gradient(to right, #00a2cf66, #2b2b34e6);
+		}
+		
+		a {
+			color: white;
+
+			&:visited {
+				color: $silver;
+			}
+
+			&:hover {
+				color: $turqoise;
+			}
 		}
 
 		i {
@@ -65,6 +77,10 @@
 				margin-right: 1rem;
 				flex: 2;
 
+				i {
+					margin-left: 35%;
+				}
+
 				p {
 					margin-left: 0.5rem;
 				}
@@ -72,6 +88,10 @@
 
 			&.tr-posts {
 				flex: 2;
+
+				i {
+					margin-left: 35%;
+				}
 
 				p {
 					margin-left: 0.5rem;

@@ -2,89 +2,47 @@
 @extends('layouts.head')
 
 @section('content')
-	@component('components.breadcrumbs', ['position' => $tableSubcategory])
-		
-	@endcomponent
+	@include('layouts.breadcrumbs', ['position' => $tableSubcategory])
 
-	<div class="table-wrapper">
-		<table class="table">
-			<thead>
-				<tr class="table-subcategory">
-					<th>
-						<div class="d-flex flex-row">
-							@if (is_role('superadmin'))
-								<a class="btn mr-2 spin btn-warning" 
-									href="{{route('tablesubcategory_edit', [$tableSubcategory->id, $tableSubcategory->slug])}}">
-									<i class="fas color-black fa-pen"></i>
-								</a>
-								<form action="{{route('tablesubcategory_delete', [$tableSubcategory->id, $tableSubcategory->slug])}}" method="post">
-									@csrf
-									<input type="hidden" name="_method" value="DELETE">
-									<button class="btn mr-2 spin btn-danger" 
-										href="{{route('tablesubcategory_delete', [$tableSubcategory->id, $tableSubcategory->slug])}}">
-										<i class="fas color-white fa-trash-alt"></i>
-									</button>
-								</form>
-							@endif
-							<h5 class="text-white my-auto">{{ __($tableSubcategory->title) }}</h5>
-						</div>
-					</th>
-					<th></th> {{-- To make sure the row is full width, because tables --}}
-					<th class="posts"></th> 
-				</tr>
-				<tr class="table-header">
-					<th class="py-3"><h4>{{ __('Thread') }}</h4></th>
-					<th class="py-3"><h4>{{ __('Latest post') }}</h4></th>
-					<th class="py-3 text-center"><h4>{{ __('Posts') }}</h4></th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach ($tableSubcategory->threads as $thread)
-					<tr class="table-row">
-						<td>
-							<div class="d-flex">
-								<div class="d-flex flex-column">
-									<a class="thread-link" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
-										{{ __($thread->title) }}
-									</a>
-									<div>
-										<span>{{ __('By') }}</span>
-										<a class="thread-author-link {{ role_coloring($thread->user->role) }}" 
-											href="{{route('user_show', [$thread->user->username])}}">
-											{{ $thread->user->username }}
-										</a>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							{{-- Latest Post --}}
-							@foreach ($thread->posts->sortByDesc('updated_at')->take(1) as $post)
-							@endforeach
-							<p>
-								<a href="{{route('post_show', [$thread->id, $thread->slug, $post->id])}}">
-									{{ pretty_date($post->updated_at) }}
-									<i class="fas fa-sign-in-alt"></i>
-								</a>
-							</p>
-							<p class="post-created-by">
-								<span>{{ __('By') }}</span>
-								<a class="{{ role_coloring($post->user->role) }}" href="{{route('user_show', [$post->user->username])}}">
-									{{ $post->user->username }}
-								</a>
-							</p>
-						</td> 
-						<td class="text-center">
-							@if (count($thread->posts))
-								{{ count($thread->posts) }}
-							@endif
-						</td>
-					</tr>
+	<div id="table">
+		@component('components.table-header')
+			@slot('title')
+				{{ $tableSubcategory->title }}
+			@endslot
+		@endcomponent
+
+		@foreach ($tableSubcategory->threads as $thread)	
+			@component('components.table-row')
+				@slot('title')
+					<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+						{{ $thread->title }}
+					</a>
+				@endslot
+
+				@foreach ($tableSubcategory->posts as $post)
+					@if ($post->user->role === 'superadmin')
+						@slot('admin_post')
+						@endslot
+
+						@break
+					@endif
 				@endforeach
-			</tbody>
-		</table>
-		<a class="btn spin btn-success" href="{{route('tablesubcategory_create', [$tableSubcategory->id, $tableSubcategory->slug])}}">
-			{{ __('New subcategory') }}
-		</a>
+
+				@slot('views')
+					{{ 'N/A' }}
+				@endslot
+
+				@slot('posts')
+					{{ count($thread->posts) }}
+				@endslot
+
+				@slot('latest_post')
+					@foreach ($thread->posts()->latest()->get() as $post)
+						{{ pretty_date($post->updated_at) }}
+						@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
+					@endforeach
+				@endslot
+			@endcomponent
+		@endforeach {{-- $threads --}}
 	</div>
 @endsection
