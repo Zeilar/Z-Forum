@@ -1,5 +1,35 @@
 .note-editor {
 	.note-toolbar {
-		background: #dfdfdf;
+		background: $darkindigo;
+
+		i, span {
+			color: white;
+		}
+
+		.note-dropdown-menu {
+			min-width: 200px;
+			padding: 0;
+
+			li {
+				padding: 0.5rem;
+				cursor: pointer;
+
+				&:hover {
+					background: $lightgray;
+				}
+
+				a {
+					color: black;
+				}
+
+				blockquote, pre {
+					padding: 0;
+				}
+			}
+		}
+
+		button::after {
+			content: none;
+		}
 	}
 }
