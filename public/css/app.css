@@ -11647,7 +11647,8 @@ a.text-dark:focus {
   background: #dadada;
 }
 
-.note-editor .note-toolbar .note-dropdown-menu li a {
+.note-editor .note-toolbar .note-dropdown-menu li a,
+.note-editor .note-toolbar .note-dropdown-menu li span {
   color: black;
 }
 
@@ -12566,6 +12567,14 @@ a:visited {
   background: #2b2b34e6;
   color: white;
   padding: 1rem;
+}
+
+.post .post-body table {
+  margin: 0;
+}
+
+.post .post-body * {
+  color: white;
 }
 
 #not-found {
