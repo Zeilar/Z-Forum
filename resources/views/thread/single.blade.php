@@ -4,11 +4,13 @@
 @section('content')
 	@include('layouts.breadcrumbs', ['position' => $thread])
 
-	@component('components.summernote', [
-		'placeholder' => 'Quick reply',
-		'height'	  => 150,
-	])
-
+	@component('components.summernote')
+		@slot('placeholder')
+			Quick reply
+		@endslot
+		@slot('height')
+			150
+		@endslot
 	@endcomponent
 
 	<div class="thread-title">

@@ -11,8 +11,4 @@
 		<input type="text" name="title" id="title" />
 		<button class="btn btn-success" type="submit">Submit</button>
 	</form>
-
-	@component('components.summernote', ['value' => $tableSubcategory->title])
-		
-	@endcomponent
 @endsection

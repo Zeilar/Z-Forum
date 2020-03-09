@@ -1,7 +1,5 @@
 <?php
-
 require_once 'Variables.php';
-
 /**
  * Custom functions
  * 
@@ -9,11 +7,11 @@ require_once 'Variables.php';
  */
 
 /**
- * Check if item exists, it should have a title and id
+ * Check if and item with both the provided object and slug exists
  * Do not use in views
  * 
- * @param object item - Object of the item
- * @param string slug - Compare URL slug with item slug
+ * @param object item
+ * @param string slug
  * 
  * @return mixed
  */
@@ -266,5 +264,81 @@ if (!function_exists('role_coloring')) {
 			default:
 				return '';
 		}
+	}
+}
+
+/**
+ * Add or change settings
+ * 
+ * @param string $key
+ * @param mixed $value
+ * @param int $id
+ * 
+ * @return boolean
+ */
+if (!function_exists('settings_put')) {
+	function settings_put(string $key, $value, int $id = null) {
+		// Set user as the currently logged in if possible, default to provided ID
+		$user = auth()->user() ?? App\User::find($id);
+
+		// Fetch the settings as an associative array
+		$settings = json_decode(auth()->user()->settings, true);
+
+		// Prepare the provided key and value pair
+		$settings[$key] = $value;
+
+		// Prepare the new user object propety
+		auth()->user()->settings = json_encode($settings);
+
+		// Save settings
+		return auth()->user()->save();
+	}
+}
+
+/**
+ * Delete settings
+ * 
+ * @param string $key
+ * @param int $id
+ * 
+ * @return boolean
+ */
+if (!function_exists('settings_delete')) {
+	function settings_delete(string $key, int $id = null) {
+		// Set user as the currently logged in if possible, default to provided ID
+		$user = auth()->user() ?? App\User::find($id);
+
+		// Fetch the settings as an associative array
+		$settings = json_decode(auth()->user()->settings, true);
+
+		// Prepare the provided key and value pair
+		unset($settings[$key]);
+
+		// Prepare the new user object propety
+		auth()->user()->settings = json_encode($settings);
+
+		// Save settings
+		return auth()->user()->save();
+	}
+}
+
+/**
+ * Get settings
+ * 
+ * @param string $key
+ * @param int $id
+ * 
+ * @return mixed
+ */
+if (!function_exists('settings_get')) {
+	function settings_get(string $key = 'all', int $id = null) {
+		// Set user as the currently logged in if possible, default to provided ID
+		$user = auth()->user() ?? App\User::find($id);
+
+		// Fetch the settings as an associative array
+		$settings = json_decode(auth()->user()->settings, true);
+
+		// Return either all or a select setting
+		return ($key === 'all') ? $settings : $settings[$key];
 	}
 }

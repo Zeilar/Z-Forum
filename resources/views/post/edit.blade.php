@@ -12,7 +12,9 @@
 		<button class="btn btn-success" type="submit">Submit</button>
 	</form>
 
-	@component('components.summernote', ['value' => $post->content])
-		
+	@component('components.summernote')
+		@slot('value')
+			{!! $post->content !!}
+		@endslot
 	@endcomponent
 @endsection
