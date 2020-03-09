@@ -41,7 +41,7 @@
 
 		@include('layouts.navbar')
 		
-        <main class="container-fluid py-3" id="content">
+        <main class="container-fluid" id="content">
             @yield('content')
 		</main>
 		
