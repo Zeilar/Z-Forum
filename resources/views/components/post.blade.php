@@ -47,7 +47,7 @@
 			<div class="post-meta">
 				<div class="post-avatar 
 					@if (is_user_online($post->user->id))
-						is_online 
+						is_online
 					@else
 						{{role_coloring($post->user->role)}}
 					@endif
