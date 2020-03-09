@@ -18,6 +18,7 @@ class CreateThreadsTable extends Migration
 			$table->string('title');
 			$table->string('slug');
 			$table->boolean('locked')->default(false);
+			$table->unsignedBigInteger('views')->default(0);
 			$table->unsignedInteger('user_id');
 			$table->unsignedInteger('table_subcategory_id');
 			$table->unsignedInteger('table_category_id');

@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		// Share this variable across all views
-                // Check if table exists to prevent PHP Artisan going wild
+		// Check if table exists to prevent PHP Artisan going wild
 		if (Schema::hasTable('posts')) {
+			// Share this variable across all views
 			view()->share('latest_posts', Post::orderBy('updated_at')->take(5)->get());
 		}
     }

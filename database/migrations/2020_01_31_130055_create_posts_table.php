@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
 			$table->text('content');
+			$table->unsignedBigInteger('views')->default(0);
 			$table->unsignedInteger('thread_id');
 			$table->unsignedInteger('user_id');
 			$table->unsignedInteger('table_subcategory_id');

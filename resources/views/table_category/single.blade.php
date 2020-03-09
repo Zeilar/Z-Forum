@@ -29,7 +29,11 @@
 				@endforeach
 
 				@slot('views')
-					{{ 'N/A' }}
+					<?php $views = 0; ?>
+					@foreach ($tableSubcategory->threads as $thread)
+						<?php $views += $thread->views ?>
+					@endforeach
+					{{ $views }}
 				@endslot
 
 				@slot('posts')
