@@ -11680,11 +11680,13 @@ a.text-dark:focus {
 }
 
 ::-moz-selection {
-  color: #00d2d2;
+  background: rgba(25, 25, 35, 0.25);
+  color: #00ffff;
 }
 
 ::selection {
-  color: #00d2d2;
+  background: rgba(25, 25, 35, 0.25);
+  color: #00ffff;
 }
 
 .fas {
