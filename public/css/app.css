@@ -11620,6 +11620,10 @@ a.text-dark:focus {
   border: none;
 }
 
+.note-editor.note-frame.panel.panel-default {
+  border: 0;
+}
+
 .note-editor .note-toolbar {
   background: #2b2b34e6;
 }
