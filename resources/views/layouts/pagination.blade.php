@@ -1,7 +1,7 @@
 @if ($paginator->hasPages())
     <div class="pagination" role="navigation" data-current-page="{{$paginator->currentPage()}}">
         {{-- Previous Page Link --}}
-        @if (!$paginator->onFirstPage() && $paginator->hasMorePages())
+        @if (!$paginator->onFirstPage())
 			<div class="item-wrapper">
 				<a class="item" href="{{ $paginator->previousPageUrl() }}" rel="prev"> 
 					<i class="fas fa-chevron-left mr-1"></i>
