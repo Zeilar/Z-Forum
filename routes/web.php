@@ -46,6 +46,10 @@ Route::put('/post/{id}/update', 'PostsController@update')->name('post_update');
 Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');
 Route::get('/post/{id}/edit', 'PostsController@edit')->name('post_edit');
 
+// settings_put('posts_per_page', '2');
+
+// var_dump(settings_get('posts_per_page'));
+
 // Users
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 

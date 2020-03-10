@@ -12047,14 +12047,10 @@ input::placeholder {
           user-select: none;
 }
 
-a {
-  color: #00c26e;
-}
-
 a:hover,
 a:visited:hover {
   text-decoration: none;
-  color: white;
+  color: #00ffff;
 }
 
 a:visited {
@@ -12087,7 +12083,7 @@ a:visited {
 }
 
 .navbar {
-  box-shadow: 0 0 25px 5px black;
+  box-shadow: 0 0 10px 5px black;
   border-bottom: 2px solid #00c26e;
   background: #131313f2;
   position: -webkit-sticky;
@@ -12420,7 +12416,7 @@ a:visited {
 }
 
 .post .post-header .post-meta .post-avatar.is_moderator {
-  border-color: #f6993f;
+  border-color: #7a11a3;
 }
 
 .post .post-header .post-meta .post-meta-text {
@@ -12441,6 +12437,11 @@ a:visited {
 .post .post-header .post-meta .post-meta-text.is_superadmin {
   background: -webkit-gradient(linear, left top, right top, from(#00a2cf66), to(#2b2b34e6));
   background: linear-gradient(to right, #00a2cf66, #2b2b34e6);
+}
+
+.post .post-header .post-meta .post-meta-text.is_moderator {
+  background: -webkit-gradient(linear, left top, right top, from(#7a11a3), to(#2b2b34e6));
+  background: linear-gradient(to right, #7a11a3, #2b2b34e6);
 }
 
 .post .post-header .post-meta .post-meta-text.is_author {
@@ -12467,7 +12468,7 @@ a:visited {
 
 .post .post-header .post-meta .post-meta-text .post-author a:hover,
 .post .post-header .post-meta .post-meta-text .post-author a:visited:hover {
-  color: #00c26e;
+  color: #00ffff;
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-left,
@@ -12497,11 +12498,11 @@ a:visited {
 }
 
 .post .post-header .post-meta .post-link a:hover {
-  color: #00c26e;
+  color: #00ffff;
 }
 
 .post .post-header .post-meta .post-link a:hover i.fas {
-  color: #00c26e;
+  color: #00ffff;
 }
 
 .post .post-header .post-meta .post-link a i.fas {

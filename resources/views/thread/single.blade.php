@@ -64,15 +64,12 @@
 				<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
-					<button class="btn spin btn-success m-2" type="submit">{{ __('Send') }}</button>
+					<button class="btn spin btn-success my-2 mr-2" type="submit">{{ __('Send') }}</button>
 					<button class="btn btn-success my-2 preview-button" type="button">
 						{{ __('Preview') }}
 					</button>
 				</form>
 			</div>
-			<a class="btn spin mt-4 btn-success" href="{{route('post_create', [$thread->id, $thread->slug])}}">
-				{{ __('Reply') }}
-			</a>
 
 			<script>
 				// Render post preview
@@ -80,8 +77,8 @@
 					// Prepare the user input in the editor
 					let content = $('.note-editable').html();
 					
-					// Only render the preview if it doesn't already exist and isn't empty
-					// Summernote always renders '<p><br></p>' no matter what
+					// Only render the preview if it doesn't already exist and isn't "empty"
+					// Summernote always renders '<p><br></p>' by default no matter what
 					if (!$('#preview').length && content !== '<p><br></p>') {
 						// Render the post itself, but not the content
 						$('.thread').append(`

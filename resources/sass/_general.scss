@@ -28,10 +28,9 @@ img, input::placeholder {
 }
 
 a {
-	color: $green;
 	&:hover, &:visited:hover {
 		text-decoration: none;
-		color: white;
+		color: $turqoise;
 	}
 	&:visited {
 		color: $silver;

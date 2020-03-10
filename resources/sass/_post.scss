@@ -40,6 +40,10 @@
 					background: linear-gradient(to right, #00a2cf66, #2b2b34e6);
 				}
 
+				&.is_moderator {
+					background: linear-gradient(to right, $moderator, #2b2b34e6);
+				}
+
 				&.is_author {
 					background: linear-gradient(to right, $darkgreen, #2b2b34e6);
 
@@ -57,7 +61,7 @@
 						color: white;
 
 						&:hover {
-							color: $green;
+							color: $turqoise;
 						}
 					}
 				}
@@ -89,10 +93,10 @@
 					color: white;
 
 					&:hover {
-						color: $green;
+						color: $turqoise;
 
 						i.fas {
-							color: $green;
+							color: $turqoise;
 						}
 					}
 

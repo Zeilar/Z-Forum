@@ -46,10 +46,7 @@ class PostsController extends Controller
      */
     public function index($id)
     {
-		return (Post::find($id)
-			? view('post.single', ['post' => Post::find($id)])
-			: view('errors.404')
-		);
+		return Post::find($id) ? view('post.single', ['post' => Post::find($id)]) : view('errors.404');
     }
 
     /**

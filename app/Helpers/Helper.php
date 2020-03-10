@@ -282,13 +282,13 @@ if (!function_exists('settings_put')) {
 		$user = auth()->user() ?? App\User::find($id);
 
 		// Fetch the settings as an associative array
-		$settings = json_decode(auth()->user()->settings, true);
+		if (isset($user->settings)) $settings = json_decode($user->settings, true);
 
 		// Prepare the provided key and value pair
 		$settings[$key] = $value;
 
 		// Prepare the new user object propety
-		auth()->user()->settings = json_encode($settings);
+		$user->settings = json_encode($settings);
 
 		// Save settings
 		return auth()->user()->save();
