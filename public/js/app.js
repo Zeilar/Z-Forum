@@ -78295,6 +78295,15 @@ $(document).ready(function () {
       $('.pagination-go').addClass('hide');
     }
   });
+
+  if (window.location.href.includes('#')) {
+    var id = window.location.href.split('#', 2)[1];
+    var target = $("#".concat(id));
+
+    if (target.length) {
+      window.scrollTo(0, target.position().top - $('.navbar').outerHeight(true) - 15);
+    }
+  }
 });
 
 /***/ }),

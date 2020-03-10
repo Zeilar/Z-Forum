@@ -221,4 +221,12 @@ $(document).ready(() => {
 			$('.pagination-go').addClass('hide');
 		}
 	});
+
+	if (window.location.href.includes('#')) {
+		let id = window.location.href.split('#', 2)[1];
+		let target = $(`#${id}`);
+		if (target.length) {
+			window.scrollTo(0, target.position().top - $('.navbar').outerHeight(true) - 15);
+		}
+	}
 });
