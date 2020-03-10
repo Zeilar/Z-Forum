@@ -164,7 +164,7 @@ if (!function_exists('msg_success')) {
  * @return array
  */
 function breadcrumb_guesser(object $position) {
-	if ($position) {
+	try {
 		if (isset($position->tableSubcategories)) {
 			return [
 				[
@@ -208,8 +208,8 @@ function breadcrumb_guesser(object $position) {
 				],
 			];
 		}
-	} else {
-		return null;
+	} catch (Exception $e) {
+		return $e;
 	}
 }
 
@@ -291,7 +291,7 @@ if (!function_exists('settings_put')) {
 		$user->settings = json_encode($settings);
 
 		// Save settings
-		return auth()->user()->save();
+		return $user->save();
 	}
 }
 
@@ -309,16 +309,16 @@ if (!function_exists('settings_delete')) {
 		$user = auth()->user() ?? App\User::find($id);
 
 		// Fetch the settings as an associative array
-		$settings = json_decode(auth()->user()->settings, true);
+		$settings = json_decode($user->settings, true);
 
 		// Prepare the provided key and value pair
 		unset($settings[$key]);
 
 		// Prepare the new user object propety
-		auth()->user()->settings = json_encode($settings);
+		$user->settings = json_encode($settings);
 
 		// Save settings
-		return auth()->user()->save();
+		return $user->save();
 	}
 }
 
@@ -336,7 +336,7 @@ if (!function_exists('settings_get')) {
 		$user = auth()->user() ?? App\User::find($id);
 
 		// Fetch the settings as an associative array
-		$settings = json_decode(auth()->user()->settings, true);
+		$settings = json_decode($user->settings, true);
 
 		// Return either all or a select setting
 		return ($key === 'all') ? $settings : $settings[$key];
