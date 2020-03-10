@@ -75,17 +75,24 @@
 			</a>
 
 			<script>
+				// Render post preview
 				$('.preview-button').click(function() {
+					// Prepare the user input in the editor
 					let content = $('.note-editable').html();
-
-					if (!$('#preview').length) {
+					
+					// Only render the preview if it doesn't already exist and isn't empty
+					// Summernote always renders '<p><br></p>' no matter what
+					if (!$('#preview').length && content !== '<p><br></p>') {
+						// Render the post itself, but not the content
 						$('.thread').append(`
 							@component('components.post', ['post' => 'preview'])
 
 							@endcomponent
 						`);
+
+						// Inject the content
+						$('#preview .post-body').html(content);
 					}
-					$('#preview .post-body').html(content);
 				});
 			</script>
 		@endif
