@@ -156,64 +156,6 @@ if (!function_exists('msg_success')) {
 }
 
 /**
- * Calculate breadcrumbs from your position and upwards in the hierarchy
- * The breadcrumb at your current position will by defualt not be a hyperlink
- * 
- * @param object $position
- * 
- * @return array
- */
-function breadcrumb_guesser(object $position) {
-	try {
-		if (isset($position->tableSubcategories)) {
-			return [
-				[
-					$position,
-					'route' => false,
-				],
-			];
-		} else if (isset($position->tableCategory)) {
-			return [
-				[
-					$position->tableCategory,
-					'route' => route('tablecategory_show', [
-						$position->tableCategory->id,
-						$position->tableCategory->slug
-					]),
-				],
-				[
-					$position,
-					'route' => false,
-				],
-			];
-		} else if (isset($position->tableSubcategory)) {
-			return [
-				[
-					$position->tableSubcategory->tableCategory,
-					'route' => route('tablecategory_show', [
-						$position->tableSubcategory->tableCategory->id,
-						$position->tableSubcategory->tableCategory->slug
-					]),
-				],
-				[
-					$position->tableSubcategory,
-					'route' => route('tablesubcategory_show', [
-						$position->tableSubcategory->id,
-						$position->tableSubcategory->slug
-					]),
-				],
-				[
-					$position,
-					'route' => false,
-				],
-			];
-		}
-	} catch (Exception $e) {
-		return $e;
-	}
-}
-
-/**
  * Check if user is online
  * 
  * @param int $id

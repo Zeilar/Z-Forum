@@ -2,7 +2,7 @@
 @extends('layouts.head')
 
 @section('content')
-	@include('layouts.breadcrumbs', ['position' => $thread])
+	{{ Breadcrumbs::render('thread', $thread) }}
 
 	@component('components.summernote')
 		@slot('placeholder')

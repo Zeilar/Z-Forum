@@ -2,7 +2,7 @@
 @extends('layouts.head')
 
 @section('content')
-	@include('layouts.breadcrumbs', ['position' => $tableCategory])
+	{{ Breadcrumbs::render('table_category', $tableCategory) }}
 
 	<div id="table">
 		@component('components.table-header')
