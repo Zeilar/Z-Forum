@@ -10,13 +10,26 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+	/**
+     * Default attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'settings' => '{
+			"posts_per_page": 5
+		}',
+		'avatar' => 'default.png',
+		'role' => 'member',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password',
+        'username', 'email', 'password', 'role', 'avatar', 'settings',
     ];
 
     /**

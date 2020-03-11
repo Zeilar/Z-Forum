@@ -49,7 +49,8 @@
 	</div>
 
 	<div class="thread">
-		<?php $i = 1; ?>
+		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>
+		{!! var_dump($i); !!}
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post, 'i' => $i])
 

@@ -221,10 +221,13 @@ if (!function_exists('role_coloring')) {
 if (!function_exists('settings_put')) {
 	function settings_put(string $key, $value, int $id = null) {
 		// Set user as the currently logged in if possible, default to provided ID
-		$user = auth()->user() ?? App\User::find($id);
+		$user = App\User::find($id) ?? auth()->user();
+
+		// If no user was found, return false to prevent further issues
+		if (empty($user)) return false;
 
 		// Fetch the settings as an associative array
-		if (isset($user->settings)) $settings = json_decode($user->settings, true);
+		$settings = json_decode($user->settings, true);
 
 		// Prepare the provided key and value pair
 		$settings[$key] = $value;
@@ -248,7 +251,10 @@ if (!function_exists('settings_put')) {
 if (!function_exists('settings_delete')) {
 	function settings_delete(string $key, int $id = null) {
 		// Set user as the currently logged in if possible, default to provided ID
-		$user = auth()->user() ?? App\User::find($id);
+		$user = App\User::find($id) ?? auth()->user();
+
+		// If no user was found, return false to prevent further issues
+		if (empty($user)) return false;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);
@@ -275,7 +281,10 @@ if (!function_exists('settings_delete')) {
 if (!function_exists('settings_get')) {
 	function settings_get(string $key = 'all', int $id = null) {
 		// Set user as the currently logged in if possible, default to provided ID
-		$user = auth()->user() ?? App\User::find($id);
+		$user = App\User::find($id) ?? auth()->user();
+
+		// If no user was found, return false to prevent further issues
+		if (empty($user)) return false;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);

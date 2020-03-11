@@ -225,8 +225,8 @@ $(document).ready(() => {
 	if (window.location.href.includes('#')) {
 		let id = window.location.href.split('#', 2)[1];
 		let target = $(`#${id}`);
-		if (target.length) {
-			window.scrollTo(0, target.position().top - $('.navbar').outerHeight(true) - 15);
-		}
+
+		// If target element exists, scroll to it, and subtract by the navbar height plus some margin since the navbar is sticky
+		if (target.length) window.scrollTo(0, target.position().top - $('.navbar').outerHeight(true) - 15);
 	}
 });

@@ -110,7 +110,7 @@ class ThreadsController extends Controller
 			$thread->save();
 			return view('thread.single', [
 				'thread' => Thread::find($id),
-				'posts'  => Post::where('thread_id', $id)->paginate(4),
+				'posts'  => Post::where('thread_id', $id)->paginate(settings_get('posts_per_page') ?? 5),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);
