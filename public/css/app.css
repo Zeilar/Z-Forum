@@ -11361,18 +11361,19 @@ a.text-dark:focus {
 }
 
 .btn {
-  padding: 0.35rem 0.85rem;
+  padding: 0.35rem 0.5rem;
   border-radius: 0.25rem;
+  min-width: 3.5rem;
 }
 
 .btn:active,
 .btn:focus,
-.btn:hover {
+.btn:hover,
+.btn[disabled] {
   box-shadow: none !important;
 }
 
 .btn[disabled] {
-  box-shadow: none;
   cursor: auto;
 }
 

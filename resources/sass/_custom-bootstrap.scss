@@ -1,13 +1,13 @@
 .btn {
-	padding: 0.35rem 0.85rem;
+	padding: 0.35rem 0.5rem;
 	border-radius: 0.25rem;
+	min-width: 3.5rem;
 
-	&:active, &:focus, &:hover {
+	&:active, &:focus, &:hover, &[disabled] {
 		box-shadow: none !important;
 	}
 
 	&[disabled] {
-		box-shadow: none;
 		cursor: auto;
 	}
 }
