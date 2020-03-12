@@ -78185,9 +78185,11 @@ $(document).ready(function () {
 
 
   if ($('.spin')) {
-    $('.spin').click(function () {
+    $('.spin').click(function (e) {
+      e.preventDefault();
+
       if (!$(this).hasClass('loading')) {
-        $(this).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+        $(this).css('width', "".concat($(this).outerWidth(), "px")).addClass('loading').html('<i class="fas fa-circle-notch"></i>').attr('disabled', true);
       }
     });
   } // Spawn scroll to top button

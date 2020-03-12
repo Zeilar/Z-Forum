@@ -52,7 +52,7 @@
 		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post, 'i' => $i])
-
+				
 			@endcomponent
 			<?php $i++; ?>
 		@endforeach

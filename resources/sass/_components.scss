@@ -84,14 +84,25 @@ input[type=file] {
 }
 
 .spin {
+	position: relative;
+
 	&.loading {
-		background: black;
+		&::before {
+			background: rgba(0, 0, 0, 0.35);
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			content: '';
+			left: 0;
+			top: 0;
+		}
 
 		i {
 			animation-name: spin;
 			animation-duration: 1s;
 			animation-iteration-count: infinite;
 			animation-timing-function: linear; 
+			color: white;
 		}
 
 		@keyframes spin {
@@ -101,12 +112,6 @@ input[type=file] {
 			to {
 				transform: rotate(360deg);
 			}
-		}
-
-		&:hover, &:active, &:focus {
-			background: black;
-			box-shadow: none;
-			cursor: default;
 		}
 	}
 

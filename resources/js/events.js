@@ -75,9 +75,10 @@ $(document).ready(() => {
 	
 	// Put spinning wheel on submits buttons when pressed
 	if ($('.spin')) {
-		$('.spin').click(function() {
+		$('.spin').click(function(e) {
+			e.preventDefault();
 			if (!$(this).hasClass('loading')) {
-				$(this).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+				$(this).css('width', `${$(this).outerWidth()}px`).addClass('loading').html('<i class="fas fa-circle-notch"></i>').attr('disabled', true);
 			}
 		});
 	}

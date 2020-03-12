@@ -5,7 +5,12 @@
 	-o-border-radius: 0.25rem;
 	border-radius: 0.25rem;
 
-	&:disabled {
+	&:active, &:focus, &:hover {
+		box-shadow: none !important;
+	}
+
+	&[disabled] {
+		box-shadow: none;
 		cursor: auto;
 	}
 }
