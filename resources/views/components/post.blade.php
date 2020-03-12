@@ -14,7 +14,7 @@
 								{{ auth()->user()->username }}
 							</a>
 						</p>
-						<p class="post-author-role {{ role_coloring(auth()->user()->role) }}">
+						<p class="post-author-role {{role_coloring(auth()->user()->role)}}">
 							{{ __(ucfirst(auth()->user()->role)) }}
 						</p>
 					</div>
@@ -42,7 +42,7 @@
 		</div>
 	</article>
 @else
-	<article class="post">
+	<article class="post" id="{{$post->id}}">
 		<div class="post-header">
 			<div class="post-meta">
 				<div class="post-avatar 
@@ -55,7 +55,7 @@
 					<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" />
 				</div>
 					
-				<div id="{{$post->id}}" class="post-meta-text
+				<div class="post-meta-text
 					@if ($post->user->role !== 'user')
 						{{ role_coloring($post->user->role) }}
 					@elseif (logged_in()) 

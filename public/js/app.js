@@ -78300,7 +78300,10 @@ $(document).ready(function () {
     var id = window.location.href.split('#', 2)[1];
     var target = $("#".concat(id)); // If target element exists, scroll to it, and subtract by the navbar height plus some margin since the navbar is sticky
 
-    if (target.length) window.scrollTo(0, target.position().top - $('.navbar').outerHeight(true) - 15);
+    if (target.length) {
+      window.scrollTo(0, target.position().top - $('.navbar').outerHeight(true) - 15);
+      target.addClass('active');
+    }
   }
 });
 

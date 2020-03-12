@@ -1,4 +1,7 @@
 <?php
+
+use \Carbon\Carbon;
+
 require_once 'Variables.php';
 /**
  * Custom functions
@@ -75,12 +78,14 @@ if (!function_exists('is_role')) {
  */
 if (!function_exists('pretty_date')) {
 	function pretty_date(string $date) {
-		$date = strtotime($date);
+		$date = new Carbon($date);
+		$now = Carbon::now();
+		$difference = $date->diff($now)->days;
 
-		if ((time() - $date < DAY_IN_SECONDS)) {
-			return __('Today') . ', ' . date('H:i', $date);
-		} else if ((time() - $date) > 60 * 60 * 24 && (time() - $date) < DAY_IN_SECONDS * 2) {
-			return __('Yesterday') . ', ' . date('H:i', $date);
+		if ($difference = $date->diff($now)->days === 0) {
+			return __('Today') . ', ' . date('H:i', strtotime($date));
+		} else if ($difference = $date->diff($now)->days === 1) {
+			return __('Yesterday') . ', ' . date('H:i', strtotime($date));
 		} else {
 			return date('Y-m-d', $date);
 		}
@@ -164,11 +169,7 @@ if (!function_exists('msg_success')) {
  */
 if (!function_exists('is_user_online')) {
 	function is_user_online($id) {
-		if (Illuminate\Support\Facades\Cache::has('user-online-' . $id)) {
-			return true;
-		} else {
-			return false;
-		}
+		return Illuminate\Support\Facades\Cache::has('user-online-' . $id) ? true : false;
 	}
 }
 
@@ -186,6 +187,13 @@ if (!function_exists('get_online_users')) {
 			}
 		}
 		return $online_users;
+	}
+}
+
+// TODO: User activity
+if (!function_exists('get_user_activity')) {
+	function get_user_activity(int $id) {
+		return Illuminate\Support\Facades\Cache::get('user-activity-' . $id ?? auth()->user()->id);
 	}
 }
 
@@ -224,7 +232,7 @@ if (!function_exists('settings_put')) {
 		$user = App\User::find($id) ?? auth()->user();
 
 		// If no user was found, return false to prevent further issues
-		if (empty($user)) return false;
+		if (empty($user)) return null;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);
@@ -254,7 +262,7 @@ if (!function_exists('settings_delete')) {
 		$user = App\User::find($id) ?? auth()->user();
 
 		// If no user was found, return false to prevent further issues
-		if (empty($user)) return false;
+		if (empty($user)) return null;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);
@@ -284,7 +292,7 @@ if (!function_exists('settings_get')) {
 		$user = App\User::find($id) ?? auth()->user();
 
 		// If no user was found, return false to prevent further issues
-		if (empty($user)) return false;
+		if (empty($user)) return null;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);
