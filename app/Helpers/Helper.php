@@ -87,7 +87,7 @@ if (!function_exists('pretty_date')) {
 		} else if ($difference = $date->diff($now)->days === 1) {
 			return __('Yesterday') . ', ' . date('H:i', strtotime($date));
 		} else {
-			return date('Y-m-d', $date);
+			return date('Y-m-d', strtotime($date));
 		}
 	}
 }
