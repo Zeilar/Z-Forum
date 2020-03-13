@@ -50,7 +50,12 @@
 		@endforeach {{-- $tableSubcategory --}}
 	</div>
 	@if (is_role('superadmin'))
-		<a class="btn btn-success spin" href="{{route('tablesubcategory_create', [$tableCategory->id, $tableCategory->slug])}}">
+		@component('modals.create', ['route_name' => 'tablesubcategory_store', 'route_values' => [$tableCategory->id, $tableCategory->slug]])
+			@slot('title')
+				{{ __('Create new subcategory') }}
+			@endslot
+		@endcomponent
+		<a class="btn btn-success" id="create-button" data-toggle="modal" href="#createModal">
 			{{ __('Create new subcategory') }}
 		</a>
 	@endif

@@ -78151,7 +78151,7 @@ $(document).ready(function () {
     }
   }); // Turn disabled off if all inputs are filled, otherwise turn it on
 
-  $('.modal-auth input').on('input', function () {
+  $('.modal input').on('input', function () {
     var modal = $(this).closest('form');
     var emptyFields = modal.find('input').not('[name=_token]').length;
     modal.find('input').not('[name=_token]').each(function () {
@@ -78177,6 +78177,11 @@ $(document).ready(function () {
     });
   } else if ($('#errorModal #error-any').length) {
     $('#errorModal').modal('show');
+  } else if ($('#createModal #error-title').length) {
+    $('#createModal').modal('show');
+    $('.modal').on('shown.bs.modal', function () {
+      $('#createModal .is-invalid').first().focus();
+    });
   } else {
     $('.modal').on('shown.bs.modal', function () {
       $(this).find('[autofocus]').focus();
