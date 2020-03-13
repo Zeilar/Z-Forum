@@ -1,3 +1,4 @@
+{{-- Passed variables: $tableCategory --}}
 @extends('layouts.head')
 
 @section('content')

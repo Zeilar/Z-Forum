@@ -49,4 +49,9 @@
 			@endcomponent
 		@endforeach {{-- $tableSubcategory --}}
 	</div>
+	@if (is_role('superadmin'))
+		<a class="btn btn-success spin" href="{{route('tablesubcategory_create', [$tableCategory->id, $tableCategory->slug])}}">
+			{{ __('Create new subcategory') }}
+		</a>
+	@endif
 @endsection

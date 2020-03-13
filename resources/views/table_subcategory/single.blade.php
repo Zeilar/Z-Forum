@@ -49,4 +49,7 @@
 			@endcomponent
 		@endforeach {{-- $threads --}}
 	</div>
+	<a class="btn btn-success spin" href="{{route('thread_create', [$tableSubcategory->id, $tableSubcategory->slug])}}">
+		{{ __('Create new thread') }}
+	</a>
 @endsection

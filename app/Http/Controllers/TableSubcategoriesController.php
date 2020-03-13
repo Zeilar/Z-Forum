@@ -45,9 +45,9 @@ class TableSubcategoriesController extends Controller
 		if ($this->tablesubcategory_validation() !== true) {
 			return $this->tablesubcategory_validation();
 		} else {
-			if (item_exists(TableSubcategory::find($id), $slug)) {
+			if (item_exists(TableCategory::find($id), $slug)) {
 				return view('table_subcategory.create', [
-					'tableCategory' => TableSubcategory::find($id)->tableCategory,
+					'tableCategory' => TableCategory::find($id),
 				]);
 			} else {
 				return view('errors.404', ['value' => urldecode($slug)]);
