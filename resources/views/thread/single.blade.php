@@ -76,21 +76,37 @@
 				$('.preview-button').click(function() {
 					// Prepare the user input in the editor
 					let content = $('.note-editable').html();
+
+					// '<p><br></p>' is Summernote default for empty, if the editor is empty, do nothing
+					if (content === '<p><br></p>') return;
 					
-					// Only render the preview if it doesn't already exist and isn't "empty"
-					// Summernote always renders '<p><br></p>' by default no matter what
-					if (!$('#preview').length && content !== '<p><br></p>') {
+					// Only render the preview if it doesn't already exist
+					if (!$('#preview').length) {
 						// Render the post itself, but not the content
-						$('.thread').append(`
-							@component('components.post', ['post' => 'preview'])
-
-							@endcomponent
-						`);
-
-						// Inject the content
-						$('#preview .post-body').html(content);
+						$('.thread').append(`@include('components.post', ['post' => 'preview'])`);
 					}
+
+					// Inject the content
+					$('#preview .post-body').html(content);
 				});
+
+				// $('.btn-secondary').click(function(e) {
+				// 	let that = $(this);
+				// 	e.preventDefault();
+				// 	$.ajax({
+				// 		method: 'POST',
+				// 		url: '{{ route("thread_lock", [$thread->id, $thread->slug]) }}',
+				// 		data: {
+				// 			_token: '{{ Session::token() }}'
+				// 		},
+				// 		success: function(response) {
+				// 			console.log(response);
+				// 		},
+				// 		error: function(error) {
+				// 			console.log(error);
+				// 		}
+				// 	})
+				// });
 			</script>
 		@endif
 	@endauth

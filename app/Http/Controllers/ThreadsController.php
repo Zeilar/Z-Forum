@@ -66,7 +66,7 @@ class ThreadsController extends Controller
     public function store(Request $request, int $id, string $slug)
     {
 		if (logged_in()) {
-			$data = request()->validate([
+			request()->validate([
 				'title'   => 'required|max:100',
 				'content' => 'required|max:500',
 			]);
