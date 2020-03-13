@@ -78184,7 +78184,7 @@ $(document).ready(function () {
   } // Put spinning wheel on submits buttons when pressed
 
 
-  if ($('.spin')) {
+  if ($('.spin').length) {
     $('.spin').click(function () {
       var _this = this;
 

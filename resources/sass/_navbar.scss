@@ -1,20 +1,17 @@
 .navbar {
 	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 1);
 	border-bottom: 2px solid $green;
-	background: rgba(19, 19, 19, 0.975);
+	background: #131313f9;
 	position: sticky;
 	display: flex;
-	height: 5rem;
 	z-index: 100;
+	height: 5rem;
 	top: 0;
 
 	.nav-avatar {
+		border: 2px solid $green;
 		margin-left: 1rem;
 		width: 2.5rem;
-
-		&.is_superadmin {
-			border-color: $superadmin;
-		}
 	}
 
 	#navbar-container {

@@ -74,7 +74,7 @@ $(document).ready(() => {
 	}
 	
 	// Put spinning wheel on submits buttons when pressed
-	if ($('.spin')) {
+	if ($('.spin').length) {
 		$('.spin').click(function() {
 			if (!$(this).hasClass('loading')) {
 				$(this).css('width', `${$(this).outerWidth()}px`).addClass('loading').html('<i class="fas fa-circle-notch"></i>');

@@ -12103,23 +12103,20 @@ a:visited {
 .navbar {
   box-shadow: 0 0 10px 5px black;
   border-bottom: 2px solid #00c26e;
-  background: rgba(19, 19, 19, 0.975);
+  background: #131313f9;
   position: -webkit-sticky;
   position: sticky;
   display: -webkit-box;
   display: flex;
-  height: 5rem;
   z-index: 100;
+  height: 5rem;
   top: 0;
 }
 
 .navbar .nav-avatar {
+  border: 2px solid #00c26e;
   margin-left: 1rem;
   width: 2.5rem;
-}
-
-.navbar .nav-avatar.is_superadmin {
-  border-color: #00b0e066;
 }
 
 .navbar #navbar-container {
@@ -12419,6 +12416,7 @@ a:visited {
 }
 
 .post .post-header .post-meta .post-avatar {
+  border: 2px solid #2b2b34e6;
   margin-right: 2px;
   padding: 2px;
   width: 5rem;
