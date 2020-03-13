@@ -77,7 +77,10 @@ $(document).ready(() => {
 	if ($('.spin')) {
 		$('.spin').click(function() {
 			if (!$(this).hasClass('loading')) {
-				$(this).css('width', `${$(this).outerWidth()}px`).addClass('loading').html('<i class="fas fa-circle-notch"></i>').attr('disabled', true);
+				$(this).css('width', `${$(this).outerWidth()}px`).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+				setTimeout(() => {
+					$(this).attr('disabled', true);
+				}, 50);
 			}
 		});
 	}
