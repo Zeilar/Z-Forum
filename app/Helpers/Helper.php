@@ -130,6 +130,8 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error-password', __('Incorrect password'));
 			case 'locked':
 				return redirect()->back()->with('error', __('The thread is locked, please contact a moderator'));
+			case 'create-item':
+				return redirect()->back()->with('error-create', __('Test'));
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:

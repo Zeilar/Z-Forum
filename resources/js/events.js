@@ -41,7 +41,7 @@ $(document).ready(() => {
 	});
 
 	// Turn disabled off if all inputs are filled, otherwise turn it on
-	$('.modal input').on('input', function() {
+	$('.modal input').on('input onload', function() {
 		let modal = $(this).closest('form');
 		let emptyFields = modal.find('input').not('[name=_token]').length;
 		modal.find('input').not('[name=_token]').each(function() {

@@ -9,10 +9,10 @@
 				</div>
 				<div class="modal-body">				
 					<div class="form-group">
-						<label>{{ $input ?? __('Title') }}</label>
-						@if (session('error-create')) <p class="color-red" id="error-create">{{ session('error-create') }}</p> @endif
+						<label>{{ __('Title') }}</label>
+						@error('title') <p class="color-red" id="error-create">{{ $message }}</p> @enderror
 						<input type="text" id="create_title" name="title" autocomplete="off"
-							class="form-control @if (session('error-create')) is-invalid @endif" value="{{old('title')}}" autofocus
+							class="form-control @error('title') is-invalid @enderror" autofocus
 						/>
 					</div>
 				</div>

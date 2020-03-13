@@ -62,8 +62,8 @@ class TableCategoriesController extends Controller
 		if ($this->tablecategory_validation() !== true) {
 			return $this->tablecategory_validation();
 		} else {
-			$data = request()->validate([
-				'title' => 'required|max:30',
+			request()->validate([
+				'title' => 'required|max:30|unique:table_categories',
 			]);
 
 			$tableCategory = new TableCategory();

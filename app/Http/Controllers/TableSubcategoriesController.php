@@ -66,8 +66,8 @@ class TableSubcategoriesController extends Controller
 		if ($this->tablesubcategory_validation() !== true) {
 			return $this->tablesubcategory_validation();
 		} else {
-			$data = request()->validate([
-				'title' => 'required|max:30',
+			request()->validate([
+				'title' => 'required|min:3|max:30|unique:table_subcategories',
 			]);
 
 			$tableSubcategory = new TableSubcategory();

@@ -12083,6 +12083,10 @@ a:visited {
   color: white !important;
 }
 
+.color-red {
+  color: red !important;
+}
+
 .search-wrapper {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
