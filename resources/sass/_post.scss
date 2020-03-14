@@ -107,12 +107,12 @@
 				}
 
 				.copy-notification {
+					box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
 					transform: translate(-50%, -50%);
-					box-shadow: 0 0 5px 0px black;
 					padding: 0.5rem 0.65rem;
-					background: #141414;
 					animation: fade-in 2s;
 					border-radius: 10px;
+					background: $green;
 					position: absolute;
 					opacity: 0;
 					top: -160%;
@@ -136,13 +136,13 @@
 					}
 
 					&::after {
-						content: '';
-						border-color: #141414 transparent;
+						border-color: $green transparent;
 						transform: translateX(-50%);
 						border-width: 20px 20px 0;
 						border-style: solid;
 						position: absolute;
 						bottom: -25%;
+						content: '';
 						left: 50%;
 					}
 				}

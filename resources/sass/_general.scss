@@ -23,7 +23,7 @@ body {
 	display: flex;
 }
 
-img, input::placeholder {
+img, input::placeholder, .note-placeholder {
 	user-select: none;
 }
 

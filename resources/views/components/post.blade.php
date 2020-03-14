@@ -29,7 +29,7 @@
 							@else
 								<a class="permalink" href="#">
 									{{ 'Today, ' . date('H:i') }}
-									<i class="fas fa-link"></i>	
+									<i class="fas fa-copy"></i>	
 								</a>
 							@endisset
 						</div>
@@ -85,7 +85,7 @@
 							@else
 								<a class="permalink" href="{{route('post_permalink', [$post->id])}}">
 									{{ pretty_date($post->created_at) }}
-									<i class="fas fa-link"></i>	
+									<i class="fas fa-copy"></i>	
 								</a>
 							@endisset
 						</div>
