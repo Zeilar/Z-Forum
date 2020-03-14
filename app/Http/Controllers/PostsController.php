@@ -213,6 +213,13 @@ class PostsController extends Controller
 		} else {
 			$post = Post::find($id);
 			$thread = $post->thread;
+
+			if (count($thread->posts) <= 1) {
+				$tableSubcategory = $thread->tableSubcategory;
+				$thread->delete();
+				return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+			}
+
 			$post->delete();
 			
 			return redirect(route('thread_show', [$thread->id, $thread->slug]));

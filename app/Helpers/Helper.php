@@ -19,14 +19,16 @@ require_once 'Variables.php';
  * @return mixed
  */
 if (!function_exists('item_exists')) {
-	function item_exists(object $item, string $slug) {
-		if ($item) {
-			if (strtolower(urldecode($slug)) === strtolower(urldecode($item->slug))) {
-				return true;
-			} else {
-				return false;
+	function item_exists($item, string $slug) {
+		try {
+			if ($item) {
+				if (strtolower(urldecode($slug)) === strtolower(urldecode($item->slug))) {
+					return true;
+				} else {
+					return false;
+				}
 			}
-		} else {
+		} catch (Exception $e) {
 			return false;
 		}
 	}
