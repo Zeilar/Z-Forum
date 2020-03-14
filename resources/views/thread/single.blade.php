@@ -13,40 +13,38 @@
 		@endslot
 	@endcomponent
 
-	<div class="thread-title">
-		<div class="d-flex flex-row">
-			@if (is_role('superadmin', 'moderator'))
-				<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
-					<i class="fas color-black fa-pen"></i>
-				</a>
-				<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
+	<div class="thread-toolbar d-flex flex-row">
+		@if (is_role('superadmin', 'moderator'))
+			<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
+				<i class="fas color-black fa-pen"></i>
+			</a>
+			<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
+				@csrf
+				<input type="hidden" name="_method" value="DELETE">
+				<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}" type="submit">
+					<i class="fas color-white fa-trash-alt"></i>
+				</button>
+			</form>
+			@if ($thread->locked)
+				<form action="{{route('thread_unlock', [$thread->id, $thread->slug])}}" method="post">
 					@csrf
-					<input type="hidden" name="_method" value="DELETE">
-					<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}" type="submit">
-						<i class="fas color-white fa-trash-alt"></i>
+					<input type="hidden" name="_method" value="PUT">
+					<button class="btn mr-2 spin btn-secondary" href="{{route('thread_unlock', [$thread->id, $thread->slug])}}" type="submit">
+						<i class="fas color-white fa-unlock"></i>
 					</button>
 				</form>
-				@if ($thread->locked)
-					<form action="{{route('thread_unlock', [$thread->id, $thread->slug])}}" method="post">
-						@csrf
-						<input type="hidden" name="_method" value="PUT">
-						<button class="btn mr-2 spin btn-secondary" href="{{route('thread_unlock', [$thread->id, $thread->slug])}}" type="submit">
-							<i class="fas color-white fa-unlock"></i>
-						</button>
-					</form>
-				@else
-					<form action="{{route('thread_lock', [$thread->id, $thread->slug])}}" method="post">
-						@csrf
-						<input type="hidden" name="_method" value="PUT">
-						<button class="btn mr-2 spin btn-secondary" href="{{route('thread_lock', [$thread->id, $thread->slug])}}" type="submit">
-							<i class="fas color-white fa-lock"></i>
-						</button>
-					</form>
-				@endif
+			@else
+				<form action="{{route('thread_lock', [$thread->id, $thread->slug])}}" method="post">
+					@csrf
+					<input type="hidden" name="_method" value="PUT">
+					<button class="btn mr-2 spin btn-secondary" href="{{route('thread_lock', [$thread->id, $thread->slug])}}" type="submit">
+						<i class="fas color-white fa-lock"></i>
+					</button>
+				</form>
 			@endif
-			<h5 class="text-white my-auto">{{ $thread->title }}</h5>
-		</div>
+		@endif
 	</div>
+	<h5 class="thread-title">{{ $thread->title }}</h5>
 
 	<div class="thread">
 		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>

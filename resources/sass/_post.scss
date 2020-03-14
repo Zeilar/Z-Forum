@@ -38,7 +38,7 @@
 				flex: 1;
 
 				&.is_superadmin {
-					background: linear-gradient(to right, #00a2cf66, #2b2b34e6);
+					background: linear-gradient(to right, $superadmin, #2b2b34e6);
 				}
 
 				&.is_moderator {
