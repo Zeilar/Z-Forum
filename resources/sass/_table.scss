@@ -34,12 +34,12 @@
 			background: rgba(65, 65, 80, 0.5);
 
 			&.admin-post {
-				background: linear-gradient(to right, #00c8ff66, #2b2b34e6);
+				background: linear-gradient(to right, $superadmin, #2b2b34e6);
 			}
 		}
 
 		&.admin-post {
-			background: linear-gradient(to right, #00a2cf66, #2b2b34e6);
+			background: linear-gradient(to right, $superadmin, #2b2b34e6);
 		}
 		
 		a {
@@ -66,7 +66,7 @@
 			display: flex;
 
 			&.tr-title {
-				flex: 15;
+				flex: 13;
 
 				p {
 					margin-left: 0.5rem;
