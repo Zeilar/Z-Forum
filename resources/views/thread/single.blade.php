@@ -62,21 +62,41 @@
 				<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
-					<button class="btn spin btn-success my-2 mr-2" type="submit">{{ __('Send') }}</button>
-					<button class="btn btn-success my-2 preview-button" type="button">
+					<button class="btn spin btn-success my-2 mr-2" type="submit" disabled>
+						{{ __('Send') }}
+					</button>
+					<button class="btn btn-success my-2 preview-button" type="button" disabled>
 						{{ __('Preview') }}
 					</button>
 				</form>
 			</div>
 
 			<script>
+				let interval = setInterval(() => {
+					if ($('#quick-reply .note-editable').length) clearInterval(interval);
+
+					$('#quick-reply .note-editable').on('input', function() {
+						console.log($(this).html());
+						if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
+							$('#quick-reply button').each(function() {
+								$(this).removeAttr('disabled');
+							});
+						} else {
+							console.log('else');
+							$('#quick-reply button').each(function() {
+								$(this).attr('disabled', true);
+							});
+						}
+					})
+				}, 50);
+
 				// Render post preview
 				$('.preview-button').click(function() {
 					// Prepare the user input in the editor
 					let content = $('.note-editable').html();
 
 					// '<p><br></p>' is Summernote default for empty, if the editor is empty, do nothing
-					if (content === '<p><br></p>') return;
+					if (content === '<p><br></p>' || content === '') return;
 					
 					// Only render the preview if it doesn't already exist
 					if (!$('#preview').length) {
