@@ -96,5 +96,17 @@
 		<div class="post-body">
 			{!! $post->content !!}
 		</div>
+
+		<div class="post-toolbar">
+			<div class="d-flex flex-row">
+				@auth
+					@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
+						<button class="btn post-edit btn-success">
+							{{ __('Edit') }}
+						</button>
+					@endif
+				@endauth
+			</div>
+		</div>
 	</article>
 @endif

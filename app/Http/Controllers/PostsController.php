@@ -146,7 +146,7 @@ class PostsController extends Controller
 		if ($this->post_validation($id) !== true) {
 			return $this->post_validation($id);
 		} else {
-			$data = request()->validate([
+			request()->validate([
 				'content' => 'required|max:500'
 			]);
 
@@ -155,6 +155,48 @@ class PostsController extends Controller
 			$post->save();
 
 			return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
+		}
+    }
+
+	/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_ajax(Request $request)
+    {
+		if (!logged_in()) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('Please log in and try again'),
+			]);
+		} elseif (!Post::find(request('id'))) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('That post does not exist, refresh the page and try again'),
+			]);
+		} elseif (Post::find(request('id'))->thread->locked && !is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('The thread has been locked'),
+			]);
+		} elseif (Post::find(request('id'))->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('That post does not belong to you, contact an administrator if you believe this is false'),
+			]);
+		} else {
+			$post = Post::find(request('id'));
+			$post->content = request('content');
+			$post->save();
+			return response()->json([
+				'success'   => true,
+				'message' 	=> __('Post was successfully changed'),
+				'content' => request('content'),
+				'id' => request('id'),
+			]);
 		}
     }
 

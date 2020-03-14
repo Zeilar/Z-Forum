@@ -87,26 +87,70 @@
 					// Inject the content
 					$('#preview .post-body').html(content);
 				});
-
-				// $('.btn-secondary').click(function(e) {
-				// 	let that = $(this);
-				// 	e.preventDefault();
-				// 	$.ajax({
-				// 		method: 'POST',
-				// 		url: '{{ route("thread_lock", [$thread->id, $thread->slug]) }}',
-				// 		data: {
-				// 			_token: '{{ Session::token() }}'
-				// 		},
-				// 		success: function(response) {
-				// 			console.log(response);
-				// 		},
-				// 		error: function(error) {
-				// 			console.log(error);
-				// 		}
-				// 	})
-				// });
 			</script>
 		@endif
+
+		<script>
+			// Spawn the save button and Summernote editor on the post
+			function post_edit(element) {
+				element.parents('.post-toolbar').siblings('.post-body').summernote();
+				if (!element.parent().siblings('.post-save-toolbar').length) {
+					element.parents('.post-toolbar').append(`
+						<div class="d-flex post-save-toolbar flex-row">
+							<button class="btn btn-success spin post-save">
+								Save
+							</button>
+						</div>
+					`);
+				}
+			}
+
+			// Save the edited post and reset elements to how they were before, but with the updated post content
+			function post_save(element, original, e) {
+				let id = element.parents('.post').attr('id');
+				let content = element.parents('.post').find('.note-editable').html();
+				e.preventDefault();
+				$.ajax({
+					url: '{{ route("post_update_ajax") }}',
+					method: 'POST',
+					data: {
+						_token: '{{ Session::token() }}',
+						id: id,
+						content: content
+					},
+					success: function() {
+						// Reset post element and remove Summernote editor
+						$(`#${id}`).html(original);
+
+						// Insert the newly edited content into the post
+						$(`#${id} .post-body`).html(content);
+
+						// The event handler needs to be re-initalized since the element was destroyed
+						post_handlers();
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+
+			// Initialize post handlers in order to let them be "recursive"
+			function post_handlers() {
+				$('.post-edit').each(function() {
+					let original = $(this).parents('.post').html();
+					$(this).click(function(e) {
+						post_edit($(this));
+
+						$(this).parent().siblings().children('.post-save').click(function(e) {
+							post_save($(this), original, e);
+						});
+					});
+				}) 
+			}
+
+			// Initalize post handlers on page load
+			post_handlers();
+		</script>
 	@endauth
 
 	{{ $posts->links('layouts.pagination') }}
