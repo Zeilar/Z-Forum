@@ -53,29 +53,16 @@ $(document).ready(() => {
 			modal.find('[type=submit]').attr('disabled', true);
 		}
 	});
-	
-	// Open modals depending on which error element has been spawned
-	if ($('#registerModal .is-invalid').length) {
-		$('#registerModal').modal('show');
-		$('.modal').on('shown.bs.modal', function() {
-			$('#registerModal .is-invalid').first().focus();
-		});
-	} else if ($('#loginModal .is-invalid').length) {
-		$('#loginModal').modal('show');
-		$('.modal').on('shown.bs.modal', function() {
-			$('#loginModal .is-invalid').first().focus();
-		});
-	} else if ($('#errorModal #error-any').length) {
-		$('#errorModal').modal('show');
-	} else if ($('#createModal #error-title').length) {
-		$('#createModal').modal('show');
-		$('.modal').on('shown.bs.modal', function() {
-			$('#createModal .is-invalid').first().focus();
-		});
-	} else {
-		$('.modal').on('shown.bs.modal', function() {
+
+	$('.modal').on('shown.bs.modal', function() {
+		if ($('.modal .is-invalid').length) {
+			$(this).find('.is-invalid').first().focus();
+		} else {
 			$(this).find('[autofocus]').focus();
-		});
+		}
+	});
+	if ($('.modal .is-invalid').length) {
+		$('.modal .is-invalid').parents('.modal').modal('show');
 	}
 	
 	// Put spinning wheel on submits buttons when pressed
