@@ -11361,7 +11361,9 @@ a.text-dark:focus {
 .btn {
   padding: 0.35rem 1rem;
   border-radius: 0.25rem;
+  position: relative;
   min-width: 3.5rem;
+  overflow: hidden;
 }
 
 .btn:active,
@@ -11373,6 +11375,49 @@ a.text-dark:focus {
 
 .btn[disabled] {
   cursor: auto;
+}
+
+.btn:active::before {
+  -webkit-animation: expand 0.5s linear forwards;
+          animation: expand 0.5s linear forwards;
+  background: rgba(0, 0, 0, 0.15);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  content: '';
+  left: 50%;
+  top: 50%;
+}
+
+@-webkit-keyframes expand {
+  from {
+    height: 0;
+    width: 0;
+  }
+
+  to {
+    height: 10rem;
+    width: 10rem;
+  }
+}
+
+@keyframes expand {
+  from {
+    height: 0;
+    width: 0;
+  }
+
+  to {
+    height: 10rem;
+    width: 10rem;
+  }
+}
+
+.btn span {
+  position: relative;
+  z-index: 2;
 }
 
 .btn-success {
@@ -12255,8 +12300,8 @@ a:visited {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button:hover {
-  border-color: #00c8c8;
-  background: #00c8c8;
+  border-color: #00a05b;
+  background: #00a05b;
 }
 
 .thread-title {
@@ -12608,6 +12653,62 @@ a:visited {
 
 .post .post-body * {
   color: white;
+}
+
+#server-error {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 15rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+#server-error .header {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+}
+
+#server-error .header h1,
+#server-error .header i {
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 4rem;
+  margin: auto;
+}
+
+#not-authorized {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 15rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+#not-authorized .header {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+}
+
+#not-authorized .header h1,
+#not-authorized .header i {
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 4rem;
+  margin: auto;
 }
 
 #not-found {

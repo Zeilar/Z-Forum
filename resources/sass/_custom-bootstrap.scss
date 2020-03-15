@@ -1,7 +1,9 @@
 .btn {
 	padding: 0.35rem 1rem;
 	border-radius: 0.25rem;
+	position: relative;
 	min-width: 3.5rem;
+	overflow: hidden;
 
 	&:active, &:focus, &:hover, &[disabled] {
 		box-shadow: none !important;
@@ -9,6 +11,36 @@
 
 	&[disabled] {
 		cursor: auto;
+	}
+
+	&:active {
+		&::before {
+			animation: expand 0.5s linear forwards;
+			background: rgba(0, 0, 0, 0.15);
+			transform: translate(-50%, -50%);
+			border-radius: 50%;
+			position: absolute;
+			display: block;
+			content: '';
+			left: 50%;
+			top: 50%;
+
+			@keyframes expand {
+				from {
+					height: 0;
+					width: 0;
+				}
+				to {
+					height: 10rem;
+					width: 10rem;
+				}
+			}
+		}
+	}
+
+	span {
+		position: relative;
+		z-index: 2;
 	}
 }
 

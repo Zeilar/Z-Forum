@@ -213,6 +213,7 @@ $(document).ready(() => {
 		}
 	});
 
+	// Automatically scroll to element if URL contains pound
 	if (window.location.href.includes('#')) {
 		let id = window.location.href.split('#', 2)[1];
 		let target = $(`#${id}`);
@@ -223,4 +224,8 @@ $(document).ready(() => {
 			target.addClass('active');
 		}
 	}
+
+	$(window).mousedown(function(e) {
+		console.log(e.target);
+	})
 });

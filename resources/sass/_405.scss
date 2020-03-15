@@ -1,0 +1,17 @@
+#not-authorized {
+	flex-direction: column;
+	padding-top: 15rem;
+	display: flex;
+
+	.header {
+		flex-direction: column;
+		display: flex;
+
+		h1, i {
+			text-align: center;
+			user-select: none;
+			font-size: 4rem;
+			margin: auto;
+		}
+	}
+}
