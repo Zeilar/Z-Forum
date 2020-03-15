@@ -1,0 +1,43 @@
+.alert {
+	animation: fade 0.25s linear forwards;
+	padding: 0.5rem 1rem;
+	flex-direction: row;
+	border-radius: 0;
+	color: white;
+	display: flex;
+
+	@keyframes fade {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	&.success {
+		background: rgba(0, 194, 110, 0.75);
+	}
+
+	i {
+		margin: auto 0;
+		color: white;
+
+		&.close {
+			margin-left: auto;
+			font-size: 1rem;
+			cursor: pointer;
+			opacity: 0.75;
+			float: none;
+
+			&:hover {
+				color: white;
+				opacity: 1 !important;
+			}
+		}
+	}
+
+	span {
+		margin-left: 0.5rem;
+	}
+}

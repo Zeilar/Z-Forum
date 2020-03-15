@@ -11469,14 +11469,6 @@ a.text-dark:focus {
   box-shadow: 0 0 0 0.1rem #00c26e;
 }
 
-.container-fluid#content,
-#content.container-sm,
-#content.container-md,
-#content.container-lg,
-#content.container-xl {
-  padding: 2.5% 10%;
-}
-
 .navbar {
   padding: 0 10%;
 }
@@ -12119,6 +12111,11 @@ a:visited {
   color: #a5abaf;
 }
 
+#content {
+  position: relative;
+  padding: 1% 10%;
+}
+
 .color-black {
   color: black !important;
 }
@@ -12316,6 +12313,65 @@ a:visited {
   padding: 1% 10%;
   margin-top: auto;
   color: white;
+}
+
+.alert {
+  -webkit-animation: fade 0.25s linear forwards;
+          animation: fade 0.25s linear forwards;
+  padding: 0.5rem 1rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  border-radius: 0;
+  color: white;
+  display: -webkit-box;
+  display: flex;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.alert.success {
+  background: rgba(0, 194, 110, 0.75);
+}
+
+.alert i {
+  margin: auto 0;
+  color: white;
+}
+
+.alert i.close {
+  margin-left: auto;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.75;
+  float: none;
+}
+
+.alert i.close:hover {
+  color: white;
+  opacity: 1 !important;
+}
+
+.alert span {
+  margin-left: 0.5rem;
 }
 
 #table .table-header,

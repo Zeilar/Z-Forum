@@ -56,7 +56,7 @@
 				<div class="post-meta-text
 					@if ($post->user->role !== 'user')
 						{{ role_coloring($post->user->role) }}
-					@elseif (logged_in()) 
+					@else if (logged_in()) 
 						@if ($post->user->id === auth()->user()->id) 
 							is_author
 						@endif

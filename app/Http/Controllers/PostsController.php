@@ -20,15 +20,15 @@ class PostsController extends Controller
 	{
 		if (!logged_in()) {
 			return msg_error('login');
-		} elseif (!Post::find($id)) {
+		} else if (!Post::find($id)) {
 			return view('errors.404');
-		} elseif (Post::find($id)->user_id !== auth()->user()->id) {
+		} else if (Post::find($id)->user_id !== auth()->user()->id) {
 			if (is_role('superadmin', 'moderator')) {
 				return true;
 			} else {
 				return msg_error('That post does not belong to you');
 			}
-		} elseif (Post::find($id)->thread->locked) {
+		} else if (Post::find($id)->thread->locked) {
 			if (is_role('superadmin', 'moderator')) {
 				return true;
 			} else {
@@ -59,9 +59,9 @@ class PostsController extends Controller
     {
 		if (!logged_in()) {
 			return msg_error('login');
-		} elseif (!item_exists(Thread::find($id), $slug)) {
+		} else if (!item_exists(Thread::find($id), $slug)) {
 			return view('errors.404', ['value' => urldecode($slug)]);
-		} elseif (Thread::find($id)->locked) {
+		} else if (Thread::find($id)->locked) {
 			return msg_error('locked');
 		} else {
 			return view('post.create', ['thread' => Thread::find($id)]);
@@ -78,9 +78,9 @@ class PostsController extends Controller
     {
 		if (!logged_in()) {
 			return msg_error('login');
-		} elseif (!Thread::find($id)) {
+		} else if (!Thread::find($id)) {
 			return view('errors.404', ['value' => urldecode($slug)]);
-		} elseif (Thread::find($id)->locked) {
+		} else if (Thread::find($id)->locked) {
 			return msg_error('locked');
 		} else {
 			$data = request()->validate([
@@ -196,22 +196,22 @@ class PostsController extends Controller
     {
 		if (!logged_in()) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('Please log in and try again'),
 			]);
-		} elseif (!Post::find(request('id'))) {
+		} else if (!Post::find(request('id'))) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('That post does not exist, refresh the page and try again'),
 			]);
-		} elseif (Post::find(request('id'))->thread->locked && !is_role('superadmin', 'moderator')) {
+		} else if (Post::find(request('id'))->thread->locked && !is_role('superadmin', 'moderator')) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('The thread has been locked'),
 			]);
-		} elseif (Post::find(request('id'))->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
+		} else if (Post::find(request('id'))->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('That post does not belong to you, contact an administrator if you believe this is false'),
 			]);
 		} else {
@@ -219,8 +219,8 @@ class PostsController extends Controller
 			$post->content = request('content');
 			$post->save();
 			return response()->json([
-				'success'   => true,
-				'message' 	=> __('Post was successfully changed'),
+				'type'	  => 'success',
+				'message' => __('Post was successfully changed'),
 			]);
 		}
     }
@@ -235,22 +235,22 @@ class PostsController extends Controller
     {
 		if (!logged_in()) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('Please log in and try again'),
 			]);
-		} elseif (!Post::find(request('id'))) {
+		} else if (!Post::find(request('id'))) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('That post does not exist, refresh the page and try again'),
 			]);
-		} elseif (Post::find(request('id'))->thread->locked && !is_role('superadmin', 'moderator')) {
+		} else if (Post::find(request('id'))->thread->locked && !is_role('superadmin', 'moderator')) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('The thread has been locked'),
 			]);
-		} elseif (Post::find(request('id'))->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
+		} else if (Post::find(request('id'))->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
 			return response()->json([
-				'error'   => true,
+				'type'    => 'error',
 				'message' => __('That post does not belong to you, contact an administrator if you believe this is false'),
 			]);
 		} else {
@@ -266,9 +266,9 @@ class PostsController extends Controller
 
 			$post->delete();
 			return response()->json([
-				'success'   => true,
-				'message' 	=> __('Post was successfully deleted'),
-				'redirect'	=> $redirect,
+				'type'     => 'success',
+				'message'  => __('Post was successfully deleted'),
+				'redirect' => $redirect,
 			]);
 		}
     }

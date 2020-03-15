@@ -78299,10 +78299,6 @@ $(document).ready(function () {
       target.addClass('active');
     }
   }
-
-  $(window).mousedown(function (e) {
-    console.log(e.target);
-  });
 });
 
 /***/ }),

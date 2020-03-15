@@ -140,12 +140,14 @@
 							id: id,
 							content: content
 						},
-						success: function() {
+						success: function(response) {
 							// Reset post element and remove Summernote editor
 							$(`#${id}`).html(original);
 
 							// Insert the newly edited content into the post
 							$(`#${id} .post-body`).html(content);
+
+							ajax_alert(response);
 
 							// The event handler needs to be re-initalized since the element was destroyed
 							post_handlers();
@@ -203,6 +205,40 @@
 					}) 
 				}
 
+				function ajax_alert(response) {
+					let alertIcon = '';
+
+					switch (response.type) {
+						case 'success':
+							alertIcon = '<i class="fas fa-check"></i>';
+							break;
+						case 'error':
+							alertIcon = '<i class="fas fa-exclamation"></i>';
+							break;
+						case 'warning':
+							alertIcon = '<i class="fas fa-exclamation-triangle"></i>';
+							break;
+					}
+
+					let alertContent = `
+						<div class="alert ${response.type}">
+							${alertIcon}
+							<span>${response.message}</span>
+							<i class="fas close fa-times"></i>
+						</div>
+					`;
+
+					if (!$('.alert').length) {
+						$('#content').prepend(alertContent);
+					} else {
+						$('.alert').replaceWith(alertContent);
+					}
+
+					$('.alert .close').click(function() {
+						$(this).parents('.alert').remove();
+					});
+				}
+
 				// Initalize post handlers on page load
 				post_handlers();
 
@@ -223,6 +259,7 @@
 								window.location.href = response.redirect;
 							} else {
 								$(`#${id}`).remove();
+								ajax_alert(response);
 							}
 						},
 						error: function(error) {

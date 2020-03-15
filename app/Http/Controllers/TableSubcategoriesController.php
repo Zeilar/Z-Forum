@@ -18,7 +18,7 @@ class TableSubcategoriesController extends Controller
 	{
 		if (!logged_in()) {
 			return msg_error('login');
-		} elseif (!is_role('superadmin')) {
+		} else if (!is_role('superadmin')) {
 			return msg_error('role');
 		} else {
 			return true;

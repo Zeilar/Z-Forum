@@ -20,7 +20,7 @@ class ThreadsController extends Controller
 	{
 		if (!logged_in()) {
 			return msg_error('login');
-		} elseif (!item_exists(Thread::find($id), $slug)) {
+		} else if (!item_exists(Thread::find($id), $slug)) {
 			return view('errors.404');
 		} else if (!is_role('superadmin', 'moderator')) {
 			return msg_error('role');
@@ -48,7 +48,7 @@ class ThreadsController extends Controller
     {
 		if (!logged_in()) {
 			return msg_error('login');
-		} elseif (!item_exists(TableSubcategory::find($id), $slug)) {
+		} else if (!item_exists(TableSubcategory::find($id), $slug)) {
 			return view('errors.404', ['value' => urldecode($slug)]);
 		} else {
 			return view('thread.create', [
