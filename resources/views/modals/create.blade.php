@@ -18,7 +18,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
-						{{__('Create')}}
+						<span>{{__('Create')}}</span>
 					</button>
 				</div>
 			</form>

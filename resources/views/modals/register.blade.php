@@ -48,7 +48,7 @@
 				</div>
 				<div class="modal-footer">		
 					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
-						{{__('Register')}}
+						<span>{{__('Register')}}</span>
 					</button>
 					<p>
 						{{ __('Already a member?') }}

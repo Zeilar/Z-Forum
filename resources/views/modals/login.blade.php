@@ -40,7 +40,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
-						{{__('Login')}}
+						<span>{{__('Login')}}</span>
 					</button>
 					<p>
 						{{ __('Not a member?') }}

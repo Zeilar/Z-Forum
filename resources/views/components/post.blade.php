@@ -103,7 +103,7 @@
 				@auth
 					@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
 						<button class="btn post-edit btn-success">
-							{{ __('Edit') }}
+							<span>{{ __('Edit') }}</span>
 						</button>
 						<button class="btn post-delete btn-danger">
 							{{ __('Delete') }}

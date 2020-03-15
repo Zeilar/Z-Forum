@@ -9,6 +9,8 @@
 		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<input type="text" name="title" id="title" />
-		<button class="btn btn-success" type="submit">Submit</button>
+		<button class="btn btn-success" type="submit">
+			<span>{{ __('Submit') }}</span>
+		</button>
 	</form>
 @endsection

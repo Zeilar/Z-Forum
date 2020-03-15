@@ -63,10 +63,10 @@
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
 					<button class="btn spin btn-success my-2 mr-2" type="submit" disabled>
-						{{ __('Send') }}
+						<span>{{ __('Send') }}</span>
 					</button>
 					<button class="btn btn-success my-2 preview-button" type="button" disabled>
-						{{ __('Preview') }}
+						<span>{{ __('Preview') }}</span>
 					</button>
 				</form>
 			</div>
@@ -117,10 +117,10 @@
 						element.parents('.post-toolbar').append(`
 							<div class="d-flex post-save-toolbar flex-row">
 								<button class="btn btn-success spin post-save">
-									Save
+									<span>Save</span>
 								</button>
 								<button class="btn btn-success spin post-cancel">
-									Cancel
+									<span>Cancel</span>
 								</button>
 							</div>
 						`);

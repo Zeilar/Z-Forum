@@ -56,7 +56,7 @@
 			@endslot
 		@endcomponent
 		<a class="btn btn-success" id="create-button" data-toggle="modal" href="#createModal">
-			{{ __('Create new subcategory') }}
+			<span>{{ __('Create new subcategory') }}</span>
 		</a>
 	@endif
 @endsection

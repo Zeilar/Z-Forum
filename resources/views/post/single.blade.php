@@ -12,8 +12,8 @@
 		@endslot
 	@endcomponent
 
-	<a href="{{route('post_edit', [$post->id])}}">
-		<button class="btn btn-success" type="button">{{ __('Edit') }}</button>
+	<a class="btn btn-success" href="{{route('post_edit', [$post->id])}}">
+		<span>{{ __('Edit') }}</span>
 	</a>
 	
 	<form action="{{route('post_delete', [$post->id])}}" method="post">
