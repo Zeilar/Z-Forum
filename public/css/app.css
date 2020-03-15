@@ -11398,8 +11398,8 @@ a.text-dark:focus {
   }
 
   to {
-    height: 10rem;
-    width: 10rem;
+    height: 400%;
+    width: 200%;
   }
 }
 
@@ -11410,8 +11410,8 @@ a.text-dark:focus {
   }
 
   to {
-    height: 10rem;
-    width: 10rem;
+    height: 400%;
+    width: 200%;
   }
 }
 
