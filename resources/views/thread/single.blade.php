@@ -76,13 +76,11 @@
 					if ($('#quick-reply .note-editable').length) clearInterval(interval);
 
 					$('#quick-reply .note-editable').on('input', function() {
-						console.log($(this).html());
 						if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 							$('#quick-reply button').each(function() {
 								$(this).removeAttr('disabled');
 							});
 						} else {
-							console.log('else');
 							$('#quick-reply button').each(function() {
 								$(this).attr('disabled', true);
 							});
@@ -207,6 +205,35 @@
 
 				// Initalize post handlers on page load
 				post_handlers();
+
+				function post_delete(element, e) {
+					let id = element.parents('.post').attr('id');
+					e.preventDefault();
+					$.ajax({
+						url: '{{ route("post_delete_ajax") }}',
+						method: 'POST',
+						data: {
+							_token: '{{ Session::token() }}',
+							id: id,
+						},
+						success: function(response) {
+							// If the post is the last of its thread, a redirect to the previous page will be supplied
+							// Otherwise just remove the post element
+							if (response.redirect) {
+								window.location.href = response.redirect;
+							} else {
+								$(`#${id}`).remove();
+							}
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+
+				$('.post .post-delete').click(function(e) {
+					post_delete($(this), e);
+				});
 			</script>
 		@endif
 	@endauth

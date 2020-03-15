@@ -158,8 +158,35 @@ class PostsController extends Controller
 		}
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(int $id)
+    {
+		if ($this->post_validation($id) !== true) {
+			return $this->post_validation($id);
+		} else {
+			$post = Post::find($id);
+			$thread = $post->thread;
+
+			if (count($thread->posts) <= 1) {
+				$tableSubcategory = $thread->tableSubcategory;
+				$thread->delete();
+				$post->delete();
+				return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+			}
+
+			$post->delete();
+			
+			return redirect(route('thread_show', [$thread->id, $thread->slug]));
+		}
+    }
+
 	/**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage, using AJAX.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -194,35 +221,55 @@ class PostsController extends Controller
 			return response()->json([
 				'success'   => true,
 				'message' 	=> __('Post was successfully changed'),
-				'content' => request('content'),
-				'id' => request('id'),
 			]);
 		}
     }
 
-    /**
-     * Remove the specified resource from storage.
+	/**
+     * Remove the specified resource from storage, using AJAX.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy_ajax(Request $request)
     {
-		if ($this->post_validation($id) !== true) {
-			return $this->post_validation($id);
+		if (!logged_in()) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('Please log in and try again'),
+			]);
+		} elseif (!Post::find(request('id'))) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('That post does not exist, refresh the page and try again'),
+			]);
+		} elseif (Post::find(request('id'))->thread->locked && !is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('The thread has been locked'),
+			]);
+		} elseif (Post::find(request('id'))->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'error'   => true,
+				'message' => __('That post does not belong to you, contact an administrator if you believe this is false'),
+			]);
 		} else {
-			$post = Post::find($id);
+			$redirect = false;
+			$post = Post::find(request('id'));
 			$thread = $post->thread;
+			$tableSubcategory = $thread->tableSubcategory;
 
 			if (count($thread->posts) <= 1) {
-				$tableSubcategory = $thread->tableSubcategory;
 				$thread->delete();
-				return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+				$redirect = route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]);
 			}
 
 			$post->delete();
-			
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
+			return response()->json([
+				'success'   => true,
+				'message' 	=> __('Post was successfully deleted'),
+				'redirect'	=> $redirect,
+			]);
 		}
     }
 }

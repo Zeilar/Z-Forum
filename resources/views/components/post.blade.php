@@ -49,12 +49,7 @@
 		<div class="post-header">
 			<div class="post-meta">
 				<div class="post-avatar 
-					@if (is_user_online($post->user->id))
-						is_online
-					@else
-						{{role_coloring($post->user->role)}}
-					@endif
-				">
+					@if (is_user_online($post->user->id)) is_online @else {{role_coloring($post->user->role)}} @endif ">
 					<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" />
 				</div>
 					
@@ -109,6 +104,9 @@
 					@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
 						<button class="btn post-edit btn-success">
 							{{ __('Edit') }}
+						</button>
+						<button class="btn post-delete btn-danger">
+							{{ __('Delete') }}
 						</button>
 					@endif
 				@endauth
