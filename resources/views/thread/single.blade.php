@@ -26,27 +26,19 @@
 				</button>
 			</form>
 			@if ($thread->locked)
-				<form action="{{route('thread_unlock', [$thread->id, $thread->slug])}}" method="post">
-					@csrf
-					<input type="hidden" name="_method" value="PUT">
-					<button class="btn mr-2 spin btn-secondary" href="{{route('thread_unlock', [$thread->id, $thread->slug])}}" type="submit">
-						<i class="fas color-white fa-unlock"></i>
-					</button>
-				</form>
+				<button class="btn mr-2 spin thread-toggle btn-secondary" type="button">
+					<i class="fas color-white fa-unlock"></i>
+				</button>
 			@else
-				<form action="{{route('thread_lock', [$thread->id, $thread->slug])}}" method="post">
-					@csrf
-					<input type="hidden" name="_method" value="PUT">
-					<button class="btn mr-2 spin btn-secondary" href="{{route('thread_lock', [$thread->id, $thread->slug])}}" type="submit">
-						<i class="fas color-white fa-lock"></i>
-					</button>
-				</form>
+				<button class="btn mr-2 spin thread-toggle btn-secondary" type="button">
+					<i class="fas color-white fa-lock"></i>
+				</button>
 			@endif
 		@endif
 	</div>
 	<h5 class="thread-title">{{ $thread->title }}</h5>
 
-	<div class="thread">
+	<div class="thread @if ($thread->locked) locked @endif">
 		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post, 'i' => $i])
@@ -114,8 +106,9 @@
 				function post_edit(element) {
 					element.parents('.post').find('.post-body').summernote();
 					if (!element.parents('.post').find('.post-save-toolbar').length) {
+						let toolbar = element.parents('.post-toolbar').html();
 						element.parents('.post-toolbar').append(`
-							<div class="d-flex post-save-toolbar flex-row">
+							<div class="post-save-toolbar">
 								<button class="btn btn-success spin post-save">
 									<span>Save</span>
 								</button>
@@ -200,7 +193,7 @@
 							});
 
 							// Remove edit button after it's clicked
-							$(this).remove();
+							$(this).parent().remove();
 						});
 					}) 
 				}
@@ -272,6 +265,32 @@
 
 				$('.post .post-delete').click(function(e) {
 					post_delete($(this), e);
+				});
+
+				$('.thread-toggle').click(function(e) {
+					let url = '{{ route("thread_toggle") }}';
+					let id = '{{ $thread->id }}';
+					e.preventDefault();
+					$.ajax({
+						url: url,
+						method: 'POST',
+						data: {
+							_token: '{{ Session::token() }}',
+							id: id,
+						},
+						success: function(response) {
+							ajax_alert(response);
+							$('.thread-toggle').removeClass('loading').removeAttr('disabled');
+							if (response.state === 'unlocked') {
+								$('.thread-toggle i').removeClass('fa-lock').addClass('fa-lock color-white')
+							} else {
+								$('.thread-toggle i').removeClass('fa-lock').addClass('fa-unlock color-white');
+							}
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
 				});
 			</script>
 		@endif

@@ -179,42 +179,46 @@ class ThreadsController extends Controller
     }
 
 	/**
-     * Lock the specified resource in storage.
+     * Toggle locked or unlocked state the specified resource in storage, using AJAX.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-	 * @param  string $slug
-     * @return mixed
+     * @return \Illuminate\Http\Response
      */
-    public function lock(int $id, string $slug)
+    public function toggle(Request $request)
     {
-		if ($this->thread_validation($id, $slug) !== true) {
-			return $this->thread_validation($id, $slug);
+		if (!logged_in()) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('Please log in and try again'),
+			]);
+		} else if (!Thread::find(request('id'))) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('That thread does not exist, refresh the page and try again'),
+			]);
+		} else if (!is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('Insufficient permissions'),
+			]);
 		} else {
-			$thread = Thread::find($id);
-			$thread->locked = true;
+			$thread = Thread::find(request('id'));
+
+			if ($thread->locked) {
+				$thread->locked = false;
+				$state = __('unlocked');
+			} else {
+				$thread->locked = true;
+				$state = __('locked');
+			}
+			
 			$thread->save();
-
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
-		}
-    }
-
-	/**
-     * Unlock the specified resource in storage.
-     *
-     * @param  int  $id
-	 * @param  string $slug
-     * @return mixed
-     */
-    public function unlock(int $id, string $slug)
-    {
-		if ($this->thread_validation($id, $slug) !== true) {
-			return $this->thread_validation($id, $slug);
-		} else {
-			$thread = Thread::find($id);
-			$thread->locked = false;
-			$thread->save();
-
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
+			return response()->json([
+				'type'	  => 'success',
+				'message' => __("Thread was successfully $state"),
+				'state'   => $state,
+			]);
 		}
     }
 }
