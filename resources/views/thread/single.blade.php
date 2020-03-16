@@ -15,16 +15,9 @@
 
 	<div class="thread-toolbar d-flex flex-row">
 		@if (is_role('superadmin', 'moderator'))
-			<a class="btn mr-2 spin btn-warning" href="{{route('thread_edit', [$thread->id, $thread->slug])}}">
+			<a class="btn mr-2 spin thread-edit btn-warning" data-toggle="modal" href="#crudModal">
 				<i class="fas color-black fa-pen"></i>
 			</a>
-			<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
-				@csrf
-				<input type="hidden" name="_method" value="DELETE">
-				<button class="btn mr-2 spin btn-danger" href="{{route('thread_delete', [$thread->id, $thread->slug])}}" type="submit">
-					<i class="fas color-white fa-trash-alt"></i>
-				</button>
-			</form>
 			@if ($thread->locked)
 				<button class="btn mr-2 spin thread-toggle btn-secondary" type="button">
 					<i class="fas color-white fa-unlock"></i>
@@ -34,11 +27,21 @@
 					<i class="fas color-white fa-lock"></i>
 				</button>
 			@endif
+			<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
+				@csrf
+				<input type="hidden" name="_method" value="DELETE">
+				<button class="btn mr-2 spin btn-danger" type="submit">
+					<i class="fas color-white fa-trash-alt"></i>
+				</button>
+			</form>
 		@endif
 	</div>
-	<h5 class="thread-title">{{ $thread->title }}</h5>
 
 	<div class="thread @if ($thread->locked) locked @endif">
+		<div class="thread-header">
+			<h5 class="thread-title">{!! $thread->title !!}</h5>
+		</div>
+
 		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post, 'i' => $i])
@@ -158,7 +161,6 @@
 				function post_edit(element) {
 					element.parents('.post').find('.post-body').summernote();
 					if (!element.parents('.post').find('.post-save-toolbar').length) {
-						let toolbar = element.parents('.post-toolbar').html();
 						element.parents('.post-toolbar').append(`
 							<div class="post-save-toolbar">
 								<button class="btn btn-success spin post-save">
@@ -310,8 +312,22 @@
 					});
 				});
 			</script>
+
+			@component('modals.crud', ['route_name' => 'thread_update', 'route_values' => [$thread->id, $thread->slug]])
+				@slot('method')
+					PUT
+				@endslot
+				@slot('title')
+					{{ __('Edit thread title') }}
+				@endslot
+				@slot('submit')
+					{{ __('Save') }}
+				@endslot
+			@endcomponent
+
 		@endif
 	@endauth
 
 	{{ $posts->links('layouts.pagination') }}
+
 @endsection

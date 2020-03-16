@@ -1,10 +1,13 @@
-<div id="createModal" class="modal fade">
-	<div class="modal-dialog modal-create">
+<div id="crudModal" class="modal fade">
+	<div class="modal-dialog modal-crud">
 		<div class="modal-content">
-			<form method="POST" action="{{route($route_name, $route_values)}}">
+			<form method="POST" action="{{route($route_name ?? '', $route_values ?? '')}}">
 				@csrf
+				@isset($method)
+					<input type="hidden" name="_method" value="{{$method}}">
+				@endisset
 				<div class="modal-header">				
-					<h4 class="modal-title">{{ $title ?? __('Create new item') }}</h4>
+					<h4 class="modal-title">{{ $title ?? '' }}</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">				
@@ -18,7 +21,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
-						<span>{{__('Create')}}</span>
+						<span>{{ $submit ?? '' }}</span>
 					</button>
 				</div>
 			</form>

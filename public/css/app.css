@@ -12020,7 +12020,7 @@ input[type=file] {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
-  background: #00c26e;
+  border-radius: 0;
   display: -webkit-box;
   display: flex;
   outline: 0;

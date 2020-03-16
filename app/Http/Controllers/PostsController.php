@@ -80,7 +80,7 @@ class PostsController extends Controller
 			return msg_error('login');
 		} else if (!Thread::find($id)) {
 			return view('errors.404', ['value' => urldecode($slug)]);
-		} else if (Thread::find($id)->locked) {
+		} else if (Thread::find($id)->locked && !is_role('superadmin', 'moderator')) {
 			return msg_error('locked');
 		} else {
 			$data = request()->validate([
