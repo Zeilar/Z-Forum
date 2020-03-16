@@ -15,7 +15,7 @@
 
 	<div class="thread-toolbar d-flex flex-row">
 		@if (is_role('superadmin', 'moderator'))
-			<a class="btn mr-2 spin thread-edit btn-warning" data-toggle="modal" href="#crudModal">
+			<a class="btn mr-2 thread-edit btn-warning" data-toggle="modal" href="#crudModal">
 				<i class="fas color-black fa-pen"></i>
 			</a>
 			@if ($thread->locked)
