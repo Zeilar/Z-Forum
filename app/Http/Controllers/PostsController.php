@@ -265,6 +265,7 @@ class PostsController extends Controller
 			}
 
 			$post->delete();
+			
 			return response()->json([
 				'type'     => 'success',
 				'message'  => __('Post was successfully deleted'),

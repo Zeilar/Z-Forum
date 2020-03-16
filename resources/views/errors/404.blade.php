@@ -4,24 +4,28 @@
 @section('content')
 	<div class="page-error" id="four-zero-four">
 		<div class="header">
-			<i class="fas mb-4 fa-ghost"></i>
-			<h1 class="color-green">{{ __('404 Not Found') }}</h1>
+			<h1>
+				<span>4</span>
+				<i class="fas fa-ghost"></i>
+				<span>4</span>
+			</h1>
+
+			<h2>{{ __('Not Found') }}</h2>
+
+			<form action="{{route('search')}}" method="get">
+				@csrf
+				<div class="search">
+					<input type="text" name="search" id="search-error" placeholder="What are you looking for?"
+						@isset ($value) value="{{$value}}" @endisset
+					/>
+					<button type="submit">
+						<span>{{ __('Search') }}</span>
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+			</form>
+
+			<iframe width="800" height="400" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" frameborder="0"></iframe>
 		</div>
-
-		<form class="mt-4" action="/search" method="get">
-			@csrf
-			<div class="search d-flex">
-				<input class="py-2" type="text" name="search" id="search-big" placeholder="What are you looking for?"
-					@if (isset($value)) value="{{$value}}" @endif
-				/>
-				<button type="submit">
-					<i class="fas fa-search"></i>
-				</button>
-			</div>
-		</form>
-
-		<iframe class="m-auto" width="550" height="400" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" frameborder="0" 
-			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
-		</iframe>
 	</div>
 @endsection

@@ -1,104 +1,88 @@
 .page-error {
-	
-}
-
-#four-zero-four {
-	flex-direction: column;
-	padding-top: 15rem;
-	display: flex;
+	color: white;
 
 	.header {
+		transform: translate(-50%, -50%);
 		flex-direction: column;
+		text-align: center;
+		position: absolute;
 		display: flex;
+		left: 50%;
+		top: 50%;
 
-		h1, i {
-			text-align: center;
+		h1 {
+			justify-content: center;
+			flex-direction: row;
 			user-select: none;
-			font-size: 4rem;
-			margin: auto;
-		}
-	}
+			display: flex;
+			color: $green;
 
-	.search {
-		border: 2px solid $green;
-		border-radius: 5rem;
-		background: none;
-		margin: auto;
-		height: 5%;
-		width: 75%;
-
-		input {
-			padding-right: 1.75rem;
-			padding-left: 1.75rem;
-			background: black;
-			border-radius: 5rem;
-			font-size: 2rem;
-			color: white;
-			width: 100%;
-			border: 0;
-
-			&::placeholder {
-				color: white;
-				opacity: 0.25;
-			}
-
-			&:focus {
-				outline: 0;
-			}
-		}
-
-		button {
-			border: 0;
-			padding: 0.5rem 1.5rem 0.5rem 1.2rem;
-			border-bottom-right-radius: 5rem;
-			border-top-right-radius: 5rem;
-			border-left: 2px solid $green;
-			background: black;
-
-			&:focus {
-				outline: 0;
+			span {
+				font-size: 10rem;
+				line-height: 1;
 			}
 
 			i {
-				align-self: center;
-				font-size: 1.5rem;
+				font-size: 7.5rem;
+				margin: auto 0;
 			}
 		}
+
+		h2 {
+			margin: 1rem 0 2rem 0;
+		}
+	}
+}
+
+#four-zero-four {
+	.search {
+		border: 2px solid $green;
+		flex-direction: row;
+		display: flex;
+
+		input {
+			padding: 0 0.5rem;
+			width: 100%;
+			border: 0;
+		}
+
+		button {
+			padding: 0.5rem 2rem;
+			flex-direction: row;
+			background: $green;
+			display: flex;
+			outline: 0;
+			border: 0;
+
+			&:hover {
+				background: $darkgreen;
+			}
+
+			span, i {
+				color: white;
+				margin: auto 0;
+			}
+
+			span {
+				margin-right: 1rem;
+			}
+		}
+	}
+
+	a {
+		margin: auto;
+		width: 40%;
+	}
+
+	iframe {
+		margin: 2rem 0;
 	}
 }
 
 #four-zero-five {
-	flex-direction: column;
-	padding-top: 15rem;
-	display: flex;
-
-	.header {
-		flex-direction: column;
-		display: flex;
-
-		h1, i {
-			text-align: center;
-			user-select: none;
-			font-size: 4rem;
-			margin: auto;
-		}
-	}
+	
 }
 
 #five-zero-five {
-	flex-direction: column;
-	padding-top: 15rem;
-	display: flex;
-
-	.header {
-		flex-direction: column;
-		display: flex;
-
-		h1, i {
-			text-align: center;
-			user-select: none;
-			font-size: 4rem;
-			margin: auto;
-		}
-	}
+	
 }

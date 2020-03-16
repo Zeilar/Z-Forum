@@ -37,9 +37,16 @@ a {
 	}
 }
 
+#app {
+	flex-direction: column;
+	display: flex;
+	flex: 1;
+}
+
 #content {
 	position: relative;
 	padding: 1% 10%;
+	flex: 1;
 }
 
 .color-black {

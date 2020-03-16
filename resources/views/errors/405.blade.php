@@ -4,9 +4,17 @@
 @section('content')
 	<div class="page-error" id="four-zero-five">
 		<div class="header">
-			<i class="fas mb-4 fa-ghost"></i>
-			<h2 class="color-green">{{ '405' }}</h2>
-			<h1 class="color-green">{{ __('Unauthorized') }}</h1>
+			<h1>
+				<span>4</span>
+				<i class="fas fa-ban"></i>
+				<span>5</span>
+			</h1>
+
+			<h2>{{ __('Unauthorized') }}</h2>
+
+			<a class="btn btn-success" href="{{url()->previous()}}">
+				{{ __('Go back') }}
+			</a>
 		</div>
 	</div>
 @endsection

@@ -214,6 +214,7 @@ class ThreadsController extends Controller
 			}
 			
 			$thread->save();
+			
 			return response()->json([
 				'type'	  => 'success',
 				'message' => __("Thread was successfully $state"),
