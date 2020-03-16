@@ -54,12 +54,14 @@
 				</div>
 					
 				<div class="post-meta-text
-					@if ($post->user->role !== 'user')
-						{{ role_coloring($post->user->role) }}
-					@else if (logged_in()) 
+					@if (logged_in()) 
 						@if ($post->user->id === auth()->user()->id) 
 							is_author
 						@endif
+					@else
+						@if ($post->user->role !== 'user')
+							{{ role_coloring($post->user->role) }}
+						@endif	
 					@endif
 				">
 					<div class="post-meta-left">
@@ -77,6 +79,7 @@
 						@isset($i)
 							<span class="post-i">#{{ $i }}</span>
 						@endisset
+
 						<div class="post-link">
 							@isset ($banner_link) 
 								{{ $banner_link }}
@@ -85,6 +88,7 @@
 									{{ pretty_date($post->created_at) }}
 									<i class="fas fa-copy"></i>
 								</a>
+								
 								<a class="ml-2" href="{{route('post_permalink', [$post->id])}}" target="_blank">
 									<i class="fas fa-external-link-alt"></i>
 								</a>
@@ -94,6 +98,7 @@
 				</div>
 			</div>
 		</div> {{-- .post-header --}}
+
 		<div class="post-body">
 			{!! $post->content !!}
 		</div>
