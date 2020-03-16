@@ -1,5 +1,5 @@
 .alert {
-	animation: fade 0.25s linear forwards;
+	animation: fadein 0.25s linear forwards;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
 	position: relative;
@@ -7,12 +7,25 @@
 	color: white;
 	display: flex;
 
-	@keyframes fade {
+	&.fade-out {
+		animation: fadeout 0.5s linear;
+	}
+
+	@keyframes fadein {
 		from {
 			opacity: 0;
 		}
 		to {
 			opacity: 1;
+		}
+	}
+
+	@keyframes fadeout {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
 		}
 	}
 

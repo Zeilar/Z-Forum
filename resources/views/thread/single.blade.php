@@ -102,6 +102,78 @@
 
 		@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
 			<script>
+				// Spawn alert element on top of the site with message
+				function ajax_alert(response) {
+					let alertIcon = '';
+
+					switch (response.type) {
+						case 'success':
+							alertIcon = '<i class="fas fa-check"></i>';
+							break;
+						case 'error':
+							alertIcon = '<i class="fas fa-exclamation"></i>';
+							break;
+						case 'warning':
+							alertIcon = '<i class="fas fa-exclamation-triangle"></i>';
+							break;
+					}
+
+					let alertContent = `
+						<div class="alert ${response.type}">
+							${alertIcon}
+							<span>${response.message}</span>
+							<div>
+								<i class="fas close fa-times"></i>
+							</div>
+						</div>
+					`;
+
+					if (!$('.alert').length) {
+						$('#content').prepend(alertContent);
+					} else {
+						$('.alert').replaceWith(alertContent);
+					}
+
+					// Remove alert after a while regardless
+					setInterval(() => {
+						// Do a fade animatin before removing
+						$('.alert').addClass('fade-out');
+
+						// Remove element after animation is finished, it needs to be the same amount as the animation duration on the element
+						setInterval(() => {
+							$('.alert').remove();
+						}, 500);
+					}, 5000);
+
+					// Remove alert when the X button is clicked
+					$('.alert div').click(function() {
+						$(this).parents('.alert').remove();
+					});
+				}
+
+				// Initialize post handlers in order to let them be "recursive"
+				function post_handlers() {
+					$('.post-edit').each(function() {
+						let original = $(this).parents('.post').html();
+						$(this).click(function(e) {
+							post_edit($(this));
+
+							$(this).parents('.post').find('.post-save').click(function(e) {
+								post_save($(this), original, e);
+							});
+
+							$(this).parents('.post').find('.post-cancel').click(function(e) {
+								post_cancel($(this), original, e);
+							});
+
+							// Remove edit button after it's clicked
+							$(this).parent().remove();
+						});
+					}) 
+				}
+				// Initalize post handlers on page load
+				post_handlers();
+
 				// Spawn the save button and Summernote editor on the post
 				function post_edit(element) {
 					element.parents('.post').find('.post-body').summernote();
@@ -176,66 +248,6 @@
 						}
 					});
 				}
-
-				// Initialize post handlers in order to let them be "recursive"
-				function post_handlers() {
-					$('.post-edit').each(function() {
-						let original = $(this).parents('.post').html();
-						$(this).click(function(e) {
-							post_edit($(this));
-
-							$(this).parents('.post').find('.post-save').click(function(e) {
-								post_save($(this), original, e);
-							});
-
-							$(this).parents('.post').find('.post-cancel').click(function(e) {
-								post_cancel($(this), original, e);
-							});
-
-							// Remove edit button after it's clicked
-							$(this).parent().remove();
-						});
-					}) 
-				}
-
-				function ajax_alert(response) {
-					let alertIcon = '';
-
-					switch (response.type) {
-						case 'success':
-							alertIcon = '<i class="fas fa-check"></i>';
-							break;
-						case 'error':
-							alertIcon = '<i class="fas fa-exclamation"></i>';
-							break;
-						case 'warning':
-							alertIcon = '<i class="fas fa-exclamation-triangle"></i>';
-							break;
-					}
-
-					let alertContent = `
-						<div class="alert ${response.type}">
-							${alertIcon}
-							<span>${response.message}</span>
-							<div>
-								<i class="fas close fa-times"></i>
-							</div>
-						</div>
-					`;
-
-					if (!$('.alert').length) {
-						$('#content').prepend(alertContent);
-					} else {
-						$('.alert').replaceWith(alertContent);
-					}
-
-					$('.alert div').click(function() {
-						$(this).parents('.alert').remove();
-					});
-				}
-
-				// Initalize post handlers on page load
-				post_handlers();
 
 				function post_delete(element, e) {
 					let id = element.parents('.post').attr('id');

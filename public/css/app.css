@@ -12316,8 +12316,8 @@ a:visited {
 }
 
 .alert {
-  -webkit-animation: fade 0.25s linear forwards;
-          animation: fade 0.25s linear forwards;
+  -webkit-animation: fadein 0.25s linear forwards;
+          animation: fadein 0.25s linear forwards;
   padding: 0.5rem 1rem;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -12329,7 +12329,12 @@ a:visited {
   display: flex;
 }
 
-@-webkit-keyframes fade {
+.alert.fade-out {
+  -webkit-animation: fadeout 0.5s linear;
+          animation: fadeout 0.5s linear;
+}
+
+@-webkit-keyframes fadein {
   from {
     opacity: 0;
   }
@@ -12339,13 +12344,33 @@ a:visited {
   }
 }
 
-@keyframes fade {
+@keyframes fadein {
   from {
     opacity: 0;
   }
 
   to {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }
 
