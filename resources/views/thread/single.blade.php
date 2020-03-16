@@ -102,6 +102,9 @@
 
 		@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
 			<script>
+				// Initalize post handlers on page load
+				post_handlers();
+
 				// Spawn alert element on top of the site with message
 				function ajax_alert(response) {
 					let alertIcon = '';
@@ -150,29 +153,6 @@
 						$(this).parents('.alert').remove();
 					});
 				}
-
-				// Initialize post handlers in order to let them be "recursive"
-				function post_handlers() {
-					$('.post-edit').each(function() {
-						let original = $(this).parents('.post').html();
-						$(this).click(function(e) {
-							post_edit($(this));
-
-							$(this).parents('.post').find('.post-save').click(function(e) {
-								post_save($(this), original, e);
-							});
-
-							$(this).parents('.post').find('.post-cancel').click(function(e) {
-								post_cancel($(this), original, e);
-							});
-
-							// Remove edit button after it's clicked
-							$(this).parent().remove();
-						});
-					}) 
-				}
-				// Initalize post handlers on page load
-				post_handlers();
 
 				// Spawn the save button and Summernote editor on the post
 				function post_edit(element) {
@@ -272,6 +252,31 @@
 						error: function(error) {
 							console.log(error);
 						}
+					});
+				}
+
+				// Initialize post handlers in order to let them be "recursive"
+				function post_handlers() {
+					$('.post').each(function() {
+						let original = $(this).html();
+						$(this).find('.post-edit').click(function(e) {
+							post_edit($(this));
+
+							$(this).parents('.post').find('.post-save').click(function(e) {
+								post_save($(this), original, e);
+							});
+
+							$(this).parents('.post').find('.post-cancel').click(function(e) {
+								post_cancel($(this), original, e);
+							});
+
+							// Remove edit button after it's clicked
+							$(this).parent().remove();
+						});
+
+						$(this).find('.post-delete').click(function(e) {
+							post_delete($(this), e)
+						});
 					});
 				}
 
