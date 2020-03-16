@@ -12398,8 +12398,8 @@ a:visited {
 }
 
 .alert.fade-out {
-  -webkit-animation: fadeout 0.5s linear;
-          animation: fadeout 0.5s linear;
+  -webkit-animation: fadeout 0.5s linear forwards;
+          animation: fadeout 0.5s linear forwards;
 }
 
 @-webkit-keyframes fadein {
