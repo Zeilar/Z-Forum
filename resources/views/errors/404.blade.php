@@ -2,7 +2,7 @@
 @extends('layouts.head')
 
 @section('content')
-	<div id="not-found">
+	<div class="page-error" id="four-zero-four">
 		<div class="header">
 			<i class="fas mb-4 fa-ghost"></i>
 			<h1 class="color-green">{{ __('404 Not Found') }}</h1>

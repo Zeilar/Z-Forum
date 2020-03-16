@@ -11994,6 +11994,157 @@ input[type=file] {
   color: white;
 }
 
+#four-zero-four {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 15rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+#four-zero-four .header {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+}
+
+#four-zero-four .header h1,
+#four-zero-four .header i {
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 4rem;
+  margin: auto;
+}
+
+#four-zero-four .search {
+  border: 2px solid #00c26e;
+  border-radius: 5rem;
+  background: none;
+  margin: auto;
+  height: 5%;
+  width: 75%;
+}
+
+#four-zero-four .search input {
+  padding-right: 1.75rem;
+  padding-left: 1.75rem;
+  background: black;
+  border-radius: 5rem;
+  font-size: 2rem;
+  color: white;
+  width: 100%;
+  border: 0;
+}
+
+#four-zero-four .search input::-webkit-input-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#four-zero-four .search input::-moz-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#four-zero-four .search input:-ms-input-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#four-zero-four .search input::-ms-input-placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#four-zero-four .search input::placeholder {
+  color: white;
+  opacity: 0.25;
+}
+
+#four-zero-four .search input:focus {
+  outline: 0;
+}
+
+#four-zero-four .search button {
+  border: 0;
+  padding: 0.5rem 1.5rem 0.5rem 1.2rem;
+  border-bottom-right-radius: 5rem;
+  border-top-right-radius: 5rem;
+  border-left: 2px solid #00c26e;
+  background: black;
+}
+
+#four-zero-four .search button:focus {
+  outline: 0;
+}
+
+#four-zero-four .search button i {
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+#four-zero-five {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 15rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+#four-zero-five .header {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+}
+
+#four-zero-five .header h1,
+#four-zero-five .header i {
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 4rem;
+  margin: auto;
+}
+
+#five-zero-five {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 15rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+#five-zero-five .header {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+}
+
+#five-zero-five .header h1,
+#five-zero-five .header i {
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 4rem;
+  margin: auto;
+}
+
 .dashboard-nav .nav-item {
   position: relative;
   display: -webkit-box;
@@ -12747,156 +12898,5 @@ a:visited {
 
 .post .post-body * {
   color: white;
-}
-
-#server-error {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  padding-top: 15rem;
-  display: -webkit-box;
-  display: flex;
-}
-
-#server-error .header {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  display: -webkit-box;
-  display: flex;
-}
-
-#server-error .header h1,
-#server-error .header i {
-  text-align: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  font-size: 4rem;
-  margin: auto;
-}
-
-#not-authorized {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  padding-top: 15rem;
-  display: -webkit-box;
-  display: flex;
-}
-
-#not-authorized .header {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  display: -webkit-box;
-  display: flex;
-}
-
-#not-authorized .header h1,
-#not-authorized .header i {
-  text-align: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  font-size: 4rem;
-  margin: auto;
-}
-
-#not-found {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  padding-top: 15rem;
-  display: -webkit-box;
-  display: flex;
-}
-
-#not-found .header {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  display: -webkit-box;
-  display: flex;
-}
-
-#not-found .header h1,
-#not-found .header i {
-  text-align: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  font-size: 4rem;
-  margin: auto;
-}
-
-#not-found .search {
-  border: 2px solid #00c26e;
-  border-radius: 5rem;
-  background: none;
-  margin: auto;
-  height: 5%;
-  width: 75%;
-}
-
-#not-found .search input {
-  padding-right: 1.75rem;
-  padding-left: 1.75rem;
-  background: black;
-  border-radius: 5rem;
-  font-size: 2rem;
-  color: white;
-  width: 100%;
-  border: 0;
-}
-
-#not-found .search input::-webkit-input-placeholder {
-  color: white;
-  opacity: 0.25;
-}
-
-#not-found .search input::-moz-placeholder {
-  color: white;
-  opacity: 0.25;
-}
-
-#not-found .search input:-ms-input-placeholder {
-  color: white;
-  opacity: 0.25;
-}
-
-#not-found .search input::-ms-input-placeholder {
-  color: white;
-  opacity: 0.25;
-}
-
-#not-found .search input::placeholder {
-  color: white;
-  opacity: 0.25;
-}
-
-#not-found .search input:focus {
-  outline: 0;
-}
-
-#not-found .search button {
-  border: 0;
-  padding: 0.5rem 1.5rem 0.5rem 1.2rem;
-  border-bottom-right-radius: 5rem;
-  border-top-right-radius: 5rem;
-  border-left: 2px solid #00c26e;
-  background: black;
-}
-
-#not-found .search button:focus {
-  outline: 0;
-}
-
-#not-found .search button i {
-  align-self: center;
-  font-size: 1.5rem;
 }
 

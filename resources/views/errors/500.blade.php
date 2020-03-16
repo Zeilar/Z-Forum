@@ -2,7 +2,7 @@
 @extends('layouts.head')
 
 @section('content')
-	<div id="server-error">
+	<div class="page-error" id="page-error">
 		<div class="header">
 			<i class="fas mb-4 fa-ghost"></i>
 			<h2 class="color-green">{{ '500' }}</h2>

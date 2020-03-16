@@ -1,4 +1,8 @@
-#not-found {
+.page-error {
+	
+}
+
+#four-zero-four {
 	flex-direction: column;
 	padding-top: 15rem;
 	display: flex;
@@ -59,6 +63,42 @@
 				align-self: center;
 				font-size: 1.5rem;
 			}
+		}
+	}
+}
+
+#four-zero-five {
+	flex-direction: column;
+	padding-top: 15rem;
+	display: flex;
+
+	.header {
+		flex-direction: column;
+		display: flex;
+
+		h1, i {
+			text-align: center;
+			user-select: none;
+			font-size: 4rem;
+			margin: auto;
+		}
+	}
+}
+
+#five-zero-five {
+	flex-direction: column;
+	padding-top: 15rem;
+	display: flex;
+
+	.header {
+		flex-direction: column;
+		display: flex;
+
+		h1, i {
+			text-align: center;
+			user-select: none;
+			font-size: 4rem;
+			margin: auto;
 		}
 	}
 }
