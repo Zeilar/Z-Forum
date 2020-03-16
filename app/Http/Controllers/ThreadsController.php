@@ -52,7 +52,7 @@ class ThreadsController extends Controller
 			return view('errors.404', ['value' => urldecode($slug)]);
 		} else {
 			return view('thread.create', [
-				'subcategory' => TableSubcategory::find($id),
+				'tableSubcategory' => TableSubcategory::find($id),
 			]);
 		}
     }

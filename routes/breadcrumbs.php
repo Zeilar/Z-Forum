@@ -23,6 +23,12 @@ Breadcrumbs::for('thread', function ($trail, $thread) {
     $trail->push($thread->title, route('thread_show', [$thread->id, $thread->slug]));
 });
 
+// Home > [Table category] > [Table subcategory] > [Thread] > [New]
+Breadcrumbs::for('thread_new', function ($trail, $tableSubcategory) {
+    $trail->parent('table_subcategory', $tableSubcategory);
+    $trail->push(__('New thread'), route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+});
+
 // Home > [Table category] > [Table subcategory] > [Thread] > [Post]
 Breadcrumbs::for('post', function ($trail, $post) {
     $trail->parent('thread', $post->thread);

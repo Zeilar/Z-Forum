@@ -3,9 +3,11 @@
 @section('pageTitle') Create new thread @endsection
 
 @section('content')
-	<h1>Create new thread in: {{ $subcategory->title }}</h1>
+	{{ Breadcrumbs::render('thread_new', $tableSubcategory) }}
 
-	<form action="{{route('thread_store', [$subcategory->id, $subcategory->slug])}}" method="POST">
+	<h1>Create new thread in: {{ $tableSubcategory->title }}</h1>
+
+	<form action="{{route('thread_store', [$tableSubcategory->id, $tableSubcategory->slug])}}" method="POST">
 		@csrf
 
 		<input type="text" name="title" id="title">
