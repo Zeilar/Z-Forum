@@ -12322,6 +12322,7 @@ a:visited {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  position: relative;
   border-radius: 0;
   color: white;
   display: -webkit-box;
@@ -12357,21 +12358,31 @@ a:visited {
   color: white;
 }
 
-.alert i.close {
-  margin-left: auto;
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: 0.75;
-  float: none;
-}
-
-.alert i.close:hover {
-  color: white;
-  opacity: 1 !important;
-}
-
 .alert span {
   margin-left: 0.5rem;
+}
+
+.alert div {
+  position: absolute;
+  cursor: pointer;
+  display: -webkit-box;
+  display: flex;
+  height: 100%;
+  width: 3%;
+  right: 0;
+  top: 0;
+}
+
+.alert div:hover .close {
+  opacity: 1 !important;
+  color: white;
+}
+
+.alert div .close {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin: auto;
+  float: none;
 }
 
 #table .table-header,

@@ -2,6 +2,7 @@
 	animation: fade 0.25s linear forwards;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
+	position: relative;
 	border-radius: 0;
 	color: white;
 	display: flex;
@@ -22,22 +23,33 @@
 	i {
 		margin: auto 0;
 		color: white;
-
-		&.close {
-			margin-left: auto;
-			font-size: 1rem;
-			cursor: pointer;
-			opacity: 0.75;
-			float: none;
-
-			&:hover {
-				color: white;
-				opacity: 1 !important;
-			}
-		}
 	}
 
 	span {
 		margin-left: 0.5rem;
+	}
+
+	div {
+		position: absolute;
+		cursor: pointer;
+		display: flex;
+		height: 100%;
+		width: 3%;
+		right: 0;
+		top: 0;
+
+		&:hover {
+			.close {
+				opacity: 1 !important;
+				color: white;
+			}
+		}
+		
+		.close {
+			font-size: 1rem;
+			opacity: 0.75;
+			margin: auto;
+			float: none;
+		}
 	}
 }

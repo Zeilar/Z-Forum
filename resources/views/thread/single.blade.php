@@ -224,7 +224,9 @@
 						<div class="alert ${response.type}">
 							${alertIcon}
 							<span>${response.message}</span>
-							<i class="fas close fa-times"></i>
+							<div>
+								<i class="fas close fa-times"></i>
+							</div>
 						</div>
 					`;
 
@@ -234,7 +236,7 @@
 						$('.alert').replaceWith(alertContent);
 					}
 
-					$('.alert .close').click(function() {
+					$('.alert div').click(function() {
 						$(this).parents('.alert').remove();
 					});
 				}
