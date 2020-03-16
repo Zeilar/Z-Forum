@@ -135,12 +135,12 @@
 					}
 
 					// Remove alert after a while regardless
-					setInterval(() => {
+					setTimeout(() => {
 						// Do a fade animatin before removing
 						$('.alert').addClass('fade-out');
 
 						// Remove element after animation is finished, it needs to be the same amount as the animation duration on the element
-						setInterval(() => {
+						setTimeout(() => {
 							$('.alert').remove();
 						}, 500);
 					}, 5000);
