@@ -106,7 +106,6 @@ class ThreadsController extends Controller
     {
 		if (item_exists(Thread::find($id), $slug)) {
 			$thread = Thread::find($id);
-			$thread->views += 1;
 			$thread->save();
 			return view('thread.single', [
 				'thread' => Thread::find($id),
