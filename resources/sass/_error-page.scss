@@ -43,6 +43,7 @@
 		input {
 			padding: 0 0.5rem;
 			width: 100%;
+			outline: 0;
 			border: 0;
 		}
 
@@ -64,7 +65,7 @@
 			}
 
 			span {
-				margin-right: 1rem;
+				margin-right: 0.5rem;
 			}
 		}
 	}

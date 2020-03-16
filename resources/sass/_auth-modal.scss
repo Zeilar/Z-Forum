@@ -30,12 +30,13 @@
 			.close {
 				position: absolute;
 				color: white;
+				opacity: 0.75;
 				right: 15px;
-				opacity: 1;
+				outline: 0;
 				top: 15px;
 
-				&:focus {
-					outline: 0;
+				&:hover {
+					opacity: 1;
 				}
 			}
 		}

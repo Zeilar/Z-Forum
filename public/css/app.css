@@ -11523,13 +11523,14 @@ a.text-dark:focus {
 .modal-auth .modal-content .modal-header .close {
   position: absolute;
   color: white;
+  opacity: 0.75;
   right: 15px;
-  opacity: 1;
+  outline: 0;
   top: 15px;
 }
 
-.modal-auth .modal-content .modal-header .close:focus {
-  outline: 0;
+.modal-auth .modal-content .modal-header .close:hover {
+  opacity: 1;
 }
 
 .modal-auth .modal-content .modal-body {
@@ -12010,6 +12011,7 @@ input[type=file] {
 #four-zero-four .search input {
   padding: 0 0.5rem;
   width: 100%;
+  outline: 0;
   border: 0;
 }
 
@@ -12036,7 +12038,7 @@ input[type=file] {
 }
 
 #four-zero-four .search button span {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 #four-zero-four a {
