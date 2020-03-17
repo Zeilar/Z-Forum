@@ -299,7 +299,13 @@
 						},
 						success: function(response) {
 							ajax_alert(response);
-							$('.thread-toggle').removeClass('loading').removeAttr('disabled');
+							$('.thread-toggle').removeClass('loading')
+
+							// Need to delay this due to .spin event handler code being fired after this 
+							setTimeout(() => {
+								$('.thread-toggle').removeAttr('disabled');
+							}, 100);
+
 							if (response.state === 'unlocked') {
 								$('.thread-toggle i').removeClass('fa-lock').addClass('fa-lock color-white')
 							} else {
