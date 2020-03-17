@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableCategory;
+use App\Category;
 use App\Post;
 
-class TableCategoriesController extends Controller
+class CategoriesController extends Controller
 {
 	/**
 	 * Error handling for various table category actions
@@ -14,7 +14,7 @@ class TableCategoriesController extends Controller
 	 * @param  int $id
 	 * @return mixed
 	 */
-	public function tablecategory_validation() 
+	public function category_validation() 
 	{
 		if (!logged_in()) {
 			return msg_error('login');
@@ -33,7 +33,7 @@ class TableCategoriesController extends Controller
     public function index()
     {
         return view('index', [
-			'tableCategories' => TableCategory::all(),
+			'tableCategories' => Category::all(),
 		]);
     }
 
@@ -44,10 +44,10 @@ class TableCategoriesController extends Controller
      */
     public function create()
     {
-		if ($this->tablecategory_validation() !== true) {
-			return $this->tablecategory_validation();
+		if ($this->category_validation() !== true) {
+			return $this->category_validation();
 		} else {
-			return view('table_category.create');
+			return view('category.create');
 		}
     }
 
@@ -59,19 +59,19 @@ class TableCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-		if ($this->tablecategory_validation() !== true) {
-			return $this->tablecategory_validation();
+		if ($this->category_validation() !== true) {
+			return $this->category_validation();
 		} else {
 			request()->validate([
-				'title' => 'required|max:30|unique:table_categories',
+				'title' => 'required|max:30|unique:categories',
 			]);
 
-			$tableCategory = new TableCategory();
-			$tableCategory->title = request('title');
-			$tableCategory->slug = urlencode(request('title'));
-			$tableCategory->save();
+			$category = new Category();
+			$category->title = request('title');
+			$category->slug = urlencode(request('title'));
+			$category->save();
 
-			return redirect()->route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]);
+			return redirect()->route('category_show', [$category->id, $category->slug]);
 		}
     }
 
@@ -83,9 +83,9 @@ class TableCategoriesController extends Controller
      */
     public function show(int $id, string $slug)
     {
-		if (item_exists(TableCategory::find($id), $slug)) {
-			return view('table_category.single', [
-				'tableCategory' => TableCategory::find($id),
+		if (item_exists(Category::find($id), $slug)) {
+			return view('category.single', [
+				'category' => Category::find($id),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);

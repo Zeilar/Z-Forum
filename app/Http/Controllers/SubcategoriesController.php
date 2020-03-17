@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableSubcategory;
-use App\TableCategory;
+use App\Subcategory;
+use App\Category;
 
-class TableSubcategoriesController extends Controller
+class SubcategoriesController extends Controller
 {
 	/**
 	 * Error handling for various table subcategory actions
@@ -14,7 +14,7 @@ class TableSubcategoriesController extends Controller
 	 * @param  int $id
 	 * @return mixed
 	 */
-	public function tablesubcategory_validation() 
+	public function subcategory_validation() 
 	{
 		if (!logged_in()) {
 			return msg_error('login');
@@ -42,12 +42,12 @@ class TableSubcategoriesController extends Controller
      */
     public function create(int $id, string $slug)
     {
-		if ($this->tablesubcategory_validation() !== true) {
-			return $this->tablesubcategory_validation();
+		if ($this->subcategory_validation() !== true) {
+			return $this->subcategory_validation();
 		} else {
-			if (item_exists(TableCategory::find($id), $slug)) {
-				return view('table_subcategory.create', [
-					'tableCategory' => TableCategory::find($id),
+			if (item_exists(Category::find($id), $slug)) {
+				return view('subcategory.create', [
+					'category' => Category::find($id),
 				]);
 			} else {
 				return view('errors.404', ['value' => urldecode($slug)]);
@@ -63,20 +63,20 @@ class TableSubcategoriesController extends Controller
      */
     public function store(Request $request, int $id, string $slug)
     {
-		if ($this->tablesubcategory_validation() !== true) {
-			return $this->tablesubcategory_validation();
+		if ($this->subcategory_validation() !== true) {
+			return $this->subcategory_validation();
 		} else {
 			request()->validate([
-				'title' => 'required|min:3|max:30|unique:table_subcategories',
+				'title' => 'required|min:3|max:30|unique:subcategories',
 			]);
 
-			$tableSubcategory = new TableSubcategory();
-			$tableSubcategory->title = request('title');
-			$tableSubcategory->slug = urlencode(request('title'));
-			$tableSubcategory->table_category_id = TableCategory::find($id)->id;
-			$tableSubcategory->save();
+			$subcategory = new Subcategory();
+			$subcategory->title = request('title');
+			$subcategory->slug = urlencode(request('title'));
+			$subcategory->category_id = Category::find($id)->id;
+			$subcategory->save();
 
-			return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 		}
     }
 
@@ -88,9 +88,9 @@ class TableSubcategoriesController extends Controller
      */
     public function show(int $id, string $slug)
     {
-		if (item_exists(TableSubcategory::find($id), $slug)) {
-			return view('table_subcategory.single', [
-				'tableSubcategory' => TableSubcategory::find($id),
+		if (item_exists(Subcategory::find($id), $slug)) {
+			return view('subcategory.single', [
+				'subcategory' => Subcategory::find($id),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);
@@ -105,11 +105,11 @@ class TableSubcategoriesController extends Controller
      */
     public function edit(int $id, string $slug)
     {
-		if ($this->tablesubcategory_validation() !== true) {
-			return $this->tablesubcategory_validation();
+		if ($this->subcategory_validation() !== true) {
+			return $this->subcategory_validation();
 		} else {
-			if (item_exists(TableSubcategory::find($id), $slug)) {
-				return view('table_subcategory.edit', ['tableSubcategory' => TableSubcategory::find($id)]);
+			if (item_exists(Subcategory::find($id), $slug)) {
+				return view('subcategory.edit', ['subcategory' => Subcategory::find($id)]);
 			} else {
 				return view('errors.404', ['value' => urldecode($slug)]);
 			}
@@ -126,18 +126,18 @@ class TableSubcategoriesController extends Controller
     public function update(Request $request, int $id, string $slug)
     {
         if (logged_in()) {
-			if (item_exists(TableSubcategory::find($id), $slug)) {
+			if (item_exists(Subcategory::find($id), $slug)) {
 				if (is_role('superadmin')) {
 					$data = request()->validate([
 						'title' => 'required|max:30'
 					]);
 
-					$tableSubcategory = TableSubcategory::find($id);
-					$tableSubcategory->title = request('title');
-					$tableSubcategory->slug = urlencode(request('title'));
-					$tableSubcategory->save();
+					$subcategory = Subcategory::find($id);
+					$subcategory->title = request('title');
+					$subcategory->slug = urlencode(request('title'));
+					$subcategory->save();
 
-					return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+					return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 				} else {
 					return msg_error('role');
 				}
@@ -157,14 +157,14 @@ class TableSubcategoriesController extends Controller
      */
     public function destroy(int $id, string $slug)
     {
-		if (item_exists(TableSubcategory::find($id), $slug)) {
+		if (item_exists(Subcategory::find($id), $slug)) {
 			if (logged_in()) {
 				if (is_role('superadmin')) {
-					$tableSubcategory = TableSubcategory::find($id);
-					$tableCategory = $tableSubcategory->tableCategory;
+					$subcategory = Subcategory::find($id);
+					$category = $subcategory->category;
 
-					if ($tableSubcategory->threads) {
-						foreach ($tableSubcategory->threads as $thread) {
+					if ($subcategory->threads) {
+						foreach ($subcategory->threads as $thread) {
 							foreach ($thread->posts as $post) {
 								$post->delete();
 							}
@@ -172,8 +172,8 @@ class TableSubcategoriesController extends Controller
 						}
 					}
 
-					$tableSubcategory->delete();
-					return redirect(route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]));
+					$subcategory->delete();
+					return redirect(route('category_show', [$category->id, $category->slug]));
 				} else {
 					return msg_error('role');
 				}

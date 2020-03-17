@@ -3,24 +3,24 @@
 
 @section('content')
 	<div id="table">
-		@foreach ($tableCategories as $tableCategory)
+		@foreach ($tableCategories as $category)
 			@component('components.table-header')
 				@slot('title')
-					<a href="{{route('tablecategory_show', [$tableCategory->id, $tableCategory->slug])}}">
-						{{ $tableCategory->title }}
+					<a href="{{route('category_show', [$category->id, $category->slug])}}">
+						{{ $category->title }}
 					</a>
 				@endslot
 			@endcomponent
 
-			@foreach ($tableCategory->tableSubcategories as $tableSubcategory)	
+			@foreach ($category->subcategories as $subcategory)	
 				@component('components.table-row')
 					@slot('title')
-						<a href="{{route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug])}}">
-							{{ $tableSubcategory->title }}
+						<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
+							{{ $subcategory->title }}
 						</a>
 					@endslot
 
-					@foreach ($tableSubcategory->posts as $post)
+					@foreach ($subcategory->posts as $post)
 						@if ($post->user->role === 'superadmin')
 							@slot('admin_post')
 							@endslot
@@ -31,18 +31,18 @@
 
 					@slot('views')
 						<?php $views = 0; ?>
-						@foreach ($tableSubcategory->threads as $thread)
+						@foreach ($subcategory->threads as $thread)
 							<?php $views += $thread->views ?>
 						@endforeach
 						{{ $views }}
 					@endslot
 
 					@slot('posts')
-						{{ count($tableSubcategory->posts) }}
+						{{ count($subcategory->posts) }}
 					@endslot
 
 					@slot('latest_post')
-						@foreach ($tableSubcategory->posts()->latest()->get() as $post)
+						@foreach ($subcategory->posts()->latest()->get() as $post)
 							<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">
 								{{ pretty_date($post->updated_at) }}
 								<i class="fas fa-sign-in-alt"></i>
@@ -51,11 +51,11 @@
 						@endforeach
 					@endslot
 				@endcomponent
-			@endforeach {{-- $tableSubcategories --}}
+			@endforeach {{-- $subcategories --}}
 		@endforeach {{-- $tableCategories --}}
 	</div>
 	@if (is_role('superadmin'))
-		@component('modals.crud', ['route_name' => 'tablecategory_store'])
+		@component('modals.crud', ['route_name' => 'category_store'])
 			@slot('title')
 				{{ __('Create new category') }}
 			@endslot

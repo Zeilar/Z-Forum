@@ -5,7 +5,7 @@
 @section('content')
 	<h1>Edit subcategory</h1>
 
-	<form action="{{route('tablesubcategory_update', [$tableSubcategory->id, $tableSubcategory->slug])}}" method="POST">
+	<form action="{{route('subcategory_update', [$subcategory->id, $subcategory->slug])}}" method="POST">
 		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<input type="text" name="title" id="title" />

@@ -12,20 +12,20 @@
 */
 
 // Index
-Route::get('/', 'TableCategoriesController@index')->name('index');
+Route::get('/', 'CategoriesController@index')->name('index');
 
 // Table categories
-Route::get('/category/{id}-{slug}', 'TableCategoriesController@show')->name('tablecategory_show');
-Route::post('/category/store', 'TableCategoriesController@store')->name('tablecategory_store');
-Route::get('/category/new', 'TableCategoriesController@create')->name('tablecategory_create');
+Route::get('/category/{id}-{slug}', 'CategoriesController@show')->name('category_show');
+Route::post('/category/store', 'CategoriesController@store')->name('category_store');
+Route::get('/category/new', 'CategoriesController@create')->name('category_create');
 
 // Table subcategories
-Route::delete('/subcategory/{id}-{slug}/destroy', 'TableSubcategoriesController@destroy')->name('tablesubcategory_delete');
-Route::put('/subcategory/{id}-{slug}/update', 'TableSubcategoriesController@update')->name('tablesubcategory_update');
-Route::post('/subcategory/{id}-{slug}/store', 'TableSubcategoriesController@store')->name('tablesubcategory_store');
-Route::post('/category/{id}-{slug}/new', 'TableSubcategoriesController@create')->name('tablesubcategory_create');
-Route::get('/subcategory/{id}-{slug}/edit', 'TableSubcategoriesController@edit')->name('tablesubcategory_edit');
-Route::get('/subcategory/{id}-{slug}', 'TableSubcategoriesController@show')->name('tablesubcategory_show');
+Route::delete('/subcategory/{id}-{slug}/destroy', 'SubcategoriesController@destroy')->name('subcategory_delete');
+Route::put('/subcategory/{id}-{slug}/update', 'SubcategoriesController@update')->name('subcategory_update');
+Route::post('/subcategory/{id}-{slug}/store', 'SubcategoriesController@store')->name('subcategory_store');
+Route::post('/category/{id}-{slug}/new', 'SubcategoriesController@create')->name('subcategory_create');
+Route::get('/subcategory/{id}-{slug}/edit', 'SubcategoriesController@edit')->name('subcategory_edit');
+Route::get('/subcategory/{id}-{slug}', 'SubcategoriesController@show')->name('subcategory_show');
 
 // Threads
 Route::post('/subcategory/{id}-{slug}/thread/store', 'ThreadsController@store')->name('thread_store');

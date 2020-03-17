@@ -1,8 +1,8 @@
-{{-- Passed variables: $tableCategory --}}
+{{-- Passed variables: $category --}}
 @extends('layouts.head')
 
 @section('content')
-	<form action="{{route('tablesubcategory_store', [$tableCategory->id, $tableCategory->slug])}}" method="POST">
+	<form action="{{route('subcategory_store', [$category->id, $category->slug])}}" method="POST">
 		@csrf
 
 		<div class="form-group">

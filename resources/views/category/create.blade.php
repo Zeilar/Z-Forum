@@ -1,7 +1,7 @@
 @extends('layouts.head')
 
 @section('content')
-	<form action="{{route('tablecategory_store')}}" method="POST">
+	<form action="{{route('category_store')}}" method="POST">
 		@csrf
 
 		<div class="form-group">

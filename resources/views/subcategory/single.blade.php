@@ -1,17 +1,17 @@
-{{-- Passed variables: $tableSubcategory --}}
+{{-- Passed variables: $subcategory --}}
 @extends('layouts.head')
 
 @section('content')
-	{{ Breadcrumbs::render('table_subcategory', $tableSubcategory) }}
+	{{ Breadcrumbs::render('subcategory', $subcategory) }}
 
 	<div id="table">
 		@component('components.table-header')
 			@slot('title')
-				{{ $tableSubcategory->title }}
+				{{ $subcategory->title }}
 			@endslot
 		@endcomponent
 
-		@foreach ($tableSubcategory->threads as $thread)	
+		@foreach ($subcategory->threads as $thread)	
 			@component('components.table-row')
 				@slot('title')
 					<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
@@ -19,7 +19,7 @@
 					</a>
 				@endslot
 
-				@foreach ($tableSubcategory->posts as $post)
+				@foreach ($subcategory->posts as $post)
 					@if ($post->user->role === 'superadmin')
 						@slot('admin_post')
 						@endslot
@@ -30,7 +30,7 @@
 
 				@slot('views')
 					<?php $views = 0; ?>
-					@foreach ($tableSubcategory->threads as $thread)
+					@foreach ($subcategory->threads as $thread)
 						<?php $views += $thread->views ?>
 					@endforeach
 					{{ $views }}
@@ -52,7 +52,7 @@
 			@endcomponent
 		@endforeach {{-- $threads --}}
 	</div>
-	<a class="btn btn-success spin" href="{{route('thread_create', [$tableSubcategory->id, $tableSubcategory->slug])}}">
+	<a class="btn btn-success spin" href="{{route('thread_create', [$subcategory->id, $subcategory->slug])}}">
 		<span>{{ __('Create new thread') }}</span>
 	</a>
 @endsection

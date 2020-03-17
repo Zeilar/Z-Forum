@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\TableCategory;
+use App\Category;
 
-class TableCategoriesTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,15 +12,15 @@ class TableCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        TableCategory::create([
+        Category::create([
 			'title' => 'Gaming',
 			'slug' => 'Gaming',
 		]);
-		TableCategory::create([
+		Category::create([
 			'title' => 'Computers',
 			'slug' => 'Computers',
 		]);
-		TableCategory::create([
+		Category::create([
 			'title' => 'General',
 			'slug' => 'General',
 		]);

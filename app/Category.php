@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TableSubcategory extends Model
+class Category extends Model
 {
-    public function tableCategory()
+    public function subcategories()
 	{
-		return $this->belongsTo(TableCategory::class);
+		return $this->hasMany(Subcategory::class);
 	}
 
 	public function threads()

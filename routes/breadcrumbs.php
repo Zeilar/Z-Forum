@@ -6,27 +6,27 @@ Breadcrumbs::for('home', function ($trail) {
 });
 
 // Home > [Table category]
-Breadcrumbs::for('table_category', function ($trail, $tableCategory) {
+Breadcrumbs::for('category', function ($trail, $category) {
     $trail->parent('home');
-    $trail->push($tableCategory->title, route('tablecategory_show', [$tableCategory->id, $tableCategory->slug]));
+    $trail->push($category->title, route('category_show', [$category->id, $category->slug]));
 });
 
 // Home > [Table category] > [Table subcategory]
-Breadcrumbs::for('table_subcategory', function ($trail, $tableSubcategory) {
-    $trail->parent('table_category', $tableSubcategory->tableCategory);
-    $trail->push($tableSubcategory->title, route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+Breadcrumbs::for('subcategory', function ($trail, $subcategory) {
+    $trail->parent('category', $subcategory->category);
+    $trail->push($subcategory->title, route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 });
 
 // Home > [Table category] > [Table subcategory] > [Thread]
 Breadcrumbs::for('thread', function ($trail, $thread) {
-    $trail->parent('table_subcategory', $thread->tableSubcategory);
+    $trail->parent('subcategory', $thread->subcategory);
     $trail->push($thread->title, route('thread_show', [$thread->id, $thread->slug]));
 });
 
 // Home > [Table category] > [Table subcategory] > [Thread] > [New]
-Breadcrumbs::for('thread_new', function ($trail, $tableSubcategory) {
-    $trail->parent('table_subcategory', $tableSubcategory);
-    $trail->push(__('New thread'), route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+Breadcrumbs::for('thread_new', function ($trail, $subcategory) {
+    $trail->parent('subcategory', $subcategory);
+    $trail->push(__('New thread'), route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 });
 
 // Home > [Table category] > [Table subcategory] > [Thread] > [Post]

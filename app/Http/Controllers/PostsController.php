@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableSubcategory;
-use App\TableCategory;
+use App\Subcategory;
+use App\Category;
 use App\Thread;
 use App\Post;
 
@@ -92,8 +92,8 @@ class PostsController extends Controller
 			$post->content = request('content');
 			$post->user_id = auth()->user()->id;
 			$post->thread_id = $thread->id;
-			$post->table_subcategory_id = $thread->tableSubcategory->id;
-			$post->table_category_id = $thread->tableCategory->id;
+			$post->subcategory_id = $thread->subcategory->id;
+			$post->category_id = $thread->category->id;
 			$post->save();
 
 			return redirect(route('thread_show', [$thread->id, $thread->slug]));
@@ -173,10 +173,10 @@ class PostsController extends Controller
 			$thread = $post->thread;
 
 			if (count($thread->posts) <= 1) {
-				$tableSubcategory = $thread->tableSubcategory;
+				$subcategory = $thread->subcategory;
 				$thread->delete();
 				$post->delete();
-				return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+				return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 			}
 
 			$post->delete();
@@ -257,11 +257,11 @@ class PostsController extends Controller
 			$redirect = false;
 			$post = Post::find(request('id'));
 			$thread = $post->thread;
-			$tableSubcategory = $thread->tableSubcategory;
+			$subcategory = $thread->subcategory;
 
 			if (count($thread->posts) <= 1) {
 				$thread->delete();
-				$redirect = route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]);
+				$redirect = route('subcategory_show', [$subcategory->id, $subcategory->slug]);
 			}
 
 			$post->delete();

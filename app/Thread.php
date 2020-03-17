@@ -11,14 +11,14 @@ class Thread extends Model
 		return $this->hasMany(Post::class);
 	}
 
-	public function tableCategory()
+	public function category()
 	{
-		return $this->belongsTo(TableCategory::class);
+		return $this->belongsTo(Category::class);
 	}
 
-	public function tableSubcategory()
+	public function subcategory()
 	{
-		return $this->belongsTo(TableSubcategory::class);
+		return $this->belongsTo(Subcategory::class);
 	}
 
 	public function user()

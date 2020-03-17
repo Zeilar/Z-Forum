@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TableSubcategory;
-use App\TableCategory;
+use App\Subcategory;
+use App\Category;
 use App\Thread;
 use App\Post;
 
@@ -48,11 +48,11 @@ class ThreadsController extends Controller
     {
 		if (!logged_in()) {
 			return msg_error('login');
-		} else if (!item_exists(TableSubcategory::find($id), $slug)) {
+		} else if (!item_exists(Subcategory::find($id), $slug)) {
 			return view('errors.404', ['value' => urldecode($slug)]);
 		} else {
 			return view('thread.create', [
-				'tableSubcategory' => TableSubcategory::find($id),
+				'subcategory' => Subcategory::find($id),
 			]);
 		}
     }
@@ -71,23 +71,23 @@ class ThreadsController extends Controller
 				'content' => 'required|max:500',
 			]);
 
-			$tableCategory = TableSubcategory::find($id)->tableCategory;
-			$tableSubcategory = TableSubcategory::find($id);
+			$category = Subcategory::find($id)->category;
+			$subcategory = Subcategory::find($id);
 
 			$thread = new Thread();
 			$thread->title = request('title');
 			$thread->slug = urlencode(request('title'));
 			$thread->user_id = auth()->user()->id;
-			$thread->table_category_id = $tableCategory->id;
-			$thread->table_subcategory_id = $tableSubcategory->id;
+			$thread->category_id = $category->id;
+			$thread->subcategory_id = $subcategory->id;
 			$thread->save();
 
 			$post = new Post();
 			$post->content = request('content');
 			$post->user_id = auth()->user()->id;
 			$post->thread_id = $thread->id;
-			$post->table_category_id = $tableCategory->id;
-			$post->table_subcategory_id = $tableSubcategory->id;
+			$post->category_id = $category->id;
+			$post->subcategory_id = $subcategory->id;
 			$post->save();
 
 			return redirect(route('thread_show', [$thread->id, $thread->slug]));
@@ -153,12 +153,12 @@ class ThreadsController extends Controller
 			return $this->thread_validation($id, $slug);
 		} else {
 			$thread = Thread::find($id);
-			$tableSubcategory = $thread->tableSubcategory;
+			$subcategory = $thread->subcategory;
 			foreach ($thread->posts as $post) {
 				$post->delete();
 			}
 			$thread->delete();
-			return redirect(route('tablesubcategory_show', [$tableSubcategory->id, $tableSubcategory->slug]));
+			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 		}
     }
 
