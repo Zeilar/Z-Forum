@@ -12598,8 +12598,8 @@ a:visited {
 }
 
 #table .table-row .__wrapper.tr-latest-post {
-  -webkit-box-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 2.5;
+          flex: 2.5;
 }
 
 #table .table-row .__wrapper.tr-latest-post p {
