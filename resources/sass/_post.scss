@@ -15,11 +15,13 @@
 
 			&.is_op {
 				.post-meta-text {
-					background: linear-gradient(to right, $darkgreen, #2b2b34e6);
+					background: linear-gradient(to right, rgba(0, 133, 173, 0.5), #2b2b34e6);
 				}
+			}
 
-				.post-avatar {
-					border: 2px solid $green;
+			&.is_author {
+				.post-meta-text {
+					background: linear-gradient(to right, $green, #2b2b34e6);
 				}
 			}
 
@@ -27,19 +29,11 @@
 				.post-meta-text {
 					background: linear-gradient(to right, $superadmin, #2b2b34e6);
 				}
-
-				.post-avatar {
-					border: 2px solid $green;
-				}
 			}
 
 			&.is_moderator {
 				.post-meta-text {
 					background: linear-gradient(to right, $moderator, #2b2b34e6);
-				}
-
-				.post-avatar {
-					border: 2px solid $green;
 				}
 			}
 
@@ -57,6 +51,8 @@
 				}
 
 				&.is_online {
+					border-color: $green;
+
 					.avatar-meta {
 						background: rgba(0, 194, 110, 0.5);
 					}

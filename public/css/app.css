@@ -12637,12 +12637,13 @@ a:visited {
 }
 
 .post .post-header .post-meta.is_op .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(#00a05b), to(#2b2b34e6));
-  background: linear-gradient(to right, #00a05b, #2b2b34e6);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 133, 173, 0.5)), to(#2b2b34e6));
+  background: linear-gradient(to right, rgba(0, 133, 173, 0.5), #2b2b34e6);
 }
 
-.post .post-header .post-meta.is_op .post-avatar {
-  border: 2px solid #00c26e;
+.post .post-header .post-meta.is_author .post-meta-text {
+  background: -webkit-gradient(linear, left top, right top, from(#00c26e), to(#2b2b34e6));
+  background: linear-gradient(to right, #00c26e, #2b2b34e6);
 }
 
 .post .post-header .post-meta.is_superadmin .post-meta-text {
@@ -12650,17 +12651,9 @@ a:visited {
   background: linear-gradient(to right, #a0181880, #2b2b34e6);
 }
 
-.post .post-header .post-meta.is_superadmin .post-avatar {
-  border: 2px solid #00c26e;
-}
-
 .post .post-header .post-meta.is_moderator .post-meta-text {
   background: -webkit-gradient(linear, left top, right top, from(#7a11a380), to(#2b2b34e6));
   background: linear-gradient(to right, #7a11a380, #2b2b34e6);
-}
-
-.post .post-header .post-meta.is_moderator .post-avatar {
-  border: 2px solid #00c26e;
 }
 
 .post .post-header .post-meta .post-avatar {
@@ -12673,6 +12666,10 @@ a:visited {
 
 .post .post-header .post-meta .post-avatar:hover .avatar-meta {
   opacity: 1;
+}
+
+.post .post-header .post-meta .post-avatar.is_online {
+  border-color: #00c26e;
 }
 
 .post .post-header .post-meta .post-avatar.is_online .avatar-meta {

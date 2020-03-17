@@ -48,13 +48,21 @@
 	<article class="post" id="{{$post->id}}">
 		<div class="post-header">
 			<div class="post-meta
-				@if ($post->user->id === $post->thread->user->id) 
-					is_op
+				@auth
+					@if ($post->user->id === auth()->user()->id)
+						is_author
+					@elseif ($post->user->id === $post->thread->user->id)
+						is_op
+					@endif
 				@else
-					{{ role_coloring($post->user->role) }}
-				@endif
+					@if ($post->user->id === $post->thread->user->id)
+						is_op
+					@else
+						{{ role_coloring($post->user->role) }}
+					@endif
+				@endauth
 			">
-				<a class="post-avatar-wrapper" href="{{route('user_show', [$post->user->id])}}">
+				<a class="post-avatar-link" href="{{route('user_show', [$post->user->id])}}">
 					<div class="post-avatar @if (is_user_online($post->user->id)) is_online @endif">
 						<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" />
 
