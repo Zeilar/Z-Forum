@@ -57,7 +57,7 @@ class PostsTableSeeder extends Seeder
 		Post::create([
 			'content' => 'Because NvidiaTM',
 			'thread_id' => 7,
-			'user_id' => 1,
+			'user_id' => 3,
 			'subcategory_id' => 7,
 			'category_id' => 2,
 		]);
@@ -85,7 +85,7 @@ class PostsTableSeeder extends Seeder
 		Post::create([
 			'content' => 'God Emperor Trump brother',
 			'thread_id' => 11,
-			'user_id' => 2,
+			'user_id' => 3,
 			'subcategory_id' => 11,
 			'category_id' => 3,
 		]);
@@ -99,7 +99,7 @@ class PostsTableSeeder extends Seeder
 		Post::create([
 			'content' => 'Yes.',
 			'thread_id' => 13,
-			'user_id' => 1,
+			'user_id' => 2,
 			'subcategory_id' => 13,
 			'category_id' => 3,
 		]);
