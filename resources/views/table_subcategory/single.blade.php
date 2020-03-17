@@ -42,7 +42,10 @@
 
 				@slot('latest_post')
 					@foreach ($thread->posts()->latest()->get() as $post)
-						{{ pretty_date($post->updated_at) }}
+						<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">
+							{{ pretty_date($post->updated_at) }}
+							<i class="fas fa-sign-in-alt"></i>
+						</a>
 						@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
 					@endforeach
 				@endslot

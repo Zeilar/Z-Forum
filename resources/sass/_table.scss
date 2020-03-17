@@ -104,6 +104,31 @@
 
 				p {
 					margin-left: auto;
+					
+					a {
+						&:hover {
+							i, a {
+								color: $turqoise;
+							}
+						}
+						
+						&:visited {
+							&:hover {
+								i {
+									color: $turqoise;
+								}
+							}
+
+							i {
+								color: $silver;
+							}
+						}
+
+						i {
+							margin-left: 0.25rem;
+							color: white;
+						}
+					}
 				}
 			}
 

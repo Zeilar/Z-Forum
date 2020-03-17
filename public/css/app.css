@@ -12610,6 +12610,24 @@ a:visited {
   margin-left: auto;
 }
 
+#table .table-row .__wrapper.tr-latest-post p a:hover i,
+#table .table-row .__wrapper.tr-latest-post p a:hover a {
+  color: #00ffff;
+}
+
+#table .table-row .__wrapper.tr-latest-post p a:visited:hover i {
+  color: #00ffff;
+}
+
+#table .table-row .__wrapper.tr-latest-post p a:visited i {
+  color: #a5abaf;
+}
+
+#table .table-row .__wrapper.tr-latest-post p a i {
+  margin-left: 0.25rem;
+  color: white;
+}
+
 #table .table-row .__wrapper i,
 #table .table-row .__wrapper p {
   margin: auto 0;
