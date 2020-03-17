@@ -129,7 +129,7 @@ class ThreadsController extends Controller
 			return $this->thread_validation($id, $slug);
 		} else {
 			$data = request()->validate([
-				'title' => 'required|max:30'
+				'title' => 'required|max:30|min:3'
 			]);
 
 			$thread = Thread::find($id);

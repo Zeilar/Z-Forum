@@ -33,6 +33,14 @@
 		background: rgba(0, 194, 110, 0.75);
 	}
 
+	&.error {
+		background: red;
+	}
+
+	&.warning {
+		background: orangered;
+	}
+
 	i {
 		margin: auto 0;
 		color: white;

@@ -47,36 +47,42 @@
 @else
 	<article class="post" id="{{$post->id}}">
 		<div class="post-header">
-			<div class="post-meta">
-				<div class="post-avatar 
-					@if (is_user_online($post->user->id)) is_online @else {{role_coloring($post->user->role)}} @endif ">
-					<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" />
-				</div>
+			<div class="post-meta
+				@if ($post->user->id === $post->thread->user->id) 
+					is_op
+				@else
+					{{ role_coloring($post->user->role) }}
+				@endif
+			">
+				<a class="post-avatar-wrapper" href="{{route('user_show', [$post->user->id])}}">
+					<div class="post-avatar @if (is_user_online($post->user->id)) is_online @endif">
+						<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" />
+
+						<div class="avatar-meta">
+							@if (is_user_online($post->user->id)) 
+								<p>{{ __('Online') }}</p> 
+							@else
+								<p>{{ __('Offline') }}</p> 
+							@endif
+							<p>{{ __('Posts: ') . count($post->user->posts) }}</p>
+						</div>
+					</div>
+				</a>
 					
-				<div class="post-meta-text
-					@if (logged_in()) 
-						@if ($post->user->id === auth()->user()->id) 
-							is_author
-						@endif
-					@else
-						@if ($post->user->role !== 'user')
-							{{ role_coloring($post->user->role) }}
-						@endif	
-					@endif
-				">
+				<div class="post-meta-text">
 					<div class="post-meta-left">
 						<p class="post-author">
 							<a href="{{route('user_show', [$post->user->id])}}">
 								{{ $post->user->username }}
 							</a>
 						</p>
-						<p class="post-author-role {{ role_coloring($post->user->role) }}">
+						<p class="post-author-role">
 							{{ __(ucfirst($post->user->role)) }}
 						</p>
 					</div>
 					
 					<div class="post-meta-right">
-						@isset($i)
+						@isset ($i)
 							<span class="post-i">#{{ $i }}</span>
 						@endisset
 
