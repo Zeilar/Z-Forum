@@ -21,7 +21,7 @@
 
 			&.is_author {
 				.post-meta-text {
-					background: linear-gradient(to right, $green, #2b2b34e6);
+					background: linear-gradient(to right, rgba(0, 194, 110, 0.5), #2b2b34e6);
 				}
 			}
 
@@ -51,7 +51,7 @@
 				}
 
 				&.is_online {
-					border-color: $green;
+					border-color: rgba(0, 194, 110, 0.5);
 
 					.avatar-meta {
 						background: rgba(0, 194, 110, 0.5);

@@ -79,7 +79,7 @@ if (!function_exists('is_role')) {
  * @return date
  */
 if (!function_exists('pretty_date')) {
-	function pretty_date(string $date) {
+	function pretty_date($date) {
 		$date = new Carbon($date);
 		$now = Carbon::now();
 		$difference = $date->diff($now)->days;

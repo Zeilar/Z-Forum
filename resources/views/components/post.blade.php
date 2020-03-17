@@ -2,46 +2,58 @@
 @if ($post === 'preview')
 	<article class="post" id="preview">
 		<div class="post-header">
-			<div class="post-meta">
-				<div class="post-avatar">
-					<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" />
-				</div>
+			<div class="post-meta is_author">
+				<a class="post-avatar-link" href="#">
+					<div class="post-avatar is_online">
+						<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" />
+
+						<div class="avatar-meta">
+							<p>{{ __('Online') }}</p> 
+							<p>{{ __('Posts: ') . count(auth()->user()->posts) }}</p>
+						</div>
+					</div>
+				</a>
 					
-				<div class="post-meta-text is_author {{ role_coloring(auth()->user()->role) }} ">
+				<div class="post-meta-text">
 					<div class="post-meta-left">
 						<p class="post-author">
-							<a href="{{route('user_show', [auth()->user()->id])}}">
+							<a href="#">
 								{{ auth()->user()->username }}
 							</a>
 						</p>
-						<p class="post-author-role {{role_coloring(auth()->user()->role)}}">
+						<p class="post-author-role">
 							{{ __(ucfirst(auth()->user()->role)) }}
 						</p>
 					</div>
 					
 					<div class="post-meta-right">
-						@isset($i)
+						@isset ($i)
 							<span class="post-i">#{{ $i }}</span>
 						@endisset
+
 						<div class="post-link">
-							@isset ($banner_link) 
-								{{ $banner_link }}
-							@else
-								<a class="permalink" href="#">
-									{{ 'Today, ' . date('H:i') }}
-									<i class="fas fa-copy"></i>
-								</a>
-								<a class="ml-2" href="#">
-									<i class="fas fa-external-link-alt"></i>
-								</a>
-							@endisset
+							<a class="permalink" href="#">
+								{{ pretty_date(time()) }}
+								<i class="fas fa-copy"></i>
+							</a>
+							
+							<a class="ml-2" href="#">
+								<i class="fas fa-external-link-alt"></i>
+							</a>
 						</div>
 					</div> {{-- .post-meta-text --}}
 				</div>
 			</div>
 		</div> {{-- .post-header --}}
+
 		<div class="post-body">
 			
+		</div>
+
+		<div class="post-toolbar">
+			<div class="d-flex flex-row">
+
+			</div>
 		</div>
 	</article>
 @else
