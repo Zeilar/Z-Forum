@@ -11674,6 +11674,10 @@ a.text-dark:focus {
   list-style: unset;
 }
 
+.note-editor .note-editing-area .note-editable {
+  padding: 1rem !important;
+}
+
 .note-editor .note-statusbar {
   border-radius: 0 !important;
 }

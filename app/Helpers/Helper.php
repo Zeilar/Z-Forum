@@ -74,7 +74,7 @@ if (!function_exists('is_role')) {
 /**
  * Render date with "Today" or "Yesterday" instead of numerics, when applicable
  *
- * @param string $date
+ * @param date $date
  *
  * @return date
  */
