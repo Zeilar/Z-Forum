@@ -47,11 +47,10 @@
 		}
 
 		button {
-			padding: 0.5rem 2rem;
-			flex-direction: row;
+			padding: 0.5rem 0;
 			border-radius: 0;
-			display: flex;
 			outline: 0;
+			width: 20%;
 			border: 0;
 
 			&:hover {

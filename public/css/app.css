@@ -12015,14 +12015,10 @@ input[type=file] {
 }
 
 #four-zero-four .search button {
-  padding: 0.5rem 2rem;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
+  padding: 0.5rem 0;
   border-radius: 0;
-  display: -webkit-box;
-  display: flex;
   outline: 0;
+  width: 20%;
   border: 0;
 }
 
