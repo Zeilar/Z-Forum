@@ -12060,6 +12060,7 @@ body {
   background: #18171c;
   overflow-x: hidden;
   min-height: 100vh;
+  color: white;
   display: -webkit-box;
   display: flex;
 }

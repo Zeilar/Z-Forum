@@ -42,7 +42,14 @@
 
 				@slot('latest_post')
 					@foreach ($thread->posts()->latest()->get() as $post)
-						<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">
+						<a href="{{
+							route('post_show', [
+								$post->thread->id,
+								$post->thread->slug,
+								get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+								$post->id,
+							])
+						}}">
 							{{ pretty_date($post->updated_at) }}
 							<i class="fas fa-sign-in-alt"></i>
 						</a>

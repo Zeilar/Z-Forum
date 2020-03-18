@@ -305,3 +305,30 @@ if (!function_exists('settings_get')) {
 		return ($key === 'all') ? $settings : $settings[$key];
 	}
 }
+
+/**
+ * Get which page in pagination of a given item
+ * 
+ * @param $colletion
+ * @param int $id
+ * @param int $pageAmount
+ */
+if (!function_exists('get_item_page_number')) {
+	function get_item_page_number($collection, int $id, int $pageAmount = 0) {
+		foreach ($collection->sortBy('created_at') as $item) {
+			if (empty($page)) $page = 1;
+
+			isset($j) ? $j++ : $j = 0;
+
+			if ($j === $pageAmount) {
+				$page ++;
+				$j = 0;
+			}
+
+			if ($id === $item->id) {
+				return $page;
+			}
+		}
+		return '';
+	}
+}

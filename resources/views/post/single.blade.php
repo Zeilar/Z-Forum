@@ -6,7 +6,14 @@
 
 	@component('components.post', ['post' => $post])
 		@slot('banner_link')
-			<a href="{{route('post_show', [$post->thread->id, $post->thread->slug, $post->id])}}">
+			<a href="{{
+				route('post_show', [
+					$post->thread->id,
+					$post->thread->slug,
+					get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+					$post->id,
+				])
+			}}">
 				{{ __('View in thread') }} &raquo;
 			</a>
 		@endslot

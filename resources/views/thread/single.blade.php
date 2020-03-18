@@ -60,30 +60,32 @@
 
 			<script>
 				let interval = setInterval(() => {
-					let iframe = $('#quick-reply').find('iframe')[0];
-					let iframeWindow = iframe.contentWindow.document;
-					let input = $(iframeWindow).find('body');
+					if ($('#quick-reply').find('iframe').length) {
+						clearInterval(interval);
+						let iframe = $('#quick-reply').find('iframe')[0];
+						let iframeWindow = iframe.contentWindow.document;
+						let input = $(iframeWindow).find('body');
+						input.focus();
 
-					if (input.length) clearInterval(interval);
-
-					input.on('input', function() {
-						if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
-							$('#quick-reply button').each(function() {
-								$(this).removeAttr('disabled');
-							});
-						} else {
-							$('#quick-reply button').each(function() {
-								$(this).attr('disabled', true);
-							});
-						}
-					})
+						input.on('input', function() {
+							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
+								$('#quick-reply button').each(function() {
+									$(this).removeAttr('disabled');
+								});
+							} else {
+								$('#quick-reply button').each(function() {
+									$(this).attr('disabled', true);
+								});
+							}
+						});
+					}
 				}, 50);
 			</script>
 		@endif
 
 		@include('js.post.controls')
 
-		@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
+		@if (is_role('superadmin', 'moderator'))
 			<script>
 				$('.thread-toggle').click(function(e) {
 					let url = '{{ route("thread_toggle") }}';
