@@ -12577,7 +12577,7 @@ a:visited {
 }
 
 .post.active {
-  background: darkgrey;
+  box-shadow: 0 0 5px 0 #00c26e;
 }
 
 .post .post-header {

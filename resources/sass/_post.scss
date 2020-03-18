@@ -3,7 +3,7 @@
 	background: none;
 
 	&.active {
-		background: darkgrey;
+		box-shadow: 0 0 5px 0 $green;
 	}
 
 	.post-header {
