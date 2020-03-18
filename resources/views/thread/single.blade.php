@@ -48,6 +48,7 @@
 				<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
+					@error('content') <p class="color-red">{{ $message }}</p> @enderror
 					<button class="btn spin btn-success my-2 mr-2" type="submit" disabled>
 						<span>{{ __('Send') }}</span>
 					</button>
@@ -59,9 +60,13 @@
 
 			<script>
 				let interval = setInterval(() => {
-					if ($('#quick-reply .note-editable').length) clearInterval(interval);
+					let iframe = $('#quick-reply').find('iframe')[0];
+					let iframeWindow = iframe.contentWindow.document;
+					let input = $(iframeWindow).find('body');
 
-					$('#quick-reply .note-editable').on('input', function() {
+					if (input.length) clearInterval(interval);
+
+					input.on('input', function() {
 						if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 							$('#quick-reply button').each(function() {
 								$(this).removeAttr('disabled');
