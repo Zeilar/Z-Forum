@@ -11627,69 +11627,6 @@ a.text-dark:focus {
   border: none;
 }
 
-.note-editor.note-frame.panel.panel-default {
-  border: 0;
-}
-
-.note-editor .note-toolbar {
-  background: #2c2c35e6;
-}
-
-.note-editor .note-toolbar i,
-.note-editor .note-toolbar span {
-  color: white;
-}
-
-.note-editor .note-toolbar .note-dropdown-menu {
-  min-width: 200px;
-  padding: 0;
-}
-
-.note-editor .note-toolbar .note-dropdown-menu li {
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.note-editor .note-toolbar .note-dropdown-menu li:hover {
-  background: #dadada;
-}
-
-.note-editor .note-toolbar .note-dropdown-menu li a,
-.note-editor .note-toolbar .note-dropdown-menu li span {
-  color: black;
-}
-
-.note-editor .note-toolbar .note-dropdown-menu li blockquote,
-.note-editor .note-toolbar .note-dropdown-menu li pre {
-  padding: 0;
-}
-
-.note-editor .note-toolbar button::after {
-  content: none;
-}
-
-.note-editor .note-editing-area ul,
-.note-editor .note-editing-area ol {
-  padding-left: 1rem;
-  list-style: unset;
-}
-
-.note-editor .note-editing-area .note-editable {
-  padding: 1rem !important;
-}
-
-.note-editor .note-statusbar {
-  border-radius: 0 !important;
-}
-
-.note-editor .note-statusbar .note-resizebar {
-  background: #2c2c35e6;
-}
-
-.note-editor .note-statusbar .note-resizebar .note-icon-bar {
-  border-color: white;
-}
-
 ::-moz-selection {
   background: rgba(25, 25, 35, 0.5);
   color: #00ffff;

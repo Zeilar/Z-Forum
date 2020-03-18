@@ -1,9 +1,10 @@
 $(document).ready(() => {
-	// Summernote default values
-	$('#form-content').summernote({
-		height: 150,
-		focus: true,
-	});
+	// TinyMCE default values
+	tinymce.init({
+      selector: '#form-content',
+      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      toolbar_mode: 'floating',
+    });
 	
 	// Dashboard settings menu size animation
 	$('.settings-item').mouseenter(function() {
