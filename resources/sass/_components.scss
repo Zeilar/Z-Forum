@@ -151,6 +151,14 @@ input[type=file] {
 				}
 			}
 
+			&.dots {
+				cursor: pointer;
+
+				&:hover {
+					color: white;
+				}
+			}
+
 			i {
 				font-size: 0.65rem;
 				color: $silver;
@@ -162,6 +170,7 @@ input[type=file] {
 			animation: slide-in 0.25s ease-out 0s 1 normal forwards;
 			transition: opacity 0.25s ease-out;
 			transform: translateX(-50%);
+			border: 2px solid $green;
 			background: $darkindigo;
 			flex-direction: row;
 			position: absolute;

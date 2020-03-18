@@ -15,7 +15,7 @@
             {{-- "Three Dots" Separator --}}
             @if (is_string($element))
 				<div class="item-wrapper">
-                	<a class="item dots" href="#" id="pagination-dots">{{ $element }}</a>
+                	<p class="item dots" href="#" id="pagination-dots">{{ $element }}</p>
 				</div>
             @endif
 

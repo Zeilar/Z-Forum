@@ -11818,6 +11818,14 @@ input[type=file] {
   color: white;
 }
 
+.pagination .item-wrapper .item.dots {
+  cursor: pointer;
+}
+
+.pagination .item-wrapper .item.dots:hover {
+  color: white;
+}
+
 .pagination .item-wrapper .item i {
   font-size: 0.65rem;
   color: #a5abaf;
@@ -11831,6 +11839,7 @@ input[type=file] {
   transition: opacity 0.25s ease-out;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  border: 2px solid #00c26e;
   background: #2c2c35e6;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
