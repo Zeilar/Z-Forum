@@ -93,5 +93,10 @@
 			}
 			$('.nav-ruler').css('transform', `translateX(${distance}px)`);
 		}
+
+		$(this).parents('.nav-items').mouseleave(function() {
+			$('.nav-link.color-white').removeClass('color-white');
+			$('.nav-ruler').remove();
+		});
 	});
 </script>
