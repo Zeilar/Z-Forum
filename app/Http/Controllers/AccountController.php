@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -69,8 +70,14 @@ class AccountController extends Controller
      */
     public function update(Request $request)
     {
-		$path = $request->file('avatar')->store('public/avatars');
-		auth()->user()->avatar = $request->file('avatar')->store('avatars');
+		// Delete the previously used avatar
+		Storage::delete('/public/' . auth()->user()->avatar);
+
+		// Store the file and use the path for the database
+		$path = $request->file('user-avatar')->store('/public/user-avatars');
+
+		
+		auth()->user()->avatar = explode('public/', $path)[1];
 		auth()->user()->save();
 
         return msg_success('update');

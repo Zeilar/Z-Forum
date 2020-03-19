@@ -10,7 +10,7 @@
 					<i class="fas color-white fa-upload"></i>
 					<span>{{ __('Choose a file') }}</span>
 				</label>
-				<input type="file" id="avatar-upload" name="avatar" />
+				<input type="file" id="avatar-upload" name="user-avatar" />
 			</div>
 			<button type="submit">Submit</button>
 		</form>

@@ -25,7 +25,6 @@ if (mix.inProduction()) {
 	mix.copyDirectory('tests', 'dist/miss_hosting/zforum/tests');
 
 	// Public
-	mix.copyDirectory('public/storage/user-avatars', 'dist/miss_hosting/public_html/storage/user-avatars');
 	mix.copyDirectory('public/images', 'dist/miss_hosting/public_html/images');
 	mix.copyDirectory('public/fonts', 'dist/miss_hosting/public_html/fonts');
 	mix.copyDirectory('public/css', 'dist/miss_hosting/public_html/css');

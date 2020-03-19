@@ -58,7 +58,7 @@
 			</div>
 		</form>
 		@auth
-			<img class="nav-avatar img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+			<img class="nav-avatar img-fluid" src="{{route('user_avatar', [auth()->user()->avatar])}}" alt="{{ __('User avatar') }}" />
 		@endauth
 	</div>
 </nav>

@@ -49,6 +49,7 @@ Route::get('/post/{id}/edit', 'PostsController@edit')->name('post_edit');
 
 // Users
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
+Route::get('/storage/{avatar}')->name('user_avatar');
 
 // Search
 Route::get('/search', 'SearchController@search')->name('search');
