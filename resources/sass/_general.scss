@@ -20,11 +20,10 @@ body {
 	background: $body-bg;
 	overflow-x: hidden;
     min-height: 100vh;
-	color: white;
 	display: flex;
 }
 
-img, input::placeholder, .note-placeholder {
+img, input::placeholder {
 	user-select: none;
 }
 

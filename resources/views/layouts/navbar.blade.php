@@ -6,12 +6,30 @@
 		</a>
 
 		<div class="navbar-content">
-			<nav class="nav-list @guest ml-auto @endguest">
+			<nav class="nav-list">
 				<ul class="nav-items">
 					@auth
 						<li class="nav-item">
 							<a href="#" class="nav-link">
-								3
+								<span>{{ __('Settings') }}</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<span>{{ __('Messages') }}</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<span>{{ __('Test') }}</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<span>{{ __('Test') }}</span>
 							</a>
 						</li>
 					@else
@@ -44,3 +62,34 @@
 		@endauth
 	</div>
 </nav>
+
+<script>
+	$('.nav-item').mouseenter(function() {
+		if (!$('.nav-ruler').length) {
+			$(this).append(`
+				<div class="nav-ruler"></div>
+			`);
+		}
+
+		let index = $(this).index();
+		let rulerIndex = $('.nav-ruler').parents('.nav-item').index();
+		let difference = rulerIndex - index;
+
+		let distance = 0;		
+		if (difference < 0) {
+			for (let i = index; i > rulerIndex; i--) {
+				distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
+			}
+			$('.nav-ruler').css('transform', `translateX(-${distance}px)`);
+		} else {
+			for (let i = index; i < rulerIndex; i++) {
+				if (index === 0) {
+					distance += $(`.nav-item:first-child`).outerWidth(true);
+				} else {
+					distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
+				}
+			}
+			$('.nav-ruler').css('transform', `translateX(${distance}px)`);
+		}
+	})
+</script>

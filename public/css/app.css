@@ -12069,7 +12069,6 @@ body {
   background: #18171c;
   overflow-x: hidden;
   min-height: 100vh;
-  color: white;
   display: -webkit-box;
   display: flex;
 }
@@ -12095,8 +12094,7 @@ input::-ms-input-placeholder {
 }
 
 img,
-input::placeholder,
-.note-placeholder {
+input::placeholder {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -12180,6 +12178,7 @@ a:visited {
 
 .navbar #navbar-container {
   position: relative;
+  height: 100%;
 }
 
 .navbar #navbar-container .navbar-brand {
@@ -12260,6 +12259,7 @@ a:visited {
 .navbar #navbar-container .navbar-content {
   display: -webkit-box;
   display: flex;
+  height: 100%;
   -webkit-box-flex: 1;
           flex: 1;
 }
@@ -12268,6 +12268,7 @@ a:visited {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
           flex-direction: row-reverse;
+  margin-left: auto;
   display: -webkit-box;
   display: flex;
 }
@@ -12281,17 +12282,37 @@ a:visited {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item {
-  margin: auto 0 auto 1.5rem;
-  padding: 0;
+  height: calc(100% + 2px);
+  position: relative;
+  margin-left: 2rem;
+  display: -webkit-box;
+  display: flex;
+  width: 7rem;
+}
+
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-ruler {
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+  background: white;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link {
-  padding: 0.5rem 1.5rem;
+  position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  color: white;
+  padding: 0 1.5rem;
+  display: -webkit-box;
+  display: flex;
+  color: #00c26e;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button {
@@ -12313,6 +12334,12 @@ a:visited {
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button:hover {
   border-color: #00a05b;
   background: #00a05b;
+}
+
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link span {
+  pointer-events: none;
+  margin: auto;
+  z-index: 2;
 }
 
 .thread-title {

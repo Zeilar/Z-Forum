@@ -295,8 +295,15 @@ if (!function_exists('settings_get')) {
 		// Set user as the currently logged in if possible, default to provided ID
 		$user = App\User::find($id) ?? auth()->user();
 
-		// If no user was found, return false to prevent further issues
-		if (empty($user)) return null;
+		// If no user was found, return default value for that setting
+		if (empty($user)) {
+			switch ($key) {
+				case 'posts_per_page':
+					return 5;				
+				default:
+					return null;
+			}
+		}
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);

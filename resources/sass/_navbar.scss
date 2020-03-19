@@ -16,6 +16,7 @@
 
 	#navbar-container {
 		position: relative;
+		height: 100%;
 
 		.navbar-brand {
 			display: flex;
@@ -75,10 +76,12 @@
 
 		.navbar-content {
 			display: flex;
+			height: 100%;
 			flex: 1;
 
 			.nav-list {
 				flex-direction: row-reverse;
+				margin-left: auto;
 				display: flex;
 
 				.nav-items {
@@ -86,13 +89,29 @@
 					display: flex;
 
 					.nav-item {
-						margin: auto 0 auto 1.5rem;
-						padding: 0;
+						height: calc(100% + 2px);
+						position: relative;
+						margin-left: 2rem;
+						display: flex;
+						width: 7rem;
+
+						.nav-ruler {
+							transition: transform 0.25s ease-out;
+							background: white;
+							position: absolute;
+							height: 2px;
+							width: 100%;
+							bottom: 0;
+							left: 0;
+						}
 
 						.nav-link {
-							padding: 0.5rem 1.5rem;
+							position: relative;
 							user-select: none;
-							color: white;
+							padding: 0 1.5rem;
+							display: flex;
+							color: $green;
+							
 
 							&#login-button {
 								background: none;
@@ -113,6 +132,12 @@
 									border-color: $darkgreen;
 									background: $darkgreen;
 								}
+							}
+
+							span {
+								pointer-events: none;
+								margin: auto;
+								z-index: 2;
 							}
 						}
 					}
