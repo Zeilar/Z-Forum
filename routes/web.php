@@ -57,7 +57,6 @@ Route::get('/search', 'SearchController@search')->name('search');
 Route::put('/dashboard/account/update', 'AccountController@update')->name('dashboard_account_update');
 Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('dashboard_superadmin');
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 // Auth
 Route::post('/register', 'AuthController@register')->name('register');

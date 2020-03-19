@@ -10,8 +10,8 @@
 				<ul class="nav-items">
 					@auth
 						<li class="nav-item">
-							<a href="#" class="nav-link">
-								<span>{{ __('Settings') }}</span>
+							<a class="nav-link account" href="{{route('dashboard_account')}}">
+								<span>{{ __('Account') }}</span>
 							</a>
 						</li>
 
