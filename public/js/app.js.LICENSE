@@ -69,6 +69,10 @@ object-assign
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 
+/*! WysiBB v1.5.1 2014-03-26 
+    Author: Vadim Dobroskok
+ */
+
 /** @license React v16.12.0
  * react.production.min.js
  *
