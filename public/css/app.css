@@ -12313,6 +12313,8 @@ a:visited {
   display: -webkit-box;
   display: flex;
   color: #00c26e;
+  height: 100%;
+  width: 100%;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button {

@@ -64,14 +64,14 @@
 </nav>
 
 <script>
-	$('.nav-item').mouseenter(function() {
+	$('.nav-link').mouseenter(function() {
 		if (!$('.nav-ruler').length) {
-			$(this).append(`
+			$(this).parent().append(`
 				<div class="nav-ruler"></div>
 			`);
 		}
 
-		let index = $(this).index();
+		let index = $(this).parent().index();
 		let rulerIndex = $('.nav-ruler').parents('.nav-item').index();
 		let difference = rulerIndex - index;
 
