@@ -12309,12 +12309,12 @@ a:visited {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  padding: 0 1.5rem;
   display: -webkit-box;
   display: flex;
   color: #00c26e;
   height: 100%;
   width: 100%;
+  padding: 0;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button {
