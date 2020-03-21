@@ -47,14 +47,32 @@
 				&:hover {
 					.avatar-meta {
 						opacity: 1;
+
+						&::before {
+							animation: fade 0.1s forwards;
+							background: black;
+							position: absolute;
+							height: 100%;
+							content: '';
+							width: 100%;
+							
+							@keyframes fade {
+								from {
+									opacity: 0;
+								}
+								to {
+									opacity: 0.5;
+								}
+							}
+						}
 					}
 				}
 
 				&.is_online {
-					border-color: rgba(0, 194, 110, 0.5);
+					border-color: rgba(0, 194, 110, 0.85);
 
 					.avatar-meta {
-						background: rgba(0, 194, 110, 0.5);
+						background: rgba(0, 194, 110, 0.85);
 					}
 				}
 
@@ -82,6 +100,7 @@
 					p {
 						margin: 0 auto;
 						display: flex;
+						z-index: 2;
 					}
 				}
 			}
