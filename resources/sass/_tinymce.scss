@@ -1,0 +1,31 @@
+div.tox-tinymce {
+	border: 0;
+
+	.tox-menubar {
+		background: $darkindigo !important;
+
+		button {
+			margin-right: 0.5rem;
+			color: white;
+
+			&.tox-mbtn--active {
+				color: black;
+			}
+		}
+	}
+
+	.tox-statusbar__branding {
+		display: none;
+	}
+
+}
+
+button.tox-button {
+	background-color: $green !important;
+}
+
+div.tox-tinymce-aux {
+	.tox-dialog-wrap__backdrop {
+		background-color: rgba(0, 0, 0, 0.75);
+	}
+}
