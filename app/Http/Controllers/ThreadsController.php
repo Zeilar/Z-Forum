@@ -129,7 +129,7 @@ class ThreadsController extends Controller
 			return $this->thread_validation($id, $slug);
 		} else {
 			$data = request()->validate([
-				'title'   => 'required|alpha_dash|max:30|min:3',
+				'title' => 'required|alpha_dash|max:30|min:3',
 			]);
 
 			$thread = Thread::find($id);
@@ -154,10 +154,13 @@ class ThreadsController extends Controller
 		} else {
 			$thread = Thread::find($id);
 			$subcategory = $thread->subcategory;
+
 			foreach ($thread->posts as $post) {
 				$post->delete();
 			}
+
 			$thread->delete();
+			
 			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 		}
     }

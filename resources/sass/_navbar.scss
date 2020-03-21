@@ -94,6 +94,12 @@
 						display: flex;
 						width: 7rem;
 
+						&.guest {
+							margin: auto;
+							margin-left: 2rem;
+							height: 60%;
+						}
+
 						.nav-ruler {
 							transition: transform 0.25s ease-out;
 							background: white;
@@ -115,7 +121,8 @@
 
 							&#login-button {
 								background: none;
-								padding: 0.5rem;
+								width: unset;
+								padding: 0;
 								border: 0;
 
 								&:hover {
@@ -127,6 +134,7 @@
 								border: 2px solid $green;
 								border-radius: 4px;
 								background: $green;
+								color: white;
 
 								&:hover {
 									border-color: $darkgreen;

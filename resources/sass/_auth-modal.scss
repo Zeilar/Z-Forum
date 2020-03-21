@@ -1,8 +1,18 @@
 .modal-auth {
 	width: 35rem;
 
-	a:visited {
-		color: $link;
+	a {
+		&:visited {
+			color: $link;
+
+			&:hover {
+				color: $green;
+			}
+		}
+
+		&:hover {
+			color: $green;
+		}
 	}
 
 	::placeholder {

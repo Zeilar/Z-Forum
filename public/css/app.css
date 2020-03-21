@@ -11476,6 +11476,14 @@ a.text-dark:focus {
   color: #3490dc;
 }
 
+.modal-auth a:visited:hover {
+  color: #00c26e;
+}
+
+.modal-auth a:hover {
+  color: #00c26e;
+}
+
 .modal-auth ::-webkit-input-placeholder {
   opacity: 0.5;
 }
@@ -12289,6 +12297,12 @@ a:visited {
   width: 7rem;
 }
 
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item.guest {
+  margin: auto;
+  margin-left: 2rem;
+  height: 60%;
+}
+
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-ruler {
   -webkit-transition: -webkit-transform 0.25s ease-out;
   transition: -webkit-transform 0.25s ease-out;
@@ -12318,7 +12332,8 @@ a:visited {
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button {
   background: none;
-  padding: 0.5rem;
+  width: unset;
+  padding: 0;
   border: 0;
 }
 
@@ -12330,6 +12345,7 @@ a:visited {
   border: 2px solid #00c26e;
   border-radius: 4px;
   background: #00c26e;
+  color: white;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#register-button:hover {

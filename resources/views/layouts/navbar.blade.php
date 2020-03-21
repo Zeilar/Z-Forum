@@ -33,13 +33,15 @@
 							</a>
 						</li>
 					@else
-						<li class="nav-item">
+						<li class="nav-item guest">
 							<a class="nav-link btn btn-success" id="register-button" data-toggle="modal" href="#registerModal">
 								<span>{{ __('Register') }}</span>	
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link ml-auto" id="login-button" data-toggle="modal" href="#loginModal">{{ __('Login') }}</a>
+						<li class="nav-item guest">
+							<a class="nav-link ml-auto" id="login-button" data-toggle="modal" href="#loginModal">
+								<span>{{ __('Login') }}</span>
+							</a>
 						</li>
 					@endauth
 				</ul>
@@ -64,7 +66,7 @@
 </nav>
 
 <script>
-	$('.nav-link').mouseenter(function() {
+	$('.nav-link').not('#login-button, #register-button').mouseenter(function() {
 		// Spawn nav ruler if it doesn't exist
 		if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>');
 

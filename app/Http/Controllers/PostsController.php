@@ -259,12 +259,12 @@ class PostsController extends Controller
 			$thread = $post->thread;
 			$subcategory = $thread->subcategory;
 
-			if (count($thread->posts) <= 1) {
+			$post->delete();
+
+			if (count($thread->posts) <= 0) {
 				$thread->delete();
 				$redirect = route('subcategory_show', [$subcategory->id, $subcategory->slug]);
 			}
-
-			$post->delete();
 			
 			return response()->json([
 				'type'     => 'success',
