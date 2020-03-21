@@ -67,7 +67,7 @@ class ThreadsController extends Controller
     {
 		if (logged_in()) {
 			request()->validate([
-				'title'   => 'required|max:30|min:3|alpa_dash',
+				'title'   => 'required|alpha_dash|max:30|min:3',
 				'content' => 'required|max:500',
 			]);
 
@@ -129,7 +129,7 @@ class ThreadsController extends Controller
 			return $this->thread_validation($id, $slug);
 		} else {
 			$data = request()->validate([
-				'title' => 'required|max:30|min:3|alpha_dash'
+				'title'   => 'required|alpha_dash|max:30|min:3',
 			]);
 
 			$thread = Thread::find($id);

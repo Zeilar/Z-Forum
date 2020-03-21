@@ -43,18 +43,20 @@
 
 					@slot('latest_post')
 						@foreach ($subcategory->posts()->latest()->get() as $post)
-							<a href="{{
-								route('post_show', [
-									$post->thread->id,
-									$post->thread->slug,
-									get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
-									$post->id,
-								])
-							}}">
-								{{ pretty_date($post->updated_at) }}
-								<i class="fas fa-sign-in-alt"></i>
-							</a>
-							@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
+							@isset($post->thread)
+								<a href="{{
+									route('post_show', [
+										$post->thread->id,
+										$post->thread->slug,
+										get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+										$post->id,
+									])
+								}}">
+									{{ pretty_date($post->updated_at) }}
+									<i class="fas fa-sign-in-alt"></i>
+								</a>
+								@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
+							@endisset
 						@endforeach
 					@endslot
 				@endcomponent
