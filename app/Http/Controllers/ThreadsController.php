@@ -106,7 +106,9 @@ class ThreadsController extends Controller
     {
 		if (item_exists(Thread::find($id), $slug)) {
 			$thread = Thread::find($id);
+			$thread->views += 1;
 			$thread->save();
+
 			return view('thread.single', [
 				'thread' => Thread::find($id),
 				'posts'  => Post::where('thread_id', $id)->orderBy('created_at')->paginate(settings_get('posts_per_page')),
