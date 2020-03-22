@@ -19,11 +19,14 @@
 				if (!element.parents('.post').find('.post-save-toolbar').length) {
 					element.parents('.post-toolbar').append(`
 						<div class="post-save-toolbar">
-							<button class="btn btn-success spin post-save">
+							<button class="btn btn-default spin post-save">
 								<span>Save</span>
 							</button>
-							<button class="btn btn-success spin post-cancel">
+							<button class="btn btn-default spin post-cancel">
 								<span>Cancel</span>
+							</button>
+							<button class="btn btn-default spin post-delete">
+								<span>Delete</span>
 							</button>
 						</div>
 					`);
@@ -90,6 +93,7 @@
 			// Delete post
 			function post_delete(element, e) {
 				let id = element.parents('.post').attr('id');
+
 				e.preventDefault();
 				$.ajax({
 					url: '{{ route("post_delete_ajax") }}',

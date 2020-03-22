@@ -6,27 +6,27 @@
 
 	<div class="thread-toolbar">
 		@if (is_role('superadmin', 'moderator'))
-			<button class="btn thread-edit btn-warning">
-				<i class="fas color-black fa-pen"></i>
+			<button class="btn btn-default thread-edit">
+				<i class="fas fa-pen"></i>
 			</button>
 			@if ($thread->locked)
-				<button class="btn spin thread-toggle btn-secondary" type="button">
-					<i class="fas color-white fa-unlock"></i>
+				<button class="btn btn-default spin thread-toggle" type="button">
+					<i class="fas fa-unlock"></i>
 				</button>
 			@else
-				<button class="btn spin thread-toggle btn-secondary" type="button">
-					<i class="fas color-white fa-lock"></i>
+				<button class="btn btn-default spin thread-toggle" type="button">
+					<i class="fas fa-lock"></i>
 				</button>
 			@endif
-			<button class="btn spin btn-danger" type="submit">
-				<i class="fas color-white fa-trash-alt"></i>
+			<button class="btn btn-default spin thread-delete" type="submit">
+				<i class="fas fa-trash-alt"></i>
 			</button>
 		@endif
 	</div>
 
 	<div class="thread @if ($thread->locked) locked @endif">
 		<div class="thread-header">
-			<h5 class="thread-title">{!! $thread->title !!}</h5>
+			<h4 class="thread-title">{!! $thread->title !!}</h4>
 		</div>
 
 		{{-- Don't even ask, it just works --}}
@@ -47,7 +47,7 @@
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
 					@error('content') <p class="color-red">{{ $message }}</p> @enderror
-					<button class="btn spin btn-success my-2" type="submit" disabled>
+					<button class="btn post-send spin btn-success" type="submit" disabled>
 						<span>{{ __('Send') }}</span>
 					</button>
 				</form>
@@ -82,8 +82,10 @@
 
 		@if (is_role('superadmin', 'moderator'))
 			<script>
+				// Init the handlers
 				thread_handlers();
 
+				// Toggle thread lock/unlock state
 				$('.thread-toggle').click(function(e) {
 					e.preventDefault();
 					$.ajax({
@@ -94,8 +96,8 @@
 							id: '{{ $thread->id }}',
 						},
 						success: function(response) {
+							$('.thread-toggle').removeClass('loading');
 							ajax_alert(response);
-							$('.thread-toggle').removeClass('loading')
 
 							// Need to delay this due to .spin event handler code being fired after this 
 							setTimeout(() => {
@@ -114,17 +116,18 @@
 					});
 				});
 
+				// Edit thread title
 				function thread_edit() {
 					if (!$('.thread-save-toolbar').length) {
 						let title = $('.thread-title').html();
 
-						$('.thread-title').replaceWith(`<input type="text" value="${title}" /> `);
+						$('.thread-title').replaceWith(`<input type="text" value="${title}" />`);
 						$('.thread-header').append(`
 							<div class="thread-save-toolbar">
-								<button class="btn btn-success spin thread-save">
+								<button class="btn btn-default spin thread-save">
 									<span>Save</span>
 								</button>
-								<button class="btn btn-success spin thread-cancel">
+								<button class="btn btn-default spin thread-cancel">
 									<span>Cancel</span>
 								</button>
 							</div>
@@ -134,9 +137,8 @@
 
 				// Cancel the edited thread and reset elements to how they were before
 				function thread_cancel(original) {					
-					// Reset thread header
+					// Reset thread header and edit button
 					$('.thread-header').html(original);
-
 					$('.thread-edit').removeAttr('disabled');
 
 					// The event handler needs to be re-initalized since the element was destroyed
@@ -145,16 +147,13 @@
 
 				// Save the edited post and reset elements to how they were before, but with the updated post content
 				function thread_save(original, e) {
-					let originalTitle = '{{ $thread->title }}';
-					let id = '{{ $thread->id }}';
-
 					e.preventDefault();
 					$.ajax({
 						url: '{{ route("thread_update_ajax") }}',
 						method: 'POST',
 						data: {
 							_token: '{{ Session::token() }}',
-							id: id,
+							id: '{{ $thread->id }}',
 							title: $('.thread-header input').val()
 						},
 						success: function(response) {
@@ -167,7 +166,7 @@
 							// Edit the active breadcrumb content
 							$('.breadcrumb-item.active').html(response.title);
 
-							// Edit the current URL state for better UX in case user reloads, otherwise it will return 404
+							// Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
 							window.history.pushState("", "", response.url);
 
 							// Dispay the alert message on the top of the page
@@ -175,7 +174,7 @@
 								ajax_alert(response);
 							}
 
-							// The event handler needs to be re-initalized since the element was destroyed
+							// The event handlers need to be reinitalized since the element was destroyed
 							thread_handlers();
 						},
 						error: function(error) {
@@ -185,16 +184,14 @@
 				}
 
 				// Delete thread
-				function thread_delete(element, e) {
-					let id = element.parents('.post').attr('id');
-
+				function thread_delete(e) {
 					e.preventDefault();
 					$.ajax({
 						url: '{{ route("thread_delete_ajax") }}',
 						method: 'POST',
 						data: {
 							_token: '{{ Session::token() }}',
-							id: id,
+							id: '{{ $thread->id }}',
 						},
 						success: function(response) {
 							window.location.href = response.redirect;

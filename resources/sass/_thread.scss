@@ -4,10 +4,15 @@
 }
 
 .thread-toolbar {
-	flex-direction: row;
-	display: flex;
+	border: 1px solid $green;
+	margin-bottom: 0.5rem;
+	width: fit-content;
+}
 
-	button {
-		margin-right: 0.5rem;
-	}
+.thread-save-toolbar {
+	margin: 0.5rem 0 1rem 0;
+}
+
+.post-send {
+	margin-top: 0.5rem;
 }

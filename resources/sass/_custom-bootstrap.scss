@@ -79,3 +79,13 @@
 		border-color: white;
 	}
 }
+
+.btn-default {
+	color: white !important;
+	background: $darkindigo;
+	border-color: $body-bg;
+
+	&:active, &:focus {
+		background: $body-bg;
+	}
+}

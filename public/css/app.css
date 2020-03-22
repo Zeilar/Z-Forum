@@ -11443,6 +11443,17 @@ a.text-dark:focus {
   border-color: white;
 }
 
+.btn-default {
+  color: white !important;
+  background: #2c2c35e6;
+  border-color: #18171c;
+}
+
+.btn-default:active,
+.btn-default:focus {
+  background: #18171c;
+}
+
 #posts-slider {
   white-space: nowrap;
   -webkit-box-align: center;
@@ -12465,15 +12476,19 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .thread-toolbar {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  display: -webkit-box;
-  display: flex;
+  border: 1px solid #00c26e;
+  margin-bottom: 0.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.thread-toolbar button {
-  margin-right: 0.5rem;
+.thread-save-toolbar {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.post-send {
+  margin-top: 0.5rem;
 }
 
 #footer {
@@ -13011,16 +13026,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
-.post .post-toolbar {
-  background: #2c2c35e6;
-  padding: 0.5rem 1rem;
-  margin-top: 2px;
-}
-
-.post .post-toolbar button {
-  margin-right: 0.5rem;
-  background: #2c2c35e6;
-  border-color: #18171c;
+.post .post-save-toolbar {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  display: -webkit-box;
+  display: flex;
 }
 
 .post .post-edited-by {
@@ -13049,5 +13060,76 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .post .post-edited-by * {
   font-size: 0.75rem;
+}
+
+.post-toolbar,
+.thread-toolbar {
+  background: #2c2c35e6;
+  padding: 0.5rem 1rem;
+  margin-top: 2px;
+}
+
+.post-toolbar i,
+.thread-toolbar i {
+  pointer-events: none;
+  color: white;
+}
+
+.post-toolbar button,
+.post-save-toolbar button,
+.thread-toolbar button,
+.thread-save-toolbar button {
+  margin-right: 0.5rem;
+}
+
+.post-toolbar button.post-save:active,
+.post-toolbar button.post-save:focus,
+.post-toolbar button.thread-save:active,
+.post-toolbar button.thread-save:focus,
+.post-save-toolbar button.post-save:active,
+.post-save-toolbar button.post-save:focus,
+.post-save-toolbar button.thread-save:active,
+.post-save-toolbar button.thread-save:focus,
+.thread-toolbar button.post-save:active,
+.thread-toolbar button.post-save:focus,
+.thread-toolbar button.thread-save:active,
+.thread-toolbar button.thread-save:focus,
+.thread-save-toolbar button.post-save:active,
+.thread-save-toolbar button.post-save:focus,
+.thread-save-toolbar button.thread-save:active,
+.thread-save-toolbar button.thread-save:focus {
+  border-color: transparent;
+  background: #00c26e;
+}
+
+.post-toolbar button.post-delete,
+.post-toolbar button.thread-delete,
+.post-save-toolbar button.post-delete,
+.post-save-toolbar button.thread-delete,
+.thread-toolbar button.post-delete,
+.thread-toolbar button.thread-delete,
+.thread-save-toolbar button.post-delete,
+.thread-save-toolbar button.thread-delete {
+  border-color: red;
+  margin-left: auto;
+}
+
+.post-toolbar button.post-delete:active,
+.post-toolbar button.post-delete:focus,
+.post-toolbar button.thread-delete:active,
+.post-toolbar button.thread-delete:focus,
+.post-save-toolbar button.post-delete:active,
+.post-save-toolbar button.post-delete:focus,
+.post-save-toolbar button.thread-delete:active,
+.post-save-toolbar button.thread-delete:focus,
+.thread-toolbar button.post-delete:active,
+.thread-toolbar button.post-delete:focus,
+.thread-toolbar button.thread-delete:active,
+.thread-toolbar button.thread-delete:focus,
+.thread-save-toolbar button.post-delete:active,
+.thread-save-toolbar button.post-delete:focus,
+.thread-save-toolbar button.thread-delete:active,
+.thread-save-toolbar button.thread-delete:focus {
+  background: red;
 }
 

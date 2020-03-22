@@ -83,10 +83,10 @@
 		<div class="d-flex flex-row">
 			@auth
 				@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
-					<button class="btn post-edit btn-success">
+					<button class="btn btn-default post-edit">
 						<span>{{ __('Edit') }}</span>
 					</button>
-					<button class="btn post-delete btn-danger">
+					<button class="btn btn-default post-delete">
 						{{ __('Delete') }}
 					</button>
 				@endif
