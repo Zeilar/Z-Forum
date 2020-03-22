@@ -4,8 +4,8 @@
 @section('content')
 	{{ Breadcrumbs::render('thread', $thread) }}
 
-	<div class="thread-toolbar">
-		@if (is_role('superadmin', 'moderator'))
+	@if (is_role('superadmin', 'moderator'))
+		<div class="thread-toolbar">
 			<button class="btn btn-default thread-edit">
 				<i class="fas fa-pen"></i>
 			</button>
@@ -18,11 +18,13 @@
 					<i class="fas fa-lock"></i>
 				</button>
 			@endif
-			<button class="btn btn-default spin thread-delete" type="submit">
-				<i class="fas fa-trash-alt"></i>
-			</button>
-		@endif
-	</div>
+			@if (is_role('superadmin'))
+				<button class="btn btn-default spin thread-delete" type="submit">
+					<i class="fas fa-trash-alt"></i>
+				</button>
+			@endif
+		</div>
+	@endif
 
 	<div class="thread @if ($thread->locked) locked @endif">
 		<div class="thread-header">

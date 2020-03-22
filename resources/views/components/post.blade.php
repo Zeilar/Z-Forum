@@ -73,7 +73,7 @@
 		{!! $post->content !!}
 	</div>
 
-	@isset($post->edited_by)
+	@isset ($post->edited_by)
 		<div class="post-edited-by">
 			{!! $post->edited_by !!}
 		</div>
@@ -86,9 +86,12 @@
 					<button class="btn btn-default post-edit">
 						<span>{{ __('Edit') }}</span>
 					</button>
-					<button class="btn btn-default post-delete">
-						{{ __('Delete') }}
-					</button>
+
+					@if ($post->thread->posts()->first()->id !== $post->id || is_role('superadmin'))
+						<button class="btn btn-default post-delete">
+							{{ __('Delete') }}
+						</button>
+					@endif
 				@endif
 			@endauth
 		</div>
