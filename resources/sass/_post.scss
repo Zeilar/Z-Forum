@@ -275,17 +275,31 @@
 	button {
 		margin-right: 0.5rem;
 
-		&.post-save:active, &.post-save:focus, &.thread-save:active, &.thread-save:focus {
+		&.post-save, &.thread-save {
 			border-color: transparent;
 			background: $green;
 		}
 
+		&.thread-cancel {
+			background: $darkindigo !important;
+		}
+
 		&.post-delete, &.thread-delete {
+			color: red !important;
 			border-color: red;
 			margin-left: auto;
 
 			&:active, &:focus {
+				color: white !important;
 				background: red;
+
+				i {
+					color: white;
+				}
+			}
+
+			i {
+				color: red;
 			}
 		}
 	}
