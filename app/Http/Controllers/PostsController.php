@@ -273,14 +273,16 @@ class PostsController extends Controller
 		} else {
 			$redirect = false;
 			$post = Post::find(request('id'));
+			
 			$thread = $post->thread;
-			$subcategory = $thread->subcategory;
 
 			$post->delete();
 
 			if (count($thread->posts) <= 0) {
-				$thread->delete();
+				$subcategory = $thread->subcategory;
 				$redirect = route('subcategory_show', [$subcategory->id, $subcategory->slug]);
+				
+				$thread->delete();
 			}
 			
 			return response()->json([

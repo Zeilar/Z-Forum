@@ -12192,12 +12192,24 @@ div.tox-tinymce .tox-menubar button.tox-mbtn--active {
   color: black;
 }
 
-div.tox-tinymce .tox-statusbar__branding {
+div.tox-tinymce .tox-statusbar {
+  border-color: #2c2c35e6;
+}
+
+div.tox-tinymce .tox-statusbar .tox-statusbar__branding {
   display: none;
 }
 
 button.tox-button {
   background-color: #00c26e !important;
+}
+
+div.tox-tinymce-aux .tox-menu {
+  border-color: #2c2c35e6;
+}
+
+div.tox-tinymce-aux .tox-menu .tox-collection__group {
+  border-color: #2c2c35e6 !important;
 }
 
 div.tox-tinymce-aux .tox-dialog-wrap__backdrop {

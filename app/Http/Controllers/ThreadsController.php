@@ -209,4 +209,92 @@ class ThreadsController extends Controller
 			]);
 		}
     }
+
+	/**
+     * Update the specified resource in storage, using AJAX.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_ajax(Request $request)
+    {
+		if (!logged_in()) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('Please log in and try again'),
+			]);
+		} else if (!Thread::find(request('id'))) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('That thread does not exist, refresh the page and try again'),
+			]);
+		} else if (!is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'type' 	  => 'error',
+				'message' => __('Insufficient permissions')
+			]);
+		} else if (request('title') === Thread::find(request('id'))->title) {
+			return response()->json([
+				'type' => 'none',
+			]); 
+		} else {
+			$thread = Thread::find(request('id'));
+			$thread->title = request('title');
+			$thread->slug = urlencode(request('title'));
+
+			$thread->save();
+
+			return response()->json([
+				'type'	  => 'success',
+				'message' => __('Thread title was successfully changed'),
+				'title'	  => $thread->title,
+				'url'	  => route('thread_show', [$thread->id, $thread->slug]),
+			]);
+		}
+    }
+
+	/**
+     * Remove the specified resource from storage, using AJAX.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_ajax(Request $request)
+    {
+		if (!logged_in()) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('Please log in and try again'),
+			]);
+		} else if (!Thread::find(request('id'))) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('That thread does not exist, refresh the page and try again'),
+			]);
+		} else if (!is_role('superadmin', 'moderator')) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('Insufficient permissions'),
+			]);
+		} else {
+			$post = Post::find(request('id'));
+			$thread = $post->thread;
+
+			$subcategory = $thread->subcategory;
+			$redirect = route('subcategory_show', [$subcategory->id, $subcategory->slug]);
+
+			foreach ($thread->posts as $post) {
+				$post->delete();
+			}
+
+			$thread->delete();
+			
+			return response()->json([
+				'type'     => 'success',
+				'message'  => __('Thread was successfully deleted'),
+				'redirect' => $redirect,
+			]);
+		}
+    }
 }

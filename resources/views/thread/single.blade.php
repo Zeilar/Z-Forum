@@ -6,9 +6,9 @@
 
 	<div class="thread-toolbar d-flex flex-row">
 		@if (is_role('superadmin', 'moderator'))
-			<a class="btn mr-2 thread-edit btn-warning" data-toggle="modal" href="#crudModal">
+			<button class="btn mr-2 thread-edit btn-warning">
 				<i class="fas color-black fa-pen"></i>
-			</a>
+			</button>
 			@if ($thread->locked)
 				<button class="btn mr-2 spin thread-toggle btn-secondary" type="button">
 					<i class="fas color-white fa-unlock"></i>
@@ -33,7 +33,9 @@
 			<h5 class="thread-title">{!! $thread->title !!}</h5>
 		</div>
 
+		{{-- Don't even ask, it just works --}}
 		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>
+
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post, 'i' => $i])
 				
@@ -84,16 +86,16 @@
 
 		@if (is_role('superadmin', 'moderator'))
 			<script>
+				thread_handlers();
+
 				$('.thread-toggle').click(function(e) {
-					let url = '{{ route("thread_toggle") }}';
-					let id = '{{ $thread->id }}';
 					e.preventDefault();
 					$.ajax({
-						url: url,
+						url: '{{ route("thread_toggle") }}',
 						method: 'POST',
 						data: {
 							_token: '{{ Session::token() }}',
-							id: id,
+							id: '{{ $thread->id }}',
 						},
 						success: function(response) {
 							ajax_alert(response);
@@ -115,19 +117,122 @@
 						}
 					});
 				});
-			</script>
 
-			@component('modals.crud', ['route_name' => 'thread_update', 'route_values' => [$thread->id, $thread->slug]])
-				@slot('method')
-					PUT
-				@endslot
-				@slot('title')
-					{{ __('Edit thread title') }}
-				@endslot
-				@slot('submit')
-					{{ __('Save') }}
-				@endslot
-			@endcomponent
+				function thread_edit() {
+					if (!$('.thread-save-toolbar').length) {
+						let title = $('.thread-title').html();
+
+						$('.thread-title').replaceWith(`<input type="text" value="${title}" /> `);
+						$('.thread-header').append(`
+							<div class="thread-save-toolbar">
+								<button class="btn btn-success spin thread-save">
+									<span>Save</span>
+								</button>
+								<button class="btn btn-success spin thread-cancel">
+									<span>Cancel</span>
+								</button>
+							</div>
+						`);
+					}
+				}
+
+				// Cancel the edited thread and reset elements to how they were before
+				function thread_cancel(original) {					
+					// Reset thread header
+					$('.thread-header').html(original);
+
+					$('.thread-edit').removeAttr('disabled');
+
+					// The event handler needs to be re-initalized since the element was destroyed
+					thread_handlers();
+				}
+
+				// Save the edited post and reset elements to how they were before, but with the updated post content
+				function thread_save(original, e) {
+					let originalTitle = '{{ $thread->title }}';
+					let id = '{{ $thread->id }}';
+
+					e.preventDefault();
+					$.ajax({
+						url: '{{ route("thread_update_ajax") }}',
+						method: 'POST',
+						data: {
+							_token: '{{ Session::token() }}',
+							id: id,
+							title: $('.thread-header input').val()
+						},
+						success: function(response) {
+							// Reset post element and remove TinyMCE editor first
+							$('.thread-header').html(original);
+
+							// Insert the newly edited content into the post
+							$('.thread-title').html(response.title);
+
+							// Edit the active breadcrumb content
+							$('.breadcrumb-item.active').html(response.title);
+
+							// Edit the current URL state for better UX in case user reloads, otherwise it will return 404
+							window.history.pushState("", "", response.url);
+
+							// Dispay the alert message on the top of the page
+							if (response.type !== 'none') {
+								ajax_alert(response);
+							}
+
+							// The event handler needs to be re-initalized since the element was destroyed
+							thread_handlers();
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+
+				// Delete thread
+				function thread_delete(element, e) {
+					let id = element.parents('.post').attr('id');
+
+					e.preventDefault();
+					$.ajax({
+						url: '{{ route("thread_delete_ajax") }}',
+						method: 'POST',
+						data: {
+							_token: '{{ Session::token() }}',
+							id: id,
+						},
+						success: function(response) {
+							window.location.href = response.redirect;
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+
+				// Initialize post handlers in order to let them be "recursive"
+				function thread_handlers() {
+					let original = $('.thread-header').html();
+
+					$('.thread-edit').click(function() {
+						thread_edit();
+
+						$('.thread-save').click(function(e) {
+							thread_save(original, e);
+						});
+
+						$('.thread-cancel').click(function() {
+							thread_cancel(original);
+						});
+
+						// Put disabled on edit button
+						$(this).attr('disabled', true);
+					});
+
+					$('.thread-delete').click(function(e) {
+						thread_delete(e);
+					});
+				}
+			</script>
 		@endif
 	@endauth
 

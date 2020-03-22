@@ -31,17 +31,19 @@ Route::get('/subcategory/{id}-{slug}', 'SubcategoriesController@show')->name('su
 Route::post('/subcategory/{id}-{slug}/thread/store', 'ThreadsController@store')->name('thread_store');
 Route::get('/subcategory/{id}-{slug}/thread/new', 'ThreadsController@create')->name('thread_create');
 Route::delete('/thread/{id}-{slug}/delete', 'ThreadsController@destroy')->name('thread_delete');
+Route::post('/thread/delete', 'ThreadsController@destroy_ajax')->name('thread_delete_ajax');
 Route::put('/thread/{id}-{slug}/update', 'ThreadsController@update')->name('thread_update');
+Route::post('/thread/update', 'ThreadsController@update_ajax')->name('thread_update_ajax');
 Route::get('/thread/{id}-{slug}/edit', 'ThreadsController@edit')->name('thread_edit');
-Route::post('/thread/toggle', 'ThreadsController@toggle')->name('thread_toggle');
 Route::get('/thread/{id}-{slug}', 'ThreadsController@show')->name('thread_show');
+Route::post('/thread/toggle', 'ThreadsController@toggle')->name('thread_toggle');
 
 // Posts
 Route::get('/thread/{id}-{slug}?page={page}#{post-id}', 'PostsController@show')->name('post_show');
-Route::post('/post/update_ajax', 'PostsController@update_ajax')->name('post_update_ajax');
 Route::post('/post/delete', 'PostsController@destroy_ajax')->name('post_delete_ajax');
 Route::post('/thread/{id}-{slug}/store', 'PostsController@store')->name('post_store');
 Route::get('/thread/{id}-{slug}/new', 'PostsController@create')->name('post_create');
+Route::post('/post/update', 'PostsController@update_ajax')->name('post_update_ajax');
 Route::delete('/post/{id}/delete', 'PostsController@destroy')->name('post_delete');
 Route::put('/post/{id}/update', 'PostsController@update')->name('post_update');
 Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');

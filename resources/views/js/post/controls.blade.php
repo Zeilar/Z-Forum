@@ -116,6 +116,7 @@
 			function post_handlers() {
 				$('.post').each(function() {
 					let original = $(this).html();
+					
 					$(this).find('.post-edit').click(function(e) {
 						post_edit($(this));
 

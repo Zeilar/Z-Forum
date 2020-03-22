@@ -24,8 +24,12 @@ div.tox-tinymce {
 		}
 	}
 
-	.tox-statusbar__branding {
-		display: none;
+	.tox-statusbar {
+		border-color: $darkindigo;
+
+		.tox-statusbar__branding {
+			display: none;
+		}
 	}
 }
 
@@ -34,6 +38,14 @@ button.tox-button {
 }
 
 div.tox-tinymce-aux {
+	.tox-menu {
+		border-color: $darkindigo;
+
+		.tox-collection__group {
+			border-color: $darkindigo !important;
+		}
+	}
+
 	.tox-dialog-wrap__backdrop {
 		background-color: rgba(0, 0, 0, 0.75);
 	}
