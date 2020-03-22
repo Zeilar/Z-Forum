@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
+use DefaultSettings;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
 	/**
-     * Default attributes.
+     * The default attributes.
      *
      * @var array
      */
@@ -24,12 +25,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are guarded.
      *
      * @var array
      */
-    protected $fillable = [
-        'username', 'email', 'password', 'role', 'avatar', 'settings',
+    protected $guarded = [
+        'role',
     ];
 
     /**
