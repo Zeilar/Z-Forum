@@ -288,12 +288,14 @@
 			color: red !important;
 			border-color: red;
 			margin-left: auto;
+			margin-right: 0;
 
 			&:active, &:focus {
 				color: white !important;
 				background: red;
 
 				i {
+					transition: color 0.15s ease-in-out;
 					color: white;
 				}
 			}

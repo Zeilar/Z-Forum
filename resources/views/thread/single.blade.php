@@ -165,6 +165,8 @@
 							// Insert the newly edited content into the post
 							$('.thread-title').html(response.title);
 
+							$('.thread-edit').removeAttr('disabled');
+
 							// Edit the active breadcrumb content
 							$('.breadcrumb-item.active').html(response.title);
 

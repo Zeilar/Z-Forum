@@ -88,7 +88,7 @@
 					</button>
 
 					@if ($post->thread->posts()->first()->id !== $post->id || is_role('superadmin'))
-						<button class="btn btn-default post-delete">
+						<button class="btn btn-default spin post-delete">
 							{{ __('Delete') }}
 						</button>
 					@endif

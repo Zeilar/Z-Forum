@@ -13112,6 +13112,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: red !important;
   border-color: red;
   margin-left: auto;
+  margin-right: 0;
 }
 
 .post-toolbar button.post-delete:active,
@@ -13150,6 +13151,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .thread-save-toolbar button.post-delete:focus i,
 .thread-save-toolbar button.thread-delete:active i,
 .thread-save-toolbar button.thread-delete:focus i {
+  -webkit-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
   color: white;
 }
 
