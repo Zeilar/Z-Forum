@@ -12928,3 +12928,23 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
+.post .post-edited-by {
+  background: #2c2c35e6;
+  padding: 0.5rem 1rem;
+  font-style: italic;
+  margin-top: 2px;
+  color: #a5abaf;
+}
+
+.post .post-edited-by a {
+  color: white;
+}
+
+.post .post-edited-by a:hover {
+  color: #00ffff;
+}
+
+.post .post-edited-by * {
+  font-size: 0.75rem;
+}
+

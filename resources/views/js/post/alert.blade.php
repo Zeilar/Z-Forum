@@ -13,6 +13,10 @@
 			case 'warning':
 				alertIcon = '<i class="fas fa-exclamation-triangle"></i>';
 				break;
+			case 'none':
+				return;
+			default:
+				return;
 		}
 
 		let alertContent = `

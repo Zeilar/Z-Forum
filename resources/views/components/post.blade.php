@@ -73,6 +73,12 @@
 		{!! $post->content !!}
 	</div>
 
+	@isset($post->edited_by)
+		<div class="post-edited-by">
+			{!! $post->edited_by !!}
+		</div>
+	@endisset
+
 	<div class="post-toolbar">
 		<div class="d-flex flex-row">
 			@auth

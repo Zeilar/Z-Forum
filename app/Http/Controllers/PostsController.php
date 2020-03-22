@@ -214,13 +214,30 @@ class PostsController extends Controller
 				'type'    => 'error',
 				'message' => __('That post does not belong to you, contact an administrator if you believe this is false'),
 			]);
+		} else if (request('content') === Post::find(request('id'))->content) {
+			return response()->json([
+				'type' => 'none',
+			]);
 		} else {
 			$post = Post::find(request('id'));
 			$post->content = request('content');
+		
 			$post->save();
+
+			// If the edit was 3 or more minutes after creation, put a notation of it at the bottom
+			if ($post->created_at->diffInMinutes($post->updated_at) >= 3) {
+				$post->edited_by  = '<p class="edited-by">' . __('Edited by ');
+				$post->edited_by .= '<a href="' . route('user_show', auth()->user()->id) . '">' . auth()->user()->username . '</a>';
+				$post->edited_by .= __(' at ') . $post->updated_at . '</p>';
+
+				$post->save();
+			}
+
 			return response()->json([
-				'type'	  => 'success',
-				'message' => __('Post was successfully changed'),
+				'type'	  	=> 'success',
+				'message' 	=> __('Post was successfully changed'),
+				'content' 	=> $post->content,
+				'edited_by' => $post->edited_by,
 			]);
 		}
     }

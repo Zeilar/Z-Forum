@@ -225,4 +225,24 @@
 			color: white;
 		}
 	}
+
+	.post-edited-by {
+		background: $darkindigo;
+		padding: 0.5rem 1rem;
+		font-style: italic;
+		margin-top: 2px;
+		color: $silver;
+
+		a {
+			color: white;
+
+			&:hover {
+				color: $turqoise;
+			}
+		}
+
+		* {
+			font-size: 0.75rem;
+		}
+	}
 }

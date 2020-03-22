@@ -60,13 +60,16 @@
 						content: content
 					},
 					success: function(response) {
-						// Reset post element and remove TinyMCE editor
+						// Reset post element and remove TinyMCE editor first
 						$(`#${id}`).html(original);
 
 						// Insert the newly edited content into the post
-						$(`#${id} .post-body`).html(content);
+						$(`#${id} .post-body`).html(response.content).after(`<div class="post-edited-by">${response.edited_by}</div>`);
 
-						ajax_alert(response);
+						// Dispay the alert message on the top of the page
+						if (response.type !== 'none') {
+							ajax_alert(response);
+						}
 
 						// The event handler needs to be re-initalized since the element was destroyed
 						post_handlers();
