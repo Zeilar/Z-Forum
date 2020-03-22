@@ -79,9 +79,9 @@
 		</div>
 	@endisset
 
-	<div class="post-toolbar">
-		<div class="d-flex flex-row">
-			@auth
+	@auth
+		<div class="post-toolbar">
+			<div class="d-flex flex-row">
 				@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
 					<button class="btn btn-default post-edit">
 						<span>{{ __('Edit') }}</span>
@@ -93,7 +93,7 @@
 						</button>
 					@endif
 				@endif
-			@endauth
+			</div>
 		</div>
-	</div>
+	@endauth
 </article>
