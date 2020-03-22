@@ -2,3 +2,12 @@
 	padding: 1rem 0;
 	color: white;
 }
+
+.thread-toolbar {
+	flex-direction: row;
+	display: flex;
+
+	button {
+		margin-right: 0.5rem;
+	}
+}

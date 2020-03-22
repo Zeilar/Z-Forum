@@ -12464,6 +12464,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
+.thread-toolbar {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  display: -webkit-box;
+  display: flex;
+}
+
+.thread-toolbar button {
+  margin-right: 0.5rem;
+}
+
 #footer {
   border-top: 2px solid #00c26e;
   background: black;
@@ -13003,6 +13015,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #2c2c35e6;
   padding: 0.5rem 1rem;
   margin-top: 2px;
+}
+
+.post .post-toolbar button {
+  margin-right: 0.5rem;
+  background: #2c2c35e6;
+  border-color: #18171c;
 }
 
 .post .post-edited-by {

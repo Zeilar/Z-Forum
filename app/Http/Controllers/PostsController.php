@@ -96,7 +96,12 @@ class PostsController extends Controller
 			$post->category_id = $thread->category->id;
 			$post->save();
 
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
+			return redirect(route('post_show', [
+				$thread->id,
+				$thread->slug,
+				get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+				$post->id,
+			]));
 		}
     }
 

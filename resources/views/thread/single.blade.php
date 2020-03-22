@@ -4,27 +4,23 @@
 @section('content')
 	{{ Breadcrumbs::render('thread', $thread) }}
 
-	<div class="thread-toolbar d-flex flex-row">
+	<div class="thread-toolbar">
 		@if (is_role('superadmin', 'moderator'))
-			<button class="btn mr-2 thread-edit btn-warning">
+			<button class="btn thread-edit btn-warning">
 				<i class="fas color-black fa-pen"></i>
 			</button>
 			@if ($thread->locked)
-				<button class="btn mr-2 spin thread-toggle btn-secondary" type="button">
+				<button class="btn spin thread-toggle btn-secondary" type="button">
 					<i class="fas color-white fa-unlock"></i>
 				</button>
 			@else
-				<button class="btn mr-2 spin thread-toggle btn-secondary" type="button">
+				<button class="btn spin thread-toggle btn-secondary" type="button">
 					<i class="fas color-white fa-lock"></i>
 				</button>
 			@endif
-			<form action="{{route('thread_delete', [$thread->id, $thread->slug])}}" method="post">
-				@csrf
-				<input type="hidden" name="_method" value="DELETE">
-				<button class="btn mr-2 spin btn-danger" type="submit">
-					<i class="fas color-white fa-trash-alt"></i>
-				</button>
-			</form>
+			<button class="btn spin btn-danger" type="submit">
+				<i class="fas color-white fa-trash-alt"></i>
+			</button>
 		@endif
 	</div>
 
@@ -51,7 +47,7 @@
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
 					@error('content') <p class="color-red">{{ $message }}</p> @enderror
-					<button class="btn spin btn-success my-2 mr-2" type="submit" disabled>
+					<button class="btn spin btn-success my-2" type="submit" disabled>
 						<span>{{ __('Send') }}</span>
 					</button>
 				</form>
