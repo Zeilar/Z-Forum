@@ -226,7 +226,7 @@ class PostsController extends Controller
 
 			// If the edit was 3 or more minutes after creation, put a notation of it at the bottom
 			if ($post->created_at->diffInMinutes($post->updated_at) >= 3) {
-				$post->edited_by  = '<p class="edited-by">' . __('Edited by ');
+				$post->edited_by  = '<p class="edited-by ' . role_coloring(auth()->user()->role) . '">' . __('Edited by ');
 				$post->edited_by .= '<a href="' . route('user_show', auth()->user()->id) . '">' . auth()->user()->username . '</a>';
 				$post->edited_by .= __(' at ') . $post->updated_at . '</p>';
 

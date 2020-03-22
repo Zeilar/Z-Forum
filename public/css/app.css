@@ -12936,6 +12936,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #a5abaf;
 }
 
+.post .post-edited-by .is_superadmin a {
+  color: #a01818;
+}
+
+.post .post-edited-by .is_moderator a {
+  color: #7a11a3;
+}
+
 .post .post-edited-by a {
   color: white;
 }

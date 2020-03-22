@@ -64,7 +64,12 @@
 						$(`#${id}`).html(original);
 
 						// Insert the newly edited content into the post
-						$(`#${id} .post-body`).html(response.content).after(`<div class="post-edited-by">${response.edited_by}</div>`);
+						$(`#${id} .post-body`).html(response.content);
+						if (!$('.post-edited-by').length) {
+							$(`#${id} .post-body`).after(`<div class="post-edited-by">${response.edited_by}</div>`);
+						} else {
+							$('.post-edited-by').html(response.edited_by);
+						}
 
 						// Dispay the alert message on the top of the page
 						if (response.type !== 'none') {
