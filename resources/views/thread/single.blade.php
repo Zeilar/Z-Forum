@@ -52,9 +52,6 @@
 					<button class="btn spin btn-success my-2 mr-2" type="submit" disabled>
 						<span>{{ __('Send') }}</span>
 					</button>
-					<button class="btn btn-success my-2 preview-button" type="button" disabled>
-						<span>{{ __('Preview') }}</span>
-					</button>
 				</form>
 			</div>
 
@@ -131,7 +128,6 @@
 					{{ __('Save') }}
 				@endslot
 			@endcomponent
-
 		@endif
 	@endauth
 

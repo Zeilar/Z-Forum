@@ -1,6 +1,16 @@
 div.tox-tinymce {
 	border: 0;
 
+	.tox-toolbar__primary {
+		border-top: 1px $darkindigo !important;
+		border-bottom: 1px solid $darkindigo;
+		background: none;
+
+		.tox-toolbar__group {
+			border-color: $darkindigo !important;
+		}
+	}
+
 	.tox-menubar {
 		background: $darkindigo !important;
 
@@ -17,7 +27,6 @@ div.tox-tinymce {
 	.tox-statusbar__branding {
 		display: none;
 	}
-
 }
 
 button.tox-button {

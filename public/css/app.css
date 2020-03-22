@@ -12169,6 +12169,16 @@ div.tox-tinymce {
   border: 0;
 }
 
+div.tox-tinymce .tox-toolbar__primary {
+  border-top: 1px #2c2c35e6 !important;
+  border-bottom: 1px solid #2c2c35e6;
+  background: none;
+}
+
+div.tox-tinymce .tox-toolbar__primary .tox-toolbar__group {
+  border-color: #2c2c35e6 !important;
+}
+
 div.tox-tinymce .tox-menubar {
   background: #2c2c35e6 !important;
 }
