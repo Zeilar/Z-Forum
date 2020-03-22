@@ -11,6 +11,10 @@ div.tox-tinymce {
 		}
 	}
 
+	.tox-mbtn--active {
+		background: white;
+	}
+
 	.tox-menubar {
 		background: $darkindigo !important;
 
@@ -25,25 +29,72 @@ div.tox-tinymce {
 	}
 
 	.tox-statusbar {
-		border-color: $darkindigo;
+		background: $darkindigo;
+		border: 0;
 
 		.tox-statusbar__branding {
 			display: none;
+		}
+
+		.tox-statusbar__path-item {
+			color: white;
+		}
+
+		.tox-statusbar__resize-handle svg {
+			fill: white;
 		}
 	}
 }
 
 button.tox-button {
 	background-color: $green !important;
+	color: white;
+	border: 0;
 }
 
 div.tox-tinymce-aux {
+	.tox-dialog {
+		border-color: $darkindigo;
+	}
+
+	.tox-icon svg {
+		fill: white !important;
+	}
+
+	.tox-dialog__footer-end {
+		button {
+			color: white;
+			border: 0;
+
+			&:hover {
+				color: white !important;
+			}
+		}
+	}
+
+	.tox-dialog__body-content {
+		padding: 1rem;
+	}
+
 	.tox-menu {
 		border-color: $darkindigo;
 
 		.tox-collection__group {
 			border-color: $darkindigo !important;
 		}
+	}
+
+	.tox-dialog__header {
+		border-bottom: 1px solid $darkindigo;
+		padding: 0.5rem 1rem;
+
+		button {
+			display: none;
+		}
+	}
+
+	.tox-dialog__footer {
+		border-color: $darkindigo;
 	}
 
 	.tox-dialog-wrap__backdrop {

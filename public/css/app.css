@@ -12179,6 +12179,10 @@ div.tox-tinymce .tox-toolbar__primary .tox-toolbar__group {
   border-color: #2c2c35e6 !important;
 }
 
+div.tox-tinymce .tox-mbtn--active {
+  background: white;
+}
+
 div.tox-tinymce .tox-menubar {
   background: #2c2c35e6 !important;
 }
@@ -12193,15 +12197,47 @@ div.tox-tinymce .tox-menubar button.tox-mbtn--active {
 }
 
 div.tox-tinymce .tox-statusbar {
-  border-color: #2c2c35e6;
+  background: #2c2c35e6;
+  border: 0;
 }
 
 div.tox-tinymce .tox-statusbar .tox-statusbar__branding {
   display: none;
 }
 
+div.tox-tinymce .tox-statusbar .tox-statusbar__path-item {
+  color: white;
+}
+
+div.tox-tinymce .tox-statusbar .tox-statusbar__resize-handle svg {
+  fill: white;
+}
+
 button.tox-button {
   background-color: #00c26e !important;
+  color: white;
+  border: 0;
+}
+
+div.tox-tinymce-aux .tox-dialog {
+  border-color: #2c2c35e6;
+}
+
+div.tox-tinymce-aux .tox-icon svg {
+  fill: white !important;
+}
+
+div.tox-tinymce-aux .tox-dialog__footer-end button {
+  color: white;
+  border: 0;
+}
+
+div.tox-tinymce-aux .tox-dialog__footer-end button:hover {
+  color: white !important;
+}
+
+div.tox-tinymce-aux .tox-dialog__body-content {
+  padding: 1rem;
 }
 
 div.tox-tinymce-aux .tox-menu {
@@ -12210,6 +12246,19 @@ div.tox-tinymce-aux .tox-menu {
 
 div.tox-tinymce-aux .tox-menu .tox-collection__group {
   border-color: #2c2c35e6 !important;
+}
+
+div.tox-tinymce-aux .tox-dialog__header {
+  border-bottom: 1px solid #2c2c35e6;
+  padding: 0.5rem 1rem;
+}
+
+div.tox-tinymce-aux .tox-dialog__header button {
+  display: none;
+}
+
+div.tox-tinymce-aux .tox-dialog__footer {
+  border-color: #2c2c35e6;
 }
 
 div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
