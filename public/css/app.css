@@ -12999,6 +12999,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
+.post .post-toolbar {
+  background: #2c2c35e6;
+  padding: 0.5rem 1rem;
+  margin-top: 2px;
+}
+
 .post .post-edited-by {
   background: #2c2c35e6;
   padding: 0.5rem 1rem;

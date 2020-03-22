@@ -65,10 +65,12 @@
 
 						// Insert the newly edited content into the post
 						$(`#${id} .post-body`).html(response.content);
-						if (!$('.post-edited-by').length) {
-							$(`#${id} .post-body`).after(`<div class="post-edited-by">${response.edited_by}</div>`);
-						} else {
-							$('.post-edited-by').html(response.edited_by);
+						if (response.edited_by) {
+							if (!$('.post-edited-by').length) {
+								$(`#${id} .post-body`).after(`<div class="post-edited-by">${response.edited_by}</div>`);
+							} else {
+								$('.post-edited-by').html(response.edited_by);
+							}
 						}
 
 						// Dispay the alert message on the top of the page
