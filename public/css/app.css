@@ -12290,7 +12290,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar .nav-avatar {
-  border: 2px solid #00c26e;
   margin-left: 1rem;
   width: 2.5rem;
 }
@@ -12801,6 +12800,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta .post-avatar:hover .avatar-meta {
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
   opacity: 1;
 }
 
@@ -12843,8 +12844,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta .post-avatar .avatar-meta {
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
   -webkit-box-pack: center;
           justify-content: center;
   background: #2b2b34e6;
@@ -13151,8 +13150,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .thread-save-toolbar button.post-delete:focus i,
 .thread-save-toolbar button.thread-delete:active i,
 .thread-save-toolbar button.thread-delete:focus i {
-  -webkit-transition: color 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out;
   color: white;
 }
 
@@ -13164,6 +13161,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .thread-toolbar button.thread-delete i,
 .thread-save-toolbar button.post-delete i,
 .thread-save-toolbar button.thread-delete i {
+  -webkit-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
   color: red;
 }
 

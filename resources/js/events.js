@@ -2,9 +2,9 @@ $(document).ready(() => {
 	// TinyMCE default values
 	tinymce.init({
 		selector: '#form-content',
-		plugins: 'bbcode',
-		bbcode_dialect: "punbb",
-    });
+		plugins: "bbcode",
+		bbcode_dialect: "punbb"
+	});
 	
 	// Dashboard settings menu size animation
 	$('.settings-item').mouseenter(function() {
