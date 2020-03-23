@@ -44,8 +44,10 @@ a {
 }
 
 #content {
+	flex-direction: row;
 	position: relative;
 	padding: 1% 10%;
+	display: flex;
 	flex: 1;
 }
 

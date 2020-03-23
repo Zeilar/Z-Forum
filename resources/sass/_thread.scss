@@ -1,11 +1,16 @@
-.thread-title {
-	padding: 1rem 0;
-	color: white;
+.thread-header {
+	.thread-title {
+		padding: 1rem 0;
+		color: white;
+	}
+
+	input {
+		margin-top: 0.5rem;
+	}
 }
 
 .thread-toolbar {
 	border: 1px solid $green;
-	margin-bottom: 0.5rem;
 	width: fit-content;
 }
 

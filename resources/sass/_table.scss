@@ -1,4 +1,6 @@
 #table {
+	flex: 1;
+
 	.table-header, .table-row {
 		transition: background 0.1s ease-in;
 		flex-direction: row;

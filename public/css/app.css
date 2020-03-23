@@ -12141,8 +12141,13 @@ a:visited {
 }
 
 #content {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
   position: relative;
   padding: 1% 10%;
+  display: -webkit-box;
+  display: flex;
   -webkit-box-flex: 1;
           flex: 1;
 }
@@ -12274,6 +12279,10 @@ div.tox-tinymce-aux .tox-dialog__footer {
 
 div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+#sidebar {
+  border: 2px solid #00c26e;
 }
 
 .navbar {
@@ -12469,14 +12478,17 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   z-index: 2;
 }
 
-.thread-title {
+.thread-header .thread-title {
   padding: 1rem 0;
   color: white;
 }
 
+.thread-header input {
+  margin-top: 0.5rem;
+}
+
 .thread-toolbar {
   border: 1px solid #00c26e;
-  margin-bottom: 0.5rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -12600,6 +12612,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   opacity: 0.75;
   margin: auto;
   float: none;
+}
+
+#table {
+  -webkit-box-flex: 1;
+          flex: 1;
 }
 
 #table .table-header,

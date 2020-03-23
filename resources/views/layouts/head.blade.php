@@ -43,6 +43,8 @@
 		
         <main class="container-fluid" id="content">
             @yield('content')
+
+			@include('layouts.sidebar')
 		</main>
 		
 		<h2 class="color-white">Online users:</h2>
