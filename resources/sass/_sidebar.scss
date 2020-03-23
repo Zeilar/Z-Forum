@@ -1,3 +1,26 @@
 #sidebar {
-	border: 2px solid $green;
+	margin-left: 2.5rem;
+	color: white;
+	flex: 1;
+
+	a:visited {
+		color: white;
+
+		&:hover {
+			color: $turqoise;
+		}
+	}
+
+	.sidebar-item {
+		border: 2px solid $green;
+		border-radius: 0.25rem;
+		padding: 0.5rem 1rem;
+
+		.sidebar-header {
+			border-bottom: 2px solid $green;
+			padding-bottom: 0.5rem;
+			margin-bottom: 1rem;
+			font-weight: bold;
+		}
+	}
 }

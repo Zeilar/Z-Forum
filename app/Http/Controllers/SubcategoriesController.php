@@ -67,7 +67,7 @@ class SubcategoriesController extends Controller
 			return $this->subcategory_validation();
 		} else {
 			request()->validate([
-				'title' => 'required|min:3|max:30|unique:subcategories',
+				'title' => 'required|min:3|max:40|unique:subcategories',
 			]);
 
 			$subcategory = new Subcategory();
@@ -129,7 +129,7 @@ class SubcategoriesController extends Controller
 			if (item_exists(Subcategory::find($id), $slug)) {
 				if (is_role('superadmin')) {
 					$data = request()->validate([
-						'title' => 'required|max:30'
+						'title' => 'required|max:40'
 					]);
 
 					$subcategory = Subcategory::find($id);

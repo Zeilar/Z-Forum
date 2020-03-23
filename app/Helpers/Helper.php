@@ -178,19 +178,19 @@ if (!function_exists('is_user_online')) {
 }
 
 /**
- * Get all users that are online
+ * Get all users who are online
  * 
  * @return array
  */
 if (!function_exists('get_online_users')) {
 	function get_online_users() {
-		$online_users = [];
+		$users = [];
 		foreach (App\User::all() as $user) {
 			if (is_user_online($user->id)) {
-				array_push($online_users, $user);
+				array_push($users, $user);
 			}
 		}
-		return $online_users;
+		return $users;
 	}
 }
 

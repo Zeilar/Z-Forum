@@ -11454,31 +11454,6 @@ a.text-dark:focus {
   background: #18171c;
 }
 
-#posts-slider {
-  white-space: nowrap;
-  -webkit-box-align: center;
-          align-items: center;
-  position: relative;
-  overflow: hidden;
-  margin: auto 0;
-  display: -webkit-box;
-  display: flex;
-  height: 2rem;
-  -webkit-box-flex: 4;
-          flex: 4;
-}
-
-#posts-slider .latest-post {
-  text-align: center;
-  position: absolute;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  color: white;
-  width: 100%;
-}
-
 .modal-auth {
   width: 35rem;
 }
@@ -11648,12 +11623,12 @@ a.text-dark:focus {
 
 ::-moz-selection {
   background: rgba(25, 25, 35, 0.5);
-  color: #00ffff;
+  color: #00c8c8;
 }
 
 ::selection {
   background: rgba(25, 25, 35, 0.5);
-  color: #00ffff;
+  color: #00c8c8;
 }
 
 .fas {
@@ -12152,6 +12127,11 @@ a:visited {
           flex: 1;
 }
 
+#content #main {
+  -webkit-box-flex: 5;
+          flex: 5;
+}
+
 .color-black {
   color: black !important;
 }
@@ -12282,7 +12262,31 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar {
+  margin-left: 2.5rem;
+  color: white;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#sidebar a:visited {
+  color: white;
+}
+
+#sidebar a:visited:hover {
+  color: #00ffff;
+}
+
+#sidebar .sidebar-item {
   border: 2px solid #00c26e;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+#sidebar .sidebar-item .sidebar-header {
+  border-bottom: 2px solid #00c26e;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .navbar {
@@ -12294,7 +12298,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: -webkit-box;
   display: flex;
   z-index: 100;
-  height: 5rem;
+  height: 4rem;
   top: 0;
 }
 
@@ -12614,11 +12618,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   float: none;
 }
 
-#table {
-  -webkit-box-flex: 1;
-          flex: 1;
-}
-
 #table .table-header,
 #table .table-row {
   -webkit-transition: background 0.1s ease-in;
@@ -12634,6 +12633,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-header {
   background: #00a05b;
+  padding: 0.5rem 1rem;
   color: white;
 }
 
@@ -12644,6 +12644,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-header a {
+  font-size: 1.5rem;
   color: white;
 }
 

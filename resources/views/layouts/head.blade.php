@@ -42,20 +42,18 @@
 		@include('layouts.navbar')
 		
         <main class="container-fluid" id="content">
-            @yield('content')
+			<div id="main">
+            	@yield('content')
+			</div>
 
 			@include('layouts.sidebar')
 		</main>
-		
-		<h2 class="color-white">Online users:</h2>
-		@foreach (get_online_users() as $user)
-			<p class="color-white">{{ $user->username }}</p>
-		@endforeach
-
+	
 		<div id="scroller">
 			<i class="fas fa-arrow-up"></i>
 		</div>
     </div>
+	
 	@include('layouts.footer')
 </body>
 </html>

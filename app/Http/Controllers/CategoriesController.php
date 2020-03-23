@@ -63,7 +63,7 @@ class CategoriesController extends Controller
 			return $this->category_validation();
 		} else {
 			request()->validate([
-				'title' => 'required|max:30|unique:categories',
+				'title' => 'required|max:40|unique:categories',
 			]);
 
 			$category = new Category();
