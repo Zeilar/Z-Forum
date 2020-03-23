@@ -17,12 +17,17 @@
 			background: $green;
 		}
 
-		a {
-			font-size: 1.5rem;
-			color: white;
+		.th-title {
+			* {
+				font-size: 1.5rem;
+			}
 
-			&:hover {
-				text-decoration: underline;
+			a {
+				color: white;
+
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}

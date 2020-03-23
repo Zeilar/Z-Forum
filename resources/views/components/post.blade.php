@@ -80,20 +80,20 @@
 	@endisset
 
 	@auth
-		<div class="post-toolbar">
-			<div class="d-flex flex-row">
-				@can ('create', $post)
+		@can('update', $post)
+			<div class="post-toolbar">
+				<div class="d-flex flex-row">
 					<button class="btn btn-default post-edit">
 						<span>{{ __('Edit') }}</span>
 					</button>
 
-					@can ('delete', $post)
+					@can('delete', $post)
 						<button class="btn btn-default spin post-delete">
 							{{ __('Delete') }}
 						</button>
 					@endcan
-				@endcan
+				</div>
 			</div>
-		</div>
+		@endcan
 	@endauth
 </article>

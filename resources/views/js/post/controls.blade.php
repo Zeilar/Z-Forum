@@ -1,5 +1,5 @@
 @auth
-	@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
+	@can('update', $post)
 		@include('js.post.alert')
 
 		<script>
@@ -148,5 +148,5 @@
 				post_delete($(this), e);
 			});
 		</script>
-	@endif
+	@endcan
 @endauth

@@ -63,7 +63,7 @@
 			@endforeach {{-- $subcategories --}}
 		@endforeach {{-- $tableCategories --}}
 		
-		@if (is_role('superadmin'))
+		@can('create', App\Category::class)
 			@component('modals.crud', ['route_name' => 'category_store'])
 				@slot('title')
 					{{ __('Create new category') }}
@@ -75,6 +75,6 @@
 			<a class="btn btn-success" id="create-button" data-toggle="modal" href="#crudModal">
 				<span>{{ __('Create new category') }}</span>
 			</a>
-		@endif
+		@endcan
 	</div>
 @endsection

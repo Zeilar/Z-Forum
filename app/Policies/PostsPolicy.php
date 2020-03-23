@@ -55,6 +55,8 @@ class PostsPolicy
     {
 		if (is_role('superadmin', 'moderator')) {
 			return true;
+		} else if ($post->thread->locked) {
+			return false;
 		} else if ($user->id === $post->user->id) {
 			return true;
 		} else {
@@ -73,10 +75,12 @@ class PostsPolicy
     {
         if (is_role('superadmin')) {
 			return true;
-		} else if ($user->id == $post->user->id) {
-			return true;
-		} else if (is_role('moderator') && $post->thread->posts()->first()->id === $post->id) {
+		} else if ($post->thread->locked) {
 			return false;
+		} else if ($post->thread->posts()->first()->id === $post->id) {
+			return false;
+		} else if ($user->id === $post->user->id) {
+			return true;
 		} else {
 			return false;
 		}

@@ -4,7 +4,7 @@
 @section('content')
 	{{ Breadcrumbs::render('thread', $thread) }}
 
-	@can ('update', $thread)
+	@can('update', $thread)
 		<div class="thread-toolbar">
 			<button class="btn btn-default thread-edit">
 				<i class="fas fa-pen"></i>
@@ -18,7 +18,7 @@
 					<i class="fas fa-lock"></i>
 				</button>
 			@endif
-			@can ('delete', $thread)
+			@can('delete', $thread)
 				<button class="btn btn-default spin thread-delete" type="submit">
 					<i class="fas fa-trash-alt"></i>
 				</button>
@@ -28,7 +28,7 @@
 
 	<div class="thread @if ($thread->locked) locked @endif">
 		<div class="thread-header">
-			<h4 class="thread-title">{!! $thread->title !!}</h4>
+			<h4 class="thread-title">{{ $thread->title }}</h4>
 		</div>
 
 		{{-- Don't even ask, it just works --}}
@@ -82,7 +82,7 @@
 
 		@include('js.post.controls')
 
-		@can ('update', $thread)
+		@can('update', $thread)
 			<script>
 				// Init the handlers
 				thread_handlers();

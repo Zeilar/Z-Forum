@@ -12643,12 +12643,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #00c26e;
 }
 
-#table .table-header a {
+#table .table-header .th-title * {
   font-size: 1.5rem;
+}
+
+#table .table-header .th-title a {
   color: white;
 }
 
-#table .table-header a:hover {
+#table .table-header .th-title a:hover {
   text-decoration: underline;
 }
 
