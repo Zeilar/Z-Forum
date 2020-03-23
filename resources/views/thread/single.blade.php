@@ -4,7 +4,7 @@
 @section('content')
 	{{ Breadcrumbs::render('thread', $thread) }}
 
-	@if (is_role('superadmin', 'moderator'))
+	@can ('update', $thread)
 		<div class="thread-toolbar">
 			<button class="btn btn-default thread-edit">
 				<i class="fas fa-pen"></i>
@@ -18,13 +18,13 @@
 					<i class="fas fa-lock"></i>
 				</button>
 			@endif
-			@if (is_role('superadmin'))
+			@can ('delete', $thread)
 				<button class="btn btn-default spin thread-delete" type="submit">
 					<i class="fas fa-trash-alt"></i>
 				</button>
-			@endif
+			@endcan
 		</div>
-	@endif
+	@endcan
 
 	<div class="thread @if ($thread->locked) locked @endif">
 		<div class="thread-header">
@@ -82,7 +82,7 @@
 
 		@include('js.post.controls')
 
-		@if (is_role('superadmin', 'moderator'))
+		@can ('update', $thread)
 			<script>
 				// Init the handlers
 				thread_handlers();
@@ -187,25 +187,6 @@
 					});
 				}
 
-				// Delete thread
-				function thread_delete(e) {
-					e.preventDefault();
-					$.ajax({
-						url: '{{ route("thread_delete_ajax") }}',
-						method: 'POST',
-						data: {
-							_token: '{{ Session::token() }}',
-							id: '{{ $thread->id }}',
-						},
-						success: function(response) {
-							window.location.href = response.redirect;
-						},
-						error: function(error) {
-							console.log(error);
-						}
-					});
-				}
-
 				// Initialize post handlers in order to let them be "recursive"
 				function thread_handlers() {
 					let original = $('.thread-header').html();
@@ -230,9 +211,29 @@
 					});
 				}
 			</script>
-		@endif
+		@elsecan ('delete', $thread)
+			<script>
+				// Delete thread
+				function thread_delete(e) {
+					e.preventDefault();
+					$.ajax({
+						url: '{{ route("thread_delete_ajax") }}',
+						method: 'POST',
+						data: {
+							_token: '{{ Session::token() }}',
+							id: '{{ $thread->id }}',
+						},
+						success: function(response) {
+							window.location.href = response.redirect;
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+			</script>
+		@endcan
 	@endauth
 
 	{{ $posts->links('layouts.pagination') }}
-
 @endsection

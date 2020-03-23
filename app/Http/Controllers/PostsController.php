@@ -77,7 +77,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, int $id)
     {
-		$this->authorize('update', auth()->user(), Post::class);
+		$this->authorize('update', Post::class);
 
 		request()->validate([
 			'content' => 'required|max:500'
@@ -96,9 +96,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id, User $user)
+    public function destroy(int $id)
     {
-		$this->authorize('delete', auth()->user(), Post::class);
+		$this->authorize('delete', Post::class);
 
 		$post = Post::find($id);
 		$thread = $post->thread;

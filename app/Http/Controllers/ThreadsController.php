@@ -65,35 +65,33 @@ class ThreadsController extends Controller
      */
     public function store(Request $request, int $id, string $slug)
     {
-		if (logged_in()) {
-			request()->validate([
-				'title'   => 'required|alpha_dash|max:40|min:3',
-				'content' => 'required|max:500',
-			]);
+		$this->authorize('create', Thread::class);
 
-			$category = Subcategory::find($id)->category;
-			$subcategory = Subcategory::find($id);
+		request()->validate([
+			'title'   => 'required|alpha_dash|max:40|min:3',
+			'content' => 'required|max:500',
+		]);
 
-			$thread = new Thread();
-			$thread->title = request('title');
-			$thread->slug = urlencode(request('title'));
-			$thread->user_id = auth()->user()->id;
-			$thread->category_id = $category->id;
-			$thread->subcategory_id = $subcategory->id;
-			$thread->save();
+		$category = Subcategory::find($id)->category;
+		$subcategory = Subcategory::find($id);
 
-			$post = new Post();
-			$post->content = request('content');
-			$post->user_id = auth()->user()->id;
-			$post->thread_id = $thread->id;
-			$post->category_id = $category->id;
-			$post->subcategory_id = $subcategory->id;
-			$post->save();
+		$thread = new Thread();
+		$thread->title = request('title');
+		$thread->slug = urlencode(request('title'));
+		$thread->user_id = auth()->user()->id;
+		$thread->category_id = $category->id;
+		$thread->subcategory_id = $subcategory->id;
+		$thread->save();
 
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
-		} else {
-			return msg_error('login');
-		}
+		$post = new Post();
+		$post->content = request('content');
+		$post->user_id = auth()->user()->id;
+		$post->thread_id = $thread->id;
+		$post->category_id = $category->id;
+		$post->subcategory_id = $subcategory->id;
+		$post->save();
+
+		return redirect(route('thread_show', [$thread->id, $thread->slug]));
     }
 
     /**
@@ -119,31 +117,6 @@ class ThreadsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, int $id, string $slug)
-    {
-		if ($this->thread_validation($id, $slug) !== true) {
-			return $this->thread_validation($id, $slug);
-		} else {
-			$data = request()->validate([
-				'title' => 'required|alpha_dash|max:40|min:3',
-			]);
-
-			$thread = Thread::find($id);
-			$thread->title = request('title');
-			$thread->slug = urlencode(request('title'));
-			$thread->save();
-
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
-		}
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -151,20 +124,18 @@ class ThreadsController extends Controller
      */
     public function destroy(int $id, string $slug)
     {
-		if ($this->thread_validation($id, $slug) !== true) {
-			return $this->thread_validation($id, $slug);
-		} else {
-			$thread = Thread::find($id);
-			$subcategory = $thread->subcategory;
+		$this->authorize('delete', Thread::class);
 
-			foreach ($thread->posts as $post) {
-				$post->delete();
-			}
+		$thread = Thread::find($id);
+		$subcategory = $thread->subcategory;
 
-			$thread->delete();
-			
-			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
+		foreach ($thread->posts as $post) {
+			$post->delete();
 		}
+
+		$thread->delete();
+		
+		return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
     }
 
 	/**

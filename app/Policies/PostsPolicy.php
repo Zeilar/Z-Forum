@@ -91,7 +91,7 @@ class PostsPolicy
      */
     public function restore(User $user, Post $post)
     {
-        if (is_role('superadmin')) return true;
+        return is_role('superadmin');
     }
 
     /**
@@ -103,6 +103,6 @@ class PostsPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
-        if (is_role('superadmin')) return true;
+        return is_role('superadmin');
     }
 }
