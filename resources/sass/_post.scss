@@ -236,11 +236,11 @@
 		color: $silver;
 
 		.is_superadmin a {
-			color: rgb(160, 24, 24);
+			color: $superadmin-text;
 		}
 
 		.is_moderator a {
-			color: rgb(122, 17, 163);
+			color: $moderator-text;
 		}
 
 		a {

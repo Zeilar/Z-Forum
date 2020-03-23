@@ -3,8 +3,16 @@
 	color: white;
 	flex: 1;
 
-	a:visited {
+	a {
 		color: white;
+
+		&:visited {
+			color: white;
+
+			&:hover {
+				color: $turqoise;
+			}
+		}
 
 		&:hover {
 			color: $turqoise;
@@ -21,6 +29,18 @@
 			padding-bottom: 0.5rem;
 			margin-bottom: 1rem;
 			font-weight: bold;
+		}
+
+		a:hover {
+			color: $turqoise;
+		}
+
+		.is_superadmin {
+			color: $superadmin-text;
+		}
+
+		.is_moderator {
+			color: $moderator-text;
 		}
 	}
 }

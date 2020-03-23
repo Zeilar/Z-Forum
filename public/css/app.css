@@ -12268,11 +12268,19 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           flex: 1;
 }
 
+#sidebar a {
+  color: white;
+}
+
 #sidebar a:visited {
   color: white;
 }
 
 #sidebar a:visited:hover {
+  color: #00ffff;
+}
+
+#sidebar a:hover {
   color: #00ffff;
 }
 
@@ -12287,6 +12295,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
   font-weight: bold;
+}
+
+#sidebar .sidebar-item a:hover {
+  color: #00ffff;
+}
+
+#sidebar .sidebar-item .is_superadmin {
+  color: #a01818;
+}
+
+#sidebar .sidebar-item .is_moderator {
+  color: #7a11a3;
 }
 
 .navbar {

@@ -23,13 +23,13 @@
 
 			@for ($i = 0; $i < 5; $i++)
 				@isset ($superadmins[$i])
-					<a href="{{route('user_show', [$superadmins[$i]->id])}}">{{ $superadmins[$i]->username }}</a>
+					<a class="is_superadmin" href="{{route('user_show', [$superadmins[$i]->id])}}">{{ $superadmins[$i]->username }}</a>
 				@endisset
 			@endfor
 
 			@for ($i = 0; $i < 5; $i++)
 				@isset ($moderators[$i])
-					<a href="{{route('user_show', [$moderators[$i]->id])}}">{{ $moderators[$i]->username }}</a>
+					<a class="is_moderator" href="{{route('user_show', [$moderators[$i]->id])}}">{{ $moderators[$i]->username }}</a>
 				@endisset
 			@endfor
 		@else
