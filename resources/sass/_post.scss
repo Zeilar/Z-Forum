@@ -46,25 +46,10 @@
 
 				&:hover {
 					.avatar-meta {
-						transition: opacity 0.1s linear;
 						opacity: 1;
 
 						&::before {
-							animation: fade 0.1s forwards;
-							background: black;
-							position: absolute;
-							height: 100%;
-							content: '';
-							width: 100%;
-							
-							@keyframes fade {
-								from {
-									opacity: 0;
-								}
-								to {
-									opacity: 0.5;
-								}
-							}
+							opacity: 0.6;
 						}
 					}
 				}
@@ -78,6 +63,7 @@
 				}
 
 				.avatar-meta {
+					transition: opacity 0.2s ease-in-out;
 					justify-content: center;
 					background: #2b2b34e6;
 					flex-direction: column;
@@ -92,6 +78,17 @@
 					opacity: 0;
 					bottom: 0;
 					left: 0;
+
+					&::before {
+						transition: opacity 0.2s ease-in-out;
+						pointer-events: none;
+						background: black;
+						position: absolute;
+						height: 100%;
+						content: '';
+						width: 100%;
+						opacity: 0;
+					}
 
 					p, span {
 						font-size: 0.9rem;
