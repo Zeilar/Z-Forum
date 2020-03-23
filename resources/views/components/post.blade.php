@@ -82,17 +82,17 @@
 	@auth
 		<div class="post-toolbar">
 			<div class="d-flex flex-row">
-				@if (is_role('superadmin', 'moderator') || $post->user->id === auth()->user()->id)
+				@can ('create', $post)
 					<button class="btn btn-default post-edit">
 						<span>{{ __('Edit') }}</span>
 					</button>
 
-					@if ($post->thread->posts()->first()->id !== $post->id || is_role('superadmin'))
+					@can ('delete', $post)
 						<button class="btn btn-default spin post-delete">
 							{{ __('Delete') }}
 						</button>
-					@endif
-				@endif
+					@endcan
+				@endcan
 			</div>
 		</div>
 	@endauth

@@ -10,35 +10,6 @@ use App\Post;
 
 class PostsController extends Controller
 {
-	/**
-	 * Error handling for various post actions
-	 * 
-	 * @param  int $id
-	 * @return mixed
-	 */
-	public function post_validation(int $id) 
-	{
-		if (!logged_in()) {
-			return msg_error('login');
-		} else if (!Post::find($id)) {
-			return view('errors.404');
-		} else if (Post::find($id)->user_id !== auth()->user()->id) {
-			if (is_role('superadmin', 'moderator')) {
-				return true;
-			} else {
-				return msg_error('That post does not belong to you');
-			}
-		} else if (Post::find($id)->thread->locked) {
-			if (is_role('superadmin', 'moderator')) {
-				return true;
-			} else {
-				return msg_error('locked');
-			}
-		} else {
-			return true;
-		}
-	}
-
     /**
      * Display a listing of the resource.
      *
@@ -50,25 +21,6 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-	 * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function create(int $id, string $slug)
-    {
-		if (!logged_in()) {
-			return msg_error('login');
-		} else if (!item_exists(Thread::find($id), $slug)) {
-			return view('errors.404', ['value' => urldecode($slug)]);
-		} else if (Thread::find($id)->locked) {
-			return msg_error('locked');
-		} else {
-			return view('post.create', ['thread' => Thread::find($id)]);
-		}
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -76,33 +28,27 @@ class PostsController extends Controller
      */
     public function store(Request $request, int $id, string $slug)
     {
-		if (!logged_in()) {
-			return msg_error('login');
-		} else if (!Thread::find($id)) {
-			return view('errors.404', ['value' => urldecode($slug)]);
-		} else if (Thread::find($id)->locked && !is_role('superadmin', 'moderator')) {
-			return msg_error('locked');
-		} else {
-			$data = request()->validate([
-				'content' => 'required|max:500'
-			]);
+		$this->authorize('create', Post::class);
 
-			$thread = Thread::find($id);
-			$post = new Post();
-			$post->content = request('content');
-			$post->user_id = auth()->user()->id;
-			$post->thread_id = $thread->id;
-			$post->subcategory_id = $thread->subcategory->id;
-			$post->category_id = $thread->category->id;
-			$post->save();
+		$data = request()->validate([
+			'content' => 'required|max:500'
+		]);
 
-			return redirect(route('post_show', [
-				$thread->id,
-				$thread->slug,
-				get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
-				$post->id,
-			]));
-		}
+		$thread = Thread::find($id);
+		$post = new Post();
+		$post->content = request('content');
+		$post->user_id = auth()->user()->id;
+		$post->thread_id = $thread->id;
+		$post->subcategory_id = $thread->subcategory->id;
+		$post->category_id = $thread->category->id;
+		$post->save();
+
+		return redirect(route('post_show', [
+			$thread->id,
+			$thread->slug,
+			get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+			$post->id,
+		]));
     }
 
     /**
@@ -123,23 +69,6 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(int $id)
-    {
-		if ($this->post_validation($id) !== true) {
-			return $this->post_validation($id);
-		} else {
-			return view('post.edit', [
-				'post' => Post::find($id),
-			]);
-		}
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -148,19 +77,17 @@ class PostsController extends Controller
      */
     public function update(Request $request, int $id)
     {
-		if ($this->post_validation($id) !== true) {
-			return $this->post_validation($id);
-		} else {
-			request()->validate([
-				'content' => 'required|max:500'
-			]);
+		$this->authorize('update', auth()->user(), Post::class);
 
-			$post = Post::find($id);
-			$post->content = request('content');
-			$post->save();
+		request()->validate([
+			'content' => 'required|max:500'
+		]);
 
-			return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
-		}
+		$post = Post::find($id);
+		$post->content = request('content');
+		$post->save();
+
+		return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
     }
 
     /**
@@ -169,25 +96,23 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(int $id, User $user)
     {
-		if ($this->post_validation($id) !== true) {
-			return $this->post_validation($id);
-		} else {
-			$post = Post::find($id);
-			$thread = $post->thread;
+		$this->authorize('delete', auth()->user(), Post::class);
 
-			if (count($thread->posts) <= 1) {
-				$subcategory = $thread->subcategory;
-				$thread->delete();
-				$post->delete();
-				return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
-			}
+		$post = Post::find($id);
+		$thread = $post->thread;
 
+		if (count($thread->posts) <= 1) {
+			$subcategory = $thread->subcategory;
+			$thread->delete();
 			$post->delete();
-			
-			return redirect(route('thread_show', [$thread->id, $thread->slug]));
+			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 		}
+
+		$post->delete();
+		
+		return redirect(route('thread_show', [$thread->id, $thread->slug]));
     }
 
 	/**
