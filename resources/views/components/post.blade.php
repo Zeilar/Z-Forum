@@ -82,17 +82,15 @@
 	@auth
 		@can('update', $post)
 			<div class="post-toolbar">
-				<div class="d-flex flex-row">
-					<button class="btn btn-default post-edit">
-						<span>{{ __('Edit') }}</span>
-					</button>
+				<button class="btn btn-default post-edit">
+					<span>{{ __('Edit') }}</span>
+				</button>
 
-					@can('delete', $post)
-						<button class="btn btn-default spin post-delete">
-							{{ __('Delete') }}
-						</button>
-					@endcan
-				</div>
+				@can('delete', $post)
+					<button class="btn btn-default spin post-delete">
+						{{ __('Delete') }}
+					</button>
+				@endcan
 			</div>
 		@endcan
 	@endauth

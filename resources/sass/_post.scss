@@ -260,7 +260,9 @@
 .post-toolbar, .thread-toolbar {
 	background: $darkindigo;
 	padding: 0.5rem 1rem;
+	flex-direction: row;
 	margin-top: 2px;
+	display: flex;
 
 	i {
 		pointer-events: none;

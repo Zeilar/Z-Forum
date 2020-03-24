@@ -16,21 +16,20 @@
 					toolbar_mode: 'floating',
 				});
 
-				if (!element.parents('.post').find('.post-save-toolbar').length) {
-					element.parents('.post-toolbar').append(`
-						<div class="post-save-toolbar">
-							<button class="btn btn-default spin post-save">
-								<span>Save</span>
-							</button>
-							<button class="btn btn-default spin post-cancel">
-								<span>Cancel</span>
-							</button>
-							<button class="btn btn-default spin post-delete">
-								<span>Delete</span>
-							</button>
-						</div>
-					`);
-				}
+				let deleteButton = element.siblings('.post-delete');
+
+				element.parents('.post').append(`
+					<div class="post-toolbar">
+						<button class="btn btn-default spin post-save">
+							<span>Save</span>
+						</button>
+						<button class="btn btn-default spin post-cancel">
+							<span>Cancel</span>
+						</button>
+					</div>
+				`);
+
+				if (deleteButton.length) element.parents('.post').find('.post-toolbar').append(deleteButton);
 			}
 
 			// Cancel the edited post and reset elements to how they were before

@@ -13092,7 +13092,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .thread-toolbar {
   background: #2c2c35e6;
   padding: 0.5rem 1rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
   margin-top: 2px;
+  display: -webkit-box;
+  display: flex;
 }
 
 .post-toolbar i,
