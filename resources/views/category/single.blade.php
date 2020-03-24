@@ -1,6 +1,10 @@
 {{-- Passed variables: $category --}}
 @extends('layouts.head')
 
+@section('pageTitle')
+	{{ $category->title }}
+@endsection
+
 @section('content')
 	{{ Breadcrumbs::render('category', $category) }}
 

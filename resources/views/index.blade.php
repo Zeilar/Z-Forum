@@ -1,6 +1,10 @@
 {{-- Passed variables: $tableCategories --}}
 @extends('layouts.head')
 
+@section('pageTitle')
+	{{ __('The pioneer hangout') }}
+@endsection
+
 @section('content')
 	<div id="table">
 		@foreach ($tableCategories as $category)

@@ -1,6 +1,8 @@
 @extends('layouts.head')
 
-@section('pageTitle') Create new thread @endsection
+@section('pageTitle')
+	{{ __('Create new thread in ') . $subcategory->title }}
+@endsection
 
 @section('content')
 	{{ Breadcrumbs::render('thread_new', $subcategory) }}

@@ -1,6 +1,10 @@
 {{-- Passed variables: $thread --}}
 @extends('layouts.head')
 
+@section('pageTitle')
+	{{ $thread->title }}
+@endsection
+
 @section('content')
 	{{ Breadcrumbs::render('thread', $thread) }}
 

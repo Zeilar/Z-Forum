@@ -1,6 +1,10 @@
 {{-- Passed variables: $post --}}
 @extends('layouts.head')
 
+@section('pageTitle')
+	{{ __('Post by ') . $post->user->username }}
+@endsection
+
 @section('content')
 	{{ Breadcrumbs::render('post', $post) }}
 
