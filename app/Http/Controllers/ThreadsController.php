@@ -68,7 +68,7 @@ class ThreadsController extends Controller
 		$this->authorize('create', Thread::class);
 
 		request()->validate([
-			'title'   => 'required|alpha_dash|max:40|min:3',
+			'title'   => 'required|max:40|min:3',
 			'content' => 'required|max:500',
 		]);
 

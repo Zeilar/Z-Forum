@@ -10,9 +10,9 @@
 	<form action="{{route('thread_store', [$subcategory->id, $subcategory->slug])}}" method="POST">
 		@csrf
 
-		<input type="text" name="title" id="title">
+		<input type="text" name="title" id="title" value="{{old('title')}}">
 
-		<textarea name="content" id="form-content" value="Post"></textarea>
+		<textarea name="content" id="form-content" value="Post">{{ old('content') }}</textarea>
 		
 		<button type="submit">Submit</button>
 	</form>
