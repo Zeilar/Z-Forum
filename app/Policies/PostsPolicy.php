@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Post;
 use App\User;
+use App\Thread;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostsPolicy
@@ -39,9 +40,15 @@ class PostsPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Thread $thread)
     {
-		return auth()->user();
+		if (is_role('superadmin', 'moderator')) {
+			return true;
+		} else if ($thread->locked) {
+			return false;
+		} else {
+			return true;
+		}
     }
 
     /**

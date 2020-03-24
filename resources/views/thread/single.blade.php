@@ -43,7 +43,7 @@
 	</div>
 
 	@auth
-		@if (!$thread->locked || is_role('superadmin', 'moderator'))
+		@can('create', [App\Post::class, $thread])
 			<div id="quick-reply">
 				<form action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 					@csrf
@@ -78,7 +78,7 @@
 					}
 				}, 50);
 			</script>
-		@endif
+		@endcan
 
 		@include('js.post.controls')
 

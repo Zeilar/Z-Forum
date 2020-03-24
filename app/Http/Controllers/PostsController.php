@@ -28,7 +28,7 @@ class PostsController extends Controller
      */
     public function store(Request $request, int $id, string $slug)
     {
-		$this->authorize('create', Post::class);
+
 
 		$data = request()->validate([
 			'content' => 'required|max:500'
