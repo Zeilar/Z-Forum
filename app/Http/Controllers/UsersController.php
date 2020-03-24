@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\User;
+use Cache;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -89,4 +92,12 @@ class UsersController extends Controller
     {
         //
     }
+
+	public function push_status()
+	{
+		if (Auth::check()) {
+			$expiresAt = Carbon::now()->addMinutes(3);
+			Cache::put('user-online-' . Auth::user()->id, true, $expiresAt);
+		}
+	}
 }

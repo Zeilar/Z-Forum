@@ -40,6 +40,7 @@ Route::post('/post/update', 'PostsController@update_ajax')->name('post_update_aj
 Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');
 
 // Users
+Route::post('/user/push_status', 'UsersController@push_status')->name('user_push_status');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 
 // Search

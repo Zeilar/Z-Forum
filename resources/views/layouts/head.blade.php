@@ -13,11 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
 	<!-- To grant access to jQuery where not already available -->
-	<script
-		src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-		crossorigin="anonymous">
-  	</script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -39,21 +35,50 @@
 		@include('modals.login')
 		@include('modals.error')
 
+		{{-- Navbar --}}
 		@include('layouts.navbar')
 		
+		{{-- Main content --}}
         <main class="container-fluid" id="content">
 			<div id="main">
             	@yield('content')
 			</div>
 
+			{{-- Right sidebar --}}
 			@include('layouts.sidebar')
 		</main>
 	
+		{{-- Scroll to top button --}}
 		<div id="scroller">
 			<i class="fas fa-arrow-up"></i>
 		</div>
     </div>
 	
+	{{-- Footer --}}
 	@include('layouts.footer')
+
+	@auth
+		<script>
+			push_user_status();
+
+			setInterval(() => {
+				push_user_status();
+			}, 1000 * 60 * 3);
+
+			function push_user_status() {
+				$.ajax({
+					url: '{{ route("user_push_status") }}',
+					method: 'POST',
+					data: {
+						_token: '{{ Session::token() }}',
+						id: '{{ auth()->user()->id }}',
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+		</script>
+	@endauth
 </body>
 </html>
