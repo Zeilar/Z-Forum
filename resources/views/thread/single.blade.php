@@ -8,6 +8,11 @@
 @section('content')
 	{{ Breadcrumbs::render('thread', $thread) }}
 
+	@include('layouts.toolbar', $items = [
+		'<h1>Test 1</h1>',
+		'<h1>Test 2</h1>'
+	])
+
 	@can('update', $thread)
 		<div class="thread-toolbar">
 			<button class="btn btn-default thread-edit">
@@ -36,13 +41,13 @@
 		</div>
 
 		{{-- Don't even ask, it just works --}}
-		<?php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; ?>
+		@php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; @endphp
 
 		@foreach ($posts as $post)
 			@component('components.post', ['post' => $post, 'i' => $i])
 				
 			@endcomponent
-			<?php $i++; ?>
+			@php $i++; @endphp
 		@endforeach
 	</div>
 

@@ -2,28 +2,31 @@
 	@auth
 		<div class="sidebar-item welcome">
 			<h5 class="sidebar-header">{{ __('Welcome ') . auth()->user()->username }}</h5>
+			<a class="logout" href="{{route('logout')}}">
+				<span>{{ __('Logout') }}</span>
+				<i class="fas fa-sign-out-alt"></i>
+			</a>
 		</div>
 	@endauth
 
 	<div class="sidebar-item online-users">
 		<h5 class="sidebar-header">{{ __('Online moderators') }}</h5>
 
-		<?php $users = get_online_users(); ?>
+		@php $users = get_online_users(); @endphp
 		@if ($users)
 			{{-- Get online superadmins --}}
-			<?php $superadmins = []; ?>
+			@php $superadmins = []; @endphp
 			@foreach ($users as $user)
 				@if ($user->role === 'superadmin')
-					<?php array_push($superadmins, $user); ?>
+					@php array_push($superadmins, $user); @endphp
 				@endif
 			@endforeach
 
-
 			{{-- Get online moderators --}}
-			<?php $moderators = []; ?>
+			@php $moderators = []; @endphp
 			@foreach ($users as $user)
 				@if ($user->role === 'moderator')
-					<?php array_push($moderators, $user); ?>
+					@php array_push($moderators, $user); @endphp
 				@endif
 			@endforeach
 

@@ -1,6 +1,10 @@
 {{-- Passed variables: $value --}}
 @extends('layouts.head')
 
+@section('pageTitle')
+	405
+@endsection
+
 @section('content')
 	<div class="page-error" id="four-zero-five">
 		<div class="header">

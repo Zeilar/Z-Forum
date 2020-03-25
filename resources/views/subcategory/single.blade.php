@@ -19,7 +19,7 @@
 			@component('components.table-row')
 				@slot('title')
 					<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
-						{{ $thread->title }}
+						{{ $thread->excerpt }}
 					</a>
 				@endslot
 
@@ -33,9 +33,9 @@
 				@endforeach
 
 				@slot('views')
-					<?php $views = 0; ?>
+					@php $views = 0; @endphp
 					@foreach ($subcategory->threads as $thread)
-						<?php $views += $thread->views ?>
+						@php $views += $thread->views @endphp
 					@endforeach
 					{{ $views }}
 				@endslot

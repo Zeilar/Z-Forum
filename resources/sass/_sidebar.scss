@@ -3,6 +3,7 @@
 	margin-left: 2.5rem;
 	height: fit-content;
 	position: sticky;
+	max-width: 20%;
 	color: white;
 	flex: 1;
 
@@ -28,10 +29,20 @@
 		padding: 0.5rem 1rem;
 		margin-bottom: 1rem;
 
-		&.welcome .sidebar-header {
-			padding: 0;
-			margin: 0;
-			border: 0;
+		&.welcome {
+			.sidebar-header {
+				padding: 0;
+				margin: 0;
+				border: 0;
+			}
+
+			.logout {
+				color: white;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 
 		.sidebar-header {

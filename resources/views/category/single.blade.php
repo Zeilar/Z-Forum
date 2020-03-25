@@ -33,9 +33,9 @@
 				@endforeach
 
 				@slot('views')
-					<?php $views = 0; ?>
+					@php $views = 0; @endphp
 					@foreach ($subcategory->threads as $thread)
-						<?php $views += $thread->views ?>
+						@php $views += $thread->views @endphp
 					@endforeach
 					{{ $views }}
 				@endslot
@@ -75,7 +75,7 @@
 				{{ __('Create') }}
 			@endslot
 		@endcomponent
-		
+
 		<a class="btn btn-success" id="create-button" data-toggle="modal" href="#crudModal">
 			<span>{{ __('Create new subcategory') }}</span>
 		</a>

@@ -12028,6 +12028,20 @@ input[type=file] {
   padding: 1rem;
 }
 
+#toolbar {
+  top: calc(4vh + 2rem);
+  margin-right: 2.5rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: -webkit-sticky;
+  position: sticky;
+  max-width: 20%;
+  color: white;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
 p,
 h1,
 h2,
@@ -12118,8 +12132,8 @@ a:visited {
 .navbar,
 #content,
 #footer {
-  padding-right: 10rem;
-  padding-left: 10rem;
+  padding-right: 20rem;
+  padding-left: 20rem;
 }
 
 #content,
@@ -12140,8 +12154,8 @@ a:visited {
 }
 
 #content #main {
-  -webkit-box-flex: 5;
-          flex: 5;
+  -webkit-box-flex: 4;
+          flex: 4;
 }
 
 .color-black {
@@ -12281,6 +12295,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: fit-content;
   position: -webkit-sticky;
   position: sticky;
+  max-width: 20%;
   color: white;
   -webkit-box-flex: 1;
           flex: 1;
@@ -12313,6 +12328,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0;
   margin: 0;
   border: 0;
+}
+
+#sidebar .sidebar-item.welcome .logout {
+  color: white;
+}
+
+#sidebar .sidebar-item.welcome .logout:hover {
+  text-decoration: underline;
 }
 
 #sidebar .sidebar-item .sidebar-header {
@@ -12759,8 +12782,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-row .__wrapper.tr-views {
   margin-right: 1rem;
-  -webkit-box-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 3;
+          flex: 3;
 }
 
 #table .table-row .__wrapper.tr-views i {
@@ -12772,8 +12795,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-row .__wrapper.tr-posts {
-  -webkit-box-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 3;
+          flex: 3;
 }
 
 #table .table-row .__wrapper.tr-posts i {
@@ -12785,8 +12808,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-row .__wrapper.tr-latest-post {
-  -webkit-box-flex: 2.5;
-          flex: 2.5;
+  -webkit-box-flex: 5;
+          flex: 5;
 }
 
 #table .table-row .__wrapper.tr-latest-post p {
@@ -13132,39 +13155,27 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post-toolbar button,
-.post-save-toolbar button,
-.thread-toolbar button,
-.thread-save-toolbar button {
+.post-save-toolbar button {
   margin-right: 0.5rem;
 }
 
 .post-toolbar button.post-save,
 .post-toolbar button.thread-save,
 .post-save-toolbar button.post-save,
-.post-save-toolbar button.thread-save,
-.thread-toolbar button.post-save,
-.thread-toolbar button.thread-save,
-.thread-save-toolbar button.post-save,
-.thread-save-toolbar button.thread-save {
+.post-save-toolbar button.thread-save {
   border-color: transparent;
   background: #00c26e;
 }
 
 .post-toolbar button.thread-cancel,
-.post-save-toolbar button.thread-cancel,
-.thread-toolbar button.thread-cancel,
-.thread-save-toolbar button.thread-cancel {
+.post-save-toolbar button.thread-cancel {
   background: #2c2c35e6 !important;
 }
 
 .post-toolbar button.post-delete,
 .post-toolbar button.thread-delete,
 .post-save-toolbar button.post-delete,
-.post-save-toolbar button.thread-delete,
-.thread-toolbar button.post-delete,
-.thread-toolbar button.thread-delete,
-.thread-save-toolbar button.post-delete,
-.thread-save-toolbar button.thread-delete {
+.post-save-toolbar button.thread-delete {
   color: red !important;
   border-color: red;
   margin-left: auto;
@@ -13178,15 +13189,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .post-save-toolbar button.post-delete:active,
 .post-save-toolbar button.post-delete:focus,
 .post-save-toolbar button.thread-delete:active,
-.post-save-toolbar button.thread-delete:focus,
-.thread-toolbar button.post-delete:active,
-.thread-toolbar button.post-delete:focus,
-.thread-toolbar button.thread-delete:active,
-.thread-toolbar button.thread-delete:focus,
-.thread-save-toolbar button.post-delete:active,
-.thread-save-toolbar button.post-delete:focus,
-.thread-save-toolbar button.thread-delete:active,
-.thread-save-toolbar button.thread-delete:focus {
+.post-save-toolbar button.thread-delete:focus {
   color: white !important;
   background: red;
 }
@@ -13198,26 +13201,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .post-save-toolbar button.post-delete:active i,
 .post-save-toolbar button.post-delete:focus i,
 .post-save-toolbar button.thread-delete:active i,
-.post-save-toolbar button.thread-delete:focus i,
-.thread-toolbar button.post-delete:active i,
-.thread-toolbar button.post-delete:focus i,
-.thread-toolbar button.thread-delete:active i,
-.thread-toolbar button.thread-delete:focus i,
-.thread-save-toolbar button.post-delete:active i,
-.thread-save-toolbar button.post-delete:focus i,
-.thread-save-toolbar button.thread-delete:active i,
-.thread-save-toolbar button.thread-delete:focus i {
+.post-save-toolbar button.thread-delete:focus i {
   color: white;
 }
 
 .post-toolbar button.post-delete i,
 .post-toolbar button.thread-delete i,
 .post-save-toolbar button.post-delete i,
-.post-save-toolbar button.thread-delete i,
-.thread-toolbar button.post-delete i,
-.thread-toolbar button.thread-delete i,
-.thread-save-toolbar button.post-delete i,
-.thread-save-toolbar button.thread-delete i {
+.post-save-toolbar button.thread-delete i {
   -webkit-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
   color: red;
