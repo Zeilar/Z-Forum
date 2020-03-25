@@ -1,4 +1,10 @@
 <div id="sidebar">
+	@auth
+		<div class="sidebar-item welcome">
+			<h5 class="sidebar-header">{{ __('Welcome ') . auth()->user()->username }}</h5>
+		</div>
+	@endauth
+
 	<div class="sidebar-item online-users">
 		<h5 class="sidebar-header">{{ __('Online moderators') }}</h5>
 

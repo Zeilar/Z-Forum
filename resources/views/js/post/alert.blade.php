@@ -30,7 +30,7 @@
 		`;
 
 		if (!$('.alert').length) {
-			$('#content').prepend(alertContent);
+			$('#main').prepend(alertContent);
 		} else {
 			$('.alert').replaceWith(alertContent);
 		}

@@ -65,7 +65,7 @@
 			@endcomponent
 		@endforeach {{-- $subcategory --}}
 	</div>
-	
+
 	@can('create', App\Subcategory::class)
 		@component('modals.crud', ['route_name' => 'subcategory_store', 'route_values' => [$category->id, $category->slug]])
 			@slot('title')
@@ -75,6 +75,7 @@
 				{{ __('Create') }}
 			@endslot
 		@endcomponent
+		
 		<a class="btn btn-success" id="create-button" data-toggle="modal" href="#crudModal">
 			<span>{{ __('Create new subcategory') }}</span>
 		</a>

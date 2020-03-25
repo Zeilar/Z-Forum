@@ -43,10 +43,19 @@ a {
 	flex: 1;
 }
 
+.navbar, #content, #footer {
+	padding-right: 10rem;
+	padding-left: 10rem;
+}
+
+#content, #footer {
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}
+
 #content {
 	flex-direction: row;
 	position: relative;
-	padding: 1% 10%;
 	display: flex;
 	flex: 1;
 

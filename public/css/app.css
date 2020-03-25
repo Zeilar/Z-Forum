@@ -12115,12 +12115,24 @@ a:visited {
           flex: 1;
 }
 
+.navbar,
+#content,
+#footer {
+  padding-right: 10rem;
+  padding-left: 10rem;
+}
+
+#content,
+#footer {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
 #content {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
   position: relative;
-  padding: 1% 10%;
   display: -webkit-box;
   display: flex;
   -webkit-box-flex: 1;
@@ -12262,7 +12274,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar {
+  top: calc(4vh + 2rem);
   margin-left: 2.5rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: -webkit-sticky;
+  position: sticky;
   color: white;
   -webkit-box-flex: 1;
           flex: 1;
@@ -12288,6 +12306,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border: 2px solid #00c26e;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+#sidebar .sidebar-item.welcome .sidebar-header {
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 #sidebar .sidebar-item .sidebar-header {

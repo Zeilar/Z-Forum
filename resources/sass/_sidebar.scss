@@ -1,5 +1,8 @@
 #sidebar {
+	top: calc(4vh + 2rem);
 	margin-left: 2.5rem;
+	height: fit-content;
+	position: sticky;
 	color: white;
 	flex: 1;
 
@@ -23,6 +26,13 @@
 		border: 2px solid $green;
 		border-radius: 0.25rem;
 		padding: 0.5rem 1rem;
+		margin-bottom: 1rem;
+
+		&.welcome .sidebar-header {
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
 
 		.sidebar-header {
 			border-bottom: 2px solid $green;

@@ -59,12 +59,12 @@
 
 	@auth
 		<script>
-			push_user_status();
-
+			// Check user status every 3 minutes
 			setInterval(() => {
 				push_user_status();
 			}, 1000 * 60 * 3);
 
+			// Check user status
 			function push_user_status() {
 				$.ajax({
 					url: '{{ route("user_push_status") }}',
