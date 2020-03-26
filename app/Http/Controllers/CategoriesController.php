@@ -29,7 +29,7 @@ class CategoriesController extends Controller
 		$this->authorize('create', Category::class);
 
 		request()->validate([
-			'title' => 'required|max:40|unique:categories',
+			'title' => 'required|min:3|max:40|unique:categories',
 		]);
 
 		$category = new Category();

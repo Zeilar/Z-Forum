@@ -1,12 +1,12 @@
 #toolbar {
-	background: $darkgreen;
+	background: $superadmin;
 	top: calc(4vh + 2rem); // navbar is 4vh high and content has a 2rem margin-top away from it
 	margin-right: 2.5rem;
-	max-width: 17.5rem; // 20 rem is the distance from the edge to the main content area
 	padding: 0.5rem 1rem;
 	height: fit-content;
 	position: fixed;
 	color: white;
+	width: 17.5rem; // 20 rem is the distance from the edge to the main content area
 	z-index: 2;
 	left: 0;
 

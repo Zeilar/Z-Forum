@@ -80,17 +80,14 @@ class AuthController extends Controller
 			]
 		);
 
-		// Prepare the user data
-		$data = [
+		// If validation checks out, create our new user
+		User::create([
 			'username' => request('username'),
 			'email'	   => request('email'),
 			'password' => Hash::make(request('password')),
-		];
+		]);
 
-		// If validation checks out, create our new user
-		User::create($data);
-
-		// Try to log in with the newly created user - careful to not use the hashed password when attempting to authenticate
+		// Try to log in with the newly created user - careful not to use the hashed password when attempting to authenticate
 		$data = [
 			'email'	   => request('email'),
 			'password' => request('password'),
@@ -122,4 +119,6 @@ class AuthController extends Controller
 			return view('errors.405');
 		}
 	}
+
+	// TODO: Admin login
 }
