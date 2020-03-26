@@ -109,4 +109,17 @@ class AuthController extends Controller
 		Auth::logout();
 		return redirect(route('index'));
 	}
+
+	public function backup_login()
+	{
+		if (\App\MaintenanceMode::all()[0]->enabled) {
+			if (!logged_in()) {
+				return view('layouts.backup-login');
+			} else {
+				return view('errors.405');
+			}
+		} else {
+			return view('errors.405');
+		}
+	}
 }

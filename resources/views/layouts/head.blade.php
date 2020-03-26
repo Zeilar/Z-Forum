@@ -29,6 +29,14 @@
 	@yield('head')
 </head>
 <body>
+	{{-- Maintenance mode check --}}
+	@if (App\MaintenanceMode::all()[0]->enabled)
+		@cannot('update', App\MaintenanceMode::all()[0])
+			@include('errors.maintenance')
+			@php return; @endphp
+		@endcannot
+	@endif
+
     <div id="app">
 		{{-- Modals --}}
 		@include('modals.register')
@@ -43,7 +51,6 @@
 		
 		{{-- Main content --}}
         <main class="container-fluid" id="content">
-
 			<div id="main">
             	@yield('content')
 			</div>

@@ -52,9 +52,11 @@ Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('das
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
 
 // Auth
+Route::get('/login', 'AuthController@backup_login')->name('backup_login');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');
 
 // Toolbar
+Route::post('/toggle_maintenance_mode', 'ToolbarController@toggle_maintenance_mode')->name('toggle_maintenance_mode');
 Route::post('/spoof_login', 'ToolbarController@spoof_login')->name('spoof_login');
