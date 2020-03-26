@@ -55,3 +55,6 @@ Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');
+
+// Toolbar
+Route::post('/spoof_login', 'ToolbarController@spoof_login')->name('spoof_login');

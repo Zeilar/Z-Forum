@@ -12056,17 +12056,65 @@ input[type=file] {
 }
 
 #toolbar {
+  background: #00a05b;
   top: calc(4vh + 2rem);
   margin-right: 2.5rem;
+  max-width: 17.5rem;
+  padding: 0.5rem 1rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  position: -webkit-sticky;
-  position: sticky;
-  max-width: 20%;
+  position: fixed;
   color: white;
-  -webkit-box-flex: 1;
-          flex: 1;
+  z-index: 2;
+  left: 0;
+}
+
+#toolbar .toolbar-items .toolbar-row {
+  margin-bottom: 1rem;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#toolbar .toolbar-items .toolbar-row:last-child {
+  margin-bottom: 0;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-collapse {
+  -webkit-box-align: center;
+          align-items: center;
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: flex;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-collapse span {
+  margin-left: 0.5rem;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-collapse i {
+  width: 1.5rem;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-collapse i.fa-caret-left {
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+  margin-left: auto;
+  color: white;
+  width: unset;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-accordion {
+  -webkit-transition: height 0.25s ease-in-out, margin 0.25s ease-in-out;
+  transition: height 0.25s ease-in-out, margin 0.25s ease-in-out;
+  overflow: hidden;
+  height: 0;
 }
 
 p,
@@ -12152,6 +12200,7 @@ a:visited {
           flex-direction: column;
   display: -webkit-box;
   display: flex;
+  height: 100%;
   -webkit-box-flex: 1;
           flex: 1;
 }

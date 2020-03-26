@@ -72239,14 +72239,20 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function ($) {// $.fn.navbarOpen = function() {
-  //     this.css( "color", "red" );
-  //     return this;
-  // };
-  // $.fn.navbarClose = function() {
-  //     this.css( "color", "red" );
-  //     return this;
-  // };
+(function ($) {
+  $.fn.close = function () {
+    this.css('height', '0');
+    return this;
+  };
+
+  $.fn.collapse = function () {
+    var height = 0;
+    this.children().each(function () {
+      height += $(this).height();
+    });
+    this.css('height', "".concat(height, "px"));
+    return this;
+  };
 })(jQuery);
 
 /***/ }),

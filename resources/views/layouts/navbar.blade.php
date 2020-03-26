@@ -63,42 +63,41 @@
 			<img class="nav-avatar img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
 		@endauth
 	</div>
-</nav>
+	<script>
+		$('.nav-link').not('#login-button, #register-button').mouseenter(function() {
+			// Spawn nav ruler if it doesn't exist
+			if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>');
 
-<script>
-	$('.nav-link').not('#login-button, #register-button').mouseenter(function() {
-		// Spawn nav ruler if it doesn't exist
-		if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>');
+			// Remove any colored nav link and color the latest hovered one
+			$('.nav-link.color-white').removeClass('color-white');
+			$(this).addClass('color-white');
 
-		// Remove any colored nav link and color the latest hovered one
-		$('.nav-link.color-white').removeClass('color-white');
-		$(this).addClass('color-white');
+			// Get index of currently hovered item and the index of the item with the ruler
+			let index = $(this).parent().index();
+			let rulerIndex = $('.nav-ruler').parents('.nav-item').index();
 
-		// Get index of currently hovered item and the index of the item with the ruler
-		let index = $(this).parent().index();
-		let rulerIndex = $('.nav-ruler').parents('.nav-item').index();
-
-		// The magic
-		let distance = 0;		
-		if (rulerIndex - index < 0) {
-			for (let i = index; i > rulerIndex; i--) {
-				distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
-			}
-			$('.nav-ruler').css('transform', `translateX(-${distance}px)`);
-		} else {
-			for (let i = index; i < rulerIndex; i++) {
-				if (index === 0) {
-					distance += $(`.nav-item:first-child`).outerWidth(true);
-				} else {
+			// The magic
+			let distance = 0;		
+			if (rulerIndex - index < 0) {
+				for (let i = index; i > rulerIndex; i--) {
 					distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
 				}
+				$('.nav-ruler').css('transform', `translateX(-${distance}px)`);
+			} else {
+				for (let i = index; i < rulerIndex; i++) {
+					if (index === 0) {
+						distance += $(`.nav-item:first-child`).outerWidth(true);
+					} else {
+						distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
+					}
+				}
+				$('.nav-ruler').css('transform', `translateX(${distance}px)`);
 			}
-			$('.nav-ruler').css('transform', `translateX(${distance}px)`);
-		}
 
-		$(this).parents('.nav-items').mouseleave(function() {
-			$('.nav-link.color-white').removeClass('color-white');
-			$('.nav-ruler').remove();
+			$(this).parents('.nav-items').mouseleave(function() {
+				$('.nav-link.color-white').removeClass('color-white');
+				$('.nav-ruler').remove();
+			});
 		});
-	});
-</script>
+	</script>
+</nav>

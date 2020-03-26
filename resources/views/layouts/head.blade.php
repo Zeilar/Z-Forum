@@ -38,8 +38,12 @@
 		{{-- Navbar --}}
 		@include('layouts.navbar')
 		
+		{{-- Admin toolbar --}}
+		@include('layouts.toolbar')
+		
 		{{-- Main content --}}
         <main class="container-fluid" id="content">
+
 			<div id="main">
             	@yield('content')
 			</div>

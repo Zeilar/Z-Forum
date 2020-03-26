@@ -1,12 +1,15 @@
 (function($) {
-    // $.fn.navbarOpen = function() {
-    //     this.css( "color", "red" );
-    //     return this;
-    // };
+	$.fn.close = function() {
+	    this.css('height', '0');
+	    return this;
+	};
 
-	// $.fn.navbarClose = function() {
-    //     this.css( "color", "red" );
-    //     return this;
-    // };
- 
+	$.fn.collapse = function() {
+		let height = 0;
+		this.children().each(function() {
+			height += $(this).height();
+		});
+	    this.css('height', `${height}px`);
+	    return this;
+	};
 }(jQuery));
