@@ -18,18 +18,29 @@
 			color: $green;
 
 			span {
+				font-weight: bold;
 				font-size: 10rem;
 				line-height: 1;
 			}
 
 			i {
-				font-size: 7.5rem;
+				font-size: 8rem;
 				margin: auto 0;
 			}
 		}
 
 		h2 {
+			margin-top: 1rem;
+			font-size: 3rem;
+		}
+
+		h4 {
 			margin: 1rem 0 2rem 0;
+		}
+
+		.btn {
+			margin: 0 auto;
+			width: 55%;
 		}
 	}
 }
@@ -78,10 +89,19 @@
 	}
 }
 
-#four-zero-five {
-	
-}
+#four-one-nineteen {
+	.header {
+		h1 {
+			user-select: all;
+		}
 
-#five-zero-five {
-	
+		.refresh {
+			font-size: inherit;
+			color: $green;
+
+			&:hover {
+				color: $turqoise;
+			}
+		}
+	}
 }

@@ -11622,13 +11622,13 @@ a.text-dark:focus {
 }
 
 ::-moz-selection {
-  background: rgba(25, 25, 35, 0.5);
-  color: #00c8c8;
+  background: rgba(15, 15, 15, 0.85);
+  color: #00a05b;
 }
 
 ::selection {
-  background: rgba(25, 25, 35, 0.5);
-  color: #00c8c8;
+  background: rgba(15, 15, 15, 0.85);
+  color: #00a05b;
 }
 
 .fas {
@@ -11930,17 +11930,28 @@ input[type=file] {
 }
 
 .page-error .header h1 span {
+  font-weight: bold;
   font-size: 10rem;
   line-height: 1;
 }
 
 .page-error .header h1 i {
-  font-size: 7.5rem;
+  font-size: 8rem;
   margin: auto 0;
 }
 
 .page-error .header h2 {
+  margin-top: 1rem;
+  font-size: 3rem;
+}
+
+.page-error .header h4 {
   margin: 1rem 0 2rem 0;
+}
+
+.page-error .header .btn {
+  margin: 0 auto;
+  width: 55%;
 }
 
 #four-zero-four .search {
@@ -11987,6 +11998,22 @@ input[type=file] {
 
 #four-zero-four iframe {
   margin: 2rem 0;
+}
+
+#four-one-nineteen .header h1 {
+  -webkit-user-select: all;
+     -moz-user-select: all;
+      -ms-user-select: all;
+          user-select: all;
+}
+
+#four-one-nineteen .header .refresh {
+  font-size: inherit;
+  color: #00c26e;
+}
+
+#four-one-nineteen .header .refresh:hover {
+  color: #00ffff;
 }
 
 .dashboard-nav .nav-item {

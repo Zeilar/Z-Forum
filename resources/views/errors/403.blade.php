@@ -2,26 +2,26 @@
 @extends('layouts.head')
 
 @section('pageTitle')
-	405 {{ __('Method not allowed') }}
+	403 {{ __('Forbidden') }}
 @endsection
 
 @php $disableSidebar = true; @endphp
 
 @section('content')
-	<div class="page-error" id="four-zero-five">
+	<div class="page-error" id="four-zero-three">
 		<div class="header">
 			<h1>
 				<span>4</span>
 				<i class="fas fa-ban"></i>
-				<span>5</span>
+				<span>3</span>
 			</h1>
 
-			<h2>{{ __('Method not allowed') }}</h2>
+			<h2>{{ __('Forbidden') }}</h2>
 
 			<h4>
-				{{ __('The request method was not allowed') }}
+				{{ __('Your request to access this resource was denied') }}
 				<br>
-				{{ __('If the issue persists, please contact an administrator') }}
+				{{ __('If you believe to be authorized, please contact an administrator') }}
 			</h4>
 
 			<a class="btn btn-success" href="{{url()->previous()}}">

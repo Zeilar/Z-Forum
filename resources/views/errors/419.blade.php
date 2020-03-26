@@ -2,24 +2,22 @@
 @extends('layouts.head')
 
 @section('pageTitle')
-	405 {{ __('Method not allowed') }}
+	419 {{ __('Session expired') }}
 @endsection
 
 @php $disableSidebar = true; @endphp
 
 @section('content')
-	<div class="page-error" id="four-zero-five">
+	<div class="page-error" id="four-one-nineteen">
 		<div class="header">
 			<h1>
-				<span>4</span>
-				<i class="fas fa-ban"></i>
-				<span>5</span>
+				<span>419</span>
 			</h1>
 
-			<h2>{{ __('Method not allowed') }}</h2>
+			<h2>{{ __('Session expired') }}</h2>
 
 			<h4>
-				{{ __('The request method was not allowed') }}
+				{{ __('Please') }} <a class="refresh" href="{{url()->current()}}">{{ __('refresh') }}</a> {{ __('and try again') }}
 				<br>
 				{{ __('If the issue persists, please contact an administrator') }}
 			</h4>

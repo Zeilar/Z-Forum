@@ -2,7 +2,7 @@
 @extends('layouts.head')
 
 @section('pageTitle')
-	404
+	404 {{ __('Not found') }}
 @endsection
 
 @php $disableSidebar = true; @endphp
@@ -17,6 +17,10 @@
 			</h1>
 
 			<h2>{{ __('Not Found') }}</h2>
+
+			<h4>
+				{{ __('The resource you requested could not be found') }}
+			</h4>
 
 			<form action="{{route('search')}}" method="get">
 				@csrf
