@@ -5,6 +5,8 @@
 	405
 @endsection
 
+@php $disableSidebar = true; @endphp
+
 @section('content')
 	<div class="page-error" id="four-zero-five">
 		<div class="header">
