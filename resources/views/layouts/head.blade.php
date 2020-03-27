@@ -38,33 +38,33 @@
 	@endif
 
     <div id="app">
-		{{-- Modals --}}
-		@empty($disableModals)	
-			@include('modals.register')
-			@include('modals.login')
-			@include('modals.error')
-		@endempty
-
 		{{-- Navbar --}}
 		@include('layouts.navbar')
 		
-		{{-- Admin toolbar --}}
-		@include('layouts.toolbar')
-		
 		{{-- Main content --}}
         <main class="container-fluid" id="content">
+			{{-- Modals --}}
+			@empty($disableModals)	
+				@include('modals.register')
+				@include('modals.login')
+				@include('modals.error')
+			@endempty
+
+			{{-- Admin toolbar --}}
+			@include('layouts.toolbar')
+
 			<div id="main">
             	@yield('content')
 			</div>
 
 			{{-- Right sidebar --}}
 			@include('layouts.sidebar')
+
+			{{-- Scroll to top button --}}
+			<div id="scroller">
+				<i class="fas fa-arrow-up"></i>
+			</div>
 		</main>
-	
-		{{-- Scroll to top button --}}
-		<div id="scroller">
-			<i class="fas fa-arrow-up"></i>
-		</div>
     </div>
 	
 	{{-- Footer --}}
@@ -72,12 +72,12 @@
 
 	@auth
 		<script>
-			// Check user status every 3 minutes
+			// Push user status every 3 minutes
 			setInterval(() => {
 				push_user_status();
 			}, 1000 * 60 * 3);
 
-			// Check user status
+			// Push user status
 			function push_user_status() {
 				$.ajax({
 					url: '{{ route("user_push_status") }}',
