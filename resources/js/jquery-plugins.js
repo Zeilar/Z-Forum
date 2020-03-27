@@ -7,7 +7,7 @@
 	$.fn.collapse = function() {
 		let height = 0;
 		this.children().each(function() {
-			height += $(this).height();
+			height += $(this).outerHeight(true);
 		});
 	    this.css('height', `${height}px`);
 	    return this;

@@ -12075,14 +12075,15 @@ input[type=file] {
 }
 
 #toolbar {
+  border: 2px solid #00c26e;
   background: #a0181880;
   top: calc(4vh + 2rem);
   margin-right: 2.5rem;
-  padding: 0.5rem 1rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: fixed;
+  border-left: 0;
   color: white;
   width: 17.5rem;
   z-index: 2;
@@ -12103,6 +12104,7 @@ input[type=file] {
 }
 
 #toolbar .toolbar-items .toolbar-row .toolbar-collapse {
+  padding: 0.5rem 1rem;
   -webkit-box-align: center;
           align-items: center;
   position: relative;
@@ -12132,8 +12134,14 @@ input[type=file] {
 #toolbar .toolbar-items .toolbar-row .toolbar-accordion {
   -webkit-transition: height 0.25s ease-in-out, margin 0.25s ease-in-out;
   transition: height 0.25s ease-in-out, margin 0.25s ease-in-out;
+  background: #1f1f1f;
   overflow: hidden;
+  padding: 0 1rem;
   height: 0;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-accordion .toolbar-item {
+  padding: 1rem 0;
 }
 
 p,

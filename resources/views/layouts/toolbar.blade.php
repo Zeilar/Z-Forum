@@ -9,7 +9,7 @@
 						<i class="fas fa-caret-left"></i>
 					</div>
 					<ul class="toolbar-accordion">
-						<li>
+						<li class="toolbar-item">
 							<p>{{ __('Login spoof') }}</p>
 							<form action="{{route('spoof_login')}}" method="post">
 								@csrf
@@ -27,8 +27,8 @@
 							<i class="fas fa-caret-left"></i>
 						</div>
 						<ul class="toolbar-accordion">
-							<p>{{ __('Maintenance mode') }}</p>
-							<li>
+							<li class="toolbar-item">
+								<p>{{ __('Maintenance mode') }}</p>
 								<form action="{{route('toggle_maintenance_mode')}}" method="post">
 									@csrf
 									<button class="btn btn-success" type="submit">
