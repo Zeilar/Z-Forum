@@ -43,8 +43,11 @@
 
 		{{-- Breadcrumbs --}}
 		@yield('breadcrumbs')
+
+		{{-- Admin toolbar --}}
+		@include('layouts.toolbar')
 		
-		{{-- Main content --}}
+		{{-- Main wrapper --}}
         <main class="container-fluid" id="content">
 			{{-- Modals --}}
 			@empty($disableModals)	
@@ -52,9 +55,6 @@
 				@include('modals.login')
 				@include('modals.error')
 			@endempty
-
-			{{-- Admin toolbar --}}
-			@include('layouts.toolbar')
 
 			{{-- Main content --}}
 			<div id="main">

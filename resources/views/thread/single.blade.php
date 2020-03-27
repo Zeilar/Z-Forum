@@ -5,9 +5,11 @@
 	{{ $thread->title }}
 @endsection
 
-@section('content')
+@section('breadcrumbs')
 	{{ Breadcrumbs::render('thread', $thread) }}
+@endsection
 
+@section('content')
 	@include('layouts.toolbar', $items = [
 		'<h1>Test 1</h1>',
 		'<h1>Test 2</h1>'

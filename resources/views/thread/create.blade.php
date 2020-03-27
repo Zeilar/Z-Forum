@@ -4,9 +4,11 @@
 	{{ __('Create new thread in ') . $subcategory->title }}
 @endsection
 
-@section('content')
+@section('breadcrumbs')
 	{{ Breadcrumbs::render('thread_new', $subcategory) }}
+@endsection
 
+@section('content')
 	<h1>Create new thread in: {{ $subcategory->title }}</h1>
 
 	<form action="{{route('thread_store', [$subcategory->id, $subcategory->slug])}}" method="POST">

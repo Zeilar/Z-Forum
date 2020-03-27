@@ -1,31 +1,31 @@
 #toolbar {
+	top: calc(4vh + 0.5rem + 2px); // navbar is 4vh high, put it just below
 	border: 2px solid $green;
-	background: $superadmin;
-	top: calc(4vh + 2rem); // navbar is 4vh high and content has a 2rem margin-top away from it
 	margin-right: 2.5rem;
 	height: fit-content;
 	position: fixed;
 	border-left: 0;
 	color: white;
 	width: 17.5rem; // 20 rem is the distance from the window edge to the main content area
-	z-index: 2;
+	z-index: 999;
 	left: 0;
 
 	.toolbar-items {
 		.toolbar-row {
-			margin-bottom: 1rem;
+			padding-bottom: 1.5rem;
 			position: relative;
 			user-select: none;
 
 			&:last-child {
-				margin-bottom: 0;
+				padding-bottom: 0;
 			}
 
 			.toolbar-collapse {
-				padding: 0.5rem 1rem;
+				background: $superadmin;
 				align-items: center;
 				position: relative;
 				cursor: pointer;
+				padding: 1rem;
 				display: flex;
 
 				span {
@@ -46,7 +46,7 @@
 
 			.toolbar-accordion {
 				transition: height 0.25s ease-in-out, margin 0.25s ease-in-out;
-				background: $gray;
+				background: transparent;
 				overflow: hidden;
 				padding: 0 1rem;
 				height: 0;

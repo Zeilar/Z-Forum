@@ -5,9 +5,11 @@
 	{{ $category->title }}
 @endsection
 
-@section('content')
+@section('breadcrumbs')
 	{{ Breadcrumbs::render('category', $category) }}
+@endsection
 
+@section('content')
 	<div id="table">
 		@component('components.table-header')
 			@slot('title')
