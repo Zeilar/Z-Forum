@@ -11,6 +11,8 @@ class ToolbarController extends Controller
 {
     public function spoof_login(Request $request)
 	{
+		$this->authorize('toolbar');
+
 		// If target user is equal to the logged in user, do nothing
 		if (request('id') === auth()->user()->id) return;
 
@@ -19,7 +21,6 @@ class ToolbarController extends Controller
 
 		if (isset($id)) {
 			Auth::loginUsingId($id, true);
-			setcookie('toolbar', true, time() + DAY_IN_SECONDS);
 		}
 		return redirect(url()->previous());
 	}
