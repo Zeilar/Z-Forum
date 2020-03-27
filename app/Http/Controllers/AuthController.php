@@ -131,17 +131,18 @@ class AuthController extends Controller
 			]
 		);
 
-		// Determine if input is email or username
-		$id = request()->input('id');
-		$fieldType = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-		request()->merge([$fieldType => $id]);
-
+		// Check if the provided user exists and if that user is an admin
 		$user = User::where('username', request('id'))->orWhere('email', request('id'))->get();
 		if (count($user)) {
 			if ($user[0]->role !== 'superadmin') {
 				return msg_error(__('You must be an administrator to proceed'), 'error-id');
 			}
 		}
+
+		// Determine if input is email or username
+		$id = request()->input('id');
+		$fieldType = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		request()->merge([$fieldType => $id]);
 
 		// Prepare login data now that we have determined what login to use
 		$data = [
