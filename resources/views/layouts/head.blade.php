@@ -39,9 +39,11 @@
 
     <div id="app">
 		{{-- Modals --}}
-		@include('modals.register')
-		@include('modals.login')
-		@include('modals.error')
+		@empty($disableModals)	
+			@include('modals.register')
+			@include('modals.login')
+			@include('modals.error')
+		@endempty
 
 		{{-- Navbar --}}
 		@include('layouts.navbar')

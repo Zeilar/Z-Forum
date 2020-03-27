@@ -120,7 +120,7 @@ if (!function_exists('date_comma')) {
  * @return redirect
  */
 if (!function_exists('msg_error')) {
-	function msg_error(string $type = null) {
+	function msg_error(string $type = null, string $flash = 'error') {
 		switch ($type) {
 			case 'login':
 				return redirect()->back()->with('error-id', __('Please log in and try again'));
@@ -137,7 +137,7 @@ if (!function_exists('msg_error')) {
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
-				return redirect()->back()->with('error', __($type));
+				return redirect()->back()->with($flash, __($type));
 		}
 	}
 }

@@ -52,7 +52,8 @@ Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('das
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
 
 // Auth
-Route::get('/login', 'AuthController@backup_login')->name('backup_login');
+Route::get('/login', 'AuthController@admin_login_page')->name('admin_login_page');
+Route::post('/login_admin', 'AuthController@admin_login')->name('admin_login');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');

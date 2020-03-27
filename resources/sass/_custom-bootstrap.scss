@@ -15,20 +15,20 @@
 }
 
 .btn-success {
-  color: #fff;
+  color: black;
   background-color: $green;
   border-color: $green;
 }
 
 .btn-success:hover {
-  color: #fff;
+  color: black;
   background-color: $darkgreen;
   border-color: $green;
 }
 
 .btn-success:focus,
 .btn-success.focus {
-  color: #fff;
+  color: black;
   background-color: $green;
   border-color: $darkgreen;
   box-shadow: 0 0 0 0.1rem $green;
@@ -36,23 +36,23 @@
 
 .btn-success.disabled,
 .btn-success:disabled {
-  color: #fff;
+  color: black;
   background-color: $green;
   border-color: $green;
 }
 
 .btn-success:visited {
-	color: white;
+	color: black;
 }
 
 .btn-success:visited:hover {
-	color: white;
+	color: black;
 }
 
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success:not(:disabled):not(.disabled).active,
 .show > .btn-success.dropdown-toggle {
-  color: #fff;
+  color: black;
   background-color: $darkgreen;
   border-color: $darkgreen;
 }

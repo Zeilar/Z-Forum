@@ -11378,20 +11378,20 @@ a.text-dark:focus {
 }
 
 .btn-success {
-  color: #fff;
+  color: black;
   background-color: #00c26e;
   border-color: #00c26e;
 }
 
 .btn-success:hover {
-  color: #fff;
+  color: black;
   background-color: #00a05b;
   border-color: #00c26e;
 }
 
 .btn-success:focus,
 .btn-success.focus {
-  color: #fff;
+  color: black;
   background-color: #00c26e;
   border-color: #00a05b;
   box-shadow: 0 0 0 0.1rem #00c26e;
@@ -11399,23 +11399,23 @@ a.text-dark:focus {
 
 .btn-success.disabled,
 .btn-success:disabled {
-  color: #fff;
+  color: black;
   background-color: #00c26e;
   border-color: #00c26e;
 }
 
 .btn-success:visited {
-  color: white;
+  color: black;
 }
 
 .btn-success:visited:hover {
-  color: white;
+  color: black;
 }
 
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success:not(:disabled):not(.disabled).active,
 .show > .btn-success.dropdown-toggle {
-  color: #fff;
+  color: black;
   background-color: #00a05b;
   border-color: #00a05b;
 }
@@ -11454,17 +11454,7 @@ a.text-dark:focus {
   background: #18171c;
 }
 
-#loginModal .background {
-  background: linear-gradient(45deg, black, rgba(0, 0, 0, 0));
-  height: 100vh;
-  width: 100vw;
-}
-
-.modal-auth {
-  width: 35rem;
-}
-
-.modal-auth.backup {
+#admin-login {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   position: absolute;
@@ -11473,8 +11463,44 @@ a.text-dark:focus {
   top: 40%;
 }
 
-.modal-auth.backup form {
+#admin-login form {
   margin: 0;
+}
+
+#admin-login form .modal-header {
+  background: #a01818;
+}
+
+#admin-login form .modal-header .modal-title {
+  -webkit-user-select: all;
+     -moz-user-select: all;
+      -ms-user-select: all;
+          user-select: all;
+}
+
+#admin-login form .modal-body input:focus {
+  box-shadow: 0 0 0 0.1rem #a01818;
+}
+
+#admin-login form .modal-body input:checked ~ .checkmark {
+  background: #a01818;
+}
+
+#admin-login form .modal-body a:hover {
+  color: #a01818;
+}
+
+#admin-login form .modal-footer button {
+  background: #a01818;
+  color: white;
+}
+
+#admin-login form .modal-footer button:hover {
+  background: #af0000;
+}
+
+.modal-auth {
+  width: 35rem;
 }
 
 .modal-auth a:visited {
@@ -12158,7 +12184,8 @@ ol {
 
 p,
 a,
-span {
+span,
+i {
   font-size: 1rem;
 }
 
@@ -12173,10 +12200,11 @@ html {
 }
 
 body {
+  background: -webkit-gradient(linear, left bottom, left top, from(black), to(#18171c));
+  background: linear-gradient(0deg, black, #18171c);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  background: #18171c;
   overflow-x: hidden;
   min-height: 100vh;
   display: -webkit-box;
@@ -12271,23 +12299,6 @@ a:visited {
 
 .color-red {
   color: red !important;
-}
-
-.search-wrapper {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  position: relative;
-  display: -webkit-box;
-  display: flex;
-}
-
-.search-wrapper input {
-  padding-left: 0;
-}
-
-.search-wrapper button {
-  padding-right: 0;
 }
 
 div.tox-tinymce {

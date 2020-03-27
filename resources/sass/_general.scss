@@ -2,7 +2,7 @@ p, h1, h2, h3, h4, h5, h6, ul, ol {
 	margin: 0;
 }
 
-p, a, span {
+p, a, span, i {
 	font-size: $font-size-base;
 }
 
@@ -16,8 +16,8 @@ html {
 }
 
 body {
+	background: linear-gradient(0deg, rgb(0, 0, 0), $body-bg);
     flex-direction: column;
-	background: $body-bg;
 	overflow-x: hidden;
     min-height: 100vh;
 	display: flex;
@@ -75,18 +75,4 @@ a {
 
 .color-red {
 	color: red !important;
-}
-
-.search-wrapper {
-	flex-direction: row;
-	position: relative;
-	display: flex;
-
-	input {
-		padding-left: 0;
-	}
-
-	button {
-		padding-right: 0;
-	}
 }

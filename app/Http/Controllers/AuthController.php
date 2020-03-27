@@ -107,18 +107,57 @@ class AuthController extends Controller
 		return redirect(route('index'));
 	}
 
-	public function backup_login()
+	public function admin_login_page()
 	{
-		if (\App\MaintenanceMode::all()[0]->enabled) {
-			if (!logged_in()) {
-				return view('layouts.backup-login');
-			} else {
-				return view('errors.405');
-			}
+		if (!logged_in()) {
+			return view('layouts.admin-login');
 		} else {
 			return view('errors.405');
 		}
 	}
 
-	// TODO: Admin login
+	public function admin_login(Request $request)
+	{
+		// Validation
+		$this->validate(
+			$request,
+			[
+				'id'	   => 'required',
+				'password' => 'required',
+			],
+			[
+				'id.required' 		=> __('Username or email is required'),
+				'password.required' => __('Password is required'),
+			]
+		);
+
+		// Determine if input is email or username
+		$id = request()->input('id');
+		$fieldType = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		request()->merge([$fieldType => $id]);
+
+		$user = User::where('username', request('id'))->orWhere('email', request('id'))->get();
+		if (count($user)) {
+			if ($user[0]->role !== 'superadmin') {
+				return msg_error(__('You must be an administrator to proceed'), 'error-id');
+			}
+		}
+
+		// Prepare login data now that we have determined what login to use
+		$data = [
+			$fieldType => request('id'),
+			'password' => request('password'),
+		];
+
+		// Try to log in with the given data
+		if (Auth::attempt($data)) {
+			return redirect()->back()->with('success', __('Successfully logged in'));
+		} else {
+			// If a user exists with the input username/email and the login failed, the password was incorrect
+			if (count(User::where('username', request('id'))->orWhere('email', request('id'))->get())) {
+				return msg_error('incorrect-password')->withInput($request->except('password'));
+			}
+			return msg_error('incorrect-id');
+		}
+	}
 }

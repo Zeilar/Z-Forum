@@ -1,0 +1,48 @@
+#admin-login {
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	top: 40%;
+
+	form {
+		margin: 0;
+		
+		.modal-header {
+			background: $superadmin-text;
+
+			.modal-title {
+				user-select: all;
+			}
+		}
+
+		.modal-body {
+			input {
+				&:focus {
+					box-shadow: 0 0 0 0.1rem $superadmin-text;
+				}
+
+				&:checked ~ .checkmark {
+					background: $superadmin-text;
+				}
+			}
+
+			a {
+				&:hover {
+					color: $superadmin-text;
+				}
+			}
+		}
+
+		.modal-footer {
+			button {
+				background: $superadmin-text;
+				color: white;
+
+				&:hover {
+					background: rgb(175, 0, 0);
+				}
+			}
+		}
+	}
+}
