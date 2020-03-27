@@ -38,15 +38,15 @@
 
 		&:hover {
 			transition: background 0.2s ease-out;
-			background: rgba(75, 75, 90, 0.5);
+			background: rgba(93, 93, 112, 0.5);
 		}
 
 		&.admin-post {
 			background: linear-gradient(to right, $superadmin, #2b2b34e6);
 			
 			&:hover {
-				transition: background 0.2s ease-out;
 				background: linear-gradient(to right, #c0141480, #2b2b34e6);
+				transition: background 0.2s ease-out;
 			}
 		}
 		
