@@ -7,6 +7,13 @@
 	$disableNavbar = true;
 @endphp
 
+<style>
+	::selection {
+		color: rgb(0, 255, 255) !important;
+		background: rgba(0, 0, 0, 0.85) !important;
+	}
+</style>
+
 <div id="admin-login">
 	<div class="modal-dialog modal-auth">
 		<div class="modal-content">
