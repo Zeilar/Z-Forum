@@ -33,7 +33,7 @@
 	@if (App\MaintenanceMode::all()[0]->enabled)
 		@cannot('update', App\MaintenanceMode::all()[0])
 			@include('errors.maintenance')
-			@php return; @endphp
+			@php return @endphp
 		@endcannot
 	@endif
 
