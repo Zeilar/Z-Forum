@@ -9,8 +9,8 @@
 
 <style>
 	::selection {
-		color: rgb(0, 255, 255) !important;
 		background: rgba(0, 0, 0, 0.85) !important;
+		color: rgb(0, 255, 255) !important;
 	}
 </style>
 

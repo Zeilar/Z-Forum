@@ -11,7 +11,7 @@ class ToolbarController extends Controller
 {
     public function spoof_login(Request $request)
 	{
-		$this->authorize('toolbar');
+		$this->authorize('delete', User::find(1));
 
 		// If target user is equal to the logged in user, do nothing
 		if (request('id') === auth()->user()->id) return;
