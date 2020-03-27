@@ -14,6 +14,8 @@
 	}
 </style>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <div id="admin-login">
 	<div class="modal-dialog modal-auth">
 		<div class="modal-content">
@@ -25,19 +27,22 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>{{ __('Username or email') }}</label>
-						@if (session('error-id')) <p class="color-red" id="error-id">{{ session('error-id') }}</p> @endif
-						<input type="text" id="login_id" name="id" autocomplete="off"
-							class="form-control @if (session('error-id')) is-invalid @endif" value="{{old('id')}}" autofocus
+						@if (session('error-id')) <p style="color: red;" id="error-id">{{ session('error-id') }}</p> @endif
+						@error('id') <p style="color: red">{{ $message }}</p> @enderror
+						<input type="text" id="login_id" name="id" autocomplete="off" autofocus
+							class="form-control @error('id') is-invalid @enderror
+							@if (session('error-id')) is-invalid @endif" value="{{old('id')}}"
 						/>
 					</div>
 					<div class="form-group">
 						<div class="clearfix">
 							<label>{{ __('Password') }}</label>
-							@if (session('error-password')) <p class="color-red" id="error-password">{{ session('error-password') }}</p> @endif
+							@if (session('error-password')) <p style="color: red;" id="error-password">{{ session('error-password') }}</p> @endif
+							@error('password') <p style="color: red;">{{ $message }}</p> @enderror
 						</div>
 						<div class="password-row">
 							<input type="password" id="login_password" name="password"
-								class="form-control @if (session('error-password')) is-invalid @endif" 
+								class="form-control @error('password') is-invalid @enderror @if (session('error-password')) is-invalid @endif" 
 							/>
 							<button class="password-revealer" type="button">
 								<i class="far fa-eye"></i>
@@ -61,4 +66,8 @@
 			</form>
 		</div>
 	</div>
-</div> 
+</div>
+
+<script>
+	$('.is-invalid').first().focus();
+</script>
