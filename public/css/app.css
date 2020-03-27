@@ -11674,9 +11674,10 @@ a.text-dark:focus {
 }
 
 .breadcrumb {
-  padding: 0.5rem 0;
+  padding: 2rem 20rem 0 20rem;
   background: none;
   color: white;
+  margin: 0;
 }
 
 .breadcrumb a,

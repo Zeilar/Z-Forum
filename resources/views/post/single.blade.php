@@ -5,9 +5,11 @@
 	{{ __('Post by ') . $post->user->username }}
 @endsection
 
-@section('content')
+@section('breadcrumbs')
 	{{ Breadcrumbs::render('post', $post) }}
+@endsection
 
+@section('content')
 	@component('components.post', ['post' => $post])
 		@slot('banner_link')
 			<a href="{{

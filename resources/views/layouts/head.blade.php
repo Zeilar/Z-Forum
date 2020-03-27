@@ -40,6 +40,9 @@
     <div id="app">
 		{{-- Navbar --}}
 		@include('layouts.navbar')
+
+		{{-- Breadcrumbs --}}
+		@yield('breadcrumbs')
 		
 		{{-- Main content --}}
         <main class="container-fluid" id="content">
@@ -53,6 +56,7 @@
 			{{-- Admin toolbar --}}
 			@include('layouts.toolbar')
 
+			{{-- Main content --}}
 			<div id="main">
             	@yield('content')
 			</div>
