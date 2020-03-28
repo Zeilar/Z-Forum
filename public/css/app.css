@@ -11683,6 +11683,7 @@ legend {
 .crud-toolbar {
   border: 1px solid #00b365;
   background: #2c2c35e6;
+  margin: 2rem 0 1rem 0;
   padding: 0.5rem 1rem;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -11690,7 +11691,6 @@ legend {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 2rem 0 1rem 0;
   display: -webkit-box;
   display: flex;
 }

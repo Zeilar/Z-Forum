@@ -29,11 +29,10 @@
 			</div>
 		`;
 
-		if (!$('.alert').length) {
-			$('#main').prepend(alertContent);
-		} else {
-			$('.alert').replaceWith(alertContent);
+		if ($('.alert').length) {
+			$('.alert').remove();
 		}
+		$('#main').prepend(alertContent);
 
 		// Remove alert after a while regardless
 		setTimeout(() => {
