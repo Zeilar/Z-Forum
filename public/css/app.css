@@ -11482,13 +11482,14 @@ legend {
   color: #a01818;
 }
 
-#admin-login form .modal-footer button {
-  background: #a01818;
+#admin-login form .modal-footer .btn {
+  border-color: #a01818 !important;
+  background: #a01818 !important;
   color: white;
 }
 
-#admin-login form .modal-footer button:hover {
-  background: #af0000;
+#admin-login form .modal-footer .btn:hover {
+  background: #af0000 !important;
 }
 
 .modal-auth {
