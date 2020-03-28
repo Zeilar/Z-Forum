@@ -12132,13 +12132,11 @@ input[type=file] {
 
 #toolbar {
   border-bottom-right-radius: 0.25rem;
+  height: calc(100vh - 8rem + 4px);
   border: 2px solid #00b365;
   background: #a0181880;
   top: calc(4rem - 2px);
   margin-right: 2.5rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   position: fixed;
   border-left: 0;
   color: white;

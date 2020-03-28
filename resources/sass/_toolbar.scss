@@ -1,14 +1,14 @@
 #toolbar {
 	border-bottom-right-radius: 0.25rem;
+	height: calc(100vh - 8rem + 4px); // 4rem for footer and navbar, plus 4px due to their 2px borders
 	border: 2px solid $green;
 	background: $superadmin;
 	top: calc(4rem - 2px); // navbar is 4rem high, put it just below
 	margin-right: 2.5rem;
-	height: fit-content;
 	position: fixed;
 	border-left: 0;
 	color: white;
-	width: 17.5rem; // 20 rem is the distance from the window edge to the main content area
+	width: 17.5rem; // 20rem is the distance from the window edge to the main content area
 	z-index: 999;
 	left: 0;
 
