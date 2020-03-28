@@ -12,6 +12,12 @@
 		background: rgba(0, 0, 0, 0.85) !important;
 		color: rgb(0, 255, 255) !important;
 	}
+
+	body.maintenance {
+		background-image: url('/storage/images/bg.jfif');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
 </style>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

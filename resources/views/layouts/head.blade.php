@@ -28,7 +28,7 @@
 	<!-- Any -->
 	@yield('head')
 </head>
-<body>
+<body @if (App\MaintenanceMode::find(1)->enabled) class="maintenance" @endif>
 	{{-- Maintenance mode check --}}
 	@if (App\MaintenanceMode::find(1)->enabled)
 		@cannot('update', App\MaintenanceMode::find(1))

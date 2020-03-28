@@ -31,12 +31,13 @@
 		}
 
 		.modal-footer {
-			button {
-				background: $superadmin-text;
+			.btn {
+				border-color: $superadmin-text !important;
+				background: $superadmin-text !important;
 				color: white;
 
 				&:hover {
-					background: rgb(175, 0, 0);
+					background: rgb(175, 0, 0) !important;
 				}
 			}
 		}
