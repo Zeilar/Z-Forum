@@ -2,9 +2,9 @@
 	border-bottom-right-radius: 0.25rem;
 	height: calc(100vh - 8rem + 4px); // 4rem for footer and navbar, plus 4px due to their 2px borders
 	border: 2px solid $green;
-	background: $superadmin;
 	top: calc(4rem - 2px); // navbar is 4rem high, put it just below
 	margin-right: 2.5rem;
+	background: $body-bg;
 	position: fixed;
 	border-left: 0;
 	color: white;
@@ -14,11 +14,17 @@
 
 	.toolbar-items {
 		.toolbar-row {
+			margin-bottom: 0.5rem;
 			position: relative;
 			user-select: none;
 
+			&:last-child {
+				margin-bottom: 0;
+			}
+
 			.toolbar-collapse {
 				align-items: center;
+				background: $green;
 				position: relative;
 				cursor: pointer;
 				padding: 1rem;
@@ -29,12 +35,12 @@
 				}
 
 				i {
+					color: white;
 					width: 1.5rem;
 
 					&.fa-caret-left {
 						transition: transform 0.25s ease-in-out;
 						margin-left: auto;
-						color: white;
 						width: unset;
 					}
 				}
@@ -42,7 +48,6 @@
 
 			.toolbar-accordion {
 				transition: height 0.25s ease-in-out;
-				background: $body-bg;
 				overflow: hidden;
 				padding: 0 1rem;
 				height: 0;

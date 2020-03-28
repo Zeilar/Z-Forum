@@ -10,7 +10,6 @@
 					</div>
 					<ul class="toolbar-accordion">
 						<li class="toolbar-item spoof-login">
-							<p class="title">{{ __('Spoof login') }}</p>
 							<form action="{{route('spoof_login')}}" method="post">
 								@csrf
 								<fieldset>
@@ -64,16 +63,10 @@
 
 				let accordion = $(this).siblings('.toolbar-accordion');
 				if (accordion.height()) {
-					accordion.close().css('margin-bottom', '0');
+					accordion.close();
 					$(this).find('.fa-caret-left').css('transform', 'rotate(0)');
 				} else {
 					accordion.collapse();
-
-					// Only add margin bottom if child is not last
-					if (accordion.index() !== $('.toolbar-accordion').length - 1) {
-						accordion.css('margin-bottom', '1rem');
-					}
-
 					$(this).find('.fa-caret-left').css('transform', 'rotate(-90deg)');
 				}
 			});
