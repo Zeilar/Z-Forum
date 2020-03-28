@@ -27,9 +27,9 @@ class ToolbarController extends Controller
 
 	public function toggle_maintenance_mode(Request $request)
 	{
-		$this->authorize('update', MaintenanceMode::all()[0]);
+		$this->authorize('update', MaintenanceMode::find(1));
 
-		$mode = MaintenanceMode::all()[0];
+		$mode = MaintenanceMode::find(1);
 
 		if ($mode->enabled) {
 			$mode->enabled = false;

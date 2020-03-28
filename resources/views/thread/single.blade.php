@@ -9,14 +9,9 @@
 	{{ Breadcrumbs::render('thread', $thread) }}
 @endsection
 
-@section('content')
-	@include('layouts.toolbar', $items = [
-		'<h1>Test 1</h1>',
-		'<h1>Test 2</h1>'
-	])
-
-	@can('update', $thread)
-		<div class="thread-toolbar">
+@can('update', $thread)
+	@section('crudToolbar')
+		<div class="crud-toolbar">
 			<button class="btn btn-default thread-edit">
 				<i class="fas fa-pen"></i>
 			</button>
@@ -30,18 +25,22 @@
 				</button>
 			@endif
 			@can('delete', $thread)
-				<button class="btn btn-default spin thread-delete" type="submit">
+				<button class="btn btn-hazard spin thread-delete" type="submit">
 					<i class="fas fa-trash-alt"></i>
 				</button>
 			@endcan
 		</div>
-	@endcan
+	@endsection
+@endcan
 
+@section('threadTitle')
+	<div class="thread-header">
+		<h4 class="thread-title">{{ $thread->title }}</h4>
+	</div>
+@endsection
+
+@section('content')
 	<div class="thread @if ($thread->locked) locked @endif">
-		<div class="thread-header">
-			<h4 class="thread-title">{{ $thread->title }}</h4>
-		</div>
-
 		{{-- Don't even ask, it just works --}}
 		@php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; @endphp
 
@@ -137,7 +136,7 @@
 						$('.thread-title').replaceWith(`<input type="text" value="${title}" />`);
 						$('.thread-header').append(`
 							<div class="thread-save-toolbar">
-								<button class="btn btn-default spin thread-save">
+								<button class="btn btn-success spin thread-save">
 									<span>Save</span>
 								</button>
 								<button class="btn btn-default spin thread-cancel">

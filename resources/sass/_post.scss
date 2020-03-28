@@ -257,7 +257,7 @@
 	}
 }
 
-.post-toolbar, .thread-toolbar {
+.post-toolbar {
 	background: $darkindigo;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
@@ -284,24 +284,8 @@
 		}
 
 		&.post-delete, &.thread-delete {
-			color: red !important;
-			border-color: red;
 			margin-left: auto;
 			margin-right: 0;
-
-			&:active, &:focus {
-				color: white !important;
-				background: red;
-
-				i {
-					color: white;
-				}
-			}
-
-			i {
-				transition: color 0.15s ease-in-out;
-				color: red;
-			}
 		}
 	}
 }

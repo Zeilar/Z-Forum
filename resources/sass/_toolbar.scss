@@ -1,6 +1,8 @@
 #toolbar {
+	border-bottom-right-radius: 0.25rem;
 	top: calc(4vh + 0.5rem + 2px); // navbar is 4vh high, put it just below
 	border: 2px solid $green;
+	background: $superadmin;
 	margin-right: 2.5rem;
 	height: fit-content;
 	position: fixed;
@@ -12,16 +14,10 @@
 
 	.toolbar-items {
 		.toolbar-row {
-			padding-bottom: 1.5rem;
 			position: relative;
 			user-select: none;
 
-			&:last-child {
-				padding-bottom: 0;
-			}
-
 			.toolbar-collapse {
-				background: $superadmin;
 				align-items: center;
 				position: relative;
 				cursor: pointer;
@@ -45,14 +41,36 @@
 			}
 
 			.toolbar-accordion {
-				transition: height 0.25s ease-in-out, margin 0.25s ease-in-out;
-				background: transparent;
+				transition: height 0.25s ease-in-out;
+				background: $body-bg;
 				overflow: hidden;
 				padding: 0 1rem;
 				height: 0;
 
 				.toolbar-item {
-					padding: 1rem 0;
+					padding: 0.5rem 0;
+
+					.title {
+						margin-bottom: 0.25rem;
+					}
+
+					&.spoof-login {
+						input {
+							border: 0;
+							background: none;
+							color: white;
+							width: 100%;
+							outline: 0;
+						}
+					}
+
+					&.maintenance-mode {
+						.btn {
+							i {
+								margin-right: 0.25rem;
+							}
+						}
+					}
 				}
 			}
 		}

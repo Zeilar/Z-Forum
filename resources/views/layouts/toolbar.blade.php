@@ -9,17 +9,20 @@
 						<i class="fas fa-caret-left"></i>
 					</div>
 					<ul class="toolbar-accordion">
-						<li class="toolbar-item">
-							<p>{{ __('Login spoof') }}</p>
+						<li class="toolbar-item spoof-login">
+							<p class="title">{{ __('Spoof login') }}</p>
 							<form action="{{route('spoof_login')}}" method="post">
 								@csrf
-								<input type="text" name="user" placeholder="{{ __('Username or ID') }}">
+								<fieldset>
+									<legend>{{ __('Spoof login') }}</legend>
+									<input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
+								</fieldset>
 							</form>
 						</li>
 					</ul>
 				</div>
 
-				@can('update', App\MaintenanceMode::all()[0])
+				@can('update', App\MaintenanceMode::find(1))
 					<div class="toolbar-row">
 						<div class="toolbar-collapse">
 							<i class="fas fa-tools"></i>
@@ -27,12 +30,17 @@
 							<i class="fas fa-caret-left"></i>
 						</div>
 						<ul class="toolbar-accordion">
-							<li class="toolbar-item">
-								<p>{{ __('Maintenance mode') }}</p>
+							<li class="toolbar-item maintenance-mode">
+								<p class="title">{{ __('Maintenance mode') }}</p>
 								<form action="{{route('toggle_maintenance_mode')}}" method="post">
 									@csrf
-									<button class="btn btn-success" type="submit">
-										{{ __('Toggle') }}
+									<button class="btn btn-hazard" type="submit">
+										<i class="fas fa-exclamation-triangle"></i>
+										@if (App\MaintenanceMode::find(1)->enabled)
+											{{ __('Turn OFF') }}
+										@else
+											{{ __('Turn ON') }}
+										@endif
 									</button>
 								</form>
 							</li>

@@ -87,7 +87,7 @@
 				</button>
 
 				@can('delete', $post)
-					<button class="btn btn-default spin post-delete">
+					<button class="btn btn-hazard spin post-delete">
 						{{ __('Delete') }}
 					</button>
 				@endcan

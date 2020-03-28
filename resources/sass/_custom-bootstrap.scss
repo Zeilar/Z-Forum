@@ -1,6 +1,6 @@
 .btn {
-	padding: 0.35rem 1rem;
 	border-radius: 0.25rem;
+	padding: 0.35rem 1rem;
 	position: relative;
 	min-width: 3.5rem;
 	overflow: hidden;
@@ -15,52 +15,15 @@
 }
 
 .btn-success {
-  color: black;
-  background-color: $green;
-  border-color: $green;
-}
+	border-color: $green !important;
+	background: $darkindigo !important;
+	color: white !important;
 
-.btn-success:hover {
-  color: black;
-  background-color: $darkgreen;
-  border-color: $green;
-}
-
-.btn-success:focus,
-.btn-success.focus {
-  color: black;
-  background-color: $green;
-  border-color: $darkgreen;
-  box-shadow: 0 0 0 0.1rem $green;
-}
-
-.btn-success.disabled,
-.btn-success:disabled {
-  color: black;
-  background-color: $green;
-  border-color: $green;
-}
-
-.btn-success:visited {
-	color: black;
-}
-
-.btn-success:visited:hover {
-	color: black;
-}
-
-.btn-success:not(:disabled):not(.disabled):active,
-.btn-success:not(:disabled):not(.disabled).active,
-.show > .btn-success.dropdown-toggle {
-  color: black;
-  background-color: $darkgreen;
-  border-color: $darkgreen;
-}
-
-.btn-success:not(:disabled):not(.disabled):active:focus,
-.btn-success:not(:disabled):not(.disabled).active:focus,
-.show > .btn-success.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem $green;
+	&:not([disabled]) {
+		&:focus, &:hover {
+			background: $green !important;
+		}
+	}
 }
 
 .navbar {
@@ -85,7 +48,40 @@
 	background: $darkindigo;
 	border-color: $body-bg;
 
-	&:active, &:focus {
+	&:focus, &:hover {
 		background: $body-bg;
 	}
+}
+
+.btn-hazard {
+	color: red !important;
+	border-color: red;
+	margin-left: auto;
+	margin-right: 0;
+
+	&:focus, &:hover {
+		color: white !important;
+		background: red;
+
+		i {
+			color: white !important;
+		}
+	}
+
+	i {
+		transition: color 0.15s ease-in-out;
+		color: red !important;
+	}
+}
+
+fieldset {
+	border: 1px solid;
+	min-width: unset;
+	padding: 0.5rem;
+	margin: unset;
+}
+
+legend {
+	width: unset;
+	margin: 0;
 }

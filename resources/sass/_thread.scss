@@ -1,17 +1,14 @@
 .thread-header {
+	margin-bottom: -1rem;
+	margin-top: 1rem;
+
 	.thread-title {
-		padding: 1rem 0;
 		color: white;
 	}
 
 	input {
 		margin-top: 0.5rem;
 	}
-}
-
-.thread-toolbar {
-	border: 1px solid $green;
-	width: fit-content;
 }
 
 .thread-save-toolbar {

@@ -30,8 +30,8 @@
 </head>
 <body>
 	{{-- Maintenance mode check --}}
-	@if (App\MaintenanceMode::all()[0]->enabled)
-		@cannot('update', App\MaintenanceMode::all()[0])
+	@if (App\MaintenanceMode::find(1)->enabled)
+		@cannot('update', App\MaintenanceMode::find(1))
 			@include('errors.maintenance')
 			@php return @endphp
 		@endcannot
@@ -41,21 +41,31 @@
 		{{-- Navbar --}}
 		@include('layouts.navbar')
 
-		{{-- Breadcrumbs --}}
-		@yield('breadcrumbs')
-
-		{{-- Admin toolbar --}}
-		@include('layouts.toolbar')
-		
-		{{-- Main wrapper --}}
-        <main class="container-fluid" id="content">
-			{{-- Modals --}}
+		{{-- Modals --}}
+		<div class="modals">
 			@empty($disableModals)	
 				@include('modals.register')
 				@include('modals.login')
 				@include('modals.error')
 			@endempty
+		</div>
 
+		{{-- Admin toolbar --}}
+		@include('layouts.toolbar')
+
+		<div class="content-upper">
+			{{-- Breadcrumbs --}}
+			@yield('breadcrumbs')
+
+			{{-- CRUD toolbar --}}
+			@yield('crudToolbar')
+
+			{{-- Thread title --}}
+			@yield('threadTitle')
+		</div>
+		
+		{{-- Main wrapper --}}
+        <main class="container-fluid" id="content">
 			{{-- Main content --}}
 			<div id="main">
             	@yield('content')

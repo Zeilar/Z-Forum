@@ -7,8 +7,35 @@
 	color: $green;
 }
 
+.content-upper {
+	padding: 0 20rem;
+}
+
+.crud-toolbar {
+	border: 1px solid $green;
+	background: $darkindigo;
+	padding: 0.5rem 1rem;
+	flex-direction: row;
+	width: fit-content;
+	margin: 2rem 0 1rem 0;
+	display: flex;
+
+	i {
+		pointer-events: none;
+		color: white;
+	}
+
+	.btn {
+		margin-right: 0.5rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
 .breadcrumb {
-	padding: 2rem 20rem 0 20rem;
+	padding: 2rem 0 0 0;
 	background: none;
 	color: white;
 	margin: 0;
