@@ -12132,9 +12132,9 @@ input[type=file] {
 
 #toolbar {
   border-bottom-right-radius: 0.25rem;
-  top: calc(4vh + 0.5rem + 2px);
   border: 2px solid #00b365;
   background: #a0181880;
+  top: calc(4rem - 2px);
   margin-right: 2.5rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -12736,9 +12736,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border-top: 2px solid #00b365;
   background: black;
   text-align: center;
-  padding: 1% 10%;
   margin-top: auto;
+  padding: 0 20rem;
   color: white;
+  display: -webkit-box;
+  display: flex;
+  height: 4rem;
+}
+
+#footer #copyright {
+  margin: auto;
 }
 
 .alert {

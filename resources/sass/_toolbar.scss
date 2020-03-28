@@ -1,8 +1,8 @@
 #toolbar {
 	border-bottom-right-radius: 0.25rem;
-	top: calc(4vh + 0.5rem + 2px); // navbar is 4vh high, put it just below
 	border: 2px solid $green;
 	background: $superadmin;
+	top: calc(4rem - 2px); // navbar is 4rem high, put it just below
 	margin-right: 2.5rem;
 	height: fit-content;
 	position: fixed;

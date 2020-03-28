@@ -2,7 +2,13 @@
 	border-top: 2px solid $green;
 	background: black;
 	text-align: center;
-	padding: 1% 10%;
 	margin-top: auto;
+	padding: 0 20rem;
 	color: white;
+	display: flex;
+	height: 4rem;
+
+	#copyright {
+		margin: auto;
+	}
 }
