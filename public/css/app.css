@@ -11441,13 +11441,14 @@ a.text-dark:focus {
 }
 
 fieldset {
-  border: 1px solid;
+  border: 1px solid white;
   min-width: unset;
   padding: 0.5rem;
   margin: unset;
 }
 
 legend {
+  color: white;
   width: unset;
   margin: 0;
 }
@@ -12712,6 +12713,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .thread-header .thread-title {
   color: white;
+}
+
+.thread-header fieldset legend input {
+  width: 100%;
+  margin: 0;
 }
 
 .thread-header input {

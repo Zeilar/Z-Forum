@@ -133,7 +133,14 @@
 					if (!$('.thread-save-toolbar').length) {
 						let title = $('.thread-title').html();
 
-						$('.thread-title').replaceWith(`<input type="text" value="${title}" />`);
+						$('.thread-title').replaceWith(`
+							<fieldset style="width: ${$('#main').width()}px;">
+								<legend>
+									Title
+								</legend>
+								<input type="text" value="${title}" />
+							</fieldset>
+						`);
 						$('.thread-header').append(`
 							<div class="thread-save-toolbar">
 								<button class="btn btn-success spin thread-save">
