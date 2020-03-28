@@ -1,8 +1,7 @@
 #toolbar {
 	border-bottom-right-radius: 0.25rem;
-	height: calc(100vh - 8rem + 4px); // 4rem for footer and navbar, plus 4px due to their 2px borders
+	height: calc(100vh - 12rem); // 4rem for footer and navbar respectively, 4rem for padding bottom and top on content
 	border: 2px solid $green;
-	top: calc(4rem - 2px); // navbar is 4rem high, put it just below
 	margin-right: 2.5rem;
 	background: $body-bg;
 	position: fixed;
@@ -10,6 +9,7 @@
 	color: white;
 	width: 17.5rem; // 20rem is the distance from the window edge to the main content area
 	z-index: 999;
+	top: 6rem;
 	left: 0;
 
 	.toolbar-items {
@@ -62,10 +62,15 @@
 					&.spoof-login {
 						input {
 							border: 0;
-							background: none;
+							background: white;
+							padding: 0 0.25rem;
 							color: white;
 							width: 100%;
 							outline: 0;
+
+							&:focus + legend {
+								color: red !important;
+							}
 						}
 					}
 

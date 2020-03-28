@@ -14,7 +14,7 @@
 	}
 
 	body.maintenance {
-		background-image: url('/storage/images/bg.jfif');
+		background-image: url('/storage/images/admin-login.jpg');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}

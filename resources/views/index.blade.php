@@ -24,15 +24,6 @@
 						</a>
 					@endslot
 
-					@foreach ($subcategory->posts as $post)
-						@if ($post->user->role === 'superadmin')
-							@slot('admin_post')
-							@endslot
-
-							@break
-						@endif
-					@endforeach
-
 					@slot('views')
 						@php $views = 0; @endphp
 						@foreach ($subcategory->threads as $thread)

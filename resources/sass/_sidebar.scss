@@ -1,10 +1,10 @@
 #sidebar {
-	top: calc(4vh + 2rem);
 	margin-left: 2.5rem;
 	height: fit-content;
 	position: sticky;
 	max-width: 20%;
 	color: white;
+	top: 6rem; // 4rem from navbar height plus content padding;
 	flex: 1;
 
 	a {

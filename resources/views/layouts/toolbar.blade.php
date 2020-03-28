@@ -20,7 +20,7 @@
 						</li>
 					</ul>
 				</div>
-
+				{{-- TODO: JS cookie toolbar --}}
 				@can('update', App\MaintenanceMode::find(1))
 					<div class="toolbar-row">
 						<div class="toolbar-collapse">
@@ -56,7 +56,19 @@
 		</div>
 
 		<script>
+			$(document).ready(() => {
+				collapse();
+			});
+
 			$('.toolbar-collapse').click(function() {
+				// Create date string for expiration date, which is 24 hours from now
+				let date = new Date();
+				date.setTime(date.getTime() + (60 * 60 * 24));
+				let expires = `${date.toUTCString()}`;
+
+				// Add cookie to keep the collapse open
+				document.cookie = `collapseIndex=${$(this).parent().index()}; expires=${expires}; path=/`;
+
 				// Reset all collapsibles when any is opened
 				$('.toolbar-accordion').close().removeAttr('style');
 				$('.fa-caret-left').css('transform', 'rotate(0)');
@@ -70,6 +82,30 @@
 					$(this).find('.fa-caret-left').css('transform', 'rotate(-90deg)');
 				}
 			});
+
+			function collapse() {
+				// Separate the cookies
+				let cookies = document.cookie;
+				cookies = cookies.split(';');
+
+				let collapseIndex = '';
+				for (let i = 0; i < cookies.length; i++) {
+					if (cookies[i].search('collapseIndex') !== -1) {
+						collapseIndex = cookies[i];
+						break;
+					}
+				}
+
+				if (collapseIndex !== '') {
+					// Get the int value of the cookie
+					collapseIndex = Number(collapseIndex.split('=')[1]);
+
+					// Since nth-child indexes aren't like arrays, it starts at 1
+					collapseIndex += 1;
+
+					$(`.toolbar-row:nth-child(${collapseIndex})`).find('.toolbar-accordion').css('transition', 'none').collapse();
+				}
+			}
 		</script>
 	@endcan
 @endauth
