@@ -76,6 +76,9 @@
 
 				let accordion = $(this).siblings('.toolbar-accordion');
 				if (accordion.height()) {
+					// Reset localStorage if there was any so that it stays closed
+					localStorage.removeItem('toolbarCollapseIndex');
+
 					$(this).find('.plus').css('opacity', '1');
 					accordion.close();
 				} else {
