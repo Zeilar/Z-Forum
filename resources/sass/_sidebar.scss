@@ -25,22 +25,44 @@
 
 	.sidebar-item {
 		border: 2px solid $green;
+		background: $darkindigo;
 		border-radius: 0.25rem;
 		padding: 0.5rem 1rem;
 		margin-bottom: 1rem;
 
 		&.welcome {
-			.sidebar-header {
-				padding: 0;
-				margin: 0;
-				border: 0;
+			justify-content: space-between;
+			flex-direction: row;
+			display: flex;
+
+			.welcome-text {
+				flex-direction: column;
+				display: flex;
+
+				.sidebar-header {
+					padding: 0;
+					border: 0;
+
+					a {
+						font-size: inherit;
+					}
+				}
+
+				.logout {
+					margin-top: auto;
+					color: $green;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
 			}
 
-			.logout {
-				color: white;
+			.welcome-avatar {
+				width: 40%;
 
-				&:hover {
-					text-decoration: underline;
+				img {
+					margin: auto;
 				}
 			}
 		}
@@ -48,7 +70,7 @@
 		.sidebar-header {
 			border-bottom: 2px solid $green;
 			padding-bottom: 0.5rem;
-			margin-bottom: 1rem;
+			margin-bottom: 0.5rem;
 			font-weight: bold;
 		}
 

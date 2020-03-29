@@ -60,9 +60,6 @@
 					</button>
 				</div>
 			</form>
-			@auth
-				<img class="nav-avatar img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
-			@endauth
 		</div>
 		<script>
 			$('.nav-link').not('#login-button, #register-button').mouseenter(function() {

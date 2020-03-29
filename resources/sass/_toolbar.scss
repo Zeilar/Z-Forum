@@ -23,25 +23,41 @@
 			}
 
 			.toolbar-collapse {
+				padding: 0.5rem 1rem;
 				align-items: center;
 				background: $green;
 				position: relative;
 				cursor: pointer;
-				padding: 1rem;
 				display: flex;
 
-				span {
+				.title {
 					margin-left: 0.5rem;
 				}
 
 				i {
 					color: white;
 					width: 1.5rem;
+				}
 
-					&.fa-caret-left {
-						transition: transform 0.25s ease-in-out;
-						margin-left: auto;
-						width: unset;
+				.collapse-icon {
+					position: relative;
+					margin-left: auto;
+					height: 1.5rem;
+					width: 1.5rem;
+
+					span {
+						transition: opacity 0.25s ease-in-out;
+						transform: translate(-50%, -50%);
+						text-align: center;
+						position: absolute;
+						font-size: 1.5rem;
+						line-height: 1;
+						left: 50%;
+						top: 50%;
+
+						&.minus {
+							font-size: 1.2rem;
+						}
 					}
 				}
 			}
@@ -61,16 +77,12 @@
 
 					&.spoof-login {
 						input {
-							border: 0;
 							background: white;
 							padding: 0 0.25rem;
-							color: white;
+							color: black;
 							width: 100%;
 							outline: 0;
-
-							&:focus + legend {
-								color: red !important;
-							}
+							border: 0;
 						}
 					}
 

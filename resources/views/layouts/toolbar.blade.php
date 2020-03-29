@@ -5,8 +5,11 @@
 				<div class="toolbar-row">
 					<div class="toolbar-collapse">
 						<i class="fas fa-users"></i>
-						<span>{{ __('Users') }}</span>
-						<i class="fas fa-caret-left"></i>
+						<span class="title">{{ __('Users') }}</span>
+						<div class="collapse-icon">
+							<span class="plus">+</span>
+							<span class="minus">-</span>
+						</div>
 					</div>
 					<ul class="toolbar-accordion">
 						<li class="toolbar-item spoof-login">
@@ -20,13 +23,16 @@
 						</li>
 					</ul>
 				</div>
-				{{-- TODO: JS cookie toolbar --}}
+
 				@can('update', App\MaintenanceMode::find(1))
 					<div class="toolbar-row">
 						<div class="toolbar-collapse">
 							<i class="fas fa-tools"></i>
-							<span>{{ __('System') }}</span>
-							<i class="fas fa-caret-left"></i>
+							<span class="title">{{ __('System') }}</span>
+							<div class="collapse-icon">
+								<span class="plus">+</span>
+								<span class="minus">-</span>
+							</div>
 						</div>
 						<ul class="toolbar-accordion">
 							<li class="toolbar-item maintenance-mode">
@@ -61,49 +67,36 @@
 			});
 
 			$('.toolbar-collapse').click(function() {
-				// Create date string for expiration date, which is 24 hours from now
-				let date = new Date();
-				date.setTime(date.getTime() + (60 * 60 * 24));
-				let expires = `${date.toUTCString()}`;
+				// Add collapsible index to local storage to keep it open through all pages
+				localStorage.setItem('toolbarCollapseIndex', $(this).parent().index())
 
-				// Add cookie to keep the collapse open
-				document.cookie = `collapseIndex=${$(this).parent().index()}; expires=${expires}; path=/`;
-
-				// Reset all collapsibles when any is opened
+				// Reset all collapsibles and minuses when any is opened
+				$('.toolbar-collapse .plus').removeAttr('style').css('opacity', '1');
 				$('.toolbar-accordion').close().removeAttr('style');
-				$('.fa-caret-left').css('transform', 'rotate(0)');
 
 				let accordion = $(this).siblings('.toolbar-accordion');
 				if (accordion.height()) {
+					$(this).find('.plus').css('opacity', '1');
 					accordion.close();
-					$(this).find('.fa-caret-left').css('transform', 'rotate(0)');
 				} else {
+					$(this).find('.plus').css('opacity', '0');
 					accordion.collapse();
-					$(this).find('.fa-caret-left').css('transform', 'rotate(-90deg)');
 				}
 			});
 
 			function collapse() {
-				// Separate the cookies
-				let cookies = document.cookie;
-				cookies = cookies.split(';');
+				if (localStorage.getItem('toolbarCollapseIndex') != null) {
+					// Convert to number so we can add 1 onto it easier
+					// We add 1 because nth:child() starts at 1 rather than 0
+					let collapseIndex = Number(localStorage.getItem('toolbarCollapseIndex')) + 1;
 
-				let collapseIndex = '';
-				for (let i = 0; i < cookies.length; i++) {
-					if (cookies[i].search('collapseIndex') !== -1) {
-						collapseIndex = cookies[i];
-						break;
-					}
-				}
-
-				if (collapseIndex !== '') {
-					// Get the int value of the cookie
-					collapseIndex = Number(collapseIndex.split('=')[1]);
-
-					// Since nth-child indexes aren't like arrays, it starts at 1
-					collapseIndex += 1;
-
-					$(`.toolbar-row:nth-child(${collapseIndex})`).find('.toolbar-accordion').css('transition', 'none').collapse();
+					// Collapse the last opened collapsible and their plus and remove the animation to make it look more seamless
+					let collapsible = $(`.toolbar-row:nth-child(${collapseIndex})`);
+					collapsible.find('.toolbar-accordion').css('transition', 'none').collapse();
+					collapsible.find('.plus').css({
+						'transition': 'none',
+						'opacity': '0',
+					});
 				}
 			}
 		</script>

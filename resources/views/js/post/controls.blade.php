@@ -5,7 +5,7 @@
 		<script>
 			// Initalize post handlers on page load
 			post_handlers();
-
+			
 			// Spawn the save button and TinyMCE editor on the post
 			function post_edit(element) {
 				let selector = element.parents('.post').attr('id');
@@ -15,6 +15,23 @@
 					plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
 					toolbar_mode: 'floating',
 				});
+
+				// Since CSS can't style inside iframes, we do it here...
+				let interval = setInterval(() => {
+					if ($(`#${selector} iframe`).length) {
+						// Find TinyMCE content inside iframe
+						let iframe = $(`#${selector} iframe`)[0];
+						let iframeWindow = iframe.contentWindow.document;
+
+						// Style p elements inside to match the rest of the site
+						$(iframeWindow).find('body p').css({
+							'margin': '0.25rem 0',
+							'line-height': '1.5',
+						});
+
+						clearInterval(interval);
+					}
+				}, 50);
 
 				let deleteButton = element.siblings('.post-delete');
 

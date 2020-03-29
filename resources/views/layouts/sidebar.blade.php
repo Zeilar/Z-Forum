@@ -2,11 +2,21 @@
 	<div id="sidebar">
 		@auth
 			<div class="sidebar-item welcome">
-				<h5 class="sidebar-header">{{ __('Welcome ') . auth()->user()->username }}</h5>
-				<a class="logout" href="{{route('logout')}}">
-					<span>{{ __('Logout') }}</span>
-					<i class="fas fa-sign-out-alt"></i>
-				</a>
+				<div class="welcome-text">
+					<h5 class="sidebar-header">
+						{{ __('Welcome ') }} 
+						<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
+							{{ auth()->user()->username }}
+						</a>
+					</h5>
+					<a class="logout" href="{{route('logout')}}">
+						<span>{{ __('Logout') }}</span>
+						<i class="fas fa-sign-out-alt"></i>
+					</a>
+				</div>
+				<div class="welcome-avatar">
+					<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+				</div>
 			</div>
 		@endauth
 
@@ -31,17 +41,41 @@
 					@endif
 				@endforeach
 
-				@for ($i = 0; $i < 5; $i++)
-					@isset ($superadmins[$i])
-						<a class="is_superadmin" href="{{route('user_show', [$superadmins[$i]->id])}}">{{ $superadmins[$i]->username }}</a>
-					@endisset
-				@endfor
+				@if (count($superadmins))
+					<div class="sidebar-admins">
+						@for ($i = 0; $i < count($superadmins); $i++)
+							@isset ($superadmins[$i])
+								<a class="is_superadmin" href="{{route('user_show', [$superadmins[$i]->id])}}">
+									@if (count($superadmins) > 1 && $i !== count($superadmins) - 1)
+										@php $comma = ','; @endphp
+									@else
+										@php $comma = false; @endphp
+									@endif
+									{{ $superadmins[$i]->username }}
+								</a>
+								<span>{{ $comma ?? '' }}</span>
+							@endisset
+						@endfor
+					</div>
+				@endif
 
-				@for ($i = 0; $i < 5; $i++)
-					@isset ($moderators[$i])
-						<a class="is_moderator" href="{{route('user_show', [$moderators[$i]->id])}}">{{ $moderators[$i]->username }}</a>
-					@endisset
-				@endfor
+				@if (count($moderators))
+					<div class="sidebar-moderators">
+						@for ($i = 0; $i < count($moderators); $i++)
+							@isset ($moderators[$i])
+								<a class="is_moderator" href="{{route('user_show', [$moderators[$i]->id])}}">
+									@if (count($moderators) > 1 && $i !== count($moderators) - 1)
+										@php $comma = ','; @endphp
+									@else
+										@php $comma = false; @endphp
+									@endif
+									{{ $moderators[$i]->username }}
+								</a>
+								<span>{{ $comma ?? '' }}</span>
+							@endisset
+						@endfor
+					</div>
+				@endif
 			@else
 				{{ __('No moderator is online') }}
 			@endif
