@@ -72046,13 +72046,6 @@ $(document).ready(function () {
     selector: '#form-content',
     plugins: "bbcode",
     bbcode_dialect: "punbb"
-  }); // Dashboard settings menu size animation
-
-  $('.settings-item').mouseenter(function () {
-    $(this).addClass('active-hover');
-    $(this).mouseleave(function () {
-      $(this).removeClass('active-hover');
-    });
   }); // Password revealer button
 
   $('.password-revealer').click(function () {
@@ -72076,7 +72069,7 @@ $(document).ready(function () {
       $(this).removeClass('is-invalid');
       $('#passwords-no-match').remove();
     }
-  }); // Turn disabled off if all inputs are filled, otherwise turn it on
+  }); // Turn disabled off on modal submit button if all inputs are filled, otherwise turn it on
 
   $('.modal input').on('input', function () {
     var modal = $(this).closest('form');

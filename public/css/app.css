@@ -11358,7 +11358,8 @@ a.text-dark:focus {
   }
 }
 
-.btn {
+html body #app .btn,
+html body #footer .btn {
   border-radius: 0.25rem;
   padding: 0.35rem 1rem;
   position: relative;
@@ -11366,26 +11367,38 @@ a.text-dark:focus {
   overflow: hidden;
 }
 
-.btn:active,
-.btn:focus,
-.btn:hover,
-.btn[disabled] {
+html body #app .btn:active,
+html body #app .btn:focus,
+html body #app .btn:hover,
+html body #app .btn[disabled],
+html body #footer .btn:active,
+html body #footer .btn:focus,
+html body #footer .btn:hover,
+html body #footer .btn[disabled] {
   box-shadow: none !important;
 }
 
-.btn[disabled] {
+html body #app .btn[disabled],
+html body #footer .btn[disabled] {
   cursor: auto;
 }
 
-.btn-success {
-  border-color: #00b365 !important;
-  background: #2c2c35e6 !important;
-  color: white !important;
+html body #app .btn-success,
+html body #footer .btn-success {
+  background: #2c2c35e6;
+  border-color: #00b365;
+  color: white;
 }
 
-.btn-success:not([disabled]):focus,
-.btn-success:not([disabled]):hover {
-  background: #00b365 !important;
+html body #app .btn-success:not([disabled]):focus,
+html body #app .btn-success:not([disabled]):hover,
+html body #app .btn-success:not([disabled]):active,
+html body #footer .btn-success:not([disabled]):focus,
+html body #footer .btn-success:not([disabled]):hover,
+html body #footer .btn-success:not([disabled]):active {
+  border-color: #00b365;
+  background: #00b365;
+  color: white;
 }
 
 .navbar {

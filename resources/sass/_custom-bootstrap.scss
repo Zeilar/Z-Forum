@@ -1,30 +1,40 @@
-.btn {
-	border-radius: 0.25rem;
-	padding: 0.35rem 1rem;
-	position: relative;
-	min-width: 3.5rem;
-	overflow: hidden;
+html {
+	body {
+		#app, #footer {
+			.btn {
+				border-radius: 0.25rem;
+				padding: 0.35rem 1rem;
+				position: relative;
+				min-width: 3.5rem;
+				overflow: hidden;
 
-	&:active, &:focus, &:hover, &[disabled] {
-		box-shadow: none !important;
-	}
+				&:active, &:focus, &:hover, &[disabled] {
+					box-shadow: none !important;
+				}
 
-	&[disabled] {
-		cursor: auto;
-	}
-}
+				&[disabled] {
+					cursor: auto;
+				}
+			}
 
-.btn-success {
-	border-color: $green !important;
-	background: $darkindigo !important;
-	color: white !important;
+			.btn-success {
+				background: $darkindigo;
+				border-color: $green;
+				color: white;
 
-	&:not([disabled]) {
-		&:focus, &:hover {
-			background: $green !important;
+				&:not([disabled]) {
+					&:focus, &:hover, &:active {
+						border-color: $green;
+						background: $green;
+						color: white;
+					}
+				}
+			}
 		}
 	}
 }
+
+
 
 .navbar {
 	padding: 0 10%;

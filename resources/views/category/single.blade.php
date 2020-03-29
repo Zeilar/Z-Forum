@@ -11,52 +11,54 @@
 
 @section('content')
 	<div id="table">
-		@component('components.table-header')
-			@slot('title')
-				{{ $category->title }}
-			@endslot
-		@endcomponent
-
-		@foreach ($category->subcategories as $subcategory)	
-			@component('components.table-row')
+		<div class="table-group">
+			@component('components.table-header')
 				@slot('title')
-					<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
-						{{ $subcategory->title }}
-					</a>
-				@endslot
-
-				@slot('views')
-					@php $views = 0; @endphp
-					@foreach ($subcategory->threads as $thread)
-						@php $views += $thread->views @endphp
-					@endforeach
-					{{ $views }}
-				@endslot
-
-				@slot('posts')
-					{{ count($subcategory->posts) }}
-				@endslot
-
-				@slot('latest_post')
-					@foreach ($subcategory->posts()->latest()->get() as $post)
-						@isset($post->thread)
-							<a href="{{
-								route('post_show', [
-									$post->thread->id,
-									$post->thread->slug,
-									get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
-									$post->id,
-								])
-							}}">
-								{{ pretty_date($post->updated_at) }}
-								<i class="fas fa-sign-in-alt"></i>
-							</a>
-							@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
-						@endisset
-					@endforeach
+					{{ $category->title }}
 				@endslot
 			@endcomponent
-		@endforeach {{-- $subcategory --}}
+
+			@foreach ($category->subcategories as $subcategory)	
+				@component('components.table-row')
+					@slot('title')
+						<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
+							{{ $subcategory->title }}
+						</a>
+					@endslot
+
+					@slot('views')
+						@php $views = 0; @endphp
+						@foreach ($subcategory->threads as $thread)
+							@php $views += $thread->views @endphp
+						@endforeach
+						{{ $views }}
+					@endslot
+
+					@slot('posts')
+						{{ count($subcategory->posts) }}
+					@endslot
+
+					@slot('latest_post')
+						@foreach ($subcategory->posts()->latest()->get() as $post)
+							@isset($post->thread)
+								<a href="{{
+									route('post_show', [
+										$post->thread->id,
+										$post->thread->slug,
+										get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+										$post->id,
+									])
+								}}">
+									{{ pretty_date($post->updated_at) }}
+									<i class="fas fa-sign-in-alt"></i>
+								</a>
+								@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
+							@endisset
+						@endforeach
+					@endslot
+				@endcomponent
+			@endforeach {{-- $subcategory --}}
+		</div>
 	</div>
 
 	@can('create', App\Subcategory::class)

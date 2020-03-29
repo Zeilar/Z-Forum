@@ -6,15 +6,6 @@ $(document).ready(() => {
 		bbcode_dialect: "punbb"
 	});
 	
-	// Dashboard settings menu size animation
-	$('.settings-item').mouseenter(function() {
-		$(this).addClass('active-hover');
-	
-		$(this).mouseleave(function() {
-			$(this).removeClass('active-hover');
-		});
-	});
-	
 	// Password revealer button
 	$('.password-revealer').click(function() {
 		if ($(this).siblings('input').attr('type') === 'password') {
@@ -41,7 +32,7 @@ $(document).ready(() => {
 		}
 	});
 
-	// Turn disabled off if all inputs are filled, otherwise turn it on
+	// Turn disabled off on modal submit button if all inputs are filled, otherwise turn it on
 	$('.modal input').on('input', function() {
 		let modal = $(this).closest('form');
 		let emptyFields = modal.find('input').not('[name=_token]').length;
