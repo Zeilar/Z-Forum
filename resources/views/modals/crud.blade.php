@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
+					<button type="submit" class="btn spin rounded btn-block btn-success-full" disabled>
 						<span>{{ $submit ?? __('Create') }}</span>
 					</button>
 				</div>

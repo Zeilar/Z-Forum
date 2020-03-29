@@ -11401,6 +11401,24 @@ html body #footer .btn-success:not([disabled]):active {
   color: white;
 }
 
+html body #app .btn-success-full,
+html body #footer .btn-success-full {
+  border-color: #00864c;
+  background: #00864c;
+  color: white;
+}
+
+html body #app .btn-success-full:not([disabled]):focus,
+html body #app .btn-success-full:not([disabled]):hover,
+html body #app .btn-success-full:not([disabled]):active,
+html body #footer .btn-success-full:not([disabled]):focus,
+html body #footer .btn-success-full:not([disabled]):hover,
+html body #footer .btn-success-full:not([disabled]):active {
+  border-color: #00b365;
+  background: #00b365;
+  color: white;
+}
+
 .navbar {
   padding: 0 10%;
 }

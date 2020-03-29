@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	
-	<a class="btn btn-success" href="{{route('thread_create', [$subcategory->id, $subcategory->slug])}}">
+	<a class="btn btn-success-full" href="{{route('thread_create', [$subcategory->id, $subcategory->slug])}}">
 		<span>{{ __('Create new thread') }}</span>
 	</a>
 @endsection

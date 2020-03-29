@@ -71,7 +71,7 @@
 			@endslot
 		@endcomponent
 
-		<a class="btn btn-success" id="create-button" data-toggle="modal" href="#crudModal">
+		<a class="btn btn-success-full" id="create-button" data-toggle="modal" href="#crudModal">
 			<span>{{ __('Create new subcategory') }}</span>
 		</a>
 	@endcan

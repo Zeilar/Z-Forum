@@ -30,6 +30,20 @@ html {
 					}
 				}
 			}
+
+			.btn-success-full {
+				border-color: $darkgreen;
+				background: $darkgreen;
+				color: white;
+
+				&:not([disabled]) {
+					&:focus, &:hover, &:active {
+						border-color: $green;
+						background: $green;
+						color: white;
+					}
+				}
+			}
 		}
 	}
 }
