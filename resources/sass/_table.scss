@@ -29,11 +29,16 @@
 		}
 
 		.table-row {
-			transition: background 0.1s ease-in;
+			transition: background 0.1s ease-in, opacity 0.35s ease-out;
 			background: $darkindigo;
 			margin-top: 0.25rem;
 			color: $lightgray;
 			padding: 1rem;
+			opacity: 0;
+
+			&.show {
+				opacity: 1;
+			}
 
 			&:nth-child(2) {
 				margin-top: 0;

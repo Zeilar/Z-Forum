@@ -1,9 +1,6 @@
 #toolbar {
-	border-bottom-right-radius: 0.25rem;
 	height: calc(100vh - 12rem); // 4rem for footer and navbar respectively, 4rem for padding bottom and top on content
-	border: 2px solid $green;
 	margin-right: 2.5rem;
-	background: $body-bg;
 	position: fixed;
 	border-left: 0;
 	color: white;
