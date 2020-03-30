@@ -1,71 +1,44 @@
-#toolbar {
+#toolbar, #toolbar .toolbar-item {
 	height: calc(100vh - 12rem); // 4rem for footer and navbar respectively, 4rem for padding bottom and top on content
 	margin-right: 2.5rem;
 	position: fixed;
-	border-left: 0;
 	color: white;
 	width: 17.5rem; // 20rem is the distance from the window edge to the main content area
 	z-index: 999;
 	top: 6rem;
 	left: 0;
+}
 
+#toolbar {
 	.toolbar-items {
+		background: $darkindigo;
+		width: fit-content;
+		padding: 0.5rem 1rem;
+
 		.toolbar-row {
-			margin-bottom: 0.5rem;
+			margin-bottom: 1rem;
 			position: relative;
 			user-select: none;
+			cursor: pointer;
 
 			&:last-child {
 				margin-bottom: 0;
 			}
 
-			.toolbar-collapse {
-				padding: 0.5rem 1rem;
-				align-items: center;
-				background: $green;
-				position: relative;
-				cursor: pointer;
+			.toolbar-icon {
+				justify-content: center;
 				display: flex;
-
-				.title {
-					margin-left: 0.5rem;
-				}
-
-				i {
-					color: white;
-					width: 1.5rem;
-				}
-
-				.collapse-icon {
-					position: relative;
-					margin-left: auto;
-					height: 1.5rem;
-					width: 1.5rem;
-
-					span {
-						transition: opacity 0.25s ease-in-out;
-						transform: translate(-50%, -50%);
-						text-align: center;
-						position: absolute;
-						font-size: 1.5rem;
-						line-height: 1;
-						left: 50%;
-						top: 50%;
-
-						&.minus {
-							font-size: 1.2rem;
-						}
-					}
-				}
 			}
 
-			.toolbar-accordion {
-				transition: height 0.25s ease-in-out;
-				overflow: hidden;
-				padding: 0 1rem;
-				height: 0;
+			.toolbar-item {
+				transition: transform 0.25s ease-in-out;
+				transform: translateX(-100%);
 
-				.toolbar-item {
+				&.show {
+					transform: none;
+				}
+
+				.toolbar-subitem {
 					padding: 0.5rem 0;
 
 					.title {

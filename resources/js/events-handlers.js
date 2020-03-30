@@ -1,32 +1,24 @@
-/*
------------------------------------------------
-Functions - because for some reason I cannot put it in a separate file
------------------------------------------------
-*/
+// Need to have functions here because of webpack wrapping files in their own scopes
+import Functions from './functions';
 
-function fadeTable() {
-	if (localStorage.getItem('fadeTable') !== 'true') {
-		let delay = 0;
-		$('.table-row').each(function() {
-			setTimeout(() => {
-				$(this).addClass('show')
-			}, delay);
-			delay += 50;
-		});
-		localStorage.setItem('fadeTable', 'true');
-	} else {
-		$('.table-row').css('opacity', '1');
-	}
-}
+/**
+ * Event handlers
+ */
 
 /*
 -----------------------------------------------
-Event handlers
+On page load
 -----------------------------------------------
 */
 
 // Table fade animation handler
-fadeTable();
+Functions.fadeTable();
+
+/*
+-----------------------------------------------
+Buttons
+-----------------------------------------------
+*/
 
 // Password revealer button
 $('.password-revealer').click(function() {

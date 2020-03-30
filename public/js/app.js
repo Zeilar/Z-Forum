@@ -37107,39 +37107,32 @@ tinymce.init({
 /*!*****************************************!*\
   !*** ./resources/js/events-handlers.js ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./resources/js/functions.js");
+// Need to have functions here because of webpack wrapping files in their own scopes
+
+/**
+ * Event handlers
+ */
 
 /*
 -----------------------------------------------
-Functions - because for some reason I cannot put it in a separate file
------------------------------------------------
-*/
-function fadeTable() {
-  if (localStorage.getItem('fadeTable') !== 'true') {
-    var delay = 0;
-    $('.table-row').each(function () {
-      var _this = this;
-
-      setTimeout(function () {
-        $(_this).addClass('show');
-      }, delay);
-      delay += 50;
-    });
-    localStorage.setItem('fadeTable', 'true');
-  } else {
-    $('.table-row').css('opacity', '1');
-  }
-}
-/*
------------------------------------------------
-Event handlers
+On page load
 -----------------------------------------------
 */
 // Table fade animation handler
 
-
-fadeTable(); // Password revealer button
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].fadeTable();
+/*
+-----------------------------------------------
+Buttons
+-----------------------------------------------
+*/
+// Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37192,12 +37185,12 @@ if ($('.modal .is-invalid').length) {
 
 if ($('.spin').length) {
   $('.spin').click(function () {
-    var _this2 = this;
+    var _this = this;
 
     if (!$(this).hasClass('loading')) {
       $(this).css('width', "".concat($(this).outerWidth(), "px")).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
       setTimeout(function () {
-        $(_this2).attr('disabled', true);
+        $(_this).attr('disabled', true);
       }, 50);
     }
   });
@@ -37314,6 +37307,55 @@ if (window.location.href.includes('#')) {
     target.addClass('active');
   }
 }
+
+/***/ }),
+
+/***/ "./resources/js/functions.js":
+/*!***********************************!*\
+  !*** ./resources/js/functions.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Functions =
+/*#__PURE__*/
+function () {
+  function Functions() {
+    _classCallCheck(this, Functions);
+  }
+
+  _createClass(Functions, null, [{
+    key: "fadeTable",
+    value: function fadeTable() {
+      if (localStorage.getItem('fadeTable') !== 'true') {
+        var delay = 0;
+        $('.table-row').each(function () {
+          var _this = this;
+
+          setTimeout(function () {
+            $(_this).addClass('show');
+          }, delay);
+          delay += 50;
+        });
+        localStorage.setItem('fadeTable', 'true');
+      } else {
+        $('.table-row').css('opacity', '1');
+      }
+    }
+  }]);
+
+  return Functions;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Functions);
 
 /***/ }),
 

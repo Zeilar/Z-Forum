@@ -3,16 +3,11 @@
 		<div id="toolbar">
 			<ul class="toolbar-items">
 				<div class="toolbar-row">
-					<div class="toolbar-collapse">
+					<div class="toolbar-icon">
 						<i class="fas fa-users"></i>
-						<span class="title">{{ __('Users') }}</span>
-						<div class="collapse-icon">
-							<span class="plus">+</span>
-							<span class="minus">-</span>
-						</div>
 					</div>
-					<ul class="toolbar-accordion">
-						<li class="toolbar-item spoof-login">
+					<ul class="toolbar-item">
+						<li class="toolbar-subitem spoof-login">
 							<form action="{{route('spoof_login')}}" method="post">
 								@csrf
 								<fieldset>
@@ -26,16 +21,11 @@
 
 				@can('update', App\MaintenanceMode::find(1))
 					<div class="toolbar-row">
-						<div class="toolbar-collapse">
+						<div class="toolbar-icon">
 							<i class="fas fa-tools"></i>
-							<span class="title">{{ __('System') }}</span>
-							<div class="collapse-icon">
-								<span class="plus">+</span>
-								<span class="minus">-</span>
-							</div>
 						</div>
-						<ul class="toolbar-accordion">
-							<li class="toolbar-item maintenance-mode">
+						<ul class="toolbar-item">
+							<li class="toolbar-sub item maintenance-mode">
 								<p class="title">{{ __('Maintenance mode') }}</p>
 								<form action="{{route('toggle_maintenance_mode')}}" method="post">
 									@csrf
