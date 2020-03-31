@@ -25,9 +25,4 @@ class Thread extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
-
-	public function read_by()
-	{
-		return $this->belongsTo(User::class);
-	}
 }

@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Thread;
-use User;
 
 class UserVisitedThreads extends Model
 {

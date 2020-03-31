@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
-use DefaultSettings;
 
 class User extends Authenticatable
 {
@@ -56,7 +55,7 @@ class User extends Authenticatable
 		return $this->hasMany(Post::class);
 	}
 
-	public function unread_threads()
+	public function visited_threads()
 	{
 		return $this->hasMany(UserVisitedThreads::class);
 	}

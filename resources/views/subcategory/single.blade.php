@@ -19,21 +19,24 @@
 			@endcomponent
 
 			@foreach ($subcategory->threads as $thread)	
-				@component('components.table-row')
+				{{-- Check if the thread has any admin post --}}
+				@foreach ($subcategory->posts as $post)
+					@if ($post->user->role === 'superadmin')
+						@php $admin_post = true; @endphp
+						@break
+					@endif
+				@endforeach
+
+				@foreach (auth()->user()->visited_threads as $visited_thread)
+					@dump($visited_thread->user())
+				@endforeach
+
+				@component('components.table-row', ['admin_post' => $admin_post ?? null])
 					@slot('title')
 						<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 							{{ $thread->excerpt }}
 						</a>
 					@endslot
-
-					@foreach ($subcategory->posts as $post)
-						@if ($post->user->role === 'superadmin')
-							@slot('admin_post')
-							@endslot
-
-							@break
-						@endif
-					@endforeach
 
 					@slot('views')
 						@php $views = 0; @endphp
