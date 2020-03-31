@@ -75,6 +75,22 @@
 			}
 		}
 
+		&.online-users {
+			.separator {
+				margin-right: 0.25rem;
+			}
+
+			.sidebar-offline {
+				a {
+					color: $link;
+
+					&:hover {
+						color: $turqoise;
+					}
+				}
+			}
+		}
+
 		.sidebar-header {
 			border-bottom: 2px solid $green;
 			padding-bottom: 0.5rem;

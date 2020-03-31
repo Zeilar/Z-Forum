@@ -12589,6 +12589,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin: auto;
 }
 
+#sidebar .sidebar-item.online-users .separator {
+  margin-right: 0.25rem;
+}
+
+#sidebar .sidebar-item.online-users .sidebar-offline a {
+  color: #3490dc;
+}
+
+#sidebar .sidebar-item.online-users .sidebar-offline a:hover {
+  color: #00ffff;
+}
+
 #sidebar .sidebar-item .sidebar-header {
   border-bottom: 2px solid #00b365;
   padding-bottom: 0.5rem;

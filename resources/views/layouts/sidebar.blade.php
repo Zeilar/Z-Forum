@@ -24,30 +24,31 @@
 
 		<div class="sidebar-item online-users">
 			<div class="item-border">
-				@php $users = get_online_users(); @endphp
-				@if ($users)
-				{{-- Get online superadmins --}}
-					@php $superadmins = []; @endphp
-					@foreach ($users as $user)
+				@php $online_users = get_online_users() @endphp
+				@php $superadmins = []; @endphp
+				@php $moderators = []; @endphp
+
+				@if ($online_users)
+					{{-- Get online superadmins --}}
+					@foreach ($online_users as $user)
 						@if ($user->role === 'superadmin')
-							@php array_push($superadmins, $user); @endphp
+							@php $superadmins[] = $user @endphp
 						@endif
 					@endforeach
 
 					{{-- Get online moderators --}}
-					@php $moderators = []; @endphp
-					@foreach ($users as $user)
+					@foreach ($online_users as $user)
 						@if ($user->role === 'moderator')
-							@php array_push($moderators, $user); @endphp
+							@php $moderators[] = $user @endphp
 						@endif
 					@endforeach
 				@endif
 
-				@php $amount = count($superadmins) + count($moderators) @endphp
+				@php $amount = count($superadmins) + count($moderators) ?? 0 @endphp
 
 				<h5 class="sidebar-header">{{ __("Online moderators: $amount") }}</h5>
 
-				@if ($users)
+				@if ($amount)
 					@if (count($superadmins))
 						<div class="sidebar-admins">
 							@for ($i = 0; $i < count($superadmins); $i++)
@@ -78,13 +79,17 @@
 										@endif
 										{{ $moderators[$i]->username }}
 									</a>
-									<span>{{ $comma ?? '' }}</span>
+									<span class="separator">{{ $comma ?? '' }}</span>
 								@endisset
 							@endfor
 						</div>
 					@endif
 				@else
-					{{ __('No moderator is online') }}
+					<div class="sidebar-offline">
+						<p>{{ __('No moderator is online 👻') }}</p>
+						<span>{{ __('Contact:') }}</span>
+						<a href="mailto:admin@zforum.nu" target="_blank">admin@zforum.nu</a>
+					</div>
 				@endif
 			</div>
 		</div>
