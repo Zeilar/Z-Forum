@@ -19,9 +19,13 @@
 			@endcomponent
 
 			@auth
-				@foreach (auth()->user()->visited_threads as $visited_thread)
-					@php $visitedThreadsIds[] = $visited_thread->thread->id @endphp
-				@endforeach
+				@if (count(auth()->user()->visited_threads))
+					@foreach (auth()->user()->visited_threads as $visited_thread)
+						@php $visitedThreadsIds[] = $visited_thread->thread->id @endphp
+					@endforeach
+				@else
+					@php $visitedThreadsIds = [] @endphp
+				@endif
 			@endauth
 
 			@foreach ($category->subcategories as $subcategory)	
