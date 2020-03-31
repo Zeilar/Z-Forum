@@ -7,9 +7,12 @@
 
 @section('content')
 	<div id="table">
-		@foreach (auth()->user()->visited_threads as $visited_thread)
-			@php $visitedThreadsIds[] = $visited_thread->thread->id @endphp
-		@endforeach
+
+		@auth
+			@foreach (auth()->user()->visited_threads as $visited_thread)
+				@php $visitedThreadsIds[] = $visited_thread->thread->id @endphp
+			@endforeach
+		@endauth
 
 		@foreach ($tableCategories as $category)
 			<div class="table-group">

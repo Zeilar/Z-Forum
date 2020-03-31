@@ -21,11 +21,9 @@
 		@endauth
 
 		<div class="sidebar-item online-users">
-			<h5 class="sidebar-header">{{ __('Online moderators') }}</h5>
-
 			@php $users = get_online_users(); @endphp
 			@if ($users)
-				{{-- Get online superadmins --}}
+			{{-- Get online superadmins --}}
 				@php $superadmins = []; @endphp
 				@foreach ($users as $user)
 					@if ($user->role === 'superadmin')
@@ -40,6 +38,13 @@
 						@php array_push($moderators, $user); @endphp
 					@endif
 				@endforeach
+			@endif
+
+			@php $amount = count($superadmins) + count($moderators) @endphp
+
+			<h5 class="sidebar-header">{{ __("Online moderators: $amount") }}</h5>
+
+			@if ($users)
 
 				@if (count($superadmins))
 					<div class="sidebar-admins">
