@@ -39,7 +39,7 @@
 				@component('components.table-row', ['admin_post' => $admin_post ?? null, 'read' => true ?? null])
 					@slot('title')
 						<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
-							{{ $thread->excerpt }}
+							{{ $thread->id }}
 						</a>
 					@endslot
 
