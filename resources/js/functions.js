@@ -15,4 +15,5 @@ class Functions {
 	}
 }
 
+// Important that this happens after class declaration
 export default Functions;
