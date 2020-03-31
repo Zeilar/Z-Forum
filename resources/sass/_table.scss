@@ -33,14 +33,41 @@
 		}
 
 		.table-row {
-			transition: background 0.1s ease-in, opacity 0.35s ease-out;
+			transition: background 0.1s ease-in;
 			background: $darkindigo;
 			margin-top: 0.25rem;
 			color: $lightgray;
 			padding: 1rem;
 			opacity: 0;
 
+			&.read {
+				a {
+					color: $silver;
+
+					&:visited {
+						color: $silver;
+
+						i {
+							color: $silver;
+						}
+					}
+
+					&:hover {
+						color: $turqoise;
+					}
+
+					i {
+						color: $silver;
+					}
+				}
+
+				.folder {
+					color: $silver;
+				}
+			}
+
 			&.show {
+				transition: opacity 0.35 ease-out;
 				opacity: 1;
 			}
 
@@ -63,10 +90,14 @@
 			}
 			
 			a {
-				color: white;
+				color: $green;
 
 				&:visited {
-					color: $silver;
+					color: $green;
+
+					i {
+						color: $green;
+					}
 				}
 
 				&:hover {
@@ -76,6 +107,7 @@
 
 			i {
 				margin: auto 0;
+				color: $green;
 			}
 
 			.folder {
@@ -117,15 +149,10 @@
 									color: $turqoise;
 								}
 							}
-
-							i {
-								color: $silver;
-							}
 						}
 
 						i {
 							margin-left: 0.25rem;
-							color: white;
 						}
 					}
 				}

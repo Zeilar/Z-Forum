@@ -22,16 +22,21 @@
 				{{-- Check if the thread has any admin post --}}
 				@foreach ($subcategory->posts as $post)
 					@if ($post->user->role === 'superadmin')
-						@php $admin_post = true; @endphp
+						@php $admin_post = true @endphp
 						@break
 					@endif
 				@endforeach
 
-				@foreach (auth()->user()->visited_threads as $visited_thread)
-					@dump($visited_thread->user())
-				@endforeach
+				@auth
+					{{-- Check if user has read the current thread --}}
+					@foreach (auth()->user()->visited_threads as $visited_thread)
+						@if ($visited_thread->thread->id === $thread->id)
+							@php $read = true @endphp
+						@endif
+					@endforeach
+				@endauth
 
-				@component('components.table-row', ['admin_post' => $admin_post ?? null])
+				@component('components.table-row', ['admin_post' => $admin_post ?? null, 'read' => true ?? null])
 					@slot('title')
 						<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 							{{ $thread->excerpt }}

@@ -17,8 +17,22 @@
 					@endslot
 				@endcomponent
 
-				@foreach ($category->subcategories as $subcategory)	
-					@component('components.table-row')
+				@foreach ($category->subcategories as $subcategory)
+					@auth
+						{{-- Check if user has any read thread in the subcategory --}}
+						@php $read = false @endphp
+
+						@foreach ($subcategory->threads as $thread)
+						@endforeach
+
+						@foreach (auth()->user()->visited_threads as $visited_thread)
+							@if ($visited_thread->thread->id === $thread->id)
+								@php $read = true @endphp
+							@endif
+						@endforeach
+					@endauth
+
+					@component('components.table-row', ['read' => $read ?? null])
 						@slot('title')
 							<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
 								{{ $subcategory->title }}

@@ -12319,7 +12319,7 @@ a:visited:hover {
 }
 
 a:visited {
-  color: #a5abaf;
+  color: inherit;
 }
 
 #app {
@@ -12957,8 +12957,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row {
-  -webkit-transition: background 0.1s ease-in, opacity 0.35s ease-out;
-  transition: background 0.1s ease-in, opacity 0.35s ease-out;
+  -webkit-transition: background 0.1s ease-in;
+  transition: background 0.1s ease-in;
   background: #2c2c35e6;
   margin-top: 0.25rem;
   color: #dadada;
@@ -12966,7 +12966,33 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   opacity: 0;
 }
 
+#table .table-group .table-row.read a {
+  color: #a5abaf;
+}
+
+#table .table-group .table-row.read a:visited {
+  color: #a5abaf;
+}
+
+#table .table-group .table-row.read a:visited i {
+  color: #a5abaf;
+}
+
+#table .table-group .table-row.read a:hover {
+  color: #00ffff;
+}
+
+#table .table-group .table-row.read a i {
+  color: #a5abaf;
+}
+
+#table .table-group .table-row.read .folder {
+  color: #a5abaf;
+}
+
 #table .table-group .table-row.show {
+  -webkit-transition: opacity 0.35 ease-out;
+  transition: opacity 0.35 ease-out;
   opacity: 1;
 }
 
@@ -12993,11 +13019,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row a {
-  color: white;
+  color: #00b365;
 }
 
 #table .table-group .table-row a:visited {
-  color: #a5abaf;
+  color: #00b365;
+}
+
+#table .table-group .table-row a:visited i {
+  color: #00b365;
 }
 
 #table .table-group .table-row a:hover {
@@ -13006,6 +13036,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-row i {
   margin: auto 0;
+  color: #00b365;
 }
 
 #table .table-group .table-row .folder {
@@ -13048,13 +13079,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #00ffff;
 }
 
-#table .table-group .__wrapper.table-latest-post p a:visited i {
-  color: #a5abaf;
-}
-
 #table .table-group .__wrapper.table-latest-post p a i {
   margin-left: 0.25rem;
-  color: white;
 }
 
 #table .table-group .__wrapper i,

@@ -1,6 +1,10 @@
 {{-- Passed variables: $section --}}
-<div class="table-row @isset($admin_post) admin-post @endisset">
-	<i class="far fa-folder-open folder"></i>
+<div class="table-row @isset($admin_post) admin-post @endisset @if($read) read @endif">
+	@if ($read)
+		<i class="far fa-folder-open folder"></i>
+	@else
+		<i class="far fa-folder folder"></i>
+	@endif
 
 	@isset($title)
 		<div class="table-title __wrapper">

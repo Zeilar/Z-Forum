@@ -93,7 +93,7 @@ class ThreadsController extends Controller
 			if (logged_in()) {
 				$visitedThread = UserVisitedThreads::where([['user_id', auth()->user()->id], ['thread_id', $thread->id]])->get();
 
-				if (!$visitedThread) {
+				if (!count($visitedThread)) {
 					UserVisitedThreads::create([
 						'user_id' => auth()->user()->id,
 						'thread_id' => $thread->id,
