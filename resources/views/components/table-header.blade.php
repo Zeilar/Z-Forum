@@ -1,7 +1,17 @@
 <div class="table-header">
 	@isset ($title)
-		<div class="th-title">
-			<p>{{ $title }}</p>
+		<div class="table-title __wrapper">
+			<h4>{{ $title }}</h4>
 		</div>
 	@endisset
+
+	<div class="table-views __wrapper">
+		<i class="far fa-eye"></i>
+	</div>
+
+	<div class="table-posts __wrapper">
+		<i class="far fa-comments"></i>
+	</div>
+
+	<div class="table-latest-post __wrapper"></div>
 </div>

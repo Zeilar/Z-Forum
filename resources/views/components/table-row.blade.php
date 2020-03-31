@@ -3,27 +3,25 @@
 	<i class="far fa-folder-open folder"></i>
 
 	@isset($title)
-		<div class="tr-title __wrapper">
+		<div class="table-title __wrapper">
 			<p>{{ $title }}</p>
 		</div>
 	@endisset
 
 	@isset($views)
-		<div class="tr-views __wrapper">
-			<i class="far fa-eye"></i>
+		<div class="table-views __wrapper">
 			<p>{{ $views }}</p>
 		</div>
 	@endisset
 	
 	@isset($posts)
-		<div class="tr-posts __wrapper">
-			<i class="far fa-comments"></i>
+		<div class="table-posts __wrapper">
 			<p>{{ $posts }}</p>
 		</div>
 	@endisset
 
 	@isset($latest_post)
-		<div class="tr-latest-post __wrapper">
+		<div class="table-latest-post __wrapper">
 			<p>{{ $latest_post }}</p>
 		</div>
 	@endisset

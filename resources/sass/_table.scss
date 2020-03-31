@@ -13,12 +13,9 @@
 			background: $green;
 			color: white;
 
-			.th-title {
-				* {
-					font-size: 1.5rem;
-				}
-
+			.table-title {
 				a {
+					font-size: inherit;
 					color: white;
 
 					&:hover {
@@ -77,78 +74,75 @@
 			.folder {
 				font-size: 1.5rem;
 			}
+		}
 
-			.__wrapper {
-				display: flex;
+		.__wrapper {
+			display: flex;
 
-				&.tr-title {
-					flex: 13;
+			&.table-title {
+				flex: 1;
 
-					p {
-						margin-left: 0.5rem;
-					}
+				p {
+					margin-left: 0.5rem;
 				}
+			}
 
-				&.tr-views {
-					margin-right: 1rem;
-					flex: 3;
+			&.table-views {
+				width: 10%;
+			}
 
-					i {
-						margin-left: 35%;
-					}
+			&.table-posts {
+				width: 10%;
+			}
 
-					p {
-						margin-left: 0.5rem;
-					}
-				}
+			&.table-latest-post {
+				width: 25%;
 
-				&.tr-posts {
-					flex: 3;
-
-					i {
-						margin-left: 35%;
-					}
-
-					p {
-						margin-left: 0.5rem;
-					}
-				}
-
-				&.tr-latest-post {
-					flex: 5;
-
-					p {
-						margin-left: auto;
-						
-						a {
-							&:hover {
-								i, a {
-									color: $turqoise;
-								}
+				p {
+					margin-left: auto;
+					
+					a {
+						&:hover {
+							i, a {
+								color: $turqoise;
 							}
-							
-							&:visited {
-								&:hover {
-									i {
-										color: $turqoise;
-									}
-								}
-
+						}
+						
+						&:visited {
+							&:hover {
 								i {
-									color: $silver;
+									color: $turqoise;
 								}
 							}
 
 							i {
-								margin-left: 0.25rem;
-								color: white;
+								color: $silver;
 							}
+						}
+
+						i {
+							margin-left: 0.25rem;
+							color: white;
 						}
 					}
 				}
+			}
 
-				i, p {
-					margin: auto 0;
+			i, p {
+				margin: auto 0;
+			}
+		}
+
+		.th-title {
+			* {
+				font-size: 1.5rem;
+			}
+
+			a {
+				color: white;
+
+				&:hover {
+					text-decoration: underline;
 				}
 			}
 		}
