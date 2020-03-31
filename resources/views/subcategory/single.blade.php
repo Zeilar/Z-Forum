@@ -48,7 +48,7 @@
 					@endif
 				@endauth
 
-				@component('components.table-row', ['admin_post' => $admin_post ?? null, 'read' => $read ?? null])
+				@component('components.table-row', ['admin_post' => $admin_post ?? null, 'read' => $read ?? null, 'disableFolderIcon' => true])
 					@slot('title')
 						<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 							{{ $thread->title }}

@@ -16,7 +16,10 @@ html {
 }
 
 body {
-	background: linear-gradient(0deg, rgb(0, 0, 0), $body-bg);
+	background-image: url('../../storage/app/public/images/background-polygons.png');
+	background-attachment: fixed;
+	background-color: $body-bg;
+
     flex-direction: column;
 	overflow-x: hidden;
     min-height: 100vh;

@@ -111,6 +111,7 @@
 			}
 
 			.folder {
+				margin-right: 0.5rem;
 				font-size: 1.5rem;
 			}
 		}
@@ -120,10 +121,6 @@
 
 			&.table-title {
 				flex: 1;
-
-				p {
-					margin-left: 0.5rem;
-				}
 			}
 
 			&.table-views, &.table-posts {

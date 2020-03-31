@@ -12273,8 +12273,9 @@ html {
 }
 
 body {
-  background: -webkit-gradient(linear, left bottom, left top, from(black), to(#18171c));
-  background: linear-gradient(0deg, black, #18171c);
+  background-image: url(/images/background-polygons.png?55f570e10a17499db8c42683a397be69);
+  background-attachment: fixed;
+  background-color: #18171c;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
@@ -13040,6 +13041,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row .folder {
+  margin-right: 0.5rem;
   font-size: 1.5rem;
 }
 
@@ -13051,10 +13053,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #table .table-group .__wrapper.table-title {
   -webkit-box-flex: 1;
           flex: 1;
-}
-
-#table .table-group .__wrapper.table-title p {
-  margin-left: 0.5rem;
 }
 
 #table .table-group .__wrapper.table-views,
