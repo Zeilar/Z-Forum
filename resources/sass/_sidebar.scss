@@ -27,44 +27,50 @@
 		border: 2px solid $green;
 		background: $darkindigo;
 		border-radius: 0.25rem;
-		padding: 0.5rem 1rem;
 		margin-bottom: 1rem;
 
-		&.welcome {
-			justify-content: space-between;
-			flex-direction: row;
-			display: flex;
+		.item-border {
+			border: 4px solid black;
+			padding: 0.5rem 1rem;
+		}
 
-			.welcome-text {
-				flex-direction: column;
+		&.welcome {
+			.item-border {
+				justify-content: space-between;
+				flex-direction: row;
 				display: flex;
 
-				.sidebar-header {
-					padding: 0;
-					border: 0;
+				.welcome-text {
+					flex-direction: column;
+					display: flex;
 
-					a {
-						font-weight: normal;
-						font-size: inherit;
+					.sidebar-header {
+						padding: 0;
+						border: 0;
+
+						a {
+							font-weight: normal;
+							font-size: inherit;
+						}
+					}
+
+					.logout {
+						margin-right: auto;
+						margin-top: auto;
+						color: $green;
+
+						&:hover {
+							text-decoration: underline;
+						}
 					}
 				}
 
-				.logout {
-					margin-right: auto;
-					margin-top: auto;
-					color: $green;
+				.welcome-avatar {
+					width: 40%;
 
-					&:hover {
-						text-decoration: underline;
+					img {
+						margin: auto;
 					}
-				}
-			}
-
-			.welcome-avatar {
-				width: 40%;
-
-				img {
-					margin: auto;
 				}
 			}
 		}
