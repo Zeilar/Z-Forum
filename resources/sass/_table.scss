@@ -33,12 +33,20 @@
 		}
 
 		.table-row {
-			transition: background 0.1s ease-in;
+			transition: background 0.1s ease-in-out;
 			background: $darkindigo;
-			margin-top: 0.25rem;
 			color: $lightgray;
+			margin: 0.25rem;
 			padding: 1rem;
 			opacity: 0;
+
+			&.admin-post {
+				background: linear-gradient(to right, $superadmin, $gray);
+				
+				&:hover {
+					background: linear-gradient(to right, #0084ff80, #62627580);
+				}
+			}
 
 			&.read {
 				a {
@@ -67,26 +75,12 @@
 			}
 
 			&.show {
-				transition: opacity 0.35 ease-out;
+				transition: background 0.1s ease-in-out, opacity 0.35s ease-out;
 				opacity: 1;
 			}
 
-			&:nth-child(2) {
-				margin-top: 0;
-			}
-
 			&:hover {
-				transition: background 0.2s ease-out;
-				background: rgba(93, 93, 112, 0.5);
-			}
-
-			&.admin-post {
-				background: linear-gradient(to right, $superadmin, #2b2b34e6);
-				
-				&:hover {
-					background: linear-gradient(to right, #c0141480, #2b2b34e6);
-					transition: background 0.2s ease-out;
-				}
+				background: #62627580;
 			}
 			
 			a {

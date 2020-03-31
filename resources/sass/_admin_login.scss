@@ -9,31 +9,31 @@
 		margin: 0;
 		
 		.modal-header {
-			background: $superadmin-text;
+			background: $superadmin-fill;
 		}
 
 		.modal-body {
 			input {
 				&:focus {
-					box-shadow: 0 0 0 0.1rem $superadmin-text;
+					box-shadow: 0 0 0 0.1rem $superadmin-fill;
 				}
 
 				&:checked ~ .checkmark {
-					background: $superadmin-text;
+					background: $superadmin-fill;
 				}
 			}
 
 			a {
 				&:hover {
-					color: $superadmin-text;
+					color: $superadmin-fill;
 				}
 			}
 		}
 
 		.modal-footer {
 			.btn {
-				border-color: $superadmin-text !important;
-				background: $superadmin-text !important;
+				border-color: $superadmin-fill !important;
+				background: $superadmin-fill !important;
 				color: white;
 
 				&:hover {

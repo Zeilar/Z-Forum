@@ -37347,7 +37347,7 @@ function () {
         });
         localStorage.setItem('fadeTable', 'true');
       } else {
-        $('.table-row').css('opacity', '1');
+        $('.table-row').addClass('show');
       }
     }
   }]);

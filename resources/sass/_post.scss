@@ -15,30 +15,30 @@
 
 			&.is_op {
 				.post-meta-text {
-					background: linear-gradient(to right, rgba(0, 133, 173, 0.5), #2b2b34e6);
+					background: linear-gradient(to right, rgba(0, 133, 173, 0.5), $gray);
 				}
 			}
 
 			&.is_author {
 				.post-meta-text {
-					background: linear-gradient(to right, rgba(0, 194, 110, 0.5), #2b2b34e6);
+					background: linear-gradient(to right, rgba(0, 194, 110, 0.5), $gray);
 				}
 			}
 
 			&.is_superadmin {
 				.post-meta-text {
-					background: linear-gradient(to right, $superadmin, #2b2b34e6);
+					background: linear-gradient(to right, $superadmin, $gray);
 				}
 			}
 
 			&.is_moderator {
 				.post-meta-text {
-					background: linear-gradient(to right, $moderator, #2b2b34e6);
+					background: linear-gradient(to right, $moderator, $gray);
 				}
 			}
 
 			.post-avatar {
-				border: 2px solid #2b2b34e6;
+				border: 2px solid $gray;
 				position: relative;
 				margin-right: 2px;
 				padding: 2px;
@@ -65,7 +65,7 @@
 				.avatar-meta {
 					transition: opacity 0.2s ease-in-out;
 					justify-content: center;
-					background: #2b2b34e6;
+					background: $gray;
 					flex-direction: column;
 					pointer-events: none;
 					text-align: center;
@@ -104,7 +104,7 @@
 
 			.post-meta-text {
 				justify-content: space-between;
-				background: #2b2b34e6;
+				background: $gray;
 				flex-direction: row;
 				color: white;
 				padding: 1rem;
@@ -205,7 +205,7 @@
 	}
 
 	.post-body {
-		background: #2b2b34e6;
+		background: $gray;
 		color: white;
 		padding: 1rem;
 
@@ -235,11 +235,11 @@
 		color: $silver;
 
 		.is_superadmin a {
-			color: $superadmin-text;
+			color: $superadmin-fill;
 		}
 
 		.is_moderator a {
-			color: $moderator-text;
+			color: $moderator-fill;
 		}
 
 		a {

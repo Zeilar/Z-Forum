@@ -11498,24 +11498,24 @@ legend {
 }
 
 #admin-login form .modal-header {
-  background: #c21e1e;
+  background: #167cdb;
 }
 
 #admin-login form .modal-body input:focus {
-  box-shadow: 0 0 0 0.1rem #c21e1e;
+  box-shadow: 0 0 0 0.1rem #167cdb;
 }
 
 #admin-login form .modal-body input:checked ~ .checkmark {
-  background: #c21e1e;
+  background: #167cdb;
 }
 
 #admin-login form .modal-body a:hover {
-  color: #c21e1e;
+  color: #167cdb;
 }
 
 #admin-login form .modal-footer .btn {
-  border-color: #c21e1e !important;
-  background: #c21e1e !important;
+  border-color: #167cdb !important;
+  background: #167cdb !important;
   color: white;
 }
 
@@ -12571,11 +12571,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item .is_superadmin {
-  color: #c21e1e;
+  color: #167cdb;
 }
 
 #sidebar .sidebar-item .is_moderator {
-  color: #a316db;
+  color: #97008a;
 }
 
 .navbar {
@@ -12958,13 +12958,23 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row {
-  -webkit-transition: background 0.1s ease-in;
-  transition: background 0.1s ease-in;
+  -webkit-transition: background 0.1s ease-in-out;
+  transition: background 0.1s ease-in-out;
   background: #2c2c35e6;
-  margin-top: 0.25rem;
   color: #dadada;
+  margin: 0.25rem;
   padding: 1rem;
   opacity: 0;
+}
+
+#table .table-group .table-row.admin-post {
+  background: -webkit-gradient(linear, left top, right top, from(#167cdb80), to(#2b2b34e6));
+  background: linear-gradient(to right, #167cdb80, #2b2b34e6);
+}
+
+#table .table-group .table-row.admin-post:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#0084ff80), to(#62627580));
+  background: linear-gradient(to right, #0084ff80, #62627580);
 }
 
 #table .table-group .table-row.read a {
@@ -12992,31 +13002,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row.show {
-  -webkit-transition: opacity 0.35 ease-out;
-  transition: opacity 0.35 ease-out;
+  -webkit-transition: background 0.1s ease-in-out, opacity 0.35s ease-out;
+  transition: background 0.1s ease-in-out, opacity 0.35s ease-out;
   opacity: 1;
 }
 
-#table .table-group .table-row:nth-child(2) {
-  margin-top: 0;
-}
-
 #table .table-group .table-row:hover {
-  -webkit-transition: background 0.2s ease-out;
-  transition: background 0.2s ease-out;
-  background: rgba(93, 93, 112, 0.5);
-}
-
-#table .table-group .table-row.admin-post {
-  background: -webkit-gradient(linear, left top, right top, from(#c21e1e80), to(#2b2b34e6));
-  background: linear-gradient(to right, #c21e1e80, #2b2b34e6);
-}
-
-#table .table-group .table-row.admin-post:hover {
-  background: -webkit-gradient(linear, left top, right top, from(#c0141480), to(#2b2b34e6));
-  background: linear-gradient(to right, #c0141480, #2b2b34e6);
-  -webkit-transition: background 0.2s ease-out;
-  transition: background 0.2s ease-out;
+  background: #62627580;
 }
 
 #table .table-group .table-row a {
@@ -13130,13 +13122,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta.is_superadmin .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(#c21e1e80), to(#2b2b34e6));
-  background: linear-gradient(to right, #c21e1e80, #2b2b34e6);
+  background: -webkit-gradient(linear, left top, right top, from(#167cdb80), to(#2b2b34e6));
+  background: linear-gradient(to right, #167cdb80, #2b2b34e6);
 }
 
 .post .post-header .post-meta.is_moderator .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(#a316db80), to(#2b2b34e6));
-  background: linear-gradient(to right, #a316db80, #2b2b34e6);
+  background: -webkit-gradient(linear, left top, right top, from(#97008b80), to(#2b2b34e6));
+  background: linear-gradient(to right, #97008b80, #2b2b34e6);
 }
 
 .post .post-header .post-meta .post-avatar {
@@ -13375,11 +13367,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-edited-by .is_superadmin a {
-  color: #c21e1e;
+  color: #167cdb;
 }
 
 .post .post-edited-by .is_moderator a {
-  color: #a316db;
+  color: #97008a;
 }
 
 .post .post-edited-by a {

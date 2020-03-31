@@ -14,7 +14,7 @@
 						<i class="fas fa-sign-out-alt"></i>
 					</a>
 				</div>
-				<div class="welcome-avatar">
+				<div class="welcome-avatar" data-title="{{ auth()->user()->username }}">
 					<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
 				</div>
 			</div>
