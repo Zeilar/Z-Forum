@@ -7,6 +7,10 @@
 
 @section('content')
 	<div id="table">
+		@foreach (auth()->user()->visited_threads as $visited_thread)
+			@php $visitedThreadsIds[] = $visited_thread->thread->id @endphp
+		@endforeach
+
 		@foreach ($tableCategories as $category)
 			<div class="table-group">
 				@component('components.table-header')
@@ -19,18 +23,22 @@
 
 				@foreach ($category->subcategories as $subcategory)
 					@auth
-						{{-- Check if user has any read thread in the subcategory --}}
-						@php $read = false @endphp
-
-						@foreach ($subcategory->threads as $thread)
-						@endforeach
-
-						@foreach (auth()->user()->visited_threads as $visited_thread)
-							@if ($visited_thread->thread->id === $thread->id)
-								@php $read = true @endphp
-							@endif
-						@endforeach
-					@endauth
+					{{-- Check if user has any read thread in the subcategory --}}
+					@php $read = false @endphp
+					@foreach ($subcategory->threads as $thread)
+						@if (!in_array($thread->id, $visitedThreadsIds))
+							@php $read = false @endphp
+						@else
+							@php $latest_post = $subcategory->posts()->latest()->get()->take(1)[0] @endphp
+							@php $visited = auth()->user()->visited_threads->where('thread_id', $latest_post->thread->id) @endphp
+							@foreach ($visited as $item)
+								@if (strtotime($item->updated_at) - strtotime($latest_post->created_at) >= 0)
+									@php $read = true @endphp
+								@endif
+							@endforeach
+						@endif
+					@endforeach
+				@endauth
 
 					@component('components.table-row', ['read' => $read ?? null])
 						@slot('title')
