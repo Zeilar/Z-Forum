@@ -6,6 +6,13 @@
 		.table-header, .table-row {
 			flex-direction: row;
 			display: flex;
+
+			.table-views, .table-posts {
+				p, i {
+					text-align: center;
+					width: 100%;
+				}
+			}
 		}
 
 		.table-header {
@@ -87,16 +94,12 @@
 				}
 			}
 
-			&.table-views {
-				width: 10%;
-			}
-
-			&.table-posts {
-				width: 10%;
+			&.table-views, &.table-posts {
+				width: 15%;
 			}
 
 			&.table-latest-post {
-				width: 25%;
+				width: 20%;
 
 				p {
 					margin-left: auto;

@@ -12924,6 +12924,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
+#table .table-group .table-header .table-views p,
+#table .table-group .table-header .table-views i,
+#table .table-group .table-header .table-posts p,
+#table .table-group .table-header .table-posts i,
+#table .table-group .table-row .table-views p,
+#table .table-group .table-row .table-views i,
+#table .table-group .table-row .table-posts p,
+#table .table-group .table-row .table-posts i {
+  text-align: center;
+  width: 100%;
+}
+
 #table .table-group .table-header {
   padding: 0.5rem 1rem;
   background: #00b365;
@@ -13009,16 +13021,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: 0.5rem;
 }
 
-#table .table-group .__wrapper.table-views {
-  width: 10%;
-}
-
+#table .table-group .__wrapper.table-views,
 #table .table-group .__wrapper.table-posts {
-  width: 10%;
+  width: 15%;
 }
 
 #table .table-group .__wrapper.table-latest-post {
-  width: 25%;
+  width: 20%;
 }
 
 #table .table-group .__wrapper.table-latest-post p {
