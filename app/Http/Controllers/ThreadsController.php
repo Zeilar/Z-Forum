@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserVisitedThreads;
 use App\Subcategory;
 use App\Category;
 use App\Thread;
@@ -10,25 +11,6 @@ use App\Post;
 
 class ThreadsController extends Controller
 {
-	/**
-	 * Error handling for various thread actions
-	 * 
-	 * @param  int $id
-	 * @return mixed
-	 */
-	public function thread_validation(int $id, string $slug) 
-	{
-		if (!logged_in()) {
-			return msg_error('login');
-		} else if (!item_exists(Thread::find($id), $slug)) {
-			return view('errors.404');
-		} else if (!is_role('superadmin', 'moderator')) {
-			return msg_error('role');
-		} else {
-			return true;
-		}
-	}
-
     /**
      * Display a listing of the resource.
      *
@@ -107,6 +89,20 @@ class ThreadsController extends Controller
 			$thread = Thread::find($id);
 			$thread->views += 1;
 			$thread->save();
+
+			if (logged_in()) {
+				$visitedThread = UserVisitedThreads::where([['user_id', auth()->user()->id], ['thread_id', $thread->id]])->get();
+
+				if (!$visitedThread) {
+					UserVisitedThreads::create([
+						'user_id' => auth()->user()->id,
+						'thread_id' => $thread->id,
+					]);
+				} else {
+					$visitedThread[0]->updated_at = \Carbon\Carbon::now();
+					$visitedThread[0]->save();
+				}
+			}
 
 			return view('thread.single', [
 				'thread' => Thread::find($id),

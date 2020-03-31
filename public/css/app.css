@@ -12179,11 +12179,10 @@ input[type=file] {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.5rem 1rem;
 }
 
 #toolbar .toolbar-items .toolbar-row {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -12199,8 +12198,14 @@ input[type=file] {
 #toolbar .toolbar-items .toolbar-row .toolbar-icon {
   -webkit-box-pack: center;
           justify-content: center;
+  padding: 0.5rem 1rem;
   display: -webkit-box;
   display: flex;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-icon i {
+  font-size: 1.5rem;
+  color: white;
 }
 
 #toolbar .toolbar-items .toolbar-row .toolbar-item {

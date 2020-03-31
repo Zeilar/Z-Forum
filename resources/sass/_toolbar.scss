@@ -13,10 +13,9 @@
 	.toolbar-items {
 		background: $darkindigo;
 		width: fit-content;
-		padding: 0.5rem 1rem;
 
 		.toolbar-row {
-			margin-bottom: 1rem;
+			margin-bottom: 0.5rem;
 			position: relative;
 			user-select: none;
 			cursor: pointer;
@@ -27,7 +26,13 @@
 
 			.toolbar-icon {
 				justify-content: center;
+				padding: 0.5rem 1rem;
 				display: flex;
+
+				i {
+					font-size: 1.5rem;
+					color: white;
+				}
 			}
 
 			.toolbar-item {

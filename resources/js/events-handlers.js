@@ -1,4 +1,4 @@
-// Need to have functions here because of webpack wrapping files in their own scopes
+// Need to import like this due to webpack wrapping files in their own scopes
 import Functions from './functions';
 
 /**

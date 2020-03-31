@@ -55,4 +55,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Post::class);
 	}
+
+	public function unread_threads()
+	{
+		return $this->hasMany(UserVisitedThreads::class);
+	}
 }
