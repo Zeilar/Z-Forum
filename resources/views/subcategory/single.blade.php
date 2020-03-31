@@ -18,6 +18,10 @@
 				@endslot
 			@endcomponent
 
+			@foreach (auth()->user()->visited_threads as $visited_thread)
+				@php $visitedThreadsIds[] = $visited_thread->thread->id @endphp
+			@endforeach
+
 			@foreach ($subcategory->threads as $thread)	
 				{{-- Check if the thread has any admin post --}}
 				@foreach ($subcategory->posts as $post)
@@ -28,7 +32,12 @@
 				@endforeach
 
 				@auth
-					{{-- Check if user has read the current thread --}}
+					{{-- Check if user has any read thread in the subcategory --}}
+					@php $read = false @endphp
+
+					@foreach ($subcategory->threads as $thread)
+					@endforeach
+
 					@foreach (auth()->user()->visited_threads as $visited_thread)
 						@if ($visited_thread->thread->id === $thread->id)
 							@php $read = true @endphp
@@ -36,18 +45,16 @@
 					@endforeach
 				@endauth
 
-				@component('components.table-row', ['admin_post' => $admin_post ?? null, 'read' => true ?? null])
+				@component('components.table-row', ['admin_post' => $admin_post ?? null, 'read' => $read ?? null])
 					@slot('title')
 						<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
-							{{ $thread->id }}
+							{{ $thread->title }}
 						</a>
 					@endslot
 
 					@slot('views')
 						@php $views = 0; @endphp
-						@foreach ($subcategory->threads as $thread)
-							@php $views += $thread->views @endphp
-						@endforeach
+						@php $views += $thread->views @endphp
 						{{ $views }}
 					@endslot
 
