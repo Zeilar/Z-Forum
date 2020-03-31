@@ -37132,7 +37132,11 @@ _functions__WEBPACK_IMPORTED_MODULE_0__["default"].fadeTable();
 Buttons
 -----------------------------------------------
 */
-// Password revealer button
+// Setup tooltip positions etc
+
+$('[data-title]').each(function () {
+  $(this).showTitle();
+}); // Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37380,6 +37384,13 @@ function () {
     });
     this.css('height', "".concat(height, "px"));
     return this;
+  };
+
+  $.fn.showTitle = function () {
+    this.addClass('position-relative');
+    var element = "\n\t\t\t<span class=\"hover-tooltip\">\n\t\t\t\t".concat(this.attr('data-title'), "\n\t\t\t</span>\n\t\t");
+    this.append(element);
+    this.children('.hover-tooltip').css('top', "-".concat(this.children('.hover-tooltip').outerHeight() + 20, "px"));
   };
 })(jQuery);
 

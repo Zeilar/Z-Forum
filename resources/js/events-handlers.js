@@ -20,6 +20,11 @@ Buttons
 -----------------------------------------------
 */
 
+// Setup tooltip positions etc
+$('[data-title]').each(function() {
+	$(this).showTitle();
+});
+
 // Password revealer button
 $('.password-revealer').click(function() {
 	if ($(this).siblings('input').attr('type') === 'password') {

@@ -70,6 +70,30 @@
 	}
 }
 
+[data-title] {
+	position: relative;
+
+	span {
+		box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.75);
+		transition: opacity 0.15s ease-in-out;
+		font-family: $font-family-sans-serif;
+		transform: translateX(-50%);
+		border: 1px solid $green;
+		background: #0f0f0fd9;
+		border-radius: 0.25rem;
+		pointer-events: none;
+		padding: 0.5rem 1rem;
+		position: absolute;
+		opacity: 0;
+		left: 50%;
+		top: 0;
+	}
+
+	&:hover span {
+		opacity: 1;
+	}
+}
+
 .file-upload {
 	padding: 0.5rem 0.75rem;
 	background: $green;
