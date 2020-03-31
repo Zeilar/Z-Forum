@@ -82,11 +82,10 @@ if (!function_exists('pretty_date')) {
 	function pretty_date($date) {
 		$date = new Carbon($date);
 		$now = Carbon::now();
-		$difference = $date->diff($now)->days;
 
-		if ($difference = $date->diff($now)->days === 0) {
+		if ($date->isCurrentDay()) {
 			return __('Today') . ', ' . date('H:i', strtotime($date));
-		} else if ($difference = $date->diff($now)->days === 1) {
+		} else if ($date->isYesterday()) {
 			return __('Yesterday') . ', ' . date('H:i', strtotime($date));
 		} else {
 			return date('Y-m-d', strtotime($date));
@@ -191,13 +190,6 @@ if (!function_exists('get_online_users')) {
 			}
 		}
 		return $users;
-	}
-}
-
-// TODO: User activity
-if (!function_exists('get_user_activity')) {
-	function get_user_activity(int $id) {
-		return Illuminate\Support\Facades\Cache::get('user-activity-' . $id ?? auth()->user()->id);
 	}
 }
 
