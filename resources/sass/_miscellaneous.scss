@@ -31,14 +31,16 @@ img, input::placeholder {
 }
 
 a {
+	color: $link;
+
 	&:hover, &:visited:hover {
 		text-decoration: none;
 		color: $turqoise;
 	}
-	&:visited {
-		color: inherit;
-	}
 
+	&:visited {
+		color: $link;
+	}
 }
 
 #app {

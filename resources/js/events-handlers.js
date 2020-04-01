@@ -10,7 +10,6 @@ import Functions from './functions';
 On page load
 -----------------------------------------------
 */
-
 Functions.fadeTable();
 Functions.showTitle();
 
@@ -19,7 +18,6 @@ Functions.showTitle();
 Hover
 -----------------------------------------------
 */
-
 Functions.navSlide();
 
 /*

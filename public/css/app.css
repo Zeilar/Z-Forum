@@ -12777,29 +12777,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  min-width: 20rem;
   position: -webkit-sticky;
   position: sticky;
-  max-width: 20%;
   color: white;
+  width: 20rem;
   top: 6rem;
   -webkit-box-flex: 1;
           flex: 1;
-}
-
-#sidebar a {
-  color: white;
-}
-
-#sidebar a:visited {
-  color: white;
-}
-
-#sidebar a:visited:hover {
-  color: #00ffff;
-}
-
-#sidebar a:hover {
-  color: #00ffff;
 }
 
 #sidebar .sidebar-item {
@@ -12933,15 +12918,17 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border-top: 2px solid transparent;
   border-bottom: 2px solid #00b365;
   background: transparent;
-  margin-left: 2rem;
+  margin-left: 2.5rem;
   display: -webkit-box;
   display: flex;
+  width: 20rem;
 }
 
 .navbar #navbar-container form .nav-search input {
   background: transparent;
   padding: 0.35rem 0;
   color: white;
+  outline: 0;
   border: 0;
 }
 
@@ -12970,18 +12957,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search input:focus {
-  outline: 0;
-}
-
 .navbar #navbar-container form .nav-search button {
-  border: 0;
   background: transparent;
   padding: 0.35rem 0;
-}
-
-.navbar #navbar-container form .nav-search button:focus {
+  margin-left: auto;
   outline: 0;
+  border: 0;
 }
 
 .navbar #navbar-container form .nav-search button i {
@@ -13033,7 +13014,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   transition: -webkit-transform 0.25s ease-out;
   transition: transform 0.25s ease-out;
   transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
-  background: white;
+  background: #00ffff;
   position: absolute;
   height: 2px;
   width: 100%;
@@ -13053,6 +13034,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: 100%;
   width: 100%;
   padding: 0;
+}
+
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link.active {
+  color: #00ffff;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button {
@@ -13370,6 +13355,10 @@ input::placeholder {
           user-select: none;
 }
 
+a {
+  color: #3490dc;
+}
+
 a:hover,
 a:visited:hover {
   text-decoration: none;
@@ -13377,7 +13366,7 @@ a:visited:hover {
 }
 
 a:visited {
-  color: inherit;
+  color: #3490dc;
 }
 
 #app {

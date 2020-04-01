@@ -37366,8 +37366,8 @@ function () {
         // Spawn nav ruler if it doesn't exist
         if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>'); // Remove any colored nav link and color the latest hovered one
 
-        $('.nav-link.color-white').removeClass('color-white');
-        $(this).addClass('color-white'); // Get index of currently hovered item and the index of the item with the ruler
+        $('.nav-link.active').removeClass('active');
+        $(this).addClass('active'); // Get index of currently hovered item and the index of the item with the ruler
 
         var index = $(this).parent().index();
         var rulerIndex = $('.nav-ruler').parents('.nav-item').index(); // The magic
@@ -37394,7 +37394,7 @@ function () {
 
 
         $(this).parents('.nav-items').mouseleave(function () {
-          $('.nav-link.color-white').removeClass('color-white');
+          $('.nav-link.active').removeClass('active');
           $('.nav-ruler').remove();
         });
       });

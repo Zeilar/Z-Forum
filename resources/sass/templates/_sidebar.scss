@@ -1,27 +1,12 @@
 #sidebar {
 	margin-left: 2.5rem;
 	height: fit-content;
+	min-width: 20rem;
 	position: sticky;
-	max-width: 20%;
 	color: white;
+	width: 20rem;
 	top: 6rem; // 4rem from navbar height plus content padding;
 	flex: 1;
-
-	a {
-		color: white;
-
-		&:visited {
-			color: white;
-
-			&:hover {
-				color: $turqoise;
-			}
-		}
-
-		&:hover {
-			color: $turqoise;
-		}
-	}
 
 	.sidebar-item {
 		border: 2px solid $green;
