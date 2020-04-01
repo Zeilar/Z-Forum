@@ -1,5 +1,5 @@
 {{-- Passed variables: $subcategory --}}
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	{{ $subcategory->title }}

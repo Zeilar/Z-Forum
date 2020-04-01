@@ -3,25 +3,30 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 // Variables
-@import 'variables';
+@import 'assets/variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Custom Bootstrap
+@import 'bootstrap/custom-bootstrap';
+
 // Components
-@import 'custom-bootstrap';
-@import 'admin_login';
-@import 'auth-modal';
-@import 'components';
-@import 'error-page';
-@import 'dashboard';
-@import 'toolbar';
-@import 'general';
-@import 'tinymce';
-@import 'sidebar';
-@import 'navbar';
-@import 'thread';
-@import 'footer';
-@import 'alerts';
-@import 'table';
-@import 'post';
+@import 'components/auth-modal';
+@import 'components/components';
+@import 'components/tinymce';
+@import 'components/alerts';
+@import 'components/post';
+
+// Templates
+@import 'templates/admin_login';
+@import 'templates/error-page';
+@import 'templates/toolbar';
+@import 'templates/sidebar';
+@import 'templates/navbar';
+@import 'templates/thread';
+@import 'templates/footer';
+@import 'templates/table';
+
+// Miscellaneous
+@import 'miscellaneous';

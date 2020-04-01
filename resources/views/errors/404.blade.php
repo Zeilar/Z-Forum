@@ -1,5 +1,5 @@
 {{-- Passed variables: $value --}}
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	404 {{ __('Not found') }}

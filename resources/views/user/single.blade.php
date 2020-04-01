@@ -1,5 +1,5 @@
 {{-- Passed variables: $user --}}
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	{{ __('User ') . $user->username }}

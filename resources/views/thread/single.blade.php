@@ -1,5 +1,5 @@
 {{-- Passed variables: $thread --}}
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	{{ $thread->title }}

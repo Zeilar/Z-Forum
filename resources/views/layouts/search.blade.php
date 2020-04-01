@@ -1,4 +1,4 @@
-@extends('layouts.head')
+@extends('head')
 
 @section('content')
 	Search

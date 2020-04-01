@@ -1,5 +1,5 @@
 {{-- Passed variables: $tableCategories --}}
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	{{ __('The pioneer hangout') }}

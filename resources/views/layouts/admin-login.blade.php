@@ -1,4 +1,4 @@
-@extends('layouts.head')
+@extends('head')
 
 @php
 	$disableMaintenance = true;

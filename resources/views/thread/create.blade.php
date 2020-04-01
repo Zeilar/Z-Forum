@@ -1,4 +1,4 @@
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	{{ __('Create new thread in ') . $subcategory->title }}

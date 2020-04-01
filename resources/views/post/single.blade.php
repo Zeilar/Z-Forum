@@ -1,5 +1,5 @@
 {{-- Passed variables: $post --}}
-@extends('layouts.head')
+@extends('head')
 
 @section('pageTitle')
 	{{ __('Post by ') . $post->user->username }}
