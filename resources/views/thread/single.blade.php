@@ -143,7 +143,7 @@
 						`);
 						$('.thread-header').append(`
 							<div class="thread-save-toolbar">
-								<button class="btn btn-success spin thread-save">
+								<button class="btn btn-success-full spin thread-save">
 									<span>Save</span>
 								</button>
 								<button class="btn btn-default spin thread-cancel">

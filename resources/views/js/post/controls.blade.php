@@ -37,7 +37,7 @@
 
 				element.parents('.post').append(`
 					<div class="post-toolbar">
-						<button class="btn btn-success spin post-save">
+						<button class="btn btn-success-full spin post-save">
 							<span>Save</span>
 						</button>
 						<button class="btn btn-default spin post-cancel">
