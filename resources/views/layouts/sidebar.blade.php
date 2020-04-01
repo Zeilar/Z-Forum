@@ -3,13 +3,17 @@
 		@auth
 			<div class="sidebar-item welcome">
 				<div class="item-border">
+					<h6>ye boi</h6>
 					<div class="welcome-text">
 						<h5 class="sidebar-header">
-							{{ __('Welcome ') }} 
+							<span>{{ __('Welcome ') }}</span>
 							<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
 								{{ auth()->user()->username }}
 							</a>
 						</h5>
+						@if (is_role('superadmin', 'moderator'))
+							<p class="user-role">{{ ucfirst(auth()->user()->role) }}</p>
+						@endif
 						<a class="logout" href="{{route('logout')}}">
 							<span>{{ __('Logout') }}</span>
 							<i class="fas fa-sign-out-alt"></i>
@@ -25,8 +29,8 @@
 		<div class="sidebar-item online-users">
 			<div class="item-border">
 				@php $online_users = get_online_users() @endphp
-				@php $superadmins = []; @endphp
-				@php $moderators = []; @endphp
+				@php $superadmins = [] @endphp
+				@php $moderators = [] @endphp
 
 				@if ($online_users)
 					{{-- Get online superadmins --}}

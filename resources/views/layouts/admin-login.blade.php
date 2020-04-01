@@ -1,10 +1,15 @@
 @extends('head')
 
+@section('pageTitle')
+	{{ __('Log in') }}
+@endsection
+
 @php
 	$disableMaintenance = true;
 	$disableSidebar = true;
 	$disableModals = true;
 	$disableNavbar = true;
+	$disableFooter = true;
 @endphp
 
 <style>
@@ -13,8 +18,8 @@
 		color: rgb(0, 255, 255) !important;
 	}
 
-	body.maintenance {
-		background-image: url('/storage/images/admin-login.jpg');
+	body {
+		background-image: url('/storage/images/admin-login.jpg') !important;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}

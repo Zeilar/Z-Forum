@@ -12536,7 +12536,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   position: absolute;
-  z-index: 2;
   left: 50%;
   top: 40%;
 }
@@ -12838,7 +12837,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.welcome .item-border .welcome-avatar {
-  width: 40%;
+  width: 25%;
 }
 
 #sidebar .sidebar-item.welcome .item-border .welcome-avatar img {
@@ -13299,9 +13298,12 @@ ol {
 
 p,
 a,
-span,
 i {
   font-size: 1rem;
+}
+
+span {
+  font-size: inherit;
 }
 
 ul,
@@ -13387,8 +13389,7 @@ a:visited {
   padding-left: 20rem;
 }
 
-#content,
-#footer {
+#content {
   padding-bottom: 2rem;
   padding-top: 2rem;
 }

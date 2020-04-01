@@ -25,7 +25,7 @@
 			<form action="{{route('search')}}" method="get">
 				@csrf
 				<div class="search">
-					<input type="text" name="search" id="search-error" placeholder="What are you looking for?"
+					<input type="text" name="search" id="search-error" placeholder="{{ __('What are you looking for?') }}"
 						@isset ($value) value="{{$value}}" @endisset
 					/>
 					<button class="btn btn-success" type="submit">

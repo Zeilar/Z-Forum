@@ -2,8 +2,12 @@ p, h1, h2, h3, h4, h5, h6, ul, ol {
 	margin: 0;
 }
 
-p, a, span, i {
+p, a, i {
 	font-size: $font-size-base;
+}
+
+span {
+	font-size: inherit;
 }
 
 ul, ol {
@@ -55,7 +59,7 @@ a {
 	padding-left: 20rem;
 }
 
-#content, #footer {
+#content {
 	padding-bottom: 2rem;
 	padding-top: 2rem;
 }

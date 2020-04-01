@@ -53,7 +53,7 @@
 				@csrf
 				<div class="nav-search">
 					<div class="search-wrapper">
-						<input type="text" name="search" id="search" placeholder="{{ __('Search ...') }}" />
+						<input type="text" name="search" id="search" placeholder="{{ __('Search') }}" />
 					</div>
 					<button type="submit">
 						<i class="fas fa-search"></i>
