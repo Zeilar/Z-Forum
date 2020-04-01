@@ -12787,11 +12787,28 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           flex: 1;
 }
 
+#sidebar .sidebar-border {
+  height: calc(100% - 1rem);
+  border: 4px solid black;
+  top: calc(0.5rem + 1px);
+  position: absolute;
+  margin: 0.5rem 0;
+  z-index: -1;
+  width: 100%;
+  left: 0;
+}
+
+#sidebar legend {
+  padding: 0 0.25rem;
+  z-index: 2;
+}
+
 #sidebar .sidebar-item {
   border: 2px solid #00b365;
   background: #2c2c35e6;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+  z-index: 1;
 }
 
 #sidebar .sidebar-item .item-border {
@@ -12799,7 +12816,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0.5rem 1rem;
 }
 
-#sidebar .sidebar-item.welcome .item-border {
+#sidebar .sidebar-item.welcome {
+  position: relative;
+}
+
+#sidebar .sidebar-item.welcome .wrapper {
   -webkit-box-pack: justify;
           justify-content: space-between;
   -webkit-box-orient: horizontal;
@@ -12809,7 +12830,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-text {
+#sidebar .sidebar-item.welcome .wrapper .welcome-text {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
@@ -12817,43 +12838,43 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-text .sidebar-header {
+#sidebar .sidebar-item.welcome .wrapper .welcome-text .sidebar-header {
   padding: 0;
   border: 0;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-text .sidebar-header a {
+#sidebar .sidebar-item.welcome .wrapper .welcome-text .sidebar-header a {
   font-weight: normal;
   font-size: inherit;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-text .logout {
+#sidebar .sidebar-item.welcome .wrapper .welcome-text .logout {
   margin-right: auto;
   margin-top: auto;
   color: #00b365;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-text .logout:hover {
+#sidebar .sidebar-item.welcome .wrapper .welcome-text .logout:hover {
   text-decoration: underline;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-avatar {
+#sidebar .sidebar-item.welcome .wrapper .welcome-avatar {
   width: 25%;
 }
 
-#sidebar .sidebar-item.welcome .item-border .welcome-avatar img {
+#sidebar .sidebar-item.welcome .wrapper .welcome-avatar img {
   margin: auto;
 }
 
-#sidebar .sidebar-item.online-users .separator {
+#sidebar .sidebar-item.online-moderators .separator {
   margin-right: 0.25rem;
 }
 
-#sidebar .sidebar-item.online-users .sidebar-offline a {
+#sidebar .sidebar-item.online-moderators .sidebar-offline a {
   color: #3490dc;
 }
 
-#sidebar .sidebar-item.online-users .sidebar-offline a:hover {
+#sidebar .sidebar-item.online-moderators .sidebar-offline a:hover {
   color: #00ffff;
 }
 

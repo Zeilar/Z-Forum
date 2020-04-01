@@ -8,11 +8,28 @@
 	top: 6rem; // 4rem from navbar height plus content padding;
 	flex: 1;
 
+	.sidebar-border {
+		height: calc(100% - 1rem);
+		border: 4px solid black;
+		top: calc(0.5rem + 1px);
+		position: absolute;
+		margin: 0.5rem 0;
+		z-index: -1;
+		width: 100%;
+		left: 0;
+	}
+
+	legend {
+		padding: 0 0.25rem;
+		z-index: 2;
+	}
+
 	.sidebar-item {
 		border: 2px solid $green;
 		background: $darkindigo;
 		border-radius: 0.25rem;
 		margin-bottom: 1rem;
+		z-index: 1;
 
 		.item-border {
 			border: 4px solid black;
@@ -20,11 +37,13 @@
 		}
 
 		&.welcome {
-			.item-border {
+			position: relative;
+
+			.wrapper {
 				justify-content: space-between;
 				flex-direction: row;
 				display: flex;
-
+				
 				.welcome-text {
 					flex-direction: column;
 					display: flex;
@@ -60,7 +79,7 @@
 			}
 		}
 
-		&.online-users {
+		&.online-moderators {
 			.separator {
 				margin-right: 0.25rem;
 			}

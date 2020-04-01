@@ -1,32 +1,37 @@
 @empty($disableSidebar)
 	<div id="sidebar">
 		@auth
-			<div class="sidebar-item welcome">
-				<div class="item-border">
-					<div class="welcome-text">
-						<h5 class="sidebar-header">
-							<span>{{ __('Welcome ') }}</span>
-							<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
-								{{ auth()->user()->username }}
+			@component('components.sidebar-item', ['class' => 'welcome'])
+				@slot('legend')
+					{{ __('Welcome') }}
+				@endslot
+
+				@slot('content')
+					<div class="wrapper">
+						<div class="welcome-text">
+							<h5 class="sidebar-header">
+								<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
+									{{ auth()->user()->username }}
+								</a>
+							</h5>
+							@if (is_role('superadmin', 'moderator'))
+								<p class="user-role">{{ ucfirst(auth()->user()->role) }}</p>
+							@endif
+							<a class="logout" href="{{route('logout')}}">
+								<span>{{ __('Logout') }}</span>
+								<i class="fas fa-sign-out-alt"></i>
 							</a>
-						</h5>
-						@if (is_role('superadmin', 'moderator'))
-							<p class="user-role">{{ ucfirst(auth()->user()->role) }}</p>
-						@endif
-						<a class="logout" href="{{route('logout')}}">
-							<span>{{ __('Logout') }}</span>
-							<i class="fas fa-sign-out-alt"></i>
-						</a>
+						</div>
+						<div class="welcome-avatar" data-title="{{ auth()->user()->username }}">
+							<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+						</div>
 					</div>
-					<div class="welcome-avatar" data-title="{{ auth()->user()->username }}">
-						<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
-					</div>
-				</div>
-			</div>
+				@endslot
+			@endcomponent
 		@endauth
 
-		<div class="sidebar-item online-users">
-			<div class="item-border">
+		@component('components.sidebar-item', ['class' => 'online-moderators'])
+			@slot('content')
 				@php $online_users = get_online_users() @endphp
 				@php $superadmins = [] @endphp
 				@php $moderators = [] @endphp
@@ -49,7 +54,9 @@
 
 				@php $amount = count($superadmins) + count($moderators) ?? 0 @endphp
 
-				<h5 class="sidebar-header">{{ __("Online moderators: $amount") }}</h5>
+				@slot('legend')
+					{{ __("Online moderators: $amount") }}
+				@endslot
 
 				@if ($amount)
 					@if (count($superadmins))
@@ -94,7 +101,7 @@
 						<a href="mailto:admin@zforum.nu" target="_blank">admin@zforum.nu</a>
 					</div>
 				@endif
-			</div>
-		</div>
+			@endslot
+		@endcomponent
 	</div>
 @endempty
