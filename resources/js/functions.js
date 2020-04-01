@@ -54,10 +54,20 @@ class Functions {
 			});
 		});
 	}
+
+	// Setup tooltip positions etc
 	static showTitle() {
-		// Setup tooltip positions etc
 		$('[data-title]').each(function() {
 			$(this).showTitle();
+		});
+	}
+
+	// Animation that opens folder icons when clicking
+	static openFolder() {
+		$('.table-title a').mousedown(function() {
+			$(this).mouseup(function() {
+				$(this).parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
+			});
 		});
 	}
 }

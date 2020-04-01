@@ -37113,15 +37113,15 @@ tinymce.init({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./resources/js/functions.js");
-// Need to import like this due to webpack wrapping files in their own scopes
+// Need to import like this instead of the whole file due to webpack wrapping files in their own scopes
 
 /**
- * Event handlers
+ * Register the event handler
  */
 
 /*
 -----------------------------------------------
-On page load
+No event handler, always runs
 -----------------------------------------------
 */
 
@@ -37139,7 +37139,11 @@ _functions__WEBPACK_IMPORTED_MODULE_0__["default"].navSlide();
 Click
 -----------------------------------------------
 */
-// Password revealer button
+
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].openFolder();
+$('.search-animate').click(function () {
+  $(this).siblings('.wrapper').addClass('show');
+}); // Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37398,13 +37402,23 @@ function () {
           $('.nav-ruler').remove();
         });
       });
-    }
+    } // Setup tooltip positions etc
+
   }, {
     key: "showTitle",
     value: function showTitle() {
-      // Setup tooltip positions etc
       $('[data-title]').each(function () {
         $(this).showTitle();
+      });
+    } // Animation that opens folder icons when clicking
+
+  }, {
+    key: "openFolder",
+    value: function openFolder() {
+      $('.table-title a').mousedown(function () {
+        $(this).mouseup(function () {
+          $(this).parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
+        });
       });
     }
   }]);

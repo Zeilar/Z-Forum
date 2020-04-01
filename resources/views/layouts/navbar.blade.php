@@ -21,18 +21,6 @@
 									<span>{{ __('Messages') }}</span>
 								</a>
 							</li>
-
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<span>{{ __('Test') }}</span>
-								</a>
-							</li>
-
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<span>{{ __('Test') }}</span>
-								</a>
-							</li>
 						@else
 							<li class="nav-item guest">
 								<a class="nav-link btn btn-success" id="register-button" data-toggle="modal" href="#registerModal">
@@ -52,10 +40,10 @@
 			<form action="{{route('search')}}" method="get">
 				@csrf
 				<div class="nav-search">
-					<div class="search-wrapper">
+					<div class="wrapper">
 						<input type="text" name="search" id="search" placeholder="{{ __('Search') }}" />
 					</div>
-					<button type="submit">
+					<button class="search-animate" type="button">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>

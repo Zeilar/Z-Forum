@@ -12879,7 +12879,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .navbar {
   box-shadow: 0 0 10px 5px black;
   border-bottom: 2px solid #00b365;
-  background: black;
+  background: #000000f2;
   position: -webkit-sticky;
   position: sticky;
   display: -webkit-box;
@@ -12915,54 +12915,73 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container form .nav-search {
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid #00b365;
-  background: transparent;
   margin-left: 2.5rem;
-  display: -webkit-box;
-  display: flex;
+  position: relative;
+  overflow: hidden;
   width: 20rem;
 }
 
-.navbar #navbar-container form .nav-search input {
+.navbar #navbar-container form .nav-search .wrapper {
+  -webkit-transition: -webkit-transform 1s ease-out;
+  transition: -webkit-transform 1s ease-out;
+  transition: transform 1s ease-out;
+  transition: transform 1s ease-out, -webkit-transform 1s ease-out;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid #00b365;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  display: -webkit-box;
+  display: flex;
+}
+
+.navbar #navbar-container form .nav-search .wrapper.show {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.navbar #navbar-container form .nav-search .wrapper input {
   background: transparent;
   padding: 0.35rem 0;
   color: white;
+  width: 100%;
   outline: 0;
   border: 0;
 }
 
-.navbar #navbar-container form .nav-search input::-webkit-input-placeholder {
+.navbar #navbar-container form .nav-search .wrapper input::-webkit-input-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search input::-moz-placeholder {
+.navbar #navbar-container form .nav-search .wrapper input::-moz-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search input:-ms-input-placeholder {
+.navbar #navbar-container form .nav-search .wrapper input:-ms-input-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search input::-ms-input-placeholder {
+.navbar #navbar-container form .nav-search .wrapper input::-ms-input-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search input::placeholder {
+.navbar #navbar-container form .nav-search .wrapper input::placeholder {
   color: white;
   opacity: 0.25;
 }
 
 .navbar #navbar-container form .nav-search button {
   background: transparent;
+  position: absolute;
   padding: 0.35rem 0;
   margin-left: auto;
   outline: 0;
   border: 0;
+  right: 0;
+  top: 0;
 }
 
 .navbar #navbar-container form .nav-search button i {
@@ -13097,7 +13116,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #footer {
   border-top: 2px solid #00b365;
-  background: black;
+  background: #000000f2;
   text-align: center;
   margin-top: auto;
   padding: 0 20rem;

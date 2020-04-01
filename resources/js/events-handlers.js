@@ -1,13 +1,13 @@
-// Need to import like this due to webpack wrapping files in their own scopes
+// Need to import like this instead of the whole file due to webpack wrapping files in their own scopes
 import Functions from './functions';
 
 /**
- * Event handlers
+ * Register the event handler
  */
 
 /*
 -----------------------------------------------
-On page load
+No event handler, always runs
 -----------------------------------------------
 */
 Functions.fadeTable();
@@ -25,6 +25,12 @@ Functions.navSlide();
 Click
 -----------------------------------------------
 */
+Functions.openFolder();
+
+$('.search-animate').click(function() {
+	$(this).siblings('.wrapper').addClass('show');
+	
+});
 
 // Password revealer button
 $('.password-revealer').click(function() {

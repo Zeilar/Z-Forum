@@ -1,7 +1,7 @@
 .navbar {
 	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 1);
 	border-bottom: 2px solid $green;
-	background: black;
+	background: #000000f2;
 	position: sticky;
 	display: flex;
 	z-index: 100;
@@ -33,32 +33,46 @@
 
 		form {
 			.nav-search {
-				border-top: 2px solid transparent;
-				border-bottom: 2px solid $green;
-				background: transparent;
 				margin-left: 2.5rem;
-				display: flex;
+				position: relative;
+				overflow: hidden;
 				width: 20rem;
 
-				input {
-					background: transparent;
-					padding: 0.35rem 0;
-					color: white;
-					outline: 0;
-					border: 0;
+				.wrapper {
+					transition: transform 1s ease-out;
+					border-top: 2px solid transparent;
+					border-bottom: 2px solid $green;
+					transform: translateX(100%);
+					display: flex;
 
-					&::placeholder {
+					&.show {
+						transform: translateX(0);
+					}
+
+					input {
+						background: transparent;
+						padding: 0.35rem 0;
 						color: white;
-						opacity: 0.25;
+						width: 100%;
+						outline: 0;
+						border: 0;
+
+						&::placeholder {
+							color: white;
+							opacity: 0.25;
+						}
 					}
 				}
 
 				button {
 					background: transparent;
+					position: absolute;
 					padding: 0.35rem 0;
 					margin-left: auto;
 					outline: 0;
 					border: 0;
+					right: 0;
+					top: 0;
 
 					i {
 						align-self: center;
