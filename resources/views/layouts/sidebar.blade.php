@@ -3,7 +3,6 @@
 		@auth
 			<div class="sidebar-item welcome">
 				<div class="item-border">
-					<h6>ye boi</h6>
 					<div class="welcome-text">
 						<h5 class="sidebar-header">
 							<span>{{ __('Welcome ') }}</span>
