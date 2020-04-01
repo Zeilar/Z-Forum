@@ -26,11 +26,7 @@ Click
 -----------------------------------------------
 */
 Functions.openFolder();
-
-$('.search-animate').click(function() {
-	$(this).siblings('.wrapper').addClass('show');
-	
-});
+Functions.searchAnimate();
 
 // Password revealer button
 $('.password-revealer').click(function() {

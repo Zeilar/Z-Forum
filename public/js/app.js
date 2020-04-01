@@ -37141,9 +37141,7 @@ Click
 */
 
 _functions__WEBPACK_IMPORTED_MODULE_0__["default"].openFolder();
-$('.search-animate').click(function () {
-  $(this).siblings('.wrapper').addClass('show');
-}); // Password revealer button
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].searchAnimate(); // Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37419,6 +37417,27 @@ function () {
         $(this).mouseup(function () {
           $(this).parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
         });
+      });
+    } // Search input sliding animation
+
+  }, {
+    key: "searchAnimate",
+    value: function searchAnimate() {
+      $('.nav-search, .search-animate').click(function () {
+        $('.search-animate').siblings('.wrapper').addClass('show');
+        setTimeout(function () {
+          $('#search').focus();
+          $('.search-animate').attr('type', 'submit');
+        }, 500);
+      });
+      $(window).click(function (e) {
+        var search = $('.nav-search');
+
+        if (e.target !== search[0] && e.target !== $('#search')[0] && e.target !== $('.search-animate')[0]) {
+          $('#search').blur();
+          search.children('.wrapper').removeClass('show');
+          search.find('.search-animate').attr('type', 'button');
+        }
       });
     }
   }]);

@@ -41,7 +41,7 @@
 				@csrf
 				<div class="nav-search">
 					<div class="wrapper">
-						<input type="text" name="search" id="search" placeholder="{{ __('Search') }}" />
+						<input type="text" name="search" id="search" />
 					</div>
 					<button class="search-animate" type="button">
 						<i class="fas fa-search"></i>

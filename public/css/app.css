@@ -12936,10 +12936,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container form .nav-search .wrapper {
-  -webkit-transition: -webkit-transform 1s ease-out;
-  transition: -webkit-transform 1s ease-out;
-  transition: transform 1s ease-out;
-  transition: transform 1s ease-out, -webkit-transform 1s ease-out;
   border-top: 2px solid transparent;
   border-bottom: 2px solid #00b365;
   -webkit-transform: translateX(100%);
@@ -12949,56 +12945,68 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container form .nav-search .wrapper.show {
+  -webkit-transition: border-left 0.1s linear 0.35s, border-top 0.25s linear 0.45s, border-right 0.1s linear 0.55s, -webkit-transform 0.25s linear;
+  transition: border-left 0.1s linear 0.35s, border-top 0.25s linear 0.45s, border-right 0.1s linear 0.55s, -webkit-transform 0.25s linear;
+  transition: transform 0.25s linear, border-left 0.1s linear 0.35s, border-top 0.25s linear 0.45s, border-right 0.1s linear 0.55s;
+  transition: transform 0.25s linear, border-left 0.1s linear 0.35s, border-top 0.25s linear 0.45s, border-right 0.1s linear 0.55s, -webkit-transform 0.25s linear;
+  border-right: 2px solid #00b365;
+  border-left: 2px solid #00b365;
+  border-top: 2px solid #00b365;
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
-.navbar #navbar-container form .nav-search .wrapper input {
+.navbar #navbar-container form .nav-search .wrapper #search {
+  padding: 0.35rem 2rem 0.35rem 0.35rem;
   background: transparent;
-  padding: 0.35rem 0;
   color: white;
   width: 100%;
   outline: 0;
   border: 0;
 }
 
-.navbar #navbar-container form .nav-search .wrapper input::-webkit-input-placeholder {
+.navbar #navbar-container form .nav-search .wrapper #search::-webkit-input-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search .wrapper input::-moz-placeholder {
+.navbar #navbar-container form .nav-search .wrapper #search::-moz-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search .wrapper input:-ms-input-placeholder {
+.navbar #navbar-container form .nav-search .wrapper #search:-ms-input-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search .wrapper input::-ms-input-placeholder {
+.navbar #navbar-container form .nav-search .wrapper #search::-ms-input-placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search .wrapper input::placeholder {
+.navbar #navbar-container form .nav-search .wrapper #search::placeholder {
   color: white;
   opacity: 0.25;
 }
 
-.navbar #navbar-container form .nav-search button {
+.navbar #navbar-container form .nav-search .search-animate {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   background: transparent;
   position: absolute;
   padding: 0.35rem 0;
   margin-left: auto;
   outline: 0;
   border: 0;
+  top: 50%;
   right: 0;
-  top: 0;
 }
 
-.navbar #navbar-container form .nav-search button i {
+.navbar #navbar-container form .nav-search .search-animate i {
+  pointer-events: none;
+  margin-right: 0.5rem;
+  background: black;
   align-self: center;
   font-size: 1rem;
 }

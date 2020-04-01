@@ -39,19 +39,27 @@
 				width: 20rem;
 
 				.wrapper {
-					transition: transform 1s ease-out;
 					border-top: 2px solid transparent;
 					border-bottom: 2px solid $green;
 					transform: translateX(100%);
 					display: flex;
 
 					&.show {
+						transition: 
+							transform 0.25s linear,
+							border-left 0.1s linear 0.35s,
+							border-top 0.25s linear 0.45s,
+							border-right 0.1s linear 0.55s;
+
+						border-right: 2px solid $green;
+						border-left: 2px solid $green;
+						border-top: 2px solid $green;
 						transform: translateX(0);
 					}
 
-					input {
+					#search {
+						padding: 0.35rem 2rem 0.35rem 0.35rem;
 						background: transparent;
-						padding: 0.35rem 0;
 						color: white;
 						width: 100%;
 						outline: 0;
@@ -64,17 +72,21 @@
 					}
 				}
 
-				button {
+				.search-animate {
+					transform: translateY(-50%);
 					background: transparent;
 					position: absolute;
 					padding: 0.35rem 0;
 					margin-left: auto;
 					outline: 0;
 					border: 0;
+					top: 50%;
 					right: 0;
-					top: 0;
 
 					i {
+						pointer-events: none;
+						margin-right: 0.5rem;
+						background: black;
 						align-self: center;
 						font-size: 1rem;
 					}

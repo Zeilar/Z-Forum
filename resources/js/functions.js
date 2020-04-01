@@ -70,6 +70,27 @@ class Functions {
 			});
 		});
 	}
+
+	// Search input sliding animation
+	static searchAnimate() {
+		$('.nav-search, .search-animate').click(function() {
+			$('.search-animate').siblings('.wrapper').addClass('show');
+
+			setTimeout(() => {
+				$('#search').focus();
+				$('.search-animate').attr('type', 'submit');
+			}, 500);
+		});
+
+		$(window).click(function(e) {
+			let search = $('.nav-search');
+			if (e.target !== search[0] && e.target !== $('#search')[0] && e.target !== $('.search-animate')[0]) {
+				$('#search').blur();
+				search.children('.wrapper').removeClass('show');
+				search.find('.search-animate').attr('type', 'button');
+			}
+		});
+	}
 }
 
 // Important that this happens after class declaration
