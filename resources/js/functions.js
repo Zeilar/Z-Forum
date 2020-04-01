@@ -75,6 +75,7 @@ class Functions {
 	static searchAnimate() {
 		$('.nav-search, .search-animate').click(function() {
 			$('.search-animate').siblings('.wrapper').addClass('show');
+			$('.nav-search').addClass('show');
 
 			setTimeout(() => {
 				$('#search').focus();
@@ -87,6 +88,9 @@ class Functions {
 			if (e.target !== search[0] && e.target !== $('#search')[0] && e.target !== $('.search-animate')[0]) {
 				$('#search').blur();
 				search.children('.wrapper').removeClass('show');
+				setTimeout(() => {
+					$('.nav-search').removeClass('show');
+				}, 300);
 				search.find('.search-animate').attr('type', 'button');
 			}
 		});

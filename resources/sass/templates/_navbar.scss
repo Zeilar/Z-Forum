@@ -33,19 +33,23 @@
 
 		form {
 			.nav-search {
+				transition: border-right 0.1s linear;
+				border-right: 2px solid transparent;
 				margin-left: 2.5rem;
 				position: relative;
 				overflow: hidden;
 				width: 20rem;
 
+				&.show {
+					border-right: 2px solid $green;
+				}
+
 				.wrapper {
 					transition: 
 						transform 0.2s linear,
 						border-left 0.1s linear 0.2s,
-						border-top 0.2s linear 0.2s,
-						border-right 0.1s linear 0.2s;
+						border-top 0.2s linear 0.2s;
 
-					border-right: 2px solid transparent;
 					border-left: 2px solid transparent;
 					border-top: 2px solid transparent;
 					border-bottom: 2px solid $green;
@@ -53,7 +57,6 @@
 					display: flex;
 
 					&.show {
-						border-right: 2px solid $green;
 						border-left: 2px solid $green;
 						border-top: 2px solid $green;
 						transform: translateX(0);

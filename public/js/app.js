@@ -37425,6 +37425,7 @@ function () {
     value: function searchAnimate() {
       $('.nav-search, .search-animate').click(function () {
         $('.search-animate').siblings('.wrapper').addClass('show');
+        $('.nav-search').addClass('show');
         setTimeout(function () {
           $('#search').focus();
           $('.search-animate').attr('type', 'submit');
@@ -37436,6 +37437,9 @@ function () {
         if (e.target !== search[0] && e.target !== $('#search')[0] && e.target !== $('.search-animate')[0]) {
           $('#search').blur();
           search.children('.wrapper').removeClass('show');
+          setTimeout(function () {
+            $('.nav-search').removeClass('show');
+          }, 300);
           search.find('.search-animate').attr('type', 'button');
         }
       });
