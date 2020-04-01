@@ -12774,6 +12774,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #sidebar {
   margin-left: 2.5rem;
+  margin-top: -0.5rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -12782,7 +12783,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   position: sticky;
   color: white;
   width: 20rem;
-  top: 6rem;
+  top: 5.5rem;
   -webkit-box-flex: 1;
           flex: 1;
 }
