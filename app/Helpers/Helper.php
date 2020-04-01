@@ -72,7 +72,7 @@ if (!function_exists('is_role')) {
 }
 
 /**
- * Render date with "Today" or "Yesterday" instead of numerics, when applicable
+ * Prettier date format including "today", "yesterday", and month abbreviations
  *
  * @param date $date
  *
@@ -91,24 +91,6 @@ if (!function_exists('pretty_date')) {
 			return date('F jS', strtotime($date));
 		} else {
 			return date('Y-m-d', strtotime($date));
-		}
-	}
-}
-
-/**
- * Add a comma between numeric date and time
- * 
- * @param string $timestamp
- * 
- * @return date
- */
-if (!function_exists('date_comma')) {
-	function date_comma(string $timestamp) {
-		if ($timestamp) {
-			$formatted = explode(' ', $timestamp); 
-			return $formatted[0] . ', ' . $formatted[1];
-		} else {
-			return date('Y-m-d, H:i:s');
 		}
 	}
 }
@@ -196,7 +178,7 @@ if (!function_exists('get_online_users')) {
 }
 
 /**
- * Decide text color of a user link based on that user's role
+ * Apply HTML class string if user text should have special coloring
  * 
  * @param string $role
  * 

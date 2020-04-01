@@ -12624,7 +12624,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .navbar {
   box-shadow: 0 0 10px 5px black;
   border-bottom: 2px solid #00b365;
-  background: #131313f9;
+  background: black;
   position: -webkit-sticky;
   position: sticky;
   display: -webkit-box;
