@@ -39,18 +39,20 @@
 				width: 20rem;
 
 				.wrapper {
+					transition: 
+						transform 0.2s linear,
+						border-left 0.1s linear 0.2s,
+						border-top 0.2s linear 0.2s,
+						border-right 0.1s linear 0.2s;
+
+					border-right: 2px solid transparent;
+					border-left: 2px solid transparent;
 					border-top: 2px solid transparent;
 					border-bottom: 2px solid $green;
 					transform: translateX(100%);
 					display: flex;
 
 					&.show {
-						transition: 
-							transform 0.25s linear,
-							border-left 0.1s linear 0.35s,
-							border-top 0.25s linear 0.45s,
-							border-right 0.1s linear 0.55s;
-
 						border-right: 2px solid $green;
 						border-left: 2px solid $green;
 						border-top: 2px solid $green;
