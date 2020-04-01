@@ -11,19 +11,22 @@ On page load
 -----------------------------------------------
 */
 
-// Table fade animation handler
 Functions.fadeTable();
+Functions.showTitle();
 
 /*
 -----------------------------------------------
-Buttons
+Hover
 -----------------------------------------------
 */
 
-// Setup tooltip positions etc
-$('[data-title]').each(function() {
-	$(this).showTitle();
-});
+Functions.navSlide();
+
+/*
+-----------------------------------------------
+Click
+-----------------------------------------------
+*/
 
 // Password revealer button
 $('.password-revealer').click(function() {

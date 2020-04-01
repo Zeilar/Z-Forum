@@ -37124,19 +37124,22 @@ __webpack_require__.r(__webpack_exports__);
 On page load
 -----------------------------------------------
 */
-// Table fade animation handler
 
 _functions__WEBPACK_IMPORTED_MODULE_0__["default"].fadeTable();
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].showTitle();
 /*
 -----------------------------------------------
-Buttons
+Hover
 -----------------------------------------------
 */
-// Setup tooltip positions etc
 
-$('[data-title]').each(function () {
-  $(this).showTitle();
-}); // Password revealer button
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].navSlide();
+/*
+-----------------------------------------------
+Click
+-----------------------------------------------
+*/
+// Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37338,6 +37341,7 @@ function () {
 
   _createClass(Functions, null, [{
     key: "fadeTable",
+    // Plays fade animatin on first visit
     value: function fadeTable() {
       if (localStorage.getItem('fadeTable') !== 'true') {
         var delay = 0;
@@ -37353,6 +37357,55 @@ function () {
       } else {
         $('.table-row').addClass('show');
       }
+    } // Navbar slide animation when hovering on items
+
+  }, {
+    key: "navSlide",
+    value: function navSlide() {
+      $('.nav-link').not('#login-button, #register-button').mouseenter(function () {
+        // Spawn nav ruler if it doesn't exist
+        if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>'); // Remove any colored nav link and color the latest hovered one
+
+        $('.nav-link.color-white').removeClass('color-white');
+        $(this).addClass('color-white'); // Get index of currently hovered item and the index of the item with the ruler
+
+        var index = $(this).parent().index();
+        var rulerIndex = $('.nav-ruler').parents('.nav-item').index(); // The magic
+
+        var distance = 0;
+
+        if (rulerIndex - index < 0) {
+          for (var i = index; i > rulerIndex; i--) {
+            distance += $(".nav-item:nth-child(".concat(i, ")")).outerWidth(true);
+          }
+
+          $('.nav-ruler').css('transform', "translateX(-".concat(distance, "px)"));
+        } else {
+          for (var _i = index; _i < rulerIndex; _i++) {
+            if (index === 0) {
+              distance += $(".nav-item:first-child").outerWidth(true);
+            } else {
+              distance += $(".nav-item:nth-child(".concat(_i, ")")).outerWidth(true);
+            }
+          }
+
+          $('.nav-ruler').css('transform', "translateX(".concat(distance, "px)"));
+        } // Remove ruler when leaving navbar
+
+
+        $(this).parents('.nav-items').mouseleave(function () {
+          $('.nav-link.color-white').removeClass('color-white');
+          $('.nav-ruler').remove();
+        });
+      });
+    }
+  }, {
+    key: "showTitle",
+    value: function showTitle() {
+      // Setup tooltip positions etc
+      $('[data-title]').each(function () {
+        $(this).showTitle();
+      });
     }
   }]);
 

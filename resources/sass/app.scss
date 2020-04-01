@@ -1,9 +1,6 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
-
-// Variables
+// Assets
 @import 'assets/variables';
+@import 'assets/fonts';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -19,7 +16,7 @@
 @import 'components/post';
 
 // Templates
-@import 'templates/admin_login';
+@import 'templates/admin-login';
 @import 'templates/error-page';
 @import 'templates/toolbar';
 @import 'templates/sidebar';
