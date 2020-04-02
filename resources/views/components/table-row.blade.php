@@ -1,4 +1,3 @@
-{{-- Passed variables: $section --}}
 <div class="table-row @isset($admin_post) admin-post @endisset @if($read) read @endif">
 	@empty($disableFolderIcon)
 		@if ($read)

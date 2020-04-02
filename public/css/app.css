@@ -12947,6 +12947,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-transition: border-right 0.1s linear;
   transition: border-right 0.1s linear;
   border-right: 2px solid transparent;
+  border-radius: 0.25rem;
   margin-left: 2.5rem;
   position: relative;
   overflow: hidden;
@@ -12967,6 +12968,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border-bottom: 2px solid #00b365;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: flex;
 }
@@ -13444,6 +13446,13 @@ a:visited {
   height: 100%;
   -webkit-box-flex: 1;
           flex: 1;
+}
+
+legend {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .navbar,

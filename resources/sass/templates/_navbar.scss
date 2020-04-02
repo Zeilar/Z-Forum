@@ -35,6 +35,7 @@
 			.nav-search {
 				transition: border-right 0.1s linear;
 				border-right: 2px solid transparent;
+				border-radius: 0.25rem;
 				margin-left: 2.5rem;
 				position: relative;
 				overflow: hidden;
@@ -54,6 +55,7 @@
 					border-top: 2px solid transparent;
 					border-bottom: 2px solid $green;
 					transform: translateX(100%);
+					border-radius: 0.25rem;
 					display: flex;
 
 					&.show {

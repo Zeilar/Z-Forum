@@ -54,6 +54,10 @@ a {
 	flex: 1;
 }
 
+legend {
+	user-select: none;
+}
+
 .navbar, #content, #footer {
 	padding-right: 20rem;
 	padding-left: 20rem;
