@@ -12242,6 +12242,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta .post-avatar {
+  background: #2c2c35e6;
   border: 2px solid #2b2b34e6;
   position: relative;
   margin-right: 2px;
@@ -12363,30 +12364,25 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .post .post-header .post-meta .post-link a {
   position: relative;
-  color: white;
 }
 
-.post .post-header .post-meta .post-link a:hover {
+.post .post-header .post-meta .post-link a:hover .fas {
   color: #00ffff;
 }
 
-.post .post-header .post-meta .post-link a:hover i.fas {
-  color: #00ffff;
-}
-
-.post .post-header .post-meta .post-link a i.fas {
-  color: white;
+.post .post-header .post-meta .post-link a .fas {
+  color: #3490dc;
 }
 
 .post .post-header .post-meta .post-link .copy-notification {
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  padding: 0.5rem 0.65rem;
+  border: 2px solid #00b365;
+  background: #000000f2;
   -webkit-animation: fade-in 2s;
           animation: fade-in 2s;
-  border-radius: 10px;
-  background: #00b365;
+  border-radius: 0.5rem;
   position: absolute;
   opacity: 0;
   top: -160%;
@@ -12422,10 +12418,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta .post-link .copy-notification span {
+  background: #000000f2;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  display: -webkit-box;
+  display: flex;
   margin: auto;
 }
 
@@ -12437,6 +12438,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border-style: solid;
   position: absolute;
   bottom: -25%;
+  z-index: -1;
   content: '';
   left: 50%;
 }
@@ -12784,14 +12786,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-width: 20rem;
   position: -webkit-sticky;
   position: sticky;
   color: white;
-  width: 20rem;
+  width: 20vw;
   top: 5.5rem;
-  -webkit-box-flex: 1;
-          flex: 1;
 }
 
 #sidebar .sidebar-border {
@@ -12942,7 +12941,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: 2.5rem;
   position: relative;
   overflow: hidden;
-  width: 20rem;
+  width: 20vw;
 }
 
 .navbar #navbar-container form .nav-search.show {

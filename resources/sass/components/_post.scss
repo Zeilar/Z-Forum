@@ -38,6 +38,7 @@
 			}
 
 			.post-avatar {
+				background: $darkindigo;
 				border: 2px solid $gray;
 				position: relative;
 				margin-right: 2px;
@@ -145,28 +146,25 @@
 
 				a {
 					position: relative;
-					color: white;
 
 					&:hover {
-						color: $turqoise;
-
-						i.fas {
+						.fas {
 							color: $turqoise;
 						}
 					}
 
-					i.fas {
-						color: white;
+					.fas {
+						color: $link;
 					}
 				}
 
 				.copy-notification {
 					box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
 					transform: translate(-50%, -50%);
-					padding: 0.5rem 0.65rem;
+					border: 2px solid $green;
+					background: #000000f2;
 					animation: fade-in 2s;
-					border-radius: 10px;
-					background: $green;
+					border-radius: 0.5rem;
 					position: absolute;
 					opacity: 0;
 					top: -160%;
@@ -185,7 +183,11 @@
 					}
 
 					span {
+						background: #000000f2;
+						padding: 0.5rem 0.65rem;
+						border-radius: 0.5rem;
 						user-select: none;
+						display: flex;
 						margin: auto;
 					}
 
@@ -196,6 +198,7 @@
 						border-style: solid;
 						position: absolute;
 						bottom: -25%;
+						z-index: -1;
 						content: '';
 						left: 50%;
 					}
