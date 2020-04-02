@@ -184,11 +184,14 @@ input[type=file] {
 }
 
 .pagination {
+	margin-top: 1rem;
+
 	.item-wrapper {
 		position: relative;
 
 		.item {
 			margin-right: 0.5rem;
+			font-size: 1.15rem;
 			color: $silver;
 			display: flex;
 
@@ -249,6 +252,7 @@ input[type=file] {
 
 			input {
 				text-align: center;
+				font-size: 1.15rem;
 				background: none;
 				margin: 0 10px;
 				color: white;

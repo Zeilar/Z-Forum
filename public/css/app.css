@@ -11884,12 +11884,17 @@ input[type=file] {
   top: 0;
 }
 
+.pagination {
+  margin-top: 1rem;
+}
+
 .pagination .item-wrapper {
   position: relative;
 }
 
 .pagination .item-wrapper .item {
   margin-right: 0.5rem;
+  font-size: 1.15rem;
   color: #a5abaf;
   display: -webkit-box;
   display: flex;
@@ -11965,6 +11970,7 @@ input[type=file] {
 
 .pagination .item-wrapper .pagination-go input {
   text-align: center;
+  font-size: 1.15rem;
   background: none;
   margin: 0 10px;
   color: white;

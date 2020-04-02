@@ -84,14 +84,16 @@ if (!function_exists('pretty_date')) {
 		$now = Carbon::now();
 
 		if ($date->isCurrentDay()) {
-			return __('Today ') . date('H:i', strtotime($date));
+			$format = __('Today ');
 		} else if ($date->isYesterday()) {
-			return __('Yesterday ') . date('H:i', strtotime($date));
+			$format = __('Yesterday ');
 		} else if ($date->year === $now->year) {
-			return date('F jS', strtotime($date));
+			$format = date('F jS', strtotime($date));
 		} else {
-			return date('Y-m-d', strtotime($date));
+			$format = date('Y-m-d', strtotime($date));
 		}
+		
+		return $format . date('H:i', strtotime($date));
 	}
 }
 

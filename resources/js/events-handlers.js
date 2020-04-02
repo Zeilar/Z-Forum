@@ -151,10 +151,11 @@ $('.pagination .dots').click(function() {
 		}
 	} else {
 		// Add the input box if it doesn't exist
+		let page = $('.pagination').attr('data-current-page');
 		$(this).parent().append(`
 			<div class="pagination-go" id="pagination-go">
 				<i class="fas fa-minus" id="pagination-minus"></i>
-				<input min="1" type="number" id="pagination-input" value="${$('.pagination').attr('data-current-page')}" />
+					<input min="1" autocomplete="off" type="number" id="pagination-input" value="${page}" />
 				<i class="fas fa-plus" id="pagination-plus"></i>
 				<a class="btn" id="pagination-submit">
 					Go
@@ -162,8 +163,11 @@ $('.pagination .dots').click(function() {
 			</div>
 		`);
 
-		$(document).keypress(function(e) {
-			if (e.which === 13) $('#pagination-submit').click();
+		// Since we have no form, we "submit" manually if the input is up and Enter is pressed
+		$(document).on('keydown', function(e) {
+			if (e.key === 'Escape') {
+				$('.pagination-go').addClass('hide');
+			}
 		});
 
 		// Pagination input incrementers
