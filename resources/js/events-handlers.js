@@ -156,7 +156,7 @@ $('.pagination .dots').click(function() {
 				<i class="fas fa-minus" id="pagination-minus"></i>
 				<input min="1" type="number" id="pagination-input" value="${$('.pagination').attr('data-current-page')}" />
 				<i class="fas fa-plus" id="pagination-plus"></i>
-				<a class="btn" href="#" id="pagination-submit">
+				<a class="btn" id="pagination-submit">
 					Go
 				</a>
 			</div>

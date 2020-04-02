@@ -37257,7 +37257,7 @@ $('.pagination .dots').click(function () {
     }
   } else {
     // Add the input box if it doesn't exist
-    $(this).parent().append("\n\t\t\t<div class=\"pagination-go\" id=\"pagination-go\">\n\t\t\t\t<i class=\"fas fa-minus\" id=\"pagination-minus\"></i>\n\t\t\t\t<input min=\"1\" type=\"number\" id=\"pagination-input\" value=\"".concat($('.pagination').attr('data-current-page'), "\" />\n\t\t\t\t<i class=\"fas fa-plus\" id=\"pagination-plus\"></i>\n\t\t\t\t<a class=\"btn\" href=\"#\" id=\"pagination-submit\">\n\t\t\t\t\tGo\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t"));
+    $(this).parent().append("\n\t\t\t<div class=\"pagination-go\" id=\"pagination-go\">\n\t\t\t\t<i class=\"fas fa-minus\" id=\"pagination-minus\"></i>\n\t\t\t\t<input min=\"1\" type=\"number\" id=\"pagination-input\" value=\"".concat($('.pagination').attr('data-current-page'), "\" />\n\t\t\t\t<i class=\"fas fa-plus\" id=\"pagination-plus\"></i>\n\t\t\t\t<a class=\"btn\" id=\"pagination-submit\">\n\t\t\t\t\tGo\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t"));
     $(document).keypress(function (e) {
       if (e.which === 13) $('#pagination-submit').click();
     }); // Pagination input incrementers
