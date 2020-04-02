@@ -25,7 +25,6 @@ $factory->define(Thread::class, function (Faker $faker) {
 	return [
 		'title'			 => $title,
 		'slug'			 => urlencode($title),
-		'excerpt'		 => substr($title, 0, 40),
 		'user_id'		 => $user->id,
 		'subcategory_id' => $subcategory->id,
 		'category_id'	 => $subcategory->category->id,

@@ -164,6 +164,6 @@ class PostsTableSeeder extends Seeder
 			'updated_at' => $date,
 		]);
 
-		factory(App\Post::class, 10000)->create();
+		factory(App\Post::class, 5000)->create();
     }
 }

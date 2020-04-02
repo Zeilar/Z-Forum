@@ -72,7 +72,6 @@
 						let iframe = $('#quick-reply').find('iframe')[0];
 						let iframeWindow = iframe.contentWindow.document;
 						let input = $(iframeWindow).find('body');
-						input.focus();
 
 						input.on('input', function() {
 							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {

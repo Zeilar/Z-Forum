@@ -60,7 +60,6 @@ class ThreadsController extends Controller
 		$thread = new Thread();
 		$thread->title = request('title');
 		$thread->slug = urlencode(request('title'));
-		$thread->excerpt = substr($thread->title, 0, 40);
 		$thread->user_id = auth()->user()->id;
 		$thread->category_id = $category->id;
 		$thread->subcategory_id = $subcategory->id;
@@ -211,7 +210,6 @@ class ThreadsController extends Controller
 		} else {
 			$thread = Thread::find(request('id'));
 			$thread->title = request('title');
-			$thread->excerpt = substr($thread->title, 0, 40);
 			$thread->slug = urlencode(request('title'));
 
 			$thread->save();
