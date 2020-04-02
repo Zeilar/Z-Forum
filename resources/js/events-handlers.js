@@ -148,6 +148,9 @@ $('.pagination .dots').click(function() {
 			$('.pagination-go').removeClass('hide');
 		} else {
 			$('.pagination-go').addClass('hide');
+			setTimeout(() => {
+				$('.pagination-go').remove();
+			}, 250);
 		}
 	} else {
 		// Add the input box if it doesn't exist
@@ -167,6 +170,9 @@ $('.pagination .dots').click(function() {
 		$(document).on('keydown', function(e) {
 			if (e.key === 'Escape') {
 				$('.pagination-go').addClass('hide');
+				setTimeout(() => {
+					$('.pagination-go').remove();
+				}, 250);
 			}
 		});
 
@@ -230,6 +236,9 @@ $(window).click(function(e) {
 		!$('.pagination-go').hasClass('hide')
 	) {
 		$('.pagination-go').addClass('hide');
+		setTimeout(() => {
+			$('.pagination-go').remove();
+		}, 250);
 	}
 });
 
