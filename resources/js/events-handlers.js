@@ -154,13 +154,17 @@ $('.pagination .dots').click(function() {
 		$(this).parent().append(`
 			<div class="pagination-go" id="pagination-go">
 				<i class="fas fa-minus" id="pagination-minus"></i>
-				<input type="tel" id="pagination-input" value="${$('.pagination').attr('data-current-page')}" />
+				<input min="1" type="number" id="pagination-input" value="${$('.pagination').attr('data-current-page')}" />
 				<i class="fas fa-plus" id="pagination-plus"></i>
 				<a class="btn" href="#" id="pagination-submit">
 					Go
 				</a>
 			</div>
 		`);
+
+		$(document).keypress(function(e) {
+			if (e.which === 13) $('#pagination-submit').click();
+		});
 
 		// Pagination input incrementers
 		let interval = null;
@@ -205,8 +209,8 @@ $('.pagination .dots').click(function() {
 		});
 	}
 
-	// Put cursor at the end of the text
-	document.getElementById('pagination-input').setSelectionRange(100, 100);
+	// Select the text for better UX
+	document.getElementById('pagination-input').select();
 });
 
 // Hide pagination input box when clicking outside of it or the triple dots

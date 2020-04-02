@@ -147,5 +147,7 @@ class ThreadsTableSeeder extends Seeder
 			'subcategory_id' => 15,
 			'category_id' => 3,
 		]);
+
+		factory(App\Thread::class, 50)->create();
     }
 }

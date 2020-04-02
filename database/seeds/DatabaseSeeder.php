@@ -13,10 +13,12 @@ class DatabaseSeeder extends Seeder
     {
 		$this->call(MaintenanceModeTableSeeder::class);
 		$this->call(DefaultSettingsTableSeeder::class);
-		$this->call(SubcategoriesTableSeeder::class);
+
+		// Keep these in this order
 		$this->call(CategoriesTableSeeder::class);
+		$this->call(SubcategoriesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
 		$this->call(ThreadsTableSeeder::class);
 		$this->call(PostsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
     }
 }
