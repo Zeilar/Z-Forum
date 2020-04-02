@@ -11439,12 +11439,12 @@ html body #footer .btn-success-full:not([disabled]):active {
 .btn-default {
   color: white !important;
   background: #2c2c3580;
-  border-color: #18171c;
+  border-color: #2c2c3580;
 }
 
 .btn-default:focus,
 .btn-default:hover {
-  background: #18171c;
+  background: #2b2b34e6;
 }
 
 .btn-hazard {

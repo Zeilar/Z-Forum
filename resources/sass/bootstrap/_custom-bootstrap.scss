@@ -48,8 +48,6 @@ html {
 	}
 }
 
-
-
 .navbar {
 	padding: 0 10%;
 
@@ -70,10 +68,10 @@ html {
 .btn-default {
 	color: white !important;
 	background: $darkindigo;
-	border-color: $body-bg;
+	border-color: $darkindigo;
 
 	&:focus, &:hover {
-		background: $body-bg;
+		background: $gray;
 	}
 }
 
