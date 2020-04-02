@@ -104,4 +104,10 @@
 			@endslot
 		@endcomponent
 	</div>
+
+	<script>
+		$('.sidebar-legend-fixer').each(function() {
+			$(this).css('width', `${$(this).parent().siblings('legend').outerWidth()}px`);
+		});
+	</script>
 @endempty

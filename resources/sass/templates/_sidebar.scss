@@ -17,6 +17,15 @@
 		z-index: -1;
 		width: 100%;
 		left: 0;
+
+		.sidebar-legend-fixer {
+			background: $darkindigo;
+			position: absolute;
+			width: 10px;
+			height: 4px;
+			left: 4px;
+			top: -4px;
+		}
 	}
 
 	legend {

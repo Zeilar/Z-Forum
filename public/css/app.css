@@ -12805,6 +12805,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   left: 0;
 }
 
+#sidebar .sidebar-border .sidebar-legend-fixer {
+  background: #2c2c35e6;
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  left: 4px;
+  top: -4px;
+}
+
 #sidebar legend {
   padding: 0 0.25rem;
   z-index: 2;
