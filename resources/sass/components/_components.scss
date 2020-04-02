@@ -1,6 +1,6 @@
 ::selection {
-	background: rgba(15, 15, 15, 0.85);
-	color: $darkgreen;
+	background: #00b36580;
+	color: white;
 }
 
 .fas {
@@ -227,16 +227,16 @@ input[type=file] {
 			transition: opacity 0.25s ease-out;
 			transform: translateX(-50%);
 			border: 2px solid $green;
-			background: $darkindigo;
+			background: #000000f2;
 			flex-direction: row;
 			position: absolute;
 			padding: 0.5rem;
 			display: flex;
+			bottom: 150%;
 			width: 12rem;
 			opacity: 1;
 			z-index: 5;
-			left: 50%;
-			top: 100%;
+			left: 220%;
 
 			&.hide {
 				transition: opacity 0.25s ease-in;

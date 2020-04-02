@@ -11657,13 +11657,13 @@ legend {
 }
 
 ::-moz-selection {
-  background: rgba(15, 15, 15, 0.85);
-  color: #00864c;
+  background: #00b36580;
+  color: white;
 }
 
 ::selection {
-  background: rgba(15, 15, 15, 0.85);
-  color: #00864c;
+  background: #00b36580;
+  color: white;
 }
 
 .fas {
@@ -11934,7 +11934,7 @@ input[type=file] {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   border: 2px solid #00b365;
-  background: #2c2c3580;
+  background: #000000f2;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
@@ -11942,11 +11942,11 @@ input[type=file] {
   padding: 0.5rem;
   display: -webkit-box;
   display: flex;
+  bottom: 150%;
   width: 12rem;
   opacity: 1;
   z-index: 5;
-  left: 50%;
-  top: 100%;
+  left: 220%;
 }
 
 .pagination .item-wrapper .pagination-go.hide {
