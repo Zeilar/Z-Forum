@@ -106,8 +106,14 @@
 	</div>
 
 	<script>
-		$('.sidebar-legend-fixer').each(function() {
-			$(this).css('width', `${$(this).parent().siblings('legend').outerWidth()}px`);
-		});
+		// Need to let everything load for some reason
+		$(document).ready(() => {
+			// Since double border in fieldset doesn't work, this will have to do
+			$('.sidebar-legend-fixer').each(function() {
+				let width = $(this).parent().siblings('legend').outerWidth();
+				console.log(width);
+				$(this).css('width', `${width}px`);
+			});
+		})
 	</script>
 @endempty
