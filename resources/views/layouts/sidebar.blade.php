@@ -111,7 +111,6 @@
 			// Since double border in fieldset doesn't work, this will have to do
 			$('.sidebar-legend-fixer').each(function() {
 				let width = $(this).parent().siblings('legend').outerWidth();
-				console.log(width);
 				$(this).css('width', `${width}px`);
 			});
 		})
