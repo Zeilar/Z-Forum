@@ -26,7 +26,11 @@
 						@if (is_user_online($post->user->id)) 
 							<p>{{ __('Online') }}</p> 
 						@else
-							<p>{{ __('Offline') }}</p> 
+							<p class="is_offline">{{ __('Offline') }}</p>
+							@isset($post->user->last_seen)
+								@php $date = new \Carbon\Carbon($post->user->last_seen) @endphp
+								<p>{{ $date->diffForHumans() }}</p>
+							@endisset
 						@endif
 					</div>
 				</div>

@@ -21,6 +21,11 @@ class UserStatus
 		if (Auth::check()) {
 			$expiresAt = Carbon::now()->addMinutes(3);
 			Cache::put('user-online-' . Auth::user()->id, true, $expiresAt);
+			
+			// Update last seen row
+			$user = Auth::user();
+			$user->last_seen = Carbon::now();
+			$user->save();
 		}
         return $next($request);
     }

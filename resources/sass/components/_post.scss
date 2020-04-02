@@ -38,10 +38,10 @@
 			}
 
 			.post-avatar {
-				background: $darkindigo;
 				border: 2px solid $gray;
 				position: relative;
 				margin-right: 2px;
+				background: $gray;
 				padding: 2px;
 				width: 5rem;
 
@@ -92,13 +92,18 @@
 					}
 
 					p, span {
-						font-size: 0.9rem;
+						font-size: 0.8rem;
 					}
 
 					p {
 						margin: 0 auto;
 						display: flex;
 						z-index: 2;
+
+						&.is_offline {
+							font-weight: bold;
+							font-size: 0.9rem;
+						}
 					}
 				}
 			}
