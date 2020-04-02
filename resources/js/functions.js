@@ -71,28 +71,14 @@ class Functions {
 		});
 	}
 
-	// Search input sliding animation
+	// Navbar search bar animation
 	static searchAnimate() {
-		$('.nav-search, .search-animate').click(function() {
-			$('.search-animate').siblings('.wrapper').addClass('show');
-			$('.nav-search').addClass('show');
-
-			setTimeout(() => {
-				$('#search').focus();
-				$('.search-animate').attr('type', 'submit');
-			}, 500);
+		$('.nav-search').click(function() {
+			$(this).addClass('active');
 		});
 
-		$(window).click(function(e) {
-			let search = $('.nav-search');
-			if (e.target !== search[0] && e.target !== $('#search')[0] && e.target !== $('.search-animate')[0]) {
-				$('#search').blur();
-				search.children('.wrapper').removeClass('show');
-				setTimeout(() => {
-					$('.nav-search').removeClass('show');
-				}, 300);
-				search.find('.search-animate').attr('type', 'button');
-			}
+		$(document).click(function(e) {
+			if (e.target !== $('#search')[0]) $('.nav-search').removeClass('active');
 		});
 	}
 }

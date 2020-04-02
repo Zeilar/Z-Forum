@@ -33,49 +33,49 @@
 
 		form {
 			.nav-search {
-				transition: border-right 0.1s linear;
-				border-right: 2px solid transparent;
-				border-radius: 0.25rem;
 				margin-left: 2.5rem;
 				position: relative;
 				overflow: hidden;
 				width: 20vw;
-
-				&.show {
-					border-right: 2px solid $green;
+				
+				&::before {
+					transition: width 0.25s ease-in-out;
+					border-bottom: 2px solid $turqoise;
+					border-top: 2px solid transparent;
+					pointer-events: none;
+					position: absolute;
+					height: 100%;
+					content: '';
+					z-index: 1;
+					bottom: 0;
+					width: 0;
+					left: 0;
 				}
 
-				.wrapper {
-					transition: 
-						transform 0.2s linear,
-						border-left 0.1s linear 0.2s,
-						border-top 0.2s linear 0.2s;
-
-					border-left: 2px solid transparent;
-					border-top: 2px solid transparent;
-					border-bottom: 2px solid $green;
-					transform: translateX(100%);
-					border-radius: 0.25rem;
-					display: flex;
-
-					&.show {
-						border-left: 2px solid $green;
-						border-top: 2px solid $green;
-						transform: translateX(0);
+				&.active {
+					&::before {
+						width: 100%;
 					}
 
-					#search {
-						padding: 0.35rem 2rem 0.35rem 0.35rem;
-						background: transparent;
-						color: white;
-						width: 100%;
-						outline: 0;
-						border: 0;
+					.search-animate i {
+						color: $turqoise;
+					}
+				}
 
-						&::placeholder {
-							color: white;
-							opacity: 0.25;
-						}
+				#search {
+					border: 0;
+					border-top: 2px solid transparent;
+					padding: 0.25rem 1.5rem 0.25rem 0;
+					border-bottom: 2px solid $green;
+					background: transparent;
+					position: relative;
+					color: white;
+					width: 100%;
+					outline: 0;
+
+					&::placeholder {
+						color: white;
+						opacity: 0.25;
 					}
 				}
 
@@ -91,8 +91,8 @@
 					right: 0;
 
 					i {
+						transition: color 0.25s ease-in-out;
 						pointer-events: none;
-						margin-right: 0.5rem;
 						background: black;
 						align-self: center;
 						font-size: 1rem;

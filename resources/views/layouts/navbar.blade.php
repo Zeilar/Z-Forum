@@ -40,10 +40,8 @@
 			<form action="{{route('search')}}" method="get">
 				@csrf
 				<div class="nav-search">
-					<div class="wrapper">
-						<input type="text" name="search" id="search" />
-					</div>
-					<button class="search-animate" type="button">
+					<input type="text" name="search" id="search" autocomplete="off" />
+					<button class="search-animate" type="submit">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>

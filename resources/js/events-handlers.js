@@ -25,8 +25,8 @@ Functions.navSlide();
 Click
 -----------------------------------------------
 */
-Functions.openFolder();
 Functions.searchAnimate();
+Functions.openFolder();
 
 // Password revealer button
 $('.password-revealer').click(function() {
