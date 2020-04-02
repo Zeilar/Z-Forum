@@ -52,7 +52,7 @@
 					left: 0;
 				}
 
-				&.active {
+				&.active, &:hover {
 					&::before {
 						width: 100%;
 					}

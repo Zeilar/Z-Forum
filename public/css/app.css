@@ -12974,11 +12974,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   left: 0;
 }
 
-.navbar #navbar-container form .nav-search.active::before {
+.navbar #navbar-container form .nav-search.active::before,
+.navbar #navbar-container form .nav-search:hover::before {
   width: 100%;
 }
 
-.navbar #navbar-container form .nav-search.active .search-animate i {
+.navbar #navbar-container form .nav-search.active .search-animate i,
+.navbar #navbar-container form .nav-search:hover .search-animate i {
   color: #00ffff;
 }
 
