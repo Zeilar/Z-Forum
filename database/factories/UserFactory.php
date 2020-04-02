@@ -20,7 +20,7 @@ use App\User;
 
 $factory->define(User::class, function(Faker $faker) {
     return [
-        'username' 			=> $faker->name,
+        'username' 			=> $faker->username,
         'email' 			=> $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' 			=> Hash::make('123'),
