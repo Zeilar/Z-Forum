@@ -28,7 +28,6 @@
 						@else
 							<p>{{ __('Offline') }}</p> 
 						@endif
-						<p>{{ __('Posts: ') . count($post->user->posts) }}</p>
 					</div>
 				</div>
 			</a>

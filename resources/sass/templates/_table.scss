@@ -35,16 +35,16 @@
 		.table-row {
 			transition: background 0.1s ease-in-out;
 			background: $darkindigo;
-			color: $lightgray;
 			margin: 0.25rem;
 			padding: 1rem;
+			color: $white;
 			opacity: 0;
 
 			&.admin-post {
 				background: linear-gradient(to right, $superadmin, $gray);
 				
 				&:hover {
-					background: linear-gradient(to right, #0084ff80, #62627580);
+					background: linear-gradient(to right, #ff481040, #57576880);
 				}
 			}
 
