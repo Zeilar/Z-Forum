@@ -106,13 +106,10 @@
 	</div>
 
 	<script>
-		// Need to let everything load for some reason
-		$(document).ready(() => {
-			// Since double border in fieldset doesn't work, this will have to do
-			$('.sidebar-legend-fixer').each(function() {
-				let width = $(this).parent().siblings('legend').outerWidth();
-				$(this).css('width', `${width}px`);
-			});
-		})
+		// Since double border in fieldset doesn't work, this will have to do
+		$('.sidebar-legend-fixer').each(function() {
+			let width = $(this).parent().siblings('legend').outerWidth();
+			$(this).css('width', `${width}px`);
+		});
 	</script>
 @endempty
