@@ -11675,6 +11675,10 @@ legend {
   position: relative;
 }
 
+.content-upper .tox-tinymce {
+  margin-top: 1rem;
+}
+
 .crud-toolbar {
   border: 1px solid #00b365;
   background: #2c2c3580;

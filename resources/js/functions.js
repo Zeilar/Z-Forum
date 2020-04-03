@@ -81,21 +81,6 @@ class Functions {
 			if (e.target !== $('#search')[0]) $('.nav-search').removeClass('active');
 		});
 	}
-
-	// Reply button scroll and editor focus
-	static replyButton() {
-		$('.reply-button').click(function() {
-			// Get position of quick reply and scroll to it
-			let position = $('#quick-reply').position();
-			window.scrollTo(position.left, position.top);
-
-			// Since it's an iframe we need to access it this way before doing .focus()
-			let iframe = $('#quick-reply iframe')[0];
-			let iframeWindow = iframe.contentWindow.document;
-
-			$(iframeWindow).find('body').focus();
-		});
-	}
 }
 
 // Important that this happens after class declaration

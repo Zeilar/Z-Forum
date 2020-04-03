@@ -40,11 +40,28 @@
 
 	<div class="pagination-upper">
 		{{ $posts->links('layouts.pagination') }}
-		
+
 		<button class="reply-button btn btn-success-full" type="button">
 			{{ __('Reply') }}
 		</button>
 	</div>
+
+	@auth
+		@can('create', [App\Post::class, $thread])
+			<form class="d-none" id="reply-form" action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
+				@csrf
+				<textarea class="d-none" id="thread-reply"></textarea>
+				<div class="post-toolbar">
+					<button class="btn btn-success-full spin reply-save" disabled>
+						<span>{{ __('Send') }}</span>
+					</button>
+					<button class="btn btn-default reply-cancel" type="button">
+						<span>{{ __('Cancel') }}</span>
+					</button>
+				</div>
+			</form>
+		@endcan
+	@endauth
 @endsection
 
 @section('content')
@@ -94,6 +111,56 @@
 						});
 					}
 				}, 50);
+
+				let interval2 = setInterval(() => {
+					if ($('.content-upper').find('iframe').length) {
+						clearInterval(interval2);
+						let iframe = $('.content-upper').find('iframe')[0];
+						let iframeWindow = iframe.contentWindow.document;
+						let input = $(iframeWindow).find('body');
+
+						input.on('input change', function() {
+							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
+								$('.reply-save').removeAttr('disabled');
+							} else {
+								$('.reply-save').attr('disabled', true);
+							}
+						});
+					}
+				}, 50);
+
+				$('.reply-button').click(function() {
+					// Spawn dummy textarea for TinyMCE if it doesn't already exist, then spawn the editor
+					if ($('#reply-form').hasClass('d-none')) {
+						$('#reply-form').removeClass('d-none');
+					}
+					
+					tinymce.init({
+						selector: '#thread-reply',
+						plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+						toolbar_mode: 'floating',
+					});
+
+					// Since the callback doesn't work we have to check until the editor is initialized
+					let interval = setInterval(() => {
+						// We have found the editor
+						if ($('.content-upper .tox-tinymce').length) {
+							// Since it's an iframe we need to access it this way before doing .focus()
+							let iframe = $('.content-upper iframe')[0];
+							let iframeWindow = iframe.contentWindow.document;
+
+							$(iframeWindow).find('body').focus();
+
+							clearInterval(interval);
+						}
+					}, 50);
+				});
+
+				$('.reply-cancel').click(function() {
+					// Reset things
+					$('.reply-button').removeClass('d-none');
+					$('#reply-form').addClass('d-none');
+				});
 			</script>
 		@endcan
 
@@ -153,7 +220,7 @@
 								<button class="btn btn-success-full spin thread-save">
 									<span>Save</span>
 								</button>
-								<button class="btn btn-default spin thread-cancel">
+								<button class="btn btn-default thread-cancel">
 									<span>Cancel</span>
 								</button>
 							</div>

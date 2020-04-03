@@ -26,7 +26,6 @@ Click
 -----------------------------------------------
 */
 Functions.searchAnimate();
-Functions.replyButton();
 Functions.openFolder();
 
 // Password revealer button

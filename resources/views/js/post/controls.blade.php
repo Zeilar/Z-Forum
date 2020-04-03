@@ -41,7 +41,7 @@
 							<button class="btn btn-success-full spin post-save">
 								<span>Save</span>
 							</button>
-							<button class="btn btn-default spin post-cancel">
+							<button class="btn btn-default post-cancel">
 								<span>Cancel</span>
 							</button>
 						</div>
