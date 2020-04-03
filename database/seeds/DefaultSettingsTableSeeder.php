@@ -12,10 +12,6 @@ class DefaultSettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        DefaultSettings::create([
-			'settings' => '{
-				"posts_per_page": 5
-			}',
-		]);
+        DefaultSettings::create();
     }
 }

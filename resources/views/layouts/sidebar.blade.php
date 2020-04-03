@@ -97,7 +97,7 @@
 				@else
 					<div class="sidebar-offline">
 						<p>{{ __('No moderator is online 👻') }}</p>
-						<span>{{ __('Contact:') }}</span>
+						<span><i class="far fa-envelope"></i></span>
 						<a href="mailto:admin@zforum.nu" target="_blank">admin@zforum.nu</a>
 					</div>
 				@endif

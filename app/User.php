@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $attributes = [
         'settings' => '{
-			"posts_per_page": 5
+			"posts_per_page": 20
 		}',
 		'avatar' => 'default.png',
 		'role' => 'member',
