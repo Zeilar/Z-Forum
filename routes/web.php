@@ -51,6 +51,9 @@ Route::put('/dashboard/account/update', 'AccountController@update')->name('dashb
 Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('dashboard_superadmin');
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
 
+// Tools
+Route::post('/mark_as_read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
+
 // Auth
 Route::get('/login', 'AuthController@admin_login_page')->name('admin_login_page');
 Route::post('/login_admin', 'AuthController@admin_login')->name('admin_login');

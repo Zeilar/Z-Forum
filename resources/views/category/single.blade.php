@@ -10,6 +10,8 @@
 @endsection
 
 @section('content')
+	<button class="btn btn-success-full mark-as-read">{{ __('Mark all as read') }}</button>
+
 	<div id="table">
 		<div class="table-group">
 			@component('components.table-header')
@@ -104,4 +106,27 @@
 			<span>{{ __('Create new subcategory') }}</span>
 		</a>
 	@endcan
+
+	@auth
+		@include('js.fetch')
+
+		<script>
+			$('.mark-as-read').click(async function() {
+				let response = await fetch('{{ route("mark_as_read", ["category_id", $category->id]) }}', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRF-Token': '{{ csrf_token() }}',
+					},
+				})
+				.then(response => {
+					$('.folder').removeClass('fa-folder').addClass('fa-folder-open');
+					$('.table-row').addClass('read');
+				})
+				.catch(error => {
+					console.log(error);
+				});
+			});
+		</script>
+	@endauth
 @endsection
