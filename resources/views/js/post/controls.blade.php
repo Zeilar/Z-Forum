@@ -49,6 +49,8 @@
 								`);
 							}
 
+							$(`#${selector} .edit-message`).focus();
+
 							clearInterval(interval);
 						}
 					}, 50);
