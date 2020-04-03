@@ -10,6 +10,8 @@
 @endsection
 
 @section('content')
+	<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+
 	<div id="table">
 		<div class="table-group">
 			@component('components.table-header')
@@ -97,4 +99,17 @@
 	<a class="btn btn-success-full" href="{{route('thread_create', [$subcategory->id, $subcategory->slug])}}">
 		<span>{{ __('Create new thread') }}</span>
 	</a>
+
+	@auth
+		@php $collection = 'subcategory_id' @endphp
+		@php $id = $subcategory->id @endphp
+
+		@include('js.mark-as-read')
+
+		<script>
+			$('.mark-as-read').click(async function() {
+				mark_as_read();
+			});
+		</script>
+	@endauth
 @endsection

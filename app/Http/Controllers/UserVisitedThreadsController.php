@@ -28,7 +28,8 @@ class UserVisitedThreadsController extends Controller
 		}
 
 		return response()->json([
-			'type' => 'success',
+			'type'	  => 'success',
+			'message' => __('Threads were marked as read'),
 		]);
 	}
 }
