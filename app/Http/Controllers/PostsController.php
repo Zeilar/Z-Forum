@@ -62,53 +62,6 @@ class PostsController extends Controller
 		
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, int $id)
-    {
-		$this->authorize('update', Post::class);
-
-		request()->validate([
-			'content' => 'required|max:500'
-		]);
-
-		$post = Post::find($id);
-		$post->content = request('content');
-		$post->save();
-
-		return redirect(route('post_show', [$post->thread->id, $post->thread->slug, $post->id]));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(int $id)
-    {
-		$this->authorize('delete', Post::class);
-
-		$post = Post::find($id);
-		$thread = $post->thread;
-
-		if (count($thread->posts) <= 1) {
-			$subcategory = $thread->subcategory;
-			$thread->delete();
-			$post->delete();
-			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
-		}
-
-		$post->delete();
-		
-		return redirect(route('thread_show', [$thread->id, $thread->slug]));
-    }
-
 	/**
      * Update the specified resource in storage, using AJAX.
      *
@@ -138,13 +91,10 @@ class PostsController extends Controller
 				'type'    => 'error',
 				'message' => __('That post does not belong to you, contact an administrator if you believe this is false'),
 			]);
-		} else if (request('content') === Post::find(request('id'))->content) {
-			return response()->json([
-				'type' => 'none',
-			]);
 		} else {
 			$post = Post::find(request('id'));
 			$post->content = request('content');
+			$post->edited_by_message = request('edit_message');
 		
 			$post->save();
 
@@ -158,10 +108,11 @@ class PostsController extends Controller
 			}
 
 			return response()->json([
-				'type'	  	=> 'success',
-				'message' 	=> __('Post was successfully changed'),
-				'content' 	=> $post->content,
-				'edited_by' => $post->edited_by,
+				'type'	  			=> 'success',
+				'message' 			=> __('Post was successfully changed'),
+				'content' 			=> $post->content,
+				'edited_by'		    => $post->edited_by,
+				'edited_by_message' => $post->edited_by_message,
 			]);
 		}
     }

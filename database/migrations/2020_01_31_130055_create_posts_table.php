@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
 			$table->text('content');
 			$table->string('edited_by')->nullable();
+			$table->string('edited_by_message')->nullable();
 			$table->unsignedInteger('thread_id');
 			$table->unsignedInteger('user_id');
 			$table->unsignedInteger('subcategory_id');

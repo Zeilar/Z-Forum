@@ -30,6 +30,25 @@
 								'line-height': '1.5',
 							});
 
+							// Spawn the edit message row
+							if (!$(`#${selector}`).find('.post-edited-by').length) {
+								$(`#${selector} .tox-tinymce`).after(`
+									<div class="post-edited-by">
+										<div class="edit-title">
+											<span>Reason</span>
+										</div>
+										<input type="text" class="edit-message" />
+									</div>
+								`);
+							} else {
+								$(`#${selector} .post-edited-by`).html(`
+									<div class="edit-title">
+										<span>Reason</span>
+									</div>
+									<input type="text" class="edit-message" />
+								`);
+							}
+
 							clearInterval(interval);
 						}
 					}, 50);
@@ -64,6 +83,8 @@
 				// Save the edited post and reset elements to how they were before, but with the updated post content
 				function post_save(element, original, e) {
 					let id = element.parents('.post').attr('id');
+					let edit_message = element.parents('.post').find('.post-edited-by input').val();
+					if (edit_message === '') edit_message = false;
 
 					// Find TinyMCE content inside iframe
 					let iframe = element.parents('.post').find('iframe')[0];
@@ -77,19 +98,26 @@
 						data: {
 							_token: '{{ Session::token() }}',
 							id: id,
-							content: content
+							content: content,
+							edit_message: edit_message
 						},
 						success: function(response) {
 							// Reset post element and remove TinyMCE editor first
 							$(`#${id}`).html(original);
 
+							// If the user left an edit message, include it in the insertion
+							let edit_message = '';
+							if (response.edited_by_message !== null) {
+								edit_message = `<p class="edited-message">"${response.edited_by_message}"</p>`;
+							}
+
 							// Insert the newly edited content into the post
 							$(`#${id} .post-body`).html(response.content);
 							if (response.edited_by) {
-								if (!$('.post-edited-by').length) {
-									$(`#${id} .post-body`).after(`<div class="post-edited-by">${response.edited_by}</div>`);
+								if ($(`#${id} .post-edited-by`).length) {
+									$(`#${id} .post-edited-by`).html(response.edited_by + edit_message);
 								} else {
-									$('.post-edited-by').html(response.edited_by);
+									$(`#${id} .post-body`).after(`<div class="post-edited-by">${response.edited_by + edit_message}</div>`);
 								}
 							}
 

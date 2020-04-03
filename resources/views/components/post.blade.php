@@ -79,6 +79,9 @@
 	@isset ($post->edited_by)
 		<div class="post-edited-by">
 			{!! $post->edited_by !!}
+			@isset($post->edited_by_message)
+				<p class="edited-message">"{{ $post->edited_by_message }}"</p>
+			@endisset
 		</div>
 	@endisset
 

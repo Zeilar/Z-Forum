@@ -237,10 +237,28 @@
 	}
 
 	.post-edited-by {
-		background: $darkindigo;
 		padding: 0.5rem 1rem;
+		flex-direction: row;
 		font-style: italic;
+		background: $gray;
+		margin-top: 2px;
 		color: $silver;
+		display: flex;
+
+		.edit-title {
+			margin-right: 1rem;
+			display: flex;
+
+			span {
+				font-style: normal;
+				color: white;
+				margin: auto;
+			}
+		}
+
+		.edited-message {
+			margin-left: 0.5rem;
+		}
 
 		.is_superadmin a {
 			color: $superadmin-fill;
@@ -248,6 +266,11 @@
 
 		.is_moderator a {
 			color: $moderator-fill;
+		}
+
+		input {
+			outline-color: $green;
+			width: 100%;
 		}
 
 		a {
