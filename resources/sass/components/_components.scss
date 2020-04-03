@@ -8,7 +8,8 @@
 }
 
 .content-upper {
-	padding: 0 42.5rem 0 20rem;
+	padding: 0 46rem 0 20rem;
+	position: relative;
 }
 
 .crud-toolbar {
@@ -53,7 +54,7 @@
 	position: fixed;
 	cursor: pointer;
 	display: flex;
-	bottom: 2rem;
+	bottom: 6rem;
 	height: 3rem;
 	width: 3rem;
 	right: 2rem;
@@ -183,6 +184,17 @@ input[type=file] {
 	top: 0;
 }
 
+.pagination-upper {
+	position: relative;
+	margin-top: 1rem;
+
+	.reply-button {
+		position: absolute !important;
+		bottom: 0;
+		right: 0;
+	}
+}
+
 .pagination {
 	margin-top: 1rem;
 
@@ -190,12 +202,15 @@ input[type=file] {
 		position: relative;
 
 		.item {
+			padding: 0 0.25rem;
 			margin-right: 0.5rem;
 			font-size: 1.15rem;
+			line-height: 1.2;
 			color: $silver;
 			display: flex;
 
 			&.active {
+				border-bottom: 2px solid $turqoise;
 				color: $turqoise;
 			}
 

@@ -28,6 +28,18 @@ Click
 Functions.searchAnimate();
 Functions.openFolder();
 
+$('.reply-button').click(function() {
+	// Get position of quick reply and scroll to it
+	let position = $('#quick-reply').position();
+	window.scrollTo(position.left, position.top);
+
+	// Since it's an iframe we need to access it this way before doing .focus()
+	let iframe = $('#quick-reply iframe')[0];
+	let iframeWindow = iframe.contentWindow.document;
+
+	$(iframeWindow).find('body').focus();
+});
+
 // Password revealer button
 $('.password-revealer').click(function() {
 	if ($(this).siblings('input').attr('type') === 'password') {

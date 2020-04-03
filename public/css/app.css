@@ -11671,7 +11671,8 @@ legend {
 }
 
 .content-upper {
-  padding: 0 42.5rem 0 20rem;
+  padding: 0 46rem 0 20rem;
+  position: relative;
 }
 
 .crud-toolbar {
@@ -11727,7 +11728,7 @@ legend {
   cursor: pointer;
   display: -webkit-box;
   display: flex;
-  bottom: 2rem;
+  bottom: 6rem;
   height: 3rem;
   width: 3rem;
   right: 2rem;
@@ -11884,6 +11885,17 @@ input[type=file] {
   top: 0;
 }
 
+.pagination-upper {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.pagination-upper .reply-button {
+  position: absolute !important;
+  bottom: 0;
+  right: 0;
+}
+
 .pagination {
   margin-top: 1rem;
 }
@@ -11893,14 +11905,17 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item {
+  padding: 0 0.25rem;
   margin-right: 0.5rem;
   font-size: 1.15rem;
+  line-height: 1.2;
   color: #a5abaf;
   display: -webkit-box;
   display: flex;
 }
 
 .pagination .item-wrapper .item.active {
+  border-bottom: 2px solid #00ffff;
   color: #00ffff;
 }
 
@@ -12320,7 +12335,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   z-index: 2;
 }
 
-.post .post-header .post-meta .post-avatar .avatar-meta p.is_offline {
+.post .post-header .post-meta .post-avatar .avatar-meta p.status {
   font-weight: bold;
   font-size: 0.9rem;
 }
@@ -13143,7 +13158,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .thread-header {
-  margin-bottom: -1rem;
   margin-top: 1rem;
 }
 
@@ -13472,14 +13486,11 @@ legend {
 
 #content {
   padding-bottom: 2rem;
-  padding-top: 2rem;
-}
-
-#content {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
   position: relative;
+  padding-top: 1rem;
   display: -webkit-box;
   display: flex;
   -webkit-box-flex: 1;

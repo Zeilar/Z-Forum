@@ -37,6 +37,14 @@
 	<div class="thread-header">
 		<h4 class="thread-title">{{ $thread->title }}</h4>
 	</div>
+
+	<div class="pagination-upper">
+		{{ $posts->links('layouts.pagination') }}
+		
+		<button class="reply-button btn btn-success-full" type="button">
+			{{ __('Reply') }}
+		</button>
+	</div>
 @endsection
 
 @section('content')
@@ -59,7 +67,7 @@
 					@csrf
 					<textarea type="text" name="content" id="form-content"></textarea>
 					@error('content') <p class="color-red">{{ $message }}</p> @enderror
-					<button class="btn post-send spin btn-success" type="submit" disabled>
+					<button class="btn post-send spin btn-success-full" type="submit" disabled>
 						<span>{{ __('Send') }}</span>
 					</button>
 				</form>

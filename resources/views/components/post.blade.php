@@ -24,14 +24,14 @@
 
 					<div class="avatar-meta">
 						@if (is_user_online($post->user->id)) 
-							<p>{{ __('Online') }}</p> 
+							<p class="status">{{ __('Online') }}</p> 
 						@else
-							<p class="is_offline">{{ __('Offline') }}</p>
-							@isset($post->user->last_seen)
-								@php $date = new \Carbon\Carbon($post->user->last_seen) @endphp
-								<p>{{ $date->diffForHumans() }}</p>
-							@endisset
+							<p class="status">{{ __('Offline') }}</p>
 						@endif
+						@isset($post->user->last_seen)
+							@php $date = new \Carbon\Carbon($post->user->last_seen) @endphp
+							<p>{{ $date->diffForHumans() }}</p>
+						@endisset
 					</div>
 				</div>
 			</a>
