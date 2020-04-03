@@ -188,6 +188,10 @@ input[type=file] {
 	position: relative;
 	margin-top: 1rem;
 
+	.pagination {
+		margin-right: 6rem;
+	}
+
 	.reply-button {
 		position: absolute !important;
 		bottom: 0;

@@ -11890,6 +11890,10 @@ input[type=file] {
   margin-top: 1rem;
 }
 
+.pagination-upper .pagination {
+  margin-right: 6rem;
+}
+
 .pagination-upper .reply-button {
   position: absolute !important;
   bottom: 0;

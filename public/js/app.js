@@ -37141,16 +37141,8 @@ Click
 */
 
 _functions__WEBPACK_IMPORTED_MODULE_0__["default"].searchAnimate();
-_functions__WEBPACK_IMPORTED_MODULE_0__["default"].openFolder();
-$('.reply-button').click(function () {
-  // Get position of quick reply and scroll to it
-  var position = $('#quick-reply').position();
-  window.scrollTo(position.left, position.top); // Since it's an iframe we need to access it this way before doing .focus()
-
-  var iframe = $('#quick-reply iframe')[0];
-  var iframeWindow = iframe.contentWindow.document;
-  $(iframeWindow).find('body').focus();
-}); // Password revealer button
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].replyButton();
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].openFolder(); // Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37453,6 +37445,20 @@ function () {
       });
       $(document).click(function (e) {
         if (e.target !== $('#search')[0]) $('.nav-search').removeClass('active');
+      });
+    } // Reply button scroll and editor focus
+
+  }, {
+    key: "replyButton",
+    value: function replyButton() {
+      $('.reply-button').click(function () {
+        // Get position of quick reply and scroll to it
+        var position = $('#quick-reply').position();
+        window.scrollTo(position.left, position.top); // Since it's an iframe we need to access it this way before doing .focus()
+
+        var iframe = $('#quick-reply iframe')[0];
+        var iframeWindow = iframe.contentWindow.document;
+        $(iframeWindow).find('body').focus();
       });
     }
   }]);
