@@ -50,7 +50,7 @@
 		@can('create', [App\Post::class, $thread])
 			<form class="d-none" id="reply-form" action="{{route('post_store', [$thread->id, $thread->slug])}}" method="POST">
 				@csrf
-				<textarea class="d-none" id="thread-reply"></textarea>
+				<textarea class="d-none" id="thread-reply" name="content"></textarea>
 				<div class="post-toolbar">
 					<button class="btn btn-success-full spin reply-save" disabled>
 						<span>{{ __('Send') }}</span>
