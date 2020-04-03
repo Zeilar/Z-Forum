@@ -251,6 +251,7 @@
 
 			span {
 				font-style: normal;
+				font-size: 1rem;
 				color: white;
 				margin: auto;
 			}
@@ -276,6 +277,10 @@
 			color: white;
 			width: 100%;
 			outline: 0;
+
+			&:focus {
+				border-color: $green;
+			}
 		}
 
 		a {

@@ -12524,6 +12524,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .post .post-edited-by .edit-title span {
   font-style: normal;
+  font-size: 1rem;
   color: white;
   margin: auto;
 }
@@ -12548,6 +12549,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
   width: 100%;
   outline: 0;
+}
+
+.post .post-edited-by input:focus {
+  border-color: #00b365;
 }
 
 .post .post-edited-by a {
