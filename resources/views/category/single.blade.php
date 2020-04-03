@@ -108,24 +108,14 @@
 	@endcan
 
 	@auth
-		@include('js.fetch')
+		@php $collection = 'category_id' @endphp
+		@php $id = $category->id @endphp
+
+		@include('js.mark-as-read')
 
 		<script>
 			$('.mark-as-read').click(async function() {
-				let response = await fetch('{{ route("mark_as_read", ["category_id", $category->id]) }}', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'X-CSRF-Token': '{{ csrf_token() }}',
-					},
-				})
-				.then(response => {
-					$('.folder').removeClass('fa-folder').addClass('fa-folder-open');
-					$('.table-row').addClass('read');
-				})
-				.catch(error => {
-					console.log(error);
-				});
+				mark_as_read();
 			});
 		</script>
 	@endauth
