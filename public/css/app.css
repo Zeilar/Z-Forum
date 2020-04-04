@@ -11714,6 +11714,14 @@ legend {
   color: #00b365;
 }
 
+.breadcrumb .active {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
 #scroller {
   -webkit-transition: opacity 0.25s linear;
   transition: opacity 0.25s linear;

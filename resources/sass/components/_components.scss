@@ -43,6 +43,13 @@
 	a, a:visited {
 		color: $green;
 	}
+
+	.active {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		flex: 1;
+	}
 }
 
 #scroller {
