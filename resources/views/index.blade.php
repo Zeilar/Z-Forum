@@ -28,6 +28,7 @@
 				@endcomponent
 
 				@foreach ($category->subcategories as $subcategory)
+					@php $latest_post = $subcategory->posts()->latest()->get()->take(1)[0] @endphp
 					@auth
 						{{-- Check if user has any read thread in the subcategory --}}
 						@php $read = true @endphp
@@ -35,7 +36,6 @@
 							@if (!in_array($thread->id, $visitedThreadsIds))
 								@php $read = false @endphp
 							@else
-								@php $latest_post = $thread->posts()->latest()->get()->take(1)[0] @endphp
 								@php $visited = auth()->user()->visited_threads->where('thread_id', $latest_post->thread->id) @endphp
 								@foreach ($visited as $item)
 									@if (strtotime($item->updated_at) - strtotime($latest_post->created_at) <= 0)
@@ -67,22 +67,19 @@
 						@endslot
 
 						@slot('latest_post')
-							@foreach ($subcategory->posts()->latest()->get() as $post)
-								@isset($post->thread)
-									<a href="{{
-										route('post_show', [
-											$post->thread->id,
-											$post->thread->slug,
-											get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
-											$post->id,
-										])
-									}}">
-										{{ pretty_date($post->updated_at) }}
-										<i class="fas fa-sign-in-alt"></i>
-									</a>
-									@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
-								@endisset
-							@endforeach
+							@isset($latest_post->thread)
+								<a href="{{
+									route('post_show', [
+										$latest_post->thread->id,
+										$latest_post->thread->slug,
+										get_item_page_number($latest_post->thread->posts->sortBy('created_at'), $latest_post->id, settings_get('posts_per_page')),
+										$latest_post->id,
+									])
+								}}">
+									{{ pretty_date($latest_post->updated_at) }}
+									<i class="fas fa-sign-in-alt"></i>
+								</a>
+							@endisset
 						@endslot
 					@endcomponent
 				@endforeach {{-- $subcategories --}}
