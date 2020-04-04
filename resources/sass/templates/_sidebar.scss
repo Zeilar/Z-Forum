@@ -7,32 +7,6 @@
 	width: 20vw;
 	top: 5.5rem;
 
-	.sidebar-border {
-		height: calc(100% - 1rem - 1px);
-		border: 4px solid black;
-		top: calc(0.5rem + 1px);
-		border-radius: 0.25rem;
-		position: absolute;
-		margin: 0.5rem 0;
-		z-index: -1;
-		width: 100%;
-		left: 0;
-
-		.sidebar-legend-fixer {
-			background: $darkindigo;
-			position: absolute;
-			width: 10px;
-			height: 4px;
-			left: 4px;
-			top: -4px;
-		}
-	}
-
-	legend {
-		padding: 0 0.25rem;
-		z-index: 2;
-	}
-
 	.sidebar-item {
 		border: 2px solid $green;
 		background: $darkindigo;
@@ -40,6 +14,36 @@
 		margin-bottom: 1rem;
 		position: relative;
 		z-index: 1;
+
+		.sidebar-border {
+			height: calc(100% - 1rem - 1px);
+			border: 4px solid black;
+			top: calc(0.5rem + 1px);
+			border-radius: 0.25rem;
+			position: absolute;
+			margin: 0.5rem 0;
+			z-index: -1;
+			width: 100%;
+			left: 0;
+
+			.sidebar-legend-fixer {
+				background: $darkindigo;
+				position: absolute;
+				width: 10px;
+				height: 4px;
+				left: 4px;
+				top: -4px;
+			}
+		}
+
+		legend {
+			padding: 0 0.25rem;
+			z-index: 2;
+		}
+
+		.sidebar-item-content {
+			padding: 0 0.5rem 0.5rem 0.5rem;
+		}
 
 		&.welcome {
 			.wrapper {
@@ -122,6 +126,10 @@
 				margin-bottom: 0.5rem;
 				white-space: nowrap;
 				display: flex;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
 
 				.thread {
 					text-overflow: ellipsis;

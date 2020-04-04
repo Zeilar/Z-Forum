@@ -12857,7 +12857,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   top: 5.5rem;
 }
 
-#sidebar .sidebar-border {
+#sidebar .sidebar-item {
+  border: 2px solid #00b365;
+  background: #2c2c3580;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+#sidebar .sidebar-item .sidebar-border {
   height: calc(100% - 1rem - 1px);
   border: 4px solid black;
   top: calc(0.5rem + 1px);
@@ -12869,7 +12878,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   left: 0;
 }
 
-#sidebar .sidebar-border .sidebar-legend-fixer {
+#sidebar .sidebar-item .sidebar-border .sidebar-legend-fixer {
   background: #2c2c3580;
   position: absolute;
   width: 10px;
@@ -12878,18 +12887,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   top: -4px;
 }
 
-#sidebar legend {
+#sidebar .sidebar-item legend {
   padding: 0 0.25rem;
   z-index: 2;
 }
 
-#sidebar .sidebar-item {
-  border: 2px solid #00b365;
-  background: #2c2c3580;
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 1;
+#sidebar .sidebar-item .sidebar-item-content {
+  padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
 #sidebar .sidebar-item.welcome .wrapper {
@@ -12974,6 +12978,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   white-space: nowrap;
   display: -webkit-box;
   display: flex;
+}
+
+#sidebar .sidebar-item.latest-posts .latest-posts-item:last-child {
+  margin-bottom: 0;
 }
 
 #sidebar .sidebar-item.latest-posts .latest-posts-item .thread {

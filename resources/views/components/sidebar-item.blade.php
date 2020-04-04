@@ -8,6 +8,8 @@
 	@endisset
 
 	@isset($content)
-		{{ $content }}
+		<div class="sidebar-item-content">
+			{{ $content }}
+		</div>
 	@endisset
 </fieldset>
