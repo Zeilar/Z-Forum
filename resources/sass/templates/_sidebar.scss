@@ -116,5 +116,23 @@
 		.is_moderator {
 			color: $moderator-fill;
 		}
+
+		&.latest-posts {
+			.latest-posts-item {
+				margin-bottom: 0.5rem;
+				white-space: nowrap;
+				display: flex;
+
+				.thread {
+					text-overflow: ellipsis;
+					padding-left: 0.25rem;
+					overflow: hidden;
+				}
+
+				i {
+					margin: auto 0;
+				}
+			}
+		}
 	}
 }

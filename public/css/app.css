@@ -12969,6 +12969,23 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #97008a;
 }
 
+#sidebar .sidebar-item.latest-posts .latest-posts-item {
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: flex;
+}
+
+#sidebar .sidebar-item.latest-posts .latest-posts-item .thread {
+  text-overflow: ellipsis;
+  padding-left: 0.25rem;
+  overflow: hidden;
+}
+
+#sidebar .sidebar-item.latest-posts .latest-posts-item i {
+  margin: auto 0;
+}
+
 .navbar {
   box-shadow: 0 0 10px 5px black;
   border-bottom: 2px solid #00b365;

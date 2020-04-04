@@ -103,6 +103,32 @@
 				@endif
 			@endslot
 		@endcomponent
+
+		@component('components.sidebar-item', ['class' => 'latest-posts'])
+				@slot('legend')
+					{{ __('Latest Posts') }}
+				@endslot
+
+				@slot('content')
+					@php $latest_posts = App\Post::all()->sortByDesc('created_at')->take(5) @endphp
+
+					@foreach ($latest_posts as $post)
+						<div class="latest-posts-item">
+							<i class="fas fa-chevron-right"></i>
+							<a class="thread" href="{{
+								route('post_show', [
+									$post->thread->id,
+									$post->thread->slug,
+									get_item_page_number($post->thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+									$post->id,
+								])
+							}}">
+								{{ $post->thread->title }}
+							</a>
+						</div>
+					@endforeach
+				@endslot
+			@endcomponent
 	</div>
 
 	<script>
