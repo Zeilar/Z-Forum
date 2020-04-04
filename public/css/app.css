@@ -11916,9 +11916,9 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item {
-  padding: 0 0.25rem;
   margin-right: 0.5rem;
   font-size: 1.15rem;
+  padding: 0 0.25rem;
   line-height: 1.2;
   color: #a5abaf;
   display: -webkit-box;
@@ -11931,11 +11931,11 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item:not(.active):hover {
-  color: white;
+  color: #00ffff;
 }
 
 .pagination .item-wrapper .item:not(.active):hover i {
-  color: white;
+  color: #00ffff;
 }
 
 .pagination .item-wrapper .item.dots {
@@ -11947,7 +11947,7 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item.dots:hover {
-  color: white;
+  color: #00ffff;
 }
 
 .pagination .item-wrapper .item i {
