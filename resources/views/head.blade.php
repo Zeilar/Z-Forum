@@ -53,26 +53,26 @@
 		{{-- Admin toolbar --}}
 		@include('layouts.toolbar')
 
-		<div class="content-upper">
-			{{-- Breadcrumbs --}}
-			@yield('breadcrumbs')
-
-			{{-- CRUD toolbar --}}
-			@yield('crudToolbar')
-
-			{{-- Thread title --}}
-			@yield('threadTitle')
-		</div>
-		
 		{{-- Main wrapper --}}
         <main class="container-fluid" id="content">
 			{{-- Main content --}}
 			<div id="main">
+				{{-- Breadcrumbs --}}
+				@yield('breadcrumbs')
+
+				{{-- CRUD toolbar --}}
+				{{-- @yield('crudToolbar') --}}
+
+				{{-- Thread title --}}
+				@yield('threadTitle')
+
             	@yield('content')
 			</div>
 
-			{{-- Right sidebar --}}
-			@include('layouts.sidebar')
+			<div class="content-upper">
+				{{-- Right sidebar --}}
+				@include('layouts.sidebar')
+			</div>
 
 			{{-- Scroll to top button --}}
 			<div id="scroller">

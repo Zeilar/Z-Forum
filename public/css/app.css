@@ -11674,15 +11674,6 @@ legend {
   margin-bottom: 1rem;
 }
 
-.content-upper {
-  padding: 0 calc(20vw + 22.5rem) 0 20rem;
-  position: relative;
-}
-
-.content-upper .tox-tinymce {
-  margin-top: 1rem;
-}
-
 .crud-toolbar {
   border: 1px solid #00b365;
   background: #2c2c3580;
@@ -11712,10 +11703,10 @@ legend {
 }
 
 .breadcrumb {
-  padding: 2rem 0 0 0;
+  margin-bottom: 2rem;
   background: none;
   color: white;
-  margin: 0;
+  padding: 0;
 }
 
 .breadcrumb a,
@@ -11895,7 +11886,7 @@ input[type=file] {
 
 .pagination-upper {
   position: relative;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .pagination-upper .pagination {
@@ -13207,7 +13198,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .thread-header {
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .thread-header .thread-title {
@@ -13508,6 +13499,10 @@ a:visited {
   color: #3490dc;
 }
 
+#reply-form {
+  margin-bottom: 1rem;
+}
+
 #app {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -13547,6 +13542,7 @@ legend {
 }
 
 #content #main {
+  padding-top: 1rem;
   -webkit-box-flex: 3;
           flex: 3;
 }

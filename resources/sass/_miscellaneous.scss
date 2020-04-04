@@ -47,6 +47,10 @@ a {
 	}
 }
 
+#reply-form {
+	margin-bottom: 1rem;
+}
+
 #app {
 	flex-direction: column;
 	display: flex;
@@ -72,6 +76,7 @@ legend {
 	flex: 1;
 
 	#main {
+		padding-top: 1rem;
 		flex: 3;
 	}
 }

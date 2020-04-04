@@ -113,9 +113,9 @@
 				}, 50);
 
 				let interval2 = setInterval(() => {
-					if ($('.content-upper').find('iframe').length) {
+					if ($('#reply-form').find('iframe').length) {
 						clearInterval(interval2);
-						let iframe = $('.content-upper').find('iframe')[0];
+						let iframe = $('#reply-form').find('iframe')[0];
 						let iframeWindow = iframe.contentWindow.document;
 						let input = $(iframeWindow).find('body');
 
@@ -144,9 +144,9 @@
 					// Since the callback doesn't work we have to check until the editor is initialized
 					let interval = setInterval(() => {
 						// We have found the editor
-						if ($('.content-upper .tox-tinymce').length) {
+						if ($('#reply-form .tox-tinymce').length) {
 							// Since it's an iframe we need to access it this way before doing .focus()
-							let iframe = $('.content-upper iframe')[0];
+							let iframe = $('#reply-form iframe')[0];
 							let iframeWindow = iframe.contentWindow.document;
 
 							$(iframeWindow).find('body').focus();
