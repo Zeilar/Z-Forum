@@ -69,10 +69,8 @@
             	@yield('content')
 			</div>
 
-			<div class="content-upper">
-				{{-- Right sidebar --}}
-				@include('layouts.sidebar')
-			</div>
+			{{-- Right sidebar --}}
+			@include('layouts.sidebar')
 
 			{{-- Scroll to top button --}}
 			<div id="scroller">
