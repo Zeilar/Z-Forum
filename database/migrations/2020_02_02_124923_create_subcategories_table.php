@@ -17,6 +17,7 @@ class CreateSubcategoriesTable extends Migration
 			$table->bigIncrements('id');
 			$table->string('title');
 			$table->string('slug');
+			$table->string('icon')->default('default.png');
 			$table->unsignedInteger('category_id');
             $table->timestamps();
         });

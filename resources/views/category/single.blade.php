@@ -51,6 +51,12 @@
 				@endauth
 
 				@component('components.table-row', ['read' => $read ?? null])
+					@isset($subcategory->icon)
+						@slot('icon')
+							{!! $subcategory->icon !!}
+						@endslot
+					@endisset
+
 					@slot('title')
 						<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
 							{{ $subcategory->title }}

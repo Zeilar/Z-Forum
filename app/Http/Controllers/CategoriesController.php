@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
@@ -30,14 +31,20 @@ class CategoriesController extends Controller
 
 		request()->validate([
 			'title' => 'required|min:3|max:40|unique:categories',
+			'icon'  => 'required',
 		]);
+
+		// Store the file and use the path for the database
+		$path = $request->file('icon')->store('/public/icons');
 
 		$category = new Category();
 		$category->title = request('title');
 		$category->slug = urlencode(request('title'));
+		$category->icon = explode('icons/', $path)[1];
 		$category->save();
 
 		return redirect()->route('category_show', [$category->id, $category->slug]);
+		
     }
 
     /**
@@ -54,4 +61,16 @@ class CategoriesController extends Controller
 			return view('errors.404', ['value' => urldecode($slug)]);
 		}
     }
+
+	/**
+     * Update the specified resource in storage, using AJAX.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+	public function update(Request $request)
+	{
+		
+	}
 }

@@ -16,8 +16,8 @@
 		}
 
 		.table-header {
-			padding: 0.5rem 1rem;
 			background: $green;
+			padding: 0 0.25rem;
 			color: white;
 
 			.table-title {
@@ -36,7 +36,6 @@
 			transition: background 0.1s ease-in-out;
 			background: $darkindigo;
 			margin: 0.25rem;
-			padding: 1rem;
 			color: $white;
 			opacity: 0;
 
@@ -105,52 +104,68 @@
 			}
 
 			.folder {
-				margin-right: 0.5rem;
+				margin: auto 0.5rem auto 0;
 				font-size: 1.5rem;
 			}
 		}
 
-		.__wrapper {
+		.table-row-content {
+			flex-direction: row;
+			padding: 1rem;
 			display: flex;
+			flex: 1;
 
-			&.table-title {
-				flex: 1;
-			}
+			.__wrapper {
+				display: flex;
 
-			&.table-views, &.table-posts {
-				width: 15%;
-			}
+				&.table-title {
+					flex: 1;
+				}
 
-			&.table-latest-post {
-				width: 20%;
+				&.table-views, &.table-posts {
+					width: 15%;
+				}
 
-				p {
-					margin-left: auto;
-					
-					a {
-						&:hover {
-							i, a {
-								color: $turqoise;
-							}
-						}
+				&.table-latest-post {
+					width: 20%;
+
+					p {
+						margin-left: auto;
 						
-						&:visited {
+						a {
 							&:hover {
-								i {
+								i, a {
 									color: $turqoise;
 								}
 							}
-						}
+							
+							&:visited {
+								&:hover {
+									i {
+										color: $turqoise;
+									}
+								}
+							}
 
-						i {
-							margin-left: 0.25rem;
+							i {
+								margin-left: 0.25rem;
+							}
 						}
 					}
 				}
-			}
 
-			i, p {
-				margin: auto 0;
+				i, p {
+					margin: auto 0;
+				}
+			}
+		}
+
+		.table-icon {
+			padding: 0.5rem;
+			width: 4rem;
+
+			img {
+				margin: auto;
 			}
 		}
 

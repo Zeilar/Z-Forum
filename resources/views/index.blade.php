@@ -20,6 +20,12 @@
 		@foreach ($tableCategories as $category)
 			<div class="table-group">
 				@component('components.table-header')
+					@isset($category->icon)
+						@slot('icon')
+							{!! $category->icon !!}
+						@endslot
+					@endisset
+				
 					@slot('title')
 						<a href="{{route('category_show', [$category->id, $category->slug])}}">
 							{{ $category->title }}
@@ -48,6 +54,12 @@
 					@endauth
 
 					@component('components.table-row', ['read' => $read ?? null])
+						@isset($subcategory->icon)
+							@slot('icon')
+								{!! $subcategory->icon !!}
+							@endslot
+						@endisset
+
 						@slot('title')
 							<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
 								{{ $subcategory->title }}
