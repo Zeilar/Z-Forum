@@ -9,7 +9,7 @@
 				@slot('content')
 					<div class="wrapper">
 						<div class="welcome-text">
-							<h5 class="sidebar-header">
+							<h5 class="sidebar-welcome-header">
 								<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
 									{{ auth()->user()->username }}
 								</a>
