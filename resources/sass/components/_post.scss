@@ -222,8 +222,10 @@
 	}
 
 	.post-signature {
-		border-top: 2px solid rgba(0, 0, 0, 0.25);
-		margin-top: 1rem;
+		border-top: 2px solid rgba(0, 0, 0, 0.5);
+		padding-top: 1rem;
+		margin-top: 2rem;
+		color: $silver;
 	}
 
 	.post-save-toolbar {
