@@ -1,4 +1,8 @@
 #table {
+	&.subcategory .table-row .table-views {
+		margin-left: 4rem;
+	}
+
 	.table-group {
 		border: 2px solid $green;
 		margin-bottom: 1rem;
@@ -15,14 +19,16 @@
 			}
 		}
 
+
 		.table-header {
 			padding: 0.5rem 0.25rem;
 			background: $green;
 			color: white;
 
 			.table-title {
-				flex: unset !important;
-				width: 50%;
+				h4 {
+					margin-left: -0.5rem;
+				}
 
 				a {
 					font-size: inherit;

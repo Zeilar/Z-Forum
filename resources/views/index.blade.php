@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-	<div id="table">
+	<div class="index" id="table">
 		@auth
 			@if (count(auth()->user()->visited_threads))
 				@foreach (auth()->user()->visited_threads as $visited_thread)

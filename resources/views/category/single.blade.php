@@ -12,7 +12,7 @@
 @section('content')
 	<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
 
-	<div id="table">
+	<div class="category" id="table">
 		<div class="table-group">
 			@component('components.table-header')
 				@slot('title')

@@ -13273,6 +13273,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin: auto;
 }
 
+#table.subcategory .table-row .table-views {
+  margin-left: 4rem;
+}
+
 #table .table-group {
   border: 2px solid #00b365;
   margin-bottom: 1rem;
@@ -13305,10 +13309,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
-#table .table-group .table-header .table-title {
-  -webkit-box-flex: unset !important;
-          flex: unset !important;
-  width: 50%;
+#table .table-group .table-header .table-title h4 {
+  margin-left: -0.5rem;
 }
 
 #table .table-group .table-header .table-title a {
