@@ -11768,7 +11768,9 @@ legend {
   border-radius: 0.25rem;
   pointer-events: none;
   padding: 0.5rem 1rem;
+  white-space: nowrap;
   position: absolute;
+  color: white;
   z-index: 9999;
   opacity: 0;
   left: 50%;
@@ -11899,12 +11901,6 @@ input[type=file] {
 
 .pagination-upper .pagination {
   margin-right: 6rem;
-}
-
-.pagination-upper .reply-button {
-  position: absolute !important;
-  bottom: 0;
-  right: 0;
 }
 
 .pagination {
@@ -12252,13 +12248,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta.is_op .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 133, 173, 0.5)), to(#2b2b34e6));
-  background: linear-gradient(to right, rgba(0, 133, 173, 0.5), #2b2b34e6);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 133, 173, 0.35)), to(#2b2b34e6));
+  background: linear-gradient(to right, rgba(0, 133, 173, 0.35), #2b2b34e6);
 }
 
 .post .post-header .post-meta.is_author .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 194, 110, 0.5)), to(#2b2b34e6));
-  background: linear-gradient(to right, rgba(0, 194, 110, 0.5), #2b2b34e6);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 194, 110, 0.35)), to(#2b2b34e6));
+  background: linear-gradient(to right, rgba(0, 194, 110, 0.35), #2b2b34e6);
 }
 
 .post .post-header .post-meta.is_superadmin .post-meta-text {
@@ -12364,16 +12360,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
   -webkit-box-flex: 1;
           flex: 1;
-}
-
-.post .post-header .post-meta .post-meta-text .post-author a,
-.post .post-header .post-meta .post-meta-text .post-author a:visited {
-  color: white;
-}
-
-.post .post-header .post-meta .post-meta-text .post-author a:hover,
-.post .post-header .post-meta .post-meta-text .post-author a:visited:hover {
-  color: #00ffff;
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-left,
@@ -13231,20 +13217,30 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   z-index: 2;
 }
 
-.thread-header {
+.reply-button {
+  position: absolute !important;
+  top: -3rem;
+  right: 0;
+}
+
+.thread {
+  position: relative;
+}
+
+.thread .thread-header {
   margin: 1rem 0;
 }
 
-.thread-header .thread-title {
+.thread .thread-header .thread-title {
   color: white;
 }
 
-.thread-header fieldset legend input {
+.thread .thread-header fieldset legend input {
   width: 100%;
   margin: 0;
 }
 
-.thread-header input {
+.thread .thread-header input {
   margin-top: 0.5rem;
 }
 

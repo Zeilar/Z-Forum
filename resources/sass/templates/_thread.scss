@@ -1,21 +1,31 @@
-.thread-header {
-	margin: 1rem 0;
+.reply-button {
+	position: absolute !important;
+	top: -3rem;
+	right: 0;
+}
 
-	.thread-title {
-		color: white;
-	}
+.thread {
+	position: relative;
 
-	fieldset {
-		legend {
-			input {
-				width: 100%;
-				margin: 0;
+	.thread-header {
+		margin: 1rem 0;
+
+		.thread-title {
+			color: white;
+		}
+
+		fieldset {
+			legend {
+				input {
+					width: 100%;
+					margin: 0;
+				}
 			}
 		}
-	}
 
-	input {
-		margin-top: 0.5rem;
+		input {
+			margin-top: 0.5rem;
+		}
 	}
 }
 

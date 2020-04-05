@@ -40,10 +40,6 @@
 
 	<div class="pagination-upper">
 		{{ $posts->links('layouts.pagination') }}
-
-		<button class="reply-button btn btn-success-full" type="button">
-			{{ __('Reply') }}
-		</button>
 	</div>
 
 	@auth
@@ -66,6 +62,10 @@
 
 @section('content')
 	<div class="thread @if ($thread->locked) locked @endif">
+		<button class="reply-button btn btn-success-full" type="button">
+			{{ __('Reply') }}
+		</button>
+
 		{{-- Don't even ask, it just works --}}
 		@php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; @endphp
 
@@ -133,6 +133,10 @@
 					// Spawn dummy textarea for TinyMCE if it doesn't already exist, then spawn the editor
 					if ($('#reply-form').hasClass('d-none')) {
 						$('#reply-form').removeClass('d-none');
+					}
+
+					if (!$(this).hasClass('d-none')) {
+						$(this).addClass('d-none');
 					}
 					
 					tinymce.init({

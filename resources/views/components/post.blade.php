@@ -57,12 +57,12 @@
 						@isset ($banner_link) 
 							{{ $banner_link }}
 						@else
-							<a class="permalink" href="{{route('post_permalink', [$post->id])}}">
+							<a class="permalink" href="{{route('post_permalink', [$post->id])}}" data-title="{{ __('Copy') }}">
 								{{ pretty_date($post->created_at) }}
 								<i class="fas fa-copy"></i>
 							</a>
 							
-							<a class="ml-2" href="{{route('post_permalink', [$post->id])}}" target="_blank">
+							<a class="ml-2" href="{{route('post_permalink', [$post->id])}}" target="_blank" data-title="{{ __('Open in new window') }}">
 								<i class="fas fa-external-link-alt"></i>
 							</a>
 						@endisset

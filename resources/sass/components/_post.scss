@@ -15,13 +15,13 @@
 
 			&.is_op {
 				.post-meta-text {
-					background: linear-gradient(to right, rgba(0, 133, 173, 0.5), $gray);
+					background: linear-gradient(to right, rgba(0, 133, 173, 0.35), $gray);
 				}
 			}
 
 			&.is_author {
 				.post-meta-text {
-					background: linear-gradient(to right, rgba(0, 194, 110, 0.5), $gray);
+					background: linear-gradient(to right, rgba(0, 194, 110, 0.35), $gray);
 				}
 			}
 
@@ -116,16 +116,6 @@
 				padding: 1rem;
 				display: flex;
 				flex: 1;
-
-				.post-author {
-					a, a:visited {
-						color: white;
-
-						&:hover {
-							color: $turqoise;
-						}
-					}
-				}
 
 				.post-meta-left, .post-meta-right {
 					margin: auto 0;
