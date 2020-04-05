@@ -11912,9 +11912,8 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item {
-  margin-right: 0.5rem;
   font-size: 1.15rem;
-  padding: 0 0.25rem;
+  padding: 0 0.15rem;
   line-height: 1.2;
   color: #a5abaf;
   display: -webkit-box;
@@ -11922,8 +11921,11 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item.active {
-  border-bottom: 2px solid #00ffff;
   color: #00ffff;
+}
+
+.pagination .item-wrapper .item.active span {
+  border-bottom: 2px solid #00ffff;
 }
 
 .pagination .item-wrapper .item:not(.active):hover {
@@ -11944,6 +11946,10 @@ input[type=file] {
 
 .pagination .item-wrapper .item.dots:hover {
   color: #00ffff;
+}
+
+.pagination .item-wrapper .item span {
+  padding: 0 0.2rem;
 }
 
 .pagination .item-wrapper .item i {
@@ -12482,6 +12488,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .post .post-body * {
   color: white;
+}
+
+.post .post-signature {
+  border-top: 2px solid rgba(0, 0, 0, 0.25);
+  margin-top: 1rem;
 }
 
 .post .post-save-toolbar {

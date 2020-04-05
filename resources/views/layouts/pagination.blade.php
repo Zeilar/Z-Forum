@@ -24,11 +24,15 @@
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
 						<div class="item-wrapper">
-                        	<a class="item active" href="{{ $url }}" aria-current="page">{{ $page }}</a>
+                        	<a class="item active" href="{{ $url }}" aria-current="page">
+								<span>{{ $page }}</span>
+							</a>
 						</div>
                     @else
 						<div class="item-wrapper">
-							<a class="item" href="{{ $url }}">{{ $page }}</a>
+							<a class="item" href="{{ $url }}">
+								<span>{{ $page }}</span>
+							</a>
 						</div>
                     @endif
                 @endforeach
