@@ -27,7 +27,7 @@ $factory->define(Post::class, function (Faker $faker) {
 	}
 	
     return [
-        'content' 		 => $faker->realText(rand(50, 400), rand(1, 4)),
+        'content' 		 => $faker->realText(rand(400, 800), rand(4, 8)),
 		'user_id' 		 => $user->id,
 		'thread_id' 	 => $thread->id,
 		'subcategory_id' => $thread->subcategory->id,

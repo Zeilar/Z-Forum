@@ -81,6 +81,20 @@ class Functions {
 			if (e.target !== $('#search')[0]) $('.nav-search').removeClass('active');
 		});
 	}
+
+	// Collapse the categories
+	static collapseCategory() {
+		$('.category-collapse').click(function() {
+			let rows = $(this).parents('.table-group').find('.subcategory-rows');
+			if (rows.hasClass('hidden')) {
+				$(this).children().removeClass('fa-plus').addClass('fa-minus');
+				rows.removeClass('hidden');
+			} else {
+				$(this).children().removeClass('fa-minus').addClass('fa-plus');
+				rows.addClass('hidden');
+			}
+		});
+	}
 }
 
 // Important that this happens after class declaration

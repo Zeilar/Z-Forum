@@ -16,4 +16,10 @@
 
 		<div class="table-latest-post __wrapper"></div>
 	</div>
+
+	@isset($collapsible)
+		<button class="category-collapse" type="button">
+			<i class="fas fa-minus"></i>
+		</button>
+	@endisset
 </div>

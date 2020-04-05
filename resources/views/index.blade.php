@@ -18,8 +18,8 @@
 		@endauth
 
 		@foreach ($tableCategories as $category)
-			<div class="table-group">
-				@component('components.table-header')
+			<div class="table-group" id="category-{{$category->id}}">
+				@component('components.table-header', ['collapsible' => true])
 					@slot('title')
 						<a href="{{route('category_show', [$category->id, $category->slug])}}">
 							{{ $category->title }}
@@ -27,74 +27,76 @@
 					@endslot
 				@endcomponent
 
-				@foreach ($category->subcategories as $subcategory)
-					@php $latest_post = $subcategory->posts()->latest()->get()->take(1)[0] @endphp
-					@auth
-						{{-- Check if user has any read thread in the subcategory --}}
-						@php $read = true @endphp
-						@foreach ($subcategory->threads as $thread)
-							@if (!in_array($thread->id, $visitedThreadsIds))
-								@php $read = false @endphp
-							@else
-								@php $visited = auth()->user()->visited_threads->where('thread_id', $latest_post->thread->id) @endphp
-								@foreach ($visited as $item)
-									@if (strtotime($item->updated_at) - strtotime($latest_post->created_at) <= 0)
-										@php $read = false @endphp
-										@break
-									@endif
-								@endforeach
-							@endif
-						@endforeach
-					@endauth
-
-					@component('components.table-row', ['read' => $read ?? null])
-						@isset($subcategory->icon)
-							@slot('icon')
-								{!! $subcategory->icon !!}
-							@endslot
-						@endisset
-
-						@slot('title')
-							<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
-								{{ $subcategory->title }}
-							</a>
-						@endslot
-
-						@slot('views')
-							@php $views = 0; @endphp
+				<div class="subcategory-rows">
+					@foreach ($category->subcategories as $subcategory)
+						@php $latest_post = $subcategory->posts()->latest()->get()->take(1)[0] @endphp
+						@auth
+							{{-- Check if user has any read thread in the subcategory --}}
+							@php $read = true @endphp
 							@foreach ($subcategory->threads as $thread)
-								@php $views += $thread->views @endphp
+								@if (!in_array($thread->id, $visitedThreadsIds))
+									@php $read = false @endphp
+								@else
+									@php $visited = auth()->user()->visited_threads->where('thread_id', $latest_post->thread->id) @endphp
+									@foreach ($visited as $item)
+										@if (strtotime($item->updated_at) - strtotime($latest_post->created_at) <= 0)
+											@php $read = false @endphp
+											@break
+										@endif
+									@endforeach
+								@endif
 							@endforeach
-							{{ $views }}
-						@endslot
+						@endauth
 
-						@slot('posts')
-							{{ count($subcategory->posts) }}
-						@endslot
-
-						@slot('latest_post')
-							@isset($latest_post->thread)
-								<a href="{{
-									route('post_show', [
-										$latest_post->thread->id,
-										$latest_post->thread->slug,
-										get_item_page_number($latest_post->thread->posts->sortBy('created_at'), $latest_post->id, settings_get('posts_per_page')),
-										$latest_post->id,
-									])
-								}}">
-									{{ pretty_date($latest_post->updated_at) }}
-									<i class="fas fa-sign-in-alt"></i>
-								</a>
-								<p>
-									<span>{{ __('By') }}</span>
-									<a class="posted-by {{role_coloring($latest_post->user->role)}}" href="{{route('user_show', [$latest_post->user->id])}}">
-										{{ $latest_post->user->username }}
-									</a>
-								</p>
+						@component('components.table-row', ['read' => $read ?? null])
+							@isset($subcategory->icon)
+								@slot('icon')
+									{!! $subcategory->icon !!}
+								@endslot
 							@endisset
-						@endslot
-					@endcomponent
-				@endforeach {{-- $subcategories --}}
+
+							@slot('title')
+								<a href="{{route('subcategory_show', [$subcategory->id, $subcategory->slug])}}">
+									{{ $subcategory->title }}
+								</a>
+							@endslot
+
+							@slot('views')
+								@php $views = 0; @endphp
+								@foreach ($subcategory->threads as $thread)
+									@php $views += $thread->views @endphp
+								@endforeach
+								{{ $views }}
+							@endslot
+
+							@slot('posts')
+								{{ count($subcategory->posts) }}
+							@endslot
+
+							@slot('latest_post')
+								@isset($latest_post->thread)
+									<a href="{{
+										route('post_show', [
+											$latest_post->thread->id,
+											$latest_post->thread->slug,
+											get_item_page_number($latest_post->thread->posts->sortBy('created_at'), $latest_post->id, settings_get('posts_per_page')),
+											$latest_post->id,
+										])
+									}}">
+										{{ pretty_date($latest_post->updated_at) }}
+										<i class="fas fa-sign-in-alt"></i>
+									</a>
+									<p>
+										<span>{{ __('By') }}</span>
+										<a class="posted-by {{role_coloring($latest_post->user->role)}}" href="{{route('user_show', [$latest_post->user->id])}}">
+											{{ $latest_post->user->username }}
+										</a>
+									</p>
+								@endisset
+							@endslot
+						@endcomponent
+					@endforeach {{-- $subcategories --}}
+				</div>
 			</div>
 		@endforeach {{-- $tableCategories --}}
 		

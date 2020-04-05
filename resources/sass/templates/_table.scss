@@ -22,6 +22,7 @@
 		.table-header {
 			padding: 0.5rem 0.25rem;
 			background: $green;
+			position: relative;
 			color: white;
 
 			.table-title {
@@ -129,6 +130,15 @@
 			}
 		}
 
+		.subcategory-rows {
+			transition: height 0.25s ease-in-out;
+			overflow: hidden;
+
+			&.hidden {
+				height: 0;
+			}
+		}
+
 		.table-row-content {
 			flex-direction: row;
 			padding: 1rem;
@@ -213,6 +223,16 @@
 			img {
 				margin: auto;
 			}
+		}
+
+		.category-collapse {
+			transform: translateY(-50%);
+			background: white;
+			position: absolute;
+			right: 0.5rem;
+			outline: 0;
+			border: 0;
+			top: 50%;
 		}
 
 		.th-title {

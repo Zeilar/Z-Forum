@@ -25,6 +25,7 @@ Functions.navSlide();
 Click
 -----------------------------------------------
 */
+Functions.collapseCategory();
 Functions.searchAnimate();
 Functions.openFolder();
 
