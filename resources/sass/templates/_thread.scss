@@ -7,25 +7,26 @@
 .thread {
 	position: relative;
 
-	.thread-header {
-		margin: 1rem 0;
+}
 
-		.thread-title {
-			color: white;
-		}
+.thread-header {
+	margin: 1rem 0;
 
-		fieldset {
-			legend {
-				input {
-					width: 100%;
-					margin: 0;
-				}
+	.thread-title {
+		color: white;
+	}
+
+	fieldset {
+		legend {
+			input {
+				width: 100%;
+				margin: 0;
 			}
 		}
+	}
 
-		input {
-			margin-top: 0.5rem;
-		}
+	input {
+		margin-top: 0.5rem;
 	}
 }
 

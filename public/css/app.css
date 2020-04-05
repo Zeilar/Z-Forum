@@ -13227,20 +13227,20 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   position: relative;
 }
 
-.thread .thread-header {
+.thread-header {
   margin: 1rem 0;
 }
 
-.thread .thread-header .thread-title {
+.thread-header .thread-title {
   color: white;
 }
 
-.thread .thread-header fieldset legend input {
+.thread-header fieldset legend input {
   width: 100%;
   margin: 0;
 }
 
-.thread .thread-header input {
+.thread-header input {
   margin-top: 0.5rem;
 }
 
