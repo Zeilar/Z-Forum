@@ -85,6 +85,12 @@
 									{{ pretty_date($latest_post->updated_at) }}
 									<i class="fas fa-sign-in-alt"></i>
 								</a>
+								<p>
+									<span>{{ __('By') }}</span>
+									<a class="posted-by {{role_coloring($latest_post->user->role)}}" href="{{route('user_show', [$latest_post->user->id])}}">
+										{{ $latest_post->user->username }}
+									</a>
+								</p>
 							@endisset
 						@endslot
 					@endcomponent

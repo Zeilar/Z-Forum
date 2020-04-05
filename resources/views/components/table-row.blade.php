@@ -34,7 +34,7 @@
 
 		@isset($latest_post)
 			<div class="table-latest-post __wrapper">
-				<p>{{ $latest_post }}</p>
+				<div class="latest-post">{{ $latest_post }}</div>
 			</div>
 		@endisset
 	</div>

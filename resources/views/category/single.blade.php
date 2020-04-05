@@ -89,6 +89,12 @@
 									{{ pretty_date($post->updated_at) }}
 									<i class="fas fa-sign-in-alt"></i>
 								</a>
+								<p>
+									<span>{{ __('By') }}</span>
+									<a class="posted-by {{role_coloring($post->user->role)}}" href="{{route('user_show', [$post->user->id])}}">
+										{{ $post->user->username }}
+									</a>
+								</p>
 								@break {{-- Since we're in another loop, make sure we only do this one once no matter what --}}
 							@endisset
 						@endforeach

@@ -13312,7 +13312,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #table .table-group .table-header .table-title {
   -webkit-box-flex: unset !important;
           flex: unset !important;
-  width: 50%;
+  width: 45%;
 }
 
 #table .table-group .table-header .table-title h4 {
@@ -13429,6 +13429,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row-content .__wrapper {
+  -webkit-box-align: center;
+          align-items: center;
   display: -webkit-box;
   display: flex;
 }
@@ -13444,28 +13446,53 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row-content .__wrapper.table-latest-post {
-  width: 20%;
+  width: 25%;
 }
 
-#table .table-group .table-row-content .__wrapper.table-latest-post p {
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  margin-left: auto;
+  display: -webkit-box;
+  display: flex;
+}
+
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post a {
   margin-left: auto;
 }
 
-#table .table-group .table-row-content .__wrapper.table-latest-post p a:hover i,
-#table .table-group .table-row-content .__wrapper.table-latest-post p a:hover a {
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post a:hover i,
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post a:hover a {
   color: #00ffff;
 }
 
-#table .table-group .table-row-content .__wrapper.table-latest-post p a:visited:hover i {
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post a:visited:hover i {
   color: #00ffff;
 }
 
-#table .table-group .table-row-content .__wrapper.table-latest-post p a i {
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post a i {
   margin-left: 0.25rem;
 }
 
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p .posted-by {
+  color: #3490dc;
+}
+
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p .posted-by.is_moderator {
+  color: #97008a;
+}
+
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p .posted-by.is_superadmin {
+  color: #db4416;
+}
+
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p .posted-by:hover {
+  color: #00ffff;
+}
+
 #table .table-group .table-row-content .__wrapper i,
-#table .table-group .table-row-content .__wrapper p {
+#table .table-group .table-row-content .__wrapper .latest-post {
   margin: auto 0;
 }
 

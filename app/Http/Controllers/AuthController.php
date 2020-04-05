@@ -57,7 +57,7 @@ class AuthController extends Controller
 			$request,
 			[
 				// The rules
-				'username' => 'required|string|min:3|max:30|unique:users|alpha_dash',
+				'username' => 'required|string|min:3|max:15|unique:users|alpha_dash',
 				'email'	   => 'required|string|min:3|max:30|unique:users|email',
 				'password' => 'required|string|min:6|max:30|confirmed',
 			],
