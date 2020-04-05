@@ -99,7 +99,7 @@
 	</div>
 
 	@can('create', App\Subcategory::class)
-		@component('modals.crud', ['route_name' => 'subcategory_store', 'route_values' => [$category->id, $category->slug]])
+		@component('modals.crud', ['route_name' => 'subcategory_store', 'route_values' => [$category->id, $category->slug], 'icon' => true])
 			@slot('title')
 				{{ __('Create new subcategory') }}
 			@endslot
@@ -114,6 +114,7 @@
 	@endcan
 
 	@auth
+		{{-- Which collection to mark as read --}}
 		@php $collection = 'category_id' @endphp
 		@php $id = $category->id @endphp
 

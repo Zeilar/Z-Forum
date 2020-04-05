@@ -11,7 +11,6 @@
 
 @section('content')
 	<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
-
 	<div id="table">
 		<div class="table-group">
 			@component('components.table-header')
@@ -101,6 +100,7 @@
 	</a>
 
 	@auth
+		{{-- Which collection to mark as read --}}
 		@php $collection = 'subcategory_id' @endphp
 		@php $id = $subcategory->id @endphp
 

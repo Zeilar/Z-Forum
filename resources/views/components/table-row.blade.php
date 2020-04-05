@@ -1,9 +1,9 @@
 <div class="table-row @isset($admin_post) admin-post @endisset @if($read) read @endif">
-	<div class="table-icon">
-		@isset($icon)
+	@isset($icon)
+		<div class="table-icon">
 			<img class="img-fluid" src="/storage/icons/{{$icon}}" />
-		@endisset
-	</div>
+		</div>
+	@endisset
 
 	<div class="table-row-content">
 		@empty($disableFolderIcon)

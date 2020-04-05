@@ -20,12 +20,6 @@
 		@foreach ($tableCategories as $category)
 			<div class="table-group">
 				@component('components.table-header')
-					@isset($category->icon)
-						@slot('icon')
-							{!! $category->icon !!}
-						@endslot
-					@endisset
-				
 					@slot('title')
 						<a href="{{route('category_show', [$category->id, $category->slug])}}">
 							{{ $category->title }}
