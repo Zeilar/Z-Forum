@@ -227,12 +227,16 @@
 
 		.category-collapse {
 			transform: translateY(-50%);
-			background: white;
 			position: absolute;
+			background: none;
 			right: 0.5rem;
 			outline: 0;
 			border: 0;
 			top: 50%;
+
+			i {
+				color: white;
+			}
 		}
 
 		.th-title {
