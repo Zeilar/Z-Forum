@@ -12910,6 +12910,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
   display: -webkit-box;
   display: flex;
 }
@@ -13298,9 +13300,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-header {
+  padding: 0.5rem 0.25rem;
   background: #00b365;
-  padding: 0 0.25rem;
   color: white;
+}
+
+#table .table-group .table-header .table-title {
+  -webkit-box-flex: unset !important;
+          flex: unset !important;
+  width: 50%;
 }
 
 #table .table-group .table-header .table-title a {
@@ -13310,6 +13318,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-header .table-title a:hover {
   text-decoration: underline;
+}
+
+#table .table-group .table-header .table-row-content {
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0 1rem;
+}
+
+#table .table-group .table-header .table-row-content .table-views {
+  margin-left: 4rem;
 }
 
 #table .table-group .table-row {

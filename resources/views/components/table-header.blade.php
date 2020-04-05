@@ -1,10 +1,4 @@
 <div class="table-header">
-	<div class="table-icon">
-		@isset($icon)
-			<img class="img-fluid" src="/storage/icons/{{$icon}}" />
-		@endisset
-	</div>
-
 	<div class="table-row-content">
 		@isset ($title)
 			<div class="table-title __wrapper">

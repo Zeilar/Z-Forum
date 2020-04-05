@@ -33,5 +33,7 @@ class UsersTableSeeder extends Seeder
 			'role' => 'member',
 			'remember_token' => null,
 		]);
+
+		factory(App\User::class, 50)->create();
     }
 }
