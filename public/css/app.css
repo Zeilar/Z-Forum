@@ -13475,6 +13475,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: 0.25rem;
 }
 
+#table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p {
+  text-align: right;
+}
+
 #table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p .posted-by {
   color: #3490dc;
 }
