@@ -13502,6 +13502,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-icon {
   padding: 0.5rem;
+  display: -webkit-box;
+  display: flex;
   width: 4rem;
 }
 
