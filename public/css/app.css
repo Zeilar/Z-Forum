@@ -13273,8 +13273,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin: auto;
 }
 
-#table.subcategory .table-row .table-views {
-  margin-left: 4rem;
+#table.subcategory .table-header .table-views {
+  margin-left: 0 !important;
 }
 
 #table .table-group {
@@ -13307,6 +13307,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0.5rem 0.25rem;
   background: #00b365;
   color: white;
+}
+
+#table .table-group .table-header .table-title {
+  -webkit-box-flex: unset !important;
+          flex: unset !important;
+  width: 50%;
 }
 
 #table .table-group .table-header .table-title h4 {
