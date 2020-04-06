@@ -37233,23 +37233,23 @@ $('.file-upload').mouseenter(function () {
 }); // Copy link instead of opening it, and spawn a small bubble notification
 
 $('.permalink').click(function (e) {
-  e.preventDefault(); // Remove all other currently displayed notifications before we start
-
-  $('.copy-notification').each(function () {
-    $(this).remove();
-  }); // Need some sort of text to copy
+  e.preventDefault(); // Need some sort of text to copy
 
   $(this).append("<textarea id=\"copy\">".concat($(this).attr('href'), "</textarea>")).attr('id', 'tooltip'); // Copy the text and remove the dummy element
 
   $('#copy').select();
   document.execCommand('copy');
-  $('#copy').remove(); // Create the tooltip, and save its parent so we know which to remove automatically afterwards, in case user spawns multiple
+  $('#copy').remove(); // Change the tooltip content
 
-  var tooltip = $(this).parent().append('<div class="copy-notification"><span>Copied!</span></div>'); // Remove the targeted tooltip
+  $(this).find('.hover-tooltip').html('Copied!'); // Reset text when hovering outside
 
-  setTimeout(function () {
-    tooltip.find('.copy-notification').remove();
-  }, 2000);
+  $(this).mouseout(function () {
+    var _this2 = this;
+
+    setTimeout(function () {
+      $(_this2).find('.hover-tooltip').html($(_this2).attr('data-title'));
+    }, 150);
+  });
 }); // Spawn pagination input box
 
 $('.pagination .dots').click(function () {

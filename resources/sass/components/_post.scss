@@ -152,52 +152,6 @@
 						color: $link;
 					}
 				}
-
-				.copy-notification {
-					box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
-					transform: translate(-50%, -50%);
-					border: 2px solid $green;
-					background: #000000f2;
-					animation: fade-in 2s;
-					border-radius: 0.5rem;
-					position: absolute;
-					opacity: 0;
-					top: -160%;
-					left: 50%;
-
-					@keyframes fade-in {
-						10% {
-							opacity: 1;
-						}
-						80% {
-							opacity: 1;
-						}
-						100% {
-							opacity: 0;
-						}
-					}
-
-					span {
-						background: #000000f2;
-						padding: 0.5rem 0.65rem;
-						border-radius: 0.5rem;
-						user-select: none;
-						display: flex;
-						margin: auto;
-					}
-
-					&::after {
-						border-color: $green transparent;
-						transform: translateX(-50%);
-						border-width: 20px 20px 0;
-						border-style: solid;
-						position: absolute;
-						bottom: -25%;
-						z-index: -1;
-						content: '';
-						left: 50%;
-					}
-				}
 			}
 		}
 	}
