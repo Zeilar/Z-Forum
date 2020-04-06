@@ -40,7 +40,7 @@ Route::post('/post/update', 'PostsController@update_ajax')->name('post_update_aj
 Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');
 
 // Users
-Route::post('/user/push_status', 'UsersController@push_status')->name('user_push_status');
+Route::post('/user/push-status', 'UsersController@push_status')->name('user_push_status');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 
 // Search
@@ -52,15 +52,15 @@ Route::get('/dashboard/superadmin', 'DashboardController@superadmin')->name('das
 Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard_account');
 
 // Tools
-Route::post('/mark_as_read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
+Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 
 // Auth
 Route::get('/login', 'AuthController@admin_login_page')->name('admin_login_page');
-Route::post('/login_admin', 'AuthController@admin_login')->name('admin_login');
+Route::post('/login-admin', 'AuthController@admin_login')->name('admin_login');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');
 
 // Toolbar
-Route::post('/toggle_maintenance_mode', 'ToolbarController@toggle_maintenance_mode')->name('toggle_maintenance_mode');
-Route::post('/spoof_login', 'ToolbarController@spoof_login')->name('spoof_login');
+Route::post('/toggle-maintenance-mode', 'ToolbarController@toggle_maintenance_mode')->name('toggle_maintenance_mode');
+Route::post('/spoof-login', 'ToolbarController@spoof_login')->name('spoof_login');
