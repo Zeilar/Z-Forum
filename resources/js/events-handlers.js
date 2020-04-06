@@ -108,11 +108,18 @@ $('#scroller').click(function() {
 $('.file-upload').mouseenter(function() {
 	$(this).children('i').attr('style', `transform: translateX(${$(this).width() / 2 - $(this).children('i').width() / 2}px);`);
 	$(this).addClass('slide');
-
+	
 	$(this).mouseleave(function() {
 		$(this).children('i').removeAttr('style');
 		$(this).removeClass('slide');
 	});
+
+});
+
+$('.file-upload').siblings('input[type=file]').change(function() {
+	$('.selected-upload').remove();
+	let name = $(this).val().replace(/^.*[\\\/]/, '');
+	$(this).siblings('.file-upload').after(`<p class="selected-upload">${name}</p>`);
 });
 
 // Copy link instead of opening it, and spawn a small bubble notification

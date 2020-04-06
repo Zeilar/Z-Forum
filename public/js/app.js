@@ -37230,6 +37230,11 @@ $('.file-upload').mouseenter(function () {
     $(this).children('i').removeAttr('style');
     $(this).removeClass('slide');
   });
+});
+$('.file-upload').siblings('input[type=file]').change(function () {
+  $('.selected-upload').remove();
+  var name = $(this).val().replace(/^.*[\\\/]/, '');
+  $(this).siblings('.file-upload').after("<p class=\"selected-upload\">".concat(name, "</p>"));
 }); // Copy link instead of opening it, and spawn a small bubble notification
 
 $('.permalink').click(function (e) {
