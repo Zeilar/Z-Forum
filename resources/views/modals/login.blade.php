@@ -35,7 +35,9 @@
 							<span class="checkmark"></span>
 							<span class="remember-me">{{ __('Remember me') }}</span>
 						</label>
-						<a class="ml-auto" href="{{route('index')}}" class="pull-right">{{ __('Forgot Password?') }}</a>
+						<a class="ml-auto" href="#passwordresetModal" class="pull-right" data-toggle="modal" data-dismiss="modal">
+							{{ __('Forgot Password?') }}
+						</a>
 					</div>
 				</div>
 				<div class="modal-footer">

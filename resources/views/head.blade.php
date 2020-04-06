@@ -43,9 +43,15 @@
 
 		{{-- Modals --}}
 		<div class="modals">
-			@empty($disableModals)	
-				@include('modals.register')
-				@include('modals.login')
+			@guest
+				@empty($disableModals)	
+					@include('modals.password-reset')
+					@include('modals.register')
+					@include('modals.login')
+				@endempty
+			@endguest
+			
+			@empty($disableModals)
 				@include('modals.error')
 			@endempty
 		</div>

@@ -135,7 +135,7 @@ if (!function_exists('msg_error')) {
  * @return redirect
  */
 if (!function_exists('msg_success')) {
-	function msg_success(string $type) {
+	function msg_success(string $type = null, string $flash = 'error') {
 		switch ($type) {
 			case 'login':
 				return redirect()->route('index')->with('success', __('Successfully logged in!'));
@@ -144,7 +144,7 @@ if (!function_exists('msg_success')) {
 			case 'update':
 				return redirect()->back()->with('success', __('Changes were successful!'));
 			default:
-				return redirect()->route('index')->with('success', __('Success!'));
+				return redirect()->back()->with($flash, __($type));
 		}
 	}
 }
