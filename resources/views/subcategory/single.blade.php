@@ -10,7 +10,10 @@
 @endsection
 
 @section('content')
-	<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+	@auth
+		<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+	@endauth
+	
 	<div class="subcategory" id="table">
 		<div class="table-group">
 			@component('components.table-header')
