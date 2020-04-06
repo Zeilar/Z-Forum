@@ -37099,7 +37099,11 @@ tinymce.init({
   selector: '#form-content',
   plugins: "bbcode",
   bbcode_dialect: "punbb"
-});
+}); // Customize scrollbar, but on PC Windows only
+
+if (navigator.platform === 'Win32') {
+  $('html').addClass('custom-scrollbar');
+}
 
 /***/ }),
 
@@ -37451,7 +37455,22 @@ function () {
   }, {
     key: "collapseCategory",
     value: function collapseCategory() {
+      $('.table-group').each(function () {
+        if (localStorage.getItem("hidden-".concat($(this).attr('id')))) {
+          $(this).find('.category-collapse i').addClass('fa-plus').removeClass('fa-minus');
+          $(this).find('.subcategory-rows').addClass('hidden');
+        } else {
+          $(this).find('.category-collapse i').addClass('fa-minus').removeClass('fa-plus');
+          $(this).find('.subcategory-rows').removeClass('hidden');
+        }
+      });
       $('.category-collapse').click(function () {
+        if (localStorage.getItem("hidden-".concat($(this).parents('.table-group').attr('id')))) {
+          localStorage.removeItem("hidden-".concat($(this).parents('.table-group').attr('id')));
+        } else {
+          localStorage.setItem("hidden-".concat($(this).parents('.table-group').attr('id')), true);
+        }
+
         var rows = $(this).parents('.table-group').find('.subcategory-rows');
 
         if (rows.hasClass('hidden')) {

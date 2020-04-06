@@ -1,3 +1,18 @@
+.custom-scrollbar {
+	::-webkit-scrollbar {
+		width: 1rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background: black;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 1rem;
+		background: $green;
+	}
+}
+
 ::selection {
 	background: #00b36580;
 	color: white;
@@ -202,6 +217,7 @@ input[type=file] {
 }
 
 .pagination {
+	user-select: none;
 	margin-top: 1rem;
 
 	.item-wrapper {

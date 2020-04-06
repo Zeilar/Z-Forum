@@ -11656,6 +11656,19 @@ legend {
   border: none;
 }
 
+.custom-scrollbar ::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.custom-scrollbar ::-webkit-scrollbar-track {
+  background: black;
+}
+
+.custom-scrollbar ::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: #00b365;
+}
+
 ::-moz-selection {
   background: #00b36580;
   color: white;
@@ -11904,6 +11917,10 @@ input[type=file] {
 }
 
 .pagination {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   margin-top: 1rem;
 }
 

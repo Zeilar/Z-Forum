@@ -29,3 +29,8 @@ tinymce.init({
 	plugins: "bbcode",
 	bbcode_dialect: "punbb"
 });
+
+// Customize scrollbar, but on PC Windows only
+if (navigator.platform === 'Win32') {
+	$('html').addClass('custom-scrollbar');
+}
