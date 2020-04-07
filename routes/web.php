@@ -55,6 +55,9 @@ Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 
 // Auth
+Route::post('/password-reset-request', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('/password-reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('/password-reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 Route::get('/login', 'AuthController@admin_login_page')->name('admin_login_page');
 Route::post('/login-admin', 'AuthController@admin_login')->name('admin_login');
 Route::post('/register', 'AuthController@register')->name('register');

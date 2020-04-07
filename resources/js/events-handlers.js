@@ -76,6 +76,8 @@ $('.modal').on('shown.bs.modal', function() {
 });
 if ($('.modal .is-invalid').length) {
 	$('.modal .is-invalid').parents('.modal').modal('show');
+} else if ($('.modal .success').length) {
+	$('.modal .success').parents('.modal').modal('show');
 }
 
 // Put spinning wheel on submits buttons when pressed

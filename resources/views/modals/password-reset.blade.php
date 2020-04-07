@@ -1,7 +1,7 @@
 <div id="passwordresetModal" class="modal fade">
 	<div class="modal-dialog modal-auth">
 		<div class="modal-content">
-			<form method="POST" action="">
+			<form method="POST" action="{{route('password.email')}}">
 				@csrf
 				<div class="modal-header">				
 					<h4 class="modal-title">{{ __('Reset password') }}</h4>
@@ -10,6 +10,7 @@
 				<div class="modal-body">				
 					<div class="form-group">
 						<label>{{ __('Email') }}</label>
+						@if (session('status')) <p class="success">{{ session('status') }}</p> @endif
 						@error('email') <p class="color-red" id="error-email">{{ $message }}</p> @enderror
 						<input type="email" id="register_email" name="email" 
 							class="form-control @error('email') is-invalid @enderror" autofocus
