@@ -1,7 +1,7 @@
 <div id="passwordresetModal" class="modal fade">
 	<div class="modal-dialog modal-auth">
 		<div class="modal-content">
-			<form method="POST" action="{{route('password_reset_sender')}}">
+			<form method="POST" action="">
 				@csrf
 				<div class="modal-header">				
 					<h4 class="modal-title">{{ __('Reset password') }}</h4>
