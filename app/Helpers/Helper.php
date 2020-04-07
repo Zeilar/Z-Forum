@@ -100,13 +100,13 @@ if (!function_exists('pretty_date')) {
 /**
  * Redirect with session error message
  * 
- * @param string $type
+ * @param string $msg
  * 
  * @return redirect
  */
 if (!function_exists('msg_error')) {
-	function msg_error(string $type = null, string $flash = 'error') {
-		switch ($type) {
+	function msg_error(string $msg = null, string $flash = 'error') {
+		switch ($msg) {
 			case 'login':
 				return redirect()->back()->with('error-id', __('Please log in and try again'));
 			case 'role':
@@ -122,7 +122,7 @@ if (!function_exists('msg_error')) {
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
-				return redirect()->back()->with($flash, __($type));
+				return redirect()->back()->with($flash, $msg);
 		}
 	}
 }
@@ -130,21 +130,21 @@ if (!function_exists('msg_error')) {
 /**
  * Redirect with session success message
  * 
- * @param string $type
+ * @param string $msg
  * 
  * @return redirect
  */
 if (!function_exists('msg_success')) {
-	function msg_success(string $type = null, string $flash = 'error') {
-		switch ($type) {
+	function msg_success(string $msg = null, string $flash = 'success') {
+		switch ($msg) {
 			case 'login':
-				return redirect()->route('index')->with('success', __('Successfully logged in!'));
+				return redirect()->back()->with('success', __('Successfully logged in!'));
 			case 'registered':
 				return redirect()->route('index')->with('success', __('Your account has been created!'));
 			case 'update':
 				return redirect()->back()->with('success', __('Changes were successful!'));
 			default:
-				return redirect()->back()->with($flash, __($type));
+				return redirect()->back()->with($flash, $msg);
 		}
 	}
 }
