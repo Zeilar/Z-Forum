@@ -12861,8 +12861,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
-  -webkit-box-align: center;
-          align-items: center;
   display: -webkit-box;
   display: flex;
 }
@@ -12885,7 +12883,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.welcome .wrapper .welcome-text .logout {
-  margin-right: auto;
   margin-top: auto;
   color: #00b365;
 }
@@ -12895,7 +12892,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.welcome .wrapper .welcome-avatar {
-  width: 30%;
+  width: 25%;
 }
 
 #sidebar .sidebar-item.welcome .wrapper .welcome-avatar img {
