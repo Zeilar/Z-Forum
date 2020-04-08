@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ActivityLog;
 use Carbon\Carbon;
 use App\User;
 use Cache;
@@ -51,8 +52,18 @@ class UsersController extends Controller
     {
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->get()[0];
+
+			if (logged_in() && auth()->user()->id !== $user->id) {
+				ActivityLog::create([
+					'user_id' 	   => auth()->user()->id,
+					'task'	  	   => __('visited'),
+					'performed_on' => json_encode([['table' => 'users'], ['id' => $user->id]]),
+				]);
+			}
+
 			return view('user.single', [
-				'user' => User::find($id) ?? User::where('username', $id)->get()[0],
+				'user' => $user,
 			]);
 		} else {
 			return view('errors.404');

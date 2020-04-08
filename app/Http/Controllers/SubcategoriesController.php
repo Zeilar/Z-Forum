@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ActivityLog;
 use App\Subcategory;
 use App\Category;
 
@@ -42,6 +43,12 @@ class SubcategoriesController extends Controller
 		$subcategory->icon = explode('icons/', $path)[1];
 		$subcategory->category_id = Category::find($id)->id;
 		$subcategory->save();
+
+		ActivityLog::create([
+			'user_id' 	   => auth()->user()->id,
+			'task'	  	   => __('created'),
+			'performed_on' => json_encode([['table' => 'subcategories'], ['id' => $subcategory->id]]),
+		]);
 
 		return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
     }
@@ -88,16 +95,22 @@ class SubcategoriesController extends Controller
 		$this->authorize('update', Subcategory::class);
 
 		if (item_exists(Subcategory::find($id), $slug)) {
-				$data = request()->validate([
-					'title' => 'required|max:40',
-				]);
+			$data = request()->validate([
+				'title' => 'required|max:40',
+			]);
 
-				$subcategory = Subcategory::find($id);
-				$subcategory->title = request('title');
-				$subcategory->slug = urlencode(request('title'));
-				$subcategory->save();
+			$subcategory = Subcategory::find($id);
+			$subcategory->title = request('title');
+			$subcategory->slug = urlencode(request('title'));
+			$subcategory->save();
 
-				return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('edited'),
+				'performed_on' => json_encode([['table' => 'subcategories'], ['id' => $subcategory->id]]),
+			]);
+
+			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
 		} else {
 			return view('errors.404');
 		}
@@ -111,7 +124,7 @@ class SubcategoriesController extends Controller
      */
     public function destroy(int $id, string $slug)
     {
-		$this->authorize('delete', Thread::class);
+		$this->authorize('delete', Subcategory::class);
 
 		if (item_exists(Subcategory::find($id), $slug)) {
 			$subcategory = Subcategory::find($id);
@@ -125,6 +138,12 @@ class SubcategoriesController extends Controller
 					$thread->delete();
 				}
 			}
+
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('deleted'),
+				'performed_on' => json_encode([['table' => 'subcategories'], ['id' => $subcategory->id]]),
+			]);
 
 			$subcategory->delete();
 			

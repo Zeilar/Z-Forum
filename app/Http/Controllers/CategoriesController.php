@@ -43,8 +43,13 @@ class CategoriesController extends Controller
 		$category->icon = explode('icons/', $path)[1];
 		$category->save();
 
+		ActivityLog::create([
+			'user_id' 	   => auth()->user()->id,
+			'task'	  	   => __('created'),
+			'performed_on' => json_encode([['table' => 'categories'], ['id' => $category->id]]),
+		]);
+
 		return redirect()->route('category_show', [$category->id, $category->slug]);
-		
     }
 
     /**

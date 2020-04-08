@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ActivityLog;
 use App\Subcategory;
 use App\Category;
 use App\Thread;
@@ -42,6 +43,12 @@ class PostsController extends Controller
 		$post->subcategory_id = $thread->subcategory->id;
 		$post->category_id = $thread->category->id;
 		$post->save();
+
+		ActivityLog::create([
+			'user_id' 	   => auth()->user()->id,
+			'task'	  	   => __('created'),
+			'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
+		]);
 
 		return redirect(route('post_show', [
 			$thread->id,
@@ -107,6 +114,12 @@ class PostsController extends Controller
 				$post->save();
 			}
 
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('edited'),
+				'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
+			]);
+
 			return response()->json([
 				'type'	  			=> 'success',
 				'message' 			=> __('Post was successfully changed'),
@@ -148,14 +161,25 @@ class PostsController extends Controller
 		} else {
 			$redirect = false;
 			$post = Post::find(request('id'));
-			
 			$thread = $post->thread;
+
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('deleted'),
+				'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
+			]);
 
 			$post->delete();
 
 			if (count($thread->posts) <= 0) {
 				$subcategory = $thread->subcategory;
 				$redirect = route('subcategory_show', [$subcategory->id, $subcategory->slug]);
+
+				ActivityLog::create([
+					'user_id' 	   => auth()->user()->id,
+					'task'	  	   => __('deleted'),
+					'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+				]);
 				
 				$thread->delete();
 			}
