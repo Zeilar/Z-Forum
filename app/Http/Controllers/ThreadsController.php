@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserVisitedThreads;
+use App\ActivityLog;
 use App\Subcategory;
 use App\Category;
 use App\Thread;
