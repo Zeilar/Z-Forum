@@ -13481,10 +13481,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0.5rem;
   display: -webkit-box;
   display: flex;
+  height: 4rem;
+  margin: auto;
   width: 4rem;
 }
 
 #table .table-group .table-icon img {
+  height: 100%;
   margin: auto;
 }
 

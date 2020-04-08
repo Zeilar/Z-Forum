@@ -218,9 +218,12 @@
 		.table-icon {
 			padding: 0.5rem;
 			display: flex;
+			height: 4rem;
+			margin: auto;
 			width: 4rem;
 
 			img {
+				height: 100%;
 				margin: auto;
 			}
 		}
