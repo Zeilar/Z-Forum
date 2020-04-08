@@ -110,13 +110,24 @@
 			@endslot
 
 			@slot('content')
-				@php $latest_posts = App\Post::all()->sortByDesc('created_at')->take(5) @endphp
+				@php $latest_posts = App\Post::all()->sortByDesc('created_at') @endphp
 
+				{{-- Filter out duplicate threads --}}
+				@php $threads = [] @endphp
 				@foreach ($latest_posts as $post)
+					@if (count($threads) >= 5)
+						@break
+					@endif
+					@if (!in_array($post->thread, $threads))
+						@php array_push($threads, $post->thread) @endphp
+					@endif
+				@endforeach
+
+				@foreach ($threads as $thread)
 					<div class="latest-posts-item">
 						<i class="fas fa-chevron-right"></i>
-						<a class="thread" href="{{route('thread_show', [$post->thread->id, $post->thread->slug])}}">
-							{{ $post->thread->title }}
+						<a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+							{{ $thread->title }}
 						</a>
 					</div>
 				@endforeach
