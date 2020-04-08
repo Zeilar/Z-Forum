@@ -3,8 +3,14 @@
         {{-- Previous Page Link --}}
         @if (!$paginator->onFirstPage())
 			<div class="item-wrapper">
+				<a class="item first" href="{{url()->current()}}" rel="prev">
+					<i class="fas fa-chevron-left"></i>
+					<i class="fas fa-chevron-left"></i>
+				</a>
+			</div>
+
+			<div class="item-wrapper">
 				<a class="item" href="{{ $paginator->previousPageUrl() }}" rel="prev"> 
-					<i class="fas fa-chevron-left mr-1"></i>
 					{{ __('Prev') }}
 				</a>
 			</div>
@@ -44,9 +50,17 @@
 			<div class="item-wrapper">
 				<a class="icon item" href="{{ $paginator->nextPageUrl() }}" rel="next">
 					{{ __('Next') }}
-					<i class="fas fa-chevron-right ml-1"></i>
 				</a>
 			</div>
         @endif
+
+		@if ($paginator->currentPage() !== $paginator->lastPage())
+			<div class="item-wrapper">
+				<a class="item last" href="{{$paginator->lastPage()}}" rel="prev">
+					<i class="fas fa-chevron-right"></i>
+					<i class="fas fa-chevron-right"></i>
+				</a>
+			</div>
+		@endif
     </div>
 @endif

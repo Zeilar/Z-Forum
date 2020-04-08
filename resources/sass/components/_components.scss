@@ -233,6 +233,15 @@ input[type=file] {
 			line-height: 1.2;
 			color: $silver;
 			display: flex;
+			height: 100%;
+
+			&.first {
+				margin-right: 0.5rem;
+			}
+
+			&.last {
+				margin-left: 0.5rem;
+			}
 
 			&.active {
 				color: $turqoise;

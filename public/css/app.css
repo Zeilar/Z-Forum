@@ -11939,6 +11939,15 @@ input[type=file] {
   color: #a5abaf;
   display: -webkit-box;
   display: flex;
+  height: 100%;
+}
+
+.pagination .item-wrapper .item.first {
+  margin-right: 0.5rem;
+}
+
+.pagination .item-wrapper .item.last {
+  margin-left: 0.5rem;
 }
 
 .pagination .item-wrapper .item.active {
