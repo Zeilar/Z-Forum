@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-expand-md">
 		<div class="container-fluid" id="navbar-container">
 			<a class="navbar-brand" href="{{route('index')}}">
-				<img class="img-fluid" src="/images/zforum-logo.png" alt="{{ __('Navigation bar brand logo') }}" />
+				<img class="img-fluid" src="/storage/images/zforum-logo.png" alt="{{ __('Navigation bar brand logo') }}" />
 				<i class="fas fa-2x fa-rocket"></i>
 			</a>
 
