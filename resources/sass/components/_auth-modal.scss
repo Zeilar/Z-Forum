@@ -68,6 +68,10 @@
 			.remember-row {
 				margin-top: 2rem;
 
+				label {
+					margin-bottom: 0;
+				}
+
 				.checkbox-inline {
 					user-select: none;
 					cursor: pointer;
