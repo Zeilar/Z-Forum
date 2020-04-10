@@ -121,7 +121,7 @@ $('.file-upload').mouseenter(function() {
 $('.file-upload').siblings('input[type=file]').change(function() {
 	$('.selected-upload').remove();
 	let name = $(this).val().replace(/^.*[\\\/]/, '');
-	$(this).siblings('.file-upload').after(`<p class="selected-upload">${name}</p>`);
+	$(this).siblings().children('span').html(name);
 });
 
 // Copy link instead of opening it, and spawn a small bubble notification
