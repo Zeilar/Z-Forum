@@ -45,6 +45,9 @@
 						<span>{{__('Login')}}</span>
 					</button>
 					<p>
+						<a href="{{route('login_github')}}">{{ __('Sign in with GitHub') }}</a>
+					</p>
+					<p>
 						{{ __('Not a member?') }}
 						<a data-toggle="modal" data-dismiss="modal" href="#registerModal">{{ __('Sign up') }}</a>
 					</p>

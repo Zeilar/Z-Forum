@@ -16,8 +16,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
 			$table->string('username')->unique();
+			$table->string('github_id')->unique()->nullable();
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
 			$table->enum('role', ['member', 'moderator', 'superadmin'])->default('member');
 			$table->text('signature')->nullable();
 			$table->string('avatar')->default('default.png');
