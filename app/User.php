@@ -19,7 +19,6 @@ class User extends Authenticatable
         'settings' => '{
 			"posts_per_page": 20
 		}',
-		'avatar' => 'default.png',
 		'role' => 'member',
     ];
 

@@ -70,6 +70,10 @@ class AccountController extends Controller
      */
     public function update(Request $request)
     {
+		request()->validate([
+			'user-avatar' => 'required|image',
+		]);
+
 		// Delete the previously used avatar
 		Storage::delete('/public/' . auth()->user()->avatar);
 
