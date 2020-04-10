@@ -23,7 +23,7 @@
 							</a>
 						</div>
 						<div class="welcome-avatar" data-title="{{ auth()->user()->username }}">
-							<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+							<img class="img-fluid" src="{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
 						</div>
 					</div>
 				@endslot

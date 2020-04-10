@@ -73,11 +73,12 @@ class AccountController extends Controller
 		// Delete the previously used avatar
 		Storage::delete('/public/' . auth()->user()->avatar);
 
-		// Store the file and use the path for the database
+		// Store the file as an absolute URI path
 		$path = $request->file('user-avatar')->store('/public/user-avatars');
+		$path = explode('public/', $path)[1];
+		$path = route('index') . '/storage/' . $path;
 
-		
-		auth()->user()->avatar = explode('public/', $path)[1];
+		auth()->user()->avatar = $path;
 		auth()->user()->save();
 
         return msg_success('update');

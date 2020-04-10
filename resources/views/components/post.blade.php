@@ -20,7 +20,7 @@
 		">
 			<a class="post-avatar-link" href="{{route('user_show', [$post->user->id])}}">
 				<div class="post-avatar @if (is_user_online($post->user->id)) is_online @endif">
-					<img class="img-fluid" src="/storage/user-avatars/{{$post->user->avatar}}" alt="{{ __('Post user avatar') }}" />
+					<img class="img-fluid" src="{{$post->user->avatar}}" alt="{{ __('Post user avatar') }}" />
 
 					<div class="avatar-meta">
 						@if (is_user_online($post->user->id)) 
