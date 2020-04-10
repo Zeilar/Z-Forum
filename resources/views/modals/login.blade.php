@@ -41,12 +41,15 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
+					<button type="submit" class="btn spin rounded btn-block btn-success-full" disabled>
 						<span>{{__('Login')}}</span>
 					</button>
-					<p>
-						<a href="{{route('login_github')}}">{{ __('Sign in with GitHub') }}</a>
-					</p>
+					<p>{{ __('OR') }}</p>
+					<a class="btn btn-success-full" id="github-signin" href="{{route('login_github')}}">
+						<span>{{ __('Login with') }}</span>
+						<span><b>Github</b></span>
+						<i class="fab fa-github"></i>
+					</a>
 					<p>
 						{{ __('Not a member?') }}
 						<a data-toggle="modal" data-dismiss="modal" href="#registerModal">{{ __('Sign up') }}</a>

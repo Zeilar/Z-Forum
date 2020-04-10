@@ -124,13 +124,21 @@
 		}
 
 		.modal-footer {
+			flex-direction: column;
 			background: #f2f2f2;
 			padding: 0.75rem 30px;
 			border-radius: 0;
 
 			button {
-				background: $green !important;
 				border: 2px solid;
+			}
+
+			#github-signin {
+				color: white;
+
+				* {
+					vertical-align: middle;
+				}
 			}
 
 			p {
@@ -140,7 +148,6 @@
 	}
 
 	.btn {
-		line-height: normal;
 		min-height: 38px;
 		min-width: 100px;
 		border: none;

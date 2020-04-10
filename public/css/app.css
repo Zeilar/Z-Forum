@@ -11635,14 +11635,24 @@ legend {
 }
 
 .modal-auth .modal-content .modal-footer {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   background: #f2f2f2;
   padding: 0.75rem 30px;
   border-radius: 0;
 }
 
 .modal-auth .modal-content .modal-footer button {
-  background: #00b365 !important;
   border: 2px solid;
+}
+
+.modal-auth .modal-content .modal-footer #github-signin {
+  color: white;
+}
+
+.modal-auth .modal-content .modal-footer #github-signin * {
+  vertical-align: middle;
 }
 
 .modal-auth .modal-content .modal-footer p {
@@ -11650,7 +11660,6 @@ legend {
 }
 
 .modal-auth .btn {
-  line-height: normal;
   min-height: 38px;
   min-width: 100px;
   border: none;
