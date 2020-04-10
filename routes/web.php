@@ -66,9 +66,10 @@ Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');
 
+// OAuth2 Github
+Route::get('/login/github/callback', 'AuthController@handleProviderCallback')->name('login_github_callback');
+Route::get('/login/github', 'AuthController@redirectToProvider')->name('login_github');
+
 // Toolbar
 Route::post('/toggle-maintenance-mode', 'ToolbarController@toggle_maintenance_mode')->name('toggle_maintenance_mode');
 Route::post('/spoof-login', 'ToolbarController@spoof_login')->name('spoof_login');
-
-Route::get('/login/github', 'AuthController@redirectToProvider')->name('login_github');
-Route::get('/login/github/callback', 'AuthController@handleProviderCallback');
