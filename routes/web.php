@@ -14,11 +14,11 @@
 // Index
 Route::get('/', 'CategoriesController@index')->name('index');
 
-// Table categories
+// Categories
 Route::get('/category/{id}-{slug}', 'CategoriesController@show')->name('category_show');
 Route::post('/category/store', 'CategoriesController@store')->name('category_store');
 
-// Table subcategories
+// Subcategories
 Route::post('/subcategory/{id}-{slug}/store', 'SubcategoriesController@store')->name('subcategory_store');
 Route::post('/category/{id}-{slug}/new', 'SubcategoriesController@create')->name('subcategory_create');
 Route::get('/subcategory/{id}-{slug}', 'SubcategoriesController@show')->name('subcategory_show');
@@ -54,10 +54,12 @@ Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard
 // Tools
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 
-// Auth
+// Password reset
 Route::post('/password-reset-request', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('/password-reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/password-reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
+// Auth
 Route::get('/login', 'AuthController@admin_login_page')->name('admin_login_page');
 Route::post('/login-admin', 'AuthController@admin_login')->name('admin_login');
 Route::post('/register', 'AuthController@register')->name('register');
