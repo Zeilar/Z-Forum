@@ -13,8 +13,7 @@
 
 					tinymce.init({
 						selector: `#${selector} .post-body`,
-						plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-						toolbar_mode: 'floating',
+						plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
 					});
 
 					// Since CSS can't style inside iframes, we do it here...

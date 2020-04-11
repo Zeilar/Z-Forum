@@ -141,8 +141,7 @@
 					
 					tinymce.init({
 						selector: '#thread-reply',
-						plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-						toolbar_mode: 'floating',
+						plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
 					});
 
 					// Since the callback doesn't work we have to check until the editor is initialized

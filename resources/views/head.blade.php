@@ -15,6 +15,22 @@
 	<!-- To grant access to jQuery where not already available -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+	<!-- BBCode Parser -->
+	<script src="{{ asset('js/bbcode_parser/bbcode-config.js') }}"></script>
+	<script src="{{ asset('js/bbcode_parser/bbcode-parser.js') }}"></script>
+
+	<script>
+		$(document).ready(() => {
+			$('.post-body').each(function() {
+				let body = $(this);
+				parsed = BBCodeParser.process(body.html());
+				body.html(parsed);
+
+				console.log(parsed);
+			});
+		});
+	</script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
