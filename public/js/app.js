@@ -37447,8 +37447,9 @@ function () {
     key: "openFolder",
     value: function openFolder() {
       $('.table-title a').mousedown(function () {
-        $(this).mouseup(function () {
-          $(this).parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
+        var link = $(this);
+        link.mouseup(function () {
+          link.parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
         });
       });
     } // Navbar search bar animation
