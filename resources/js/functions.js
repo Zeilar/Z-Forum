@@ -85,18 +85,15 @@ class Functions {
 	// Collapse the categories
 	static collapseCategory() {
 		$('.table-group').each(function() {
+			let rows = $(this).find('.subcategory-rows');
 			if (localStorage.getItem(`hidden-${$(this).attr('id')}`)) {
 				$(this).find('.category-collapse i').addClass('fa-plus').removeClass('fa-minus');
-				$(this).find('.subcategory-rows').addClass('hidden');
+				rows.addClass('hidden');
 			} else {
-				let rows = $(this).find('.subcategory-rows');
-
-				let height = 0;
+				let height = 4;
 				rows.children('.table-row').each(function() {
-					height += $(this).outerHeight();
-					height += 4;
+					height += $(this).outerHeight() + 4;
 				});
-				height += 4;
 
 				$(this).find('.category-collapse i').addClass('fa-minus').removeClass('fa-plus');
 				rows.removeClass('hidden').css('height', `${height}px`);
@@ -104,10 +101,12 @@ class Functions {
 		});
 
 		$('.category-collapse').click(function() {
-			if (localStorage.getItem(`hidden-${$(this).parents('.table-group').attr('id')}`)) {
-				localStorage.removeItem(`hidden-${$(this).parents('.table-group').attr('id')}`);
+			let id = $(this).parents('.table-group').attr('id');
+			let button = $(this).children();
+			if (localStorage.getItem(`hidden-${id}`)) {
+				localStorage.removeItem(`hidden-${id}`);
 			} else {
-				localStorage.setItem(`hidden-${$(this).parents('.table-group').attr('id')}`, true);
+				localStorage.setItem(`hidden-${id}`, true);
 			}
 
 			let rows = $(this).parents('.table-group').find('.subcategory-rows');
@@ -120,12 +119,10 @@ class Functions {
 
 				height += 4;
 
-				rows.css('height', `${height}px`);
-
-				$(this).children().removeClass('fa-plus').addClass('fa-minus');
-				rows.removeClass('hidden');
+				button.removeClass('fa-plus').addClass('fa-minus');
+				rows.removeClass('hidden').css('height', `${height}px`);
 			} else {
-				$(this).children().removeClass('fa-minus').addClass('fa-plus');
+				button.removeClass('fa-minus').addClass('fa-plus');
 				rows.addClass('hidden').removeAttr('style');
 			}
 		});
