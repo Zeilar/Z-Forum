@@ -161,6 +161,15 @@
 		color: white;
 		padding: 1rem;
 
+		q {
+			background: rgb(20, 20, 20);
+			padding: 0.35rem;
+
+			&::before, &::after {
+				content: none;
+			}
+		}
+
 		table {
 			margin: 0;
 		}

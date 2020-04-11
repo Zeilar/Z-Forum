@@ -12446,6 +12446,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 1rem;
 }
 
+.post .post-body q {
+  background: #141414;
+  padding: 0.35rem;
+}
+
+.post .post-body q::before,
+.post .post-body q::after {
+  content: none;
+}
+
 .post .post-body table {
   margin: 0;
 }
