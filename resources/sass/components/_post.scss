@@ -163,7 +163,9 @@
 
 		q {
 			background: rgb(20, 20, 20);
+			width: fit-content;
 			padding: 0.35rem;
+			display: block;
 
 			&::before, &::after {
 				content: none;

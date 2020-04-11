@@ -11670,7 +11670,7 @@ legend {
 }
 
 .custom-scrollbar ::-webkit-scrollbar {
-  width: 1rem;
+  width: 0.75rem;
 }
 
 .custom-scrollbar ::-webkit-scrollbar-track {
@@ -11678,7 +11678,6 @@ legend {
 }
 
 .custom-scrollbar ::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
   background: #00b365;
 }
 
@@ -12448,7 +12447,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .post .post-body q {
   background: #141414;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 0.35rem;
+  display: block;
 }
 
 .post .post-body q::before,
