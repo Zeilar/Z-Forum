@@ -13151,6 +13151,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link {
+  -webkit-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;

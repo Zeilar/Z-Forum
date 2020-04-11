@@ -1,9 +1,10 @@
 class Functions {
 	// Plays fade animatin on first visit
 	static fadeTable() {
+		let rows = $('.table-row');
 		if (localStorage.getItem('fadeTable') !== 'true') {
 			let delay = 0;
-			$('.table-row').each(function() {
+			rows.each(function() {
 				setTimeout(() => {
 					$(this).addClass('show');
 				}, delay);
@@ -11,23 +12,27 @@ class Functions {
 			});
 			localStorage.setItem('fadeTable', 'true');
 		} else {
-			$('.table-row').addClass('show');
+			rows.addClass('show');
 		}
 	}
 
 	// Navbar slide animation when hovering on items
 	static navSlide() {
 		$('.nav-link').not('#login-button, #register-button').mouseenter(function() {
+			let linkActive = $('.nav-link.active');
+			let link = $(this);
+
 			// Spawn nav ruler if it doesn't exist
-			if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>');
+			if (!$('.nav-ruler').length) link.parent().append('<div class="nav-ruler"></div>');
 
 			// Remove any colored nav link and color the latest hovered one
-			$('.nav-link.active').removeClass('active');
-			$(this).addClass('active');
+			linkActive.removeClass('active');
+			link.addClass('active');
 
 			// Get index of currently hovered item and the index of the item with the ruler
-			let index = $(this).parent().index();
-			let rulerIndex = $('.nav-ruler').parents('.nav-item').index();
+			let index = link.parent().index();
+			let ruler = $('.nav-ruler');
+			let rulerIndex = ruler.parents('.nav-item').index();
 
 			// The magic
 			let distance = 0;		
@@ -35,7 +40,7 @@ class Functions {
 				for (let i = index; i > rulerIndex; i--) {
 					distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
 				}
-				$('.nav-ruler').css('transform', `translateX(-${distance}px)`);
+				ruler.css('transform', `translateX(-${distance}px)`);
 			} else {
 				for (let i = index; i < rulerIndex; i++) {
 					if (index === 0) {
@@ -44,13 +49,13 @@ class Functions {
 						distance += $(`.nav-item:nth-child(${i})`).outerWidth(true);
 					}
 				}
-				$('.nav-ruler').css('transform', `translateX(${distance}px)`);
+				ruler.css('transform', `translateX(${distance}px)`);
 			}
 
 			// Remove ruler when leaving navbar
-			$(this).parents('.nav-items').mouseleave(function() {
-				$('.nav-link.active').removeClass('active');
-				$('.nav-ruler').remove();
+			link.parents('.nav-items').mouseleave(function() {
+				linkActive.removeClass('active');
+				ruler.remove();
 			});
 		});
 	}

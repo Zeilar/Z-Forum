@@ -37373,9 +37373,11 @@ function () {
     key: "fadeTable",
     // Plays fade animatin on first visit
     value: function fadeTable() {
+      var rows = $('.table-row');
+
       if (localStorage.getItem('fadeTable') !== 'true') {
         var delay = 0;
-        $('.table-row').each(function () {
+        rows.each(function () {
           var _this = this;
 
           setTimeout(function () {
@@ -37385,7 +37387,7 @@ function () {
         });
         localStorage.setItem('fadeTable', 'true');
       } else {
-        $('.table-row').addClass('show');
+        rows.addClass('show');
       }
     } // Navbar slide animation when hovering on items
 
@@ -37393,14 +37395,17 @@ function () {
     key: "navSlide",
     value: function navSlide() {
       $('.nav-link').not('#login-button, #register-button').mouseenter(function () {
-        // Spawn nav ruler if it doesn't exist
-        if (!$('.nav-ruler').length) $(this).parent().append('<div class="nav-ruler"></div>'); // Remove any colored nav link and color the latest hovered one
+        var linkActive = $('.nav-link.active');
+        var link = $(this); // Spawn nav ruler if it doesn't exist
 
-        $('.nav-link.active').removeClass('active');
-        $(this).addClass('active'); // Get index of currently hovered item and the index of the item with the ruler
+        if (!$('.nav-ruler').length) link.parent().append('<div class="nav-ruler"></div>'); // Remove any colored nav link and color the latest hovered one
 
-        var index = $(this).parent().index();
-        var rulerIndex = $('.nav-ruler').parents('.nav-item').index(); // The magic
+        linkActive.removeClass('active');
+        link.addClass('active'); // Get index of currently hovered item and the index of the item with the ruler
+
+        var index = link.parent().index();
+        var ruler = $('.nav-ruler');
+        var rulerIndex = ruler.parents('.nav-item').index(); // The magic
 
         var distance = 0;
 
@@ -37409,7 +37414,7 @@ function () {
             distance += $(".nav-item:nth-child(".concat(i, ")")).outerWidth(true);
           }
 
-          $('.nav-ruler').css('transform', "translateX(-".concat(distance, "px)"));
+          ruler.css('transform', "translateX(-".concat(distance, "px)"));
         } else {
           for (var _i = index; _i < rulerIndex; _i++) {
             if (index === 0) {
@@ -37419,13 +37424,13 @@ function () {
             }
           }
 
-          $('.nav-ruler').css('transform', "translateX(".concat(distance, "px)"));
+          ruler.css('transform', "translateX(".concat(distance, "px)"));
         } // Remove ruler when leaving navbar
 
 
-        $(this).parents('.nav-items').mouseleave(function () {
-          $('.nav-link.active').removeClass('active');
-          $('.nav-ruler').remove();
+        link.parents('.nav-items').mouseleave(function () {
+          linkActive.removeClass('active');
+          ruler.remove();
         });
       });
     } // Setup tooltip positions etc

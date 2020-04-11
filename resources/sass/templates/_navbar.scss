@@ -138,6 +138,7 @@
 						}
 
 						.nav-link {
+							transition: color 0.15s ease-in-out;
 							position: relative;
 							user-select: none;
 							display: flex;
