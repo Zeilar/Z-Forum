@@ -89,8 +89,17 @@ class Functions {
 				$(this).find('.category-collapse i').addClass('fa-plus').removeClass('fa-minus');
 				$(this).find('.subcategory-rows').addClass('hidden');
 			} else {
+				let rows = $(this).find('.subcategory-rows');
+
+				let height = 0;
+				rows.children('.table-row').each(function() {
+					height += $(this).outerHeight();
+					height += 4;
+				});
+				height += 4;
+
 				$(this).find('.category-collapse i').addClass('fa-minus').removeClass('fa-plus');
-				$(this).find('.subcategory-rows').removeClass('hidden');
+				rows.removeClass('hidden').css('height', `${height}px`);
 			}
 		});
 
@@ -103,11 +112,21 @@ class Functions {
 
 			let rows = $(this).parents('.table-group').find('.subcategory-rows');
 			if (rows.hasClass('hidden')) {
+				let height = 0;
+				rows.children('.table-row').each(function() {
+					height += $(this).outerHeight();
+					height += 4;
+				});
+
+				height += 4;
+
+				rows.css('height', `${height}px`);
+
 				$(this).children().removeClass('fa-plus').addClass('fa-minus');
 				rows.removeClass('hidden');
 			} else {
 				$(this).children().removeClass('fa-minus').addClass('fa-plus');
-				rows.addClass('hidden');
+				rows.addClass('hidden').removeAttr('style');
 			}
 		});
 	}
