@@ -99,16 +99,11 @@
 						let input = $(iframeWindow).find('body');
 
 						// Style p elements inside to match the rest of the site
-						$(input).find('p').css({
-							'margin': '0.25rem 0',
-							'line-height': '1.5',
-						});
+						$(input).find('p').css('margin', '0');
+						$(input).css('line-height', '1.5');
 
 						input.on('input change', function() {
-							$(this).find('p').css({
-								'margin': '0.25rem 0',
-								'line-height': '1.5',
-							});
+							$(this).find('p').css('margin', '0');
 
 							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 								$('#quick-reply button').each(function() {
@@ -130,7 +125,13 @@
 						let iframeWindow = iframe.contentWindow.document;
 						let input = $(iframeWindow).find('body');
 
+						// Style p elements inside to match the rest of the site
+						$(input).find('p').css('margin', '0');
+						$(input).css('line-height', '1.5');
+
 						input.on('input change', function() {
+							$(this).find('p').css('margin', '0');
+
 							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 								$('.reply-save').removeAttr('disabled');
 							} else {
@@ -190,8 +191,8 @@
 
 					iframes.each(function() {
 						let iframe = $(this)[0].contentWindow.document;
-						$(iframe).find('body').prepend(`
-							<p style="margin: 0.25rem 0; line-height: 1.5;">
+						$(iframe).find('body').css('line-height', '1.5').prepend(`
+							<p style="margin: 0;">
 								Posted by ${author} - <a href="${link}">Read post</a>
 							</p>
 							

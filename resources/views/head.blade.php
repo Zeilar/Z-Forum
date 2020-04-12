@@ -27,8 +27,6 @@
 				parsed = BBCodeParser.process(body.html());
 				body.html(parsed);
 			});
-
-			$('.post-body p[style]').removeAttr('style');
 		});
 	</script>
 
