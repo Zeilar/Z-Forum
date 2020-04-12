@@ -271,7 +271,7 @@ if (!function_exists('settings_delete')) {
 if (!function_exists('settings_get')) {
 	function settings_get(string $key = 'all', int $id = null) {
 		// Set user as the currently logged in if possible, default to provided ID
-		$user = App\User::find($id) ?? auth()->user();
+		$user = App\User::find($id) ?? auth()->user() ?? null;
 
 		// If no user was found, return default value for that setting
 		if (empty($user)) {
@@ -283,7 +283,7 @@ if (!function_exists('settings_get')) {
 		$settings = json_decode($user->settings, true);
 
 		// Return either all or a select setting
-		return ($key === 'all') ? $settings : $settings[$key];
+		return ($key === 'all') ? $settings : $settings[$key] ?? 0;
 	}
 }
 
