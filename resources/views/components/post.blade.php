@@ -92,10 +92,16 @@
 	@endisset
 
 	@auth
-		@can('update', $post)
+		@can('create', [App\Post::class, $post->thread])
 			<div class="post-toolbar">
-				<button class="btn btn-default post-edit">
-					<span>{{ __('Edit') }}</span>
+				@can('update', $post)
+					<button class="btn btn-default post-edit">
+						<span>{{ __('Edit') }}</span>
+					</button>
+				@endcan
+
+				<button class="btn btn-default post-quote">
+					<span>{{ __('Quote') }}</span>
 				</button>
 
 				@can('delete', $post)

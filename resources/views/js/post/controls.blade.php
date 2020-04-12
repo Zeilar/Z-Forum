@@ -14,6 +14,7 @@
 					tinymce.init({
 						selector: `#${selector} .post-body`,
 						plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
+						height: 300,
 					});
 
 					// Since CSS can't style inside iframes, we do it here...
@@ -182,6 +183,10 @@
 
 							// Remove edit button after it's clicked
 							$(this).parent().remove();
+						});
+
+						$(this).find('.post-quote').click(function() {
+							post_quote($(this));
 						});
 
 						$(this).find('.post-delete').click(function(e) {

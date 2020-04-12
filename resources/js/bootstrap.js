@@ -27,6 +27,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 tinymce.init({
 	selector: '#form-content',
 	plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
+	height: 300,
 });
 
 // Customize scrollbar, but on PC Windows only

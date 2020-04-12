@@ -128,26 +128,4 @@ var parserTags = {
 			return '</span>';
 		}
 	},
-	'url': {
-		openTag: function(params,content) {
-
-			var myUrl;
-
-			if (!params) {
-				myUrl = content.replace(/<.*?>/g,"");
-			} else {
-				myUrl = params.substr(1);
-			}
-
-			BBCodeParser.urlPattern.lastIndex = 0;
-			if ( !BBCodeParser.urlPattern.test( myUrl ) ) {
-				myUrl = "#";
-			}
-
-			return '<a href="' + myUrl + '">';
-		},
-		closeTag: function(params,content) {
-			return '</a>';
-		}
-	}
 };

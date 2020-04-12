@@ -98,7 +98,18 @@
 						let iframeWindow = iframe.contentWindow.document;
 						let input = $(iframeWindow).find('body');
 
-						input.on('input', function() {
+						// Style p elements inside to match the rest of the site
+						$(input).find('p').css({
+							'margin': '0.25rem 0',
+							'line-height': '1.5',
+						});
+
+						input.on('input change', function() {
+							$(this).find('p').css({
+								'margin': '0.25rem 0',
+								'line-height': '1.5',
+							});
+
 							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 								$('#quick-reply button').each(function() {
 									$(this).removeAttr('disabled');
@@ -142,6 +153,7 @@
 					tinymce.init({
 						selector: '#thread-reply',
 						plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
+						height: 300,
 					});
 
 					// Since the callback doesn't work we have to check until the editor is initialized
@@ -164,6 +176,29 @@
 					$('.reply-button').removeClass('d-none');
 					$('#reply-form').addClass('d-none');
 				});
+			</script>
+		@endcan
+
+		@can('create', [App\Post::class, $post->thread])
+			<script>
+				function post_quote(element) {
+					let iframes = $('#reply-form, #quick-reply').find('iframe');
+					let post =  element.parents('.post');
+					let link = post.find('.permalink').attr('href');
+					let author = post.find('.post-author a').html();
+					let content = post.find('.post-body').html();
+
+					iframes.each(function() {
+						let iframe = $(this)[0].contentWindow.document;
+						$(iframe).find('body').prepend(`
+							<p style="margin: 0.25rem 0; line-height: 1.5;">
+								Posted by ${author} - <a href="${link}">Read post</a>
+							</p>
+							
+							[quote]${content}[/quote]
+						`);
+					});
+				}
 			</script>
 		@endcan
 

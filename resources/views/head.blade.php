@@ -19,15 +19,16 @@
 	<script src="{{ asset('js/bbcode_parser/bbcode-config.js') }}"></script>
 	<script src="{{ asset('js/bbcode_parser/bbcode-parser.js') }}"></script>
 
+	<!-- Run the parse on every page load -->
 	<script>
 		$(document).ready(() => {
 			$('.post-body').each(function() {
 				let body = $(this);
 				parsed = BBCodeParser.process(body.html());
 				body.html(parsed);
-
-				console.log(parsed);
 			});
+
+			$('.post-body p[style]').removeAttr('style');
 		});
 	</script>
 

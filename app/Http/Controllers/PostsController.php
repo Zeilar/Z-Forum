@@ -32,7 +32,7 @@ class PostsController extends Controller
 		$this->authorize('create', [Post::class, Thread::find($id)]);
 
 		$data = request()->validate([
-			'content' => 'required|max:500'
+			'content' => 'required|max:1000'
 		]);
 
 		$thread = Thread::find($id);
