@@ -16,15 +16,19 @@ class SearchController extends Controller
 {
     public function search(Request $request)
 	{
+		request()->validate([
+			'search' => 'required',
+		]);
+
 		$query = request('search');
 
 		$subcategories = DB::table('subcategories')->select('table_name', 'id')->where('title', 'like', "%$query%");
 		$categories    = DB::table('categories')->select('table_name', 'id')->where('title', 'like', "%$query%");
 		$threads       = DB::table('threads')->select('table_name', 'id')->where('title', 'like', "%$query%");
 		$posts         = DB::table('posts')->select('table_name', 'id')->where('content', 'like', "%$query%");
-		$users         = DB::table('users')->select('table_name', 'id')->where('username', 'like', "%$query%")
+		$users         = DB::table('users')->select('table_name', 'id')->where('username', 'like', "%$query%")->orWhere('role', 'like', "%$query%")
 			->union($subcategories)->union($categories)->union($threads)->union($posts)
-			->paginate(3);
+			->paginate(settings_get('posts_per_page'));
 
 		return view('layouts.search', ['results' => $users]);
 	}
