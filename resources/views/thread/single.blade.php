@@ -183,7 +183,7 @@
 		@can('create', [App\Post::class, $post->thread])
 			<script>
 				function post_quote(element) {
-					let iframes = $('#reply-form, #quick-reply').find('iframe');
+					let iframes = $('#reply-form, #quick-reply, .post').find('iframe');
 					let post =  element.parents('.post');
 					let link = post.find('.permalink').attr('href');
 					let author = post.find('.post-author a').html();

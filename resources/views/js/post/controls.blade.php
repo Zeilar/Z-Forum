@@ -25,10 +25,8 @@
 							let iframeWindow = iframe.contentWindow.document;
 
 							// Style p elements inside to match the rest of the site
-							$(iframeWindow).find('body p').css({
-								'margin': '0.25rem 0',
-								'line-height': '1.5',
-							});
+							$(iframeWindow).find('body').css('line-height', '1.5').focus();
+							$(iframeWindow).find('body p').css('margin', '0');
 
 							// Spawn the edit message row
 							if (!$(`#${selector}`).find('.post-edited-by').length) {
@@ -48,9 +46,6 @@
 									<input type="text" class="edit-message" />
 								`);
 							}
-
-							$(`#${selector} .edit-message`).focus();
-
 							clearInterval(interval);
 						}
 					}, 50);
