@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
 			$table->timestamp('last_seen')->default(\Carbon\Carbon::now());
             $table->timestamps();
+			$table->string('table_name')->default('users');
         });
     }
 

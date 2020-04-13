@@ -18,11 +18,11 @@ class SearchController extends Controller
 	{
 		$query = request('search');
 
-		$subcategories = DB::table('subcategories')->select('title')->where('title', 'like', "%$query%");
-		$categories    = DB::table('categories')->select('title')->where('title', 'like', "%$query%");
-		$threads       = DB::table('threads')->select('title')->where('title', 'like', "%$query%");
-		$posts         = DB::table('posts')->select('content')->where('content', 'like', "%$query%");
-		$users         = DB::table('users')->select('username')->where('username', 'like', "%$query%")
+		$subcategories = DB::table('subcategories')->select('table_name', 'id')->where('title', 'like', "%$query%");
+		$categories    = DB::table('categories')->select('table_name', 'id')->where('title', 'like', "%$query%");
+		$threads       = DB::table('threads')->select('table_name', 'id')->where('title', 'like', "%$query%");
+		$posts         = DB::table('posts')->select('table_name', 'id')->where('content', 'like', "%$query%");
+		$users         = DB::table('users')->select('table_name', 'id')->where('username', 'like', "%$query%")
 			->union($subcategories)->union($categories)->union($threads)->union($posts)
 			->paginate(3);
 
