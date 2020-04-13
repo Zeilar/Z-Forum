@@ -8,8 +8,9 @@ use App\{
 	Category,
 	Thread,
 	Post,
-	User
+	User,
 };
+use DB;
 
 class SearchController extends Controller
 {
@@ -17,13 +18,20 @@ class SearchController extends Controller
 	{
 		$query = request('search');
 
-		$subcategories = Subcategory::where('title', 'like', "%$query%")->orderBy('updated_at')->get();
-		$categories    = Category::where('title', 'like', "%$query%")->orderBy('updated_at')->get();
-		$threads       = Thread::where('title', 'like', "%$query%")->orderBy('updated_at')->get();
-		$posts         = Post::where('content', 'like', "%$query%")->orderBy('updated_at')->get();
-		$users         = User::where('username', 'like', "%$query%")->orderBy('updated_at')->get();
+		$subcategories = DB::table('subcategories')->select('title')->where('title', 'like', "%$query%");
+		$categories    = DB::table('categories')->select('title')->where('title', 'like', "%$query%");
+		$threads       = DB::table('threads')->select('title')->where('title', 'like', "%$query%");
+		$posts         = DB::table('posts')->select('content')->where('content', 'like', "%$query%");
+		$users         = DB::table('users')->select('username')->where('username', 'like', "%$query%")
+			->union($subcategories)
+			->union($categories)
+			->union($threads)
+			->union($posts)
+			->paginate(3);
 
-		$results = [
+		
+
+		$results2 = [
 			'subcategories' => $subcategories,
 			'categories' 	=> $categories,
 			'threads' 		=> $threads,
@@ -31,6 +39,6 @@ class SearchController extends Controller
 			'users' 		=> $users,
 		];
 
-		return view('layouts.search', ['results' => $results]);
+		return view('layouts.search', ['results' => $users]);
 	}
 }
