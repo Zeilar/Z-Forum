@@ -3,7 +3,7 @@
 @section('content')
 	@dump($results)
 
-	{{ $results->links('layouts.pagination') }}
+	{{ $results->appends(request()->except('page'))->links('layouts.pagination') }}
 
 	{{-- @if (!count($results['categories']) && !count($results['subcategories']) && !count($results['threads']) && !count($results['users']))
 		<h1 class="search-header">

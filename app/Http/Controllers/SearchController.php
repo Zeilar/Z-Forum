@@ -23,21 +23,8 @@ class SearchController extends Controller
 		$threads       = DB::table('threads')->select('title')->where('title', 'like', "%$query%");
 		$posts         = DB::table('posts')->select('content')->where('content', 'like', "%$query%");
 		$users         = DB::table('users')->select('username')->where('username', 'like', "%$query%")
-			->union($subcategories)
-			->union($categories)
-			->union($threads)
-			->union($posts)
+			->union($subcategories)->union($categories)->union($threads)->union($posts)
 			->paginate(3);
-
-		
-
-		$results2 = [
-			'subcategories' => $subcategories,
-			'categories' 	=> $categories,
-			'threads' 		=> $threads,
-			'posts'			=> $posts,
-			'users' 		=> $users,
-		];
 
 		return view('layouts.search', ['results' => $users]);
 	}
