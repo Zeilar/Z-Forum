@@ -23,10 +23,10 @@ body {
 	background-image: url('../../storage/app/public/images/background-polygons.png');
 	background-attachment: fixed;
 	background-color: $body-bg;
-
     flex-direction: column;
 	overflow-x: hidden;
     min-height: 100vh;
+	color: white;
 	display: flex;
 }
 
