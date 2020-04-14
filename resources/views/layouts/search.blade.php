@@ -7,14 +7,26 @@
 				@php $item = DB::table($result->table_name)->where('id', $result->id)->get() @endphp
 				@foreach ($item as $key)
 					<div class="search-result">
-						@if ($key->table_name === 'categories' || $key->table_name === 'subcategories' || $key->table_name === 'threads')
-							<h4 class="result-title">
-								{{ $key->title }}
-							</h4>
-						@else
-							<h4 class="result-post">
+						@if ($key->table_name === 'categories')
+							<h5>
+								<a href="{{route('category_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
+							</h5>
+						@elseif ($key->table_name === 'subcategories') 
+							<h5>
+								<a href="{{route('subcategory_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
+							</h5>
+						@elseif ($key->table_name === 'threads')
+							<h5>
+								<a href="{{route('thread_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
+							</h5>
+						@elseif ($key->table_name === 'users')
+							<h5>
+								{{ $key->username }}
+							</h5>
+						@elseif ($key->table_name === 'posts')
+							<h5>
 								{{ shorten_text($key->content) }}
-							</h4>
+							</h5>
 						@endif
 					</div>
 				@endforeach

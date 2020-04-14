@@ -12316,7 +12316,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   position: relative;
   margin-right: 2px;
   background: #2b2b34e6;
+  display: -webkit-box;
+  display: flex;
   padding: 2px;
+  height: 100%;
   width: 5rem;
 }
 
@@ -12334,6 +12337,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .post .post-header .post-meta .post-avatar.is_online .avatar-meta {
   background: rgba(0, 194, 110, 0.85);
+}
+
+.post .post-header .post-meta .post-avatar img {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .post .post-header .post-meta .post-avatar .avatar-meta {
@@ -13263,6 +13271,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #footer #copyright {
   margin: auto;
+}
+
+.search-results .search-result {
+  background: #2c2c3580;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-results .search-result:last-child {
+  margin-bottom: 0;
 }
 
 #table.subcategory .table-header .table-views {
