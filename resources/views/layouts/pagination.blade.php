@@ -1,14 +1,15 @@
 @if ($paginator->hasPages())
     <div class="pagination" role="navigation" data-current-page="{{$paginator->currentPage()}}">
-        {{-- Previous Page Link --}}
+		{{-- First Page Link --}}
         @if (!$paginator->onFirstPage())
 			<div class="item-wrapper">
-				<a class="item first" href="{{url()->current()}}" rel="prev">
+				<a class="item first" href="{{$paginator->url(1)}}" rel="prev">
 					<i class="fas fa-chevron-left"></i>
 					<i class="fas fa-chevron-left"></i>
 				</a>
 			</div>
 
+        	{{-- Previous Page Link --}}
 			<div class="item-wrapper">
 				<a class="item" href="{{ $paginator->previousPageUrl() }}" rel="prev"> 
 					{{ __('Prev') }}
@@ -54,9 +55,10 @@
 			</div>
         @endif
 
+		{{-- Last Page Link --}}
 		@if ($paginator->currentPage() !== $paginator->lastPage())
 			<div class="item-wrapper">
-				<a class="item last" href="{{$paginator->lastPage()}}" rel="prev">
+				<a class="item last" href="{{$paginator->url($paginator->lastPage())}}" rel="next">
 					<i class="fas fa-chevron-right"></i>
 					<i class="fas fa-chevron-right"></i>
 				</a>
