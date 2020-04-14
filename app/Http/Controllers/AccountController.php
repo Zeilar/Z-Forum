@@ -74,9 +74,6 @@ class AccountController extends Controller
 			'user-avatar' => 'required|image',
 		]);
 
-		// Delete the previously used avatar
-		Storage::delete('/public/' . auth()->user()->avatar);
-
 		// Store the file as an absolute URI path
 		$path = $request->file('user-avatar')->store('/public/user-avatars');
 		$path = explode('public/', $path)[1];

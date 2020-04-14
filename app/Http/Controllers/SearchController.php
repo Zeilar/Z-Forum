@@ -17,7 +17,7 @@ class SearchController extends Controller
     public function search(Request $request)
 	{
 		request()->validate([
-			'search' => 'required',
+			'search' => 'required|min:3',
 		]);
 
 		$query = request('search');
