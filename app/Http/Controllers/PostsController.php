@@ -101,7 +101,7 @@ class PostsController extends Controller
 		} else {
 			$post = Post::find(request('id'));
 			$post->content = request('content');
-			$post->edited_by_message = request('edit_message');
+			$post->edited_by_message = request('edit_message') === 'false' ? null : request('edit_message');
 		
 			$post->save();
 
