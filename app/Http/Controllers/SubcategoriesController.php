@@ -30,8 +30,8 @@ class SubcategoriesController extends Controller
 		$this->authorize('create', Subcategory::class);
 
 		request()->validate([
-			'title' => 'required|min:3|max:40|unique:subcategories',
-			'icon'  => 'required',
+			'title' => 'required|min:3|max:40',
+			'icon'  => 'required|image',
 		]);
 
 		// Store the file and use the path for the database

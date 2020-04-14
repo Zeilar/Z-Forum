@@ -32,16 +32,11 @@ class CategoriesController extends Controller
 
 		request()->validate([
 			'title' => 'required|min:3|max:40|unique:categories',
-			'icon'  => 'required',
 		]);
-
-		// Store the file and use the path for the database
-		$path = $request->file('icon')->store('/public/icons');
 
 		$category = new Category();
 		$category->title = request('title');
 		$category->slug = urlencode(request('title'));
-		$category->icon = explode('icons/', $path)[1];
 		$category->save();
 
 		ActivityLog::create([
