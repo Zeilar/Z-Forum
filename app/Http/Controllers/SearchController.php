@@ -26,10 +26,12 @@ class SearchController extends Controller
 		$categories    = DB::table('categories')->select('table_name', 'id')->where('title', 'like', "%$query%");
 		$threads       = DB::table('threads')->select('table_name', 'id')->where('title', 'like', "%$query%");
 		$posts         = DB::table('posts')->select('table_name', 'id')->where('content', 'like', "%$query%");
-		$users         = DB::table('users')->select('table_name', 'id')->where('username', 'like', "%$query%")->orWhere('role', 'like', "%$query%")
+		$results       = DB::table('users')
+			->select('table_name', 'id')
+			->where('username', 'like', "%$query%")->orWhere('role', 'like', "%$query%")
 			->union($subcategories)->union($categories)->union($threads)->union($posts)
 			->paginate(settings_get('posts_per_page'));
 
-		return view('layouts.search', ['results' => $users]);
+		return view('layouts.search', ['results' => $results]);
 	}
 }
