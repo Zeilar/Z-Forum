@@ -3,6 +3,7 @@
 @section('content')
 	<div class="search-results">
 		@if (count($results))
+			<h2>{{ __('Search results for: ') . request('search') }}</h2>
 			@foreach ($results as $result)
 				@php $item = DB::table($result->table_name)->where('id', $result->id)->get() @endphp
 				@foreach ($item as $key)
@@ -11,7 +12,10 @@
 							<h5>
 								<a href="{{route('category_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
 							</h5>
-						@elseif ($key->table_name === 'subcategories') 
+						@elseif ($key->table_name === 'subcategories')
+							<div class="result-icon">
+								<img class="img-fluid" src="/storage/icons/{{$key->icon}}" />
+							</div>
 							<h5>
 								<a href="{{route('subcategory_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
 							</h5>
@@ -20,12 +24,25 @@
 								<a href="{{route('thread_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
 							</h5>
 						@elseif ($key->table_name === 'users')
+							<div class="result-icon">
+								<img class="img-fluid" src="{{$key->avatar}}" />
+							</div>
 							<h5>
-								{{ $key->username }}
+								<a class="{{role_coloring($key->role)}}" href="{{route('user_show', [$key->id])}}">{{ $key->username }}</a>
 							</h5>
 						@elseif ($key->table_name === 'posts')
+							@php $thread = App\Post::find($key->id)->thread @endphp
 							<h5>
-								{{ shorten_text($key->content) }}
+								<a href="{{
+									route('post_show', [
+										$thread->id,
+										$thread->slug,
+										get_item_page_number($thread->posts->sortBy('created_at'), $key->id, settings_get('posts_per_page')),
+										$key->id,
+									])
+								}}">
+									{{ shorten_text($key->content) }}
+								</a>
 							</h5>
 						@endif
 					</div>

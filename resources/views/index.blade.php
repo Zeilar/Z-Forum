@@ -53,7 +53,7 @@
 						@component('components.table-row', ['read' => $read ?? null])
 							@isset($subcategory->icon)
 								@slot('icon')
-									{!! $subcategory->icon !!}
+									{{ $subcategory->icon }}
 								@endslot
 							@endisset
 

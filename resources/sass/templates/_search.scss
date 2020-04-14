@@ -1,16 +1,37 @@
 .search-results {
-
 	.search-result {
 		background: $darkindigo;
 		padding: 0.5rem 1rem;
-		margin-bottom: 1rem;
+		flex-direction: row;
+		margin: 1rem 0;
+		display: flex;
 
 		&:last-child {
 			margin-bottom: 0;
 		}
-		
-		h4 {
 
+		.result-icon {
+			margin-right: 0.5rem;
+			width: 2rem;
+		}
+		
+		h5 {
+			line-height: normal;
+			align-self: center;
+
+			a {
+				&.is_superadmin {
+					color: $superadmin-fill;
+				}
+
+				&.is_moderator {
+					color: $moderator-fill;
+				}
+
+				&:hover {
+					color: $turqoise;
+				}
+			}
 		}
 	}
 }

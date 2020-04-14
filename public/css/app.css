@@ -13276,11 +13276,38 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .search-results .search-result {
   background: #2c2c3580;
   padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 1rem 0;
+  display: -webkit-box;
+  display: flex;
 }
 
 .search-results .search-result:last-child {
   margin-bottom: 0;
+}
+
+.search-results .search-result .result-icon {
+  margin-right: 0.5rem;
+  width: 2rem;
+}
+
+.search-results .search-result h5 {
+  line-height: normal;
+  align-self: center;
+}
+
+.search-results .search-result h5 a.is_superadmin {
+  color: #db4416;
+}
+
+.search-results .search-result h5 a.is_moderator {
+  color: #97008a;
+}
+
+.search-results .search-result h5 a:hover {
+  color: #00ffff;
 }
 
 #table.subcategory .table-header .table-views {
