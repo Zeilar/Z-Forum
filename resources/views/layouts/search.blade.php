@@ -14,33 +14,75 @@
 				@foreach ($item as $key)
 					<div class="search-result">
 						@if ($key->table_name === 'categories')
-							<h5>
+							<div class="result-source">
+								<p>
+									{{ __('Category') }}
+								</p>
+							</div>
+							<div class="result-content">
 								<a href="{{route('category_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
-							</h5>
+							</div>
 						@elseif ($key->table_name === 'subcategories')
+							@php $subcategory = App\Subcategory::find($key->id) @endphp
+							<div class="result-source">
+								<p>
+									{{ __('Subcategory in ') }}
+									<a href="{{route('category_show', [$subcategory->category->id])}}">
+										{{ $subcategory->category->title }}
+									</a>
+								</p>
+							</div>
 							<div class="result-icon">
 								<img class="img-fluid" src="/storage/icons/{{$key->icon}}" />
 							</div>
-							<h5>
+							<div class="result-content">
 								<a href="{{route('subcategory_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
-							</h5>
-						@elseif ($key->table_name === 'threads')
-							<h5>
-								<a href="{{route('thread_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
-							</h5>
-						@elseif ($key->table_name === 'users')
-							<div class="result-icon">
-								<img class="img-fluid" src="{{$key->avatar}}" />
 							</div>
-							<div class="result-user">
-								<h5>
-									<a href="{{route('user_show', [$key->id])}}">{{ $key->username }}</a>
-									<span class="{{role_coloring($key->role)}}">{{ ucfirst($key->role) }}</span>
-								</h5>
+						@elseif ($key->table_name === 'threads')
+							@php $thread = App\Thread::find($key->id) @endphp
+							<div class="result-source">
+								<p>
+									{{ __('Thread in ') }}
+									<a href="{{route('subcategory_show', [$thread->subcategory->id, $thread->subcategory->slug])}}">
+										{{ $thread->subcategory->title }}
+									</a>
+								</p>
+							</div>
+							<div class="result-content">
+								<a href="{{route('thread_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
+							</div>
+						@elseif ($key->table_name === 'users')
+							<div class="result-source">
+								<p>{{ __('User') }}</p>
+							</div>
+							<div class="result-content">
+								<div class="result-icon">
+									<img class="img-fluid" src="{{$key->avatar}}" />
+								</div>
+								<div class="result-user">
+									<div class="result-user-text">
+										<a href="{{route('user_show', [$key->id])}}">{{ $key->username }}</a>
+										<span class="{{role_coloring($key->role)}}">{{ ucfirst($key->role) }}</span>
+									</div>
+								</div>
 							</div>
 						@elseif ($key->table_name === 'posts')
 							@php $thread = App\Post::find($key->id)->thread @endphp
-							<h5>
+							<div class="result-source">
+								<p>
+									{{ __('Post in ') }}
+									<a href="{{route('thread_show', [$thread->id, $thread->slug])}}}">
+										{{ shorten_text($thread->title, 80) }}
+									</a>
+									<span class="posted-by">
+										{{ __('By ') }}
+										<a class="{{role_coloring($thread->user->role)}}" href="{{route('user_show', [$thread->user->id])}}">
+											{{ $thread->user->username }}
+										</a>
+									</span>
+								</p>
+							</div>
+							<div class="result-content">
 								<a href="{{
 									route('post_show', [
 										$thread->id,
@@ -51,7 +93,7 @@
 								}}">
 									{{ shorten_text($key->content) }}
 								</a>
-							</h5>
+							</div>
 						@endif
 					</div>
 				@endforeach
