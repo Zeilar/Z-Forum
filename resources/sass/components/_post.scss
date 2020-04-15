@@ -229,14 +229,6 @@
 			margin-left: 0.5rem;
 		}
 
-		.is_superadmin a {
-			color: $superadmin-fill;
-		}
-
-		.is_moderator a {
-			color: $moderator-fill;
-		}
-
 		input {
 			border: 2px solid $silver;
 			padding: 0.25rem 0.5rem;
@@ -248,14 +240,6 @@
 
 			&:focus {
 				border-color: $green;
-			}
-		}
-
-		a {
-			color: white;
-
-			&:hover {
-				color: $turqoise;
 			}
 		}
 

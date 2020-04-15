@@ -10,12 +10,12 @@
 					<div class="wrapper">
 						<div class="welcome-text">
 							<h5 class="sidebar-welcome-header">
-								<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
+								<a href="{{route('user_show', [auth()->user()->id])}}">
 									{{ auth()->user()->username }}
 								</a>
 							</h5>
 							@if (is_role('superadmin', 'moderator'))
-								<p class="user-role">{{ ucfirst(auth()->user()->role) }}</p>
+								<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
 							@endif
 							<a class="logout" href="{{route('logout')}}">
 								<span>{{ __('Logout') }}</span>

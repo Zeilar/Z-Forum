@@ -82,9 +82,16 @@
 		@endisset
 	</div>
 
-	@isset ($post->edited_by)
+	@isset($post->edited_by)
 		<div class="post-edited-by">
-			{!! $post->edited_by !!}
+			@php $user = App\User::find($post->edited_by) @endphp
+			<p class="edited-by">
+				{{ __('Edited by ') }}
+				<a class="{{role_coloring($user->role)}}" href="{{route('user_show', [$user->id])}}">
+					{{ $user->username }}
+				</a>
+				{{ __(' at ') . $post->updated_at }}
+			</p>
 			@isset($post->edited_by_message)
 				<p class="edited-message">"{{ $post->edited_by_message }}"</p>
 			@endisset

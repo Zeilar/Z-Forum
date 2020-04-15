@@ -12,26 +12,25 @@
 
 		.result-icon {
 			margin-right: 0.5rem;
-			width: 2rem;
+			align-items: center;
+			display: flex;
+			width: 4rem;
+		}
+
+		.result-user {
+			flex-direction: column;
+			display: flex;
+
+			h5 {
+				flex-direction: column;
+				display: flex;
+				margin: auto;
+			}
 		}
 		
 		h5 {
 			line-height: normal;
 			align-self: center;
-
-			a {
-				&.is_superadmin {
-					color: $superadmin-fill;
-				}
-
-				&.is_moderator {
-					color: $moderator-fill;
-				}
-
-				&:hover {
-					color: $turqoise;
-				}
-			}
 		}
 	}
 }

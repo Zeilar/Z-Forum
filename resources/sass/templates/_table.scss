@@ -189,22 +189,6 @@
 
 						p {
 							text-align: right;
-
-							.posted-by {
-								color: $link;
-
-								&.is_moderator {
-									color: $moderator-fill;
-								}
-
-								&.is_superadmin {
-									color: $superadmin-fill;
-								}
-
-								&:hover {
-									color: $turqoise;
-								}
-							}
 						}
 					}
 				}

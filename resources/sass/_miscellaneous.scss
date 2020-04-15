@@ -2,10 +2,6 @@ p, h1, h2, h3, h4, h5, h6, ul, ol {
 	margin: 0;
 }
 
-p, a, i {
-	font-size: $font-size-base;
-}
-
 span {
 	font-size: inherit;
 }
@@ -91,4 +87,14 @@ legend {
 
 .color-red {
 	color: red !important;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, i, span {
+	&.is_superadmin {
+		color: $superadmin-fill;
+	}
+
+	&.is_moderator {
+		color: $moderator-fill;
+	}
 }

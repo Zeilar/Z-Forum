@@ -3,7 +3,7 @@
 @section('content')
 	<div class="search-results">
 		@if (count($results))
-			<h2>{{ __('Search results for: ') . request('search') }}</h2>
+			<h2>{{ __('Search results for: ') . request('query') }}</h2>
 			@foreach ($results as $result)
 				@php $item = DB::table($result->table_name)->where('id', $result->id)->get() @endphp
 				@foreach ($item as $key)
@@ -27,9 +27,12 @@
 							<div class="result-icon">
 								<img class="img-fluid" src="{{$key->avatar}}" />
 							</div>
-							<h5>
-								<a class="{{role_coloring($key->role)}}" href="{{route('user_show', [$key->id])}}">{{ $key->username }}</a>
-							</h5>
+							<div class="result-user">
+								<h5>
+									<a href="{{route('user_show', [$key->id])}}">{{ $key->username }}</a>
+									<span class="{{role_coloring($key->role)}}">{{ ucfirst($key->role) }}</span>
+								</h5>
+							</div>
 						@elseif ($key->table_name === 'posts')
 							@php $thread = App\Post::find($key->id)->thread @endphp
 							<h5>

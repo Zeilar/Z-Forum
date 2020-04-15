@@ -107,12 +107,14 @@ class PostsController extends Controller
 
 			// If the edit was 3 or more minutes after creation, put a notation of it at the bottom
 			if ($post->created_at->diffInMinutes($post->updated_at) >= 3) {
-				$post->edited_by  = '<p class="edited-by ' . role_coloring(auth()->user()->role) . '">' . __('Edited by ');
-				$post->edited_by .= '<a href="' . route('user_show', auth()->user()->id) . '">' . auth()->user()->username . '</a>';
-				$post->edited_by .= __(' at ') . $post->updated_at . '</p>';
-
+				$post->edited_by = auth()->user()->id;
 				$post->save();
 			}
+
+			$edited_by_content  = '<p class="edited-by">' . __('Edited by ');
+			$edited_by_content .= '<a class="' . role_coloring(auth()->user()->role) . '" href="' . route('user_show', auth()->user()->id) . '">';
+			$edited_by_content .= auth()->user()->username . '</a>';
+			$edited_by_content .= __(' at ') . $post->updated_at . '</p>';
 
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
@@ -124,7 +126,7 @@ class PostsController extends Controller
 				'type'	  			=> 'success',
 				'message' 			=> __('Post was successfully changed'),
 				'content' 			=> $post->content,
-				'edited_by'		    => $post->edited_by,
+				'edited_by'		    => $edited_by_content,
 				'edited_by_message' => $post->edited_by_message,
 			]);
 		}
