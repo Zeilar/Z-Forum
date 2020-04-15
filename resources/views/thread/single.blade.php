@@ -62,9 +62,13 @@
 
 @section('content')
 	<div class="thread @if ($thread->locked) locked @endif">
-		<button class="reply-button btn btn-success-full" type="button">
-			{{ __('Reply') }}
-		</button>
+		@auth
+			@can('create', [App\Post::class, $thread])
+				<button class="reply-button btn btn-success-full" type="button">
+					{{ __('Reply') }}
+				</button>
+			@endcan
+		@endauth
 
 		{{-- Don't even ask, it just works --}}
 		@php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; @endphp
@@ -200,6 +204,10 @@
 						`);
 					});
 				}
+
+				$('.post .post-quote').click(function() {
+					post_quote($(this));
+				});
 			</script>
 		@endcan
 
