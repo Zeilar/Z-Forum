@@ -11942,8 +11942,8 @@ input[type=file] {
 
 .pagination .item-wrapper .item {
   font-size: 1.15rem;
-  padding: 0 0.15rem;
   line-height: 1.2;
+  padding: 0 3px;
   color: #a5abaf;
   display: -webkit-box;
   display: flex;
@@ -11987,7 +11987,7 @@ input[type=file] {
 }
 
 .pagination .item-wrapper .item span {
-  padding: 0 0.2rem;
+  padding: 0 0.25rem;
 }
 
 .pagination .item-wrapper .item i {
