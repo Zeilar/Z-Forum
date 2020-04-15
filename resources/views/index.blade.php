@@ -77,7 +77,7 @@
 
 							@slot('latest_post')
 								@isset($latest_post->thread)
-									<a href="{{
+									<a class="posted-at" href="{{
 										route('post_show', [
 											$latest_post->thread->id,
 											$latest_post->thread->slug,

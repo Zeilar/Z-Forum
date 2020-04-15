@@ -80,7 +80,7 @@
 					@slot('latest_post')
 						@foreach ($subcategory->posts()->latest()->get() as $post)
 							@isset($post->thread)
-								<a href="{{
+								<a class="posted-at" href="{{
 									route('post_show', [
 										$post->thread->id,
 										$post->thread->slug,

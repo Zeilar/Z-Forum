@@ -68,6 +68,16 @@
 				}
 			}
 
+			a {
+				&:not(.posted-by) {
+					color: $green;
+
+					&:hover {
+						color: $turqoise;
+					}
+				}
+			}
+
 			&.read {
 				a {
 					&:not(.posted-by) {

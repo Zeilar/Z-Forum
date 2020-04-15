@@ -13380,6 +13380,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: linear-gradient(to right, #ff481040, #57576880);
 }
 
+#table .table-group .table-row a:not(.posted-by) {
+  color: #00b365;
+}
+
+#table .table-group .table-row a:not(.posted-by):hover {
+  color: #00ffff;
+}
+
 #table .table-group .table-row.read a:not(.posted-by) {
   color: #a5abaf;
 }
