@@ -17,10 +17,10 @@ class SearchController extends Controller
     public function search(Request $request)
 	{
 		request()->validate([
-			'search' => 'required|min:3',
+			'query' => 'required|min:3',
 		]);
 
-		$query = request('search');
+		$query = request('query');
 
 		$subcategories = DB::table('subcategories')->select('table_name', 'id')->where('title', 'like', "%$query%");
 		$categories    = DB::table('categories')->select('table_name', 'id')->where('title', 'like', "%$query%");

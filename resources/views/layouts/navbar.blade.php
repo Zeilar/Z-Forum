@@ -38,9 +38,8 @@
 			</div>
 
 			<form action="{{route('search')}}" method="get">
-				@csrf
 				<div class="nav-search">
-					<input type="text" name="search" id="search" autocomplete="off" required />
+					<input type="text" name="query" id="search" autocomplete="off" required />
 					<button class="search-animate" type="submit">
 						<i class="fas fa-search"></i>
 					</button>
