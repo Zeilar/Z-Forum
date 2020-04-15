@@ -27,15 +27,15 @@
 							<div class="result-source">
 								<p>
 									{{ __('Subcategory in ') }}
-									<a href="{{route('category_show', [$subcategory->category->id])}}">
+									<a href="{{route('category_show', [$subcategory->category->id, $subcategory->category->slug])}}">
 										{{ $subcategory->category->title }}
 									</a>
 								</p>
 							</div>
-							<div class="result-icon">
-								<img class="img-fluid" src="/storage/icons/{{$key->icon}}" />
-							</div>
 							<div class="result-content">
+								<div class="result-icon">
+									<img class="img-fluid" src="/storage/icons/{{$key->icon}}" />
+								</div>
 								<a href="{{route('subcategory_show', [$key->id, $key->slug])}}">{{ $key->title }}</a>
 							</div>
 						@elseif ($key->table_name === 'threads')

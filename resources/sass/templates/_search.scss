@@ -28,13 +28,18 @@
 			background: $darkindigo;
 			flex-direction: row;
 			display: flex;
+
+			a {
+				height: fit-content;
+				margin: auto 0;
+			}
 		}
 
 		.result-icon {
 			align-items: center;
 			margin-right: 1rem;
 			display: flex;
-			width: 4rem;
+			width: 3rem;
 		}
 
 		.result-user {

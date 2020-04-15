@@ -13288,13 +13288,20 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
+.search-results .search-result .result-content a {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto 0;
+}
+
 .search-results .search-result .result-icon {
   -webkit-box-align: center;
           align-items: center;
   margin-right: 1rem;
   display: -webkit-box;
   display: flex;
-  width: 4rem;
+  width: 3rem;
 }
 
 .search-results .search-result .result-user {
