@@ -1,5 +1,10 @@
 @extends('head')
 
+@section('pageTitle')
+	{{ __('Search - ') }}
+	{{ request('query') }}
+@endsection
+
 @section('content')
 	<div class="search-results">
 		@if (count($results))

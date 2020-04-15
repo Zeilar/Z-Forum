@@ -1,5 +1,9 @@
 @extends('head')
 
+@section('pageTitle')
+	{{ __('Account') }}
+@endsection
+
 @section('content')
 	<div id="settings">
 		<form action="{{route('dashboard_account_update')}}" method="post" enctype="multipart/form-data">
