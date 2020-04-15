@@ -13380,16 +13380,20 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: linear-gradient(to right, #ff481040, #57576880);
 }
 
-#table .table-group .table-row.read a {
+#table .table-group .table-row.read a:not(.posted-by) {
   color: #a5abaf;
 }
 
-#table .table-group .table-row.read a:visited {
+#table .table-group .table-row.read a:not(.posted-by):visited {
   color: #a5abaf;
 }
 
-#table .table-group .table-row.read a:visited i {
+#table .table-group .table-row.read a:not(.posted-by):visited i {
   color: #a5abaf;
+}
+
+#table .table-group .table-row.read a:not(.posted-by):hover {
+  color: #00ffff;
 }
 
 #table .table-group .table-row.read a:hover {
@@ -13412,27 +13416,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-row:hover {
   background: #62627580;
-}
-
-#table .table-group .table-row a {
-  color: #00b365;
-}
-
-#table .table-group .table-row a:visited {
-  color: #00b365;
-}
-
-#table .table-group .table-row a:visited i {
-  color: #00b365;
-}
-
-#table .table-group .table-row a:hover {
-  color: #00ffff;
-}
-
-#table .table-group .table-row i {
-  margin: auto 0;
-  color: #00b365;
 }
 
 #table .table-group .table-row .folder {
@@ -13639,6 +13622,10 @@ a:visited {
   color: #3490dc;
 }
 
+i {
+  color: #00b365;
+}
+
 #reply-form {
   margin-bottom: 1rem;
 }
@@ -13706,6 +13693,7 @@ h4.is_superadmin,
 h5.is_superadmin,
 h6.is_superadmin,
 a.is_superadmin,
+a:visited.is_superadmin,
 p.is_superadmin,
 i.is_superadmin,
 span.is_superadmin {
@@ -13719,6 +13707,7 @@ h4.is_moderator,
 h5.is_moderator,
 h6.is_moderator,
 a.is_moderator,
+a:visited.is_moderator,
 p.is_moderator,
 i.is_moderator,
 span.is_moderator {

@@ -70,13 +70,19 @@
 
 			&.read {
 				a {
-					color: $silver;
-
-					&:visited {
+					&:not(.posted-by) {
 						color: $silver;
 
-						i {
+						&:visited {
 							color: $silver;
+
+							i {
+								color: $silver;
+							}
+						}
+
+						&:hover {
+							color: $turqoise;
 						}
 					}
 
@@ -101,27 +107,6 @@
 
 			&:hover {
 				background: #62627580;
-			}
-			
-			a {
-				color: $green;
-
-				&:visited {
-					color: $green;
-
-					i {
-						color: $green;
-					}
-				}
-
-				&:hover {
-					color: $turqoise;
-				}
-			}
-
-			i {
-				margin: auto 0;
-				color: $green;
 			}
 
 			.folder {

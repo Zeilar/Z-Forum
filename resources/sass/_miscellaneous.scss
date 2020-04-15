@@ -43,6 +43,10 @@ a {
 	}
 }
 
+i {
+	color: $green;
+}
+
 #reply-form {
 	margin-bottom: 1rem;
 }
@@ -89,7 +93,7 @@ legend {
 	color: red !important;
 }
 
-h1, h2, h3, h4, h5, h6, a, p, i, span {
+h1, h2, h3, h4, h5, h6, a, a:visited, p, i, span {
 	&.is_superadmin {
 		color: $superadmin-fill;
 	}

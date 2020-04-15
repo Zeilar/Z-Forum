@@ -14,9 +14,7 @@
 									{{ auth()->user()->username }}
 								</a>
 							</h5>
-							@if (is_role('superadmin', 'moderator'))
-								<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
-							@endif
+							<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
 							<a class="logout" href="{{route('logout')}}">
 								<span>{{ __('Logout') }}</span>
 								<i class="fas fa-sign-out-alt"></i>
