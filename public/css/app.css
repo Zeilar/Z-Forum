@@ -13388,6 +13388,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #00ffff;
 }
 
+#table .table-group .table-row a:hover {
+  color: #00ffff;
+}
+
 #table .table-group .table-row.read a:not(.posted-by) {
   color: #a5abaf;
 }
