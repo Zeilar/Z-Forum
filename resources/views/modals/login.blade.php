@@ -50,7 +50,7 @@
 						<span><b>Github</b></span>
 						<i class="fab fa-github"></i>
 					</a>
-					<p>
+					<p class="not-a-member">
 						{{ __('Not a member?') }}
 						<a data-toggle="modal" data-dismiss="modal" href="#registerModal">{{ __('Sign up') }}</a>
 					</p>

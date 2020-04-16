@@ -11500,6 +11500,11 @@ legend {
   color: #00b365;
 }
 
+.modal-auth label,
+.modal-auth p {
+  color: black;
+}
+
 .modal-auth ::-webkit-input-placeholder {
   opacity: 0.5;
 }
@@ -11571,6 +11576,10 @@ legend {
   background: none;
   border-left: 0;
   width: 3rem;
+}
+
+.modal-auth .modal-content .modal-body .password-row .password-revealer i {
+  color: black;
 }
 
 .modal-auth .modal-content .modal-body .remember-row {
@@ -11655,18 +11664,16 @@ legend {
   color: white;
 }
 
+.modal-auth .modal-content .modal-footer #github-signin i {
+  color: white;
+}
+
 .modal-auth .modal-content .modal-footer #github-signin * {
   vertical-align: middle;
 }
 
 .modal-auth .modal-content .modal-footer p {
   margin: 0.5rem auto;
-}
-
-.modal-auth .btn {
-  min-height: 38px;
-  min-width: 100px;
-  border: none;
 }
 
 .custom-scrollbar ::-webkit-scrollbar {
@@ -13323,6 +13330,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #table .table-group .table-row .table-posts p,
 #table .table-group .table-row .table-posts i {
   text-align: center;
+  color: white;
   width: 100%;
 }
 
