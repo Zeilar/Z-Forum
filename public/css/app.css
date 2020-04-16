@@ -11668,10 +11668,6 @@ legend {
   color: white;
 }
 
-.modal-auth .modal-content .modal-footer #github-signin * {
-  vertical-align: middle;
-}
-
 .modal-auth .modal-content .modal-footer p {
   margin: 0.5rem auto;
 }
