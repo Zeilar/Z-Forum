@@ -13537,16 +13537,32 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #table .table-group .category-collapse {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  background: black;
   position: absolute;
-  background: none;
   right: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
   outline: 0;
   border: 0;
   top: 50%;
 }
 
 #table .table-group .category-collapse i {
-  color: white;
+  -webkit-transition: -webkit-transform 0.25s linear;
+  transition: -webkit-transform 0.25s linear;
+  transition: transform 0.25s linear;
+  transition: transform 0.25s linear, -webkit-transform 0.25s linear;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  -webkit-transform: none;
+          transform: none;
+  color: #00b365;
+}
+
+#table .table-group .category-collapse i.closed {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 #table .table-group .th-title * {

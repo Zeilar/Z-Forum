@@ -93,7 +93,7 @@ class Functions {
 		$('.table-group').each(function() {
 			let rows = $(this).find('.subcategory-rows');
 			if (localStorage.getItem(`hidden-${$(this).attr('id')}`)) {
-				$(this).find('.category-collapse i').addClass('fa-plus').removeClass('fa-minus');
+				$(this).find('.category-collapse i').addClass('closed');
 				rows.addClass('hidden');
 			} else {
 				let height = 4;
@@ -101,7 +101,7 @@ class Functions {
 					height += $(this).outerHeight() + 4;
 				});
 
-				$(this).find('.category-collapse i').addClass('fa-minus').removeClass('fa-plus');
+				$(this).find('.category-collapse i').removeClass('closed');
 				rows.removeClass('hidden').css('height', `${height}px`);
 			}
 		});
@@ -125,11 +125,11 @@ class Functions {
 
 				height += 4;
 
-				button.removeClass('fa-plus').addClass('fa-minus');
 				rows.removeClass('hidden').css('height', `${height}px`);
+				button.removeClass('closed');
 			} else {
-				button.removeClass('fa-minus').addClass('fa-plus');
 				rows.addClass('hidden').removeAttr('style');
+				button.addClass('closed');
 			}
 		});
 	}

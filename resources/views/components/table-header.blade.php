@@ -19,7 +19,7 @@
 
 	@isset($collapsible)
 		<button class="category-collapse" type="button">
-			<i class="fas fa-minus"></i>
+			<i class="fas fa-angle-double-down"></i>
 		</button>
 	@endisset
 </div>
