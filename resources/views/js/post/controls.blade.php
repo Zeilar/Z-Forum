@@ -230,6 +230,7 @@
 							element.find('.like-amount-number').html(amount - 1);
 							element.find('.like-text').html('Like');
 						}
+						element.blur();
 					})
 					.catch(function (error) {
 						console.log(error);
