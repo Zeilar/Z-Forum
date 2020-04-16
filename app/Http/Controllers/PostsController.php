@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserLikedPosts;
 use App\ActivityLog;
 use App\Subcategory;
 use App\Category;
@@ -193,4 +194,44 @@ class PostsController extends Controller
 			]);
 		}
     }
+
+	/**
+     * Like a post.
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function like(Request $request)
+	{
+		if (!logged_in()) {
+			return response()->json([
+				'type' 	  => 'error',
+				'message' => __('You must be logged in to do that'),
+			]);
+		}
+
+		$isLiked = UserLikedPosts::where([ 'user_id' => auth()->user()->id, 'post_id' => request('id') ])->get();
+
+		if (count($isLiked)) {
+			foreach ($isLiked as $like) {
+				$like->delete();
+			}
+
+			return response()->json([
+				'type'    => 'success',
+				'message' => __('Unliked post'),
+				'action'  => 'unlike',
+			]);
+		} else {
+			UserLikedPosts::create([
+				'user_id' => auth()->user()->id,
+				'post_id' => request('id'),
+			]);
+
+			return response()->json([
+				'type'    => 'success',
+				'message' => __('Liked post'),
+				'action'  => 'like',
+			]);
+		}
+	}
 }

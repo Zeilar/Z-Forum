@@ -1,6 +1,6 @@
 <script>
-	async function mark_as_read() {
-		let response = await fetch(`{{ route("mark_as_read", [$collection, $id]) }}`, {
+	function mark_as_read() {
+		let response = fetch(`{{ route("mark_as_read", [$collection, $id]) }}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

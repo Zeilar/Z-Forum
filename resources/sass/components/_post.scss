@@ -256,6 +256,14 @@
 	margin-top: 2px;
 	display: flex;
 
+	.post-like {
+		color: white !important;
+
+		i {
+			color: white;
+		}
+	}
+
 	i {
 		pointer-events: none;
 		color: white;

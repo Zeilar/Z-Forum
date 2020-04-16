@@ -67,8 +67,8 @@ html {
 
 .btn-default {
 	color: white !important;
-	background: $darkindigo;
 	border-color: $darkindigo;
+	background: $darkindigo;
 
 	&:focus, &:hover {
 		background: $gray;
@@ -76,23 +76,21 @@ html {
 }
 
 .btn-hazard {
-	color: red !important;
 	border-color: red;
-	margin-left: auto;
-	margin-right: 0;
+	color: red;
 
 	&:focus, &:hover {
-		color: white !important;
 		background: red;
+		color: white;
 
 		i {
-			color: white !important;
+			color: white;
 		}
 	}
 
 	i {
 		transition: color 0.15s ease-in-out;
-		color: red !important;
+		color: red;
 	}
 }
 

@@ -1,7 +1,8 @@
 @auth
 	@isset($post)
+		@include('js.post.alert')
+
 		@can('update', $post)
-			@include('js.post.alert')
 
 			<script>
 				// Initalize post handlers on page load
@@ -187,6 +188,10 @@
 						$(this).find('.post-delete').click(function(e) {
 							post_delete($(this), e)
 						});
+
+						$(this).find('.post-like').click(function() {
+							post_like($(this));
+						});
 					});
 				}
 
@@ -194,6 +199,43 @@
 					post_delete($(this), e);
 				});
 			</script>
+		@else
+			<script>
+				$('.post-like').click(function() {
+					post_like($(this));
+				});
+			</script>
 		@endcan
+
+		@auth
+			<script>
+				// Like post
+				function post_like(element) {
+					axios.defaults.headers.common['X-CSRF-Token'] = '{{ csrf_token() }}';
+					axios.defaults.headers.post['Content-Type'] = 'application/json';
+					axios.post('{{ route("post_like") }}', {
+						id: element.parents('.post').attr('id')
+					})
+					.then(function (response) {
+						let amount = Number(element.find('.like-amount-number').html());
+
+						if (response.data.action === 'like') {
+							element.find('.fa-thumbs-up').removeClass('fa-thumbs-up').addClass('fa-thumbs-down');
+							element.removeClass('btn-success').addClass('btn-hazard');
+							element.find('.like-amount-number').html(amount + 1);
+							element.find('.like-text').html('Unlike');
+						} else {
+							element.find('.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-up');
+							element.removeClass('btn-hazard').addClass('btn-success');
+							element.find('.like-amount-number').html(amount - 1);
+							element.find('.like-text').html('Like');
+						}
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
+			</script>
+		@endauth
 	@endisset
 @endauth

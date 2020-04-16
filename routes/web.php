@@ -53,6 +53,7 @@ Route::get('/dashboard/account', 'DashboardController@account')->name('dashboard
 
 // Tools
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
+Route::post('/post/like', 'PostsController@like')->name('post_like');
 
 // Password reset
 Route::post('/password-reset-request', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

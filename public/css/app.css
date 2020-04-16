@@ -11438,8 +11438,8 @@ html body #footer .btn-success-full:not([disabled]):active {
 
 .btn-default {
   color: white !important;
-  background: #2c2c3580;
   border-color: #2c2c3580;
+  background: #2c2c3580;
 }
 
 .btn-default:focus,
@@ -11448,27 +11448,25 @@ html body #footer .btn-success-full:not([disabled]):active {
 }
 
 .btn-hazard {
-  color: red !important;
   border-color: red;
-  margin-left: auto;
-  margin-right: 0;
+  color: red;
 }
 
 .btn-hazard:focus,
 .btn-hazard:hover {
-  color: white !important;
   background: red;
+  color: white;
 }
 
 .btn-hazard:focus i,
 .btn-hazard:hover i {
-  color: white !important;
+  color: white;
 }
 
 .btn-hazard i {
   -webkit-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
-  color: red !important;
+  color: red;
 }
 
 fieldset {
@@ -12567,6 +12565,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
+.post-toolbar .post-like {
+  color: white !important;
+}
+
+.post-toolbar .post-like i {
+  color: white;
+}
+
 .post-toolbar i {
   pointer-events: none;
   color: white;
@@ -13533,8 +13539,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #table .table-group .category-collapse {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  background: black;
   position: absolute;
+  background: none;
   right: 0.5rem;
   height: 2rem;
   width: 2rem;
@@ -13553,7 +13559,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   font-size: 1.5rem;
   -webkit-transform: none;
           transform: none;
-  color: #00b365;
+  color: white;
 }
 
 #table .table-group .category-collapse i.closed {

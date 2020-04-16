@@ -213,8 +213,8 @@
 
 		.category-collapse {
 			transform: translateY(-50%);
-			background: black;
 			position: absolute;
+			background: none;
 			right: 0.5rem;
 			height: 2rem;
 			width: 2rem;
@@ -228,7 +228,7 @@
 				vertical-align: middle;
 				font-size: 1.5rem;
 				transform: none;
-				color: $green;
+				color: white;
 
 				&.closed {
 					transform: rotate(180deg);

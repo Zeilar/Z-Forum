@@ -110,6 +110,23 @@
 				<button class="btn btn-default post-quote">
 					<span>{{ __('Quote') }}</span>
 				</button>
+				
+				@if (auth()->user()->liked_posts->contains('post_id', $post->id))
+					@php $isLiked = 'hazard' @endphp
+					@php $text = __('Unlike') @endphp
+					@php $thumb = 'thumbs-down' @endphp
+				@else
+					@php $isLiked = 'success' @endphp
+					@php $text = __('Like') @endphp
+					@php $thumb = 'thumbs-up' @endphp
+				@endif
+				<button class="btn btn-{{$isLiked}} post-like">
+					<span class="like-text">{{ $text }}</span>
+					<i class="far fa-{{$thumb}}"></i>
+					<span class="like-amount">
+						(<span class="like-amount-number">{{ count($post->likes) }}</span>)
+					</span>
+				</button>
 
 				@can('delete', $post)
 					<button class="btn btn-hazard spin post-delete">
