@@ -2,7 +2,7 @@
 	<div id="sidebar">
 		@auth
 			@component('components.sidebar-item', ['class' => 'welcome'])
-				@slot('legend')
+				@slot('title')
 					{{ __('Welcome') }}
 				@endslot
 
@@ -52,7 +52,7 @@
 
 				@php $amount = count($superadmins) + count($moderators) ?? 0 @endphp
 
-				@slot('legend')
+				@slot('title')
 					{{ __("Online moderators: $amount") }}
 				@endslot
 
@@ -103,7 +103,7 @@
 		@endcomponent
 
 		@component('components.sidebar-item', ['class' => 'latest-posts'])
-			@slot('legend')
+			@slot('title')
 				{{ __('Latest Posts') }}
 			@endslot
 
@@ -132,12 +132,4 @@
 			@endslot
 		@endcomponent
 	</div>
-
-	<script>
-		// Since double border in fieldset doesn't work, this will have to do
-		$('.sidebar-legend-fixer').each(function() {
-			let width = $(this).parent().siblings('legend').outerWidth();
-			$(this).css('width', `${width}px`);
-		});
-	</script>
 @endempty

@@ -215,6 +215,10 @@ input[type=file] {
 	}
 }
 
+.hover-tooltip {
+	user-select: none;
+}
+
 .pagination {
 	user-select: none;
 	margin-top: 1rem;

@@ -134,7 +134,9 @@
 				}
 
 				.post-meta-right {
+					flex-direction: column;
 					text-align: right;
+					display: flex;
 
 					.post-i {
 						font-size: 0.8rem;
@@ -143,11 +145,9 @@
 			}
 
 			.post-link {
-				position: relative;
+				display: flex;
 
 				a {
-					position: relative;
-
 					&:hover {
 						.fas {
 							color: $turqoise;

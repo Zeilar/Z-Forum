@@ -11928,6 +11928,13 @@ input[type=file] {
   margin-right: 6rem;
 }
 
+.hover-tooltip {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .pagination {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -12424,7 +12431,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-right {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   text-align: right;
+  display: -webkit-box;
+  display: flex;
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-right .post-i {
@@ -12432,11 +12444,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-header .post-meta .post-link {
-  position: relative;
-}
-
-.post .post-header .post-meta .post-link a {
-  position: relative;
+  display: -webkit-box;
+  display: flex;
 }
 
 .post .post-header .post-meta .post-link a:hover .fas {
@@ -12843,39 +12852,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border: 2px solid #00b365;
   background: #2c2c3580;
   border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  position: relative;
-  z-index: 1;
 }
 
-#sidebar .sidebar-item .sidebar-border {
-  height: calc(100% - 1rem - 1px);
-  border: 4px solid black;
-  top: calc(0.5rem + 1px);
-  border-radius: 0.25rem;
-  position: absolute;
-  margin: 0.5rem 0;
-  z-index: -1;
-  width: 100%;
-  left: 0;
-}
-
-#sidebar .sidebar-item .sidebar-border .sidebar-legend-fixer {
-  background: #2c2c3580;
-  position: absolute;
-  width: 10px;
-  height: 4px;
-  left: 4px;
-  top: -4px;
-}
-
-#sidebar .sidebar-item legend {
-  padding: 0 0.25rem;
-  z-index: 2;
-}
-
-#sidebar .sidebar-item .sidebar-item-content {
-  padding: 0 0.5rem 0.5rem 0.5rem;
+#sidebar .sidebar-item .sidebar-title {
+  border-bottom: 2px solid #00b365;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #sidebar .sidebar-item.welcome .wrapper {
@@ -13677,13 +13661,6 @@ i {
   height: 100%;
   -webkit-box-flex: 1;
           flex: 1;
-}
-
-legend {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .navbar,

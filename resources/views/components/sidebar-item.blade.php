@@ -1,10 +1,10 @@
-<fieldset class="sidebar-item @isset($class) {{$class}} @endisset">
-	<div class="sidebar-border"> {{-- To get a second border in the fieldset element --}}
-		<div class="sidebar-legend-fixer"></div> {{-- To fix the legend inconsistency --}}
-	</div> 
+<div class="sidebar-item @isset($class) {{$class}} @endisset">
+	<div class="sidebar-border"> {{-- To get a second border in the sidebar item element --}} </div> 
 	
-	@isset($legend)
-		<legend>{{ $legend }}</legend>
+	@isset($title)
+		<h5 class="sidebar-title">
+			{{ $title }}
+		</h5>
 	@endisset
 
 	@isset($content)
@@ -12,4 +12,4 @@
 			{{ $content }}
 		</div>
 	@endisset
-</fieldset>
+</div>

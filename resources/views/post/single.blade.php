@@ -20,7 +20,8 @@
 					$post->id,
 				])
 			}}">
-				{{ __('View in thread') }} &raquo;
+				{{ __('View in thread') }}
+				<i class="fas fa-sign-in-alt"></i>
 			</a>
 		@endslot
 	@endcomponent
