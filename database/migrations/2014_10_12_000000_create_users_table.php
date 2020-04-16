@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable(); // Nullable in case user logs in with OAuth
 			$table->enum('role', ['member', 'moderator', 'superadmin'])->default('member');
 			$table->text('signature')->nullable();
-			$table->string('avatar')->default(route('index') . '/storage/user-avatars/default.png');
+			$table->string('avatar')->default(route('index') . '/storage/user-avatars/default.svg');
 			$table->json('settings')->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
