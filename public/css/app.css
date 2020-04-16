@@ -12965,11 +12965,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   top: 0;
 }
 
-.navbar .nav-avatar {
-  margin-left: 1rem;
-  width: 2.5rem;
-}
-
 .navbar #navbar-container {
   position: relative;
   height: 100%;
@@ -12978,16 +12973,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .navbar #navbar-container .navbar-brand {
   display: -webkit-box;
   display: flex;
-  width: 13rem;
-}
-
-.navbar #navbar-container .navbar-brand img {
-  margin-right: 5px;
-  width: 10rem;
-}
-
-.navbar #navbar-container .navbar-brand i {
-  width: 3rem;
+  height: 100%;
+  width: 15rem;
 }
 
 .navbar #navbar-container form .nav-search {
