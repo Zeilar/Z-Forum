@@ -223,12 +223,10 @@
 							element.find('.fa-thumbs-up').removeClass('fa-thumbs-up').addClass('fa-thumbs-down');
 							element.removeClass('btn-success').addClass('btn-hazard');
 							element.find('.like-amount-number').html(amount + 1);
-							element.find('.like-text').html('Unlike');
 						} else {
 							element.find('.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-up');
 							element.removeClass('btn-hazard').addClass('btn-success');
 							element.find('.like-amount-number').html(amount - 1);
-							element.find('.like-text').html('Like');
 						}
 						element.blur();
 					})

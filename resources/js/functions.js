@@ -71,8 +71,8 @@ class Functions {
 	static openFolder() {
 		$('.table-title a').mousedown(function() {
 			let link = $(this);
-			link.mouseup(function() {
-				link.parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
+			link.mouseup(function(e) {
+				if (e.which === 1) link.parents('.table-title').siblings('.fa-folder').removeClass('fa-folder').addClass('fa-folder-open');
 			});
 		});
 	}
