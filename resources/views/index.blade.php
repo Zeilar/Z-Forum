@@ -81,7 +81,11 @@
 										route('post_show', [
 											$latest_post->thread->id,
 											$latest_post->thread->slug,
-											get_item_page_number($latest_post->thread->posts->sortBy('created_at'), $latest_post->id, settings_get('posts_per_page')),
+											get_item_page_number(
+												$latest_post->thread->posts->sortBy('created_at'),
+												$latest_post->id,
+												settings_get('posts_per_page')
+											),
 											$latest_post->id,
 										])
 									}}">
