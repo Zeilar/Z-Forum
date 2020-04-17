@@ -167,7 +167,7 @@ class PostsTableSeeder extends Seeder
 		factory(App\Post::class, 5000)->create()->each(function($post) {
 			$post->likes()->save(factory(App\UserLikedPosts::class)->make([
 				'post_id' => $post->id,
-				'user_id' => App\User::all()->random(),
+				'user_id' => App\User::all()->random()->id,
 			]));
 		});
     }
