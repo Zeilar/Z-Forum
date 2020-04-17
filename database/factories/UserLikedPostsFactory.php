@@ -8,9 +8,8 @@ use App\User;
 use App\Post;
 
 $factory->define(UserLikedPosts::class, function (Faker $faker) {
-	$users = User::all()->random();
     return [
-        'user_id' => $users,
-		'post_id' => 1,
+        'user_id' => User::all()->random(),
+		'post_id' => Post::all()->random(),
     ];
 });
