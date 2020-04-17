@@ -164,6 +164,11 @@ class PostsTableSeeder extends Seeder
 			'updated_at' => $date,
 		]);
 
-		factory(App\Post::class, 5000)->create();
+		factory(App\Post::class, 5000)->create()->each(function($post) {
+			$post->likes()->save(factory(App\UserLikedPosts::class)->make([
+				'post_id' => $post->id,
+				'user_id' => App\User::all()->random(),
+			]));
+		});
     }
 }

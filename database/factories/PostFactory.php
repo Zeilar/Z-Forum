@@ -10,9 +10,9 @@ use App\Post;
 use App\User;
 
 $factory->define(Post::class, function (Faker $faker) {
+	$date = Carbon::now()->subSeconds(rand(0, DAY_IN_SECONDS * 3));
 	$thread = Thread::all()->random();
 	$user = User::all()->random();
-	$date = Carbon::now()->subSeconds(rand(0, DAY_IN_SECONDS * 3));
 
 	if (!count($thread->posts) && $user->id !== $thread->user->id) {
 		Post::create([
