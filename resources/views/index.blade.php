@@ -74,7 +74,7 @@
 							@endslot
 
 							@slot('posts')
-								{{ count($subcategory->posts) }}
+								{{ count($posts) }}
 							@endslot
 
 							@slot('latest_post')

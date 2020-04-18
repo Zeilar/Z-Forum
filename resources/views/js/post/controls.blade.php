@@ -220,11 +220,9 @@
 						let amount = Number(element.find('.like-amount-number').html());
 
 						if (response.data.action === 'like') {
-							element.find('.fa-thumbs-up').removeClass('fa-thumbs-up').addClass('fa-thumbs-down');
 							element.removeClass('btn-success').addClass('btn-hazard');
 							element.find('.like-amount-number').html(amount + 1);
 						} else {
-							element.find('.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-up');
 							element.removeClass('btn-hazard').addClass('btn-success');
 							element.find('.like-amount-number').html(amount - 1);
 						}

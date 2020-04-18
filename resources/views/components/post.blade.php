@@ -113,13 +113,11 @@
 				
 				@if (auth()->user()->liked_posts->contains('post_id', $post->id))
 					@php $isLiked = 'hazard' @endphp
-					@php $thumb = 'thumbs-down' @endphp
 				@else
 					@php $isLiked = 'success' @endphp
-					@php $thumb = 'thumbs-up' @endphp
 				@endif
 				<button class="btn btn-{{$isLiked}} post-like">
-					<i class="far fa-{{$thumb}}"></i>
+					<i class="far fa-thumbs-up"></i>
 					<span class="like-amount">
 						(<span class="like-amount-number">{{ count($post->likes) }}</span>)
 					</span>
