@@ -58,18 +58,20 @@
 
 				@if ($amount)
 					@if (count($superadmins))
-						<div class="sidebar-admins">
+						<div class="sidebar-superadmins">
+							<h5 class="is_superadmin">{{ __('Superadmins') }}</h5>
+
 							@for ($i = 0; $i < count($superadmins); $i++)
 								@isset ($superadmins[$i])
-									<a class="is_superadmin" href="{{route('user_show', [$superadmins[$i]->id])}}">
+									<a href="{{route('user_show', [$superadmins[$i]->id])}}">
 										@if (count($superadmins) > 1 && $i !== count($superadmins) - 1)
 											@php $comma = ','; @endphp
 										@else
-											@php $comma = false; @endphp
+											@php $comma = ''; @endphp
 										@endif
 										{{ $superadmins[$i]->username }}
 									</a>
-									<span>{{ $comma ?? '' }}</span>
+									<span class="separator">{{ $comma }}</span>
 								@endisset
 							@endfor
 						</div>
@@ -77,17 +79,19 @@
 
 					@if (count($moderators))
 						<div class="sidebar-moderators">
+							<h5 class="is_moderator">{{ __('Moderators') }}</h5>
+
 							@for ($i = 0; $i < count($moderators); $i++)
 								@isset ($moderators[$i])
-									<a class="is_moderator" href="{{route('user_show', [$moderators[$i]->id])}}">
+									<a href="{{route('user_show', [$moderators[$i]->id])}}">
 										@if (count($moderators) > 1 && $i !== count($moderators) - 1)
-											@php $comma = ','; @endphp
+											@php $comma = ', '; @endphp
 										@else
-											@php $comma = false; @endphp
+											@php $comma = ''; @endphp
 										@endif
 										{{ $moderators[$i]->username }}
 									</a>
-									<span class="separator">{{ $comma ?? '' }}</span>
+									<span class="separator">{{ $comma }}</span>
 								@endisset
 							@endfor
 						</div>

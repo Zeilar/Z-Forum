@@ -12921,12 +12921,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-right: 0.25rem;
 }
 
-#sidebar .sidebar-item.online-moderators .sidebar-offline a {
-  color: #3490dc;
-}
-
-#sidebar .sidebar-item.online-moderators .sidebar-offline a:hover {
-  color: #00ffff;
+#sidebar .sidebar-item.online-moderators .sidebar-superadmins {
+  margin-bottom: 1rem;
 }
 
 #sidebar .sidebar-item .sidebar-header {
@@ -12934,10 +12930,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
   font-weight: bold;
-}
-
-#sidebar .sidebar-item a:hover {
-  color: #00ffff;
 }
 
 #sidebar .sidebar-item.latest-posts .latest-posts-item {
@@ -13028,7 +13020,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: transparent;
   position: relative;
   color: white;
-  height: 3rem;
   margin: auto;
   width: 100%;
   outline: 0;
@@ -13068,8 +13059,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: auto;
   outline: 0;
   border: 0;
-  top: 50%;
   right: 0;
+  top: 50%;
 }
 
 .navbar #navbar-container form .nav-search .search-animate i {
