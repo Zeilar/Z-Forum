@@ -84,7 +84,7 @@
 							</div>
 							<div class="result-content">
 								<p>
-									{{ shorten_text($key->content, 300) }}
+									{!! shorten_text($key->content, 300) !!}
 									<a class="read-more-button" href="{{
 										route('post_show', [
 											$thread->id,
