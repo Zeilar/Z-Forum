@@ -52,7 +52,7 @@ class UsersController extends Controller
     {
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)) {
-			$user = User::find($id) ?? User::where('username', $id)->get()[0];
+			$user = User::find($id) ?? User::where('username', $id)->first();
 
 			if (logged_in() && auth()->user()->id !== $user->id) {
 				ActivityLog::create([

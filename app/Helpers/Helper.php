@@ -275,7 +275,7 @@ if (!function_exists('settings_get')) {
 
 		// If no user was found, return default value for that setting
 		if (empty($user)) {
-			$settings = json_decode(DB::table('default_settings')->get()[0]->settings);
+			$settings = json_decode(DB::table('default_settings')->first()->settings);
 			return isset($settings->$key) ? $settings->$key : null;
 		}
 

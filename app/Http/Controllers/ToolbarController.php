@@ -17,7 +17,7 @@ class ToolbarController extends Controller
 		if (request('id') === auth()->user()->id) return;
 
 		// Get user id via input, whether it's id directly or username
-		$id = User::find(request('user'))->id ?? User::where('username', request('user'))->get()[0]->id ?? null;
+		$id = User::find(request('user'))->id ?? User::where('username', request('user'))->first()->id ?? null;
 
 		if (isset($id)) {
 			Auth::loginUsingId($id, true);
