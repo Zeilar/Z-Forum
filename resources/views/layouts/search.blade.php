@@ -83,16 +83,19 @@
 								</p>
 							</div>
 							<div class="result-content">
-								<a href="{{
-									route('post_show', [
-										$thread->id,
-										$thread->slug,
-										get_item_page_number($thread->posts->sortBy('created_at'), $key->id, settings_get('posts_per_page')),
-										$key->id,
-									])
-								}}">
-									{{ shorten_text($key->content) }}
-								</a>
+								<p>
+									{{ shorten_text($key->content, 300) }}
+									<a class="read-more-button" href="{{
+										route('post_show', [
+											$thread->id,
+											$thread->slug,
+											get_item_page_number($thread->posts->sortBy('created_at'), $key->id, settings_get('posts_per_page')),
+											$key->id,
+										])
+									}}">
+										{{ __(' Read more') }} &raquo;
+									</a>
+								</p>
 							</div>
 						@endif
 					</div>

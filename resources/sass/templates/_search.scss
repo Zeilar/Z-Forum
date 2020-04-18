@@ -26,8 +26,12 @@
 			border-right: 2px solid $gray;
 			border-left: 2px solid $gray;
 			background: $darkindigo;
-			flex-direction: row;
+			flex-direction: column;
 			display: flex;
+
+			.result-read-more {
+				margin-top: 1rem;
+			}
 
 			a {
 				height: fit-content;
