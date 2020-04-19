@@ -39,4 +39,7 @@
 			</div>
 		</div>
 	</div>
+	@foreach ($posts_with_likes as $item)
+		{{-- @dump($item) --}}
+	@endforeach
 @endsection

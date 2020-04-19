@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ActivityLog;
+use UserLikedPosts;
 use Carbon\Carbon;
 use App\User;
 use Cache;
 use Auth;
+use DB;
 
 class UsersController extends Controller
 {
@@ -62,7 +64,13 @@ class UsersController extends Controller
 				]);
 			}
 
+			$posts = DB::table('user_liked_posts')
+				->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user->id)
+				->get()
+				->unique();
+
 			return view('user.single', [
+				'posts_with_likes' => $posts,
 				'user' => $user,
 			]);
 		} else {
