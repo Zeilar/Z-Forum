@@ -12776,8 +12776,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 1rem;
   display: -webkit-box;
   display: flex;
-  height: 12.5rem;
-  width: 12.5rem;
+  height: 10rem;
+  width: 10rem;
 }
 
 .user-profile .profile-upper .profile-avatar img {
@@ -12788,33 +12788,59 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-box-pack: space-evenly;
           justify-content: space-evenly;
   background: #2c2c3580;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  -webkit-box-align: center;
-          align-items: center;
-  margin-left: 2px;
-  height: 12.5rem;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-flex: 1;
-          flex: 1;
-}
-
-.user-profile .profile-upper .profile-meta .profile-meta-block {
-  justify-content: space-around;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
   -webkit-box-align: center;
           align-items: center;
-  padding: 1rem 2rem;
+  margin-left: 2px;
   display: -webkit-box;
   display: flex;
+  height: 10rem;
+  -webkit-box-flex: 1;
+          flex: 1;
 }
 
-.user-profile .profile-upper .profile-meta .profile-meta-block h4 {
-  margin-bottom: 1rem;
+.user-profile .profile-upper .profile-meta .profile-name {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.user-profile .profile-upper .profile-meta .profile-name * {
+  text-align: center;
+  width: 33%;
+}
+
+.user-profile .profile-upper .profile-meta .profile-meta-stats {
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.user-profile .profile-upper .profile-meta .profile-meta-stats .profile-meta-block {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: flex;
+  height: 100%;
+  width: 33%;
+}
+
+.user-profile .profile-upper .profile-meta .profile-meta-stats .profile-meta-block .profile-meta-upper {
+  margin-bottom: 0.5rem;
   color: #a5abaf;
 }
 
@@ -12826,17 +12852,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
-.user-profile .profile-middle .profile-name {
-  background: #2c2c3580;
-  padding: 0.5rem 1rem;
-  margin-top: 2px;
-  width: 12.5rem;
-}
-
 .user-profile .profile-middle .profile-signature {
   background: #2c2c3580;
   padding: 0.5rem 1rem;
-  margin-left: 2px;
   overflow: hidden;
   margin-top: 2px;
   -webkit-box-flex: 1;

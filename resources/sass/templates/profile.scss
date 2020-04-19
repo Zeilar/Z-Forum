@@ -7,8 +7,8 @@
 			background: $darkindigo;
 			padding: 1rem;
 			display: flex;
-			height: 12.5rem;
-			width: 12.5rem;
+			height: 10rem;
+			width: 10rem;
 
 			img {
 				margin: auto;
@@ -18,23 +18,43 @@
 		.profile-meta {
 			justify-content: space-evenly;
 			background: $darkindigo;
-			flex-direction: row;
+			flex-direction: column;
 			align-items: center;
 			margin-left: 2px;
-			height: 12.5rem;
 			display: flex;
+			height: 10rem;
 			flex: 1;
 
-			.profile-meta-block {
-				justify-content: space-around;
-				flex-direction: column;
+			.profile-name {
+				flex-direction: row;
 				align-items: center;
-				padding: 1rem 2rem;
 				display: flex;
+				height: 100%;
+				width: 100%;
 
-				h4 {
-					margin-bottom: 1rem;
-					color: $silver;
+				* {
+					text-align: center;
+					width: 33%;
+				}
+			}
+
+			.profile-meta-stats {
+				align-items: center;
+				display: flex;
+				height: 100%;
+				width: 100%;
+
+				.profile-meta-block {
+					flex-direction: column;
+					align-items: center;
+					display: flex;
+					height: 100%;
+					width: 33%;
+
+					.profile-meta-upper {
+						margin-bottom: 0.5rem;
+						color: $silver;
+					}
 				}
 			}
 		}
@@ -44,17 +64,9 @@
 		flex-direction: row;
 		display: flex;
 
-		.profile-name {
-			background: $darkindigo;
-			padding: 0.5rem 1rem;
-			margin-top: 2px;
-			width: 12.5rem;
-		}
-
 		.profile-signature {
 			background: $darkindigo;
 			padding: 0.5rem 1rem;
-			margin-left: 2px;
 			overflow: hidden;
 			margin-top: 2px;
 			flex: 1;
