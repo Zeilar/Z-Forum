@@ -59,8 +59,8 @@ i {
 }
 
 .navbar, #content, #footer {
-	padding-right: 20rem;
-	padding-left: 20rem;
+	padding-right: 15vw;
+	padding-left: 15vw;
 }
 
 #content {
@@ -73,6 +73,7 @@ i {
 
 	#main {
 		padding-top: 1rem;
+		max-width: 50vw;
 		flex: 3;
 	}
 }

@@ -102,7 +102,7 @@
 				@endforeach
 			@endforeach
 		@else
-			<h1>{{ __('No results were found for this query') }}</h1>
+			<h2>{{ __('No results were found for this query') }}</h2>
 		@endif
 	</div>
 	

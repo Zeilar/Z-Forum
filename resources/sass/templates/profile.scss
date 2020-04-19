@@ -1,0 +1,72 @@
+.user-profile {
+	.profile-upper {
+		flex-direction: row;
+		display: flex;
+
+		.profile-avatar {
+			background: $darkindigo;
+			padding: 1rem;
+			display: flex;
+			height: 12.5rem;
+			width: 12.5rem;
+
+			img {
+				margin: auto;
+			}
+		}
+
+		.profile-meta {
+			justify-content: space-evenly;
+			background: $darkindigo;
+			flex-direction: row;
+			align-items: center;
+			margin-left: 2px;
+			height: 12.5rem;
+			display: flex;
+			flex: 1;
+
+			.profile-meta-block {
+				justify-content: space-around;
+				flex-direction: column;
+				align-items: center;
+				padding: 1rem 2rem;
+				display: flex;
+
+				h4 {
+					margin-bottom: 1rem;
+					color: $silver;
+				}
+			}
+		}
+	}
+
+	.profile-middle {
+		flex-direction: row;
+		display: flex;
+
+		.profile-name {
+			background: $darkindigo;
+			padding: 0.5rem 1rem;
+			margin-top: 2px;
+			width: 12.5rem;
+		}
+
+		.profile-signature {
+			background: $darkindigo;
+			padding: 0.5rem 1rem;
+			margin-left: 2px;
+			overflow: hidden;
+			margin-top: 2px;
+			flex: 1;
+
+			p {
+				overflow-wrap: break-word;
+			}
+
+			.no-signature {
+				font-style: italic;
+				color: $silver;
+			}
+		}
+	}
+}
