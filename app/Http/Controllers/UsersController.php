@@ -60,7 +60,7 @@ class UsersController extends Controller
 				ActivityLog::create([
 					'user_id' 	   => auth()->user()->id,
 					'task'	  	   => __('visited'),
-					'performed_on' => json_encode([['table' => 'users'], ['id' => $user->id]]),
+					'performed_on' => json_encode(['table' => 'users', 'id' => $user->id]),
 				]);
 			}
 
@@ -122,6 +122,33 @@ class UsersController extends Controller
 			$user = Auth::user();
 			$user->last_seen = Carbon::now();
 			$user->save();
+		}
+	}
+
+	public function show_activity(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = DB::table('user_liked_posts')
+				->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user->id)
+				->get()
+				->unique();
+
+			$activities = ActivityLog::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+
+			if (!count($activities)) {
+				$activities = false;
+			}
+
+			return view('user.activity', [
+				'posts_with_likes' => $posts,
+				'activities' => $activities,
+				'user' => $user,
+			]);
+		} else {
+			return view('errors.404');
 		}
 	}
 }

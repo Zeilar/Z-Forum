@@ -85,4 +85,41 @@
 			}
 		}
 	}
+
+	.profile-nav {
+		margin-top: 2rem;
+		display: flex;
+
+		.profile-nav-item {
+			border: 2px solid transparent;
+			background: $darkindigo;
+			margin-left: 0.5rem;
+			padding: 1rem 4rem;
+			color: white;
+
+			&:first-child {
+				margin: 0;
+			}
+
+			&:hover, &.active {
+				border-color: $green;
+				background: $gray;
+			}
+		}
+	}
+
+	.profile-activity {
+		border: 2px solid $green;
+		margin-top: 0.5rem;
+
+		.profile-activity-item {
+			word-break: break-all;
+			padding: 0.5rem 1rem;
+			background: $gray;
+
+			&:nth-child(odd) {
+				background: $darkindigo;
+			}
+		}
+	}
 }

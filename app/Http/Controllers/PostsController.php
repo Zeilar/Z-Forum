@@ -60,7 +60,7 @@ class PostsController extends Controller
 		ActivityLog::create([
 			'user_id' 	   => $user->id,
 			'task'	  	   => __('created'),
-			'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
+			'performed_on' => json_encode(['table' => 'posts', 'id' => $post->id]),
 		]);
 
 		return redirect(route('post_show', [
@@ -132,7 +132,7 @@ class PostsController extends Controller
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
 				'task'	  	   => __('edited'),
-				'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
+				'performed_on' => json_encode(['table' => 'posts', 'id' => $post->id]),
 			]);
 
 			return response()->json([
@@ -181,7 +181,7 @@ class PostsController extends Controller
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
 				'task'	  	   => __('deleted'),
-				'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
+				'performed_on' => json_encode(['table' => 'posts', 'id' => $post->id]),
 			]);
 
 			$post->delete();
@@ -193,7 +193,7 @@ class PostsController extends Controller
 				ActivityLog::create([
 					'user_id' 	   => auth()->user()->id,
 					'task'	  	   => __('deleted'),
-					'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 				]);
 				
 				$thread->delete();

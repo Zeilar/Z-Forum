@@ -47,7 +47,7 @@ class SubcategoriesController extends Controller
 		ActivityLog::create([
 			'user_id' 	   => auth()->user()->id,
 			'task'	  	   => __('created'),
-			'performed_on' => json_encode([['table' => 'subcategories'], ['id' => $subcategory->id]]),
+			'performed_on' => json_encode(['table' => 'subcategories', 'id' => $subcategory->id]),
 		]);
 
 		return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
@@ -107,7 +107,7 @@ class SubcategoriesController extends Controller
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
 				'task'	  	   => __('edited'),
-				'performed_on' => json_encode([['table' => 'subcategories'], ['id' => $subcategory->id]]),
+				'performed_on' => json_encode(['table' => 'subcategories', 'id' => $subcategory->id]),
 			]);
 
 			return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
@@ -142,7 +142,7 @@ class SubcategoriesController extends Controller
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
 				'task'	  	   => __('deleted'),
-				'performed_on' => json_encode([['table' => 'subcategories'], ['id' => $subcategory->id]]),
+				'performed_on' => json_encode(['table' => 'subcategories', 'id' => $subcategory->id]),
 			]);
 
 			$subcategory->delete();

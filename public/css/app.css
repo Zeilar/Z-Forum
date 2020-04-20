@@ -12875,6 +12875,45 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #a5abaf;
 }
 
+.user-profile .profile-nav {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+.user-profile .profile-nav .profile-nav-item {
+  border: 2px solid transparent;
+  background: #2c2c3580;
+  margin-left: 0.5rem;
+  padding: 1rem 4rem;
+  color: white;
+}
+
+.user-profile .profile-nav .profile-nav-item:first-child {
+  margin: 0;
+}
+
+.user-profile .profile-nav .profile-nav-item:hover,
+.user-profile .profile-nav .profile-nav-item.active {
+  border-color: #00b365;
+  background: #2b2b34e6;
+}
+
+.user-profile .profile-activity {
+  border: 2px solid #00b365;
+  margin-top: 0.5rem;
+}
+
+.user-profile .profile-activity .profile-activity-item {
+  word-break: break-all;
+  padding: 0.5rem 1rem;
+  background: #2b2b34e6;
+}
+
+.user-profile .profile-activity .profile-activity-item:nth-child(odd) {
+  background: #2c2c3580;
+}
+
 #toolbar,
 #toolbar .toolbar-item {
   height: calc(100vh - 12rem);

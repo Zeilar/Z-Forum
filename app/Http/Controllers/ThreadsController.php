@@ -77,7 +77,7 @@ class ThreadsController extends Controller
 		ActivityLog::create([
 			'user_id' 	   => auth()->user()->id,
 			'task'	  	   => __('created'),
-			'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+			'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 		]);
 
 		return redirect(route('thread_show', [$thread->id, $thread->slug]));
@@ -112,7 +112,7 @@ class ThreadsController extends Controller
 				ActivityLog::create([
 					'user_id' 	   => auth()->user()->id,
 					'task'	  	   => __('visited'),
-					'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 				]);
 			}
 
@@ -145,7 +145,7 @@ class ThreadsController extends Controller
 		ActivityLog::create([
 			'user_id' 	   => auth()->user()->id,
 			'task'	  	   => __('deleted'),
-			'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+			'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 		]);
 
 		$thread->delete();
@@ -187,7 +187,7 @@ class ThreadsController extends Controller
 				ActivityLog::create([
 					'user_id' 	   => auth()->user()->id,
 					'task'	  	   => __('unlocked'),
-					'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 				]);
 			} else {
 				$thread->locked = true;
@@ -196,7 +196,7 @@ class ThreadsController extends Controller
 				ActivityLog::create([
 					'user_id' 	   => auth()->user()->id,
 					'task'	  	   => __('locked'),
-					'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 				]);
 			}
 			
@@ -248,7 +248,7 @@ class ThreadsController extends Controller
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
 				'task'	  	   => __('edited'),
-				'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 			]);
 
 			return response()->json([
@@ -297,7 +297,7 @@ class ThreadsController extends Controller
 			ActivityLog::create([
 				'user_id' 	   => auth()->user()->id,
 				'task'	  	   => __('deleted'),
-				'performed_on' => json_encode([['table' => 'threads'], ['id' => $thread->id]]),
+				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 			]);
 
 			$thread->delete();
