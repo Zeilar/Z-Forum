@@ -45,6 +45,9 @@
 		<a class="profile-nav-item @if($active === 'posts') active @endif" href="{{route('user_posts', [$user->id])}}">
 			{{ __('Posts') }}
 		</a>
+		<a class="profile-nav-item @if($active === 'likes') active @endif" href="{{route('user_likes', [$user->id])}}">
+			{{ __('Likes') }}
+		</a>
 	</div>
 	
 	@isset($activities)
@@ -53,6 +56,10 @@
 
 	@isset($posts)
 		{{ $posts }}
+	@endisset
+
+	@isset($likes)
+		{{ $likes }}
 	@endisset
 		
 	@isset($pagination)

@@ -112,7 +112,7 @@
 						<span>{{ __('Quote') }}</span>
 					</button>
 					
-					@if (auth()->user()->liked_posts->contains('post_id', $post->id))
+					@if (auth()->user()->likes->contains('post_id', $post->id))
 						@php $isLiked = 'success' @endphp
 					@else
 						@php $isLiked = 'default' @endphp

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserLikedPosts;
 use App\ActivityLog;
-use UserLikedPosts;
 use Carbon\Carbon;
 use App\User;
 use App\Post;
@@ -14,6 +14,13 @@ use DB;
 
 class UsersController extends Controller
 {
+	private function get_user_liked_posts(int $user_id) {
+		return DB::table('user_liked_posts')
+			->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user_id)
+			->get()
+			->unique();
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -65,10 +72,7 @@ class UsersController extends Controller
 				]);
 			}
 
-			$posts = DB::table('user_liked_posts')
-				->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user->id)
-				->get()
-				->unique();
+			$posts = $this->get_user_liked_posts($user->id);
 
 			return view('user.single', [
 				'posts_with_likes' => $posts,
@@ -132,10 +136,7 @@ class UsersController extends Controller
 		if (User::find($id) || User::where('username', $id)) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
-			$posts = DB::table('user_liked_posts')
-				->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user->id)
-				->get()
-				->unique();
+			$posts = $this->get_user_liked_posts($user->id);
 
 			$activities = ActivityLog::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 
@@ -159,16 +160,32 @@ class UsersController extends Controller
 		if (User::find($id) || User::where('username', $id)) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
-			$posts = DB::table('user_liked_posts')
-				->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user->id)
-				->get()
-				->unique();
+			$posts = $this->get_user_liked_posts($user->id);
 			
 			$userPosts = Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 
 			return view('user.posts', [
 				'posts_with_likes' => $posts,
 				'posts' 		   => $userPosts,
+				'user' 			   => $user,
+			]);
+		} else {
+			return view('errors.404');
+		}
+	}
+
+	public function show_likes(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = $this->get_user_liked_posts($user->id);
+			$likes = $user->likes()->distinct('post_id')->paginate(settings_get('posts_per_page'));
+
+			return view('user.likes', [
+				'posts_with_likes' => $posts,
+				'likes' 		   => $likes,
 				'user' 			   => $user,
 			]);
 		} else {
