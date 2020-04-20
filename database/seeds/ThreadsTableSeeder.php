@@ -133,6 +133,6 @@ class ThreadsTableSeeder extends Seeder
 			'category_id' => 3,
 		]);
 
-		factory(App\Thread::class, 50)->create();
+		factory(App\Thread::class, 10)->create();
     }
 }

@@ -8,7 +8,7 @@
 	<div class="user-profile">
 		<div class="profile-upper">
 			<div class="profile-avatar">
-				<img src="{{$user->avatar}}" alt="{{ __('User profile avatar') }}">
+				<img class="img-fluid" src="{{$user->avatar}}" alt="{{ __('User profile avatar') }}">
 			</div>
 
 			<div class="profile-meta">

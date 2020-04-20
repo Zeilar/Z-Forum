@@ -164,11 +164,19 @@ class PostsTableSeeder extends Seeder
 			'updated_at' => $date,
 		]);
 
-		factory(App\Post::class, 5000)->create()->each(function($post) {
-			$post->likes()->save(factory(App\UserLikedPosts::class)->make([
-				'post_id' => $post->id,
-				'user_id' => App\User::all()->random()->id,
-			]));
+		factory(App\Post::class, 200)->create([
+			'thread_id' => 13,
+		]);
+
+		factory(App\Post::class, 500)->create()->each(function($post) {
+			// This will SEVERELY affect seeding performance
+			// Approximately 100% longer per user
+			App\User::inRandomOrder()->limit(3)->each(function($user) use ($post) {        
+				factory(App\UserLikedPosts::class)->create([
+					'user_id' => $user->id,
+					'post_id' => $post->id,
+				]);
+			});
 		});
     }
 }
