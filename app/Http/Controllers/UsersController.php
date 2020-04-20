@@ -144,8 +144,31 @@ class UsersController extends Controller
 
 			return view('user.activity', [
 				'posts_with_likes' => $posts,
-				'activities' => $activities,
-				'user' => $user,
+				'activities' 	   => $activities,
+				'user'			   => $user,
+			]);
+		} else {
+			return view('errors.404');
+		}
+	}
+
+	public function show_posts(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = DB::table('user_liked_posts')
+				->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user->id)
+				->get()
+				->unique();
+			
+			$userPosts = \App\Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+
+			return view('user.posts', [
+				'posts_with_likes' => $posts,
+				'posts' 		   => $userPosts,
+				'user' 			   => $user,
 			]);
 		} else {
 			return view('errors.404');

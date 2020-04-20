@@ -99,39 +99,41 @@
 	@endisset
 
 	@auth
-		@can('create', [App\Post::class, $post->thread])
-			<div class="post-toolbar">
-				@can('update', $post)
-					<button class="btn btn-default post-edit">
-						<span>{{ __('Edit') }}</span>
-					</button>
-				@endcan
+		@empty($disablePostToolbar)
+			@can('create', [App\Post::class, $post->thread])
+				<div class="post-toolbar">
+					@can('update', $post)
+						<button class="btn btn-default post-edit">
+							<span>{{ __('Edit') }}</span>
+						</button>
+					@endcan
 
-				<button class="btn btn-default post-quote">
-					<span>{{ __('Quote') }}</span>
-				</button>
-				
-				@if (auth()->user()->liked_posts->contains('post_id', $post->id))
-					@php $isLiked = 'success' @endphp
-				@else
-					@php $isLiked = 'default' @endphp
-				@endif
-				<button class="btn btn-{{$isLiked}} post-like">
-					<i class="far fa-thumbs-up"></i>
-					<span class="like-amount">
-						(<span class="like-amount-number">{{ count($post->likes) }}</span>)
-					</span>
-					@if ($isLiked === 'success')	
-						<span class="like-indicator">+1</span>
+					<button class="btn btn-default post-quote">
+						<span>{{ __('Quote') }}</span>
+					</button>
+					
+					@if (auth()->user()->liked_posts->contains('post_id', $post->id))
+						@php $isLiked = 'success' @endphp
+					@else
+						@php $isLiked = 'default' @endphp
 					@endif
-				</button>
-
-				@can('delete', $post)
-					<button class="btn btn-hazard spin post-delete">
-						{{ __('Delete') }}
+					<button class="btn btn-{{$isLiked}} post-like">
+						<i class="far fa-thumbs-up"></i>
+						<span class="like-amount">
+							(<span class="like-amount-number">{{ count($post->likes) }}</span>)
+						</span>
+						@if ($isLiked === 'success')	
+							<span class="like-indicator">+1</span>
+						@endif
 					</button>
-				@endcan
-			</div>
-		@endcan
+
+					@can('delete', $post)
+						<button class="btn btn-hazard spin post-delete">
+							{{ __('Delete') }}
+						</button>
+					@endcan
+				</div>
+			@endcan
+		@endempty
 	@endauth
 </article>

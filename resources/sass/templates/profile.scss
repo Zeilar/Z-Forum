@@ -87,6 +87,7 @@
 	}
 
 	.profile-nav {
+		margin-bottom: 0.5rem;
 		margin-top: 2rem;
 		display: flex;
 
@@ -110,7 +111,6 @@
 
 	.profile-activity {
 		border: 2px solid $green;
-		margin-top: 0.5rem;
 
 		.profile-activity-item {
 			word-break: break-all;

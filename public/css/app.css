@@ -12876,6 +12876,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .user-profile .profile-nav {
+  margin-bottom: 0.5rem;
   margin-top: 2rem;
   display: -webkit-box;
   display: flex;
@@ -12901,7 +12902,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .user-profile .profile-activity {
   border: 2px solid #00b365;
-  margin-top: 0.5rem;
 }
 
 .user-profile .profile-activity .profile-activity-item {

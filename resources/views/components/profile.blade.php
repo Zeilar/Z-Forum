@@ -42,13 +42,17 @@
 		<a class="profile-nav-item @if($active === 'activity') active @endif" href="{{route('user_activity', [$user->id])}}">
 			{{ __('Activity') }}
 		</a>
-		<a class="profile-nav-item @if($active === 'posts') active @endif" href="#">
+		<a class="profile-nav-item @if($active === 'posts') active @endif" href="{{route('user_posts', [$user->id])}}">
 			{{ __('Posts') }}
 		</a>
 	</div>
 	
 	@isset($activities)
 		{{ $activities }}
+	@endisset
+
+	@isset($posts)
+		{{ $posts }}
 	@endisset
 		
 	@isset($pagination)
