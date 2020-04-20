@@ -36,17 +36,29 @@ class PostsController extends Controller
 			'content' => 'required|max:1000'
 		]);
 
+		$user = auth()->user();
+
 		$thread = Thread::find($id);
 		$post = new Post();
 		$post->content = request('content');
-		$post->user_id = auth()->user()->id;
+		$post->user_id = $user->id;
 		$post->thread_id = $thread->id;
 		$post->subcategory_id = $thread->subcategory->id;
 		$post->category_id = $thread->category->id;
 		$post->save();
 
+		if (count($user->posts) >= 10) {
+			$user->rank = 'pioneer';
+		} else if (count($user->posts) >= 100) {
+			$user->rank = 'veteran';
+		} else if (count($user->posts) >= 1000) {
+			$user->rank = 'cave dweller';
+		}
+
+		$user->save();
+
 		ActivityLog::create([
-			'user_id' 	   => auth()->user()->id,
+			'user_id' 	   => $user->id,
 			'task'	  	   => __('created'),
 			'performed_on' => json_encode([['table' => 'posts'], ['id' => $post->id]]),
 		]);

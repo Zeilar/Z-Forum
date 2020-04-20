@@ -15,7 +15,7 @@
 				<div class="profile-meta-block profile-name">
 					<h3 class="profile-username">{{ $user->username }}</h3>
 					<h3 class="profile-role {{role_coloring($user->role)}}">{{ ucfirst($user->role) }}</h3>
-					<h3 class="profile-rank">Post Rank</h3>
+					<h3 class="profile-rank">{{ ucwords($user->rank) }}</h3>
 				</div>
 
 				<div class="profile-meta-stats">
@@ -23,13 +23,13 @@
 						<h5 class="profile-meta-upper">{{ __('Joined ') }}</h4>
 						<h4 class="profile-meta-lower">{{ pretty_date($user->created_at) }}</h3>
 					</div>
-					<div class="profile-posts profile-meta-block">
-						<h5 class="profile-meta-upper">{{ __('Posts') }}</h4>
-						<h4 class="profile-meta-lower">{{ count($user->posts) }}</h3>
-					</div>
 					<div class="profile-likes profile-meta-block">
 						<h5 class="profile-meta-upper">{{ __('Post likes') }}</h5>
 						<h4 class="profile-meta-lower">{{ count($posts_with_likes) }}</h4>
+					</div>
+					<div class="profile-posts profile-meta-block">
+						<h5 class="profile-meta-upper">{{ __('Posts') }}</h4>
+						<h4 class="profile-meta-lower">{{ count($user->posts) }}</h3>
 					</div>
 				</div>
 			</div>
