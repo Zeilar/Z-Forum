@@ -18,11 +18,11 @@
 				</div>
 				<div class="profile-likes profile-meta-block">
 					<h5 class="profile-meta-upper">{{ __('Post likes') }}</h5>
-					<h4 class="profile-meta-lower">{{ count($posts_with_likes) }}</h4>
+					<h4 class="profile-meta-lower">{{ $posts_with_likes->count() }}</h4>
 				</div>
 				<div class="profile-posts profile-meta-block">
 					<h5 class="profile-meta-upper">{{ __('Posts') }}</h4>
-					<h4 class="profile-meta-lower">{{ count($user->posts) }}</h3>
+					<h4 class="profile-meta-lower">{{ $user->posts->count() }}</h3>
 				</div>
 			</div>
 		</div>
@@ -42,6 +42,9 @@
 		<a class="profile-nav-item @if($active === 'activity') active @endif" href="{{route('user_activity', [$user->id])}}">
 			{{ __('Activity') }}
 		</a>
+		<a class="profile-nav-item @if($active === 'threads') active @endif" href="{{route('user_threads', [$user->id])}}">
+			{{ __('Threads') }}
+		</a>
 		<a class="profile-nav-item @if($active === 'posts') active @endif" href="{{route('user_posts', [$user->id])}}">
 			{{ __('Posts') }}
 		</a>
@@ -52,6 +55,10 @@
 	
 	@isset($activities)
 		{{ $activities }}
+	@endisset
+
+	@isset($threads)
+		{{ $threads }}
 	@endisset
 
 	@isset($posts)

@@ -109,10 +109,10 @@
 		}
 	}
 
-	.profile-activity {
+	.profile-activity, .profile-threads {
 		border: 2px solid $green;
 
-		.profile-activity-item {
+		.profile-activity-item, .profile-thread {
 			word-break: break-all;
 			padding: 0.5rem 1rem;
 			background: $gray;

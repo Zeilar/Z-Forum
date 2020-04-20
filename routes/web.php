@@ -42,6 +42,7 @@ Route::get('/post/{id}', 'PostsController@index')->name('post_permalink');
 // Users
 Route::get('/user/{id}/activity', 'UsersController@show_activity')->name('user_activity');
 Route::post('/user/push-status', 'UsersController@push_status')->name('user_push_status');
+Route::get('/user/{id}/threads', 'UsersController@show_threads')->name('user_threads');
 Route::get('/user/{id}/posts', 'UsersController@show_posts')->name('user_posts');
 Route::get('/user/{id}/likes', 'UsersController@show_likes')->name('user_likes');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
