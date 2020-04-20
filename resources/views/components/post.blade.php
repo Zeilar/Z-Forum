@@ -43,8 +43,8 @@
 							{{ $post->user->username }}
 						</a>
 					</p>
-					<p class="post-author-role">
-						{{ __(ucfirst($post->user->role)) }}
+					<p class="post-author-rank">
+						{{ __(ucfirst($post->user->rank)) }}
 					</p>
 				</div>
 				

@@ -32,7 +32,7 @@
 				@endif
 			@endauth
 
-			@foreach ($subcategory->threads as $thread)	
+			@foreach ($threads as $thread)	
 				{{-- Check if the thread has any admin post --}}
 				@foreach ($subcategory->posts as $post)
 					@if ($post->user->role === 'superadmin')

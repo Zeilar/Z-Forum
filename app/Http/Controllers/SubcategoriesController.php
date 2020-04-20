@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ActivityLog;
 use App\Subcategory;
 use App\Category;
+use App\Thread;
 
 class SubcategoriesController extends Controller
 {
@@ -62,8 +63,11 @@ class SubcategoriesController extends Controller
     public function show(int $id, string $slug)
     {
 		if (item_exists(Subcategory::find($id), $slug)) {
+			$subcategory = Subcategory::find($id);
+
 			return view('subcategory.single', [
-				'subcategory' => Subcategory::find($id),
+				'subcategory' => $subcategory,
+				'threads'	  => Thread::where('subcategory_id', $subcategory->id)->paginate(settings_get('posts_per_page')),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);
