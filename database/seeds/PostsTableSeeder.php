@@ -169,6 +169,12 @@ class PostsTableSeeder extends Seeder
 		]);
 
 		factory(App\Post::class, 500)->create()->each(function($post) {
+			App\ActivityLog::create([
+				'user_id' 	   => $post->user->id,
+				'task'	  	   => __('created'),
+				'performed_on' => json_encode(['table' => 'posts', 'id' => $post->id]),
+			]);
+
 			// This will SEVERELY affect seeding performance
 			// Approximately 100% longer per user
 			App\User::inRandomOrder()->limit(3)->each(function($user) use ($post) {        

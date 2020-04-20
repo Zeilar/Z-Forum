@@ -133,6 +133,12 @@ class ThreadsTableSeeder extends Seeder
 			'category_id' => 3,
 		]);
 
-		factory(App\Thread::class, 10)->create();
+		factory(App\Thread::class, 10)->create()->each(function($thread) {
+			App\ActivityLog::create([
+				'user_id' 	   => $thread->user->id,
+				'task'	  	   => __('created'),
+				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+			]);
+		});
     }
 }

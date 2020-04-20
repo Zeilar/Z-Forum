@@ -37,6 +37,7 @@
 							@elseif ($performed_on->table === 'threads')
 								@php $thread = App\Thread::find($performed_on->id) @endphp
 								{{ ucfirst($activity->task) }}
+								{{ 'thread' }}
 								<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 									{{ $thread->title }}
 								</a>
