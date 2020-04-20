@@ -220,11 +220,15 @@
 						let amount = Number(element.find('.like-amount-number').html());
 
 						if (response.data.action === 'like') {
-							element.removeClass('btn-success').addClass('btn-hazard');
-							element.find('.like-amount-number').html(amount + 1);
+							amount += 1;
+							element.find('.like-amount').append('<span class="like-indicator">+1</span>');
+							element.removeClass('btn-default').addClass('btn-success');
+							element.find('.like-amount-number').html(amount);
 						} else {
-							element.removeClass('btn-hazard').addClass('btn-success');
-							element.find('.like-amount-number').html(amount - 1);
+							amount -= 1;
+							element.removeClass('btn-success').addClass('btn-default');
+							element.find('.like-amount-number').html(amount);
+							element.find('.like-indicator').remove();
 						}
 						element.blur();
 					})

@@ -112,15 +112,18 @@
 				</button>
 				
 				@if (auth()->user()->liked_posts->contains('post_id', $post->id))
-					@php $isLiked = 'hazard' @endphp
-				@else
 					@php $isLiked = 'success' @endphp
+				@else
+					@php $isLiked = 'default' @endphp
 				@endif
 				<button class="btn btn-{{$isLiked}} post-like">
 					<i class="far fa-thumbs-up"></i>
 					<span class="like-amount">
 						(<span class="like-amount-number">{{ count($post->likes) }}</span>)
 					</span>
+					@if ($isLiked === 'success')	
+						<span class="like-indicator">+1</span>
+					@endif
 				</button>
 
 				@can('delete', $post)
