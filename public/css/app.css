@@ -12767,6 +12767,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #00ffff;
 }
 
+.user-profile {
+  max-width: 55vw;
+}
+
 .user-profile .profile-upper {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -12904,24 +12908,34 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #2b2b34e6;
 }
 
-.user-profile .profile-activity,
-.user-profile .profile-threads {
+.user-profile .profile-lower {
   border: 2px solid #00b365;
 }
 
-.user-profile .profile-activity .profile-activity-item,
-.user-profile .profile-activity .profile-thread,
-.user-profile .profile-threads .profile-activity-item,
-.user-profile .profile-threads .profile-thread {
+.user-profile .profile-lower.posts,
+.user-profile .profile-lower.likes {
+  padding: 0.5rem;
+}
+
+.user-profile .profile-lower.posts .post,
+.user-profile .profile-lower.likes .post {
+  margin-bottom: 0.5rem;
+}
+
+.user-profile .profile-lower.posts .post:last-child,
+.user-profile .profile-lower.likes .post:last-child {
+  margin-bottom: 0;
+}
+
+.user-profile .profile-lower .profile-activity-item,
+.user-profile .profile-lower .profile-thread {
   word-break: break-all;
   padding: 0.5rem 1rem;
   background: #2b2b34e6;
 }
 
-.user-profile .profile-activity .profile-activity-item:nth-child(odd),
-.user-profile .profile-activity .profile-thread:nth-child(odd),
-.user-profile .profile-threads .profile-activity-item:nth-child(odd),
-.user-profile .profile-threads .profile-thread:nth-child(odd) {
+.user-profile .profile-lower .profile-activity-item:nth-child(odd),
+.user-profile .profile-lower .profile-thread:nth-child(odd) {
   background: #2c2c3580;
 }
 

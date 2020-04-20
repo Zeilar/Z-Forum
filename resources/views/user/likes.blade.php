@@ -7,7 +7,7 @@
 @section('content')
 	@component('components.profile', ['user' => $user, 'posts_with_likes' => $posts_with_likes, 'active' => 'likes'])
 		@slot('likes')
-			<div class="profile-posts">
+			<div class="profile-lower likes">
 				@foreach ($likes as $like)
 					@php $post = App\Post::find($like->post_id) @endphp
 					@component('components.post', ['post' => $post, 'disablePostToolbar' => true])

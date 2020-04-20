@@ -1,4 +1,6 @@
 .user-profile {
+	max-width: 55vw;
+
 	.profile-upper {
 		flex-direction: row;
 		display: flex;
@@ -109,8 +111,20 @@
 		}
 	}
 
-	.profile-activity, .profile-threads {
+	.profile-lower {
 		border: 2px solid $green;
+
+		&.posts, &.likes {
+			padding: 0.5rem;
+
+			.post {
+				margin-bottom: 0.5rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
 
 		.profile-activity-item, .profile-thread {
 			word-break: break-all;

@@ -7,7 +7,7 @@
 @section('content')
 	@component('components.profile', ['user' => $user, 'posts_with_likes' => $posts_with_likes, 'active' => 'threads'])
 		@slot('threads')
-			<div class="profile-threads">
+			<div class="profile-lower threads">
 				@if (count($threads))
 					@foreach ($threads as $thread)
 						<div class="profile-thread">

@@ -7,7 +7,7 @@
 @section('content')
 	@component('components.profile', ['user' => $user, 'posts_with_likes' => $posts_with_likes, 'active' => 'activity'])
 		@slot('activities')
-			<div class="profile-activity">
+			<div class="profile-lower activity">
 				@if ($activities)
 					@foreach ($activities as $activity)
 						<div class="profile-activity-item">

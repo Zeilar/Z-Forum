@@ -7,7 +7,7 @@
 @section('content')
 	@component('components.profile', ['user' => $user, 'posts_with_likes' => $posts_with_likes, 'active' => 'posts'])
 		@slot('posts')
-			<div class="profile-posts">
+			<div class="profile-lower posts">
 				@foreach ($posts as $post)
 					@component('components.post', ['post' => $post, 'disablePostToolbar' => true])
 						@slot('banner_link')
