@@ -18,7 +18,7 @@ html {
 			}
 
 			.btn-success {
-				background: $darkindigo;
+				background: $darkgray;
 				border-color: $green;
 				color: white;
 
@@ -67,8 +67,8 @@ html {
 
 .btn-default {
 	color: white !important;
-	border-color: $darkindigo;
-	background: $darkindigo;
+	border-color: $darkgray;
+	background: $darkgray;
 
 	&:focus, &:hover {
 		background: $gray;

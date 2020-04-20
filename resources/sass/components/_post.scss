@@ -250,7 +250,7 @@
 }
 
 .post-toolbar {
-	background: $darkindigo;
+	background: $darkgray;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
 	margin-top: 2px;
@@ -280,7 +280,7 @@
 		}
 
 		&.thread-cancel {
-			background: $darkindigo !important;
+			background: $darkgray !important;
 		}
 
 		&.post-delete, &.thread-delete {

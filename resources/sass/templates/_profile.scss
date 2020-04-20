@@ -6,7 +6,7 @@
 		display: flex;
 
 		.profile-avatar {
-			background: $darkindigo;
+			background: $darkgray;
 			padding: 1rem;
 			display: flex;
 			height: 10rem;
@@ -27,7 +27,7 @@
 			flex: 1;
 
 			.profile-name {
-				background: $darkindigo;
+				background: $darkgray;
 				flex-direction: row;
 				align-items: center;
 				margin-bottom: 2px;
@@ -42,7 +42,7 @@
 			}
 
 			.profile-meta-stats {
-				background: $darkindigo;
+				background: $darkgray;
 				align-items: center;
 				padding: 1rem 0;
 				display: flex;
@@ -71,7 +71,7 @@
 		display: flex;
 
 		.profile-signature {
-			background: $darkindigo;
+			background: $darkgray;
 			padding: 0.5rem 1rem;
 			overflow: hidden;
 			margin-top: 2px;
@@ -95,7 +95,7 @@
 
 		.profile-nav-item {
 			border: 2px solid transparent;
-			background: $darkindigo;
+			background: $darkgray;
 			margin-left: 0.5rem;
 			padding: 1rem 4rem;
 			color: white;
@@ -132,7 +132,7 @@
 			background: $gray;
 
 			&:nth-child(odd) {
-				background: $darkindigo;
+				background: $darkgray;
 			}
 		}
 	}

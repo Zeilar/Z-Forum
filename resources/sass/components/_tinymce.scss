@@ -2,12 +2,12 @@ div.tox-tinymce {
 	border: 0;
 
 	.tox-toolbar__primary {
-		border-top: 1px $darkindigo !important;
-		border-bottom: 1px solid $darkindigo;
+		border-top: 1px $darkgray !important;
+		border-bottom: 1px solid $darkgray;
 		background: none;
 
 		.tox-toolbar__group {
-			border-color: $darkindigo !important;
+			border-color: $darkgray !important;
 		}
 	}
 
@@ -16,7 +16,7 @@ div.tox-tinymce {
 	}
 
 	.tox-menubar {
-		background: $darkindigo !important;
+		background: $darkgray !important;
 
 		button {
 			margin-right: 0.5rem;
@@ -29,7 +29,7 @@ div.tox-tinymce {
 	}
 
 	.tox-statusbar {
-		background: $darkindigo;
+		background: $darkgray;
 		border: 0;
 
 		.tox-statusbar__branding {
@@ -54,7 +54,7 @@ button.tox-button {
 
 div.tox-tinymce-aux {
 	.tox-dialog {
-		border-color: $darkindigo;
+		border-color: $darkgray;
 	}
 
 	.tox-icon svg {
@@ -77,15 +77,15 @@ div.tox-tinymce-aux {
 	}
 
 	.tox-menu {
-		border-color: $darkindigo;
+		border-color: $darkgray;
 
 		.tox-collection__group {
-			border-color: $darkindigo !important;
+			border-color: $darkgray !important;
 		}
 	}
 
 	.tox-dialog__header {
-		border-bottom: 1px solid $darkindigo;
+		border-bottom: 1px solid $darkgray;
 		padding: 0.5rem 1rem;
 
 		button {
@@ -94,7 +94,7 @@ div.tox-tinymce-aux {
 	}
 
 	.tox-dialog__footer {
-		border-color: $darkindigo;
+		border-color: $darkgray;
 	}
 
 	.tox-dialog-wrap__backdrop {
