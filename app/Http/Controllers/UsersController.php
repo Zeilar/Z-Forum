@@ -7,6 +7,7 @@ use App\ActivityLog;
 use UserLikedPosts;
 use Carbon\Carbon;
 use App\User;
+use App\Post;
 use Cache;
 use Auth;
 use DB;
@@ -163,7 +164,7 @@ class UsersController extends Controller
 				->get()
 				->unique();
 			
-			$userPosts = \App\Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+			$userPosts = Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 
 			return view('user.posts', [
 				'posts_with_likes' => $posts,
