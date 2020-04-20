@@ -12787,7 +12787,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .user-profile .profile-upper .profile-meta {
   -webkit-box-pack: space-evenly;
           justify-content: space-evenly;
-  background: #2c2c3580;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
@@ -12802,11 +12801,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .user-profile .profile-upper .profile-meta .profile-name {
+  background: #2c2c3580;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
   -webkit-box-align: center;
           align-items: center;
+  margin-bottom: 2px;
   display: -webkit-box;
   display: flex;
   height: 100%;
@@ -12819,8 +12820,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .user-profile .profile-upper .profile-meta .profile-meta-stats {
+  background: #2c2c3580;
   -webkit-box-align: center;
           align-items: center;
+  padding: 1rem 0;
   display: -webkit-box;
   display: flex;
   height: 100%;
@@ -12828,6 +12831,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .user-profile .profile-upper .profile-meta .profile-meta-stats .profile-meta-block {
+  -webkit-box-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
