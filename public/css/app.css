@@ -12762,8 +12762,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #00ffff;
 }
 
-.user-profile {
-  max-width: 55vw;
+#settings {
+  border: 2px solid #00b365;
+  background: #2c2c3580;
+  padding: 1rem;
+}
+
+#settings p {
+  margin-bottom: 0.5rem;
 }
 
 .user-profile .profile-upper {
@@ -13884,6 +13890,7 @@ i {
 
 #content #main {
   padding-top: 1rem;
+  max-width: 55vw;
   -webkit-box-flex: 3;
           flex: 3;
 }
