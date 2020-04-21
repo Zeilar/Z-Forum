@@ -12297,6 +12297,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .post .post-banner.is_superadmin {

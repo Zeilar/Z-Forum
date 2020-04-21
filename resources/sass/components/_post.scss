@@ -10,6 +10,7 @@
 		padding: 0.25rem 0.5rem;
 		margin-bottom: 2px;
 		width: fit-content;
+		user-select: none;
 
 		&.is_superadmin {
 			background: linear-gradient(to right, $superadmin, $gray);
