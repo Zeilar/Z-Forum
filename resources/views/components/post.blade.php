@@ -1,25 +1,29 @@
-{{-- Passed variables: $i --}}
+@if (auth()->check() && $post->user->id === auth()->user()->id)
+	@php $attribute = 'is_author' @endphp
+@elseif ($post->user->id === $post->thread->user->id)
+	@php $attribute = 'is_op' @endphp
+@else
+	@php $attribute = '' @endphp
+@endif
+	
 <article class="post" id="{{$post->id}}">
+	@if ($post->user->role === 'superadmin' || $post->user->role === 'moderator')
+		<div class="post-banner {{role_coloring($post->user->role)}}">
+			<span class="post-banner-role">{{ $post->user->role }}</span>
+			@if ($post->user->role === 'moderator')
+				<i class="fas fa-star"></i>
+			@endif
+			@if ($post->user->role === 'superadmin')
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+			@endif
+		</div>
+	@endif
+
 	<div class="post-header">
-		<div class="post-meta
-			@auth
-				@if ($post->user->id === auth()->user()->id)
-					is_author
-				@elseif ($post->user->id === $post->thread->user->id)
-					is_op
-				@else
-					{{ role_coloring($post->user->role) }}
-				@endif
-			@else
-				@if ($post->user->id === $post->thread->user->id)
-					is_op
-				@else
-					{{ role_coloring($post->user->role) }}
-				@endif
-			@endauth
-		">
+		<div class="post-meta {{$attribute}}">
 			<a class="post-avatar-link" href="{{route('user_show', [$post->user->id])}}">
-				<div class="post-avatar @if (is_user_online($post->user->id)) is_online @endif">
+				<div class="post-avatar @if(is_user_online($post->user->id)) is_online @endif">
 					<img class="img-fluid" src="{{$post->user->avatar}}" alt="{{ __('Post user avatar') }}" />
 
 					<div class="avatar-meta">

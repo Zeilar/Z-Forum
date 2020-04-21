@@ -12291,6 +12291,35 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   box-shadow: 0 0 5px 0 #00b365;
 }
 
+.post .post-banner {
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 2px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.post .post-banner.is_superadmin {
+  background: -webkit-gradient(linear, left top, right top, from(#db441640), to(#2b2b34e6));
+  background: linear-gradient(to right, #db441640, #2b2b34e6);
+}
+
+.post .post-banner.is_moderator {
+  background: -webkit-gradient(linear, left top, right top, from(#97008b80), to(#2b2b34e6));
+  background: linear-gradient(to right, #97008b80, #2b2b34e6);
+}
+
+.post .post-banner span {
+  text-transform: uppercase;
+  margin-right: 0.25rem;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+.post .post-banner i {
+  color: #ffed4a;
+}
+
 .post .post-header {
   margin-bottom: 2px;
 }
@@ -12311,16 +12340,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .post .post-header .post-meta.is_author .post-meta-text {
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 194, 110, 0.35)), to(#2b2b34e6));
   background: linear-gradient(to right, rgba(0, 194, 110, 0.35), #2b2b34e6);
-}
-
-.post .post-header .post-meta.is_superadmin .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(#db441640), to(#2b2b34e6));
-  background: linear-gradient(to right, #db441640, #2b2b34e6);
-}
-
-.post .post-header .post-meta.is_moderator .post-meta-text {
-  background: -webkit-gradient(linear, left top, right top, from(#97008b80), to(#2b2b34e6));
-  background: linear-gradient(to right, #97008b80, #2b2b34e6);
 }
 
 .post .post-header .post-meta .post-avatar {

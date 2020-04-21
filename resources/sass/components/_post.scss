@@ -6,6 +6,31 @@
 		box-shadow: 0 0 5px 0 $green;
 	}
 
+	.post-banner {
+		padding: 0.25rem 0.5rem;
+		margin-bottom: 2px;
+		width: fit-content;
+
+		&.is_superadmin {
+			background: linear-gradient(to right, $superadmin, $gray);
+		}
+
+		&.is_moderator {
+			background: linear-gradient(to right, $moderator, $gray);
+		}
+
+		span {
+			text-transform: uppercase;
+			margin-right: 0.25rem;
+			letter-spacing: 1px;
+			font-style: italic;
+		}
+
+		i {
+			color: $yellow;
+		}
+	}
+
 	.post-header {
 		margin-bottom: 2px;
 
@@ -22,18 +47,6 @@
 			&.is_author {
 				.post-meta-text {
 					background: linear-gradient(to right, rgba(0, 194, 110, 0.35), $gray);
-				}
-			}
-
-			&.is_superadmin {
-				.post-meta-text {
-					background: linear-gradient(to right, $superadmin, $gray);
-				}
-			}
-
-			&.is_moderator {
-				.post-meta-text {
-					background: linear-gradient(to right, $moderator, $gray);
 				}
 			}
 
