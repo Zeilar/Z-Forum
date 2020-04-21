@@ -58,8 +58,8 @@
 		}
 
 		button {
+			border-radius: 0 !important;
 			padding: 0.5rem 0;
-			border-radius: 0;
 			outline: 0;
 			width: 20%;
 			border: 0;
@@ -77,11 +77,6 @@
 				margin-right: 0.5rem;
 			}
 		}
-	}
-
-	a {
-		margin: auto;
-		width: 40%;
 	}
 
 	iframe {

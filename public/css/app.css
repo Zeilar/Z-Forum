@@ -12721,8 +12721,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #four-zero-four .search button {
+  border-radius: 0 !important;
   padding: 0.5rem 0;
-  border-radius: 0;
   outline: 0;
   width: 20%;
   border: 0;
@@ -12740,11 +12740,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #four-zero-four .search button span {
   margin-right: 0.5rem;
-}
-
-#four-zero-four a {
-  margin: auto;
-  width: 40%;
 }
 
 #four-zero-four iframe {
@@ -13323,8 +13318,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0;
 }
 
-.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link.active {
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link.active,
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link.slide-active {
   color: #00ffff;
+}
+
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link.active {
+  border-bottom: 2px solid #00ffff;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link#login-button {
@@ -13823,6 +13823,10 @@ input::placeholder {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+input {
+  outline-color: #00b365;
 }
 
 a {

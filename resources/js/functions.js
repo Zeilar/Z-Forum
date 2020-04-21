@@ -19,15 +19,15 @@ class Functions {
 	// Navbar slide animation when hovering on items
 	static navSlide() {
 		$('.nav-link').not('#login-button, #register-button').mouseenter(function() {
-			let linkActive = $('.nav-link.active');
+			let linkActive = $('.nav-link.slide-active');
 			let link = $(this);
 
 			// Spawn nav ruler if it doesn't exist
 			if (!$('.nav-ruler').length) link.parent().append('<div class="nav-ruler"></div>');
 
 			// Remove any colored nav link and color the latest hovered one
-			linkActive.removeClass('active');
-			link.addClass('active');
+			linkActive.removeClass('slide-active');
+			link.addClass('slide-active');
 
 			// Get index of currently hovered item and the index of the item with the ruler
 			let index = link.parent().index();
@@ -54,7 +54,7 @@ class Functions {
 
 			// Remove ruler when leaving navbar
 			link.parents('.nav-items').mouseleave(function() {
-				linkActive.removeClass('active');
+				linkActive.removeClass('slide-active');
 				ruler.remove();
 			});
 		});

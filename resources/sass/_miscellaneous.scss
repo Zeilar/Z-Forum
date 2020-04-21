@@ -30,6 +30,10 @@ img, input::placeholder {
 	user-select: none;
 }
 
+input {
+	outline-color: $green;
+}
+
 a {
 	color: $link;
 

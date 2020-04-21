@@ -28,7 +28,7 @@
 					<input type="text" name="search" id="search-error" placeholder="{{ __('What are you looking for?') }}"
 						@isset ($value) value="{{$value}}" @endisset
 					/>
-					<button class="btn btn-success" type="submit">
+					<button class="btn btn-success-full" type="submit">
 						<span>{{ __('Search') }}</span>
 						<i class="fas fa-search"></i>
 					</button>

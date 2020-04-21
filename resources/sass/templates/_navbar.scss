@@ -137,8 +137,12 @@
 							width: 100%;
 							padding: 0;
 
-							&.active {
+							&.active, &.slide-active {
 								color: $turqoise;
+							}
+
+							&.active {
+								border-bottom: 2px solid $turqoise;
 							}
 
 							&#login-button {

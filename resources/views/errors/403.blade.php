@@ -24,7 +24,7 @@
 				{{ __('If you believe to be authorized, please contact an administrator') }}
 			</h4>
 
-			<a class="btn btn-success" href="{{url()->previous()}}">
+			<a class="btn btn-success-full" href="{{url()->previous()}}">
 				{{ __('Go back') }}
 			</a>
 		</div>
