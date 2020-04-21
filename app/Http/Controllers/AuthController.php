@@ -134,7 +134,8 @@ class AuthController extends Controller
 
 		// Check if the provided user exists and if that user is an admin
 		$user = User::where('username', request('id'))->orWhere('email', request('id'))->first();
-		if (count($user)) {
+		
+		if (isset($user)) {
 			if ($user->role !== 'superadmin') {
 				return msg_error(__('You must be an administrator to proceed'), 'error-id');
 			}
