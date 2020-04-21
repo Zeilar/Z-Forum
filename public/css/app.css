@@ -12885,6 +12885,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .user-profile .profile-nav {
   margin-bottom: 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   margin-top: 2rem;
   display: -webkit-box;
   display: flex;
