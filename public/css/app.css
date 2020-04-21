@@ -12899,6 +12899,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: calc(20% - 4px);
   background: #2c2c3580;
   margin-left: 0.5rem;
+  text-align: center;
   padding: 1rem 4rem;
   color: white;
 }
