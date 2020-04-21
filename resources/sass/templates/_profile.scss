@@ -96,6 +96,7 @@
 
 		.profile-nav-item {
 			border: 2px solid transparent;
+			width: calc(20% - 4px); // Include border size or it will overflow
 			background: $darkgray;
 			margin-left: 0.5rem;
 			padding: 1rem 4rem;
