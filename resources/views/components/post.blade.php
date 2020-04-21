@@ -74,13 +74,13 @@
 
 	<div class="post-body">
 		{!! $post->content !!}
-
-		@isset($post->user->signature)
-			<div class="post-signature">
-				{{ $post->user->signature }}
-			</div>
-		@endisset
 	</div>
+	
+	@isset($post->user->signature)
+		<div class="post-signature">
+			{{ $post->user->signature }}
+		</div>
+	@endisset
 
 	@isset($post->edited_by)
 		<div class="post-edited-by">
