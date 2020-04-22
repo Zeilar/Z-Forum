@@ -138,11 +138,11 @@ if (!function_exists('msg_success')) {
 	function msg_success(string $msg = null, string $flash = 'success') {
 		switch ($msg) {
 			case 'login':
-				return redirect()->back()->with('success', __('Successfully logged in!'));
+				return redirect()->back()->with('success', __('Successfully logged in'));
 			case 'registered':
-				return redirect()->route('index')->with('success', __('Your account has been created!'));
+				return redirect()->route('index')->with('success', __('Your account has been created'));
 			case 'update':
-				return redirect()->back()->with('success', __('Changes were successful!'));
+				return redirect()->back()->with('success', __('Changes were successful'));
 			default:
 				return redirect()->back()->with($flash, $msg);
 		}

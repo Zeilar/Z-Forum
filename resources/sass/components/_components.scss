@@ -238,6 +238,10 @@ input[type=file] {
 	}
 }
 
+.flash-success {
+	color: $green;
+}
+
 .pagination {
 	user-select: none;
 	margin-top: 1rem;

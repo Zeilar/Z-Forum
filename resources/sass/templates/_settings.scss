@@ -3,6 +3,14 @@
 	background: $darkgray;
 	padding: 1rem;
 
+	.flash-success {
+		padding: 0.25rem 0.5rem;
+		margin-bottom: 1rem;
+		background: $green;
+		width: fit-content;
+		color: white;
+	}
+
 	.password-wrapper {
 		display: flex;
 

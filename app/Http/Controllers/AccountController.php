@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class AccountController extends Controller
 {
@@ -72,20 +74,49 @@ class AccountController extends Controller
     {
 		if (!logged_in()) {
 			return msg_error('login');
+		} else if (!Hash::check(request('password_current'), auth()->user()->password)) {
+			return msg_error(__('Incorrect password'), 'password_current')->withInput($request->except('password'));
 		}
 
 		request()->validate([
-			'user-avatar' => 'required|image',
+			'avatar'	   	   		=> 'max:5120|file|image|nullable',
+			'signature'		   		=> 'max:100|nullable',
+			'items_per_page'   		=> 'min:0|max:50|numeric',
+			'email'	  		   		=> 'min:3|max:30|unique:users|email|nullable',
+			'password'	   			=> 'min:6|max:30|confirmed|nullable',
+			'password_current'		=> 'required',
 		]);
 
 		$user = auth()->user();
+		
+		if (isset($request->avatar)) {
+			// Store the avatar as an absolute URI path
+			$path = $request->file('avatar')->store('/public/user-avatars');
+			$path = explode('public/', $path)[1];
+			$path = route('index') . '/storage/' . $path;
+			$user->avatar = $path;
+		}
 
-		// Store the file as an absolute URI path
-		$path = $request->file('user-avatar')->store('/public/user-avatars');
-		$path = explode('public/', $path)[1];
-		$path = route('index') . '/storage/' . $path;
+		if (isset($request->signature)) {
+			$user->signature = $request->signature;
+		}
 
-		$user->avatar = $path;
+		if (isset($request->items_per_page)) {
+			$settings = json_decode($user->settings, true);
+			$settings['posts_per_page'] = request('items_per_page');
+			$settings = json_encode($settings);
+
+			$user->settings = $settings;
+		}
+
+		if (isset($request->email)) {
+			$user->email = $request->email;
+		}
+
+		if (isset($request->password)) {
+			$user->password = Hash::make(request('password'));
+		}
+
 		$user->save();
 
         return msg_success('update');

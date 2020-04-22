@@ -11957,6 +11957,10 @@ input[type=file] {
   color: black;
 }
 
+.flash-success {
+  color: #00b365;
+}
+
 .pagination {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -12806,6 +12810,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border: 2px solid #00b365;
   background: #2c2c3580;
   padding: 1rem;
+}
+
+#settings .flash-success {
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
+  background: #00b365;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
 }
 
 #settings .password-wrapper {
