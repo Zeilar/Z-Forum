@@ -11,7 +11,12 @@
 				@if (count($likes))
 					@foreach ($likes as $like)
 						@php $post = App\Post::find($like->post_id) @endphp
-						@component('components.post', ['post' => $post, 'disablePostToolbar' => true, 'disablePostBanner' => true])
+						@component('components.post', [
+							'post'				   => $post,
+							'disablePostToolbar'   => true,
+							'disablePostBanner'    => true,
+							'disablePostSignature' => true
+						])
 							@slot('banner_link')
 								<a href="{{
 									route('post_show', [

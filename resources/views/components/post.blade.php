@@ -82,11 +82,13 @@
 		{!! $post->content !!}
 	</div>
 	
-	@isset($post->user->signature)
-		<div class="post-signature">
-			{{ $post->user->signature }}
-		</div>
-	@endisset
+	@empty($disablePostSignature)
+		@isset($post->user->signature)
+			<div class="post-signature">
+				{{ $post->user->signature }}
+			</div>
+		@endisset
+	@endempty
 
 	@isset($post->edited_by)
 		<div class="post-edited-by">

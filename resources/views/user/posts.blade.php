@@ -10,7 +10,12 @@
 			<div class="profile-lower posts">
 				@if (count($posts))	
 					@foreach ($posts as $post)
-						@component('components.post', ['post' => $post, 'disablePostToolbar' => true, 'disablePostBanner' => true])
+						@component('components.post', [
+							'post'				   => $post,
+							'disablePostToolbar'   => true,
+							'disablePostBanner'    => true,
+							'disablePostSignature' => true
+						])
 							@slot('banner_link')
 								<a href="{{
 									route('post_show', [
