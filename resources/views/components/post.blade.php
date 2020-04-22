@@ -114,9 +114,11 @@
 						</button>
 					@endcan
 
-					<button class="btn btn-default post-quote">
-						<span>{{ __('Quote') }}</span>
-					</button>
+					@empty($disableQuoteButton)
+						<button class="btn btn-default post-quote">
+							<span>{{ __('Quote') }}</span>
+						</button>
+					@endempty
 					
 					@if (auth()->user()->likes->contains('post_id', $post->id))
 						@php $isLiked = 'success' @endphp

@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-	@component('components.post', ['post' => $post])
+	@component('components.post', ['post' => $post, 'disableQuoteButton' => true])
 		@slot('banner_link')
 			<a href="{{
 				route('post_show', [
