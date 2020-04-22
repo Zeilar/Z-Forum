@@ -14,6 +14,8 @@
 				<p>{{ __('Avatar') }}</p>
 				@error('user-avatar') <p style="color: red">{{ $message }}</p> @enderror
 
+				<img class="file-upload-preview img-fluid" src="{{$user->avatar}}" alt="{{ __('Profile avatar') }}">
+
 				<label class="file-upload" for="avatar-upload">
 					<i class="fas color-white fa-upload"></i>
 					<span>{{ __('Upload file') }}</span>

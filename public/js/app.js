@@ -37529,7 +37529,7 @@ function () {
 
         if (validImageTypes.includes(fileType)) {
           var src = URL.createObjectURL(e.target.files[0]);
-          $(this).prev().before("<img class=\"file-upload-preview\" src=\"".concat(src, "\" />"));
+          $(this).prev().before("<img class=\"file-upload-preview img-fluid\" src=\"".concat(src, "\" />"));
         }
       });
     }

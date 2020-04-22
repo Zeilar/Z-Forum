@@ -145,7 +145,7 @@ class Functions {
 
 			if (validImageTypes.includes(fileType)) {
 				let src = URL.createObjectURL(e.target.files[0]);
-				$(this).prev().before(`<img class="file-upload-preview" src="${src}" />`);
+				$(this).prev().before(`<img class="file-upload-preview img-fluid" src="${src}" />`);
 			}
 		});
 	}
