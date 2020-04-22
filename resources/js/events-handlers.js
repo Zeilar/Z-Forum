@@ -29,6 +29,13 @@ Functions.collapseCategory();
 Functions.searchAnimate();
 Functions.openFolder();
 
+/*
+-----------------------------------------------
+Change
+-----------------------------------------------
+*/
+Functions.inputPreviewImage();
+
 // Password revealer button
 $('.password-revealer').click(function() {
 	if ($(this).siblings('input').attr('type') === 'password') {

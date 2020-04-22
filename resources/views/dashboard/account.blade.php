@@ -29,7 +29,7 @@
 		</form>
 	</div>
 	<script>
-		$('.nav-link.account').addClass('active');
 		$('.nav-link.account').parent().append('<div class="nav-ruler"></div>');
+		$('.nav-link.account').addClass('active');
 	</script>
 @endsection

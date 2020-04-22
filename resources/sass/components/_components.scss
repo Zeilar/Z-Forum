@@ -219,6 +219,13 @@ input[type=file] {
 	user-select: none;
 }
 
+.file-upload-preview {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	display: block;
+	width: 5rem;
+}
+
 .pagination {
 	user-select: none;
 	margin-top: 1rem;

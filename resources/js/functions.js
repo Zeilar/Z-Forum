@@ -133,6 +133,22 @@ class Functions {
 			}
 		});
 	}
+
+	// Creates preview of uploaded image
+	static inputPreviewImage() {
+		$('input[type=file]').change(function(e) {
+			$('.file-upload-preview').remove();
+
+			const file = this.files[0];
+			const fileType = file['type'];
+			const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/bmpg', 'image/webp'];
+
+			if (validImageTypes.includes(fileType)) {
+				let src = URL.createObjectURL(e.target.files[0]);
+				$(this).prev().before(`<img class="file-upload-preview" src="${src}" />`);
+			}
+		});
+	}
 }
 
 // Important that this happens after class declaration
