@@ -98,11 +98,19 @@ html {
 	color: black;
 }
 
+.form-control, .form-control:focus {
+	color: black;
+}
+
 fieldset {
 	border: 1px solid white;
 	min-width: unset;
 	padding: 0.5rem;
 	margin: unset;
+}
+
+input:focus {
+	box-shadow: 0 0 0 0.1rem $green;
 }
 
 legend {

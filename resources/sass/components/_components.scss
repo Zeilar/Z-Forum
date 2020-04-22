@@ -226,6 +226,18 @@ input[type=file] {
 	width: 5rem;
 }
 
+.password-revealer {
+	outline-color: $green !important;
+	border: 1px solid #ced4da;
+	background: none;
+	border-left: 0;
+	width: 3rem;
+
+	i {
+		color: black;
+	}
+}
+
 .pagination {
 	user-select: none;
 	margin-top: 1rem;

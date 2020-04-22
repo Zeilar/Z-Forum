@@ -11473,11 +11473,20 @@ html body #footer .btn-success-full:not([disabled]):active {
   color: black;
 }
 
+.form-control,
+.form-control:focus {
+  color: black;
+}
+
 fieldset {
   border: 1px solid white;
   min-width: unset;
   padding: 0.5rem;
   margin: unset;
+}
+
+input:focus {
+  box-shadow: 0 0 0 0.1rem #00b365;
 }
 
 legend {
@@ -11571,17 +11580,6 @@ legend {
 .modal-auth .modal-content .modal-body .password-row {
   display: -webkit-box;
   display: flex;
-}
-
-.modal-auth .modal-content .modal-body .password-row .password-revealer {
-  border: 1px solid #ced4da;
-  background: none;
-  border-left: 0;
-  width: 3rem;
-}
-
-.modal-auth .modal-content .modal-body .password-row .password-revealer i {
-  color: black;
 }
 
 .modal-auth .modal-content .modal-body .remember-row {
@@ -11945,6 +11943,18 @@ input[type=file] {
   margin-top: 1rem;
   display: block;
   width: 5rem;
+}
+
+.password-revealer {
+  outline-color: #00b365 !important;
+  border: 1px solid #ced4da;
+  background: none;
+  border-left: 0;
+  width: 3rem;
+}
+
+.password-revealer i {
+  color: black;
 }
 
 .pagination {
@@ -12796,6 +12806,23 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border: 2px solid #00b365;
   background: #2c2c3580;
   padding: 1rem;
+}
+
+#settings .password-wrapper {
+  display: -webkit-box;
+  display: flex;
+}
+
+#settings .password-wrapper input {
+  z-index: 2;
+}
+
+#settings .password-wrapper .password-revealer {
+  background: white;
+}
+
+#settings label:not(.file-upload) {
+  margin-top: 1rem;
 }
 
 #settings p {

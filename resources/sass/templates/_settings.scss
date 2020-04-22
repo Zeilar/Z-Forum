@@ -2,6 +2,22 @@
 	border: 2px solid $green;
 	background: $darkgray;
 	padding: 1rem;
+
+	.password-wrapper {
+		display: flex;
+
+		input {
+			z-index: 2;
+		}
+
+		.password-revealer {
+			background: white;
+		}
+	}
+
+	label:not(.file-upload) {
+		margin-top: 1rem;
+	}
 	
 	p {
 		margin-bottom: 0.5rem;
