@@ -71,7 +71,7 @@
 							<div class="result-source">
 								<p>
 									{{ __('Post in ') }}
-									<a href="{{route('thread_show', [$thread->id, $thread->slug])}}}">
+									<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 										{{ shorten_text($thread->title, 80) }}
 									</a>
 									<span class="posted-by">
