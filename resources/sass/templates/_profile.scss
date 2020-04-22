@@ -128,7 +128,7 @@
 		}
 
 		.profile-activity-item, .profile-thread {
-			word-break: break-all;
+			overflow-wrap: break-word;
 			padding: 0.5rem 1rem;
 			background: $gray;
 

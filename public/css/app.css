@@ -12959,7 +12959,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .user-profile .profile-lower .profile-activity-item,
 .user-profile .profile-lower .profile-thread {
-  word-break: break-all;
+  overflow-wrap: break-word;
   padding: 0.5rem 1rem;
   background: #2b2b34e6;
 }
