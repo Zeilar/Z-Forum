@@ -22,6 +22,24 @@
 			</div>
 
 			<div class="form-group">
+				<label>{{ __('Signature') }}</label>
+				@error('signature') <p style="color: red">{{ $message }}</p> @enderror
+				@php $joke = 'Roses are red violets are blue, unexpected \'{\' on line 32' @endphp
+    			<textarea 
+					class="form-control" name="signature" autocomplete="off" id="settings-signature"
+					placeholder="{{$user->signature ?? $joke}}" value="{{old('signature')}}"><?php
+				?></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>{{ __('Items per page') }}</label>
+				@error('items_per_page') <p style="color: red">{{ $message }}</p> @enderror
+    			<input type="number" class="form-control" name="items_per_page" min="0" max="50" autocomplete="off"
+					value="{{old('items_per_page') ?? settings_get('posts_per_page')}}"
+				/>
+			</div>
+
+			<div class="form-group">
 				<label>{{ __('Email address') }}</label>
 				@error('email') <p style="color: red">{{ $message }}</p> @enderror
     			<input type="email" class="form-control" id="settings-email" name="email" placeholder="{{$user->email}}" value="{{old('email')}}">
@@ -37,7 +55,7 @@
 					</button>
 				</div>
 
-				<label>{{ __('Confirm New Password') }}</label>
+				<label>{{ __('Confirm new Password') }}</label>
 				@error('password_confirm') <p style="color: red">{{ $message }}</p> @enderror
 				<div class="password-wrapper">
     				<input type="password" class="form-control" id="settings-pw-confirm" name="password_confirm" autocomplete="off">

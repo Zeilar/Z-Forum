@@ -70,17 +70,23 @@ class AccountController extends Controller
      */
     public function update(Request $request)
     {
+		if (!logged_in()) {
+			return msg_error('login');
+		}
+
 		request()->validate([
 			'user-avatar' => 'required|image',
 		]);
+
+		$user = auth()->user();
 
 		// Store the file as an absolute URI path
 		$path = $request->file('user-avatar')->store('/public/user-avatars');
 		$path = explode('public/', $path)[1];
 		$path = route('index') . '/storage/' . $path;
 
-		auth()->user()->avatar = $path;
-		auth()->user()->save();
+		$user->avatar = $path;
+		$user->save();
 
         return msg_success('update');
     }
