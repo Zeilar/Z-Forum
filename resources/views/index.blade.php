@@ -36,7 +36,8 @@
 							@auth
 								{{-- Check if user has any read thread in the subcategory --}}
 								@php $read = true @endphp
-								@foreach ($subcategory->threads as $thread)
+								@php $subcategoryThreads = $subcategory->threads @endphp
+								@foreach ($subcategoryThreads as $thread)
 									@if (!in_array($thread->id, $visitedThreadsIds))
 										@php $read = false @endphp
 									@else
@@ -67,7 +68,7 @@
 
 							@slot('views')
 								@php $views = 0; @endphp
-								@foreach ($subcategory->threads as $thread)
+								@foreach ($subcategoryThreads as $thread)
 									@php $views += $thread->views @endphp
 								@endforeach
 								{{ $views }}

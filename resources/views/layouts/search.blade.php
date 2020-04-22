@@ -1,8 +1,7 @@
 @extends('head')
 
 @section('pageTitle')
-	{{ __('Search - ') }}
-	{{ request('query') }}
+	{{ __('Search') . ' | ' . request('query') }}
 @endsection
 
 @section('content')
