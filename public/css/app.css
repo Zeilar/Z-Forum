@@ -12864,12 +12864,30 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 1rem;
 }
 
+#settings input,
+#settings textarea,
+#settings .password-revealer {
+  border: 1px solid #2b2b34e6;
+  background: #2c2c3580;
+  color: white;
+}
+
+#settings input i,
+#settings textarea i,
+#settings .password-revealer i {
+  color: white;
+}
+
 #settings .form-group input {
   width: 50%;
 }
 
 #settings .form-group input#settings-items_per_page {
   width: 5rem;
+}
+
+#settings .form-group textarea {
+  resize: none;
 }
 
 #settings .form-group .password-wrapper {
@@ -12881,10 +12899,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #settings .form-group .password-wrapper input {
   width: 100%;
   z-index: 2;
-}
-
-#settings .form-group .password-wrapper .password-revealer {
-  background: white;
 }
 
 #settings .flash-success {

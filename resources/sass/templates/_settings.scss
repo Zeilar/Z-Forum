@@ -3,6 +3,16 @@
 	background: $darkgray;
 	padding: 1rem;
 
+	input, textarea, .password-revealer {
+		border: 1px solid $gray;
+		background: $darkgray;
+		color: white;
+
+		i {
+			color: white;
+		}
+	}
+
 	.form-group {
 		input {
 			width: 50%;
@@ -12,6 +22,10 @@
 			}
 		}
 
+		textarea {
+			resize: none;
+		}
+
 		.password-wrapper {
 			display: flex;
 			width: 50%;
@@ -19,10 +33,6 @@
 			input {
 				width: 100%;
 				z-index: 2;
-			}
-
-			.password-revealer {
-				background: white;
 			}
 		}
 	}

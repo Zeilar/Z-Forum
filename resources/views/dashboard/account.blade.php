@@ -33,7 +33,7 @@
 				@php $joke = 'Roses are red violets are blue, unexpected \'{\' on line 32' @endphp
     			<textarea 
 					class="form-control @error('signature') is-invalid @enderror"
-					name="signature" autocomplete="off" id="settings-signature"
+					name="signature" autocomplete="off" rows="3" id="settings-signature"
 					placeholder="{{$user->signature ?? $joke}}" value="{{old('signature')}}"><?php
 				?></textarea>
 			</div>
