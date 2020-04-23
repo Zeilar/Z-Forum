@@ -29,6 +29,7 @@
 
 				<div class="subcategory-rows">
 					@foreach ($category->subcategories as $subcategory)
+						@php $subcategoryThreads = $subcategory->threads @endphp
 						@if (count($posts = $subcategory->posts))
 							@php $latest_posts = $posts->sortByDesc('created_at')->take(1) @endphp
 							@foreach ($latest_posts as $latest_post)
@@ -36,7 +37,6 @@
 							@auth
 								{{-- Check if user has any read thread in the subcategory --}}
 								@php $read = true @endphp
-								@php $subcategoryThreads = $subcategory->threads @endphp
 								@foreach ($subcategoryThreads as $thread)
 									@if (!in_array($thread->id, $visitedThreadsIds))
 										@php $read = false @endphp
