@@ -8,6 +8,7 @@
 	$messages = DB::table('user_messages')
 		->where('author_id', $user->id)
 		->orWhere('recipient_id', $user->id)
+		->orderByDesc('id')
 		->paginate(settings_get('posts_per_page'))
 @endphp
 
@@ -17,6 +18,10 @@
 	</a>
 
 	{{ $messages->links('layouts.pagination') }}
+
+	@if (session('success'))
+		<p class="flash-success messages">{{ session('success') }}</p>
+	@endif
 
 	<div id="messages">
 		@foreach ($messages as $message)

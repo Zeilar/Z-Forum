@@ -4,6 +4,13 @@
 	right: 0;
 }
 
+.flash-success.messages {
+	padding: 0.25rem 0.5rem;
+	margin-bottom: 0.5rem;
+	background: $green;
+	color: white;
+}
+
 #messages {
 	border: 2px solid $green;
 
