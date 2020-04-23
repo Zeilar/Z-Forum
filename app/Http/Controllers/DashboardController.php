@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{
+	UserMessage,
 	Subcategory,
 	Category,
 	Thread,
@@ -26,6 +27,32 @@ class DashboardController extends Controller
 	{
 		if (logged_in()) {
 			return view('dashboard.messages', ['user' => auth()->user()]);
+		} else {
+			return msg_error('login');
+		}
+	}
+
+	public function message(Request $request)
+	{
+		$message = UserMessage::find(request('id'));
+
+		if (!logged_in()) {
+			return msg_error('login');
+		} else if (empty($message)) {
+			return view('errors.404');
+		} else {
+			if (auth()->user()->id === $message->author->id || auth()->user()->id === $message->recipient->id) {
+				return view('message.single', ['message' => $message]);
+			} else {
+				return view('errors.403');
+			}
+		}
+	}
+
+	public function message_create()
+	{
+		if (logged_in()) {
+			return view('message.new');
 		} else {
 			return msg_error('login');
 		}

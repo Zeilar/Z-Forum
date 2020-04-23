@@ -1,0 +1,23 @@
+#message {
+	border: 2px solid $green;
+	background: $darkgray;
+
+	.message-title {
+		padding: 0.25rem 0.5rem;
+		background: $green;
+	}
+
+	.message-users {
+		border-bottom: 2px solid $green;
+		padding: 0.25rem 0.5rem;
+		display: flex;
+
+		.message-to {
+			margin-left: auto;
+		}
+	}
+
+	.message-content {
+		padding: 0.5rem;
+	}
+}
