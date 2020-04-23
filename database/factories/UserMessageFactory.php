@@ -9,8 +9,9 @@ use App\User;
 $factory->define(UserMessage::class, function (Faker $faker) {
     $users = User::inRandomOrder()->limit(2)->get();
     return [
+		'title'		   => $faker->sentence(rand(4, 10), true),
+		'content'      => $faker->text(rand(40, 200)),
         'author_id'	   => $users[0]->id,
 		'recipient_id' => $users[1]->id,
-		'content'      => $faker->text(),
     ];
 });

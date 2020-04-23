@@ -17,6 +17,7 @@ class CreateUserMessagesTable extends Migration
             $table->bigIncrements('id');
 			$table->unsignedBigInteger('author_id');
 			$table->unsignedBigInteger('recipient_id');
+			$table->string('title');
 			$table->text('content');
             $table->timestamps();
         });
