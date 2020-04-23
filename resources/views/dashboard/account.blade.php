@@ -43,7 +43,7 @@
 				@error('items_per_page') <p style="color: red">{{ $message }}</p> @enderror
     			<input
 					type="number" class="form-control @error('items_per_page') is-invalid @enderror"
-					name="items_per_page" min="0" max="50" autocomplete="off"
+					name="items_per_page" min="0" max="50" autocomplete="off" id="settings-items_per_page"
 					value="{{old('items_per_page') ?? settings_get('posts_per_page')}}"
 				/>
 			</div>

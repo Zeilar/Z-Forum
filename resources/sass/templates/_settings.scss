@@ -3,6 +3,30 @@
 	background: $darkgray;
 	padding: 1rem;
 
+	.form-group {
+		input {
+			width: 50%;
+
+			&#settings-items_per_page {
+				width: 5rem;
+			}
+		}
+
+		.password-wrapper {
+			display: flex;
+			width: 50%;
+
+			input {
+				width: 100%;
+				z-index: 2;
+			}
+
+			.password-revealer {
+				background: white;
+			}
+		}
+	}
+
 	.flash-success {
 		padding: 0.25rem 0.5rem;
 		margin-bottom: 1rem;
@@ -11,20 +35,9 @@
 		color: white;
 	}
 
-	.password-wrapper {
-		display: flex;
-
-		input {
-			z-index: 2;
-		}
-
-		.password-revealer {
-			background: white;
-		}
-	}
-
 	label:not(.file-upload) {
 		margin-top: 1rem;
+		cursor: text;
 	}
 	
 	p {
