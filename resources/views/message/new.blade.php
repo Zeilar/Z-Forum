@@ -12,14 +12,24 @@
 				<legend>
 					<h4>{{ __('Subject') }}</h4>
 				</legend>
+				@error('title') <p style="color: red;">{{ $message }}</p> @enderror
 				<input type="text" name="title" id="message-title" value="{{old('title')}}" />
+			</fieldset>
+
+			<fieldset class="message-form-recipient">
+				<legend>
+					<h4>{{ __('Send to') }}</h4>
+				</legend>
+				@error('recipient') <p style="color: red;">{{ $message }}</p> @enderror
+				<input type="text" name="recipient" id="message-recipient" value="{{old('recipient')}}" />
 			</fieldset>
 
 			<fieldset class="message-form-content">
 				<legend>
 					<h4>{{ __('Message') }}</h4>
 				</legend>
-				<textarea name="content" id="message-content" rows="20" value="{{old('content')}}"></textarea>
+				@error('content') <p style="color: red;">{{ $message }}</p> @enderror
+				<textarea name="content" id="message-content" rows="20" value="{{old('content')}}" ></textarea>
 			</fieldset>
 		</div>
 

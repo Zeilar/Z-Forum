@@ -57,4 +57,17 @@ class DashboardController extends Controller
 			return msg_error('login');
 		}
 	}
+
+	public function message_send()
+	{
+		if (!logged_in()) {
+			return msg_error('login');
+		}
+
+		request()->validate([
+			'title'   	=> 'required|string|min:3|max:50',
+			'recipient' => 'required|exists:users,username',
+			'content' 	=> 'required|string|min:3|max:500',
+		]);
+	}
 }

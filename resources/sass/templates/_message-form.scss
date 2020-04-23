@@ -1,6 +1,12 @@
 .message-form {
+
 	fieldset {
 		border-color: $green;
+		margin-bottom: 1rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	legend {
@@ -15,7 +21,6 @@
 	}
 
 	.message-form-title {
-		margin-bottom: 1rem;
 		padding: 0.5rem;
 
 		input {
@@ -33,6 +38,7 @@
 
 		textarea {
 			padding: 0.5rem;
+			resize: none;
 		}
 	}
 }

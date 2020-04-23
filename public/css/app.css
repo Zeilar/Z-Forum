@@ -12656,6 +12656,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .message-form fieldset {
   border-color: #00b365;
+  margin-bottom: 1rem;
+}
+
+.message-form fieldset:last-child {
+  margin-bottom: 0;
 }
 
 .message-form legend {
@@ -12671,7 +12676,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .message-form .message-form-title {
-  margin-bottom: 1rem;
   padding: 0.5rem;
 }
 
@@ -12693,6 +12697,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .message-form .message-form-content textarea {
   padding: 0.5rem;
+  resize: none;
 }
 
 .message-send {
