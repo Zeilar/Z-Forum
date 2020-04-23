@@ -6,6 +6,6 @@
 
 @section('content')
 	<div id="messages">
-		@dump(App\UserMessage::where('id', 1)->get()->first()->recipients)
+		@dump(App\UserMessage::where('id', 1)->get()->first()->recipient)
 	</div>
 @endsection

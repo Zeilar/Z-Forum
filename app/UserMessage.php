@@ -12,7 +12,7 @@ class UserMessage extends Model
 		return $this->belongsTo(User::class, 'author_id');
 	}
 
-	public function recipients() {
-		return $this->belongsToMany(User::class, 'user_messages', 'recipient_id', 'author_id');
+	public function recipient() {
+		return $this->belongsTo(User::class, 'recipient_id');
 	}
 }
