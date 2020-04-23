@@ -16,7 +16,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a href="{{route('dashboard_messages')}}" class="nav-link">
 									<span>{{ __('Messages') }}</span>
 								</a>
 							</li>

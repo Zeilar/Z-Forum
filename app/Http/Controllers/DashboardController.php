@@ -21,4 +21,13 @@ class DashboardController extends Controller
 			return msg_error('login');
 		}
 	}
+
+	public function messages()
+	{
+		if (logged_in()) {
+			return view('dashboard.messages', ['user' => auth()->user()]);
+		} else {
+			return msg_error('login');
+		}
+	}
 }
