@@ -17,13 +17,13 @@ class SubcategoriesTableSeeder extends Seeder
 			'title' => 'World of Warcraft',
 			'category_id' => 1,
 			'slug' => urlencode('World of Warcraft'),
-			'icon' => 'wow.jpg',
+			'icon' => 'wow.png',
 		]);
 		Subcategory::create([
 			'title' => 'Subnautica',
 			'category_id' => 1,
 			'slug' => urlencode('Subnautica'),
-			'icon' => '',
+			'icon' => 'subnautica.png',
 		]);
 		Subcategory::create([
 			'title' => 'Counter-Strike: Global Offensive',
