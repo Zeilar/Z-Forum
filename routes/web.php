@@ -52,8 +52,9 @@ Route::get('/search', 'SearchController@search')->name('search');
 
 // Dashboard
 Route::put('/dashboard/update', 'AccountController@update')->name('dashboard_account_update');
-Route::get('/messages/{id}', 'DashboardController@message')->name('dashboard_message');
+Route::post('/messages/send', 'DashboardController@message_send')->name('message_send');
 Route::get('/messages/new', 'DashboardController@message_create')->name('message_new');
+Route::get('/messages/{id}', 'DashboardController@message')->name('dashboard_message');
 Route::get('/messages', 'DashboardController@messages')->name('dashboard_messages');
 Route::get('/dashboard', 'DashboardController@account')->name('dashboard_account');
 

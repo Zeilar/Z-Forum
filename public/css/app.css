@@ -11485,8 +11485,10 @@ fieldset {
   margin: unset;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   box-shadow: 0 0 0 0.1rem #00b365;
+  outline: 0;
 }
 
 legend {
@@ -12650,6 +12652,51 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .post-save-toolbar button.thread-delete {
   margin-left: auto;
   margin-right: 0;
+}
+
+.message-form fieldset {
+  border-color: #00b365;
+}
+
+.message-form legend {
+  color: #00b365;
+}
+
+.message-form input,
+.message-form textarea {
+  border: 1px solid #2b2b34e6;
+  background: #2c2c3580;
+  color: white;
+  width: 100%;
+}
+
+.message-form .message-form-title {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.message-form .message-form-title input {
+  padding: 0.25rem 0.5rem;
+}
+
+.message-form .message-form-content {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+}
+
+.message-form .message-form-content h4 {
+  margin: 0 0.5rem;
+}
+
+.message-form .message-form-content textarea {
+  padding: 0.5rem;
+}
+
+.message-send {
+  margin-top: 1rem;
 }
 
 #admin-login {
@@ -14022,6 +14069,7 @@ i {
   position: relative;
   padding-top: 1rem;
   max-width: 55vw;
+  margin: 0 auto;
   -webkit-box-flex: 3;
           flex: 3;
 }

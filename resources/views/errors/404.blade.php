@@ -18,9 +18,7 @@
 
 			<h2>{{ __('Not Found') }}</h2>
 
-			<h4>
-				{{ __('The resource you requested could not be found') }}
-			</h4>
+			<h4>{{ __('The resource you requested could not be found') }}</h4>
 
 			<form action="{{route('search')}}" method="get">
 				@csrf

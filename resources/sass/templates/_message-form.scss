@@ -1,0 +1,42 @@
+.message-form {
+	fieldset {
+		border-color: $green;
+	}
+
+	legend {
+		color: $green;
+	}
+
+	input, textarea {
+		border: 1px solid $gray;
+		background: $darkgray;
+		color: white;
+		width: 100%;
+	}
+
+	.message-form-title {
+		margin-bottom: 1rem;
+		padding: 0.5rem;
+
+		input {
+			padding: 0.25rem 0.5rem;
+		}
+	}
+
+	.message-form-content {
+		flex-direction: column;
+		display: flex;
+
+		h4 {
+			margin: 0 0.5rem;
+		}
+
+		textarea {
+			padding: 0.5rem;
+		}
+	}
+}
+
+.message-send {
+	margin-top: 1rem; 
+}
