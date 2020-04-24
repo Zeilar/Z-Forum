@@ -64,6 +64,11 @@ class User extends Authenticatable
 		return $this->hasMany(UserVisitedThreads::class);
 	}
 
+	public function visited_messages()
+	{
+		return $this->hasMany(UserVisitedMessage::class);
+	}
+
 	public function likes() {
 		return $this->hasMany(UserLikedPosts::class);
 	}

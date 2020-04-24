@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{
+	UserVisitedMessage,
 	UserMessage,
 	Subcategory,
 	Category,
@@ -42,6 +43,11 @@ class DashboardController extends Controller
 			return view('errors.404');
 		} else {
 			if (auth()->user()->id === $message->author->id || auth()->user()->id === $message->recipient->id) {
+				UserVisitedMessage::create([
+					'user_id' => auth()->user()->id,
+					'user_message_id' => $message->id,
+				]);
+
 				return view('message.single', ['message' => $message]);
 			} else {
 				return view('errors.403');

@@ -23,6 +23,8 @@
 		<p class="flash-success messages">{{ session('success') }}</p>
 	@endif
 
+	@dump($user->visited_messages->first()->message)
+
 	<div id="messages">
 		@foreach ($messages as $message)
 			@php $message = App\UserMessage::find($message->id) @endphp
