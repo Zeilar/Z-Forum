@@ -30,7 +30,8 @@ img, input::placeholder {
 	user-select: none;
 }
 
-input {
+input, textarea {
+	transition: box-shadow 0.15s linear;
 	outline-color: $green;
 }
 
