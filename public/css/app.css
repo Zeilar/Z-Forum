@@ -12946,6 +12946,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
+#messages .message.read .message-title {
+  color: #a5abaf;
+}
+
+#messages .message.read .message-title:hover {
+  color: #00ffff;
+}
+
 #messages .message:last-child {
   border-bottom: 0;
 }

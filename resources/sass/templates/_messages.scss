@@ -20,6 +20,16 @@
 		padding: 0.5rem 1rem;
 		display: flex;
 
+		&.read {
+			.message-title {
+				color: $silver;
+
+				&:hover {
+					color: $turqoise;
+				}
+			}
+		}
+
 		&:last-child {
 			border-bottom: 0;
 		}

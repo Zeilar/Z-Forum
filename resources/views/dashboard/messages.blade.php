@@ -23,12 +23,15 @@
 		<p class="flash-success messages">{{ session('success') }}</p>
 	@endif
 
-	@dump($user->visited_messages->first()->message)
-
 	<div id="messages">
 		@foreach ($messages as $message)
 			@php $message = App\UserMessage::find($message->id) @endphp
-			<div class="message">
+			@if ($user->visited_messages->where('user_message_id', $message->id)->count())
+				@php $read = 'read' @endphp
+			@else
+				@php $read = '' @endphp
+			@endif
+			<div class="message {{$read}}">
 				<a class="message-title" href="{{route('dashboard_message', [$message->id])}}">{{ $message->title }}</a>
 				<span class="message-from-to">
 					@if ($message->author->id === auth()->user()->id)

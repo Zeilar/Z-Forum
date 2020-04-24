@@ -43,10 +43,12 @@ class DashboardController extends Controller
 			return view('errors.404');
 		} else {
 			if (auth()->user()->id === $message->author->id || auth()->user()->id === $message->recipient->id) {
-				UserVisitedMessage::create([
-					'user_id' => auth()->user()->id,
-					'user_message_id' => $message->id,
-				]);
+				if (!UserVisitedMessage::where(['user_id' => auth()->user()->id, 'user_message_id' => $message->id])->count()) {
+					UserVisitedMessage::create([
+						'user_id' => auth()->user()->id,
+						'user_message_id' => $message->id,
+					]);
+				}
 
 				return view('message.single', ['message' => $message]);
 			} else {
