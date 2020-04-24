@@ -24,6 +24,14 @@
 			border-bottom: 0;
 		}
 
+		.message-title {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			margin-right: 2rem;
+			overflow: hidden;
+			flex: 1;
+		}
+
 		.message-from-to {
 			margin-left: auto;
 		}

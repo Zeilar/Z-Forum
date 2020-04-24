@@ -10,7 +10,12 @@
 	.message-users {
 		border-bottom: 2px solid $green;
 		padding: 0.25rem 0.5rem;
+		background: $gray;
 		display: flex;
+		
+		.message-to, .message-from {
+			color: $silver;
+		}
 
 		.message-to {
 			margin-left: auto;

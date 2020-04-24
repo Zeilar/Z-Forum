@@ -40,6 +40,7 @@
 							{{ $message->author->username }}
 						</a>
 					@endif
+					<span class="message-date">{{ pretty_date($message->created_at) }}</span>
 				</span>
 			</div>
 		@endforeach
