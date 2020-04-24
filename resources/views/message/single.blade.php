@@ -32,4 +32,12 @@
 			{{ $message->content }}
 		</div>
 	</div>
+
+	@if ($message->author->id !== auth()->user()->id)
+		<a class="btn mt-2 btn-success-full" href="{{
+			route('message_new') . '?replyTo=' . $message->author->username . '&replySubject=' . urlencode($message->title)
+		}}">
+			{{ __('Reply') }}
+		</a>
+	@endif
 @endsection

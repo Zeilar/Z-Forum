@@ -9,10 +9,6 @@
 		}
 	}
 
-	legend {
-		color: $green;
-	}
-
 	input, textarea {
 		border: 1px solid $gray;
 		background: $darkgray;
@@ -20,12 +16,16 @@
 		width: 100%;
 	}
 
+	legend {
+		color: $green;
+	}
+
+	input {
+		padding: 0.25rem 0.5rem;
+	}
+
 	.message-form-title {
 		padding: 0.5rem;
-
-		input {
-			padding: 0.25rem 0.5rem;
-		}
 	}
 
 	.message-form-content {
