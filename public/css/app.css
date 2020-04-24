@@ -12655,6 +12655,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-right: 0;
 }
 
+.message-form {
+  margin-top: -0.75rem;
+}
+
 .message-form fieldset {
   border-color: #00b365;
   margin-bottom: 1rem;
