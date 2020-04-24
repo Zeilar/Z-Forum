@@ -4,6 +4,10 @@
 	{{ __('Send new message') }}
 @endsection
 
+@if (request()->query('replyTo') || request()->query('replySubject'))
+	@php $replyQuery = true @endphp	
+@endif
+
 @section('content')
 	<form action="{{route('message_send')}}" method="post">
 		@csrf
@@ -32,7 +36,7 @@
 					<h4>{{ __('Message') }}</h4>
 				</legend>
 				@error('content') <p style="color: red;">{{ $message }}</p> @enderror
-				<textarea name="content" id="message-content" rows="20" value="{{old('content')}}" ></textarea>
+				<textarea @isset($replyQuery) autofocus @endisset name="content" id="message-content" rows="20" value="{{old('content')}}" ></textarea>
 			</fieldset>
 		</div>
 
