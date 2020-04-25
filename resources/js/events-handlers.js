@@ -210,13 +210,13 @@ $('.pagination .dots').click(function() {
 
 		$('#pagination-plus').mousedown(function() {
 			interval = setInterval(() => {
-				if ($('#pagination-input').val() < Number($('.pagination .item-wrapper').last().prev().children('.item').html())) {
+				if (Number($('#pagination-input').val()) < Number($('.pagination').attr('data-page-amount'))) {
 					$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
 				}
 			}, 200);
 		})
 		.click(function() {
-			if ($('#pagination-input').val() < Number($('.pagination .item-wrapper').last().prev().children('.item').html())) {
+			if (Number($('#pagination-input').val()) < Number($('.pagination').attr('data-page-amount'))) {
 				$('#pagination-input').val(Number($('#pagination-input').val()) + 1);
 			}
 		})

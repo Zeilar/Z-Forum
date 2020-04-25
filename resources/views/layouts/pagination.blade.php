@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <div class="pagination" role="navigation" data-current-page="{{$paginator->currentPage()}}">
+    <div class="pagination" role="navigation" data-page-amount="{{$paginator->lastPage()}}" data-current-page="{{$paginator->currentPage()}}">
 		{{-- First Page Link --}}
         @if (!$paginator->onFirstPage())
 			<div class="item-wrapper">
