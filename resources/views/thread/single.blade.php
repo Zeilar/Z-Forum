@@ -373,7 +373,7 @@
 		@endcan
 	@endauth
 
-	@if (settings_get('posts_per_page') >= 20)
+	@if (settings_get('posts_per_page') >= 5)
 		{{ $posts->links('layouts.pagination') }}
 	@endif
 @endsection
