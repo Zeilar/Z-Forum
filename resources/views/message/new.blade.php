@@ -8,6 +8,10 @@
 	@php $replyQuery = true @endphp	
 @endif
 
+@section('breadcrumbs')
+	{{ Breadcrumbs::render('message_new') }}
+@endsection
+
 @section('content')
 	<form action="{{route('message_send')}}" method="post">
 		@csrf

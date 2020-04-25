@@ -4,6 +4,10 @@
 	{{ $message->title }}
 @endsection
 
+@section('breadcrumbs')
+	{{ Breadcrumbs::render('message', $message) }}
+@endsection
+
 @section('content')
 	<div id="message">
 		<div class="message-title">

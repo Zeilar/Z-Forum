@@ -4,6 +4,10 @@
 	{{ __('Settings') }}
 @endsection
 
+@section('breadcrumbs')
+	{{ Breadcrumbs::render('account') }}
+@endsection
+
 @section('content')
 	<div id="settings">
 		@if (session('success'))

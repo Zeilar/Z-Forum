@@ -12,6 +12,10 @@
 		->paginate(settings_get('posts_per_page'))
 @endphp
 
+@section('breadcrumbs')
+	{{ Breadcrumbs::render('messages') }}
+@endsection
+
 @section('content')
 	<a class="btn new-message btn-success-full" href="{{route('message_new')}}">
 		{{ __('Send a message') }}
