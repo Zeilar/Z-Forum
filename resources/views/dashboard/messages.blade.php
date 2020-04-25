@@ -55,7 +55,9 @@
 		@endforeach
 	</div>
 
-	{{ $messages->links('layouts.pagination') }}
+	@if (settings_get('posts_per_page') >= 20)
+		{{ $messages->links('layouts.pagination') }}
+	@endif
 
 	<script>
 		$('.nav-link.messages').parent().append('<div class="nav-ruler"></div>');
