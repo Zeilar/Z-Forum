@@ -30,8 +30,16 @@
 				flex: unset !important;
 				width: 45%;
 
+				@include phone {
+					width: 100%;
+				}
+
 				h4 {
 					margin-left: -0.5rem;
+
+					@include phone {
+						margin-left: 0;
+					}
 				}
 
 				a {
@@ -127,6 +135,10 @@
 			.folder {
 				margin: auto 0.5rem auto 0;
 				font-size: 1.5rem;
+
+				@include phone {
+					display: none;
+				}
 			}
 		}
 
@@ -155,10 +167,19 @@
 
 				&.table-views, &.table-posts {
 					width: 15%;
+
+					@include phone {
+						display: none;
+					}
 				}
 
 				&.table-latest-post {
+					text-align: right;
 					width: 25%;
+
+					@include phone {
+						width: 50%;
+					}
 
 					.latest-post {
 						flex-direction: column;
@@ -205,6 +226,10 @@
 			height: 4rem;
 			margin: auto;
 			width: 4rem;
+
+			@include phone {
+				display: none;
+			}
 
 			img {
 				margin: auto;

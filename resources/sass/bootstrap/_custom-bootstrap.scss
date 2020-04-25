@@ -2,11 +2,14 @@ html {
 	body {
 		#app, #footer {
 			.btn {
+				justify-content: center;
 				border-radius: 0.25rem;
+				align-items: baseline;
 				padding: 0.35rem 1rem;
 				position: relative;
 				min-width: 3.5rem;
 				overflow: hidden;
+				display: flex;
 
 				&:active, &:focus, &:hover, &[disabled] {
 					box-shadow: none !important;

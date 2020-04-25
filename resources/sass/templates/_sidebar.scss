@@ -7,6 +7,10 @@
 	width: 17.5vw;
 	top: 6rem;
 
+	@include phone {
+		display: none;
+	}
+
 	.sidebar-item {
 		border: 2px solid $green;
 		background: $darkgray;

@@ -79,7 +79,7 @@
 		</div>
 
 		{{-- Admin toolbar --}}
-		@include('layouts.toolbar')
+		{{-- @include('layouts.toolbar') --}}
 
 		{{-- Main wrapper --}}
         <main class="container-fluid" id="content">

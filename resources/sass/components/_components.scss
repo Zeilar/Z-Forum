@@ -80,6 +80,10 @@
 	right: 2rem;
 	opacity: 0;
 
+	@include phone {
+		display: none;
+	}
+
 	i {
 		color: white;
 		margin: auto;
