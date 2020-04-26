@@ -11367,6 +11367,9 @@ html body #footer .btn {
           align-items: baseline;
   padding: 0.35rem 1rem;
   position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   min-width: 3.5rem;
   overflow: hidden;
   display: -webkit-box;
