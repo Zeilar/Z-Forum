@@ -11962,6 +11962,12 @@ input[type=file] {
           user-select: none;
 }
 
+@media (max-width: 599px) {
+  .hover-tooltip {
+    display: none;
+  }
+}
+
 .file-upload-preview {
   margin-bottom: 1rem;
   margin-top: 1rem;
@@ -11992,6 +11998,12 @@ input[type=file] {
       -ms-user-select: none;
           user-select: none;
   margin: 1rem 0;
+}
+
+@media (max-width: 599px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
 }
 
 .pagination .item-wrapper {
@@ -12497,12 +12509,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
   -webkit-box-flex: 1;
           flex: 1;
-}
-
-@media (max-width: 599px) {
-  .post .post-header .post-meta .post-meta-text {
-    padding: 1rem 5rem;
-  }
 }
 
 .post .post-header .post-meta .post-meta-text .post-meta-left,
@@ -13753,6 +13759,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   position: absolute !important;
   top: -3rem;
   right: 0;
+}
+
+@media (max-width: 599px) {
+  .reply-button {
+    position: static !important;
+    margin-bottom: 1rem;
+  }
 }
 
 .thread {

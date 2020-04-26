@@ -2,6 +2,11 @@
 	position: absolute !important;
 	top: -3rem;
 	right: 0;
+
+	@include phone {
+		position: static !important;
+		margin-bottom: 1rem;
+	}
 }
 
 .thread {

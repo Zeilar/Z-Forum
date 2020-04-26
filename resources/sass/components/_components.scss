@@ -221,6 +221,10 @@ input[type=file] {
 
 .hover-tooltip {
 	user-select: none;
+
+	@include phone {
+		display: none;
+	}
 }
 
 .file-upload-preview {
@@ -250,6 +254,10 @@ input[type=file] {
 .pagination {
 	user-select: none;
 	margin: 1rem 0;
+
+	@include phone {
+		flex-wrap: wrap;
+	}
 
 	.item-wrapper {
 		position: relative;
