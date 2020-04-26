@@ -12,6 +12,10 @@ html {
 				overflow: hidden;
 				display: flex;
 
+				@include phone {
+					width: 100%;
+				}
+
 				&:active, &:focus, &:hover, &[disabled] {
 					box-shadow: none !important;
 				}

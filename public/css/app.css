@@ -11376,6 +11376,13 @@ html body #footer .btn {
   display: flex;
 }
 
+@media (max-width: 599px) {
+  html body #app .btn,
+  html body #footer .btn {
+    width: 100%;
+  }
+}
+
 html body #app .btn:active,
 html body #app .btn:focus,
 html body #app .btn:hover,
