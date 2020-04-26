@@ -26,12 +26,6 @@ body {
 	display: flex;
 }
 
-p, a, span {
-	@include phone {
-		font-size: 0.9rem;
-	}
-}
-
 img, input::placeholder {
 	user-select: none;
 }

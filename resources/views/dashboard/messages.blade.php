@@ -17,11 +17,11 @@
 @endsection
 
 @section('content')
+	{{ $messages->links('layouts.pagination') }}
+	
 	<a class="btn new-message btn-success-full" href="{{route('message_new')}}">
 		{{ __('Send a message') }}
 	</a>
-
-	{{ $messages->links('layouts.pagination') }}
 
 	@if (session('success'))
 		<p class="flash-success messages">{{ session('success') }}</p>
@@ -55,7 +55,7 @@
 		@endforeach
 	</div>
 
-	@if (settings_get('posts_per_page') >= 5)
+	@if (settings_get('posats_per_page') >= 5)
 		{{ $messages->links('layouts.pagination') }}
 	@endif
 

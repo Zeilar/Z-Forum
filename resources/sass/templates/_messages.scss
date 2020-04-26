@@ -1,7 +1,13 @@
 .new-message {
-	position: absolute !important;
-	top: 4rem;
-	right: 0;
+	@include phone {
+		margin-bottom: 0.5rem;
+	}
+
+	@include tablet-up {
+		position: absolute !important;
+		top: 4rem;
+		right: 0;
+	}
 }
 
 .flash-success.messages {
@@ -44,6 +50,12 @@
 
 		.message-from-to {
 			margin-left: auto;
+
+			.message-date {
+				@include phone {
+					display: none;
+				}
+			}
 		}
 	}
 }

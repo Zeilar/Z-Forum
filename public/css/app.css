@@ -12993,10 +12993,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 }
 
-.new-message {
-  position: absolute !important;
-  top: 4rem;
-  right: 0;
+@media (max-width: 599px) {
+  .new-message {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .new-message {
+    position: absolute !important;
+    top: 4rem;
+    right: 0;
+  }
 }
 
 .flash-success.messages {
@@ -13041,6 +13049,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #messages .message .message-from-to {
   margin-left: auto;
+}
+
+@media (max-width: 599px) {
+  #messages .message .message-from-to .message-date {
+    display: none;
+  }
 }
 
 #message {
@@ -14144,14 +14158,6 @@ body {
   color: white;
   display: -webkit-box;
   display: flex;
-}
-
-@media (max-width: 599px) {
-  p,
-  a,
-  span {
-    font-size: 0.9rem;
-  }
 }
 
 input::-webkit-input-placeholder {
