@@ -32,6 +32,10 @@ div.tox-tinymce {
 		background: $darkgray;
 		border: 0;
 
+		.tox-statusbar__path {
+			display: none;
+		}
+
 		.tox-statusbar__branding {
 			display: none;
 		}

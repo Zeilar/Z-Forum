@@ -12154,6 +12154,10 @@ div.tox-tinymce .tox-statusbar {
   border: 0;
 }
 
+div.tox-tinymce .tox-statusbar .tox-statusbar__path {
+  display: none;
+}
+
 div.tox-tinymce .tox-statusbar .tox-statusbar__branding {
   display: none;
 }
