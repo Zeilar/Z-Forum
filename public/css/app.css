@@ -12775,6 +12775,26 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #af0000 !important;
 }
 
+.thread-form fieldset {
+  border-color: #00b365;
+  color: #00b365;
+}
+
+.thread-form fieldset legend {
+  color: #00b365;
+}
+
+.thread-form fieldset input {
+  background: #2c2c3580;
+  color: white;
+  width: 100%;
+  border: 0;
+}
+
+.thread-form .tox-tinymce {
+  margin: 1rem 0;
+}
+
 .page-error {
   color: white;
 }
@@ -14214,6 +14234,7 @@ input,
 textarea {
   -webkit-transition: box-shadow 0.15s linear;
   transition: box-shadow 0.15s linear;
+  padding: 0.25rem 0.5rem;
   outline-color: #00b365;
 }
 
