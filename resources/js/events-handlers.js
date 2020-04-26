@@ -34,7 +34,15 @@ Functions.openFolder();
 Change
 -----------------------------------------------
 */
+Functions.fileUploadNameChanger();
 Functions.inputPreviewImage();
+
+/*
+-----------------------------------------------
+Mouse enter
+-----------------------------------------------
+*/
+Functions.fileUploadAnimation();
 
 // Password revealer button
 $('.password-revealer').click(function() {
@@ -111,24 +119,6 @@ $(document).on('scroll', function() {
 // Scroll to top
 $('#scroller').click(function() {
 	window.scrollTo(0, 0);
-});
-
-// File upload button animation
-$('.file-upload').mouseenter(function() {
-	$(this).children('i').attr('style', `transform: translateX(${$(this).width() / 2 - $(this).children('i').width() / 2}px);`);
-	$(this).addClass('slide');
-	
-	$(this).mouseleave(function() {
-		$(this).children('i').removeAttr('style');
-		$(this).removeClass('slide');
-	});
-
-});
-
-$('.file-upload').siblings('input[type=file]').change(function() {
-	$('.selected-upload').remove();
-	let name = $(this).val().replace(/^.*[\\\/]/, '');
-	$(this).siblings().children('span').html(name);
 });
 
 // Copy link instead of opening it, and spawn a small bubble notification

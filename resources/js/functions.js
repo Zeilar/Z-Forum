@@ -147,6 +147,34 @@ class Functions {
 				let src = URL.createObjectURL(e.target.files[0]);
 				$(this).prev().before(`<img class="file-upload-preview img-fluid" src="${src}" />`);
 			}
+
+			let fileUpload = $(this).parent().find('.file-upload');
+			
+			fileUpload.find('i').removeAttr('style');
+			fileUpload.removeClass('slide');
+		});
+	}
+
+	// Do sliding animation on file upload elements
+	static fileUploadAnimation() {
+		// File upload button animation
+		$('.file-upload').mouseenter(function() {
+			$(this).children('i').attr('style', `transform: translateX(${$(this).width() / 2 - $(this).children('i').width() / 2}px);`);
+			$(this).addClass('slide');
+			
+			$(this).mouseleave(function() {
+				$(this).children('i').removeAttr('style');
+				$(this).removeClass('slide');
+			});
+		});
+	}
+
+	// File upload name changer
+	static fileUploadNameChanger() {
+		$('.file-upload').parent().children('input[type=file]').change(function() {
+			$('.selected-upload').remove();
+			let name = $(this).val().replace(/^.*[\\\/]/, '');
+			$(this).siblings().children('span').html(name);
 		});
 	}
 }

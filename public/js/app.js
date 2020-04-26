@@ -37153,7 +37153,15 @@ Change
 -----------------------------------------------
 */
 
-_functions__WEBPACK_IMPORTED_MODULE_0__["default"].inputPreviewImage(); // Password revealer button
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].fileUploadNameChanger();
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].inputPreviewImage();
+/*
+-----------------------------------------------
+Mouse enter
+-----------------------------------------------
+*/
+
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].fileUploadAnimation(); // Password revealer button
 
 $('.password-revealer').click(function () {
   if ($(this).siblings('input').attr('type') === 'password') {
@@ -37230,20 +37238,6 @@ $(document).on('scroll', function () {
 
 $('#scroller').click(function () {
   window.scrollTo(0, 0);
-}); // File upload button animation
-
-$('.file-upload').mouseenter(function () {
-  $(this).children('i').attr('style', "transform: translateX(".concat($(this).width() / 2 - $(this).children('i').width() / 2, "px);"));
-  $(this).addClass('slide');
-  $(this).mouseleave(function () {
-    $(this).children('i').removeAttr('style');
-    $(this).removeClass('slide');
-  });
-});
-$('.file-upload').siblings('input[type=file]').change(function () {
-  $('.selected-upload').remove();
-  var name = $(this).val().replace(/^.*[\\\/]/, '');
-  $(this).siblings().children('span').html(name);
 }); // Copy link instead of opening it, and spawn a small bubble notification
 
 $('.permalink').click(function (e) {
@@ -37531,6 +37525,34 @@ function () {
           var src = URL.createObjectURL(e.target.files[0]);
           $(this).prev().before("<img class=\"file-upload-preview img-fluid\" src=\"".concat(src, "\" />"));
         }
+
+        var fileUpload = $(this).parent().find('.file-upload');
+        fileUpload.find('i').removeAttr('style');
+        fileUpload.removeClass('slide');
+      });
+    } // Do sliding animation on file upload elements
+
+  }, {
+    key: "fileUploadAnimation",
+    value: function fileUploadAnimation() {
+      // File upload button animation
+      $('.file-upload').mouseenter(function () {
+        $(this).children('i').attr('style', "transform: translateX(".concat($(this).width() / 2 - $(this).children('i').width() / 2, "px);"));
+        $(this).addClass('slide');
+        $(this).mouseleave(function () {
+          $(this).children('i').removeAttr('style');
+          $(this).removeClass('slide');
+        });
+      });
+    } // File upload name changer
+
+  }, {
+    key: "fileUploadNameChanger",
+    value: function fileUploadNameChanger() {
+      $('.file-upload').parent().children('input[type=file]').change(function () {
+        $('.selected-upload').remove();
+        var name = $(this).val().replace(/^.*[\\\/]/, '');
+        $(this).siblings().children('span').html(name);
       });
     }
   }]);
