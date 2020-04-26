@@ -14,6 +14,7 @@
 			.table-views, .table-posts {
 				p, i {
 					text-align: center;
+					color: white;
 					width: 100%;
 				}
 			}
@@ -29,8 +30,16 @@
 				flex: unset !important;
 				width: 45%;
 
+				@include phone {
+					width: 100%;
+				}
+
 				h4 {
 					margin-left: -0.5rem;
+
+					@include phone {
+						margin-left: 0;
+					}
 				}
 
 				a {
@@ -55,9 +64,9 @@
 
 		.table-row {
 			transition: background 0.1s ease-in-out;
-			background: $darkindigo;
-			margin: 0.25rem;
+			background: $darkgray;
 			color: $white;
+			margin: 4px;
 			opacity: 0;
 
 			&.admin-post {
@@ -68,15 +77,35 @@
 				}
 			}
 
+			a {
+				&:not(.posted-by) {
+					color: $green;
+
+					&:hover {
+						color: $turqoise;
+					}
+				}
+
+				&:hover {
+					color: $turqoise;
+				}
+			}
+
 			&.read {
 				a {
-					color: $silver;
-
-					&:visited {
+					&:not(.posted-by) {
 						color: $silver;
 
-						i {
+						&:visited {
 							color: $silver;
+
+							i {
+								color: $silver;
+							}
+						}
+
+						&:hover {
+							color: $turqoise;
 						}
 					}
 
@@ -102,31 +131,14 @@
 			&:hover {
 				background: #62627580;
 			}
-			
-			a {
-				color: $green;
-
-				&:visited {
-					color: $green;
-
-					i {
-						color: $green;
-					}
-				}
-
-				&:hover {
-					color: $turqoise;
-				}
-			}
-
-			i {
-				margin: auto 0;
-				color: $green;
-			}
 
 			.folder {
 				margin: auto 0.5rem auto 0;
 				font-size: 1.5rem;
+
+				@include phone {
+					display: none;
+				}
 			}
 		}
 
@@ -155,10 +167,19 @@
 
 				&.table-views, &.table-posts {
 					width: 15%;
+
+					@include phone {
+						display: none;
+					}
 				}
 
 				&.table-latest-post {
+					text-align: right;
 					width: 25%;
+
+					@include phone {
+						width: 50%;
+					}
 
 					.latest-post {
 						flex-direction: column;
@@ -189,22 +210,6 @@
 
 						p {
 							text-align: right;
-
-							.posted-by {
-								color: $link;
-
-								&.is_moderator {
-									color: $moderator-fill;
-								}
-
-								&.is_superadmin {
-									color: $superadmin-fill;
-								}
-
-								&:hover {
-									color: $turqoise;
-								}
-							}
 						}
 					}
 				}
@@ -218,7 +223,13 @@
 		.table-icon {
 			padding: 0.5rem;
 			display: flex;
+			height: 4rem;
+			margin: auto;
 			width: 4rem;
+
+			@include phone {
+				display: none;
+			}
 
 			img {
 				margin: auto;
@@ -230,12 +241,23 @@
 			position: absolute;
 			background: none;
 			right: 0.5rem;
+			height: 2rem;
+			width: 2rem;
+			padding: 0;
 			outline: 0;
 			border: 0;
 			top: 50%;
 
 			i {
+				transition: transform 0.25s linear;
+				vertical-align: middle;
+				font-size: 1.5rem;
+				transform: none;
 				color: white;
+
+				&.closed {
+					transform: rotate(180deg);
+				}
 			}
 		}
 

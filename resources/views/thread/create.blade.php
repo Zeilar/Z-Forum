@@ -9,17 +9,20 @@
 @endsection
 
 @section('content')
-	<h1>Create new thread in: {{ $subcategory->title }}</h1>
+	<div class="thread-form">
+		<form action="{{route('thread_store', [$subcategory->id, $subcategory->slug])}}" method="POST">
+			@csrf
 
-	<form action="{{route('thread_store', [$subcategory->id, $subcategory->slug])}}" method="POST">
-		@csrf
+			<fieldset>
+				<legend>{{ __('Title') }}</legend>
+				@error('title') <p style="color: red;">{{ $message }}</p> @enderror
+				<input type="text" name="title" id="title" value="{{old('title')}}">
+			</fieldset>
 
-		<input type="text" name="title" id="title" value="{{old('title')}}">
-
-		<textarea name="content" id="form-content" value="Post">{{ old('content') }}</textarea>
-		
-		<button type="submit">Submit</button>
-	</form>
-	@error('title') <p class="form-error">{{ __($message) }}</p> @enderror
-	@error('content') <p class="form-error">{{ __($message) }}</p> @enderror
+			@error('content') <p style="color: red;">{{ $message }}</p> @enderror
+			<textarea name="content" id="form-content" value="{{ old('content') }}"></textarea>
+			
+			<button class="btn btn-success-full" type="submit">{{ __('Create thread') }}</button>
+		</form>
+	</div>
 @endsection

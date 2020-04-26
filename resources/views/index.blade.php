@@ -29,29 +29,34 @@
 
 				<div class="subcategory-rows">
 					@foreach ($category->subcategories as $subcategory)
-						@php $latest_post = $subcategory->posts()->latest()->get()->take(1)[0] @endphp
-						@auth
-							{{-- Check if user has any read thread in the subcategory --}}
-							@php $read = true @endphp
-							@foreach ($subcategory->threads as $thread)
-								@if (!in_array($thread->id, $visitedThreadsIds))
-									@php $read = false @endphp
-								@else
-									@php $visited = auth()->user()->visited_threads->where('thread_id', $latest_post->thread->id) @endphp
-									@foreach ($visited as $item)
-										@if (strtotime($item->updated_at) - strtotime($latest_post->created_at) <= 0)
-											@php $read = false @endphp
-											@break
-										@endif
-									@endforeach
-								@endif
+						@php $subcategoryThreads = $subcategory->threads @endphp
+						@if (count($posts = $subcategory->posts))
+							@php $latest_posts = $posts->sortByDesc('created_at')->take(1) @endphp
+							@foreach ($latest_posts as $latest_post)
 							@endforeach
-						@endauth
+							@auth
+								{{-- Check if user has any read thread in the subcategory --}}
+								@php $read = true @endphp
+								@foreach ($subcategoryThreads as $thread)
+									@if (!in_array($thread->id, $visitedThreadsIds))
+										@php $read = false @endphp
+									@else
+										@php $visited = auth()->user()->visited_threads->where('thread_id', $latest_post->thread->id) @endphp
+										@foreach ($visited as $item)
+											@if (strtotime($item->updated_at) - strtotime($latest_post->created_at) <= 0)
+												@php $read = false @endphp
+												@break
+											@endif
+										@endforeach
+									@endif
+								@endforeach
+							@endauth
+						@endif
 
 						@component('components.table-row', ['read' => $read ?? null])
 							@isset($subcategory->icon)
 								@slot('icon')
-									{!! $subcategory->icon !!}
+									{{ $subcategory->icon }}
 								@endslot
 							@endisset
 
@@ -63,23 +68,27 @@
 
 							@slot('views')
 								@php $views = 0; @endphp
-								@foreach ($subcategory->threads as $thread)
+								@foreach ($subcategoryThreads as $thread)
 									@php $views += $thread->views @endphp
 								@endforeach
 								{{ $views }}
 							@endslot
 
 							@slot('posts')
-								{{ count($subcategory->posts) }}
+								{{ count($posts) }}
 							@endslot
 
 							@slot('latest_post')
 								@isset($latest_post->thread)
-									<a href="{{
+									<a class="posted-at" href="{{
 										route('post_show', [
 											$latest_post->thread->id,
 											$latest_post->thread->slug,
-											get_item_page_number($latest_post->thread->posts->sortBy('created_at'), $latest_post->id, settings_get('posts_per_page')),
+											get_item_page_number(
+												$latest_post->thread->posts->sortBy('created_at'),
+												$latest_post->id,
+												settings_get('posts_per_page')
+											),
 											$latest_post->id,
 										])
 									}}">

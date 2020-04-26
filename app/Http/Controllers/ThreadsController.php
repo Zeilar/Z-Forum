@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserVisitedThreads;
+use App\ActivityLog;
 use App\Subcategory;
 use App\Category;
 use App\Thread;
@@ -73,6 +74,12 @@ class ThreadsController extends Controller
 		$post->subcategory_id = $subcategory->id;
 		$post->save();
 
+		ActivityLog::create([
+			'user_id' 	   => auth()->user()->id,
+			'task'	  	   => __('created'),
+			'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+		]);
+
 		return redirect(route('thread_show', [$thread->id, $thread->slug]));
     }
 
@@ -101,6 +108,12 @@ class ThreadsController extends Controller
 					$visitedThread[0]->updated_at = \Carbon\Carbon::now();
 					$visitedThread[0]->save();
 				}
+
+				ActivityLog::create([
+					'user_id' 	   => auth()->user()->id,
+					'task'	  	   => __('visited'),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+				]);
 			}
 
 			return view('thread.single', [
@@ -128,6 +141,12 @@ class ThreadsController extends Controller
 		foreach ($thread->posts as $post) {
 			$post->delete();
 		}
+
+		ActivityLog::create([
+			'user_id' 	   => auth()->user()->id,
+			'task'	  	   => __('deleted'),
+			'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+		]);
 
 		$thread->delete();
 		
@@ -164,9 +183,21 @@ class ThreadsController extends Controller
 			if ($thread->locked) {
 				$thread->locked = false;
 				$state = __('unlocked');
+
+				ActivityLog::create([
+					'user_id' 	   => auth()->user()->id,
+					'task'	  	   => __('unlocked'),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+				]);
 			} else {
 				$thread->locked = true;
 				$state = __('locked');
+
+				ActivityLog::create([
+					'user_id' 	   => auth()->user()->id,
+					'task'	  	   => __('locked'),
+					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+				]);
 			}
 			
 			$thread->save();
@@ -214,6 +245,12 @@ class ThreadsController extends Controller
 
 			$thread->save();
 
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('edited'),
+				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+			]);
+
 			return response()->json([
 				'type'	  => 'success',
 				'message' => __('Thread title was successfully changed'),
@@ -256,6 +293,12 @@ class ThreadsController extends Controller
 			foreach ($thread->posts as $post) {
 				$post->delete();
 			}
+
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('deleted'),
+				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+			]);
 
 			$thread->delete();
 			

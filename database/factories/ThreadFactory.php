@@ -10,8 +10,8 @@ use App\Post;
 
 $factory->define(Thread::class, function (Faker $faker) {
 	$title = $faker->realText(rand(10, 100), rand(1, 3));
-    $subcategory = Subcategory::all()->random();
-	$user = User::all()->random();
+    $subcategory = Subcategory::inRandomOrder()->first();
+	$user = User::inRandomOrder()->first();
 	
 	return [
 		'title'			 => $title,

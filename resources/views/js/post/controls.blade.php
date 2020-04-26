@@ -1,7 +1,8 @@
 @auth
 	@isset($post)
+		@include('js.post.alert')
+
 		@can('update', $post)
-			@include('js.post.alert')
 
 			<script>
 				// Initalize post handlers on page load
@@ -13,8 +14,8 @@
 
 					tinymce.init({
 						selector: `#${selector} .post-body`,
-						plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-						toolbar_mode: 'floating',
+						plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
+						height: 300,
 					});
 
 					// Since CSS can't style inside iframes, we do it here...
@@ -25,10 +26,8 @@
 							let iframeWindow = iframe.contentWindow.document;
 
 							// Style p elements inside to match the rest of the site
-							$(iframeWindow).find('body p').css({
-								'margin': '0.25rem 0',
-								'line-height': '1.5',
-							});
+							$(iframeWindow).find('body').css('line-height', '1.5').focus();
+							$(iframeWindow).find('body p').css('margin', '0');
 
 							// Spawn the edit message row
 							if (!$(`#${selector}`).find('.post-edited-by').length) {
@@ -48,9 +47,6 @@
 									<input type="text" class="edit-message" />
 								`);
 							}
-
-							$(`#${selector} .edit-message`).focus();
-
 							clearInterval(interval);
 						}
 					}, 50);
@@ -185,8 +181,16 @@
 							$(this).parent().remove();
 						});
 
+						$(this).find('.post-quote').click(function() {
+							post_quote($(this));
+						});
+
 						$(this).find('.post-delete').click(function(e) {
 							post_delete($(this), e)
+						});
+
+						$(this).find('.post-like').click(function() {
+							post_like($(this));
 						});
 					});
 				}
@@ -195,6 +199,44 @@
 					post_delete($(this), e);
 				});
 			</script>
+		@else
+			<script>
+				$('.post-like').click(function() {
+					post_like($(this));
+				});
+			</script>
 		@endcan
+
+		@auth
+			<script>
+				// Like post
+				function post_like(element) {
+					axios.defaults.headers.common['X-CSRF-Token'] = '{{ csrf_token() }}';
+					axios.defaults.headers.post['Content-Type'] = 'application/json';
+					axios.post('{{ route("post_like") }}', {
+						id: element.parents('.post').attr('id')
+					})
+					.then(function (response) {
+						let amount = Number(element.find('.like-amount-number').html());
+
+						if (response.data.action === 'like') {
+							amount += 1;
+							element.find('.like-amount').append('<span class="like-indicator">+1</span>');
+							element.removeClass('btn-default').addClass('btn-success');
+							element.find('.like-amount-number').html(amount);
+						} else {
+							amount -= 1;
+							element.removeClass('btn-success').addClass('btn-default');
+							element.find('.like-amount-number').html(amount);
+							element.find('.like-indicator').remove();
+						}
+						element.blur();
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
+			</script>
+		@endauth
 	@endisset
 @endauth

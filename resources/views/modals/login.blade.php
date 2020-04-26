@@ -35,14 +35,22 @@
 							<span class="checkmark"></span>
 							<span class="remember-me">{{ __('Remember me') }}</span>
 						</label>
-						<a class="ml-auto" href="{{route('index')}}" class="pull-right">{{ __('Forgot Password?') }}</a>
+						<a class="ml-auto" href="#passwordresetModal" class="pull-right" data-toggle="modal" data-dismiss="modal">
+							{{ __('Forgot Password?') }}
+						</a>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn spin rounded btn-block btn-success" disabled>
+					<button type="submit" class="btn spin rounded btn-block btn-success-full" disabled>
 						<span>{{__('Login')}}</span>
 					</button>
-					<p>
+					<p>{{ __('OR') }}</p>
+					<a class="btn btn-success-full" id="github-signin" href="{{route('login_github')}}">
+						<span>{{ __('Login with') }}</span>
+						<span><b>Github</b></span>
+						<i class="fab fa-github"></i>
+					</a>
+					<p class="not-a-member">
 						{{ __('Not a member?') }}
 						<a data-toggle="modal" data-dismiss="modal" href="#registerModal">{{ __('Sign up') }}</a>
 					</p>

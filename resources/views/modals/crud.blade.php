@@ -20,11 +20,11 @@
 					@isset($icon)
 						<div class="form-group">
 							<p>{{ __('Icon') }}</p>
+							@error('icon') <p class="color-red" id="error-create">{{ $message }}</p> @enderror
 							<label class="file-upload" for="create_icon">
 								<i class="fas color-white fa-upload"></i>
 								<span>{{ __('Choose a file') }}</span>
 							</label>
-							@error('icon') <p class="color-red" id="error-create">{{ $message }}</p> @enderror
 							<input type="file" id="create_icon" name="icon" value="{{old('icon')}}"
 								class="form-control @error('icon') is-invalid @enderror"
 							/>

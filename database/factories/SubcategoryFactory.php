@@ -11,6 +11,6 @@ $factory->define(Subcategory::class, function (Faker $faker) {
     return [
         'title'		  => $title,
 		'slug'		  => urlencode($title),
-		'category_id' => Category::all()->random()->id,
+		'category_id' => Category::inRandomOrder()->first()->id,
     ];
 });

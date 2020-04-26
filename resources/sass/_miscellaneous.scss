@@ -2,10 +2,6 @@ p, h1, h2, h3, h4, h5, h6, ul, ol {
 	margin: 0;
 }
 
-p, a, i {
-	font-size: $font-size-base;
-}
-
 span {
 	font-size: inherit;
 }
@@ -23,15 +19,21 @@ body {
 	background-image: url('../../storage/app/public/images/background-polygons.png');
 	background-attachment: fixed;
 	background-color: $body-bg;
-
     flex-direction: column;
 	overflow-x: hidden;
     min-height: 100vh;
+	color: white;
 	display: flex;
 }
 
 img, input::placeholder {
 	user-select: none;
+}
+
+input, textarea {
+	transition: box-shadow 0.15s linear;
+	padding: 0.25rem 0.5rem;
+	outline-color: $green;
 }
 
 a {
@@ -47,6 +49,10 @@ a {
 	}
 }
 
+i {
+	color: $green;
+}
+
 #reply-form {
 	margin-bottom: 1rem;
 }
@@ -58,13 +64,14 @@ a {
 	flex: 1;
 }
 
-legend {
-	user-select: none;
-}
-
 .navbar, #content, #footer {
-	padding-right: 20rem;
-	padding-left: 20rem;
+	padding-right: 15vw;
+	padding-left: 15vw;
+
+	@include phone {
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
 }
 
 #content {
@@ -76,8 +83,18 @@ legend {
 	flex: 1;
 
 	#main {
+		position: relative;
 		padding-top: 1rem;
+		max-width: 50vw;
+		margin: 0 auto;
 		flex: 3;
+
+		@include phone {
+			max-width: unset;
+			width: 100%;
+			flex: unset;
+			margin: 0;
+		}
 	}
 }
 
@@ -91,4 +108,14 @@ legend {
 
 .color-red {
 	color: red !important;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, i, span {
+	&.is_superadmin {
+		color: $superadmin-fill;
+	}
+
+	&.is_moderator {
+		color: $moderator-fill;
+	}
 }

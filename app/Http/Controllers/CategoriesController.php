@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\ActivityLog;
 use App\Category;
 use App\Post;
 
@@ -31,20 +32,20 @@ class CategoriesController extends Controller
 
 		request()->validate([
 			'title' => 'required|min:3|max:40|unique:categories',
-			'icon'  => 'required',
 		]);
-
-		// Store the file and use the path for the database
-		$path = $request->file('icon')->store('/public/icons');
 
 		$category = new Category();
 		$category->title = request('title');
 		$category->slug = urlencode(request('title'));
-		$category->icon = explode('icons/', $path)[1];
 		$category->save();
 
+		ActivityLog::create([
+			'user_id' 	   => auth()->user()->id,
+			'task'	  	   => __('created'),
+			'performed_on' => json_encode(['table' => 'categories', 'id' => $category->id]),
+		]);
+
 		return redirect()->route('category_show', [$category->id, $category->slug]);
-		
     }
 
     /**

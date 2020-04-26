@@ -1,0 +1,27 @@
+.thread-form {
+	fieldset {
+		border-color: $green;
+		color: $green;
+
+		legend {
+			color: $green;
+		}
+
+		input {
+			background: $darkgray;
+			color: white;
+			width: 100%;
+			border: 0;
+		}
+	}
+
+	.tox-tinymce {
+		margin: 1rem 0;
+	}
+
+	[type=submit] {
+		@include phone {
+			width: 100% !important;
+		}
+	}
+}

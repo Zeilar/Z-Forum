@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Socialite;
 use Validator;
 use App\User;
 use Auth;
@@ -132,9 +133,10 @@ class AuthController extends Controller
 		);
 
 		// Check if the provided user exists and if that user is an admin
-		$user = User::where('username', request('id'))->orWhere('email', request('id'))->get();
-		if (count($user)) {
-			if ($user[0]->role !== 'superadmin') {
+		$user = User::where('username', request('id'))->orWhere('email', request('id'))->first();
+		
+		if (isset($user)) {
+			if ($user->role !== 'superadmin') {
 				return msg_error(__('You must be an administrator to proceed'), 'error-id');
 			}
 		}
@@ -161,4 +163,54 @@ class AuthController extends Controller
 			return msg_error('incorrect-id');
 		}
 	}
+
+	/**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+	public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        try {
+            $user = Socialite::driver('github')->user();
+        } catch (Exception $e) {
+            return redirect(route('index'));
+        }
+
+        $authUser = $this->findOrCreateUser($user);
+
+        Auth::login($authUser, true);
+
+        return redirect(route('index'));
+    }
+
+    /**
+     * Return user if exists; create and return if doesn't
+     *
+     * @param $githubUser
+     * @return User
+     */
+    private function findOrCreateUser($githubUser)
+    {
+        if ($authUser = User::where('github_id', $githubUser->id)->first()) {
+            return $authUser;
+        }
+
+        return User::create([
+            'github_id' => $githubUser->id,
+			'username' => $githubUser->name,
+            'email' => $githubUser->email,
+            'avatar' => $githubUser->avatar
+        ]);
+    }
 }

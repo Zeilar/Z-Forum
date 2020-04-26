@@ -18,7 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->isLocal()) {
+			$this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+			$this->app->register(TelescopeServiceProvider::class);
+		}
     }
 
     /**
@@ -28,13 +31,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		// FOR TESTING PURPOSES ONLY, REMOVE IN PRODUCTION
-		$users = User::where('id', '!=', '1')->get();
-		$users = $users->chunk(ceil($users->count() / 2))[0];
+		if ($this->app->isLocal()) {
+			if (Schema::hasTable('users')) {
+				$users = User::where('id', '!=', '1')->get();
+				$users = $users->chunk(ceil($users->count() / 2))[0];
 
-		foreach ($users as $user) {
-			$expiresAt = Carbon::now()->addYear(1);
-			Cache::put('user-online-' . $user->id, true, $expiresAt);
+				foreach ($users as $user) {
+					$expiresAt = Carbon::now()->addYear(1);
+					Cache::put('user-online-' . $user->id, true, $expiresAt);
+				}
+			}
 		}
     }
 }

@@ -19,7 +19,6 @@ class User extends Authenticatable
         'settings' => '{
 			"posts_per_page": 20
 		}',
-		'avatar' => 'default.png',
 		'role' => 'member',
     ];
 
@@ -29,6 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = [
+		'password',
         'role',
     ];
 
@@ -55,8 +55,29 @@ class User extends Authenticatable
 		return $this->hasMany(Post::class);
 	}
 
+	public function threads() {
+		return $this->hasMany(Thread::class);
+	}
+
 	public function visited_threads()
 	{
 		return $this->hasMany(UserVisitedThreads::class);
+	}
+
+	public function visited_messages()
+	{
+		return $this->hasMany(UserVisitedMessage::class);
+	}
+
+	public function likes() {
+		return $this->hasMany(UserLikedPosts::class);
+	}
+
+	public function messages_sent() {
+		return $this->hasMany(UserMessage::class, 'author_id', 'id');
+	}
+
+	public function messages_received() {
+		return $this->hasMany(UserMessage::class, 'recipient_id', 'id');
 	}
 }

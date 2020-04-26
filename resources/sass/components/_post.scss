@@ -6,6 +6,32 @@
 		box-shadow: 0 0 5px 0 $green;
 	}
 
+	.post-banner {
+		padding: 0.25rem 0.5rem;
+		margin-bottom: 2px;
+		width: fit-content;
+		user-select: none;
+
+		&.is_superadmin {
+			background: linear-gradient(to right, $superadmin, $gray);
+		}
+
+		&.is_moderator {
+			background: linear-gradient(to right, $moderator, $gray);
+		}
+
+		span {
+			text-transform: uppercase;
+			margin-right: 0.25rem;
+			letter-spacing: 1px;
+			font-style: italic;
+		}
+
+		i {
+			color: $yellow;
+		}
+	}
+
 	.post-header {
 		margin-bottom: 2px;
 
@@ -25,24 +51,14 @@
 				}
 			}
 
-			&.is_superadmin {
-				.post-meta-text {
-					background: linear-gradient(to right, $superadmin, $gray);
-				}
-			}
-
-			&.is_moderator {
-				.post-meta-text {
-					background: linear-gradient(to right, $moderator, $gray);
-				}
-			}
-
 			.post-avatar {
 				border: 2px solid $gray;
 				position: relative;
 				margin-right: 2px;
 				background: $gray;
+				display: flex;
 				padding: 2px;
+				height: 100%;
 				width: 5rem;
 
 				&:hover {
@@ -61,6 +77,10 @@
 					.avatar-meta {
 						background: rgba(0, 194, 110, 0.85);
 					}
+				}
+
+				img {
+					object-fit: contain;
 				}
 
 				.avatar-meta {
@@ -122,13 +142,15 @@
 				}
 
 				.post-meta-left {
-					.post-author-role {
+					.post-author-rank {
 						font-size: 0.8rem;
 					}
 				}
 
 				.post-meta-right {
+					flex-direction: column;
 					text-align: right;
+					display: flex;
 
 					.post-i {
 						font-size: 0.8rem;
@@ -137,11 +159,15 @@
 			}
 
 			.post-link {
-				position: relative;
+				display: flex;
+
+				.permalink {
+					@include phone {
+						display: none;
+					}
+				}
 
 				a {
-					position: relative;
-
 					&:hover {
 						.fas {
 							color: $turqoise;
@@ -152,52 +178,6 @@
 						color: $link;
 					}
 				}
-
-				.copy-notification {
-					box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
-					transform: translate(-50%, -50%);
-					border: 2px solid $green;
-					background: #000000f2;
-					animation: fade-in 2s;
-					border-radius: 0.5rem;
-					position: absolute;
-					opacity: 0;
-					top: -160%;
-					left: 50%;
-
-					@keyframes fade-in {
-						10% {
-							opacity: 1;
-						}
-						80% {
-							opacity: 1;
-						}
-						100% {
-							opacity: 0;
-						}
-					}
-
-					span {
-						background: #000000f2;
-						padding: 0.5rem 0.65rem;
-						border-radius: 0.5rem;
-						user-select: none;
-						display: flex;
-						margin: auto;
-					}
-
-					&::after {
-						border-color: $green transparent;
-						transform: translateX(-50%);
-						border-width: 20px 20px 0;
-						border-style: solid;
-						position: absolute;
-						bottom: -25%;
-						z-index: -1;
-						content: '';
-						left: 50%;
-					}
-				}
 			}
 		}
 	}
@@ -206,6 +186,17 @@
 		background: $gray;
 		color: white;
 		padding: 1rem;
+
+		q {
+			background: rgb(20, 20, 20);
+			width: fit-content;
+			padding: 0.35rem;
+			display: block;
+
+			&::before, &::after {
+				content: none;
+			}
+		}
 
 		table {
 			margin: 0;
@@ -219,6 +210,13 @@
 		* {
 			color: white;
 		}
+	}
+
+	.post-signature {
+		padding: 0.5rem 1rem;
+		background: $gray;
+		margin-top: 2px;
+		color: $silver;
 	}
 
 	.post-save-toolbar {
@@ -251,14 +249,6 @@
 			margin-left: 0.5rem;
 		}
 
-		.is_superadmin a {
-			color: $superadmin-fill;
-		}
-
-		.is_moderator a {
-			color: $moderator-fill;
-		}
-
 		input {
 			border: 2px solid $silver;
 			padding: 0.25rem 0.5rem;
@@ -273,14 +263,6 @@
 			}
 		}
 
-		a {
-			color: white;
-
-			&:hover {
-				color: $turqoise;
-			}
-		}
-
 		* {
 			font-size: 0.75rem;
 		}
@@ -288,11 +270,19 @@
 }
 
 .post-toolbar {
-	background: $darkindigo;
+	background: $darkgray;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
 	margin-top: 2px;
 	display: flex;
+
+	.post-like {
+		color: white !important;
+
+		i {
+			color: white;
+		}
+	}
 
 	i {
 		pointer-events: none;
@@ -310,7 +300,7 @@
 		}
 
 		&.thread-cancel {
-			background: $darkindigo !important;
+			background: $darkgray !important;
 		}
 
 		&.post-delete, &.thread-delete {

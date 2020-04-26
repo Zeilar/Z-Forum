@@ -1,0 +1,85 @@
+#settings {
+	border: 2px solid $green;
+	background: $darkgray;
+	padding: 1rem;
+
+	input, textarea, .password-revealer {
+		border: 1px solid $gray;
+		background: $darkgray;
+		color: white;
+
+		i {
+			color: white;
+		}
+	}
+
+	.form-group {
+		@include phone {
+			flex-direction: column;
+			display: flex;
+
+			.file-upload {
+				width: fit-content;
+			}
+		}
+
+		input {
+			width: 50%;
+
+			@include phone {
+				width: unset;
+				flex: 1;
+			}
+
+			&#settings-items_per_page {
+				width: 5rem;
+
+				@include phone {
+					width: 3rem;
+				}
+			}
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		.password-wrapper {
+			display: flex;
+			width: 50%;
+
+			@include phone {
+				width: unset;
+				flex: 1;
+			}
+
+			input {
+				width: 100%;
+				z-index: 2;
+			}
+		}
+	}
+
+	.flash-success {
+		padding: 0.25rem 0.5rem;
+		margin-bottom: 1rem;
+		background: $green;
+		width: fit-content;
+		color: white;
+	}
+
+	label:not(.file-upload) {
+		margin-top: 1rem;
+		cursor: text;
+	}
+	
+	p {
+		margin-bottom: 0.5rem;
+	}
+
+	[type=submit] {
+		@include phone {
+			width: 100%;
+		}
+	}
+}

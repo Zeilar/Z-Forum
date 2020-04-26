@@ -1,5 +1,6 @@
 // Assets
 @import 'assets/variables';
+@import 'assets/mixins';
 @import 'assets/fonts';
 
 // Bootstrap
@@ -16,14 +17,21 @@
 @import 'components/post';
 
 // Templates
+@import 'templates/message-form';
 @import 'templates/admin-login';
+@import 'templates/thread-form';
 @import 'templates/error-page';
 @import 'templates/containers';
+@import 'templates/settings';
+@import 'templates/messages';
+@import 'templates/message';
+@import 'templates/profile';
 @import 'templates/toolbar';
 @import 'templates/sidebar';
 @import 'templates/navbar';
 @import 'templates/thread';
 @import 'templates/footer';
+@import 'templates/search';
 @import 'templates/table';
 
 // Miscellaneous

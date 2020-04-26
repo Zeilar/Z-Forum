@@ -15,6 +15,10 @@
 		}
 	}
 
+	label, p {
+		color: black;
+	}
+
 	::placeholder {
 		opacity: 0.5;
 	}
@@ -56,17 +60,14 @@
 
 			.password-row {
 				display: flex;
-
-				.password-revealer {
-					border: 1px solid #ced4da;
-					background: none;
-					border-left: 0;
-					width: 3rem;
-				}
 			}
 
 			.remember-row {
 				margin-top: 2rem;
+
+				label {
+					margin-bottom: 0;
+				}
 
 				.checkbox-inline {
 					user-select: none;
@@ -124,25 +125,26 @@
 		}
 
 		.modal-footer {
+			flex-direction: column;
 			background: #f2f2f2;
 			padding: 0.75rem 30px;
 			border-radius: 0;
 
 			button {
-				background: $green !important;
 				border: 2px solid;
+			}
+
+			#github-signin {
+				color: white;
+
+				i {
+					color: white;
+				}
 			}
 
 			p {
 				margin: 0.5rem auto;
 			}
 		}
-	}
-
-	.btn {
-		line-height: normal;
-		min-height: 38px;
-		min-width: 100px;
-		border: none;
 	}
 }

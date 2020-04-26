@@ -18,9 +18,7 @@
 
 			<h2>{{ __('Not Found') }}</h2>
 
-			<h4>
-				{{ __('The resource you requested could not be found') }}
-			</h4>
+			<h4>{{ __('The resource you requested could not be found') }}</h4>
 
 			<form action="{{route('search')}}" method="get">
 				@csrf
@@ -28,7 +26,7 @@
 					<input type="text" name="search" id="search-error" placeholder="{{ __('What are you looking for?') }}"
 						@isset ($value) value="{{$value}}" @endisset
 					/>
-					<button class="btn btn-success" type="submit">
+					<button class="btn btn-success-full" type="submit">
 						<span>{{ __('Search') }}</span>
 						<i class="fas fa-search"></i>
 					</button>

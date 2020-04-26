@@ -164,6 +164,25 @@ class PostsTableSeeder extends Seeder
 			'updated_at' => $date,
 		]);
 
-		factory(App\Post::class, 5000)->create();
+		factory(App\Post::class, 200)->create([
+			'thread_id' => 13,
+		]);
+
+		factory(App\Post::class, 500)->create()->each(function($post) {
+			App\ActivityLog::create([
+				'user_id' 	   => $post->user->id,
+				'task'	  	   => __('created'),
+				'performed_on' => json_encode(['table' => 'posts', 'id' => $post->id]),
+			]);
+
+			// This will SEVERELY affect seeding performance
+			// Approximately 100% longer per user
+			App\User::inRandomOrder()->limit(3)->each(function($user) use ($post) {        
+				factory(App\UserLikedPosts::class)->create([
+					'user_id' => $user->id,
+					'post_id' => $post->id,
+				]);
+			});
+		});
     }
 }

@@ -2,7 +2,7 @@
 	<div id="sidebar">
 		@auth
 			@component('components.sidebar-item', ['class' => 'welcome'])
-				@slot('legend')
+				@slot('title')
 					{{ __('Welcome') }}
 				@endslot
 
@@ -10,20 +10,18 @@
 					<div class="wrapper">
 						<div class="welcome-text">
 							<h5 class="sidebar-welcome-header">
-								<a class="{{role_coloring(auth()->user()->role)}}" href="{{route('user_show', [auth()->user()->id])}}">
+								<a href="{{route('user_show', [auth()->user()->id])}}">
 									{{ auth()->user()->username }}
 								</a>
 							</h5>
-							@if (is_role('superadmin', 'moderator'))
-								<p class="user-role">{{ ucfirst(auth()->user()->role) }}</p>
-							@endif
+							<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
 							<a class="logout" href="{{route('logout')}}">
 								<span>{{ __('Logout') }}</span>
 								<i class="fas fa-sign-out-alt"></i>
 							</a>
 						</div>
-						<div class="welcome-avatar" data-title="{{ auth()->user()->username }}">
-							<img class="img-fluid" src="/storage/user-avatars/{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+						<div class="welcome-avatar">
+							<img class="img-fluid" src="{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
 						</div>
 					</div>
 				@endslot
@@ -54,24 +52,26 @@
 
 				@php $amount = count($superadmins) + count($moderators) ?? 0 @endphp
 
-				@slot('legend')
+				@slot('title')
 					{{ __("Online moderators: $amount") }}
 				@endslot
 
 				@if ($amount)
 					@if (count($superadmins))
-						<div class="sidebar-admins">
+						<div class="sidebar-superadmins">
+							<h5 class="is_superadmin">{{ __('Superadmins') }}</h5>
+
 							@for ($i = 0; $i < count($superadmins); $i++)
 								@isset ($superadmins[$i])
-									<a class="is_superadmin" href="{{route('user_show', [$superadmins[$i]->id])}}">
+									<a href="{{route('user_show', [$superadmins[$i]->id])}}">
 										@if (count($superadmins) > 1 && $i !== count($superadmins) - 1)
 											@php $comma = ','; @endphp
 										@else
-											@php $comma = false; @endphp
+											@php $comma = ''; @endphp
 										@endif
 										{{ $superadmins[$i]->username }}
 									</a>
-									<span>{{ $comma ?? '' }}</span>
+									<span class="separator">{{ $comma }}</span>
 								@endisset
 							@endfor
 						</div>
@@ -79,17 +79,19 @@
 
 					@if (count($moderators))
 						<div class="sidebar-moderators">
+							<h5 class="is_moderator">{{ __('Moderators') }}</h5>
+
 							@for ($i = 0; $i < count($moderators); $i++)
 								@isset ($moderators[$i])
-									<a class="is_moderator" href="{{route('user_show', [$moderators[$i]->id])}}">
+									<a href="{{route('user_show', [$moderators[$i]->id])}}">
 										@if (count($moderators) > 1 && $i !== count($moderators) - 1)
-											@php $comma = ','; @endphp
+											@php $comma = ', '; @endphp
 										@else
-											@php $comma = false; @endphp
+											@php $comma = ''; @endphp
 										@endif
 										{{ $moderators[$i]->username }}
 									</a>
-									<span class="separator">{{ $comma ?? '' }}</span>
+									<span class="separator">{{ $comma }}</span>
 								@endisset
 							@endfor
 						</div>
@@ -105,30 +107,33 @@
 		@endcomponent
 
 		@component('components.sidebar-item', ['class' => 'latest-posts'])
-			@slot('legend')
+			@slot('title')
 				{{ __('Latest Posts') }}
 			@endslot
 
 			@slot('content')
-				@php $latest_posts = App\Post::all()->sortByDesc('created_at')->take(5) @endphp
+				@php $latest_posts = App\Post::all()->sortByDesc('created_at') @endphp
 
+				{{-- Filter out duplicate threads --}}
+				@php $threads = [] @endphp
 				@foreach ($latest_posts as $post)
+					@if (count($threads) >= 5)
+						@break
+					@endif
+					@if (!in_array($post->thread, $threads))
+						@php array_push($threads, $post->thread) @endphp
+					@endif
+				@endforeach
+
+				@foreach ($threads as $thread)
 					<div class="latest-posts-item">
 						<i class="fas fa-chevron-right"></i>
-						<a class="thread" href="{{route('thread_show', [$post->thread->id, $post->thread->slug])}}">
-							{{ $post->thread->title }}
+						<a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+							{{ $thread->title }}
 						</a>
 					</div>
 				@endforeach
 			@endslot
 		@endcomponent
 	</div>
-
-	<script>
-		// Since double border in fieldset doesn't work, this will have to do
-		$('.sidebar-legend-fixer').each(function() {
-			let width = $(this).parent().siblings('legend').outerWidth();
-			$(this).css('width', `${width}px`);
-		});
-	</script>
 @endempty

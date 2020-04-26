@@ -2,11 +2,19 @@ html {
 	body {
 		#app, #footer {
 			.btn {
+				justify-content: center;
 				border-radius: 0.25rem;
+				align-items: baseline;
 				padding: 0.35rem 1rem;
 				position: relative;
+				width: fit-content;
 				min-width: 3.5rem;
 				overflow: hidden;
+				display: flex;
+
+				@include phone {
+					width: 100%;
+				}
 
 				&:active, &:focus, &:hover, &[disabled] {
 					box-shadow: none !important;
@@ -18,7 +26,7 @@ html {
 			}
 
 			.btn-success {
-				background: $darkindigo;
+				background: $darkgray;
 				border-color: $green;
 				color: white;
 
@@ -67,8 +75,8 @@ html {
 
 .btn-default {
 	color: white !important;
-	background: $darkindigo;
-	border-color: $darkindigo;
+	border-color: $darkgray;
+	background: $darkgray;
 
 	&:focus, &:hover {
 		background: $gray;
@@ -76,24 +84,30 @@ html {
 }
 
 .btn-hazard {
-	color: red !important;
 	border-color: red;
-	margin-left: auto;
-	margin-right: 0;
+	color: red;
 
 	&:focus, &:hover {
-		color: white !important;
 		background: red;
+		color: white;
 
 		i {
-			color: white !important;
+			color: white;
 		}
 	}
 
 	i {
 		transition: color 0.15s ease-in-out;
-		color: red !important;
+		color: red;
 	}
+}
+
+.modal {
+	color: black;
+}
+
+.form-control, .form-control:focus {
+	color: black;
 }
 
 fieldset {
@@ -101,6 +115,11 @@ fieldset {
 	min-width: unset;
 	padding: 0.5rem;
 	margin: unset;
+}
+
+input:focus, textarea:focus {
+	box-shadow: 0 0 0 0.1rem $green;
+	outline: 0;
 }
 
 legend {

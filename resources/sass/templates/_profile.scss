@@ -1,0 +1,140 @@
+.user-profile {
+	.profile-upper {
+		flex-direction: row;
+		display: flex;
+
+		.profile-avatar {
+			background: $darkgray;
+			padding: 1rem;
+			display: flex;
+			height: 10rem;
+			width: 10rem;
+
+			img {
+				margin: auto;
+			}
+		}
+
+		.profile-meta {
+			justify-content: space-evenly;
+			flex-direction: column;
+			align-items: center;
+			margin-left: 2px;
+			display: flex;
+			height: 10rem;
+			flex: 1;
+
+			.profile-name {
+				background: $darkgray;
+				flex-direction: row;
+				align-items: center;
+				margin-bottom: 2px;
+				display: flex;
+				height: 100%;
+				width: 100%;
+
+				* {
+					text-align: center;
+					width: 33%;
+				}
+			}
+
+			.profile-meta-stats {
+				background: $darkgray;
+				align-items: center;
+				padding: 1rem 0;
+				display: flex;
+				height: 100%;
+				width: 100%;
+
+				.profile-meta-block {
+					justify-content: center;
+					flex-direction: column;
+					align-items: center;
+					display: flex;
+					height: 100%;
+					width: 33%;
+
+					.profile-meta-upper {
+						margin-bottom: 0.5rem;
+						color: $silver;
+					}
+				}
+			}
+		}
+	}
+
+	.profile-middle {
+		flex-direction: row;
+		display: flex;
+
+		.profile-signature {
+			background: $darkgray;
+			padding: 0.5rem 1rem;
+			overflow: hidden;
+			margin-top: 2px;
+			flex: 1;
+
+			p {
+				overflow-wrap: break-word;
+			}
+
+			.no-signature {
+				font-style: italic;
+				color: $silver;
+			}
+		}
+	}
+
+	.profile-nav {
+		margin-bottom: 0.5rem;
+		user-select: none;
+		margin-top: 2rem;
+		display: flex;
+
+		.profile-nav-item {
+			border: 2px solid transparent;
+			width: calc(20% - 4px); // Include border size or it will overflow
+			background: $darkgray;
+			margin-left: 0.5rem;
+			text-align: center;
+			padding: 1rem 4rem;
+			color: white;
+
+			&:first-child {
+				margin: 0;
+			}
+
+			&:hover, &.active {
+				border-color: $green;
+				background: $gray;
+			}
+		}
+	}
+
+	.profile-lower {
+		border: 2px solid $green;
+
+		&.posts, &.likes {
+			padding: 0.5rem;
+
+			.post {
+				margin-bottom: 0.5rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.profile-activity-item, .profile-thread {
+			overflow-wrap: break-word;
+			padding: 0.5rem 1rem;
+			background: $gray;
+
+			&:nth-child(odd) {
+				background: $darkgray;
+			}
+		}
+	}
+}

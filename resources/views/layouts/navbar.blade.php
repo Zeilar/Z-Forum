@@ -2,8 +2,7 @@
 	<nav class="navbar navbar-expand-md">
 		<div class="container-fluid" id="navbar-container">
 			<a class="navbar-brand" href="{{route('index')}}">
-				<img class="img-fluid" src="/images/zforum-logo.png" alt="{{ __('Navigation bar brand logo') }}" />
-				<i class="fas fa-2x fa-rocket"></i>
+				<img class="img-fluid" src="/storage/images/zforum-logo.png" alt="{{ __('Navigation bar brand logo') }}" />
 			</a>
 
 			<div class="navbar-content">
@@ -17,7 +16,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a class="nav-link messages" href="{{route('dashboard_messages')}}">
 									<span>{{ __('Messages') }}</span>
 								</a>
 							</li>
@@ -38,9 +37,8 @@
 			</div>
 
 			<form action="{{route('search')}}" method="get">
-				@csrf
 				<div class="nav-search">
-					<input type="text" name="search" id="search" autocomplete="off" />
+					<input type="text" name="query" id="search" autocomplete="off" required />
 					<button class="search-animate" type="submit">
 						<i class="fas fa-search"></i>
 					</button>

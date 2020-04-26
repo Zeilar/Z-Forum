@@ -10,7 +10,10 @@
 @endsection
 
 @section('content')
-	<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+	@auth
+		<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+	@endauth
+	
 	<div class="subcategory" id="table">
 		<div class="table-group">
 			@component('components.table-header')
@@ -29,7 +32,7 @@
 				@endif
 			@endauth
 
-			@foreach ($subcategory->threads as $thread)	
+			@foreach ($threads as $thread)	
 				{{-- Check if the thread has any admin post --}}
 				@foreach ($subcategory->posts as $post)
 					@if ($post->user->role === 'superadmin')
@@ -75,7 +78,7 @@
 					@slot('latest_post')
 						@foreach ($thread->posts()->latest()->get() as $post)
 							@isset($post->thread)
-								<a href="{{
+								<a class="posted-at" href="{{
 									route('post_show', [
 										$post->thread->id,
 										$post->thread->slug,

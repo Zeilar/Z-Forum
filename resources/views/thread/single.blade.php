@@ -62,9 +62,13 @@
 
 @section('content')
 	<div class="thread @if ($thread->locked) locked @endif">
-		<button class="reply-button btn btn-success-full" type="button">
-			{{ __('Reply') }}
-		</button>
+		@auth
+			@can('create', [App\Post::class, $thread])
+				<button class="reply-button btn btn-success-full" type="button">
+					{{ __('Reply') }}
+				</button>
+			@endcan
+		@endauth
 
 		{{-- Don't even ask, it just works --}}
 		@php $i = ($posts->currentPage() - 1) * $posts->perPage() + 1; @endphp
@@ -98,7 +102,13 @@
 						let iframeWindow = iframe.contentWindow.document;
 						let input = $(iframeWindow).find('body');
 
-						input.on('input', function() {
+						// Style p elements inside to match the rest of the site
+						$(input).find('p').css('margin', '0');
+						$(input).css('line-height', '1.5');
+
+						input.on('input change', function() {
+							$(this).find('p').css('margin', '0');
+
 							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 								$('#quick-reply button').each(function() {
 									$(this).removeAttr('disabled');
@@ -119,7 +129,13 @@
 						let iframeWindow = iframe.contentWindow.document;
 						let input = $(iframeWindow).find('body');
 
+						// Style p elements inside to match the rest of the site
+						$(input).find('p').css('margin', '0');
+						$(input).css('line-height', '1.5');
+
 						input.on('input change', function() {
+							$(this).find('p').css('margin', '0');
+
 							if ($(this).html() !== '<p><br></p>' && $(this).html() !== '') {
 								$('.reply-save').removeAttr('disabled');
 							} else {
@@ -141,8 +157,8 @@
 					
 					tinymce.init({
 						selector: '#thread-reply',
-						plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-						toolbar_mode: 'floating',
+						plugins: 'advlist autolink lists link image media charmap print preview hr anchor pagebreak bbcode code',
+						height: 300,
 					});
 
 					// Since the callback doesn't work we have to check until the editor is initialized
@@ -164,6 +180,33 @@
 					// Reset things
 					$('.reply-button').removeClass('d-none');
 					$('#reply-form').addClass('d-none');
+				});
+			</script>
+		@endcan
+
+		@can('create', [App\Post::class, $post->thread])
+			<script>
+				function post_quote(element) {
+					let iframes = $('#reply-form, #quick-reply, .post').find('iframe');
+					let post =  element.parents('.post');
+					let link = post.find('.permalink').attr('href');
+					let author = post.find('.post-author a').html();
+					let content = post.find('.post-body').html();
+
+					iframes.each(function() {
+						let iframe = $(this)[0].contentWindow.document;
+						$(iframe).find('body').css('line-height', '1.5').prepend(`
+							<p style="margin: 0;">
+								Posted by ${author} - <a href="${link}">Read post</a>
+							</p>
+							
+							[quote]${content}[/quote]
+						`);
+					});
+				}
+
+				$('.post .post-quote').click(function() {
+					post_quote($(this));
 				});
 			</script>
 		@endcan
@@ -330,5 +373,7 @@
 		@endcan
 	@endauth
 
-	{{ $posts->links('layouts.pagination') }}
+	@if (settings_get('posts_per_page') >= 5)
+		{{ $posts->links('layouts.pagination') }}
+	@endif
 @endsection

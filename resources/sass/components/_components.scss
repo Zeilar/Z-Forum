@@ -1,5 +1,19 @@
+.custom-scrollbar {
+	::-webkit-scrollbar {
+		width: 0.75rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background: black;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: $green;
+	}
+}
+
 ::selection {
-	background: #00b36580;
+	background: $green;
 	color: white;
 }
 
@@ -13,7 +27,7 @@
 
 .crud-toolbar {
 	border: 1px solid $green;
-	background: $darkindigo;
+	background: $darkgray;
 	margin: 2rem 0 1rem 0;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
@@ -65,6 +79,10 @@
 	width: 3rem;
 	right: 2rem;
 	opacity: 0;
+
+	@include phone {
+		display: none;
+	}
 
 	i {
 		color: white;
@@ -201,23 +219,71 @@ input[type=file] {
 	}
 }
 
-.pagination {
+.hover-tooltip {
+	user-select: none;
+
+	@include phone {
+		display: none;
+	}
+}
+
+.file-upload-preview {
+	margin-bottom: 1rem;
 	margin-top: 1rem;
+	display: block;
+	width: 5rem;
+}
+
+.password-revealer {
+	outline-color: $green !important;
+	border: 1px solid #ced4da;
+	background: none;
+	border-left: 0;
+	width: 3rem;
+
+	i {
+		color: black;
+	}
+}
+
+.flash-success {
+	padding: 0.5rem 0;
+	color: $green;
+}
+
+.pagination {
+	user-select: none;
+	margin: 1rem 0;
+
+	@include phone {
+		flex-wrap: wrap;
+	}
 
 	.item-wrapper {
 		position: relative;
 
 		.item {
-			margin-right: 0.5rem;
 			font-size: 1.15rem;
-			padding: 0 0.25rem;
 			line-height: 1.2;
+			padding: 0 3px;
 			color: $silver;
 			display: flex;
+			height: 100%;
+
+			&.first {
+				margin-right: 0.5rem;
+			}
+
+			&.last {
+				margin-left: 0.5rem;
+			}
 
 			&.active {
-				border-bottom: 2px solid $turqoise;
 				color: $turqoise;
+
+				span {
+					border-bottom: 2px solid $turqoise;
+				}
 			}
 
 			&:not(.active):hover {
@@ -235,6 +301,10 @@ input[type=file] {
 				&:hover {
 					color: $turqoise;
 				}
+			}
+
+			span {
+				padding: 0 0.25rem;
 			}
 
 			i {

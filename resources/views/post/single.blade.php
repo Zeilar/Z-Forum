@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-	@component('components.post', ['post' => $post])
+	@component('components.post', ['post' => $post, 'disableQuoteButton' => true])
 		@slot('banner_link')
 			<a href="{{
 				route('post_show', [
@@ -20,7 +20,8 @@
 					$post->id,
 				])
 			}}">
-				{{ __('View in thread') }} &raquo;
+				{{ __('View in thread') }}
+				<i class="fas fa-sign-in-alt"></i>
 			</a>
 		@endslot
 	@endcomponent

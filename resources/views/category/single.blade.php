@@ -10,7 +10,9 @@
 @endsection
 
 @section('content')
-	<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+	@auth
+		<button class="btn btn-success-full mark-as-read">{{ __('Mark all threads as read') }}</button>
+	@endauth
 
 	<div class="category" id="table">
 		<div class="table-group">
@@ -53,7 +55,7 @@
 				@component('components.table-row', ['read' => $read ?? null])
 					@isset($subcategory->icon)
 						@slot('icon')
-							{!! $subcategory->icon !!}
+							{{ $subcategory->icon }}
 						@endslot
 					@endisset
 
@@ -78,7 +80,7 @@
 					@slot('latest_post')
 						@foreach ($subcategory->posts()->latest()->get() as $post)
 							@isset($post->thread)
-								<a href="{{
+								<a class="posted-at" href="{{
 									route('post_show', [
 										$post->thread->id,
 										$post->thread->slug,

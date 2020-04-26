@@ -34,3 +34,27 @@ Breadcrumbs::for('post', function ($trail, $post) {
     $trail->parent('thread', $post->thread);
     $trail->push(__('Post'), route('post_permalink', [$post->id]));
 });
+
+// Home > [Messages]
+Breadcrumbs::for('messages', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Messages'), route('dashboard_messages'));
+});
+
+// Home > [Messages] > [Message]
+Breadcrumbs::for('message', function ($trail, $message) {
+    $trail->parent('messages');
+    $trail->push($message->title, route('dashboard_message', [$message->id]));
+});
+
+// Home > [Messages] > [New Message]
+Breadcrumbs::for('message_new', function ($trail) {
+    $trail->parent('messages');
+    $trail->push(__('New message'), route('message_new'));
+});
+
+// Home > [Account]
+Breadcrumbs::for('account', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Account'), route('dashboard_account'));
+});

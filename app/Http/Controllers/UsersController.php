@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserLikedPosts;
+use App\ActivityLog;
 use Carbon\Carbon;
+use App\Thread;
 use App\User;
+use App\Post;
 use Cache;
 use Auth;
+use DB;
 
 class UsersController extends Controller
 {
+	private function get_user_liked_posts(int $user_id) {
+		return DB::table('user_liked_posts')
+			->join('posts', 'posts.id', '=', 'user_liked_posts.post_id')->where('posts.user_id', $user_id)
+			->get()
+			->unique();
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -51,8 +63,21 @@ class UsersController extends Controller
     {
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			if (logged_in() && auth()->user()->id !== $user->id) {
+				ActivityLog::create([
+					'user_id' 	   => auth()->user()->id,
+					'task'	  	   => __('visited'),
+					'performed_on' => json_encode(['table' => 'users', 'id' => $user->id]),
+				]);
+			}
+
+			$posts = $this->get_user_liked_posts($user->id);
+
 			return view('user.single', [
-				'user' => User::find($id) ?? User::where('username', $id)->get()[0],
+				'posts_with_likes' => $posts,
+				'user' => $user,
 			]);
 		} else {
 			return view('errors.404');
@@ -103,6 +128,87 @@ class UsersController extends Controller
 			$user = Auth::user();
 			$user->last_seen = Carbon::now();
 			$user->save();
+		}
+	}
+
+	public function show_activity(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = $this->get_user_liked_posts($user->id);
+
+			$activities = ActivityLog::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+
+			if (!count($activities)) {
+				$activities = false;
+			}
+
+			return view('user.activity', [
+				'posts_with_likes' => $posts,
+				'activities' 	   => $activities,
+				'user'			   => $user,
+			]);
+		} else {
+			return view('errors.404');
+		}
+	}
+
+	public function show_posts(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = $this->get_user_liked_posts($user->id);
+			
+			$userPosts = Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+
+			return view('user.posts', [
+				'posts_with_likes' => $posts,
+				'posts' 		   => $userPosts,
+				'user' 			   => $user,
+			]);
+		} else {
+			return view('errors.404');
+		}
+	}
+
+	public function show_likes(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = $this->get_user_liked_posts($user->id);
+			$likes = $user->likes()->distinct('post_id')->paginate(settings_get('posts_per_page'));
+
+			return view('user.likes', [
+				'posts_with_likes' => $posts,
+				'likes' 		   => $likes,
+				'user' 			   => $user,
+			]);
+		} else {
+			return view('errors.404');
+		}
+	}
+
+	public function show_threads(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+
+			$posts = $this->get_user_liked_posts($user->id);
+			
+			return view('user.threads', [
+				'posts_with_likes' => $posts,
+				'threads' 		   => Thread::where('user_id', $user->id)->paginate(settings_get('posts_per_page')),
+				'user' 			   => $user,
+			]);
+		} else {
+			return view('errors.404');
 		}
 	}
 }

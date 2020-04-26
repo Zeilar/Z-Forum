@@ -15,12 +15,34 @@
 	<!-- To grant access to jQuery where not already available -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+	<!-- BBCode Parser -->
+	<script src="{{ asset('js/bbcode_parser/bbcode-config.js') }}"></script>
+	<script src="{{ asset('js/bbcode_parser/bbcode-parser.js') }}"></script>
+
+	<!-- Run the parse on every page load -->
+	<script>
+		$(document).ready(() => {
+			$('.post-body').each(function() {
+				let body = $(this);
+				parsed = BBCodeParser.process(body.html());
+				body.html(parsed);
+			});
+		});
+	</script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.28/moment-timezone-with-data.min.js"></script>
+
+	<script>
+		document.cookie = `timezone=${moment.tz.guess()}; path=/`;
+	</script>
 
 	<!-- TinyMCE -->
 	<script src="https://cdn.tiny.cloud/1/utj040vewi8qd66brcntmyyh8pkmtxrtj12d0hekbgtol9la/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -43,15 +65,21 @@
 
 		{{-- Modals --}}
 		<div class="modals">
-			@empty($disableModals)	
-				@include('modals.register')
-				@include('modals.login')
+			@guest
+				@empty($disableModals)	
+					@include('modals.password-reset')
+					@include('modals.register')
+					@include('modals.login')
+				@endempty
+			@endguest
+			
+			@empty($disableModals)
 				@include('modals.error')
 			@endempty
 		</div>
 
 		{{-- Admin toolbar --}}
-		@include('layouts.toolbar')
+		{{-- @include('layouts.toolbar') --}}
 
 		{{-- Main wrapper --}}
         <main class="container-fluid" id="content">

@@ -80,8 +80,8 @@ if (!function_exists('is_role')) {
  */
 if (!function_exists('pretty_date')) {
 	function pretty_date($date) {
-		$date = new Carbon($date);
-		$now = Carbon::now();
+		$date = Carbon::createFromFormat('Y-m-d H:i:s', $date, $_COOKIE['timezone'] ?? 'UTC');
+		$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now(), $_COOKIE['timezone'] ?? 'UTC');
 
 		if ($date->isCurrentDay()) {
 			$format = __('Today');
@@ -92,6 +92,8 @@ if (!function_exists('pretty_date')) {
 		} else {
 			$format = date('Y-m-d', strtotime($date));
 		}
+
+		$date = $date->addSeconds($date->getOffset());
 		
 		return $format . date(' H:i', strtotime($date));
 	}
@@ -100,13 +102,13 @@ if (!function_exists('pretty_date')) {
 /**
  * Redirect with session error message
  * 
- * @param string $type
+ * @param string $msg
  * 
  * @return redirect
  */
 if (!function_exists('msg_error')) {
-	function msg_error(string $type = null, string $flash = 'error') {
-		switch ($type) {
+	function msg_error(string $msg = null, string $flash = 'error') {
+		switch ($msg) {
 			case 'login':
 				return redirect()->back()->with('error-id', __('Please log in and try again'));
 			case 'role':
@@ -122,7 +124,7 @@ if (!function_exists('msg_error')) {
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
-				return redirect()->back()->with($flash, __($type));
+				return redirect()->back()->with($flash, $msg);
 		}
 	}
 }
@@ -130,21 +132,21 @@ if (!function_exists('msg_error')) {
 /**
  * Redirect with session success message
  * 
- * @param string $type
+ * @param string $msg
  * 
  * @return redirect
  */
 if (!function_exists('msg_success')) {
-	function msg_success(string $type) {
-		switch ($type) {
+	function msg_success(string $msg = null, string $flash = 'success') {
+		switch ($msg) {
 			case 'login':
-				return redirect()->route('index')->with('success', __('Successfully logged in!'));
+				return redirect()->back()->with('success', __('Successfully logged in'));
 			case 'registered':
-				return redirect()->route('index')->with('success', __('Your account has been created!'));
+				return redirect()->route('index')->with('success', __('Your account has been created'));
 			case 'update':
-				return redirect()->back()->with('success', __('Changes were successful!'));
+				return redirect()->back()->with('success', __('Changes were successful'));
 			default:
-				return redirect()->route('index')->with('success', __('Success!'));
+				return redirect()->back()->with($flash, $msg);
 		}
 	}
 }
@@ -271,11 +273,11 @@ if (!function_exists('settings_delete')) {
 if (!function_exists('settings_get')) {
 	function settings_get(string $key = 'all', int $id = null) {
 		// Set user as the currently logged in if possible, default to provided ID
-		$user = App\User::find($id) ?? auth()->user();
+		$user = App\User::find($id) ?? auth()->user() ?? null;
 
 		// If no user was found, return default value for that setting
 		if (empty($user)) {
-			$settings = json_decode(DB::table('default_settings')->get()[0]->settings);
+			$settings = json_decode(DB::table('default_settings')->first()->settings);
 			return isset($settings->$key) ? $settings->$key : null;
 		}
 
@@ -283,7 +285,7 @@ if (!function_exists('settings_get')) {
 		$settings = json_decode($user->settings, true);
 
 		// Return either all or a select setting
-		return ($key === 'all') ? $settings : $settings[$key];
+		return ($key === 'all') ? $settings : $settings[$key] ?? 0;
 	}
 }
 
@@ -312,4 +314,34 @@ if (!function_exists('get_item_page_number')) {
 		}
 		return '';
 	}
+}
+
+/**
+ * Create text excerpt
+ * 
+ * @param string $text
+ * @param int $max_length
+ * @param string $cut_off
+ * @param bool $keep_word
+ * 
+ * @return string
+ */
+function shorten_text(string $text, int $max_length = 150, string $cut_off = '...', bool $keep_word = true)
+{
+    if (strlen($text) <= $max_length) return $text;
+
+	if ($keep_word) {
+		$text = substr($text, 0, $max_length + 1);
+
+		if ($last_space = strrpos($text, ' ')) {
+			$text = substr($text, 0, $last_space);
+			$text = rtrim($text);
+			$text .=  $cut_off;
+		}
+	} else {
+		$text = substr($text, 0, $max_length);
+		$text = rtrim($text);
+		$text .=  $cut_off;
+	}
+    return $text;
 }

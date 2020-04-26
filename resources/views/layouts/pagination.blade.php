@@ -1,10 +1,17 @@
 @if ($paginator->hasPages())
-    <div class="pagination" role="navigation" data-current-page="{{$paginator->currentPage()}}">
-        {{-- Previous Page Link --}}
+    <div class="pagination" role="navigation" data-page-amount="{{$paginator->lastPage()}}" data-current-page="{{$paginator->currentPage()}}">
+		{{-- First Page Link --}}
         @if (!$paginator->onFirstPage())
 			<div class="item-wrapper">
+				<a class="item first" href="{{$paginator->url(1)}}" rel="prev">
+					<i class="fas fa-chevron-left"></i>
+					<i class="fas fa-chevron-left"></i>
+				</a>
+			</div>
+
+        	{{-- Previous Page Link --}}
+			<div class="item-wrapper">
 				<a class="item" href="{{ $paginator->previousPageUrl() }}" rel="prev"> 
-					<i class="fas fa-chevron-left mr-1"></i>
 					{{ __('Prev') }}
 				</a>
 			</div>
@@ -24,11 +31,15 @@
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
 						<div class="item-wrapper">
-                        	<a class="item active" href="{{ $url }}" aria-current="page">{{ $page }}</a>
+                        	<a class="item active" href="{{ $url }}" aria-current="page">
+								<span>{{ $page }}</span>
+							</a>
 						</div>
                     @else
 						<div class="item-wrapper">
-							<a class="item" href="{{ $url }}">{{ $page }}</a>
+							<a class="item" href="{{ $url }}">
+								<span>{{ $page }}</span>
+							</a>
 						</div>
                     @endif
                 @endforeach
@@ -40,9 +51,18 @@
 			<div class="item-wrapper">
 				<a class="icon item" href="{{ $paginator->nextPageUrl() }}" rel="next">
 					{{ __('Next') }}
-					<i class="fas fa-chevron-right ml-1"></i>
 				</a>
 			</div>
         @endif
+
+		{{-- Last Page Link --}}
+		@if ($paginator->currentPage() !== $paginator->lastPage())
+			<div class="item-wrapper">
+				<a class="item last" href="{{$paginator->url($paginator->lastPage())}}" rel="next">
+					<i class="fas fa-chevron-right"></i>
+					<i class="fas fa-chevron-right"></i>
+				</a>
+			</div>
+		@endif
     </div>
 @endif
