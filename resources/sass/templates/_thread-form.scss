@@ -18,4 +18,10 @@
 	.tox-tinymce {
 		margin: 1rem 0;
 	}
+
+	[type=submit] {
+		@include phone {
+			width: 100% !important;
+		}
+	}
 }

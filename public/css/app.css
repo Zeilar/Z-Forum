@@ -12736,6 +12736,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-top: 1rem;
 }
 
+@media (max-width: 599px) {
+  .message-send {
+    width: 100% !important;
+  }
+}
+
 #admin-login {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -12793,6 +12799,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .thread-form .tox-tinymce {
   margin: 1rem 0;
+}
+
+@media (max-width: 599px) {
+  .thread-form [type=submit] {
+    width: 100% !important;
+  }
 }
 
 .page-error {

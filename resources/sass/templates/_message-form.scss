@@ -46,4 +46,8 @@
 
 .message-send {
 	margin-top: 1rem; 
+
+	@include phone {
+		width: 100% !important;
+	}
 }
