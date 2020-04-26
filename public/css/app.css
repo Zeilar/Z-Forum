@@ -13067,6 +13067,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #00b365;
 }
 
+@media (max-width: 599px) {
+  #message .message-title h3 {
+    font-size: 1.3rem;
+  }
+}
+
 #message .message-users {
   border-bottom: 2px solid #00b365;
   padding: 0.25rem 0.5rem;
@@ -13078,6 +13084,19 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #message .message-users .message-to,
 #message .message-users .message-from {
   color: #a5abaf;
+}
+
+#message .message-users .message-from {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#message .message-users .message-from .message-from-user {
+  margin-left: 0.25rem;
+  margin-right: auto;
 }
 
 #message .message-users .message-to {

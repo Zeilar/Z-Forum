@@ -5,6 +5,12 @@
 	.message-title {
 		padding: 0.25rem 0.5rem;
 		background: $green;
+
+		h3 {
+			@include phone {
+				font-size: 1.3rem;
+			}
+		}
 	}
 
 	.message-users {
@@ -15,6 +21,17 @@
 		
 		.message-to, .message-from {
 			color: $silver;
+		}
+
+		.message-from {
+			position: relative;
+			display: flex;
+			flex: 1;
+
+			.message-from-user {
+				margin-left: 0.25rem;
+				margin-right: auto;
+			}
 		}
 
 		.message-to {

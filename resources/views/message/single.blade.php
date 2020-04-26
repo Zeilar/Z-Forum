@@ -18,10 +18,12 @@
 			<span class="message-from">
 				@if ($message->author->id !== auth()->user()->id)
 					{{ __('From') }}
-					<a href="{{route('user_show', [$message->author->id])}}">{{ $message->author->username }}</a>
+					<a class="message-from-user {{role_coloring($message->author->role)}}" href="{{route('user_show', [$message->author->id])}}">
+						{{ $message->author->username }}
+					</a>
 				@endif
 
-				<span>{{ pretty_date($message->created_at) }}</span>
+				<span class="message-from-date">{{ pretty_date($message->created_at) }}</span>
 			</span>
 
 			<span class="message-to">
