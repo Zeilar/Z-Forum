@@ -137,6 +137,11 @@
 				display: flex;
 				flex: 1;
 
+				@include phone {
+					padding: 1rem 4rem;
+					// TODO: fix this
+				}
+
 				.post-meta-left, .post-meta-right {
 					margin: auto 0;
 				}

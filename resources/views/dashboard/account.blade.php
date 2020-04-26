@@ -18,7 +18,7 @@
 			@csrf
 			<input type="hidden" name="_method" value="PUT" />
 
-			<div class="form-group">
+			<div class="form-group avatar">
 				<p>{{ __('Avatar') }}</p>
 				@error('avatar') <p style="color: red">{{ $message }}</p> @enderror
 

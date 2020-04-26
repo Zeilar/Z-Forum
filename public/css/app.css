@@ -12485,6 +12485,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           flex: 1;
 }
 
+@media (max-width: 599px) {
+  .post .post-header .post-meta .post-meta-text {
+    padding: 1rem 4rem;
+  }
+}
+
 .post .post-header .post-meta .post-meta-text .post-meta-left,
 .post .post-header .post-meta .post-meta-text .post-meta-right {
   margin: auto 0;
@@ -12901,12 +12907,42 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
+@media (max-width: 599px) {
+  #settings .form-group {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    display: -webkit-box;
+    display: flex;
+  }
+
+  #settings .form-group .file-upload {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
 #settings .form-group input {
   width: 50%;
 }
 
+@media (max-width: 599px) {
+  #settings .form-group input {
+    width: unset;
+    -webkit-box-flex: 1;
+            flex: 1;
+  }
+}
+
 #settings .form-group input#settings-items_per_page {
   width: 5rem;
+}
+
+@media (max-width: 599px) {
+  #settings .form-group input#settings-items_per_page {
+    width: 3rem;
+  }
 }
 
 #settings .form-group textarea {
@@ -12917,6 +12953,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: -webkit-box;
   display: flex;
   width: 50%;
+}
+
+@media (max-width: 599px) {
+  #settings .form-group .password-wrapper {
+    width: unset;
+    -webkit-box-flex: 1;
+            flex: 1;
+  }
 }
 
 #settings .form-group .password-wrapper input {
@@ -12941,6 +12985,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #settings p {
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 599px) {
+  #settings [type=submit] {
+    width: 100%;
+  }
 }
 
 .new-message {
