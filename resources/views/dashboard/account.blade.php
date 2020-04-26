@@ -38,8 +38,8 @@
     			<textarea 
 					class="form-control @error('signature') is-invalid @enderror"
 					name="signature" autocomplete="off" rows="3" id="settings-signature"
-					@empty($user->signature) placeholder="{{$joke}}" @endempty value="{{ old('signature') ?? $user->signature }}"><?php
-				?></textarea>
+					@empty($user->signature) placeholder="{{$joke}}" @endempty><?php
+				?>{{ old('signature') ?? $user->signature }}</textarea>
 			</div>
 
 			<div class="form-group">
