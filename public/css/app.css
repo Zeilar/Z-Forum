@@ -12980,7 +12980,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 @media (max-width: 599px) {
-  #settings .form-group input {
+  #settings .form-group input:not([type=file]) {
     width: unset;
     -webkit-box-flex: 1;
             flex: 1;
@@ -14097,7 +14097,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 599px) {
   #table .table-group .table-row-content .__wrapper.table-latest-post {
-    width: 50%;
+    width: 55%;
   }
 }
 

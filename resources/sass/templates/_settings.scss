@@ -26,9 +26,11 @@
 		input {
 			width: 50%;
 
-			@include phone {
-				width: unset;
-				flex: 1;
+			&:not([type=file]) {
+				@include phone {
+					width: unset;
+					flex: 1;
+				}
 			}
 
 			&#settings-items_per_page {
