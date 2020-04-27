@@ -37190,7 +37190,7 @@ $('#register_password_repeat').on('change', function () {
   }
 }); // Turn disabled off on modal submit button if all inputs are filled, otherwise turn it on
 
-$('.modal input').on('input', function () {
+$('.modal-auth input').on('input', function () {
   var modal = $(this).closest('form');
   var emptyFields = modal.find('input').not('[name=_token]').length;
   modal.find('input').not('[name=_token]').each(function () {

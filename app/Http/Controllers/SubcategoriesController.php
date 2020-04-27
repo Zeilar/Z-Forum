@@ -32,16 +32,17 @@ class SubcategoriesController extends Controller
 
 		request()->validate([
 			'title' => 'required|min:3|max:40',
-			'icon'  => 'required|image',
+			'icon'  => 'image',
 		]);
 
-		// Store the file and use the path for the database
-		$path = $request->file('icon')->store('/public/icons');
 
 		$subcategory = new Subcategory();
 		$subcategory->title = request('title');
 		$subcategory->slug = urlencode(request('title'));
-		$subcategory->icon = explode('icons/', $path)[1];
+		if (isset($request->icon)) {
+			$path = $request->file('icon')->store('/public/icons');
+			$subcategory->icon = explode('icons/', $path)[1];
+		}
 		$subcategory->category_id = Category::find($id)->id;
 		$subcategory->save();
 

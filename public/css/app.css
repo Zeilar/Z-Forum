@@ -11443,6 +11443,10 @@ html body #footer .btn-success-full:not([disabled]):active {
   padding: 0;
 }
 
+.modal .btn {
+  width: 100% !important;
+}
+
 .form-control {
   border-radius: 0;
 }

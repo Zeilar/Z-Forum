@@ -32,7 +32,7 @@
 					@endisset
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn spin rounded btn-block btn-success-full" disabled>
+					<button type="submit" class="btn spin rounded btn-block btn-success-full">
 						<span>{{ $submit ?? __('Create') }}</span>
 					</button>
 				</div>
