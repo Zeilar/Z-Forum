@@ -40,7 +40,7 @@
 
 			.profile-username, .profile-role, .profile-rank {
 				@include phone {
-					font-size: 1.1rem;
+					font-size: 1rem;
 				}
 			}
 
@@ -97,7 +97,7 @@
 
 					.profile-meta-lower {
 						@include phone {
-							font-size: 1.1rem;
+							font-size: 1rem;
 						}
 					}
 				}

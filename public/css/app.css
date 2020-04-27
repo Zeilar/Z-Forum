@@ -13226,7 +13226,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   .user-profile .profile-upper .profile-meta .profile-username,
   .user-profile .profile-upper .profile-meta .profile-role,
   .user-profile .profile-upper .profile-meta .profile-rank {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
@@ -13302,7 +13302,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 599px) {
   .user-profile .profile-upper .profile-meta .profile-meta-stats .profile-meta-block .profile-meta-lower {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
