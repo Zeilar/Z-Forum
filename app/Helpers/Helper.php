@@ -74,7 +74,8 @@ if (!function_exists('is_role')) {
 /**
  * Prettier date format including "today", "yesterday", and month abbreviations
  *
- * @param date $date
+ * @param date  $date
+ * @param array $args
  *
  * @return date
  */
@@ -88,7 +89,7 @@ if (!function_exists('pretty_date')) {
 		if (isset($args['format'])) {
 			return date($args['format'], strtotime($date));
 		}
-		
+
 		if ($date->isCurrentDay()) {
 			$format = __('Today');
 		} else if ($date->isYesterday()) {
