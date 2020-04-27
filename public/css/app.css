@@ -13951,6 +13951,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: calc(100vh - 5rem);
   border: 2px solid #00b365;
   background: #000000f2;
+  pointer-events: none;
   position: fixed;
   border-top: 0;
   display: none;
@@ -13967,6 +13968,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-mobile.open {
+  pointer-events: all;
   opacity: 1;
 }
 

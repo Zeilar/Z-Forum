@@ -267,6 +267,7 @@
 			height: calc(100vh - 5rem);
 			border: 2px solid $green;
 			background: #000000f2;
+			pointer-events: none;
 			position: fixed;
 			border-top: 0;
 			display: none;
@@ -280,6 +281,7 @@
 			}
 
 			&.open {
+				pointer-events: all;
 				opacity: 1;
 			}
 
