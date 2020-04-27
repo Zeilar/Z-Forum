@@ -1,6 +1,10 @@
 .modal-auth {
 	width: 35rem;
 
+	@include phone {
+		width: unset;
+	}
+
 	a {
 		&:visited {
 			color: $link;
@@ -136,6 +140,10 @@
 
 			#github-signin {
 				color: white;
+
+				* {
+					margin: 0 1px;
+				}
 
 				i {
 					color: white;

@@ -12,11 +12,21 @@
 		position: relative;
 		height: 100%;
 
+		@include phone {
+			flex-wrap: nowrap;
+		}
+
 		.navbar-brand {
 			display: flex;
 			width: 12rem;
 			height: 65%;
 			padding: 0;
+
+			@include phone {
+				height: calc(2rem + 4px);
+				width: 10rem;
+				margin: 0;
+			}
 		}
 
 		form {
@@ -26,6 +36,11 @@
 				overflow: hidden;
 				display: flex;
 				width: 17.5vw;
+
+				@include phone {
+					margin: auto;
+					width: 80%;
+				}
 				
 				&::before {
 					transition: width 0.25s ease-in-out;
@@ -91,10 +106,78 @@
 			}
 		}
 
+		.navbar-toggler {
+			display: none;
+
+			@include phone {
+				outline: 0 !important;
+				display: block;
+				height: 100%;
+
+				.toggle-animator {
+					transition: 0.5s ease-in-out;
+					transform: rotate(0deg);
+					height: 1rem;
+					width: 2rem;
+
+					&.open span {
+						&:nth-child(1) {
+							width: 0%;
+							left: 50%;
+							top: 11px;
+						}
+
+						&:nth-child(2) {
+							transform: rotate(45deg);
+						}
+
+						&:nth-child(3) {
+							transform: rotate(-45deg);
+						}
+
+						&:nth-child(4) {
+							width: 0%;
+							left: 50%;
+							top: 11px;
+						}
+					}
+
+					span {
+						transition: 0.25s ease-in-out;
+						transform: rotate(0deg);
+						background: white;
+						border-radius: 9px;
+						position: absolute;
+						display: block;
+						height: 3px;
+						width: 100%;
+						opacity: 1;
+						left: 0;
+
+						&:nth-child(1) {
+							top: 0px;
+						}
+
+						&:nth-child(2), &:nth-child(3) {
+							top: 10px;
+						}
+
+						&:nth-child(4) {
+							top: 20px;
+						}
+					}
+				}
+			}
+		}
+
 		.navbar-content {
 			display: flex;
 			height: 100%;
 			flex: 1;
+
+			@include phone {
+				display: none;
+			}
 
 			.nav-list {
 				flex-direction: row-reverse;
@@ -173,6 +256,49 @@
 								margin: auto;
 								z-index: 2;
 							}
+						}
+					}
+				}
+			}
+		}
+
+		.navbar-mobile {
+			transition: opacity 0.25s ease-in-out;
+			height: calc(100vh - 5rem);
+			border: 2px solid $green;
+			background: #000000f2;
+			position: fixed;
+			border-top: 0;
+			display: none;
+			width: 100vw;
+			opacity: 0;
+			top: 5rem;
+			left: 0;
+
+			@include phone {
+				display: block;
+			}
+
+			&.open {
+				opacity: 1;
+			}
+
+			.navbar-mobile-items {
+				justify-content: center;
+				flex-direction: column;
+				align-items: center;
+				display: flex;
+				height: 100%;
+				
+				.navbar-mobile-item {
+					margin: 1.5rem 0;
+
+					.navbar-mobile-link {
+						font-size: 2rem;
+						color: $green;
+
+						&:hover {
+							color: $link;
 						}
 					}
 				}

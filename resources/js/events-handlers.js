@@ -44,6 +44,12 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
+
+// Mobile navbar toggler animation
+$('.navbar-toggler').click(function () {
+	$('.toggle-animator, .navbar-mobile').toggleClass('open');
+});
+
 // Password revealer button
 $('.password-revealer').click(function() {
 	if ($(this).siblings('input').attr('type') === 'password') {
