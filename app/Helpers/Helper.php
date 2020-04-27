@@ -79,7 +79,7 @@ if (!function_exists('is_role')) {
  * @return date
  */
 if (!function_exists('pretty_date')) {
-	function pretty_date($date) {
+	function pretty_date($date, array $args = []) {
 		$date = Carbon::createFromFormat('Y-m-d H:i:s', $date, $_COOKIE['timezone'] ?? 'UTC');
 		$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now(), $_COOKIE['timezone'] ?? 'UTC');
 
