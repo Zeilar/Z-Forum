@@ -26,7 +26,7 @@
 										$post->id,
 									])
 								}}">
-									{{ __('View in thread') }}
+									{{ __('Context') }}
 									<i class="fas fa-sign-in-alt"></i>
 								</a>
 							@endslot
