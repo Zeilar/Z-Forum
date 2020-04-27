@@ -13220,12 +13220,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
     margin-top: 2px;
     margin-left: 0;
   }
-
-  .user-profile .profile-upper .profile-meta .profile-meta-block,
-  .user-profile .profile-upper .profile-meta .profile-meta-stats {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-  }
 }
 
 @media (max-width: 599px) {
@@ -13250,6 +13244,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: 100%;
 }
 
+@media (max-width: 599px) {
+  .user-profile .profile-upper .profile-meta .profile-name {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}
+
 .user-profile .profile-upper .profile-meta .profile-name * {
   text-align: center;
   width: 33%;
@@ -13264,6 +13265,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: 599px) {
+  .user-profile .profile-upper .profile-meta .profile-meta-stats {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
 }
 
 .user-profile .profile-upper .profile-meta .profile-meta-stats .profile-meta-block {
