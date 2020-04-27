@@ -36,6 +36,11 @@
 			@include phone {
 				margin-top: 2px;
 				margin-left: 0;	
+
+				.profile-meta-block, .profile-meta-stats {
+					padding-right: 0.5rem;
+					padding-left: 0.5rem;
+				}
 			}
 
 			.profile-username, .profile-role, .profile-rank {

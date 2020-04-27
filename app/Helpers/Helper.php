@@ -80,9 +80,15 @@ if (!function_exists('is_role')) {
  */
 if (!function_exists('pretty_date')) {
 	function pretty_date($date, array $args = []) {
-		$date = Carbon::createFromFormat('Y-m-d H:i:s', $date, $_COOKIE['timezone'] ?? 'UTC');
-		$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now(), $_COOKIE['timezone'] ?? 'UTC');
+		$date = Carbon::createFromFormat('Y-m-d H:i:s', $date ?? Carbon::now(), $args['timezone'] ?? $_COOKIE['timezone'] ?? 'UTC');
+		$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now(), $args['timezone'] ?? $_COOKIE['timezone'] ?? 'UTC');
 
+		$date = $date->addSeconds($date->getOffset());
+
+		if (isset($args['format'])) {
+			return date($args['format'], strtotime($date));
+		}
+		
 		if ($date->isCurrentDay()) {
 			$format = __('Today');
 		} else if ($date->isYesterday()) {
@@ -92,8 +98,6 @@ if (!function_exists('pretty_date')) {
 		} else {
 			$format = date('Y-m-d', strtotime($date));
 		}
-
-		$date = $date->addSeconds($date->getOffset());
 		
 		return $format . date(' H:i', strtotime($date));
 	}

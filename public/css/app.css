@@ -13220,6 +13220,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
     margin-top: 2px;
     margin-left: 0;
   }
+
+  .user-profile .profile-upper .profile-meta .profile-meta-block,
+  .user-profile .profile-upper .profile-meta .profile-meta-stats {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
 }
 
 @media (max-width: 599px) {

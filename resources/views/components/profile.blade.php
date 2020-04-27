@@ -14,7 +14,7 @@
 			<div class="profile-meta-stats">
 				<div class="profile-registered profile-meta-block">
 					<h5 class="profile-meta-upper">{{ __('Joined ') }}</h4>
-					<h4 class="profile-meta-lower">{{ pretty_date($user->created_at) }}</h3>
+					<h4 class="profile-meta-lower">{{ pretty_date($user->created_at, ['format' => 'F NS Y']) }}</h3>
 				</div>
 				<div class="profile-likes profile-meta-block">
 					<h5 class="profile-meta-upper">{{ __('Post likes') }}</h5>
