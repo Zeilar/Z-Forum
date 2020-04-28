@@ -12,9 +12,9 @@
 	.sidebar-item {
 		border: 2px solid $green;
 		border-radius: 0.25rem;
+		margin-bottom: 1.5rem;
 		background: $darkgray;
 		padding: 0.5rem 1rem;
-		margin-bottom: 1rem;
 
 		.sidebar-title {
 			border-bottom: 2px solid $green;
@@ -75,13 +75,6 @@
 			}
 		}
 
-		.sidebar-header {
-			border-bottom: 2px solid $green;
-			padding-bottom: 0.5rem;
-			margin-bottom: 0.5rem;
-			font-weight: bold;
-		}
-
 		&.latest-posts {
 			.latest-posts-item {
 				margin-bottom: 0.5rem;
@@ -102,6 +95,20 @@
 					margin: auto 0;
 				}
 			}
+		}
+
+		&.statistics {
+			.statistics-item {
+				justify-content: space-between;
+				display: flex;
+			}
+		}
+
+		.sidebar-header {
+			border-bottom: 2px solid $green;
+			padding-bottom: 0.5rem;
+			margin-bottom: 0.5rem;
+			font-weight: bold;
 		}
 	}
 }

@@ -33,8 +33,7 @@ class AppServiceProvider extends ServiceProvider
     {
 		if ($this->app->isLocal()) {
 			if (Schema::hasTable('users')) {
-				$users = User::where('id', '!=', '1')->get();
-				$users = $users->chunk(ceil($users->count() / 2))[0];
+				$users = User::where('id', '!=', '1')->limit(10)->get();
 
 				foreach ($users as $user) {
 					$expiresAt = Carbon::now()->addYear(1);

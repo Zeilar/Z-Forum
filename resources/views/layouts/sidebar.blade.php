@@ -3,6 +3,7 @@
 		@auth
 			@component('components.sidebar-item', ['class' => 'welcome'])
 				@slot('title')
+					<i class="fas fa-home"></i>
 					{{ __('Welcome') }}
 				@endslot
 
@@ -53,6 +54,7 @@
 				@php $amount = count($superadmins) + count($moderators) ?? 0 @endphp
 
 				@slot('title')
+					<i class="fas fa-users-cog"></i>
 					{{ __("Online moderators: $amount") }}
 				@endslot
 
@@ -108,6 +110,7 @@
 
 		@component('components.sidebar-item', ['class' => 'latest-posts'])
 			@slot('title')
+				<i class="far fa-comments"></i>
 				{{ __('Latest Posts') }}
 			@endslot
 
@@ -133,6 +136,35 @@
 						</a>
 					</div>
 				@endforeach
+			@endslot
+		@endcomponent
+
+		@component('components.sidebar-item', ['class' => 'statistics'])
+			@slot('title')
+				<i class="fas fa-chart-line"></i>
+				{{ __('Statistics') }}
+			@endslot
+
+			@slot('content')
+				<div class="statistics-item">
+					<span class="statistics-item-title">{{ __('Users online:') }}</span>
+					<span class="statistics-item-content">{{ count(get_online_users()) }}</span>
+				</div>
+
+				<div class="statistics-item">
+					<span class="statistics-item-title">{{ __('Posts:') }}</span>
+					<span class="statistics-item-content">{{ App\Post::all()->count() }}</span>
+				</div>
+
+				<div class="statistics-item">
+					<span class="statistics-item-title">{{ __('Threads:') }}</span>
+					<span class="statistics-item-content">{{ App\Thread::all()->count() }}</span>
+				</div>
+
+				<div class="statistics-item">
+					<span class="statistics-item-title">{{ __('Members:') }}</span>
+					<span class="statistics-item-content">{{ App\User::all()->count() }}</span>
+				</div>
 			@endslot
 		@endcomponent
 	</div>
