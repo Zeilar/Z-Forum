@@ -92,21 +92,20 @@ class AccountController extends Controller
 
 		if (request('delete')) {
 			$user->posts()->each(function($post) {
-				$post->delete();
+				$post->content 		     = '<i>' . __('Deleted') . '</i>';
+				$post->edited_by 		 = null;
+				$post->edited_by_message = null;
+				$post->save();
 			});
 			$user->threads()->each(function($thread) {
-				$thread->posts()->each(function($post) {
-					$post->delete();
-				});
-				$thread->delete();
+				$thread->title 	 = __('Deleted');
+				$thread->slug 	 = __('Deleted');
+				$thread->save();
 			});
 			$user->likes()->each(function($like) {
 				$like->delete();
 			});
 			$user->messages_sent()->each(function($message) {
-				$message->delete();
-			});
-			$user->messages_received()->each(function($message) {
 				$message->delete();
 			});
 			$user->visited_threads()->each(function($visit) {
@@ -118,7 +117,22 @@ class AccountController extends Controller
 			ActivityLog::where('user_id', $user->id)->each(function($activity) {
 				$activity->delete();
 			});
-			$user->delete();
+
+			$user->username = null;
+			$user->github_id = null;
+			$user->email = null;
+			$user->password = null;
+			$user->role = 'Member';
+			$user->signature = null;
+			$user->avatar = route('index') . '/storage/user-avatars/default.svg';
+			$user->settings = null;
+			$user->remember_token = null;
+			$user->email_verified_at = null;
+			$user->last_seen = null;
+			$user->banned = null;
+			$user->created_at = null;
+			$user->updated_at = null;
+			$user->save();
 
 			return redirect(route('index'));
 		}

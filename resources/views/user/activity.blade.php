@@ -1,7 +1,7 @@
 @extends('head')
 
 @section('pageTitle')
-	{{ $user->username . ' | ' . __('Activity') }}
+	{{ ($user->username ?? __('Deleted')) . ' | ' . __('Activity') }}
 @endsection
 
 @section('content')

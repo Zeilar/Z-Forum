@@ -280,9 +280,11 @@ if (!function_exists('settings_get')) {
 		// Set user as the currently logged in if possible, default to provided ID
 		$user = App\User::find($id) ?? auth()->user() ?? false;
 
+		$default_setting = json_decode(DB::table('default_settings')->first()->settings)->$key;
+
 		// If no user was found, return default value for that setting
 		if (empty($user)) {
-			$settings = json_decode(DB::table('default_settings')->first()->settings);
+			$settings = $default_setting;
 			return isset($settings->$key) ? $settings->$key : null;
 		}
 
@@ -290,7 +292,7 @@ if (!function_exists('settings_get')) {
 		$settings = json_decode($user->settings, true);
 
 		// Return either all or a select setting
-		return ($key === 'all') ? $settings : $settings[$key] ?? 0;
+		return ($key === 'all') ? $settings : $settings[$key] ?? $default_setting ?? null;
 	}
 }
 

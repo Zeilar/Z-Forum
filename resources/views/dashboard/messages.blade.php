@@ -55,7 +55,7 @@
 		@endforeach
 	</div>
 
-	@if (settings_get('posats_per_page') >= 5)
+	@if (settings_get('posts_per_page') >= 5)
 		{{ $messages->links('layouts.pagination') }}
 	@endif
 
