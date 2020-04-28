@@ -6,7 +6,13 @@
 
 		<div class="profile-meta">
 			<div class="profile-meta-block profile-name">
-				<h3 class="profile-username">{{ $user->username }}</h3>
+				<h3 class="profile-username">
+					@isset($user->username)
+						{{ $user->username }}
+					@else
+						<i>{{ __('Deleted') }}</i>
+					@endisset
+				</h3>
 				<h3 class="profile-role {{role_coloring($user->role)}}">{{ ucfirst($user->role) }}</h3>
 				<h3 class="profile-rank">{{ ucwords($user->rank) }}</h3>
 			</div>

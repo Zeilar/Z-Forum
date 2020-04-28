@@ -46,7 +46,11 @@
 				<div class="post-meta-left">
 					<p class="post-author">
 						<a href="{{route('user_show', [$post->user->id])}}">
-							{{ $post->user->username }}
+							@isset($post->user->username)
+								{{ $post->user->username }}
+							@else
+								<i>{{ __('Deleted') }}</i>
+							@endisset
 						</a>
 					</p>
 					<p class="post-author-rank">
