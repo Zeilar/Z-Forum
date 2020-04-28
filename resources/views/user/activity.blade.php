@@ -15,7 +15,7 @@
 							@php $target = DB::table($performed_on->table)->where($performed_on->table . '.id', $performed_on->id)->first() @endphp
 
 							@if ($performed_on->table === 'users')
-								{{ ucfirst($activity->task) }}
+								<span>{{ ucfirst($activity->task) }}</span>
 								<a class="{{role_coloring($target->role)}}" href="{{route('user_show', [$target->id])}}">
 									{{ $target->username }}
 								</a>
@@ -23,8 +23,8 @@
 							@elseif ($performed_on->table === 'posts')
 								@php $post = App\Post::find($performed_on->id) @endphp
 								@php $thread = $post->thread @endphp
-								{{ __('Replied in') }}
-								<a href="{{
+								<span>{{ __('Replied in') }}</span>
+								<a class="activity-link" href="{{
 									route('post_show', [
 										$thread->id,
 										$thread->slug,
@@ -36,12 +36,14 @@
 								</a>
 							@elseif ($performed_on->table === 'threads')
 								@php $thread = App\Thread::find($performed_on->id) @endphp
-								{{ ucfirst($activity->task) }}
-								{{ 'thread' }}
-								<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+								<span>{{ ucfirst($activity->task) }}</span>
+								<span>{{ 'thread' }}</span>
+								<a class="activity-link" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 									{{ $thread->title }}
 								</a>
 							@endif
+							
+							<span class="activity-date">{{ pretty_date($activity->created_at) }}</span>
 						</div>
 					@endforeach
 				@else

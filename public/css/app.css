@@ -13429,6 +13429,35 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #2c2c3580;
 }
 
+.user-profile .profile-lower .profile-activity-item {
+  display: -webkit-box;
+  display: flex;
+}
+
+.user-profile .profile-lower .profile-activity-item * {
+  margin: 0 2px;
+}
+
+.user-profile .profile-lower .profile-activity-item :first-child {
+  margin-left: 0;
+}
+
+.user-profile .profile-lower .profile-activity-item :last-child {
+  margin-right: 0;
+}
+
+.user-profile .profile-lower .profile-activity-item .activity-link {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+.user-profile .profile-lower .profile-activity-item .activity-date {
+  margin-left: auto;
+}
+
 #toolbar,
 #toolbar .toolbar-item {
   height: calc(100vh - 12rem);

@@ -192,5 +192,32 @@
 				background: $darkgray;
 			}
 		}
+
+		.profile-activity-item {
+			display: flex;
+
+			* {
+				margin: 0 2px;
+			}
+
+			:first-child {
+				margin-left: 0;
+			}
+
+			:last-child {
+				margin-right: 0;
+			}
+
+			.activity-link {
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				flex: 1;
+			}
+
+			.activity-date {
+				margin-left: auto;
+			}
+		}
 	}
 }
