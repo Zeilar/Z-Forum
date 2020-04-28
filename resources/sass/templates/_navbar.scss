@@ -211,7 +211,9 @@
 						}
 
 						.nav-link {
+							border-bottom: 2px solid transparent;
 							transition: color 0.15s ease-in-out;
+							border-top: 2px solid transparent;
 							position: relative;
 							user-select: none;
 							display: flex;

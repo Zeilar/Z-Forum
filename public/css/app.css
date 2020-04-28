@@ -13933,8 +13933,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .nav-link {
+  border-bottom: 2px solid transparent;
   -webkit-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
+  border-top: 2px solid transparent;
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
