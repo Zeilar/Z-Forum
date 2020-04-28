@@ -102,7 +102,10 @@
 				</div>
 			</div>
 
-			<button class="btn btn-success-full" type="submit">{{ __('Save changes') }}</button>
+			<div class="settings-submit">
+				<button class="btn btn-success-full save" type="submit">{{ __('Save changes') }}</button>
+				<button class="btn btn-hazard delete" name="delete" value="delete" type="submit">{{ __('Delete my account') }}</button>
+			</div>
 		</form>
 	</div>
 	<script>

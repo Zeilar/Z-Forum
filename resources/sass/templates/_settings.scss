@@ -84,4 +84,17 @@
 			width: 100%;
 		}
 	}
+
+	.settings-submit {
+		justify-content: space-between;
+		display: flex;
+
+		@include phone {
+			flex-direction: column;
+
+			.delete {
+				margin-top: 3rem;
+			}
+		}
+	}
 }

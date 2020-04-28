@@ -13065,6 +13065,25 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 }
 
+#settings .settings-submit {
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: flex;
+}
+
+@media (max-width: 599px) {
+  #settings .settings-submit {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+  }
+
+  #settings .settings-submit .delete {
+    margin-top: 3rem;
+  }
+}
+
 @media (max-width: 599px) {
   .new-message {
     margin-bottom: 0.5rem;

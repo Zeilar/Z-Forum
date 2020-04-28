@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\ActivityLog;
 use App\User;
 use Auth;
 
@@ -88,6 +89,36 @@ class AccountController extends Controller
 		]);
 
 		$user = auth()->user();
+
+		if (request('delete')) {
+			$user->posts()->each(function($post) {
+				$post->delete();
+			});
+			$user->threads()->each(function($thread) {
+				$thread->delete();
+			});
+			$user->likes()->each(function($like) {
+				$like->delete();
+			});
+			$user->messages_sent()->each(function($message) {
+				$message->delete();
+			});
+			$user->messages_received()->each(function($message) {
+				$message->delete();
+			});
+			$user->visited_threads()->each(function($visit) {
+				$visit->delete();
+			});
+			$user->visited_messages()->each(function($visit) {
+				$visit->delete();
+			});
+			ActivityLog::where('user_id', $user->id)->each(function($activity) {
+				$activity->delete();
+			});
+			$user->delete();
+
+			return redirect(route('index'));
+		}
 		
 		if (isset($request->avatar)) {
 			// Store the avatar as an absolute URI path
