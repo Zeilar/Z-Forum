@@ -319,7 +319,7 @@ if (!function_exists('get_item_page_number')) {
 				return $page;
 			}
 		}
-		return 0;
+		return 1;
 	}
 }
 
