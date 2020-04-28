@@ -180,6 +180,10 @@
 				&:last-child {
 					margin-bottom: 0;
 				}
+
+				.post-link {
+					flex-direction: column;
+				}
 			}
 		}
 
