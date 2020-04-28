@@ -43,7 +43,8 @@
 		<a class="btn mt-2 btn-success-full" href="{{
 			route('message_new') . '?replyTo=' . $message->author->username . '&replySubject=' . urlencode($message->title)
 		}}">
-			{{ __('Reply') }}
+			<span>{{ __('Reply') }}</span>
+			<i class="fas ml-2 color-white fa-reply"></i>
 		</a>
 	@endif
 @endsection

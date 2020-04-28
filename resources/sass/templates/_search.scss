@@ -25,16 +25,12 @@
 			border-bottom: 2px solid $gray;
 			border-right: 2px solid $gray;
 			border-left: 2px solid $gray;
+			flex-direction: column;
 			background: $darkgray;
 			display: flex;
 
 			.result-read-more {
 				margin-top: 1rem;
-			}
-
-			a {
-				height: fit-content;
-				margin: auto 0;
 			}
 		}
 

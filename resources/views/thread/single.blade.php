@@ -66,6 +66,7 @@
 			@can('create', [App\Post::class, $thread])
 				<button class="reply-button btn btn-success-full" type="button">
 					{{ __('Reply') }}
+					<i class="fas color-white ml-2 fa-reply"></i>
 				</button>
 			@endcan
 		@endauth
