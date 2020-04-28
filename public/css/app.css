@@ -14597,6 +14597,11 @@ i {
           flex: 1;
 }
 
+.no-transition {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
 .navbar,
 #content,
 #footer {

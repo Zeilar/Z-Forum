@@ -62,7 +62,7 @@ class UsersController extends Controller
     public function show($id)
     {
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
-		if (User::find($id) || User::where('username', $id)) {
+		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
 			if (logged_in() && auth()->user()->id !== $user->id) {
@@ -134,7 +134,7 @@ class UsersController extends Controller
 	public function show_activity(Request $request, $id)
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
-		if (User::find($id) || User::where('username', $id)) {
+		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
 			$posts = $this->get_user_liked_posts($user->id);
@@ -158,7 +158,7 @@ class UsersController extends Controller
 	public function show_posts(Request $request, $id)
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
-		if (User::find($id) || User::where('username', $id)) {
+		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
 			$posts = $this->get_user_liked_posts($user->id);
@@ -178,7 +178,7 @@ class UsersController extends Controller
 	public function show_likes(Request $request, $id)
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
-		if (User::find($id) || User::where('username', $id)) {
+		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
 			$posts = $this->get_user_liked_posts($user->id);
@@ -197,7 +197,7 @@ class UsersController extends Controller
 	public function show_threads(Request $request, $id)
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
-		if (User::find($id) || User::where('username', $id)) {
+		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 
 			$posts = $this->get_user_liked_posts($user->id);

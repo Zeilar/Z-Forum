@@ -64,6 +64,10 @@ i {
 	flex: 1;
 }
 
+.no-transition {
+	transition: none !important;
+}
+
 .navbar, #content, #footer {
 	padding-right: 15vw;
 	padding-left: 15vw;
