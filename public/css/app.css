@@ -13552,11 +13552,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: -moz-fit-content;
   height: fit-content;
   padding-top: 1rem;
-  position: -webkit-sticky;
-  position: sticky;
   color: white;
   width: 17.5vw;
-  top: 6rem;
 }
 
 @media (max-width: 599px) {
@@ -13567,8 +13564,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #sidebar .sidebar-item {
   border: 2px solid #00b365;
-  background: #2c2c3580;
   border-radius: 0.25rem;
+  background: #2c2c3580;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
 }

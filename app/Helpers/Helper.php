@@ -19,7 +19,7 @@ require_once 'Variables.php';
  * @return mixed
  */
 if (!function_exists('item_exists')) {
-	function item_exists($item, string $slug) {
+	function item_exists($item, string $slug) : bool {
 		try {
 			if ($item) {
 				if (strtolower(urldecode($slug)) === strtolower(urldecode($item->slug))) {
@@ -40,7 +40,7 @@ if (!function_exists('item_exists')) {
  * @return boolean
  */
 if (!function_exists('logged_in')) {
-	function logged_in() {
+	function logged_in() : bool {
 		if (auth()->user()) {
 			return true;
 		} else {
@@ -57,7 +57,7 @@ if (!function_exists('logged_in')) {
  * @return boolean
  */
 if (!function_exists('is_role')) {
-	function is_role(...$role) {
+	function is_role(string ...$role) : bool {
 		if (auth()->user()) {
 			foreach ($role as $key) {
 				if (strtolower(auth()->user()->role) === strtolower($key)) {
@@ -80,7 +80,7 @@ if (!function_exists('is_role')) {
  * @return date
  */
 if (!function_exists('pretty_date')) {
-	function pretty_date($date, array $args = []) {
+	function pretty_date($date, array $args = []) : string {
 		$date = Carbon::createFromFormat('Y-m-d H:i:s', $date ?? Carbon::now(), $args['timezone'] ?? $_COOKIE['timezone'] ?? 'UTC');
 		$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now(), $args['timezone'] ?? $_COOKIE['timezone'] ?? 'UTC');
 
@@ -124,8 +124,6 @@ if (!function_exists('msg_error')) {
 				return redirect()->back()->with('error-password', __('Incorrect password'));
 			case 'locked':
 				return redirect()->back()->with('error', __('The thread is locked, please contact a moderator'));
-			case 'create-item':
-				return redirect()->back()->with('error-create', __('Test'));
 			case null:
 				return redirect()->route('index')->with('error', __('An unexpected error occurred'));
 			default:
@@ -164,7 +162,7 @@ if (!function_exists('msg_success')) {
  * @return boolean
  */
 if (!function_exists('is_user_online')) {
-	function is_user_online($id) {
+	function is_user_online($id) : bool {
 		return Illuminate\Support\Facades\Cache::has('user-online-' . $id) ? true : false;
 	}
 }
@@ -175,7 +173,7 @@ if (!function_exists('is_user_online')) {
  * @return array
  */
 if (!function_exists('get_online_users')) {
-	function get_online_users() {
+	function get_online_users() : array {
 		$users = [];
 		foreach (App\User::all() as $user) {
 			if (is_user_online($user->id)) {
@@ -194,7 +192,7 @@ if (!function_exists('get_online_users')) {
  * @return string
  */
 if (!function_exists('role_coloring')) {
-	function role_coloring(string $role) {
+	function role_coloring(string $role) : string {
 		switch ($role) {
 			case 'superadmin':
 				return 'is_superadmin';
@@ -216,12 +214,12 @@ if (!function_exists('role_coloring')) {
  * @return boolean
  */
 if (!function_exists('settings_put')) {
-	function settings_put(string $key, $value, int $id = null) {
+	function settings_put(string $key, $value, int $id = null) : bool {
 		// Set user as the currently logged in if possible, default to provided ID
 		$user = App\User::find($id) ?? auth()->user();
 
 		// If no user was found, return false to prevent further issues
-		if (empty($user)) return null;
+		if (empty($user)) return false;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);
@@ -246,12 +244,12 @@ if (!function_exists('settings_put')) {
  * @return boolean
  */
 if (!function_exists('settings_delete')) {
-	function settings_delete(string $key, int $id = null) {
+	function settings_delete(string $key, int $id = null) : bool {
 		// Set user as the currently logged in if possible, default to provided ID
 		$user = App\User::find($id) ?? auth()->user();
 
 		// If no user was found, return false to prevent further issues
-		if (empty($user)) return null;
+		if (empty($user)) return false;
 
 		// Fetch the settings as an associative array
 		$settings = json_decode($user->settings, true);
@@ -278,7 +276,7 @@ if (!function_exists('settings_delete')) {
 if (!function_exists('settings_get')) {
 	function settings_get(string $key = 'all', int $id = null) {
 		// Set user as the currently logged in if possible, default to provided ID
-		$user = App\User::find($id) ?? auth()->user() ?? null;
+		$user = App\User::find($id) ?? auth()->user() ?? false;
 
 		// If no user was found, return default value for that setting
 		if (empty($user)) {
@@ -302,7 +300,7 @@ if (!function_exists('settings_get')) {
  * @param int $pageAmount
  */
 if (!function_exists('get_item_page_number')) {
-	function get_item_page_number($collection, int $id, int $pageAmount = 0) {
+	function get_item_page_number($collection, int $id, int $pageAmount = 0) : int {
 		foreach ($collection->sortBy('created_at') as $item) {
 			if (empty($page)) $page = 1;
 
@@ -317,7 +315,7 @@ if (!function_exists('get_item_page_number')) {
 				return $page;
 			}
 		}
-		return '';
+		return 0;
 	}
 }
 
@@ -331,22 +329,23 @@ if (!function_exists('get_item_page_number')) {
  * 
  * @return string
  */
-function shorten_text(string $text, int $max_length = 150, string $cut_off = '...', bool $keep_word = true)
-{
-    if (strlen($text) <= $max_length) return $text;
+if (!function_exists('shorten_text')) {
+	function shorten_text(string $text, int $max_length = 150, string $cut_off = '...', bool $keep_word = true) : string {
+		if (strlen($text) <= $max_length) return $text;
 
-	if ($keep_word) {
-		$text = substr($text, 0, $max_length + 1);
+		if ($keep_word) {
+			$text = substr($text, 0, $max_length + 1);
 
-		if ($last_space = strrpos($text, ' ')) {
-			$text = substr($text, 0, $last_space);
+			if ($last_space = strrpos($text, ' ')) {
+				$text = substr($text, 0, $last_space);
+				$text = rtrim($text);
+				$text .=  $cut_off;
+			}
+		} else {
+			$text = substr($text, 0, $max_length);
 			$text = rtrim($text);
 			$text .=  $cut_off;
 		}
-	} else {
-		$text = substr($text, 0, $max_length);
-		$text = rtrim($text);
-		$text .=  $cut_off;
+		return $text;
 	}
-    return $text;
 }

@@ -2,10 +2,8 @@
 	margin-left: 2.5rem;
 	height: fit-content;
 	padding-top: 1rem;
-	position: sticky;
 	color: white;
 	width: 17.5vw;
-	top: 6rem;
 
 	@include phone {
 		display: none;
@@ -13,8 +11,8 @@
 
 	.sidebar-item {
 		border: 2px solid $green;
-		background: $darkgray;
 		border-radius: 0.25rem;
+		background: $darkgray;
 		padding: 0.5rem 1rem;
 		margin-bottom: 1rem;
 
