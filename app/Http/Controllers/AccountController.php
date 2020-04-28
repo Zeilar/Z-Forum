@@ -134,7 +134,7 @@ class AccountController extends Controller
 			$user->updated_at = null;
 			$user->save();
 
-			return redirect(route('index'));
+			return redirect(route('logout'));
 		}
 		
 		if (isset($request->avatar)) {
