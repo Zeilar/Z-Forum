@@ -111,7 +111,7 @@
 		@component('components.sidebar-item', ['class' => 'latest-posts'])
 			@slot('title')
 				<i class="far fa-comments"></i>
-				{{ __('Latest Posts') }}
+				{{ __('Recent activity') }}
 			@endslot
 
 			@slot('content')
@@ -120,7 +120,7 @@
 				{{-- Filter out duplicate threads --}}
 				@php $threads = [] @endphp
 				@foreach ($latest_posts as $post)
-					@if (count($threads) >= 5)
+					@if (count($threads) >= 10)
 						@break
 					@endif
 					@if (!in_array($post->thread, $threads))
