@@ -159,6 +159,7 @@
 			}
 
 			.post-link {
+				flex-direction: column;
 				display: flex;
 
 				@include phone {

@@ -28,6 +28,7 @@
 									{{ __('Context') }}
 									<i class="fas fa-sign-in-alt"></i>
 								</a>
+								<p>{{ pretty_date($post->created_at) }}</p>
 							@endslot
 						@endcomponent
 					@endforeach
