@@ -187,6 +187,10 @@
 			}
 		}
 
+		&.likes {
+			background: $darkgray;
+		}
+
 		.profile-activity-item, .profile-thread {
 			overflow-wrap: break-word;
 			padding: 0.5rem 1rem;
