@@ -95,6 +95,9 @@ class AccountController extends Controller
 				$post->delete();
 			});
 			$user->threads()->each(function($thread) {
+				$thread->posts()->each(function($post) {
+					$post->delete();
+				});
 				$thread->delete();
 			});
 			$user->likes()->each(function($like) {
