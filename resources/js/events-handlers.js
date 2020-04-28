@@ -105,7 +105,8 @@ if ($('.modal .is-invalid').length) {
 if ($('.spin').length) {
 	$('.spin').click(function() {
 		if (!$(this).hasClass('loading')) {
-			$(this).css('width', `${$(this).outerWidth()}px`).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+			$(this).css({'width': `${$(this).outerWidth()}px`, 'height': `${$(this).outerHeight()}px`})
+				.addClass('loading').html('<i class="fas fa-circle-notch"></i>');
 			setTimeout(() => {
 				$(this).attr('disabled', true);
 			}, 50);

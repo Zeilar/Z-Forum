@@ -37223,7 +37223,10 @@ if ($('.spin').length) {
     var _this = this;
 
     if (!$(this).hasClass('loading')) {
-      $(this).css('width', "".concat($(this).outerWidth(), "px")).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
+      $(this).css({
+        'width': "".concat($(this).outerWidth(), "px"),
+        'height': "".concat($(this).outerHeight(), "px")
+      }).addClass('loading').html('<i class="fas fa-circle-notch"></i>');
       setTimeout(function () {
         $(_this).attr('disabled', true);
       }, 50);
