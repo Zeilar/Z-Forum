@@ -37552,7 +37552,7 @@ function () {
       $('.table-group').each(function () {
         var rows = $(this).find('.subcategory-rows');
 
-        if (localStorage.getItem("hidden-".concat($(this).attr('id')))) {
+        if (cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].getCookie("hidden-".concat($(this).attr('id')))) {
           $(this).find('.category-collapse i').addClass('closed');
           rows.addClass('hidden');
         } else {
@@ -37568,10 +37568,10 @@ function () {
         var id = $(this).parents('.table-group').attr('id');
         var button = $(this).children();
 
-        if (localStorage.getItem("hidden-".concat(id))) {
-          localStorage.removeItem("hidden-".concat(id));
+        if (cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].getCookie("hidden-".concat(id))) {
+          cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].removeCookie("hidden-".concat(id));
         } else {
-          localStorage.setItem("hidden-".concat(id), true);
+          cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].setCookie("hidden-".concat(id), true);
         }
 
         var rows = $(this).parents('.table-group').find('.subcategory-rows');

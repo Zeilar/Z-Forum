@@ -92,7 +92,7 @@ class Functions {
 	static collapseCategory() {
 		$('.table-group').each(function() {
 			let rows = $(this).find('.subcategory-rows');
-			if (localStorage.getItem(`hidden-${$(this).attr('id')}`)) {
+			if (cookieCutter.getCookie(`hidden-${$(this).attr('id')}`)) {
 				$(this).find('.category-collapse i').addClass('closed');
 				rows.addClass('hidden');
 			} else {
@@ -109,10 +109,10 @@ class Functions {
 		$('.category-collapse').click(function() {
 			let id = $(this).parents('.table-group').attr('id');
 			let button = $(this).children();
-			if (localStorage.getItem(`hidden-${id}`)) {
-				localStorage.removeItem(`hidden-${id}`);
+			if (cookieCutter.getCookie(`hidden-${id}`)) {
+				cookieCutter.removeCookie(`hidden-${id}`);
 			} else {
-				localStorage.setItem(`hidden-${id}`, true);
+				cookieCutter.setCookie(`hidden-${id}`, true);
 			}
 
 			let rows = $(this).parents('.table-group').find('.subcategory-rows');
