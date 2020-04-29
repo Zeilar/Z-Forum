@@ -309,4 +309,11 @@
 			}
 		}
 	}
+
+	.toggle-sidebar {
+		transform: translate(-50%, -50%);
+		position: absolute !important;
+		right: 0;
+		top: 50%;
+	}
 }

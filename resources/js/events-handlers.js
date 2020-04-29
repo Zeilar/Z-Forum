@@ -44,11 +44,42 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
-
 // Mobile navbar toggler animation
 $('.navbar-toggler').click(function () {
 	$('.toggle-animator, .navbar-mobile').toggleClass('open');
 });
+
+if (localStorage.getItem('sidebarOpen') === 'true') {
+	// Set sidebar height on page load
+	let height = 0;
+	$('.sidebar-item').each(function() {
+		height += $(this).outerHeight(true);
+	});
+	$('#sidebar').addClass('no-transition open').css('height', `${height}px`);
+} else {
+	$('#sidebar').addClass('no-transition hide');
+}
+
+$('.toggle-sidebar').click(function() {
+	$('#sidebar').removeClass('no-transition');
+
+	let height = 0;
+
+	$('.sidebar-item').each(function() {
+		height += $(this).outerHeight(true);
+	});
+
+	if ($('#sidebar').hasClass('hide')) {
+		$('#sidebar').removeClass('hide').addClass('open');
+		$('#sidebar').css('height', `${height}px`);
+		localStorage.setItem('sidebarOpen', true);
+	} else {
+		$('#sidebar').removeClass('open').addClass('hide');
+		localStorage.setItem('sidebarOpen', false);
+		$('#sidebar').removeAttr('style');
+	}
+});
+
 
 // Password revealer button
 $('.password-revealer').click(function() {

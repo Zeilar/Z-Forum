@@ -13571,6 +13571,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   height: -moz-fit-content;
   height: fit-content;
   padding-top: 1rem;
+  overflow: hidden;
   color: white;
   width: 17.5vw;
 }
@@ -13579,6 +13580,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   #sidebar {
     display: none;
   }
+}
+
+#sidebar.hide {
+  -webkit-transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out;
+  transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out;
+  height: calc(1rem + 2px);
+  width: 0;
+}
+
+#sidebar.open {
+  -webkit-transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
+  transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
 }
 
 #sidebar .sidebar-item {
@@ -14062,6 +14075,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item .navbar-mobile-link:hover {
   color: #3490dc;
+}
+
+.navbar .toggle-sidebar {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute !important;
+  right: 0;
+  top: 50%;
 }
 
 .reply-button {

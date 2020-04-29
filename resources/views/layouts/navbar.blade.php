@@ -80,5 +80,9 @@
 				</ul>
 			</div>
 		</div>
+
+		<button class="btn toggle-sidebar btn-success-full" type="button">
+			{{ __('Toggle Sidebar') }}
+		</button>
 	</nav>
 @endempty

@@ -2,11 +2,22 @@
 	margin-left: 2.5rem;
 	height: fit-content;
 	padding-top: 1rem;
+	overflow: hidden;
 	color: white;
 	width: 17.5vw;
 
 	@include phone {
 		display: none;
+	}
+
+	&.hide {
+		transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out;
+		height: calc(1rem + 2px);
+		width: 0;
+	}
+
+	&.open {
+		transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
 	}
 
 	.sidebar-item {

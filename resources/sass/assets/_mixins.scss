@@ -6,6 +6,10 @@
   	@media (min-width: 600px) { @content; }
 }
 
+@mixin big-tablet-down {
+  	@media (max-width: 899px) { @content; }
+}
+
 @mixin big-tablet-up {
 	@media (min-width: 900px) { @content; }
 }
@@ -14,6 +18,14 @@
   	@media (min-width: 1200px) { @content; }
 }
 
+@mixin desktop-down {
+  	@media (max-width: 1199px) { @content; }
+}
+
 @mixin big-desktop-up {
   	@media (min-width: 1920px) { @content; }
+}
+
+@mixin big-desktop-down {
+  	@media (max-width: 1919px) { @content; }
 }
