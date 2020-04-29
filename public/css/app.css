@@ -13660,8 +13660,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-right: 0.25rem;
 }
 
-#sidebar .sidebar-item.online-moderators .sidebar-superadmins {
+#sidebar .sidebar-item.online-moderators .sidebar-item-content div {
   margin-bottom: 1rem;
+}
+
+#sidebar .sidebar-item.online-moderators .sidebar-item-content div:last-child {
+  margin-bottom: 0;
 }
 
 #sidebar .sidebar-item.latest-posts .latest-posts-item {

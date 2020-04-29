@@ -1,6 +1,4 @@
-<div class="sidebar-item @isset($class) {{$class}} @endisset">
-	<div class="sidebar-border"> {{-- To get a second border in the sidebar item element --}} </div> 
-	
+<div class="sidebar-item @isset($class) {{$class}} @endisset">	
 	@isset($title)
 		<h5 class="sidebar-title">
 			{{ $title }}
