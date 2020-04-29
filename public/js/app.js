@@ -37690,7 +37690,7 @@ function () {
 /***/ (function(module, exports) {
 
 (function ($) {
-  $.fn.close = function () {
+  $.fn.hide = function () {
     this.css('height', '0');
     return this;
   };
