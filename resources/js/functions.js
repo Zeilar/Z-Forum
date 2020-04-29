@@ -1,8 +1,10 @@
+import cookieCutter from 'cookie-cutter-helpers';
+
 class Functions {
 	// Plays fade animatin on first visit
 	static fadeTable() {
 		let rows = $('.table-row');
-		if (localStorage.getItem('fadeTable') !== 'true') {
+		if (!cookieCutter.getCookie('fadeTable')) {
 			let delay = 0;
 			rows.each(function() {
 				setTimeout(() => {
@@ -10,10 +12,8 @@ class Functions {
 				}, delay);
 				delay += 50;
 			});
-			localStorage.setItem('fadeTable', 'true');
-		} else {
-			rows.addClass('show');
 		}
+		cookieCutter.setCookie('fadeTable', false, false);
 	}
 
 	// Navbar slide animation when hovering on items

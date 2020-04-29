@@ -1,4 +1,20 @@
-<div class="table-row @isset($admin_post) admin-post @endisset @if($read) read @endif">
+@php $classes = [] @endphp
+
+@isset ($_COOKIE['fadeTable'])
+	@php array_push($classes, 'show') @endphp
+@endisset
+
+@isset($admin_post)
+	@php array_push($classes, 'admin-post') @endphp
+@endisset
+
+@if($read)
+	@php array_push($classes, 'read') @endphp
+@endif
+
+@php $classes =  join(' ', $classes) @endphp
+
+<div class="table-row {{$classes}}">
 	@isset($icon)
 		<div class="table-icon">
 			<img class="img-fluid" src="/storage/icons/{{$icon}}" />
