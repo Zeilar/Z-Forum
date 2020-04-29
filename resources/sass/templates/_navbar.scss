@@ -317,7 +317,7 @@
 		top: 50%;
 
 		@include phone {
-			display: none;
+			display: none !important;
 		}
 	}
 }

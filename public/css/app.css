@@ -14092,7 +14092,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 599px) {
   .navbar .toggle-sidebar {
-    display: none;
+    display: none !important;
   }
 }
 
