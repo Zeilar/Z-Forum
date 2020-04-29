@@ -9,19 +9,19 @@
 			@component('components.sidebar-item', ['class' => 'welcome'])
 				@slot('title')
 					<i class="fas fa-home"></i>
-					{{ __('Welcome ') . $user->username }}
+					{{ __('Welcome ') . auth()->user()->username }}
 				@endslot
 
 				@slot('content')
 					<div class="wrapper">
 						<div class="welcome-text">
-							<p class="user-role {{role_coloring($user->role)}}">{{ ucfirst($user->role) }}</p>
-							<a href="{{route('user_show', [$user->id])}}">
+							<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
+							<a href="{{route('user_show', [auth()->user()->id])}}">
 								{{ __('Profile') }}
 							</a>
 						</div>
 						<div class="welcome-avatar">
-							<img class="img-fluid" src="{{$user->avatar}}" alt="{{ __('User avatar') }}" />
+							<img class="img-fluid" src="{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
 						</div>
 					</div>
 				@endslot
