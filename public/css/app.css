@@ -13583,9 +13583,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar.hide {
-  -webkit-transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out;
-  transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out;
+  -webkit-transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
+  transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
   height: calc(1rem + 2px);
+  margin-left: 0;
   width: 0;
 }
 

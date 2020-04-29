@@ -11,8 +11,9 @@
 	}
 
 	&.hide {
-		transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out;
+		transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
 		height: calc(1rem + 2px);
+		margin-left: 0;
 		width: 0;
 	}
 
