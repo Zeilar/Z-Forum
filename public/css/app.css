@@ -14085,6 +14085,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   top: 50%;
 }
 
+@media (max-width: 599px) {
+  .navbar .toggle-sidebar {
+    display: none;
+  }
+}
+
 .reply-button {
   position: absolute !important;
   top: -3rem;

@@ -44,22 +44,19 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
+// Set up sidebar height on page load
+let sidebarHeight = 0;
+$('.sidebar-item').each(function() {
+	sidebarHeight += $(this).outerHeight(true);
+});
+if ($('#sidebar').hasClass('open')) $('#sidebar').css('height', `${sidebarHeight}px`);
+
 // Mobile navbar toggler animation
 $('.navbar-toggler').click(function () {
 	$('.toggle-animator, .navbar-mobile').toggleClass('open');
 });
 
-if (localStorage.getItem('sidebarOpen') === 'true') {
-	// Set sidebar height on page load
-	let height = 0;
-	$('.sidebar-item').each(function() {
-		height += $(this).outerHeight(true);
-	});
-	$('#sidebar').addClass('no-transition open').css('height', `${height}px`);
-} else {
-	$('#sidebar').addClass('no-transition hide');
-}
-
+// Toggle sidebar
 $('.toggle-sidebar').click(function() {
 	$('#sidebar').removeClass('no-transition');
 
@@ -71,15 +68,14 @@ $('.toggle-sidebar').click(function() {
 
 	if ($('#sidebar').hasClass('hide')) {
 		$('#sidebar').removeClass('hide').addClass('open');
+		Functions.setCookie('sidebarOpen', true, false);
 		$('#sidebar').css('height', `${height}px`);
-		localStorage.setItem('sidebarOpen', true);
 	} else {
 		$('#sidebar').removeClass('open').addClass('hide');
-		localStorage.setItem('sidebarOpen', false);
+		Functions.removeCookie('sidebarOpen');
 		$('#sidebar').removeAttr('style');
 	}
 });
-
 
 // Password revealer button
 $('.password-revealer').click(function() {

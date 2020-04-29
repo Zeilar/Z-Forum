@@ -315,5 +315,9 @@
 		position: absolute !important;
 		right: 0;
 		top: 50%;
+
+		@include phone {
+			display: none;
+		}
 	}
 }

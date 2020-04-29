@@ -1,5 +1,10 @@
 @empty($disableSidebar)
-	<div id="sidebar">
+	@isset ($_COOKIE['sidebarOpen'])
+		@php $class = 'open' @endphp
+	@else
+		@php $class = 'hide' @endphp
+	@endisset	
+	<div class="no-transition {{$class}}" id="sidebar">
 		@auth
 			@component('components.sidebar-item', ['class' => 'welcome'])
 				@slot('title')

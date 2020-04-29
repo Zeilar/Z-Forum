@@ -37161,22 +37161,17 @@ Mouse enter
 -----------------------------------------------
 */
 
-_functions__WEBPACK_IMPORTED_MODULE_0__["default"].fileUploadAnimation(); // Mobile navbar toggler animation
+_functions__WEBPACK_IMPORTED_MODULE_0__["default"].fileUploadAnimation(); // Set up sidebar height on page load
+
+var sidebarHeight = 0;
+$('.sidebar-item').each(function () {
+  sidebarHeight += $(this).outerHeight(true);
+});
+if ($('#sidebar').hasClass('open')) $('#sidebar').css('height', "".concat(sidebarHeight, "px")); // Mobile navbar toggler animation
 
 $('.navbar-toggler').click(function () {
   $('.toggle-animator, .navbar-mobile').toggleClass('open');
-});
-
-if (localStorage.getItem('sidebarOpen') === 'true') {
-  // Set sidebar height on page load
-  var height = 0;
-  $('.sidebar-item').each(function () {
-    height += $(this).outerHeight(true);
-  });
-  $('#sidebar').addClass('no-transition open').css('height', "".concat(height, "px"));
-} else {
-  $('#sidebar').addClass('no-transition hide');
-}
+}); // Toggle sidebar
 
 $('.toggle-sidebar').click(function () {
   $('#sidebar').removeClass('no-transition');
@@ -37187,11 +37182,11 @@ $('.toggle-sidebar').click(function () {
 
   if ($('#sidebar').hasClass('hide')) {
     $('#sidebar').removeClass('hide').addClass('open');
+    _functions__WEBPACK_IMPORTED_MODULE_0__["default"].setCookie('sidebarOpen', true, false);
     $('#sidebar').css('height', "".concat(height, "px"));
-    localStorage.setItem('sidebarOpen', true);
   } else {
     $('#sidebar').removeClass('open').addClass('hide');
-    localStorage.setItem('sidebarOpen', false);
+    _functions__WEBPACK_IMPORTED_MODULE_0__["default"].removeCookie('sidebarOpen');
     $('#sidebar').removeAttr('style');
   }
 }); // Password revealer button
@@ -37590,6 +37585,43 @@ function () {
         var name = $(this).val().replace(/^.*[\\\/]/, '');
         $(this).siblings().children('span').html(name);
       });
+    }
+  }, {
+    key: "removeCookie",
+    value: function removeCookie(key) {
+      document.cookie = "".concat(key, "=; expires=").concat(new Date(0).toUTCString(), "; path=/");
+      return "".concat(key, "=; expires=").concat(new Date(0).toUTCString(), "; path=/");
+    }
+  }, {
+    key: "setCookie",
+    value: function setCookie(key, value) {
+      var expiration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var path = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'path=/';
+      var cookie = ["".concat(key, "=").concat(value)];
+
+      if (expiration === null) {
+        var date = moment().add("days", 7);
+        expiration = date.toDate();
+      } else if (expiration) {
+        cookie.push('expires=' + expiration);
+      }
+
+      cookie.push(path);
+      cookie = cookie.join('; ');
+      document.cookie = cookie;
+      return cookie;
+    }
+  }, {
+    key: "getCookie",
+    value: function getCookie(key) {
+      var regex = new RegExp("".concat(key, "=([^;]*);"), 'i');
+      var match = document.cookie.match(regex);
+
+      if (match !== null) {
+        return match[1];
+      } else {
+        return false;
+      }
     }
   }]);
 
