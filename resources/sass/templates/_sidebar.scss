@@ -42,28 +42,10 @@
 				display: flex;
 				
 				.welcome-text {
+					justify-content: center;
 					flex-direction: column;
+					font-size: 1.25rem;
 					display: flex;
-
-					.sidebar-welcome-header {
-						a {
-							font-weight: normal;
-							font-size: inherit;
-						}
-					}
-
-					.user-role {
-						margin-bottom: 1rem;
-					}
-
-					.logout {
-						margin-top: auto;
-						color: $green;
-
-						&:hover {
-							text-decoration: underline;
-						}
-					}
 				}
 
 				.welcome-avatar {

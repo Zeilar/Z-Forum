@@ -13,12 +13,24 @@
 								<a class="nav-link account" href="{{route('dashboard_account')}}">
 									<span>{{ __('Account') }}</span>
 								</a>
+
+								<ul class="navbar-dropdown">
+									<li class="navbar-dropdown-item">
+										<a class="navbar-dropdown-link" href="{{route('logout')}}">{{ __('Logout') }}</a>
+									</li>
+								</ul>
 							</li>
 
 							<li class="nav-item">
 								<a class="nav-link messages" href="{{route('dashboard_messages')}}">
 									<span>{{ __('Messages') }}</span>
 								</a>
+
+								<ul class="navbar-dropdown">
+									<li class="navbar-dropdown-item">
+										<a class="navbar-dropdown-link" href="{{route('message_new')}}">{{ __('New') }}</a>
+									</li>
+								</ul>
 							</li>
 						@else
 							<li class="nav-item guest">

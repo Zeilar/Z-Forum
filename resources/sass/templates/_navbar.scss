@@ -186,6 +186,7 @@
 
 				.nav-items {
 					flex-direction: row-reverse;
+					margin-right: 4px;
 					display: flex;
 
 					.nav-item {
@@ -222,7 +223,7 @@
 							width: 100%;
 							padding: 0;
 
-							&.active, &.slide-active {
+							&.active, &.slide-active, &:hover {
 								color: $turqoise;
 							}
 
@@ -257,6 +258,44 @@
 								pointer-events: none;
 								margin: auto;
 								z-index: 2;
+							}
+						}
+
+						.navbar-dropdown {
+							transition: opacity 0.15s ease-in-out;
+							box-shadow: 0 0 1rem 0 black;
+							border: 2px solid $turqoise;
+							top: calc(100% - 2px);
+							pointer-events: none;
+							background: black;
+							position: absolute;
+							width: 100%;
+							z-index: 2;
+							opacity: 0;
+
+							@include phone {
+								display: none;
+							}
+
+							&.active {
+								pointer-events: all;
+								opacity: 1;
+							}
+
+							.navbar-dropdown-item {
+								text-align: center;
+								padding: 0.5rem 0;
+								cursor: pointer;
+
+								&:hover {
+									.navbar-dropdown-link {
+										color: $turqoise;
+									}
+								}
+
+								.navbar-dropdown-link {
+									color: white;
+								}
 							}
 						}
 					}

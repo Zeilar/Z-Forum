@@ -9,25 +9,19 @@
 			@component('components.sidebar-item', ['class' => 'welcome'])
 				@slot('title')
 					<i class="fas fa-home"></i>
-					{{ __('Welcome') }}
+					{{ __('Welcome ') . $user->username }}
 				@endslot
 
 				@slot('content')
 					<div class="wrapper">
 						<div class="welcome-text">
-							<h5 class="sidebar-welcome-header">
-								<a href="{{route('user_show', [auth()->user()->id])}}">
-									{{ auth()->user()->username }}
-								</a>
-							</h5>
-							<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
-							<a class="logout" href="{{route('logout')}}">
-								<span>{{ __('Logout') }}</span>
-								<i class="fas fa-sign-out-alt"></i>
+							<p class="user-role {{role_coloring($user->role)}}">{{ ucfirst($user->role) }}</p>
+							<a href="{{route('user_show', [$user->id])}}">
+								{{ __('Profile') }}
 							</a>
 						</div>
 						<div class="welcome-avatar">
-							<img class="img-fluid" src="{{auth()->user()->avatar}}" alt="{{ __('User avatar') }}" />
+							<img class="img-fluid" src="{{$user->avatar}}" alt="{{ __('User avatar') }}" />
 						</div>
 					</div>
 				@endslot

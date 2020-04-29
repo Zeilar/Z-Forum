@@ -37183,8 +37183,8 @@ _functions__WEBPACK_IMPORTED_MODULE_1__["default"].showTitle();
 Hover
 -----------------------------------------------
 */
+//Functions.navSlide();
 
-_functions__WEBPACK_IMPORTED_MODULE_1__["default"].navSlide();
 /*
 -----------------------------------------------
 Click
@@ -37208,7 +37208,13 @@ Mouse enter
 -----------------------------------------------
 */
 
-_functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Set up sidebar height on page load
+_functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Navbar dropdown handler
+
+$('.nav-item').mouseenter(function () {
+  $(this).find('.navbar-dropdown').addClass('active');
+}).mouseleave(function () {
+  $(this).find('.navbar-dropdown').removeClass('active');
+}); // Set up sidebar height on page load
 
 var sidebarHeight = 0;
 $('.sidebar-item').each(function () {
