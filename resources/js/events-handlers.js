@@ -1,4 +1,5 @@
 // Need to import like this instead of the whole file due to webpack wrapping files in their own scopes
+import cookieCutter from 'cookie-cutter-helpers';
 import Functions from './functions';
 
 /**
@@ -68,11 +69,11 @@ $('.toggle-sidebar').click(function() {
 
 	if ($('#sidebar').hasClass('hide')) {
 		$('#sidebar').removeClass('hide').addClass('open');
-		Functions.setCookie('sidebarOpen', true, false);
+		cookieCutter.setCookie('sidebarOpen', true, false);
 		$('#sidebar').css('height', `${height}px`);
 	} else {
 		$('#sidebar').removeClass('open').addClass('hide');
-		Functions.removeCookie('sidebarOpen');
+		cookieCutter.removeCookie('sidebarOpen');
 		$('#sidebar').removeAttr('style');
 	}
 });

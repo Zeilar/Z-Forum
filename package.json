@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.12.1",
+        "cookie-cutter-helpers": "^1.0.1",
         "font-awesome": "^4.7.0",
         "gulp": "^4.0.2",
         "node-sass": "^4.13.1",
