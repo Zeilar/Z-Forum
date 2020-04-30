@@ -14034,6 +14034,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   top: calc(100% - 2px);
   pointer-events: none;
   position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   width: 100%;
   z-index: 2;
   opacity: 0;
@@ -14049,8 +14053,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-transition: box-shadow 0.15s ease-in-out;
   transition: box-shadow 0.15s ease-in-out;
   text-align: center;
-  padding: 1rem 0;
   cursor: pointer;
+  display: -webkit-box;
+  display: flex;
+  height: 4rem;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item:hover .navbar-dropdown-link {
@@ -14060,7 +14066,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item .navbar-dropdown-link {
   -webkit-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
+  display: -webkit-box;
+  display: flex;
   color: #00b365;
+  width: 100%;
+}
+
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item .navbar-dropdown-link span {
+  margin: auto;
 }
 
 .navbar #navbar-container .navbar-mobile {

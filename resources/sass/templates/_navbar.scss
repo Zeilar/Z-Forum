@@ -280,6 +280,7 @@
 							top: calc(100% - 2px);
 							pointer-events: none;
 							position: absolute;
+							user-select: none;
 							width: 100%;
 							z-index: 2;
 							opacity: 0;
@@ -291,8 +292,9 @@
 							.navbar-dropdown-item {
 								transition: box-shadow 0.15s ease-in-out;
 								text-align: center;
-								padding: 1rem 0;
 								cursor: pointer;
+								display: flex;
+								height: 4rem;
 
 								&:hover {
 									.navbar-dropdown-link {
@@ -302,7 +304,13 @@
 
 								.navbar-dropdown-link {
 									transition: color 0.15s ease-in-out;
+									display: flex;
 									color: $green;
+									width: 100%;
+
+									span {
+										margin: auto;
+									}
 								}
 							}
 						}
