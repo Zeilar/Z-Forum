@@ -13927,7 +13927,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
           flex-direction: row-reverse;
-  margin-right: 4px;
   display: -webkit-box;
   display: flex;
 }
@@ -13937,7 +13936,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   position: relative;
   display: -webkit-box;
   display: flex;
-  width: 7rem;
+  width: 8rem;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item.guest {
@@ -14026,9 +14025,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   transition: opacity 0.15s ease-in-out;
   box-shadow: 0 0 1rem 0 black;
   border: 2px solid #00ffff;
+  background: #000000f2;
   top: calc(100% - 2px);
   pointer-events: none;
-  background: black;
   position: absolute;
   width: 100%;
   z-index: 2;
@@ -14042,19 +14041,25 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item {
+  -webkit-transition: box-shadow 0.15s ease-in-out;
+  transition: box-shadow 0.15s ease-in-out;
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   cursor: pointer;
 }
 
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item:not(:last-child) {
+  border-bottom: 2px solid #00ffff;
+}
+
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item:hover .navbar-dropdown-link {
-  color: #00ffff;
+  color: white;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item .navbar-dropdown-link {
   -webkit-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
-  color: white;
+  color: #00ffff;
 }
 
 .navbar #navbar-container .navbar-mobile {

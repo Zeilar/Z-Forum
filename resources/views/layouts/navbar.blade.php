@@ -16,7 +16,14 @@
 
 								<ul class="navbar-dropdown">
 									<li class="navbar-dropdown-item">
-										<a class="navbar-dropdown-link" href="{{route('logout')}}">{{ __('Logout') }}</a>
+										<a class="navbar-dropdown-link" href="{{route('user_show', [auth()->user()->id])}}">
+											{{ __('Profile') }}
+										</a>
+									</li>
+									<li class="navbar-dropdown-item">
+										<a class="navbar-dropdown-link" href="{{route('logout')}}">
+											{{ __('Logout') }}
+										</a>
 									</li>
 								</ul>
 							</li>

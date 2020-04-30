@@ -186,14 +186,13 @@
 
 				.nav-items {
 					flex-direction: row-reverse;
-					margin-right: 4px;
 					display: flex;
 
 					.nav-item {
 						height: calc(100% + 2px);
 						position: relative;
 						display: flex;
-						width: 7rem;
+						width: 8rem;
 
 						&.guest {
 							margin: auto;
@@ -272,9 +271,9 @@
 							transition: opacity 0.15s ease-in-out;
 							box-shadow: 0 0 1rem 0 black;
 							border: 2px solid $turqoise;
+							background: #000000f2;
 							top: calc(100% - 2px);
 							pointer-events: none;
-							background: black;
 							position: absolute;
 							width: 100%;
 							z-index: 2;
@@ -285,19 +284,24 @@
 							}
 
 							.navbar-dropdown-item {
+								transition: box-shadow 0.15s ease-in-out;
 								text-align: center;
-								padding: 0.5rem 0;
+								padding: 1rem 0;
 								cursor: pointer;
+
+								&:not(:last-child) {
+									border-bottom: 2px solid $turqoise;
+								}
 
 								&:hover {
 									.navbar-dropdown-link {
-										color: $turqoise;
+										color: white;
 									}
 								}
 
 								.navbar-dropdown-link {
 									transition: color 0.15s ease-in-out;
-									color: white;
+									color: $turqoise;
 								}
 							}
 						}
