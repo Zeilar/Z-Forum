@@ -222,7 +222,7 @@ input[type=file] {
 .hover-tooltip {
 	user-select: none;
 
-	@include phone {
+	@include big-desktop-down {
 		display: none;
 	}
 }

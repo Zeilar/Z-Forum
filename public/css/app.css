@@ -11976,7 +11976,7 @@ input[type=file] {
           user-select: none;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 1919px) {
   .hover-tooltip {
     display: none;
   }
@@ -14837,6 +14837,13 @@ a:visited {
   #content,
   #footer {
     padding: 1rem !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
   }
 }
 

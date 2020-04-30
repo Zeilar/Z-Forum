@@ -81,6 +81,13 @@ a {
 	}
 }
 
+.navbar {
+	@include desktop-down {
+		padding-bottom: 0 !important;
+		padding-top: 0 !important;
+	}
+}
+
 #content {
 	padding-bottom: 2rem;
 	flex-direction: row;
