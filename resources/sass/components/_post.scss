@@ -276,6 +276,18 @@
 	margin-top: 2px;
 	display: flex;
 
+	@include phone {
+		flex-wrap: wrap;
+
+		.btn {
+			width: unset !important;
+
+			&.post-delete {
+				margin: 1.5rem auto 0 0;
+			}
+		}
+	}
+
 	.post-like {
 		color: white !important;
 

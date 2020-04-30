@@ -80,7 +80,7 @@
 	right: 2rem;
 	opacity: 0;
 
-	@include phone {
+	@include big-tablet-down {
 		display: none;
 	}
 

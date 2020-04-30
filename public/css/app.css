@@ -11802,7 +11802,7 @@ legend {
   opacity: 0;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 899px) {
   #scroller {
     display: none;
   }
@@ -12672,6 +12672,20 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-top: 2px;
   display: -webkit-box;
   display: flex;
+}
+
+@media (max-width: 599px) {
+  .post-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .post-toolbar .btn {
+    width: unset !important;
+  }
+
+  .post-toolbar .btn.post-delete {
+    margin: 1.5rem auto 0 0;
+  }
 }
 
 .post-toolbar .post-like {
