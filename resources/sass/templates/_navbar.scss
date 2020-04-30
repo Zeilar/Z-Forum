@@ -272,9 +272,10 @@
 						}
 
 						.navbar-dropdown {
+							border: 2px solid $green;
 							transition: opacity 0.15s ease-in-out;
 							box-shadow: 0 0 1rem 0 black;
-							border: 2px solid $turqoise;
+							border-top: 2px solid black;
 							background: #000000f2;
 							top: calc(100% - 2px);
 							pointer-events: none;
@@ -293,19 +294,15 @@
 								padding: 1rem 0;
 								cursor: pointer;
 
-								&:not(:last-child) {
-									border-bottom: 2px solid $turqoise;
-								}
-
 								&:hover {
 									.navbar-dropdown-link {
-										color: white;
+										color: $turqoise;
 									}
 								}
 
 								.navbar-dropdown-link {
 									transition: color 0.15s ease-in-out;
-									color: $turqoise;
+									color: $green;
 								}
 							}
 						}
