@@ -13835,8 +13835,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 599px) {
   .navbar #navbar-container form .nav-search {
-    margin: auto;
-    width: 80%;
+    display: none;
   }
 }
 
@@ -13926,74 +13925,77 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-toggler {
+  outline: 0 !important;
+  margin-left: auto;
   display: none;
+  height: 100%;
+  border: 0;
 }
 
 @media (max-width: 599px) {
   .navbar #navbar-container .navbar-toggler {
-    outline: 0 !important;
     display: block;
-    height: 100%;
   }
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator {
-    -webkit-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-    height: 1rem;
-    width: 2rem;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  margin-bottom: 4px;
+  height: 1rem;
+  width: 2rem;
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(1) {
-    width: 0%;
-    left: 50%;
-    top: 11px;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(1) {
+  width: 0%;
+  left: 50%;
+  top: 11px;
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(2) {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(4) {
-    width: 0%;
-    left: 50%;
-    top: 11px;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator.open span:nth-child(4) {
+  width: 0%;
+  left: 50%;
+  top: 11px;
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator span {
-    -webkit-transition: 0.25s ease-in-out;
-    transition: 0.25s ease-in-out;
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-    background: white;
-    border-radius: 9px;
-    position: absolute;
-    display: block;
-    height: 3px;
-    width: 100%;
-    opacity: 1;
-    left: 0;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator span {
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  background: white;
+  border-radius: 9px;
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 100%;
+  opacity: 1;
+  left: 0;
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(1) {
-    top: 0px;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(1) {
+  top: 0px;
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(2),
-  .navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(3) {
-    top: 10px;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(2),
+.navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(3) {
+  top: 10px;
+}
 
-  .navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(4) {
-    top: 20px;
-  }
+.navbar #navbar-container .navbar-toggler .toggle-animator span:nth-child(4) {
+  top: 20px;
 }
 
 .navbar #navbar-container .navbar-content {

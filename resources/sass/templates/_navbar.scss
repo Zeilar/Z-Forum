@@ -42,8 +42,7 @@
 				width: 17.5vw;
 
 				@include phone {
-					margin: auto;
-					width: 80%;
+					display: none;
 				}
 				
 				&::before {
@@ -111,64 +110,67 @@
 		}
 
 		.navbar-toggler {
+			outline: 0 !important;
+			margin-left: auto;
 			display: none;
+			height: 100%;
+			border: 0;
 
 			@include phone {
-				outline: 0 !important;
 				display: block;
-				height: 100%;
+			}
 
-				.toggle-animator {
-					transition: 0.5s ease-in-out;
-					transform: rotate(0deg);
-					height: 1rem;
-					width: 2rem;
+			.toggle-animator {
+				transition: 0.5s ease-in-out;
+				transform: rotate(0deg);
+				margin-bottom: 4px;
+				height: 1rem;
+				width: 2rem;
 
-					&.open span {
-						&:nth-child(1) {
-							width: 0%;
-							left: 50%;
-							top: 11px;
-						}
-
-						&:nth-child(2) {
-							transform: rotate(45deg);
-						}
-
-						&:nth-child(3) {
-							transform: rotate(-45deg);
-						}
-
-						&:nth-child(4) {
-							width: 0%;
-							left: 50%;
-							top: 11px;
-						}
+				&.open span {
+					&:nth-child(1) {
+						width: 0%;
+						left: 50%;
+						top: 11px;
 					}
 
-					span {
-						transition: 0.25s ease-in-out;
-						transform: rotate(0deg);
-						background: white;
-						border-radius: 9px;
-						position: absolute;
-						display: block;
-						height: 3px;
-						width: 100%;
-						opacity: 1;
-						left: 0;
+					&:nth-child(2) {
+						transform: rotate(45deg);
+					}
 
-						&:nth-child(1) {
-							top: 0px;
-						}
+					&:nth-child(3) {
+						transform: rotate(-45deg);
+					}
 
-						&:nth-child(2), &:nth-child(3) {
-							top: 10px;
-						}
+					&:nth-child(4) {
+						width: 0%;
+						left: 50%;
+						top: 11px;
+					}
+				}
 
-						&:nth-child(4) {
-							top: 20px;
-						}
+				span {
+					transition: 0.25s ease-in-out;
+					transform: rotate(0deg);
+					background: white;
+					border-radius: 9px;
+					position: absolute;
+					display: block;
+					height: 3px;
+					width: 100%;
+					opacity: 1;
+					left: 0;
+
+					&:nth-child(1) {
+						top: 0px;
+					}
+
+					&:nth-child(2), &:nth-child(3) {
+						top: 10px;
+					}
+
+					&:nth-child(4) {
+						top: 20px;
 					}
 				}
 			}
