@@ -46,10 +46,7 @@ Mouse enter
 Functions.fileUploadAnimation();
 
 // Set up sidebar height on page load
-let sidebarHeight = 0;
-$('.sidebar-item').each(function() {
-	sidebarHeight += $(this).outerHeight(true);
-});
+let sidebarHeight = $('#sidebar').outerHeight(true);
 if ($('#sidebar').hasClass('open')) $('#sidebar').css('height', `${sidebarHeight}px`);
 
 // Mobile navbar toggler animation
