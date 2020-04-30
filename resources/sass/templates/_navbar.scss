@@ -194,6 +194,12 @@
 						display: flex;
 						width: 8rem;
 
+						&:hover {
+							.nav-link {
+								color: $turqoise;
+							}
+						}
+
 						&.guest {
 							margin: auto;
 							margin-left: 2rem;

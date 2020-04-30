@@ -13939,6 +13939,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: 8rem;
 }
 
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item:hover .nav-link {
+  color: #00ffff;
+}
+
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item.guest {
   margin: auto;
   margin-left: 2rem;
