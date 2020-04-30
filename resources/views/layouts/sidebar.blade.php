@@ -28,6 +28,37 @@
 			@endcomponent
 		@endauth
 
+		@component('components.sidebar-item', ['class' => 'latest-posts'])
+			@slot('title')
+				<i class="far fa-comments"></i>
+				{{ __('Recent activity') }}
+			@endslot
+
+			@slot('content')
+				@php $latest_posts = App\Post::all()->sortByDesc('created_at') @endphp
+
+				{{-- Filter out duplicate threads --}}
+				@php $threads = [] @endphp
+				@foreach ($latest_posts as $post)
+					@if (count($threads) >= 10)
+						@break
+					@endif
+					@if (!in_array($post->thread, $threads))
+						@php array_push($threads, $post->thread) @endphp
+					@endif
+				@endforeach
+
+				@foreach ($threads as $thread)
+					<div class="latest-posts-item">
+						<i class="fas fa-chevron-right"></i>
+						<a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+							{{ $thread->title }}
+						</a>
+					</div>
+				@endforeach
+			@endslot
+		@endcomponent
+
 		@component('components.sidebar-item', ['class' => 'online-moderators'])
 			@slot('content')
 				@php $online_users = get_online_users() @endphp
@@ -104,37 +135,6 @@
 						<a href="mailto:admin@zforum.nu" target="_blank">admin@zforum.nu</a>
 					</div>
 				@endif
-			@endslot
-		@endcomponent
-
-		@component('components.sidebar-item', ['class' => 'latest-posts'])
-			@slot('title')
-				<i class="far fa-comments"></i>
-				{{ __('Recent activity') }}
-			@endslot
-
-			@slot('content')
-				@php $latest_posts = App\Post::all()->sortByDesc('created_at') @endphp
-
-				{{-- Filter out duplicate threads --}}
-				@php $threads = [] @endphp
-				@foreach ($latest_posts as $post)
-					@if (count($threads) >= 10)
-						@break
-					@endif
-					@if (!in_array($post->thread, $threads))
-						@php array_push($threads, $post->thread) @endphp
-					@endif
-				@endforeach
-
-				@foreach ($threads as $thread)
-					<div class="latest-posts-item">
-						<i class="fas fa-chevron-right"></i>
-						<a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
-							{{ $thread->title }}
-						</a>
-					</div>
-				@endforeach
 			@endslot
 		@endcomponent
 

@@ -16,6 +16,10 @@
 			flex-wrap: nowrap;
 		}
 
+		@include desktop-down {
+			justify-content: flex-start;
+		}
+
 		.navbar-brand {
 			display: flex;
 			width: 12rem;
@@ -177,6 +181,10 @@
 
 			@include phone {
 				display: none;
+			}
+
+			@include desktop-down {
+				flex: unset;
 			}
 
 			.nav-list {

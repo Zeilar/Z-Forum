@@ -1,5 +1,4 @@
 #sidebar {
-	margin-left: 2.5rem;
 	height: fit-content;
 	padding-top: 1rem;
 	overflow: hidden;
@@ -10,15 +9,50 @@
 		display: none;
 	}
 
+	@include desktop-down {
+		transition: transform 1s ease-in-out;
+		height: fit-content !important;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		display: flex;
+		width: auto;
+	}
+
+	@include desktop-up {
+		margin-left: 2.5rem;
+	}
+
 	&.hide {
-		transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
-		height: calc(1rem + 2px);
-		margin-left: 0;
-		width: 0;
+		@include desktop-up {
+			transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
+			height: calc(1rem + 2px);
+			margin-left: 0;
+			width: 0;
+		}
+
+		@include desktop-down {
+			transform: translateX(0);
+		}
 	}
 
 	&.open {
-		transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
+		@include desktop-up {
+			transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
+		}
+
+		@include desktop-down {
+			transform: translateX(calc(100% + 2rem));
+			animation: hide 1s linear forwards;
+			
+			@keyframes hide {
+				from {
+					width: auto;
+				}
+				to {
+					width: 0;
+				}
+			}
+		}
 	}
 
 	.sidebar-item {
@@ -28,6 +62,12 @@
 		background: $darkgray;
 		padding: 0.5rem 1rem;
 
+		@include desktop-down {
+			width: calc(50% - 4px);
+			margin-bottom: 0.5rem;
+			height: fit-content;
+		}
+
 		.sidebar-title {
 			border-bottom: 2px solid $green;
 			padding-bottom: 0.5rem;
@@ -36,6 +76,10 @@
 		}
 
 		&.welcome {
+			@include desktop-down {
+				margin: 0 auto 0.5rem auto;
+			}
+
 			.wrapper {
 				justify-content: space-between;
 				flex-direction: row;
@@ -74,6 +118,10 @@
 		}
 
 		&.latest-posts {
+			@include desktop-down {
+				width: 100%;
+			}
+
 			.latest-posts-item {
 				margin-bottom: 0.5rem;
 				white-space: nowrap;

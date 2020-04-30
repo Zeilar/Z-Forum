@@ -76,6 +76,11 @@ a {
 		padding-right: 1rem;
 		padding-left: 1rem;
 	}
+
+	@include desktop-down {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
 }
 
 #content {
@@ -86,6 +91,10 @@ a {
 	display: flex;
 	flex: 1;
 
+	@include desktop-down {
+		flex-wrap: wrap;
+	}
+
 	#main {
 		position: relative;
 		padding-top: 1rem;
@@ -93,7 +102,7 @@ a {
 		margin: 0 auto;
 		flex: 3;
 
-		@include phone {
+		@include desktop-down {
 			max-width: unset;
 			width: 100%;
 			flex: unset;
