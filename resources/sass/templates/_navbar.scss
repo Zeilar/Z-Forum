@@ -271,6 +271,7 @@
 						.navbar-dropdown {
 							transition: opacity 0.15s ease-in-out;
 							box-shadow: 0 0 1rem 0 black;
+							border-top: 2px solid black;
 							border: 2px solid $turqoise;
 							top: calc(100% - 2px);
 							pointer-events: none;
