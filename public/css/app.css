@@ -12553,12 +12553,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 @media (max-width: 599px) {
-  .post .post-header .post-meta .post-link i {
-    display: none;
-  }
-}
-
-@media (max-width: 599px) {
   .post .post-header .post-meta .post-link .permalink {
     display: none;
   }
@@ -14810,21 +14804,21 @@ a:visited {
   padding-left: 15vw;
 }
 
-@media (max-width: 599px) {
-  .navbar,
-  #content,
-  #footer {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-}
-
 @media (max-width: 1199px) {
   .navbar,
   #content,
   #footer {
     padding-right: 2rem;
     padding-left: 2rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .navbar,
+  #content,
+  #footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
 }
 

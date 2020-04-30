@@ -68,7 +68,7 @@
 							{{ $banner_link }}
 						@else
 							<a class="permalink" href="{{route('post_permalink', [$post->id])}}" data-title="{{ __('Copy') }}">
-								{{ pretty_date($post->created_at) }}
+								<span>{{ pretty_date($post->created_at) }}</span>
 								<i class="fas fa-copy"></i>
 							</a>
 							

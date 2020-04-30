@@ -72,14 +72,14 @@ a {
 	padding-right: 15vw;
 	padding-left: 15vw;
 
-	@include phone {
-		padding-right: 1rem;
-		padding-left: 1rem;
-	}
-
 	@include desktop-down {
 		padding-right: 2rem;
 		padding-left: 2rem;
+	}
+
+	@include phone {
+		padding-right: 1rem;
+		padding-left: 1rem;
 	}
 }
 

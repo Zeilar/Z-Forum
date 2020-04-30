@@ -161,12 +161,6 @@
 			.post-link {
 				display: flex;
 
-				@include phone {
-					i {
-						display: none;
-					}
-				}
-
 				.permalink {
 					@include phone {
 						display: none;
