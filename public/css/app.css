@@ -13943,6 +13943,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #00ffff;
 }
 
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item:hover .navbar-dropdown {
+  pointer-events: all;
+  opacity: 1;
+}
+
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item.guest {
   margin: auto;
   margin-left: 2rem;
@@ -14017,11 +14022,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   pointer-events: none;
   margin: auto;
   z-index: 2;
-}
-
-.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item:hover .navbar-dropdown {
-  pointer-events: all;
-  opacity: 1;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown {

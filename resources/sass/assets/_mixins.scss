@@ -29,3 +29,7 @@
 @mixin big-desktop-down {
   	@media (max-width: 1919px) { @content; }
 }
+
+@mixin landscape {
+  	@media (oritentation: landscape) { @content; }
+}
