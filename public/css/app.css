@@ -13575,9 +13575,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: 17.5vw;
 }
 
-@media (max-width: 599px) {
+@media (min-width: 1200px) {
   #sidebar {
-    display: none;
+    margin-left: 2.5rem;
   }
 }
 
@@ -13596,12 +13596,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
     display: -webkit-box;
     display: flex;
     width: auto;
-  }
-}
-
-@media (min-width: 1200px) {
-  #sidebar {
-    margin-left: 2.5rem;
   }
 }
 
@@ -13666,6 +13660,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0.5rem 1rem;
 }
 
+#sidebar .sidebar-item:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1199px) {
   #sidebar .sidebar-item {
     width: calc(50% - 4px);
@@ -13673,6 +13671,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
+  }
+}
+
+@media (max-width: 599px) {
+  #sidebar .sidebar-item {
+    width: 100%;
   }
 }
 

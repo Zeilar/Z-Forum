@@ -5,8 +5,8 @@
 	color: white;
 	width: 17.5vw;
 
-	@include phone {
-		display: none;
+	@include desktop-up {
+		margin-left: 2.5rem;
 	}
 
 	@include desktop-down {
@@ -16,10 +16,6 @@
 		flex-wrap: wrap;
 		display: flex;
 		width: auto;
-	}
-
-	@include desktop-up {
-		margin-left: 2.5rem;
 	}
 
 	&.hide {
@@ -43,7 +39,7 @@
 		@include desktop-down {
 			transform: translateX(calc(100% + 2rem));
 			animation: hide 1s linear forwards;
-			
+
 			@keyframes hide {
 				from {
 					width: auto;
@@ -62,10 +58,18 @@
 		background: $darkgray;
 		padding: 0.5rem 1rem;
 
+		&:last-child {
+			margin-bottom: 0;
+		}
+
 		@include desktop-down {
 			width: calc(50% - 4px);
 			margin-bottom: 0.5rem;
 			height: fit-content;
+		}
+
+		@include phone {
+			width: 100%;
 		}
 
 		.sidebar-title {
