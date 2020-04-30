@@ -262,6 +262,10 @@ input[type=file] {
 	.item-wrapper {
 		position: relative;
 
+		@include phone {
+			margin: 0 0 1rem 0;
+		}
+
 		.item {
 			font-size: 1.15rem;
 			line-height: 1.2;

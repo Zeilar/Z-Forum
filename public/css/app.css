@@ -12024,6 +12024,12 @@ input[type=file] {
   position: relative;
 }
 
+@media (max-width: 599px) {
+  .pagination .item-wrapper {
+    margin: 0 0 1rem 0;
+  }
+}
+
 .pagination .item-wrapper .item {
   font-size: 1.15rem;
   line-height: 1.2;
@@ -14822,8 +14828,7 @@ a:visited {
   .navbar,
   #content,
   #footer {
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding: 2rem !important;
   }
 }
 
@@ -14831,8 +14836,7 @@ a:visited {
   .navbar,
   #content,
   #footer {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding: 1rem !important;
   }
 }
 
@@ -14871,6 +14875,12 @@ a:visited {
     -webkit-box-flex: unset;
             flex: unset;
     margin: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  #content #main {
+    padding: 0;
   }
 }
 

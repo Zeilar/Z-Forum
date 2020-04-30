@@ -73,13 +73,11 @@ a {
 	padding-left: 15vw;
 
 	@include desktop-down {
-		padding-right: 2rem;
-		padding-left: 2rem;
+		padding: 2rem !important;
 	}
 
 	@include phone {
-		padding-right: 1rem;
-		padding-left: 1rem;
+		padding: 1rem !important;
 	}
 }
 
@@ -107,6 +105,10 @@ a {
 			width: 100%;
 			flex: unset;
 			margin: 0;
+		}
+
+		@include phone {
+			padding: 0;
 		}
 	}
 }
