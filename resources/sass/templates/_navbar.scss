@@ -44,6 +44,12 @@
 				@include phone {
 					display: none;
 				}
+
+                @include big-tablet-down {
+                    @include landscape {
+                        display: none;
+                    }
+                }
 				
 				&::before {
 					transition: width 0.25s ease-in-out;
@@ -203,6 +209,12 @@
 						position: relative;
 						display: flex;
 						width: 9rem;
+
+                        @include desktop-down {
+                            @include landscape {
+                                width: 7rem;
+                            }
+                        }
 
 						&:hover {
 							.nav-link {
@@ -376,9 +388,9 @@
 	}
 
 	.toggle-sidebar {
-		transform: translate(-50%, -50%);
+		transform: translateY(-50%);
 		position: absolute !important;
-		right: 0;
+		right: 1rem;
 		top: 50%;
 
 		@include phone {

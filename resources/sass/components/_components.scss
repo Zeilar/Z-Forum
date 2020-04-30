@@ -80,7 +80,7 @@
 	right: 2rem;
 	opacity: 0;
 
-	@include big-tablet-down {
+	@include desktop-down {
 		display: none;
 	}
 

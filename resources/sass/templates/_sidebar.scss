@@ -23,11 +23,11 @@
 			transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
 			height: calc(1rem + 2px);
 			margin-left: 0;
-			width: 0;
+            width: 0;
 		}
 
 		@include desktop-down {
-			transform: translateX(0);
+			display: none;
 		}
 	}
 
@@ -37,17 +37,7 @@
 		}
 
 		@include desktop-down {
-			transform: translateX(calc(100% + 2rem));
-			animation: hide 1s linear forwards;
-
-			@keyframes hide {
-				from {
-					width: auto;
-				}
-				to {
-					width: 0;
-				}
-			}
+			display: flex;
 		}
 	}
 

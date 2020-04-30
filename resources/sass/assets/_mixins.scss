@@ -31,5 +31,5 @@
 }
 
 @mixin landscape {
-  	@media (oritentation: landscape) { @content; }
+  	@media (orientation: landscape) { @content; }
 }

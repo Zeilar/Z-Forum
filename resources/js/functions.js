@@ -105,7 +105,7 @@ class Functions {
 				rows.removeClass('hidden').css('height', `${height}px`);
 			}
 		});
-
+        
 		$('.category-collapse').click(function() {
 			let id = $(this).parents('.table-group').attr('id');
 			let button = $(this).children();
