@@ -45,13 +45,6 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
-// Navbar dropdown handler
-$('.nav-item').mouseenter(function() {
-	$(this).find('.navbar-dropdown').addClass('active');
-}).mouseleave(function() {
-	$(this).find('.navbar-dropdown').removeClass('active');
-});
-
 // Set up sidebar height on page load
 let sidebarHeight = 0;
 $('.sidebar-item').each(function() {

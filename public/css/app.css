@@ -14016,6 +14016,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   z-index: 2;
 }
 
+.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item:hover .navbar-dropdown {
+  pointer-events: all;
+  opacity: 1;
+}
+
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown {
   -webkit-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out;
@@ -14034,11 +14039,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown {
     display: none;
   }
-}
-
-.navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown.active {
-  pointer-events: all;
-  opacity: 1;
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item .navbar-dropdown .navbar-dropdown-item {

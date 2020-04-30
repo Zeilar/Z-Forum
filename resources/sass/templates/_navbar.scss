@@ -261,6 +261,13 @@
 							}
 						}
 
+						&:hover {
+							.navbar-dropdown {
+								pointer-events: all;
+								opacity: 1;
+							}
+						}
+
 						.navbar-dropdown {
 							transition: opacity 0.15s ease-in-out;
 							box-shadow: 0 0 1rem 0 black;
@@ -275,11 +282,6 @@
 
 							@include phone {
 								display: none;
-							}
-
-							&.active {
-								pointer-events: all;
-								opacity: 1;
 							}
 
 							.navbar-dropdown-item {
