@@ -117,13 +117,10 @@ class Functions {
 
 			let rows = $(this).parents('.table-group').find('.subcategory-rows');
 			if (rows.hasClass('hidden')) {
-				let height = 0;
+				let height = 4;
 				rows.children('.table-row').each(function() {
-					height += $(this).outerHeight();
-					height += 4;
+					height += $(this).outerHeight() + 4;
 				});
-
-				height += 4;
 
 				rows.removeClass('hidden').css('height', `${height}px`);
 				button.removeClass('closed');
