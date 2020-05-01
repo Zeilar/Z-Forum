@@ -14242,9 +14242,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active #mobile-search {
-  padding-right: 0.5rem;
   font-size: 2rem;
   width: 100%;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active .mobile-search-button {
+  display: none;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search #mobile-search {
