@@ -14248,11 +14248,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search #mobile-search {
-  padding: 0;
-  border: 0;
   box-shadow: none;
   background: none;
   color: white;
+  padding: 0;
+  border: 0;
   width: 0;
 }
 
