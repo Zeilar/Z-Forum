@@ -54,6 +54,18 @@ $('.navbar-toggler').click(function () {
 	$('.toggle-animator, .navbar-mobile').toggleClass('open');
 });
 
+// Mobile navbar search button handler
+$('.mobile-search-button').click(function() {
+    $(this).parents('.navbar-mobile-item').toggleClass('active');
+});
+
+// Reset mobile navbar search
+$(document).click(function(e) {
+    if (e.target !== $('#mobile-search')[0] && e.target !== $('.mobile-search-button')[0]) {
+        $('.navbar-mobile-item.search').removeClass('active');
+    }
+});
+
 // Toggle sidebar
 $('.toggle-sidebar').click(function() {
 	$('#sidebar').removeClass('no-transition');

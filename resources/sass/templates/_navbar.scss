@@ -372,7 +372,46 @@
 				height: 100%;
 				
 				.navbar-mobile-item {
-					margin: 1.5rem 0;
+					margin: 1.5rem 0.5rem;
+                    display: flex;
+
+                    &.search {
+                        border-bottom: 2px solid transparent;
+                        border-top: 2px solid transparent;
+                        padding: 0;
+
+                        &.active {
+                            border-bottom: 2px solid $green;
+                            width: 80vw;
+                            
+                            #mobile-search {
+                                padding-right: 0.5rem;
+                                font-size: 2rem;
+                                width: 100%;
+                            }
+                        }
+
+                        #mobile-search {
+                            padding: 0;
+                            border: 0;
+                            box-shadow: none;
+                            background: none;
+                            color: white;
+                            width: 0;
+                        }
+
+                        .mobile-search-button {
+                            background: none;
+                            font-size: 2rem;
+                            outline: 0;
+                            padding: 0;
+                            border: 0;
+
+                            i {
+                                pointer-events: none;
+                            }
+                        }
+                    }
 
 					.navbar-mobile-link {
 						font-size: 2rem;

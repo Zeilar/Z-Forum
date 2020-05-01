@@ -77,6 +77,14 @@
 
 			<div class="navbar-mobile">
 				<ul class="navbar-mobile-items">
+                    <form action="{{route('search')}}" method="get">
+                        <div class="navbar-mobile-item search">
+                            <input type="text" name="query" id="mobile-search" required />
+                            <button class="mobile-search-button" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
 					@auth
 						<li class="navbar-mobile-item">
 							<a class="navbar-mobile-link" href="{{route('user_show', [auth()->user()])}}">{{ __('Profile') }}</a>

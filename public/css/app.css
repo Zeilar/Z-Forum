@@ -14225,7 +14225,47 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item {
-  margin: 1.5rem 0;
+  margin: 1.5rem 0.5rem;
+  display: -webkit-box;
+  display: flex;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search {
+  border-bottom: 2px solid transparent;
+  border-top: 2px solid transparent;
+  padding: 0;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active {
+  border-bottom: 2px solid #00b365;
+  width: 80vw;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active #mobile-search {
+  padding-right: 0.5rem;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search #mobile-search {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  color: white;
+  width: 0;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-button {
+  background: none;
+  font-size: 2rem;
+  outline: 0;
+  padding: 0;
+  border: 0;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-button i {
+  pointer-events: none;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item .navbar-mobile-link {
