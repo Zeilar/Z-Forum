@@ -205,6 +205,10 @@
 
 							i {
 								margin-left: 0.25rem;
+
+                                @include desktop-down {
+                                    display: none;
+                                }
 							}
 						}
 

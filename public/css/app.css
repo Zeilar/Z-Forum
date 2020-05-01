@@ -14619,6 +14619,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: 0.25rem;
 }
 
+@media (max-width: 1199px) {
+  #table .table-group .table-row-content .__wrapper.table-latest-post .latest-post a i {
+    display: none;
+  }
+}
+
 #table .table-group .table-row-content .__wrapper.table-latest-post .latest-post p {
   text-align: right;
 }

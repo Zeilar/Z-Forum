@@ -37553,12 +37553,8 @@ function () {
           $(this).find('.category-collapse i').addClass('closed');
           rows.addClass('hidden');
         } else {
-          var height = 4;
-          rows.children('.table-row').each(function () {
-            height += $(this).outerHeight() + 4;
-          });
           $(this).find('.category-collapse i').removeClass('closed');
-          rows.removeClass('hidden').css('height', "".concat(height, "px"));
+          rows.removeClass('hidden');
         }
       });
       $('.category-collapse').click(function () {
@@ -37574,15 +37570,11 @@ function () {
         var rows = $(this).parents('.table-group').find('.subcategory-rows');
 
         if (rows.hasClass('hidden')) {
-          var height = 4;
-          rows.children('.table-row').each(function () {
-            height += $(this).outerHeight() + 4;
-          });
-          rows.removeClass('hidden').css('height', "".concat(height, "px"));
           button.removeClass('closed');
+          rows.removeClass('hidden');
         } else {
-          rows.addClass('hidden').removeAttr('style');
           button.addClass('closed');
+          rows.addClass('hidden');
         }
       });
     } // Creates preview of uploaded image
