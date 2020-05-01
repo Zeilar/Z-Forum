@@ -13810,9 +13810,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 1199px) {
   .navbar #navbar-container .navbar-brand {
-    height: calc(2rem + 4px);
     width: 10rem;
     margin: 0;
   }
@@ -13827,13 +13826,20 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: 17.5vw;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 1199px) {
+  .navbar #navbar-container form .nav-search {
+    margin-left: 0;
+    width: unset;
+  }
+}
+
+@media (max-width: 899px) and (orientation: landscape) {
   .navbar #navbar-container form .nav-search {
     display: none;
   }
 }
 
-@media (max-width: 899px) and (orientation: landscape) {
+@media (max-width: 599px) {
   .navbar #navbar-container form .nav-search {
     display: none;
   }
@@ -14034,6 +14040,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           flex-direction: row-reverse;
   display: -webkit-box;
   display: flex;
+}
+
+@media (max-width: 1199px) {
+  .navbar #navbar-container .navbar-content .nav-list .nav-items {
+    -webkit-box-orient: unset;
+    -webkit-box-direction: unset;
+            flex-direction: unset;
+  }
+
+  .navbar #navbar-container .navbar-content .nav-list .nav-items #login-button {
+    margin-left: 0 !important;
+  }
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items .nav-item {
@@ -14305,7 +14323,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   top: 50%;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 899px) {
   .navbar .toggle-sidebar {
     display: none !important;
   }

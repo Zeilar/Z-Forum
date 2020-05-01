@@ -26,8 +26,7 @@
 			height: 65%;
 			padding: 0;
 
-			@include phone {
-				height: calc(2rem + 4px);
+			@include desktop-down {
 				width: 10rem;
 				margin: 0;
 			}
@@ -41,15 +40,20 @@
 				display: flex;
 				width: 17.5vw;
 
-				@include phone {
-					display: none;
-				}
+                @include desktop-down {
+                    margin-left: 0;
+                    width: unset;
+                }
 
                 @include big-tablet-down {
                     @include landscape {
                         display: none;
                     }
                 }
+
+				@include phone {
+					display: none;
+				}
 				
 				&::before {
 					transition: width 0.25s ease-in-out;
@@ -203,6 +207,14 @@
 				.nav-items {
 					flex-direction: row-reverse;
 					display: flex;
+
+                    @include desktop-down {
+                        flex-direction: unset;
+
+                        #login-button {
+                            margin-left: 0 !important;
+                        }
+                    }
 
 					.nav-item {
 						height: calc(100% + 2px);
@@ -446,8 +458,8 @@
 		right: 1rem;
 		top: 50%;
 
-		@include phone {
-			display: none !important;
-		}
+        @include big-tablet-down {
+            display: none !important;
+        }
 	}
 }
