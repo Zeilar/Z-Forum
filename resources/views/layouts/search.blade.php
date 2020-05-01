@@ -76,7 +76,7 @@
 									<span class="posted-by">
 										{{ __('By ') }}
 										<a class="{{role_coloring($thread->user->role)}}" href="{{route('user_show', [$thread->user->id])}}">
-											{{ $thread->user->username }}
+											{{ $thread->user->username ?? __('Deleted') }}
 										</a>
 									</span>
 								</p>

@@ -280,12 +280,10 @@ if (!function_exists('settings_get')) {
 		// Set user as the currently logged in if possible, default to provided ID
 		$user = App\User::find($id) ?? auth()->user() ?? null;
 
-		$default_setting = json_decode(DB::table('default_settings')->first()->settings)->$key;
-
 		// If no user was found, return default value for that setting
 		if (empty($user)) {
-			$settings = $default_setting;
-			return isset($settings->$key) ? $settings->$key : 0;
+		    $default_setting = json_decode(DB::table('default_settings')->first()->settings)->$key;
+			return isset($default_setting) ? $default_setting : 0;
 		}
 
 		// Fetch the settings as an associative array
