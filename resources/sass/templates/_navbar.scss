@@ -378,9 +378,11 @@
                     &.search {
                         border-bottom: 2px solid transparent;
                         border-top: 2px solid transparent;
+                        width: 2rem;
                         padding: 0;
 
                         &.active {
+                            transition: width 0.25s ease-in-out;
                             border-bottom: 2px solid $green;
                             width: 80vw;
                             
@@ -392,10 +394,6 @@
 
                             .mobile-search-button {
                                 display: none;
-                            }
-
-                            .mobile-search-remove {
-                                display: block;
                             }
                         }
 
@@ -422,6 +420,10 @@
 
                         .mobile-search-remove {
                             display: none;
+
+                            &.active {
+                                display: block;
+                            }
                         }
                     }
 

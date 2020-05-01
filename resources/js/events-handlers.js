@@ -57,18 +57,30 @@ $('.navbar-toggler').click(function () {
 // Mobile navbar search button handler
 $('.mobile-search-button').click(function() {
     $(this).parents('.navbar-mobile-item').toggleClass('active');
+    if ($('#mobile-search').val() !== '') $('.mobile-search-remove').addClass('active');
+});
+
+// Mobile navbar input remove button spawner
+$('#mobile-search').on('input change', function() {
+    if ($(this).val() === '') {
+        $('.mobile-search-remove').removeClass('active');
+    } else {
+        $('.mobile-search-remove').addClass('active');
+    }
 });
 
 // Reset mobile navbar search
 $(document).click(function(e) {
     if (e.target !== $('#mobile-search')[0] && e.target !== $('.mobile-search-button')[0] && e.target !== $('.mobile-search-remove')[0]) {
         $('.navbar-mobile-item.search').removeClass('active');
+        $('.mobile-search-remove').removeClass('active');
     }
 });
 
 // Reset mobile navbar search input
 $('.mobile-search-remove').click(function() {
     $(this).siblings('#mobile-search').val('').focus();
+    $(this).removeClass('active');
 });
 
 // Toggle sidebar

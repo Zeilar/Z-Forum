@@ -11366,9 +11366,6 @@ html body #footer .btn {
   -webkit-box-align: baseline;
           align-items: baseline;
   padding: 0.35rem 1rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -14239,10 +14236,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search {
   border-bottom: 2px solid transparent;
   border-top: 2px solid transparent;
+  width: 2rem;
   padding: 0;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active {
+  -webkit-transition: width 0.25s ease-in-out;
+  transition: width 0.25s ease-in-out;
   border-bottom: 2px solid #00b365;
   width: 80vw;
 }
@@ -14255,10 +14255,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active .mobile-search-button {
   display: none;
-}
-
-.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active .mobile-search-remove {
-  display: block;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search #mobile-search {
@@ -14286,6 +14282,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-remove {
   display: none;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-remove.active {
+  display: block;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item .navbar-mobile-link {

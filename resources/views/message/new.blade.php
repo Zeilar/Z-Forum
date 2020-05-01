@@ -44,7 +44,7 @@
 			</fieldset>
 		</div>
 
-		<button class="btn message-send btn-success-full" type="submit">
+		<button class="btn message-send spin btn-success-full" type="submit">
 			{{ __('Send') }}
 		</button>
 	</form>
