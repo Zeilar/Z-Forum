@@ -54,7 +54,7 @@
 							<div class="result-source">
 								<p>{{ __('User') }}</p>
 							</div>
-							<div class="result-content">
+							<div class="result-content users">
 								<div class="result-icon">
 									<img class="img-fluid" src="{{$key->avatar}}" />
 								</div>

@@ -14402,6 +14402,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
+.search-results .search-result .result-content.users {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
 .search-results .search-result .result-content .result-read-more {
   margin-top: 1rem;
 }

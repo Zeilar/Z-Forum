@@ -29,6 +29,10 @@
 			background: $darkgray;
 			display: flex;
 
+            &.users {
+                flex-direction: row;
+            }
+
 			.result-read-more {
 				margin-top: 1rem;
 			}
