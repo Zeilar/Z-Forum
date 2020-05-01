@@ -11366,6 +11366,9 @@ html body #footer .btn {
   -webkit-box-align: baseline;
           align-items: baseline;
   padding: 0.35rem 1rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -12682,6 +12685,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 599px) {
   .post-toolbar {
+    -webkit-box-align: center;
+            align-items: center;
     flex-wrap: wrap;
   }
 
@@ -12690,7 +12695,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 
   .post-toolbar .btn.post-delete {
-    margin: 1.5rem auto 0 0;
+    margin: 0;
+    margin-right: auto;
   }
 }
 

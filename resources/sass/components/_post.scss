@@ -277,14 +277,16 @@
 	display: flex;
 
 	@include phone {
+        align-items: center;
 		flex-wrap: wrap;
 
 		.btn {
 			width: unset !important;
 
-			&.post-delete {
-				margin: 1.5rem auto 0 0;
-			}
+            &.post-delete {
+                margin: 0;
+                margin-right: auto;
+            }
 		}
 	}
 
