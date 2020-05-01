@@ -83,6 +83,9 @@
                             <button class="mobile-search-button" type="button">
                                 <i class="fas fa-search"></i>
                             </button>
+                            <button class="mobile-search-remove" type="button">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </div>
                     </form>
 					@auth

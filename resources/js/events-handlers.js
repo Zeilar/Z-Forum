@@ -61,9 +61,14 @@ $('.mobile-search-button').click(function() {
 
 // Reset mobile navbar search
 $(document).click(function(e) {
-    if (e.target !== $('#mobile-search')[0] && e.target !== $('.mobile-search-button')[0]) {
+    if (e.target !== $('#mobile-search')[0] && e.target !== $('.mobile-search-button')[0] && e.target !== $('.mobile-search-remove')[0]) {
         $('.navbar-mobile-item.search').removeClass('active');
     }
+});
+
+// Reset mobile navbar search input
+$('.mobile-search-remove').click(function() {
+    $(this).siblings('#mobile-search').val('').focus();
 });
 
 // Toggle sidebar

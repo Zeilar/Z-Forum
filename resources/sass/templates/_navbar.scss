@@ -385,12 +385,17 @@
                             width: 80vw;
                             
                             #mobile-search {
+                                padding-right: 0.5rem;
                                 font-size: 2rem;
                                 width: 100%;
                             }
 
                             .mobile-search-button {
                                 display: none;
+                            }
+
+                            .mobile-search-remove {
+                                display: block;
                             }
                         }
 
@@ -403,7 +408,7 @@
                             width: 0;
                         }
 
-                        .mobile-search-button {
+                        .mobile-search-button, .mobile-search-remove {
                             background: none;
                             font-size: 2rem;
                             outline: 0;
@@ -413,6 +418,10 @@
                             i {
                                 pointer-events: none;
                             }
+                        }
+
+                        .mobile-search-remove {
+                            display: none;
                         }
                     }
 
