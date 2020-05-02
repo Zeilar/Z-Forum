@@ -14502,7 +14502,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group {
-  border: 2px solid #00b365;
   margin-bottom: 1rem;
 }
 
@@ -14530,9 +14529,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-header {
   padding: 0.5rem 0.25rem;
-  background: #00b365;
   position: relative;
-  color: white;
+  background: #2b2b34e6;
 }
 
 #table .table-group .table-header .table-title {
@@ -14549,6 +14547,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-header .table-title h4 {
   margin-left: -0.5rem;
+  color: white;
 }
 
 @media (max-width: 599px) {
@@ -14559,11 +14558,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #table .table-group .table-header .table-title a {
   font-size: inherit;
-  color: white;
+  color: inherit;
 }
 
 #table .table-group .table-header .table-title a:hover {
   text-decoration: underline;
+  color: #00ffff;
 }
 
 #table .table-group .table-header .table-row-content {
@@ -14577,12 +14577,23 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row {
-  -webkit-transition: background 0.1s ease-in-out;
-  transition: background 0.1s ease-in-out;
   background: #2c2c3580;
-  color: #fff;
-  margin: 4px;
+  border-radius: 2px;
+  margin: 0.25rem 0;
+  color: white;
   opacity: 0;
+}
+
+@media (min-width: 1200px) {
+  #table .table-group .table-row {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  #table .table-group .table-row:hover {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+  }
 }
 
 #table .table-group .table-row.admin-post {
@@ -14636,13 +14647,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row.show {
-  -webkit-transition: background 0.1s ease-in-out, opacity 0.35s ease-out;
-  transition: background 0.1s ease-in-out, opacity 0.35s ease-out;
+  -webkit-transition: background 0.1s ease-in-out, opacity 0.35s ease-out, -webkit-transform 0.1s ease-in-out;
+  transition: background 0.1s ease-in-out, opacity 0.35s ease-out, -webkit-transform 0.1s ease-in-out;
+  transition: background 0.1s ease-in-out, transform 0.1s ease-in-out, opacity 0.35s ease-out;
+  transition: background 0.1s ease-in-out, transform 0.1s ease-in-out, opacity 0.35s ease-out, -webkit-transform 0.1s ease-in-out;
   opacity: 1;
 }
 
 #table .table-group .table-row:hover {
-  background: #62627580;
+  background: #2b2b34e6;
 }
 
 #table .table-group .table-row .folder {
@@ -14659,10 +14672,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #table .table-group .subcategory-rows {
   -webkit-transition: height 0.25s ease-in-out;
   transition: height 0.25s ease-in-out;
-  overflow: hidden;
 }
 
 #table .table-group .subcategory-rows.hidden {
+  overflow: hidden;
   height: 0;
 }
 

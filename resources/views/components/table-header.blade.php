@@ -6,11 +6,11 @@
 			</div>
 		@endisset
 
-		<div class="table-views __wrapper">
+		<div class="table-views __wrapper" title="{{ __('Views') }}">
 			<i class="far fa-eye"></i>
 		</div>
 
-		<div class="table-posts __wrapper">
+		<div class="table-posts __wrapper" title="{{ __('Posts') }}">
 			<i class="far fa-comments"></i>
 		</div>
 
@@ -18,7 +18,7 @@
 	</div>
 
 	@isset($collapsible)
-		<button class="category-collapse" type="button">
+		<button class="category-collapse" type="button" title="{{ __('Toggle') }}">
 			<i class="fas fa-angle-double-down"></i>
 		</button>
 	@endisset

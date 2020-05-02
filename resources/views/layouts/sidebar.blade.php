@@ -45,27 +45,31 @@
                         @endif
                     @endforeach
 
-                    @foreach ($threads as $thread)
-                        @php $posts = $thread->posts->sortByDesc('created_at')  @endphp
-                        @php $latest_post = $posts->first() @endphp
-                        <div class="whats-new-thread">
-                            <i class="fas fa-chevron-right"></i>
-                            <a class="whats-new-link" href="{{
-                                route('post_show', [
-                                    $thread->id,
-                                    $thread->slug,
-                                    get_item_page_number(
-                                        $posts,
+                    @if (count($threads))
+                        @foreach ($threads as $thread)
+                            @php $posts = $thread->posts->sortByDesc('created_at')  @endphp
+                            @php $latest_post = $posts->first() @endphp
+                            <div class="whats-new-thread">
+                                <i class="fas fa-chevron-right"></i>
+                                <a class="whats-new-link" href="{{
+                                    route('post_show', [
+                                        $thread->id,
+                                        $thread->slug,
+                                        get_item_page_number(
+                                            $posts,
+                                            $latest_post->id,
+                                            settings_get('posts_per_page')
+                                        ),
                                         $latest_post->id,
-                                        settings_get('posts_per_page')
-                                    ),
-                                    $latest_post->id,
-                                ])
-                            }}">
-                                {{ $thread->title }}
-                            </a>
-                        </div>
-                    @endforeach
+                                    ])
+                                }}">
+                                    {{ $thread->title }}
+                                </a>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>{{ __('Post something in the forum!') }}</p>
+                    @endif
 				@endslot
 			@endcomponent
 		@endauth

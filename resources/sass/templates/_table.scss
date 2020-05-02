@@ -4,7 +4,6 @@
 	}
 
 	.table-group {
-		border: 2px solid $green;
 		margin-bottom: 1rem;
 
 		.table-header, .table-row {
@@ -22,9 +21,8 @@
 
 		.table-header {
 			padding: 0.5rem 0.25rem;
-			background: $green;
 			position: relative;
-			color: white;
+			background: $gray;
 
 			.table-title {
 				flex: unset !important;
@@ -36,6 +34,7 @@
 
 				h4 {
 					margin-left: -0.5rem;
+                    color: white;
 
 					@include phone {
 						margin-left: 0;
@@ -44,10 +43,11 @@
 
 				a {
 					font-size: inherit;
-					color: white;
+                    color: inherit;
 
 					&:hover {
 						text-decoration: underline;
+                        color: $turqoise;
 					}
 				}
 			}
@@ -63,11 +63,19 @@
 		}
 
 		.table-row {
-			transition: background 0.1s ease-in-out;
 			background: $darkgray;
-			color: $white;
-			margin: 4px;
+            border-radius: 2px;
+			margin: 0.25rem 0;
+			color: white;
 			opacity: 0;
+
+            @include desktop-up {
+                transform: scale(1);
+
+                &:hover {
+                    transform: scale(1.01);
+                }
+            }
 
 			&.admin-post {
 				background: linear-gradient(to right, $superadmin, $gray);
@@ -124,12 +132,12 @@
 			}
 
 			&.show {
-				transition: background 0.1s ease-in-out, opacity 0.35s ease-out;
+				transition: background 0.1s ease-in-out, transform 0.1s ease-in-out, opacity 0.35s ease-out;
 				opacity: 1;
 			}
 
 			&:hover {
-				background: #62627580;
+				background: $gray;
 			}
 
 			.folder {
@@ -144,9 +152,9 @@
 
 		.subcategory-rows {
 			transition: height 0.25s ease-in-out;
-			overflow: hidden;
 
 			&.hidden {
+			    overflow: hidden;
 				height: 0;
 			}
 		}
