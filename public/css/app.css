@@ -14281,7 +14281,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search.active .mobile-search-button {
-  display: none;
+  -webkit-transition: none;
+  transition: none;
+  opacity: 0;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search #mobile-search {
@@ -14305,6 +14307,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-button i,
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-remove i {
   pointer-events: none;
+}
+
+.navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-button {
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
 }
 
 .navbar #navbar-container .navbar-mobile .navbar-mobile-items .navbar-mobile-item.search .mobile-search-remove {

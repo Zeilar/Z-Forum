@@ -405,7 +405,8 @@
                             }
 
                             .mobile-search-button {
-                                display: none;
+                                transition: none;
+                                opacity: 0;
                             }
                         }
 
@@ -428,6 +429,11 @@
                             i {
                                 pointer-events: none;
                             }
+                        }
+
+                        .mobile-search-button {
+                            transition: opacity 0.25s ease-in-out;
+                            opacity: 1;
                         }
 
                         .mobile-search-remove {
