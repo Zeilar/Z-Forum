@@ -136,8 +136,8 @@ class UsersController extends Controller
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)->first()) {
-			$activities = ActivityLog::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 			$user = User::find($id) ?? User::where('username', $id)->first();
+			$activities = ActivityLog::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 			$posts = $this->get_user_liked_posts($user->id);
 
 			if (!count($activities)) {
@@ -158,8 +158,8 @@ class UsersController extends Controller
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)->first()) {
-			$userPosts = Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 			$user = User::find($id) ?? User::where('username', $id)->first();
+			$userPosts = Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
 			$posts = $this->get_user_liked_posts($user->id);
 
 			return view('user.posts', [
