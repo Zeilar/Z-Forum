@@ -145,8 +145,8 @@
 			background: $darkgray;
 			margin-left: 0.5rem;
 			text-align: center;
-			padding: 1rem 4rem;
 			color: white;
+			padding: 1rem;
 
 			@include phone {
 				margin: 0 0 0.5rem 0;
@@ -167,6 +167,12 @@
 			}
 		}
 	}
+
+    .profile-messages {
+        .message:not(:first-child) {
+            margin-top: 2rem;
+        }
+    }
 
 	.profile-lower {
 		border: 2px solid $green;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserLikedPosts;
+use App\UserMessage;
 use App\ActivityLog;
 use Carbon\Carbon;
 use App\Thread;
@@ -135,11 +136,9 @@ class UsersController extends Controller
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)->first()) {
-			$user = User::find($id) ?? User::where('username', $id)->first();
-
-			$posts = $this->get_user_liked_posts($user->id);
-
 			$activities = ActivityLog::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+			$user = User::find($id) ?? User::where('username', $id)->first();
+			$posts = $this->get_user_liked_posts($user->id);
 
 			if (!count($activities)) {
 				$activities = false;
@@ -159,11 +158,9 @@ class UsersController extends Controller
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)->first()) {
-			$user = User::find($id) ?? User::where('username', $id)->first();
-
-			$posts = $this->get_user_liked_posts($user->id);
-			
 			$userPosts = Post::where('user_id', $user->id)->paginate(settings_get('posts_per_page'));
+			$user = User::find($id) ?? User::where('username', $id)->first();
+			$posts = $this->get_user_liked_posts($user->id);
 
 			return view('user.posts', [
 				'posts_with_likes' => $posts,
@@ -179,10 +176,9 @@ class UsersController extends Controller
 	{
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)->first()) {
-			$user = User::find($id) ?? User::where('username', $id)->first();
-
-			$posts = $this->get_user_liked_posts($user->id);
+			$user  = User::find($id) ?? User::where('username', $id)->first();
 			$likes = $user->likes()->distinct('post_id')->paginate(settings_get('posts_per_page'));
+			$posts = $this->get_user_liked_posts($user->id);
 
 			return view('user.likes', [
 				'posts_with_likes' => $posts,
@@ -199,12 +195,33 @@ class UsersController extends Controller
 		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
 		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
-
 			$posts = $this->get_user_liked_posts($user->id);
 			
 			return view('user.threads', [
 				'posts_with_likes' => $posts,
 				'threads' 		   => Thread::where('user_id', $user->id)->paginate(settings_get('posts_per_page')),
+				'user' 			   => $user,
+			]);
+		} else {
+			return view('errors.404');
+		}
+	}
+
+    public function show_messages(Request $request, $id)
+	{
+		// Make it possible to go to /user/1 or /user/john but the latter is bound to the 'user_show' route
+		if (User::find($id) || User::where('username', $id)->first()) {
+			$user = User::find($id) ?? User::where('username', $id)->first();
+			$posts = $this->get_user_liked_posts($user->id);
+            $messages = UserMessage::where('author_id', $user->id)
+                ->orWhere('recipient_id', $user->id)
+                ->distinct('id')
+                ->orderByDesc('created_at')
+                ->paginate(settings_get('posts_per_page'));
+			
+			return view('user.messages', [
+				'posts_with_likes' => $posts,
+				'messages' 		   => $messages,
 				'user' 			   => $user,
 			]);
 		} else {

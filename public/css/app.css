@@ -13157,7 +13157,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border: 2px solid #00b365;
 }
 
-#messages .message {
+#messages .profile-message {
   border-bottom: 1px solid #2c2c3580;
   background: #2c2c3580;
   padding: 0.5rem 1rem;
@@ -13165,19 +13165,19 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
-#messages .message.read .message-title {
+#messages .profile-message.read .message-title {
   color: #a5abaf;
 }
 
-#messages .message.read .message-title:hover {
+#messages .profile-message.read .message-title:hover {
   color: #00ffff;
 }
 
-#messages .message:last-child {
+#messages .profile-message:last-child {
   border-bottom: 0;
 }
 
-#messages .message .message-title {
+#messages .profile-message .message-title {
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-right: 2rem;
@@ -13186,46 +13186,44 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           flex: 1;
 }
 
-#messages .message .message-from-to {
+#messages .profile-message .message-from-to {
   margin-left: auto;
 }
 
 @media (max-width: 599px) {
-  #messages .message .message-from-to .message-date {
+  #messages .profile-message .message-from-to .message-date {
     display: none;
   }
 }
 
-#message {
-  border: 2px solid #00b365;
+.message {
   background: #2c2c3580;
 }
 
-#message .message-title {
-  padding: 0.25rem 0.5rem;
-  background: #00b365;
+.message .message-title {
+  background: #2b2b34e6;
+  padding: 0.5rem;
 }
 
 @media (max-width: 599px) {
-  #message .message-title h3 {
+  .message .message-title h3 {
     font-size: 1.3rem;
   }
 }
 
-#message .message-users {
-  border-bottom: 2px solid #00b365;
-  padding: 0.25rem 0.5rem;
+.message .message-users {
+  padding: 0 0.5rem 0.5rem 0.5rem;
   background: #2b2b34e6;
   display: -webkit-box;
   display: flex;
 }
 
-#message .message-users .message-to,
-#message .message-users .message-from {
+.message .message-users .message-to,
+.message .message-users .message-from {
   color: #a5abaf;
 }
 
-#message .message-users .message-from {
+.message .message-users .message-from {
   position: relative;
   display: -webkit-box;
   display: flex;
@@ -13233,16 +13231,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           flex: 1;
 }
 
-#message .message-users .message-from .message-from-user {
+.message .message-users .message-from .message-from-user {
   margin-left: 0.25rem;
   margin-right: auto;
 }
 
-#message .message-users .message-to {
+.message .message-users .message-to {
   margin-left: auto;
 }
 
-#message .message-content {
+.message .message-content {
   padding: 1rem;
 }
 
@@ -13438,8 +13436,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   background: #2c2c3580;
   margin-left: 0.5rem;
   text-align: center;
-  padding: 1rem 4rem;
   color: white;
+  padding: 1rem;
 }
 
 @media (max-width: 599px) {
@@ -13463,6 +13461,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .user-profile .profile-nav .profile-nav-item.active {
   border-color: #00b365;
   background: #2b2b34e6;
+}
+
+.user-profile .profile-messages .message:not(:first-child) {
+  margin-top: 2rem;
 }
 
 .user-profile .profile-lower {

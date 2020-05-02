@@ -35,7 +35,7 @@
 			@else
 				@php $read = '' @endphp
 			@endif
-			<div class="message {{$read}}">
+			<div class="profile-message {{$read}}">
 				<a class="message-title" href="{{route('dashboard_message', [$message->id])}}">{{ $message->title }}</a>
 				<span class="message-from-to">
 					@if ($message->author->id === auth()->user()->id)

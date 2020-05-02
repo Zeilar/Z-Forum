@@ -1,10 +1,9 @@
-#message {
-	border: 2px solid $green;
+.message {
 	background: $darkgray;
 
 	.message-title {
-		padding: 0.25rem 0.5rem;
-		background: $green;
+        background: $gray;
+		padding: 0.5rem;
 
 		h3 {
 			@include phone {
@@ -14,8 +13,7 @@
 	}
 
 	.message-users {
-		border-bottom: 2px solid $green;
-		padding: 0.25rem 0.5rem;
+		padding: 0 0.5rem 0.5rem 0.5rem;
 		background: $gray;
 		display: flex;
 		
