@@ -16,6 +16,7 @@
 					<div class="wrapper">
 						<div class="welcome-text">
 							<p class="user-role {{role_coloring(auth()->user()->role)}}">{{ ucfirst(auth()->user()->role) }}</p>
+                            <p>{{ ucfirst(auth()->user()->rank) }}</p>
 							<a href="{{route('user_show', [auth()->user()->id])}}">
 								{{ __('Profile') }}
 							</a>
@@ -28,7 +29,6 @@
 			@endcomponent
 
             @component('components.sidebar-item', ['class' => 'whats-new'])
-
 				@slot('title')
 					<i class="fas fa-rss"></i>
 					{{ __('What\'s new') }}
@@ -94,14 +94,16 @@
 					@endif
 				@endforeach
 
-				@foreach ($threads as $thread)
-					<div class="latest-posts-item">
-						<i class="fas fa-chevron-right"></i>
-						<a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
-							{{ $thread->title }}
-						</a>
-					</div>
-				@endforeach
+                @if (count($threads))   
+                    @foreach ($threads as $thread)
+                        <div class="latest-posts-item">
+                            <i class="fas fa-chevron-right"></i>
+                            <a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+                                {{ $thread->title }}
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
 			@endslot
 		@endcomponent
 
