@@ -219,12 +219,28 @@ input[type=file] {
 	}
 }
 
-.hover-tooltip {
+.copied-notification {
+    animation: fadeOut 2s linear forwards;
+    box-shadow: 0 0 5px 0 black;
+    transform: translateX(-50%);
+    border-radius: 0.25rem;
+    background: $gray-full;
+    pointer-events: none;
+    padding: 0.5rem 1rem;
+    position: absolute;
 	user-select: none;
+    color: white;
+    top: -200%;
+    left: 50%;
 
-	@include big-desktop-down {
-		display: none;
-	}
+    @keyframes fadeOut {
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
 }
 
 .file-upload-preview {

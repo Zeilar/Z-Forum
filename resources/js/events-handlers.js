@@ -12,7 +12,6 @@ No event handler, always runs
 -----------------------------------------------
 */
 Functions.fadeTable();
-Functions.showTitle();
 
 /*
 -----------------------------------------------
@@ -186,8 +185,10 @@ $('#scroller').click(function() {
 $('.permalink').click(function(e) {
 	e.preventDefault();
 
+    $('.copied-notification').remove();
+
 	// Need some sort of text to copy
-	$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`).attr('id', 'tooltip');
+	$(this).append(`<textarea id="copy">${$(this).attr('href')}</textarea>`);
 
 	// Copy the text and remove the dummy element
 	$('#copy').select();
@@ -195,14 +196,12 @@ $('.permalink').click(function(e) {
 	$('#copy').remove();
 
 	// Change the tooltip content
-	$(this).find('.hover-tooltip').html('Copied!');
+	$(this).append('<span class="copied-notification">Copied</span>');
 
-	// Reset text when hovering outside
-	$(this).mouseout(function() {
-		setTimeout(() => {
-			$(this).find('.hover-tooltip').html($(this).attr('data-title'));
-		}, 150);
-	})
+    // Remove the tooltip after the animation is done
+    setTimeout(() => {
+        $(this).find('.copied-notification').remove();
+    }, 2000);
 });
 
 // Spawn pagination input box

@@ -37177,7 +37177,6 @@ No event handler, always runs
 */
 
 _functions__WEBPACK_IMPORTED_MODULE_1__["default"].fadeTable();
-_functions__WEBPACK_IMPORTED_MODULE_1__["default"].showTitle();
 /*
 -----------------------------------------------
 Hover
@@ -37341,23 +37340,22 @@ $('#scroller').click(function () {
 }); // Copy link instead of opening it, and spawn a small bubble notification
 
 $('.permalink').click(function (e) {
-  e.preventDefault(); // Need some sort of text to copy
+  var _this2 = this;
 
-  $(this).append("<textarea id=\"copy\">".concat($(this).attr('href'), "</textarea>")).attr('id', 'tooltip'); // Copy the text and remove the dummy element
+  e.preventDefault();
+  $('.copied-notification').remove(); // Need some sort of text to copy
+
+  $(this).append("<textarea id=\"copy\">".concat($(this).attr('href'), "</textarea>")); // Copy the text and remove the dummy element
 
   $('#copy').select();
   document.execCommand('copy');
   $('#copy').remove(); // Change the tooltip content
 
-  $(this).find('.hover-tooltip').html('Copied!'); // Reset text when hovering outside
+  $(this).append('<span class="copied-notification">Copied</span>'); // Remove the tooltip after the animation is done
 
-  $(this).mouseout(function () {
-    var _this2 = this;
-
-    setTimeout(function () {
-      $(_this2).find('.hover-tooltip').html($(_this2).attr('data-title'));
-    }, 150);
-  });
+  setTimeout(function () {
+    $(_this2).find('.copied-notification').remove();
+  }, 2000);
 }); // Spawn pagination input box
 
 $('.pagination .dots').click(function () {
@@ -37536,14 +37534,6 @@ function () {
           ruler.remove();
         });
       });
-    } // Setup tooltip positions etc
-
-  }, {
-    key: "showTitle",
-    value: function showTitle() {
-      $('[data-title]').each(function () {
-        $(this).showTitle();
-      });
     } // Animation that opens folder icons when clicking
 
   }, {
@@ -37714,13 +37704,6 @@ function () {
     });
     this.css('height', "".concat(height, "px"));
     return this;
-  };
-
-  $.fn.showTitle = function () {
-    this.addClass('position-relative');
-    var element = "\n\t\t\t<span class=\"hover-tooltip\">\n\t\t\t\t".concat(this.attr('data-title'), "\n\t\t\t</span>\n\t\t");
-    this.append(element);
-    this.children('.hover-tooltip').css('top', "-".concat(this.children('.hover-tooltip').outerHeight() + 20, "px"));
   };
 })(jQuery);
 

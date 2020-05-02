@@ -60,13 +60,6 @@ class Functions {
 		});
 	}
 
-	// Setup tooltip positions etc
-	static showTitle() {
-		$('[data-title]').each(function() {
-			$(this).showTitle();
-		});
-	}
-
 	// Animation that opens folder icons when clicking
 	static openFolder() {
 		$('.table-title a').mousedown(function() {

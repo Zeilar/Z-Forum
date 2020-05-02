@@ -11969,16 +11969,43 @@ input[type=file] {
   margin-right: 6rem;
 }
 
-.hover-tooltip {
+.copied-notification {
+  -webkit-animation: fadeOut 2s linear forwards;
+          animation: fadeOut 2s linear forwards;
+  box-shadow: 0 0 5px 0 black;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border-radius: 0.25rem;
+  background: #2b2b34;
+  pointer-events: none;
+  padding: 0.5rem 1rem;
+  position: absolute;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  color: white;
+  top: -200%;
+  left: 50%;
 }
 
-@media (max-width: 1919px) {
-  .hover-tooltip {
-    display: none;
+@-webkit-keyframes fadeOut {
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 
@@ -12556,6 +12583,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .post .post-header .post-meta .post-link {
   display: -webkit-box;
   display: flex;
+}
+
+.post .post-header .post-meta .post-link .permalink {
+  position: relative;
 }
 
 @media (max-width: 599px) {

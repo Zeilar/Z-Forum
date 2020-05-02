@@ -7,11 +7,11 @@
 		@endisset
 
 		<div class="table-views __wrapper">
-			<i class="far fa-eye" data-title="{{ __('Views') }}"></i>
+			<i class="far fa-eye"></i>
 		</div>
 
 		<div class="table-posts __wrapper">
-			<i class="far fa-comments" data-title="{{ __('Posts') }}"></i>
+			<i class="far fa-comments"></i>
 		</div>
 
 		<div class="table-latest-post __wrapper"></div>
