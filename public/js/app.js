@@ -37207,10 +37207,7 @@ Mouse enter
 -----------------------------------------------
 */
 
-_functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Set up sidebar height on page load
-
-var sidebarHeight = $('#sidebar').outerHeight(true);
-if ($('#sidebar').hasClass('open')) $('#sidebar').css('height', "".concat(sidebarHeight, "px")); // Mobile navbar toggler animation
+_functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Mobile navbar toggler animation
 
 $('.navbar-toggler').click(function () {
   $('.toggle-animator, .navbar-mobile').toggleClass('open');
@@ -37243,19 +37240,13 @@ $('.mobile-search-remove').click(function () {
 
 $('.toggle-sidebar').click(function () {
   $('#sidebar').removeClass('no-transition');
-  var height = 0;
-  $('.sidebar-item').each(function () {
-    height += $(this).outerHeight(true);
-  });
 
   if ($('#sidebar').hasClass('hide')) {
     $('#sidebar').removeClass('hide').addClass('open');
     cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].setCookie('sidebarOpen', true, false);
-    $('#sidebar').css('height', "".concat(height, "px"));
   } else {
     $('#sidebar').removeClass('open').addClass('hide');
     cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].removeCookie('sidebarOpen');
-    $('#sidebar').removeAttr('style');
   }
 }); // Password revealer button
 

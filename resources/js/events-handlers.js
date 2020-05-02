@@ -44,10 +44,6 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
-// Set up sidebar height on page load
-let sidebarHeight = $('#sidebar').outerHeight(true);
-if ($('#sidebar').hasClass('open')) $('#sidebar').css('height', `${sidebarHeight}px`);
-
 // Mobile navbar toggler animation
 $('.navbar-toggler').click(function () {
 	$('.toggle-animator, .navbar-mobile').toggleClass('open');
@@ -86,20 +82,12 @@ $('.mobile-search-remove').click(function() {
 $('.toggle-sidebar').click(function() {
 	$('#sidebar').removeClass('no-transition');
 
-	let height = 0;
-
-	$('.sidebar-item').each(function() {
-		height += $(this).outerHeight(true);
-	});
-
 	if ($('#sidebar').hasClass('hide')) {
 		$('#sidebar').removeClass('hide').addClass('open');
 		cookieCutter.setCookie('sidebarOpen', true, false);
-		$('#sidebar').css('height', `${height}px`);
 	} else {
 		$('#sidebar').removeClass('open').addClass('hide');
 		cookieCutter.removeCookie('sidebarOpen');
-		$('#sidebar').removeAttr('style');
 	}
 });
 
