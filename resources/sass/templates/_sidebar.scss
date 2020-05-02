@@ -1,4 +1,5 @@
 #sidebar {
+    flex-direction: column;
 	height: fit-content;
 	padding-top: 1rem;
 	overflow: hidden;
@@ -13,9 +14,9 @@
 		transition: transform 1s ease-in-out;
 		height: fit-content !important;
 		justify-content: space-between;
+        flex-direction: row;
 		flex-wrap: wrap;
-		display: flex;
-		width: auto;
+		width: 100%;
 	}
 
 	&.hide {
@@ -23,11 +24,10 @@
 	}
 
 	&.open {
-		display: block;
+		display: flex;
 	}
 
 	.sidebar-item {
-		border: 2px solid $green;
 		border-radius: 0.25rem;
 		margin-bottom: 1.5rem;
 		background: $darkgray;
@@ -55,10 +55,6 @@
 		}
 
 		&.welcome {
-			@include desktop-down {
-				margin: 0 auto 0.5rem auto;
-			}
-
 			.wrapper {
 				justify-content: space-between;
 				flex-direction: row;
@@ -82,19 +78,27 @@
 			}
 		}
 
-		&.online-moderators {
-			.separator {
-				margin-right: 0.25rem;
-			}
+        &.whats-new {
+            .whats-new-thread {
+                margin-bottom: 0.5rem;
+				white-space: nowrap;
+				display: flex;
 
-			.sidebar-item-content div {
-				margin-bottom: 1rem;
-
-				&:last-child {
+                &:last-child {
 					margin-bottom: 0;
 				}
-			}
-		}
+
+                .whats-new-link {
+                    text-overflow: ellipsis;
+					padding-left: 0.5rem;
+					overflow: hidden;
+                }
+
+                i {
+					margin: auto 0;
+				}
+            }
+        }
 
 		&.latest-posts {
 			@include desktop-down {
@@ -118,6 +122,20 @@
 
 				i {
 					margin: auto 0;
+				}
+			}
+		}
+
+        &.online-moderators {
+			.separator {
+				margin-right: 0.25rem;
+			}
+
+			.sidebar-item-content div {
+				margin-bottom: 1rem;
+
+				&:last-child {
+					margin-bottom: 0;
 				}
 			}
 		}

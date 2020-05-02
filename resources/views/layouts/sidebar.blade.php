@@ -26,6 +26,48 @@
 					</div>
 				@endslot
 			@endcomponent
+
+            @component('components.sidebar-item', ['class' => 'whats-new'])
+
+				@slot('title')
+					<i class="fas fa-rss"></i>
+					{{ __('What\'s new') }}
+				@endslot
+
+				@slot('content')                    
+                    @php $threads = [] @endphp
+                    @foreach (auth()->user()->posts->sortByDesc('created_at') as $post)
+                        @if (count($threads) >= 5)
+                            @break
+                        @endif
+                        @if (!in_array($post->thread, $threads))
+                            @php array_push($threads, $post->thread) @endphp
+                        @endif
+                    @endforeach
+
+                    @foreach ($threads as $thread)
+                        @php $posts = $thread->posts->sortByDesc('created_at')  @endphp
+                        @php $latest_post = $posts->first() @endphp
+                        <div class="whats-new-thread">
+                            <i class="fas fa-chevron-right"></i>
+                            <a class="whats-new-link" href="{{
+                                route('post_show', [
+                                    $thread->id,
+                                    $thread->slug,
+                                    get_item_page_number(
+                                        $posts,
+                                        $latest_post->id,
+                                        settings_get('posts_per_page')
+                                    ),
+                                    $latest_post->id,
+                                ])
+                            }}">
+                                {{ $thread->title }}
+                            </a>
+                        </div>
+                    @endforeach
+				@endslot
+			@endcomponent
 		@endauth
 
 		@component('components.sidebar-item', ['class' => 'latest-posts'])

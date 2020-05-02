@@ -41,7 +41,6 @@
 				width: 17.5vw;
 
                 @include desktop-down {
-                    margin-left: 0;
                     width: unset;
                 }
 
