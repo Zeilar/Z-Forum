@@ -13236,8 +13236,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-right: auto;
 }
 
-.message .message-users .message-to {
-  margin-left: auto;
+.message .message-users .message-from-date {
+  margin-left: 4px;
+  color: #a5abaf;
 }
 
 .message .message-content {

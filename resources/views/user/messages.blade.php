@@ -10,7 +10,7 @@
 			<div class="profile-messages">
                 @if (count($messages))
                     @foreach ($messages as $message)
-                        @component('components.message', ['message' => $message, 'replyButton' => true])
+                        @component('components.message', ['message' => $message, 'replyButton' => true, 'titleLink' => true])
                             
                         @endcomponent
                     @endforeach

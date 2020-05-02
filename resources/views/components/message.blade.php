@@ -1,6 +1,12 @@
 <div class="message">
     <div class="message-title">
-        <h3>{{ $message->title }}</h3>
+        @isset($titleLink)
+            <h3>
+                <a href="{{ route('dashboard_message', [$message->id]) }}">{{ $message->title }}</a>
+            </h3>
+        @else
+            <h3>{{ $message->title }}</h3>
+        @endisset
     </div>
 
     <div class="message-users">
@@ -11,16 +17,18 @@
                     {{ $message->author->username }}
                 </a>
             @endif
-
-            <span class="message-from-date">{{ pretty_date($message->created_at) }}</span>
         </span>
 
         <span class="message-to">
             @if ($message->recipient->id !== auth()->user()->id)
                 {{ __('To') }}
-                <a href="{{route('user_show', [$message->recipient->id])}}">{{ $message->recipient->username }}</a>
+                <a class="{{role_coloring($message->recipient->role)}}" href="{{route('user_show', [$message->recipient->id])}}">
+                    {{ $message->recipient->username }}
+                </a>
             @endif
         </span>
+
+        <span class="message-from-date">{{ pretty_date($message->created_at) }}</span>
     </div>
 
     <div class="message-content">
