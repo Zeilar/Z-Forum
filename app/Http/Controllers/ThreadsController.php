@@ -117,8 +117,8 @@ class ThreadsController extends Controller
 			}
 
 			return view('thread.single', [
-				'thread' => Thread::find($id),
-				'posts'  => Post::where('thread_id', $id)->orderBy('created_at')->paginate(settings_get('posts_per_page')),
+				'thread' => $thread,
+				'posts'  => $thread->posts()->orderBy('created_at')->paginate(settings_get('posts_per_page')),
 			]);
 		} else {
 			return view('errors.404', ['value' => urldecode($slug)]);
