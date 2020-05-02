@@ -80,8 +80,6 @@ $('.mobile-search-remove').click(function() {
 
 // Toggle sidebar
 $('.toggle-sidebar').click(function() {
-	$('#sidebar').removeClass('no-transition');
-
 	if ($('#sidebar').hasClass('hide')) {
 		$('#sidebar').removeClass('hide').addClass('open');
 		cookieCutter.setCookie('sidebarOpen', true, false);

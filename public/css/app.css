@@ -13647,34 +13647,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 }
 
-@media (min-width: 1200px) {
-  #sidebar.hide {
-    -webkit-transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
-    transition: width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, margin 0.25s ease-in-out 0.25s;
-    height: calc(1rem + 2px);
-    margin-left: 0;
-    width: 0;
-  }
+#sidebar.hide {
+  display: none;
 }
 
-@media (max-width: 1199px) {
-  #sidebar.hide {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  #sidebar.open {
-    -webkit-transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
-    transition: width 0.25s ease-in-out, height 0.25s ease-in-out 0.25s;
-  }
-}
-
-@media (max-width: 1199px) {
-  #sidebar.open {
-    display: -webkit-box;
-    display: flex;
-  }
+#sidebar.open {
+  display: block;
 }
 
 #sidebar .sidebar-item {

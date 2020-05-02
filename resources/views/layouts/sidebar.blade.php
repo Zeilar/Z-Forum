@@ -4,7 +4,7 @@
 	@else
 		@php $class = 'hide' @endphp
 	@endisset	
-	<div class="no-transition {{$class}}" id="sidebar">
+	<div class="{{$class}}" id="sidebar">
 		@auth
 			@component('components.sidebar-item', ['class' => 'welcome'])
 				@slot('title')
