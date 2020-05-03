@@ -13854,6 +13854,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 }
 
+@media (max-width: 899px) and (orientation: landscape) {
+  .navbar #navbar-container form {
+    -webkit-box-flex: 1;
+            flex: 1;
+  }
+}
+
 .navbar #navbar-container form .nav-search {
   margin-left: 2.5rem;
   position: relative;
@@ -13865,13 +13872,15 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 1199px) {
   .navbar #navbar-container form .nav-search {
+    margin-right: 2.5rem;
     width: unset;
   }
 }
 
 @media (max-width: 899px) and (orientation: landscape) {
   .navbar #navbar-container form .nav-search {
-    display: none;
+    width: 100%;
+    margin: 0;
   }
 }
 
@@ -13968,7 +13977,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 .navbar #navbar-container .navbar-toggler {
   outline: 0 !important;
-  margin-left: auto;
   display: none;
   height: 100%;
   border: 0;
@@ -14054,13 +14062,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 }
 
-@media (max-width: 1199px) {
-  .navbar #navbar-container .navbar-content {
-    -webkit-box-flex: unset;
-            flex: unset;
-  }
-}
-
 .navbar #navbar-container .navbar-content .nav-list {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
@@ -14068,6 +14069,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: auto;
   display: -webkit-box;
   display: flex;
+  height: 100%;
+}
+
+@media (max-width: 1199px) {
+  .navbar #navbar-container .navbar-content .nav-list {
+    margin: auto;
+  }
 }
 
 .navbar #navbar-container .navbar-content .nav-list .nav-items {
@@ -14360,16 +14368,30 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar .toggle-sidebar {
+  position: absolute !important;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  position: absolute !important;
   right: 1rem;
   top: 50%;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1919px) {
   .navbar .toggle-sidebar {
-    display: none !important;
+    position: relative !important;
+    margin-left: 0.5rem;
+    -webkit-transform: none;
+            transform: none;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .navbar .toggle-sidebar {
+    margin: auto;
   }
 }
 

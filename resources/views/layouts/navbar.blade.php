@@ -66,15 +66,6 @@
 				</div>
 			</form>
 
-			<button class="navbar-toggler" type="button">
-				<div class="toggle-animator">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-
 			<div class="navbar-mobile">
 				<ul class="navbar-mobile-items">
                     <form action="{{route('search')}}" method="get">
@@ -111,10 +102,19 @@
 					@endauth
 				</ul>
 			</div>
-		</div>
+            
+            <button class="btn toggle-sidebar btn-success-full" type="button">
+                {{ __('Sidebar') }}
+            </button>
 
-		<button class="btn toggle-sidebar btn-success-full" type="button">
-			{{ __('Toggle Sidebar') }}
-		</button>
+            <button class="navbar-toggler" type="button">
+				<div class="toggle-animator">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</button>
+		</div>
 	</nav>
 @endempty

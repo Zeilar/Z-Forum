@@ -33,6 +33,12 @@
 		}
 
 		form {
+            @include big-tablet-down {
+                @include landscape {
+                    flex: 1;
+                }
+            }
+
 			.nav-search {
 				margin-left: 2.5rem;
 				position: relative;
@@ -41,12 +47,14 @@
 				width: 17.5vw;
 
                 @include desktop-down {
+                    margin-right: 2.5rem;
                     width: unset;
                 }
 
                 @include big-tablet-down {
                     @include landscape {
-                        display: none;
+                        width: 100%;
+                        margin: 0;
                     }
                 }
 
@@ -120,7 +128,6 @@
 
 		.navbar-toggler {
 			outline: 0 !important;
-			margin-left: auto;
 			display: none;
 			height: 100%;
 			border: 0;
@@ -194,14 +201,15 @@
 				display: none;
 			}
 
-			@include desktop-down {
-				flex: unset;
-			}
-
 			.nav-list {
 				flex-direction: row-reverse;
 				margin-left: auto;
 				display: flex;
+                height: 100%;
+
+                @include desktop-down {
+                    margin: auto;
+                }
 
 				.nav-items {
 					flex-direction: row-reverse;
@@ -458,13 +466,22 @@
 	}
 
 	.toggle-sidebar {
-		transform: translateY(-50%);
 		position: absolute !important;
+        width: fit-content !important;
+		transform: translateY(-50%);
 		right: 1rem;
 		top: 50%;
 
-        @include big-tablet-down {
-            display: none !important;
+        @include big-desktop-down {
+            position: relative !important;
+            margin-left: 0.5rem;
+            transform: none;
+            right: 0;
+            top: 0;
+        }
+
+        @include phone {
+            margin: auto;
         }
 	}
 }
