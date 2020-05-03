@@ -14366,9 +14366,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   width: -webkit-fit-content !important;
   width: -moz-fit-content !important;
   width: fit-content !important;
-  position: fixed !important;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  position: fixed !important;
   right: 1rem;
   top: 2.5rem;
 }
