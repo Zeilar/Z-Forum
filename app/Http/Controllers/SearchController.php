@@ -28,7 +28,7 @@ class SearchController extends Controller
 		$posts         = DB::table('posts')->select('table_name', 'id')->where('content', 'like', "%$query%");
 		$results       = DB::table('users')
 			->select('table_name', 'id')
-			->where('username', 'like', "%$query%")->orWhere('role', 'like', "%$query%")
+			->where('username', 'like', "%$query%")->orWhere('role', 'like', "%$query%")->orWhere('rank', 'like', "%$query%")
 			->union($subcategories)->union($categories)->union($threads)->union($posts)
 			->paginate(settings_get('posts_per_page'));
 
