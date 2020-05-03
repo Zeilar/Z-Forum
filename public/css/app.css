@@ -12630,7 +12630,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .post .post-body * {
-  overflow: hidden;
+  word-break: break-word;
   color: white;
 }
 
