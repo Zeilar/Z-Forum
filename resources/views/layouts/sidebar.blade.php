@@ -35,20 +35,9 @@
 				@endslot
 
 				@slot('content')                    
-                    @php $threads = [] @endphp
-                    @foreach (auth()->user()->posts->sortByDesc('created_at') as $post)
-                        @if (count($threads) >= 5)
-                            @break
-                        @endif
-                        @if (!in_array($post->thread, $threads))
-                            @php array_push($threads, $post->thread) @endphp
-                        @endif
-                    @endforeach
-
-                    @if (count($threads))
-                        @foreach ($threads as $thread)
-                            @php $posts = $thread->posts->sortByDesc('created_at')  @endphp
-                            @php $latest_post = $posts->first() @endphp
+                    @if (count($whats_new))
+                        @foreach ($whats_new as $post)
+                            @php $thread = $post->thread @endphp
                             <div class="whats-new-thread">
                                 <i class="fas fa-chevron-right"></i>
                                 <a class="whats-new-link" href="{{
@@ -56,11 +45,11 @@
                                         $thread->id,
                                         $thread->slug,
                                         get_item_page_number(
-                                            $posts,
-                                            $latest_post->id,
+                                            $thread->posts,
+                                            $post->id,
                                             settings_get('posts_per_page')
                                         ),
-                                        $latest_post->id,
+                                        $post->id,
                                     ])
                                 }}">
                                     {{ $thread->title }}
@@ -68,7 +57,7 @@
                             </div>
                         @endforeach
                     @else
-                        <p>{{ __('Post something in the forum!') }}</p>
+                        <p>{{ __('You are all up to date!') }}</p>
                     @endif
 				@endslot
 			@endcomponent

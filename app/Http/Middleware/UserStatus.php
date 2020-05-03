@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Carbon\Carbon;
+use App\Post;
 use Closure;
 use Cache;
 use Auth;
@@ -21,8 +22,18 @@ class UserStatus
 		if (Auth::check()) {
 			$expiresAt = Carbon::now()->addMinutes(3);
 			Cache::put('user-online-' . Auth::user()->id, true, $expiresAt);
+
+            //dump(Post::orderByDesc('created_at')->limit(1)->first());
+            //dump(auth()->user()->last_seen);
 			
-			// Update last seen row
+            // Determine what's new before updating last_seen
+            $whats_new = Post::orderByDesc('created_at')
+                ->where('created_at', '>=', auth()->user()->last_seen)
+                ->limit(5)
+                ->get();
+            view()->share('whats_new', $whats_new);
+
+			// Update last seen columns
 			$user = Auth::user();
 			$user->last_seen = Carbon::now();
 			$user->save();
