@@ -138,6 +138,14 @@
 			.sidebar-item-content div {
 				margin-bottom: 1rem;
 
+                h5 {
+                    background: rgba(0, 0, 0, 0.5);
+                    margin-bottom: 0.25rem;
+                    border-radius: 0.25rem;
+                    width: fit-content;
+                    padding: 0.5rem;
+                }
+
 				&:last-child {
 					margin-bottom: 0;
 				}

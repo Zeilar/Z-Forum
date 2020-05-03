@@ -13782,6 +13782,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-bottom: 1rem;
 }
 
+#sidebar .sidebar-item.online-moderators .sidebar-item-content div h5 {
+  background: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.25rem;
+  border-radius: 0.25rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5rem;
+}
+
 #sidebar .sidebar-item.online-moderators .sidebar-item-content div:last-child {
   margin-bottom: 0;
 }
