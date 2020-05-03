@@ -22,12 +22,10 @@ class UserStatus
 		if (Auth::check()) {
 			$expiresAt = Carbon::now()->addMinutes(3);
 			Cache::put('user-online-' . Auth::user()->id, true, $expiresAt);
-
-            //dump(Post::orderByDesc('created_at')->limit(1)->first());
-            //dump(auth()->user()->last_seen);
 			
             // Determine what's new before updating last_seen
             $whats_new = Post::orderByDesc('created_at')
+                ->where('user_id', auth()->user()->id)
                 ->where('created_at', '>=', auth()->user()->last_seen)
                 ->limit(5)
                 ->get();
