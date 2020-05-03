@@ -132,15 +132,7 @@
 
 							@for ($i = 0; $i < count($superadmins); $i++)
 								@isset ($superadmins[$i])
-									<a href="{{route('user_show', [$superadmins[$i]->id])}}">
-										@if (count($superadmins) > 1 && $i !== count($superadmins) - 1)
-											@php $comma = ','; @endphp
-										@else
-											@php $comma = ''; @endphp
-										@endif
-										{{ $superadmins[$i]->username }}
-									</a>
-									<span class="separator">{{ $comma }}</span>
+									<a href="{{route('user_show', [$superadmins[$i]->id])}}">{{ $superadmins[$i]->username }}</a>
 								@endisset
 							@endfor
 						</div>
@@ -152,15 +144,7 @@
 
 							@for ($i = 0; $i < count($moderators); $i++)
 								@isset ($moderators[$i])
-									<a href="{{route('user_show', [$moderators[$i]->id])}}">
-										@if (count($moderators) > 1 && $i !== count($moderators) - 1)
-											@php $comma = ', '; @endphp
-										@else
-											@php $comma = ''; @endphp
-										@endif
-										{{ $moderators[$i]->username }}
-									</a>
-									<span class="separator">{{ $comma }}</span>
+									<a href="{{route('user_show', [$moderators[$i]->id])}}">{{ $moderators[$i]->username }}</a>
 								@endisset
 							@endfor
 						</div>

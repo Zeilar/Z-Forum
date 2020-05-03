@@ -197,9 +197,7 @@
 					iframes.each(function() {
 						let iframe = $(this)[0].contentWindow.document;
 						$(iframe).find('body').css('line-height', '1.5').prepend(`
-							<p style="margin: 0;">
-								Posted by ${author} - <a href="${link}">Read post</a>
-							</p>
+							<p>Posted by ${author} - <a href="${link}">Read post</a></p>
 							
 							[quote]${content}[/quote]
 						`);

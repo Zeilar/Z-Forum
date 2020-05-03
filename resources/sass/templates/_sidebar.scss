@@ -131,23 +131,26 @@
 		}
 
         &.online-moderators {
-			.separator {
-				margin-right: 0.25rem;
-			}
-
 			.sidebar-item-content div {
-				margin-bottom: 1rem;
+				margin-bottom: 1.5rem;
 
                 h5 {
+                    margin-bottom: 0.5rem;
+                }
+
+                a {
                     background: rgba(0, 0, 0, 0.5);
-                    margin-bottom: 0.25rem;
                     border-radius: 0.25rem;
-                    width: fit-content;
+                    margin-left: 0.25rem;
                     padding: 0.5rem;
+
+                    &:nth-child(2) {
+                        margin-left: auto;
+                    }
                 }
 
 				&:last-child {
-					margin-bottom: 0;
+					margin-bottom: 0.5rem;
 				}
 			}
 		}
