@@ -138,6 +138,8 @@ class ThreadsTableSeeder extends Seeder
 				'user_id' 	   => $thread->user->id,
 				'task'	  	   => __('created'),
 				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
+                'created_at'   => $thread->created_at,
+                'updated_at'   => $thread->updated_at,
 			]);
 		});
     }

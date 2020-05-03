@@ -173,6 +173,8 @@ class PostsTableSeeder extends Seeder
 				'user_id' 	   => $post->user->id,
 				'task'	  	   => __('created'),
 				'performed_on' => json_encode(['table' => 'posts', 'id' => $post->id]),
+                'created_at'   => $post->created_at,
+                'updated_at'   => $post->updated_at,
 			]);
 
 			// This will SEVERELY affect seeding performance
