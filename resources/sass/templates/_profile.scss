@@ -39,7 +39,7 @@
 			}
 
 			.profile-username, .profile-role, .profile-rank {
-				@include phone {
+				@include desktop-down {
 					font-size: 1rem;
 				}
 			}
@@ -90,13 +90,13 @@
 						margin-bottom: 0.5rem;
 						color: $silver;
 
-						@include phone {
+						@include desktop-down {
 							font-size: 1rem;
 						}
 					}
 
 					.profile-meta-lower {
-						@include phone {
+						@include desktop-down {
 							font-size: 1rem;
 						}
 					}
@@ -219,9 +219,6 @@
 			}
 
 			.activity-link {
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				overflow: hidden;
 				flex: 1;
 			}
 
