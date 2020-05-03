@@ -103,7 +103,12 @@
 				</ul>
 			</div>
             
-            <button class="btn toggle-sidebar btn-success-full" type="button">
+            @isset($_COOKIE['sidebarOpen'])
+                @php $class = 'btn-success' @endphp
+            @else
+                @php $class = 'btn-default' @endphp
+            @endif
+            <button class="btn toggle-sidebar {{$class}}" type="button">
                 {{ __('Sidebar') }}
             </button>
 

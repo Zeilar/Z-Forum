@@ -31,7 +31,7 @@ html {
 				color: white;
 
 				&:not([disabled]) {
-					&:focus, &:hover, &:active {
+					&:hover, &:active {
 						border-color: $green;
 						background: $green;
 						color: white;
@@ -45,7 +45,7 @@ html {
 				color: white;
 
 				&:not([disabled]) {
-					&:focus, &:hover, &:active {
+					&:hover, &:active {
 						border-color: $green;
 						background: $green;
 						color: white;
@@ -82,7 +82,7 @@ html {
 	border-color: $darkgray;
 	background: $darkgray;
 
-	&:focus, &:hover {
+	&:hover {
 		background: $gray;
 	}
 }

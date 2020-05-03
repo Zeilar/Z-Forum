@@ -11406,10 +11406,8 @@ html body #footer .btn-success {
   color: white;
 }
 
-html body #app .btn-success:not([disabled]):focus,
 html body #app .btn-success:not([disabled]):hover,
 html body #app .btn-success:not([disabled]):active,
-html body #footer .btn-success:not([disabled]):focus,
 html body #footer .btn-success:not([disabled]):hover,
 html body #footer .btn-success:not([disabled]):active {
   border-color: #00b365;
@@ -11424,10 +11422,8 @@ html body #footer .btn-success-full {
   color: white;
 }
 
-html body #app .btn-success-full:not([disabled]):focus,
 html body #app .btn-success-full:not([disabled]):hover,
 html body #app .btn-success-full:not([disabled]):active,
-html body #footer .btn-success-full:not([disabled]):focus,
 html body #footer .btn-success-full:not([disabled]):hover,
 html body #footer .btn-success-full:not([disabled]):active {
   border-color: #00b365;
@@ -11462,7 +11458,6 @@ html body #footer .btn-success-full:not([disabled]):active {
   background: #2c2c3580;
 }
 
-.btn-default:focus,
 .btn-default:hover {
   background: #2b2b34e6;
 }

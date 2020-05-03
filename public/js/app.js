@@ -37239,6 +37239,8 @@ $('.mobile-search-remove').click(function () {
 }); // Toggle sidebar
 
 $('.toggle-sidebar').click(function () {
+  $(this).toggleClass('btn-default btn-success');
+
   if ($('#sidebar').hasClass('hide')) {
     $('#sidebar').removeClass('hide').addClass('open');
     cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].setCookie('sidebarOpen', true, false);
