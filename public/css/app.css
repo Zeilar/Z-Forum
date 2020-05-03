@@ -14363,17 +14363,17 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .navbar .toggle-sidebar {
-  position: absolute !important;
   width: -webkit-fit-content !important;
   width: -moz-fit-content !important;
   width: fit-content !important;
+  position: fixed !important;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   right: 1rem;
-  top: 50%;
+  top: 2.5rem;
 }
 
-@media (max-width: 1919px) {
+@media (max-width: 1199px) {
   .navbar .toggle-sidebar {
     position: relative !important;
     margin-left: 0.5rem;

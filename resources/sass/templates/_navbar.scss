@@ -466,13 +466,13 @@
 	}
 
 	.toggle-sidebar {
-		position: absolute !important;
         width: fit-content !important;
+		position: fixed !important;
 		transform: translateY(-50%);
 		right: 1rem;
-		top: 50%;
+		top: 2.5rem;
 
-        @include big-desktop-down {
+        @include desktop-down {
             position: relative !important;
             margin-left: 0.5rem;
             transform: none;
