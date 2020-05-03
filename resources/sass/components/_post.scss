@@ -186,6 +186,7 @@
 
 	.post-body {
 		background: $gray;
+        overflow: hidden;
 		color: white;
 		padding: 1rem;
 
@@ -210,6 +211,7 @@
 		}
 
 		* {
+            overflow: hidden;
 			color: white;
 		}
 	}
