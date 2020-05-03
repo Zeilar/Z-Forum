@@ -90,9 +90,6 @@
 									<i class="fas fa-sign-in-alt"></i>
 								</a>
 								<p>
-									@isset($post->user->username)
-										<span>{{ __('By') }}</span>
-									@endisset
 									<a class="posted-by {{role_coloring($post->user->role)}}" href="{{route('user_show', [$post->user->id])}}">
 										{{ $post->user->username }}
 									</a>
