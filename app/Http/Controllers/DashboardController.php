@@ -73,19 +73,24 @@ class DashboardController extends Controller
 		}
 
 		request()->validate([
-			'title'   	=> 'required|string|min:3|max:50',
+			'title'   	=> 'required|string|min:3|max:100',
 			'recipient' => 'required|exists:users,username',
 			'content' 	=> 'required|string|min:3|max:500',
 		]);
 
 		$recipient = User::where('username', request('recipient'))->first();
 
-		UserMessage::create([
+		$message = UserMessage::create([
 			'title' 	   => request('title'),
 			'content' 	   => request('content'),
 			'recipient_id' => $recipient->id,
 			'author_id'    => auth()->user()->id,
 		]);
+
+        UserVisitedMessage::create([
+            'user_id' => auth()->user()->id,
+            'user_message_id' => $message->id,
+        ]);
 
 		return redirect(route('dashboard_messages'))->with('success', __('Message was successfully sent'));
 	}
