@@ -54,7 +54,10 @@
 	{{-- Maintenance mode check --}}
 	@if (App\MaintenanceMode::find(1)->enabled)
 		@cannot('update', App\MaintenanceMode::find(1))
-			@include('errors.maintenance')
+			<div id="maintenance">
+                <h1>{{ __('We are in maintenance') }}</h1>
+                <h2>{{ __('Surf back at a later date!') }}</h2>
+            </div>
 			@php return @endphp
 		@endcannot
 	@endif
