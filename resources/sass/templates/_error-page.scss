@@ -10,6 +10,10 @@
 		left: 50%;
 		top: 50%;
 
+        @include desktop-down {
+            width: 75%;
+        }
+
 		h1 {
 			justify-content: center;
 			flex-direction: row;
@@ -21,21 +25,38 @@
 				font-weight: bold;
 				font-size: 10rem;
 				line-height: 1;
+
+                @include desktop-down {
+                    font-size: 5rem;
+                }
 			}
 
 			i {
 				font-size: 8rem;
 				margin: auto 0;
+
+                @include desktop-down {
+                    font-size: 4rem;
+                }
 			}
 		}
 
 		h2 {
 			margin-top: 1rem;
 			font-size: 3rem;
+
+            @include desktop-down {
+                font-size: 1.5rem;
+            }
 		}
 
 		h4 {
 			margin: 1rem 0 2rem 0;
+
+            @include desktop-down {
+                margin: 0.5rem 0;
+                font-size: 1rem;
+            }
 		}
 
 		.btn {
@@ -64,6 +85,10 @@
 			width: 20%;
 			border: 0;
 
+            @include desktop-down {
+                width: fit-content !important;
+            }
+
 			&:hover {
 				background: $darkgreen;
 			}
@@ -75,13 +100,29 @@
 
 			span {
 				margin-right: 0.5rem;
+
+                @include desktop-down {
+                    display: none;
+                }
 			}
 		}
 	}
 
-	iframe {
-		margin: 2rem 0;
-	}
+    .youtube-wrapper {
+        margin: 2rem 0;
+
+        @include desktop-down {
+            margin: 1rem 0;
+        }
+        
+        iframe {
+            min-height: 25rem;
+
+            @include desktop-down {
+                min-height: 5rem;
+            }
+        }
+    }
 }
 
 #four-one-nineteen {

@@ -33,7 +33,9 @@
 				</div>
 			</form>
 
-			<iframe width="800" height="400" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" frameborder="0"></iframe>
+            <div class="youtube-wrapper">
+			    <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" frameborder="0"></iframe>
+            </div>
 		</div>
 	</div>
 @endsection
