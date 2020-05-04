@@ -11,13 +11,6 @@
 		@if ($post->user->role === 'superadmin' || $post->user->role === 'moderator')
 			<div class="post-banner {{role_coloring($post->user->role)}}">
 				<span class="post-banner-role">{{ $post->user->role }}</span>
-				@if ($post->user->role === 'moderator')
-					<i class="fas fa-star"></i>
-				@endif
-				@if ($post->user->role === 'superadmin')
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-				@endif
 			</div>
 		@endif
 	@endempty
