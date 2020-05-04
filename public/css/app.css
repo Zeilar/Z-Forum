@@ -15063,7 +15063,7 @@ a:visited {
   position: relative;
   padding-top: 1rem;
   max-width: 50vw;
-  margin-left: 0;
+  margin: 0 auto;
   -webkit-box-flex: 3;
           flex: 3;
 }
