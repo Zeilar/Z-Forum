@@ -169,22 +169,22 @@
 
 			@slot('content')
 				<div class="statistics-item">
-					<span class="statistics-item-title">{{ __('Users online:') }}</span>
+					<span class="statistics-item-title">{{ __('Users online') }}</span>
 					<span class="statistics-item-content">{{ count(get_online_users()) }}</span>
 				</div>
 
 				<div class="statistics-item">
-					<span class="statistics-item-title">{{ __('Posts:') }}</span>
+					<span class="statistics-item-title">{{ __('Posts') }}</span>
 					<span class="statistics-item-content">{{ App\Post::all()->count() }}</span>
 				</div>
 
 				<div class="statistics-item">
-					<span class="statistics-item-title">{{ __('Threads:') }}</span>
+					<span class="statistics-item-title">{{ __('Threads') }}</span>
 					<span class="statistics-item-content">{{ App\Thread::all()->count() }}</span>
 				</div>
 
 				<div class="statistics-item">
-					<span class="statistics-item-title">{{ __('Members:') }}</span>
+					<span class="statistics-item-title">{{ __('Members') }}</span>
 					<span class="statistics-item-content">{{ App\User::all()->count() }}</span>
 				</div>
 			@endslot
