@@ -213,13 +213,17 @@ class UsersController extends Controller
 		if (User::find($id) || User::where('username', $id)->first()) {
 			$user = User::find($id) ?? User::where('username', $id)->first();
 			$posts = $this->get_user_liked_posts($user->id);
-            $messages = UserMessage::where('author_id', auth()->user()->id)
-                ->where('recipient_id', $user->id)
-                ->orWhere('author_id', $user->id)
-                ->where('recipient_id', auth()->user()->id)
-                ->distinct('id')
-                ->orderByDesc('created_at')
-                ->paginate(settings_get('posts_per_page'));
+            if (logged_in()) {
+                $messages = UserMessage::where('author_id', auth()->user()->id)
+                    ->where('recipient_id', $user->id)
+                    ->orWhere('author_id', $user->id)
+                    ->where('recipient_id', auth()->user()->id)
+                    ->distinct('id')
+                    ->orderByDesc('created_at')
+                    ->paginate(settings_get('posts_per_page'));
+            } else {
+                $messages = [];
+            }
 			
 			return view('user.messages', [
 				'posts_with_likes' => $posts,

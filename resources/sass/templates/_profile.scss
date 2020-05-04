@@ -207,8 +207,12 @@
 			display: flex;
 
 			* {
-				margin: 0 2px;
+				margin-right: 0.25rem;
 			}
+
+            p {
+                flex: 1;
+            }
 
 			:first-child {
 				margin-left: 0;
@@ -223,6 +227,8 @@
 			}
 
 			.activity-date {
+                align-self: center;
+                text-align: right;
 				margin-left: auto;
 			}
 		}

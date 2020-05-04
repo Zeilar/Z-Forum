@@ -23,17 +23,19 @@
 							@elseif ($performed_on->table === 'posts')
 								@php $post = App\Post::find($performed_on->id) @endphp
 								@php $thread = $post->thread @endphp
-								<span>{{ __('Replied in') }}</span>
-								<a class="activity-link" href="{{
-									route('post_show', [
-										$thread->id,
-										$thread->slug,
-										get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
-										$post->id,
-									])
-								}}">
-									{{ $thread->title }}
-								</a>
+                                <p>
+                                    <span>{{ __('Replied in') }}</span>
+                                    <a class="activity-link" href="{{
+                                        route('post_show', [
+                                            $thread->id,
+                                            $thread->slug,
+                                            get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+                                            $post->id,
+                                        ])
+                                    }}">
+                                        {{ $thread->title }}
+                                    </a>
+                                </p>
 							@elseif ($performed_on->table === 'threads')
 								@php $thread = App\Thread::find($performed_on->id) @endphp
 								<span>{{ ucfirst($activity->task) }}</span>

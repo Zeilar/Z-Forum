@@ -13509,7 +13509,12 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .user-profile .profile-lower .profile-activity-item * {
-  margin: 0 2px;
+  margin-right: 0.25rem;
+}
+
+.user-profile .profile-lower .profile-activity-item p {
+  -webkit-box-flex: 1;
+          flex: 1;
 }
 
 .user-profile .profile-lower .profile-activity-item :first-child {
@@ -13526,6 +13531,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .user-profile .profile-lower .profile-activity-item .activity-date {
+  align-self: center;
+  text-align: right;
   margin-left: auto;
 }
 
@@ -15030,10 +15037,11 @@ a:visited {
 }
 
 #content #main {
+  margin-right: auto;
   position: relative;
   padding-top: 1rem;
   max-width: 50vw;
-  margin: 0 auto;
+  margin-left: 0;
   -webkit-box-flex: 3;
           flex: 3;
 }

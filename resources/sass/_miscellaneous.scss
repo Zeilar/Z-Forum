@@ -101,10 +101,11 @@ a {
 	}
 
 	#main {
+        margin-right: auto;
 		position: relative;
 		padding-top: 1rem;
 		max-width: 50vw;
-		margin: 0 auto;
+		margin-left: 0;
 		flex: 3;
 
 		@include desktop-down {
