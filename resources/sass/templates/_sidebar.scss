@@ -84,9 +84,15 @@
 
         &.whats-new {
             .whats-new-thread {
+                transition: transform 0.1s ease-in-out;
                 margin-bottom: 0.5rem;
 				white-space: nowrap;
+                transform: scale(1);
 				display: flex;
+
+                &:hover {
+                    transform: scale(1.01);
+                }
 
                 &:last-child {
 					margin-bottom: 0;
@@ -110,9 +116,15 @@
 			}
 
 			.latest-posts-item {
+                transition: transform 0.1s ease-in-out;
 				margin-bottom: 0.5rem;
 				white-space: nowrap;
+                transform: scale(1);
 				display: flex;
+
+                &:hover {
+                    transform: scale(1.01);
+                }
 
 				&:last-child {
 					margin-bottom: 0;
