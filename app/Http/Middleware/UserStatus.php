@@ -25,7 +25,7 @@ class UserStatus
 			
             // Determine what's new before updating last_seen
             $whats_new = Post::orderByDesc('created_at')
-                ->where('user_id', auth()->user()->id)
+                ->where('user_id', '!=', auth()->user()->id)
                 ->where('created_at', '>=', auth()->user()->last_seen)
                 ->limit(5)
                 ->get();
