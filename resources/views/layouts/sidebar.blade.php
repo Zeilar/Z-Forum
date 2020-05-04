@@ -40,7 +40,7 @@
                             @php $thread = $post->thread @endphp
                             <div class="whats-new-thread">
                                 <i class="fas fa-chevron-right"></i>
-                                <a class="whats-new-link" href="{{
+                                <a class="whats-new-link @if($post->user->role === 'superadmin') is_superadmin @endif" href="{{
                                     route('post_show', [
                                         $thread->id,
                                         $thread->slug,
@@ -87,7 +87,9 @@
                     @foreach ($threads as $thread)
                         <div class="latest-posts-item">
                             <i class="fas fa-chevron-right"></i>
-                            <a class="thread" href="{{route('thread_show', [$thread->id, $thread->slug])}}">
+                            <a class="thread @if($thread->posts()->latest()->first()->user->role === 'superadmin') is_superadmin @endif"
+                                href="{{route('thread_show', [$thread->id, $thread->slug])}}
+                            ">
                                 {{ $thread->title }}
                             </a>
                         </div>
