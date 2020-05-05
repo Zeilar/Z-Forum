@@ -113,7 +113,6 @@
         &.chat {
             .chat-box {
                 @include scrollbarGreen();
-
                 overflow: auto;
                 height: 20rem;
 
@@ -122,11 +121,16 @@
                 }
 
                 .chat-message {
-                    padding: 0.25rem 0.5rem 0 0.25rem;
                     word-break: break-all;
+                    padding: 0.25rem;
+                    background: rgba(0, 0, 0, 0.15);
+
+                    &:not(:first-child) {
+                        border-top: 0;
+                    }
 
                     &:nth-child(even) {
-                        background: rgba(0, 0, 0, 0.25);
+                        background: rgba(0, 0, 0, 0.35);
                     }
 
                     .message-timestamp {
