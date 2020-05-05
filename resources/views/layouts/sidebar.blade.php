@@ -129,7 +129,7 @@
                                 console.log(error);
                             }
                         });
-                    }, 200);
+                    }, 500);
                 </script>
 
                 @auth
