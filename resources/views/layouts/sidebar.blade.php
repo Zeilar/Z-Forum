@@ -101,7 +101,6 @@
                     <script>
                         $('#chat form').submit(function(e) {
                             e.preventDefault();
-
                             $.ajax({
                                 url: '{{ route("chat_send") }}',
                                 method: 'POST',
@@ -111,7 +110,6 @@
                                     content: $('#chat-content').val(),
                                 },
                                 success: function(response) {
-
                                     if (response.error) {
                                         if (!$('.chat-error').length && response.message != null) {
                                             $('.chat-input').prepend(`<p class="chat-error" style="color: red;">${response.message}</p>`);
