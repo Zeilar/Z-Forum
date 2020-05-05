@@ -37207,7 +37207,20 @@ Mouse enter
 -----------------------------------------------
 */
 
-_functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Scroll to bottom of chat on every page load
+_functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Chat message emoticons parser
+
+$('.message-content span').each(function () {
+  var message = $(this).html();
+  var emotes = message.match('(?<=:)[a-zA-Z]+(?=:)'); // fetch(window.location.origin + '/storage/emoticons/test.jpg')
+  //     .then(response => {
+  //         if (response.status !== 404) {
+  //             console.log('exists');
+  //         }
+  //     })
+  //     .catch(error => {
+  //         console.log(error);
+  //     });
+}); // Scroll to bottom of chat on every page load
 
 $('.chat-box').scrollTop(9999); // Mobile navbar toggler animation
 

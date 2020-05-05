@@ -33,7 +33,7 @@ class ChatMessagesController extends Controller
             ]);
         }
 
-        ChatMessage::create([
+        $message = ChatMessage::create([
             'user_id' => $user->id,
             'content' => request('content'),
         ]);
@@ -41,10 +41,11 @@ class ChatMessagesController extends Controller
         $author = '<a class="' . role_coloring($user->role) . '" href="' . route('user_show', [$user->id]) . '">' . $user->username . '</a>';
 
         return response()->json([
-            'error'   => false,
-            'author'  => $author,
-            'id'      => ChatMessage::orderByDesc('id')->first()->id,
-            'content' => request('content'),
+            'error'     => false,
+            'author'    => $author,
+            'id'        => $message->id,
+            'timestamp' => pretty_date($message->created_at),
+            'content'   => request('content'),
         ]);
     }
 
@@ -55,9 +56,10 @@ class ChatMessagesController extends Controller
             $author = '<a class="' . role_coloring($user->role) . '" href="' . route('user_show', [$user->id]) . '">' . $user->username . '</a>';
 
             return response()->json([
-                'update'  => true,
-                'message' => $message,
-                'author'  => $author,
+                'update'    => true,
+                'message'   => $message,
+                'timestamp' => pretty_date($message->created_at),
+                'author'    => $author,
             ]);
         } else {
             return response()->json([

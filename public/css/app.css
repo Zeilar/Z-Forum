@@ -13854,9 +13854,16 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.chat .chat-box .chat-message {
+  padding: 0.25rem 0.5rem 0 0.25rem;
   word-break: break-all;
-  margin-right: 0.5rem;
-  padding: 0.25rem 0;
+}
+
+#sidebar .sidebar-item.chat .chat-box .chat-message:nth-child(even) {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#sidebar .sidebar-item.chat .chat-box .chat-message .message-timestamp {
+  color: #a5abaf;
 }
 
 #sidebar .sidebar-item.chat .chat-input {

@@ -44,6 +44,22 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
+// Chat message emoticons parser
+$('.message-content span').each(function() {
+    let message = $(this).html();
+    let emotes = message.match('(?<=:)[a-zA-Z]+(?=:)');
+
+    // fetch(window.location.origin + '/storage/emoticons/test.jpg')
+    //     .then(response => {
+    //         if (response.status !== 404) {
+    //             console.log('exists');
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+});
+
 // Scroll to bottom of chat on every page load
 $('.chat-box').scrollTop(9999);
 

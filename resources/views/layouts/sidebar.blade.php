@@ -76,10 +76,11 @@
                         @forelse ($messages as $message)
                             <div class="chat-message" id="chat-message-{{$message->id}}">
                                 <p class="message-content">
+                                    <span class="message-timestamp">{{ pretty_date($message->created_at) }}</span>
                                     <a class="{{role_coloring($message->user->role)}}" href="{{route('user_show', [$message->user->id])}}">
                                         {{ $message->user->username }}
                                     </a>
-                                    <span>{{ $message->content }}</span>
+                                    <p class="content">{{ $message->content }}</p>
                                 </p>
                             </div>
                         @empty
@@ -114,14 +115,15 @@
                                     let message = $(`
                                         <div class="chat-message" id="${response.message.id}">
                                             <p class="message-content">
-                                                ${response.author}:
-                                                <span></span>
+                                                <span class="message-timestamp">${response.timestamp}</span>
+                                                ${response.author}
+                                                <p class="content"></p>
                                             </p>
                                         </div>
                                     `);
 
                                     $('.chat-box').append(message);
-                                    message.find('span').text(`${response.message.content}`);
+                                    message.find('.content').text(`${response.message.content}`);
                                     $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight); 
                                 }                            
                             },
@@ -161,14 +163,15 @@
                                         let message = $(`
                                             <div class="chat-message" id="chat-message-${response.id}">
                                                 <p class="message-content">
-                                                    ${response.author}:
-                                                    <span></span>
+                                                    <span class="message-timestamp">${response.timestamp}</span>
+                                                    ${response.author}
+                                                    <p class="content"></p>
                                                 </p>
                                             </div>
                                         `);
 
                                         $('.chat-box').append(message);
-                                        message.find('span').text(`${response.content}`);
+                                        message.find('.content').text(`${response.content}`);
                                         $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
                                         $('#chat-content').removeClass('error');
                                         $('#chat-content').val('').focus();
