@@ -87,12 +87,14 @@
                         @endforelse
                     </div>
 
-                    <div class="chat-input">
-                        <form>
-                            <input type="text" id="chat-content" autocomplete="off">
-                            <button type="submit">{{ __('Send') }}</button>
-                        </form>
-                    </div>
+                    @auth  
+                        <div class="chat-input">
+                            <form>
+                                <input type="text" id="chat-content" autocomplete="off">
+                                <button type="submit">{{ __('Send') }}</button>
+                            </form>
+                        </div>
+                    @endauth
                 </div>
 
                 @auth
@@ -127,8 +129,8 @@
                                         let message = $(`
                                             <div class="chat-message">
                                                 <p class="message-content">
-                                                ${response.author}:
-                                                <span></span>
+                                                    ${response.author}:
+                                                    <span></span>
                                                 </p>
                                             </div>
                                         `);
