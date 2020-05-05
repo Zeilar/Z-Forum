@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Socialite;
 use Validator;
 use App\User;
+use \Cache;
 use Auth;
 
 class AuthController extends Controller
@@ -104,6 +105,7 @@ class AuthController extends Controller
 	// Log out
 	public function logout()
 	{
+        Cache::forget('user-online-' . auth()->user()->id);
 		Auth::logout();
 		return redirect(route('index'));
 	}
