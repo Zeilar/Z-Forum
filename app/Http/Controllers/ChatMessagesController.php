@@ -10,7 +10,9 @@ class ChatMessagesController extends Controller
 {
     public function send() {
         if (!logged_in()) {
-            return msg_error('login');
+            return response()->json([
+                'error' => true,
+            ]);
         }
 
         $user = auth()->user();
