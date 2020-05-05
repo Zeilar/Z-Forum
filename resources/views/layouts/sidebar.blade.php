@@ -79,7 +79,7 @@
                                     <a class="{{role_coloring($message->user->role)}}" href="{{route('user_show', [$message->user->id])}}">
                                         {{ $message->user->username }}
                                     </a>
-                                    {{ $message->content }}
+                                    <span>{{ $message->content }}</span>
                                 </p>
                             </div>
                         @empty
@@ -124,11 +124,17 @@
                                         if ($('.no-messages').length) $('.no-messages').remove();
                                         if ($('.chat-error').length) $('.chat-error').remove();
 
-                                        $('.chat-box').append(`
+                                        let message = $(`
                                             <div class="chat-message">
-                                                <p class="message-content">${response.author}: ${response.content}</p>
+                                                <p class="message-content">
+                                                ${response.author}:
+                                                <span></span>
+                                                </p>
                                             </div>
                                         `);
+
+                                        $('.chat-box').append(message);
+                                        message.find('span').text(`${response.content}`);
                                         $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
                                         $('#chat-content').val('').focus();
                                     }
