@@ -111,7 +111,6 @@
                                     content: $('#chat-content').val(),
                                 },
                                 success: function(response) {
-                                    $('#chat-content').removeClass('error');
 
                                     if (response.error) {
                                         if (!$('.chat-error').length && response.message != null) {
@@ -138,6 +137,7 @@
                                         $('.chat-box').append(message);
                                         message.find('span').text(`${response.content}`);
                                         $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
+                                        $('#chat-content').removeClass('error');
                                         $('#chat-content').val('').focus();
                                     }
                                 },
