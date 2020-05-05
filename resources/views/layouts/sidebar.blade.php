@@ -90,6 +90,7 @@
                     @auth  
                         <div class="chat-input">
                             <form>
+                                @csrf
                                 <input type="text" id="chat-content" autocomplete="off">
                                 <button type="submit">{{ __('Send') }}</button>
                             </form>
@@ -128,7 +129,7 @@
                                 console.log(error);
                             }
                         });
-                    }, 100);
+                    }, 200);
                 </script>
 
                 @auth
