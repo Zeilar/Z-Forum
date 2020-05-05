@@ -110,6 +110,58 @@
             }
         }
 
+        &.chat {
+            .chat-box {
+                @include scrollbarGreen();
+
+                overflow: auto;
+                height: 20rem;
+
+                @include desktop-down {
+                    height: 10rem;
+                }
+
+                .chat-message {
+                    word-break: break-all;
+                    margin-right: 0.5rem;
+                    padding: 0.25rem 0;
+                }
+            }
+
+            .chat-input {
+                border-top: 2px solid $green;
+                padding-top: 0.5rem;
+                margin-top: 0.5rem;
+
+                form {
+                    display: flex;
+
+                    #chat-content {
+                        border: 1px solid $gray;
+                        background: none;
+                        color: white;
+                        width: 100%;
+
+                        &:focus {
+                            border-color: $green;
+                            box-shadow: none;
+                        }
+
+                        &.error {
+                            border-color: red;
+                        }
+                    }
+
+                    [type=submit] {
+                        background: $gray;
+                        color: white;
+                        outline: 0;
+                        border: 0;
+                    }
+                }
+            }
+        }
+
 		&.latest-posts {
 			@include desktop-down {
 				width: 100%;
@@ -150,7 +202,7 @@
                     margin-bottom: 0.5rem;
                 }
 
-                a {
+                a:not(.contact-admin) {
                     background: rgba(0, 0, 0, 0.5);
                     border-radius: 0.25rem;
                     margin-left: 0.25rem;

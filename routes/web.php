@@ -63,6 +63,9 @@ Route::get('/dashboard', 'DashboardController@account')->name('dashboard_account
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 Route::post('/post/like', 'PostsController@like')->name('post_like');
 
+// Chat messages
+Route::post('/chat/send', 'ChatMessagesController@send')->name('chat_send');
+
 // Password reset
 Route::post('/password-reset-request', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('/password-reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');

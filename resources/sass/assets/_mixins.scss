@@ -33,3 +33,17 @@
 @mixin landscape {
   	@media (orientation: landscape) { @content; }
 }
+
+@mixin scrollbarGreen() {
+    &::-webkit-scrollbar {
+		width: 0.75rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: black;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $green;
+	}
+}

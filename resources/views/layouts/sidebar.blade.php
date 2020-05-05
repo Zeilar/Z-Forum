@@ -62,6 +62,86 @@
 				@endslot
 			@endcomponent
 		@endauth
+        
+        @component('components.sidebar-item', ['class' => 'chat'])
+            @php $messages = App\ChatMessage::orderByDesc('created_at')->limit(30)->get()->reverse() @endphp
+
+            @slot('title')
+                {{ __('Chat') }}
+            @endslot
+
+            @slot('content')
+                <div id="chat">
+                    <div class="chat-box">
+                        @forelse ($messages as $message)
+                            <div class="chat-message">
+                                <p class="message-content">
+                                    <a class="{{role_coloring($message->user->role)}}" href="{{route('user_show', [$message->user->id])}}">
+                                        {{ $message->user->username }}
+                                    </a>
+                                    {{ $message->content }}
+                                </p>
+                            </div>
+                        @empty
+                            <p class="no-messages">{{ __('No messages were found.') }}</p>
+                        @endforelse
+                    </div>
+
+                    <div class="chat-input">
+                        <form>
+                            <input type="text" id="chat-content" autocomplete="off">
+                            <button type="submit">{{ __('Send') }}</button>
+                        </form>
+                    </div>
+                </div>
+
+                @auth
+                    <script>
+                        $('#chat form').submit(function(e) {
+                            e.preventDefault();
+
+                            $.ajax({
+                                url: '{{ route("chat_send") }}',
+                                method: 'POST',
+                                data: {
+                                    _token: '{{ Session::token() }}',
+                                    author_id: '{{ auth()->user()->id }}',
+                                    content: $('#chat-content').val(),
+                                },
+                                success: function(response) {
+                                    $('#chat-content').removeClass('error');
+
+                                    if (response.error) {
+                                        if (!$('.chat-error').length && response.message != null) {
+                                            $('.chat-input').prepend(`<p class="chat-error" style="color: red;">${response.message}</p>`);
+                                            setTimeout(() => {
+                                                $('#chat-content').removeClass('error');
+                                                $('.chat-error').remove();
+                                            }, 30000);
+                                            $('#chat-content').addClass('error');
+                                        }
+                                    } else {
+                                        if ($('.no-messages').length) $('.no-messages').remove();
+                                        if ($('.chat-error').length) $('.chat-error').remove();
+
+                                        $('.chat-box').append(`
+                                            <div class="chat-message">
+                                                <p class="message-content">${response.author}: ${response.content}</p>
+                                            </div>
+                                        `);
+                                        $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
+                                        $('#chat-content').val('').focus();
+                                    }
+                                },
+                                error: function(error) {
+                                    console.log(error);
+                                }
+                            });
+                        });
+                    </script>
+                @endauth
+            @endslot
+        @endcomponent
 
 		@component('components.sidebar-item', ['class' => 'latest-posts'])
 			@slot('title')
@@ -75,7 +155,7 @@
 				{{-- Filter out duplicate threads --}}
 				@php $threads = [] @endphp
 				@foreach ($latest_posts as $post)
-					@if (count($threads) >= 10)
+					@if (count($threads) >= 5)
 						@break
 					@endif
 					@if (!in_array($post->thread, $threads))
@@ -155,7 +235,7 @@
 					<div class="sidebar-offline">
 						<p>{{ __('No moderator is online 👻') }}</p>
 						<span><i class="far fa-envelope"></i></span>
-						<a href="mailto:admin@zforum.nu" target="_blank">admin@zforum.nu</a>
+						<a class="contact-admin" href="mailto:admin@zforum.nu" target="_blank">admin@zforum.nu</a>
 					</div>
 				@endif
 			@endslot

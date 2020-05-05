@@ -13835,6 +13835,69 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin: auto 0;
 }
 
+#sidebar .sidebar-item.chat .chat-box {
+  overflow: auto;
+  height: 20rem;
+}
+
+#sidebar .sidebar-item.chat .chat-box::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+#sidebar .sidebar-item.chat .chat-box::-webkit-scrollbar-track {
+  background: black;
+}
+
+#sidebar .sidebar-item.chat .chat-box::-webkit-scrollbar-thumb {
+  background: #00b365;
+}
+
+@media (max-width: 1199px) {
+  #sidebar .sidebar-item.chat .chat-box {
+    height: 10rem;
+  }
+}
+
+#sidebar .sidebar-item.chat .chat-box .chat-message {
+  word-break: break-all;
+  margin-right: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+#sidebar .sidebar-item.chat .chat-input {
+  border-top: 2px solid #00b365;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#sidebar .sidebar-item.chat .chat-input form {
+  display: -webkit-box;
+  display: flex;
+}
+
+#sidebar .sidebar-item.chat .chat-input form #chat-content {
+  border: 1px solid #2b2b34e6;
+  background: none;
+  color: white;
+  width: 100%;
+}
+
+#sidebar .sidebar-item.chat .chat-input form #chat-content:focus {
+  border-color: #00b365;
+  box-shadow: none;
+}
+
+#sidebar .sidebar-item.chat .chat-input form #chat-content.error {
+  border-color: red;
+}
+
+#sidebar .sidebar-item.chat .chat-input form [type=submit] {
+  background: #2b2b34e6;
+  color: white;
+  outline: 0;
+  border: 0;
+}
+
 @media (max-width: 1199px) {
   #sidebar .sidebar-item.latest-posts {
     width: 100%;
@@ -13881,14 +13944,14 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-bottom: 0.5rem;
 }
 
-#sidebar .sidebar-item.online-moderators .sidebar-item-content div a {
+#sidebar .sidebar-item.online-moderators .sidebar-item-content div a:not(.contact-admin) {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0.25rem;
   margin-left: 0.25rem;
   padding: 0.5rem;
 }
 
-#sidebar .sidebar-item.online-moderators .sidebar-item-content div a:nth-child(2) {
+#sidebar .sidebar-item.online-moderators .sidebar-item-content div a:not(.contact-admin):nth-child(2) {
   margin-left: auto;
 }
 
