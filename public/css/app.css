@@ -13892,6 +13892,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.chat .chat-input form [type=submit] {
+  padding: 0.25rem 0.75rem;
   background: #2b2b34e6;
   color: white;
   outline: 0;

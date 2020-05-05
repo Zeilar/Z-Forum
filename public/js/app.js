@@ -37209,7 +37209,7 @@ Mouse enter
 
 _functions__WEBPACK_IMPORTED_MODULE_1__["default"].fileUploadAnimation(); // Scroll to bottom of chat on every page load
 
-$('.chat-box').scrollTop($('.chat-box')[0].scrollHeight); // Mobile navbar toggler animation
+$('.chat-box').scrollTop(9999); // Mobile navbar toggler animation
 
 $('.navbar-toggler').click(function () {
   $('.toggle-animator, .navbar-mobile').toggleClass('open');

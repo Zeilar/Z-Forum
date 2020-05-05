@@ -45,7 +45,7 @@ Mouse enter
 Functions.fileUploadAnimation();
 
 // Scroll to bottom of chat on every page load
-$('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
+$('.chat-box').scrollTop(9999);
 
 // Mobile navbar toggler animation
 $('.navbar-toggler').click(function () {
