@@ -64,7 +64,7 @@
 		@endauth
         
         @component('components.sidebar-item', ['class' => 'chat'])
-            @php $messages = App\ChatMessage::orderByDesc('created_at')->limit(30)->get()->reverse() @endphp
+            @php $messages = App\ChatMessage::orderByDesc('id')->limit(30)->get()->reverse() @endphp
 
             @slot('title')
                 {{ __('Chat') }}
@@ -74,7 +74,7 @@
                 <div id="chat">
                     <div class="chat-box">
                         @forelse ($messages as $message)
-                            <div class="chat-message">
+                            <div class="chat-message" id="chat-message-{{$message->id}}">
                                 <p class="message-content">
                                     <a class="{{role_coloring($message->user->role)}}" href="{{route('user_show', [$message->user->id])}}">
                                         {{ $message->user->username }}
@@ -96,6 +96,40 @@
                         </div>
                     @endauth
                 </div>
+
+                <script>
+                    setInterval(() => {
+                        let latestMsg = $('.chat-message:last-child').attr('id');
+                        latestMsg = latestMsg.replace('chat-message-', '');
+                        $.ajax({
+                            url: '{{ route("chat_update") }}',
+                            method: 'POST',
+                            data: {
+                                _token: '{{ Session::token() }}',
+                                latest_msg: latestMsg,
+                            },
+                            success: function(response) {
+                                if (response.update) {
+                                    let message = $(`
+                                        <div class="chat-message" id="${response.message.id}">
+                                            <p class="message-content">
+                                                ${response.author}:
+                                                <span></span>
+                                            </p>
+                                        </div>
+                                    `);
+
+                                    $('.chat-box').append(message);
+                                    message.find('span').text(`${response.message.content}`);
+                                    $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight); 
+                                }                            
+                            },
+                            error: function(error) {
+                                console.log(error);
+                            }
+                        });
+                    }, 100);
+                </script>
 
                 @auth
                     <script>
@@ -124,7 +158,7 @@
                                         if ($('.chat-error').length) $('.chat-error').remove();
 
                                         let message = $(`
-                                            <div class="chat-message">
+                                            <div class="chat-message" id="chat-message-${response.id}">
                                                 <p class="message-content">
                                                     ${response.author}:
                                                     <span></span>

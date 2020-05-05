@@ -64,6 +64,7 @@ Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mar
 Route::post('/post/like', 'PostsController@like')->name('post_like');
 
 // Chat messages
+Route::post('/chat/update', 'ChatMessagesController@update')->name('chat_update');
 Route::post('/chat/send', 'ChatMessagesController@send')->name('chat_send');
 
 // Password reset

@@ -41,7 +41,26 @@ class ChatMessagesController extends Controller
         return response()->json([
             'error'   => false,
             'author'  => $author,
+            'id'      => ChatMessage::orderByDesc('id')->first()->id,
             'content' => request('content'),
         ]);
+    }
+
+    public function update() {        
+        if (ChatMessage::orderByDesc('id')->first()->id !== (int)request('latest_msg')) {
+            $message = ChatMessage::orderByDesc('id')->first();
+            $user = $message->user;
+            $author = '<a class="' . role_coloring($user->role) . '" href="' . route('user_show', [$user->id]) . '">' . $user->username . '</a>';
+
+            return response()->json([
+                'update'  => true,
+                'message' => $message,
+                'author'  => $author,
+            ]);
+        } else {
+            return response()->json([
+                'update' => false,
+            ]);
+        }
     }
 }
