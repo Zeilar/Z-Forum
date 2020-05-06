@@ -37,6 +37,7 @@
                     color: white;
 
 					@include phone {
+                        font-size: 1.25rem;
 						margin-left: 0;
 					}
 				}

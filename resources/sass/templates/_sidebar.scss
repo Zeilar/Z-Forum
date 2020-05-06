@@ -184,6 +184,7 @@
 
                     [type=submit] {
                         padding: 0.25rem 0.75rem;
+                        user-select: none;
                         background: $gray;
                         color: white;
                         outline: 0;
