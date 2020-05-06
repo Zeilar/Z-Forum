@@ -265,6 +265,7 @@
 							<div class="thread-save-toolbar">
 								<button class="btn btn-success-full spin thread-save">
 									<span>Save</span>
+                                    <i class="fas ml-2 color-white fa-check"></i>
 								</button>
 								<button class="btn btn-default thread-cancel">
 									<span>Cancel</span>

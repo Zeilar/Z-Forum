@@ -57,6 +57,7 @@
 						<div class="post-toolbar">
 							<button class="btn btn-success-full spin post-save">
 								<span>Save</span>
+                                <i class="fas ml-2 color-white fa-check"></i>
 							</button>
 							<button class="btn btn-default post-cancel">
 								<span>Cancel</span>
