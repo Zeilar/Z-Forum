@@ -133,6 +133,11 @@ $('#register_password_repeat').on('change', function() {
 	}
 });
 
+// Chat send button styler
+$('#chat-content').on('input change', function() {
+    $(this).val() !== '' ? $(this).siblings('[type=submit]').addClass('active') : $(this).siblings('[type=submit]').removeClass('active');
+});
+
 // Turn disabled off on modal submit button if all inputs are filled, otherwise turn it on
 $('.modal-auth input').on('input', function() {
 	let modal = $(this).closest('form');

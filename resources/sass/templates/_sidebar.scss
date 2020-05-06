@@ -183,12 +183,25 @@
                     }
 
                     [type=submit] {
+                        border: 1px solid $darkgray;
                         padding: 0.25rem 0.75rem;
                         user-select: none;
                         background: $gray;
+                        border-left: 0;
                         color: white;
                         outline: 0;
-                        border: 0;
+
+                        &.active {
+                            border-color: $green;
+                        }
+
+                        &:active {
+                            border-color: $darkgray;
+                        }
+
+                        &.error {
+                            border-color: red;
+                        }
                     }
                 }
             }

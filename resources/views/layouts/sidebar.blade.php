@@ -172,6 +172,8 @@
                 @auth
                     <script>                        
                         $('#chat form').submit(function(e) {
+                            $(this).find('[type=submit]').removeClass('active')
+
                             e.preventDefault();
                             $.ajax({
                                 url: '{{ route("chat_send") }}',
@@ -186,10 +188,10 @@
                                         if (!$('.chat-error').length && response.message != null) {
                                             $('.chat-input').prepend(`<p class="chat-error" style="color: red;">${response.message}</p>`);
                                             setTimeout(() => {
-                                                $('#chat-content').removeClass('error');
+                                                $('#chat-content, .chat-input [type=submit]').removeClass('error');
                                                 $('.chat-error').remove();
                                             }, 30000);
-                                            $('#chat-content').addClass('error');
+                                            $('#chat-content, .chat-input [type=submit]').addClass('error');
                                         }
                                     } else {
                                         if ($('.no-messages').length) $('.no-messages').remove();
@@ -251,8 +253,7 @@
                         <div class="latest-posts-item">
                             <i class="fas fa-chevron-right"></i>
                             <a class="thread @if($thread->posts()->latest()->first()->user->role === 'superadmin') is_superadmin @endif"
-                                href="{{route('thread_show', [$thread->id, $thread->slug])}}
-                            " title="{{ $thread->title }}">
+                                href="{{route('thread_show', [$thread->id, $thread->slug])}}" title="{{ $thread->title }}">
                                 {{ $thread->title }}
                             </a>
                         </div>
