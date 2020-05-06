@@ -67,4 +67,25 @@ class ChatMessagesController extends Controller
             ]);
         }
     }
+
+    public function remove() {
+        if (!logged_in()) {
+            return response()->json([
+                'openModal' => true,
+            ]);
+        }
+
+        $message = ChatMessage::find(request('msgId'));
+        
+        if ($message->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
+            return;
+        }
+
+        $messageId = $message->id;
+        $message->delete();
+
+        return response()->json([
+            'removedMsg' => $messageId,
+        ]);
+    }
 }

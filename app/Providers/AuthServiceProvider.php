@@ -15,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
 		'App\MaintenanceMode' => 'App\Policies\MaintenanceModePolicy',
 		'App\Subcategory' => 'App\Policies\SubcategoriesPolicy',
+        'App\ChatMessage' => 'App\Policies\ChatMessagesPolicy',
 		'App\Category' => 'App\Policies\CategoriesPolicy',
 		'App\Thread' => 'App\Policies\ThreadsPolicy',
         'App\Post' => 'App\Policies\PostsPolicy',

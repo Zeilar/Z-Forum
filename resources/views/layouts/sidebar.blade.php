@@ -51,7 +51,7 @@
                                         ),
                                         $post->id,
                                     ])
-                                }}">
+                                }}" title="{{ $post->title }}">
                                     {{ $thread->title }}
                                 </a>
                             </div>
@@ -75,13 +75,18 @@
                     <div class="chat-box">
                         @forelse ($messages as $message)
                             <div class="chat-message" id="chat-message-{{$message->id}}">
-                                <p class="message-content">
-                                    <span class="message-timestamp">{{ pretty_date($message->created_at) }}</span>
+                                <div class="message-content">
                                     <a class="{{role_coloring($message->user->role)}}" href="{{route('user_show', [$message->user->id])}}">
                                         {{ $message->user->username }}
                                     </a>
-                                    <p class="content">{{ $message->content }}</p>
-                                </p>
+                                    <span class="message-timestamp">{{ pretty_date($message->created_at) }}</span>
+                                    @can('delete', $message)
+                                        <button class="chat-message-remove" type="button">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    @endcan
+                                </div>
+                                <p class="content">{{ $message->content }}</p>
                             </div>
                         @empty
                             <p class="no-messages">{{ __('No messages were found.') }}</p>
@@ -100,6 +105,30 @@
                 </div>
 
                 <script>
+                    initChatMessageRemoveHandlers();
+
+                    function initChatMessageRemoveHandlers() {
+                        $('.chat-message-remove').click(function() {
+                            let msgId = $(this).parents('.chat-message').attr('id');
+                            msgId = msgId.replace('chat-message-', '');
+                            $.ajax({
+                                url: '{{ route("chat_remove") }}',
+                                method: 'POST',
+                                data: {
+                                    _token: '{{ Session::token() }}',
+                                    msgId: msgId,
+                                },
+                                success: function(response) {
+                                    if (response.openModal) $('#loginModal').modal('show');
+                                    if (response.removedMsg) $(`#chat-message-${response.removedMsg}`).remove();
+                                },
+                                error: function(error) {
+                                    console.log(error);
+                                }
+                            });
+                        });
+                    }
+
                     setInterval(() => {
                         let latestMsg = $('.chat-message:last-child').attr('id');
                         latestMsg = latestMsg.replace('chat-message-', '');
@@ -114,17 +143,21 @@
                                 if (response.update) {
                                     let message = $(`
                                         <div class="chat-message" id="${response.message.id}">
-                                            <p class="message-content">
-                                                <span class="message-timestamp">${response.timestamp}</span>
+                                            <div class="message-content">
                                                 ${response.author}
-                                                <p class="content"></p>
-                                            </p>
+                                                <span class="message-timestamp">${response.timestamp}</span>
+                                                <button class="chat-message-remove" type="button">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                            <p class="content"></p>
                                         </div>
                                     `);
 
                                     $('.chat-box').append(message);
                                     message.find('.content').text(`${response.message.content}`);
-                                    $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight); 
+                                    $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
+                                    initChatMessageRemoveHandlers();
                                 }                            
                             },
                             error: function(error) {
@@ -135,7 +168,7 @@
                 </script>
 
                 @auth
-                    <script>
+                    <script>                        
                         $('#chat form').submit(function(e) {
                             e.preventDefault();
                             $.ajax({
@@ -161,12 +194,15 @@
                                         if ($('.chat-error').length) $('.chat-error').remove();
 
                                         let message = $(`
-                                            <div class="chat-message" id="chat-message-${response.id}">
-                                                <p class="message-content">
-                                                    <span class="message-timestamp">${response.timestamp}</span>
+                                            <div class="chat-message" id="${response.id}">
+                                                <div class="message-content">
                                                     ${response.author}
-                                                    <p class="content"></p>
-                                                </p>
+                                                    <span class="message-timestamp">${response.timestamp}</span>
+                                                    <button class="chat-message-remove" type="button">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
+                                                <p class="content"></p>
                                             </div>
                                         `);
 
@@ -175,6 +211,7 @@
                                         $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
                                         $('#chat-content').removeClass('error');
                                         $('#chat-content').val('').focus();
+                                        initChatMessageRemoveHandlers();
                                     }
                                 },
                                 error: function(error) {
@@ -213,7 +250,7 @@
                             <i class="fas fa-chevron-right"></i>
                             <a class="thread @if($thread->posts()->latest()->first()->user->role === 'superadmin') is_superadmin @endif"
                                 href="{{route('thread_show', [$thread->id, $thread->slug])}}
-                            ">
+                            " title="{{ $thread->title }}">
                                 {{ $thread->title }}
                             </a>
                         </div>
