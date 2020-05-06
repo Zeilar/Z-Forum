@@ -130,40 +130,42 @@
                     }
 
                     setInterval(() => {
-                        let latestMsg = $('.chat-message:last-child').attr('id');
-                        latestMsg = latestMsg.replace('chat-message-', '');
-                        $.ajax({
-                            url: '{{ route("chat_update") }}',
-                            method: 'POST',
-                            data: {
-                                _token: '{{ Session::token() }}',
-                                latest_msg: latestMsg,
-                            },
-                            success: function(response) {
-                                if (response.update) {
-                                    let message = $(`
-                                        <div class="chat-message" id="${response.message.id}">
-                                            <div class="message-content">
-                                                ${response.author}
-                                                <span class="message-timestamp">${response.timestamp}</span>
-                                                <button class="chat-message-remove" type="button">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
+                        if ($('.chat-message:last-child').length) {
+                            let latestMsg = $('.chat-message:last-child').attr('id');
+                            latestMsg = latestMsg.replace('chat-message-', '');
+                            $.ajax({
+                                url: '{{ route("chat_update") }}',
+                                method: 'POST',
+                                data: {
+                                    _token: '{{ Session::token() }}',
+                                    latest_msg: latestMsg,
+                                },
+                                success: function(response) {
+                                    if (response.update) {
+                                        let message = $(`
+                                            <div class="chat-message" id="${response.message.id}">
+                                                <div class="message-content">
+                                                    ${response.author}
+                                                    <span class="message-timestamp">${response.timestamp}</span>
+                                                    <button class="chat-message-remove" type="button">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
+                                                <p class="content"></p>
                                             </div>
-                                            <p class="content"></p>
-                                        </div>
-                                    `);
+                                        `);
 
-                                    $('.chat-box').append(message);
-                                    message.find('.content').text(`${response.message.content}`);
-                                    $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
-                                    initChatMessageRemoveHandlers();
-                                }                            
-                            },
-                            error: function(error) {
-                                console.log(error);
-                            }
-                        });
+                                        $('.chat-box').append(message);
+                                        message.find('.content').text(`${response.message.content}`);
+                                        $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
+                                        initChatMessageRemoveHandlers();
+                                    }                            
+                                },
+                                error: function(error) {
+                                    console.log(error);
+                                }
+                            });
+                        }
                     }, 500);
                 </script>
 
