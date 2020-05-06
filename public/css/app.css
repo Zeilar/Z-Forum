@@ -14448,6 +14448,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  cursor: pointer;
   width: 100%;
   z-index: 2;
   opacity: 0;
