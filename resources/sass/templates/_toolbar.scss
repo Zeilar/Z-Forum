@@ -1,60 +1,87 @@
-#toolbar, #toolbar .toolbar-item {
-	height: calc(100vh - 12rem); // 4rem for footer and navbar respectively, 4rem for padding bottom and top on content
-	margin-right: 2.5rem;
+#toolbar {
+	height: calc(100vh - 11rem);
 	position: fixed;
 	color: white;
-	width: 17.5rem; // 20rem is the distance from the window edge to the main content area
 	z-index: 999;
-	top: 6rem;
+    width: 15rem;
+	top: 7rem;
 	left: 0;
 }
 
 #toolbar {
 	.toolbar-items {
-		background: $darkgray;
 		width: fit-content;
 
 		.toolbar-row {
-			margin-bottom: 0.5rem;
+            pointer-events: none;
 			position: relative;
 			user-select: none;
-			cursor: pointer;
+            width: 5rem;
 
 			&:last-child {
 				margin-bottom: 0;
 			}
 
 			.toolbar-icon {
+                border-left: 1px solid rgb(15, 15, 15);
+                background: rgb(15, 15, 15);
 				justify-content: center;
-				padding: 0.5rem 1rem;
+                pointer-events: all;
+			    cursor: pointer;
+				padding: 1rem;
 				display: flex;
 
+                &:hover {
+                    i {
+                        color: $green;
+                    }
+                }
+
+                &.active {
+                    border-color: $green;
+
+                    i {
+                        color: $green;
+                    }
+                }
+
 				i {
+                    pointer-events: none;
 					font-size: 1.5rem;
 					color: white;
 				}
 			}
 
 			.toolbar-item {
-				transition: transform 0.25s ease-in-out;
-				transform: translateX(-100%);
+                background: rgb(15, 15, 15);
+                flex-direction: column;
+                pointer-events: all;
+                width: max-content;
+                max-width: 15rem;
+                padding: 0.5rem;
+                display: none;
 
 				&.show {
-					transform: none;
+					display: flex;
 				}
 
 				.toolbar-subitem {
-					padding: 0.5rem 0;
+					margin: 0.5rem 0;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
 
 					.title {
 						margin-bottom: 0.25rem;
 					}
 
 					&.spoof-login {
+                        margin-top: -0.5rem;
+
 						input {
-							background: white;
-							padding: 0 0.25rem;
-							color: black;
+                            background: $darkgray;
+                            color: white;
 							width: 100%;
 							outline: 0;
 							border: 0;

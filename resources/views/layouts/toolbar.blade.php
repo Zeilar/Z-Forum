@@ -43,12 +43,22 @@
 					</div>					
 				@endcan
 
-				@isset($toolbarItems)
-					@foreach ($toolbarItems as $item)
-						{{ $item }}
-					@endforeach
+				@isset($toolbarItem)
+					{{ $toolbarItem }}
 				@endisset
 			</ul>
 		</div>
+
+        <script>
+            $('.toolbar-icon').click(function() {
+                let item = $(this).siblings('.toolbar-item');
+                $('.toolbar-item').not(item).removeClass('show');
+                item.toggleClass('show');
+
+                let icon = $(this);
+                $('.toolbar-icon').not(icon).removeClass('active');
+                icon.toggleClass('active');
+            });
+        </script>
 	@endcan
 @endauth

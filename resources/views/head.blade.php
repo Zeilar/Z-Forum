@@ -82,7 +82,7 @@
 		</div>
 
 		{{-- Admin toolbar --}}
-		{{-- @include('layouts.toolbar') --}}
+		@include('layouts.toolbar')
 
 		{{-- Main wrapper --}}
         <main class="container-fluid" id="content">
@@ -90,9 +90,6 @@
 			<div id="main">
 				{{-- Breadcrumbs --}}
 				@yield('breadcrumbs')
-
-				{{-- CRUD toolbar --}}
-				{{-- @yield('crudToolbar') --}}
 
 				{{-- Thread title --}}
 				@yield('threadTitle')
