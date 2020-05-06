@@ -77,8 +77,10 @@ class ChatMessagesController extends Controller
 
         $message = ChatMessage::find(request('msgId'));
         
-        if ($message->user_id !== auth()->user()->id && !is_role('superadmin', 'moderator')) {
-            return;
+        if ((int)$message->user_id !== auth()->user()->id) {
+            if (!is_role('superadmin', 'moderator')) {
+                return;
+            }
         }
 
         $messageId = $message->id;

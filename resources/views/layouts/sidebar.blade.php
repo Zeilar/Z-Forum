@@ -119,6 +119,7 @@
                                     msgId: msgId,
                                 },
                                 success: function(response) {
+                                    console.log(response);
                                     if (response.openModal) $('#loginModal').modal('show');
                                     if (response.removedMsg) $(`#chat-message-${response.removedMsg}`).remove();
                                 },
