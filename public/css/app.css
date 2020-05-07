@@ -13755,10 +13755,11 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item {
+  border: 1px solid #2c2c3580;
   border-radius: 0.25rem;
-  margin-bottom: 1.5rem;
   background: #2c2c3580;
-  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 #sidebar .sidebar-item:last-child {
@@ -14848,6 +14849,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row {
+  border: 1px solid #2c2c3580;
   background: #2c2c3580;
   border-radius: 2px;
   margin: 0.25rem 0;

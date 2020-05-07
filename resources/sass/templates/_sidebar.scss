@@ -28,10 +28,11 @@
 	}
 
 	.sidebar-item {
+        border: 1px solid $darkgray;
 		border-radius: 0.25rem;
-		margin-bottom: 1.5rem;
 		background: $darkgray;
-		padding: 0.5rem 1rem;
+		margin-bottom: 1rem;
+		padding: 1rem;
 
 		&:last-child {
 			margin-bottom: 0;
