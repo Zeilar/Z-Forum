@@ -31,10 +31,18 @@ html {
 				color: white;
 
 				&:not([disabled]) {
+                    * {
+                        transition: color 0.15s ease-in-out;
+                    }
+
 					&:hover, &:active {
 						border-color: $green;
 						background: $green;
 						color: white;
+
+                        * {
+                            color: white;
+                        }
 					}
 				}
 			}
@@ -45,10 +53,18 @@ html {
 				color: white;
 
 				&:not([disabled]) {
+                    * {
+                        transition: color 0.15s ease-in-out;
+                    }
+
 					&:hover, &:active {
 						border-color: $green;
 						background: $green;
 						color: white;
+
+                        * {
+                            color: white;
+                        }
 					}
 				}
 			}

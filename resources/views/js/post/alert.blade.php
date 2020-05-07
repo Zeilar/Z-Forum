@@ -1,6 +1,10 @@
 <script>
 	// Spawn alert element on top of the site with message
 	function ajax_alert(response) {
+		if ($('.alert').length) {
+			$('.alert').remove();
+		}
+        
 		let alertIcon = '';
 
 		switch (response.type) {
@@ -29,9 +33,6 @@
 			</div>
 		`;
 
-		if ($('.alert').length) {
-			$('.alert').remove();
-		}
 		$('#main').prepend(alertContent);
 
 		// Remove alert after a while regardless

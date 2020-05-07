@@ -1,24 +1,26 @@
 @auth
-	@can('delete', App\User::find(1))
+	@if(auth()->user()->is_role('moderator', 'superadmin'))
 		<div id="toolbar">
 			<ul class="toolbar-items">
-				<li class="toolbar-row">
-					<div class="toolbar-icon">
-						<i class="fas fa-users"></i>
-                        <h4 class="toolbar-category">{{ __('Users') }}</h4>
-					</div>
-					<div class="toolbar-item">
-						<div class="toolbar-subitem spoof-login">
-							<form action="{{route('spoof_login')}}" method="post">
-								@csrf
-								<div>
-									<h5 class="subitem-title">{{ __('Spoof login') }}</h5>
-									<input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
-								</div>
-							</form>
-						</div>
-					</div>
-				</li>
+                @if (auth()->user()->is_role('superadmin'))
+                    <li class="toolbar-row">
+                        <div class="toolbar-icon">
+                            <i class="fas fa-users"></i>
+                            <h4 class="toolbar-category">{{ __('Users') }}</h4>
+                        </div>
+                        <div class="toolbar-item">
+                            <div class="toolbar-subitem spoof-login">
+                                <form action="{{route('spoof_login')}}" method="post">
+                                    @csrf
+                                    <div>
+                                        <h5 class="subitem-title">{{ __('Spoof login') }}</h5>
+                                        <input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                @endif
 
 				@can('update', App\MaintenanceMode::find(1))
 					<li class="toolbar-row">

@@ -11406,12 +11406,25 @@ html body #footer .btn-success {
   color: white;
 }
 
+html body #app .btn-success:not([disabled]) *,
+html body #footer .btn-success:not([disabled]) * {
+  -webkit-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
+}
+
 html body #app .btn-success:not([disabled]):hover,
 html body #app .btn-success:not([disabled]):active,
 html body #footer .btn-success:not([disabled]):hover,
 html body #footer .btn-success:not([disabled]):active {
   border-color: #00b365;
   background: #00b365;
+  color: white;
+}
+
+html body #app .btn-success:not([disabled]):hover *,
+html body #app .btn-success:not([disabled]):active *,
+html body #footer .btn-success:not([disabled]):hover *,
+html body #footer .btn-success:not([disabled]):active * {
   color: white;
 }
 
@@ -11422,12 +11435,25 @@ html body #footer .btn-success-full {
   color: white;
 }
 
+html body #app .btn-success-full:not([disabled]) *,
+html body #footer .btn-success-full:not([disabled]) * {
+  -webkit-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
+}
+
 html body #app .btn-success-full:not([disabled]):hover,
 html body #app .btn-success-full:not([disabled]):active,
 html body #footer .btn-success-full:not([disabled]):hover,
 html body #footer .btn-success-full:not([disabled]):active {
   border-color: #00b365;
   background: #00b365;
+  color: white;
+}
+
+html body #app .btn-success-full:not([disabled]):hover *,
+html body #app .btn-success-full:not([disabled]):active *,
+html body #footer .btn-success-full:not([disabled]):hover *,
+html body #footer .btn-success-full:not([disabled]):active * {
   color: white;
 }
 
@@ -13673,12 +13699,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: #00b365;
 }
 
-#toolbar .toolbar-items .toolbar-row .toolbar-icon .toolbar-category {
-  margin-left: 0.5rem;
-}
-
 #toolbar .toolbar-items .toolbar-row .toolbar-icon i {
   pointer-events: none;
+  margin-right: 0.5rem;
   font-size: 1.5rem;
   color: white;
 }
