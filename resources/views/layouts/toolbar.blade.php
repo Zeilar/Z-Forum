@@ -5,15 +5,16 @@
 				<div class="toolbar-row">
 					<div class="toolbar-icon">
 						<i class="fas fa-users"></i>
+                        <h4 class="toolbar-category">{{ __('Users') }}</h4>
 					</div>
 					<ul class="toolbar-item">
 						<li class="toolbar-subitem spoof-login">
 							<form action="{{route('spoof_login')}}" method="post">
 								@csrf
-								<fieldset>
-									<legend>{{ __('Spoof login') }}</legend>
+								<div>
+									<h5 class="subitem-title">{{ __('Spoof login') }}</h5>
 									<input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
-								</fieldset>
+								</div>
 							</form>
 						</li>
 					</ul>
@@ -23,10 +24,11 @@
 					<div class="toolbar-row">
 						<div class="toolbar-icon">
 							<i class="fas fa-tools"></i>
+                            <h4 class="toolbar-category">{{ __('Configuration') }}</h4>
 						</div>
 						<ul class="toolbar-item">
-							<li class="toolbar-sub item maintenance-mode">
-								<p class="title">{{ __('Maintenance mode') }}</p>
+							<li class="toolbar-subitem maintenance-mode">
+								<h5 class="subitem-title">{{ __('Maintenance mode') }}</h5>
 								<form action="{{route('toggle_maintenance_mode')}}" method="post">
 									@csrf
 									<button class="btn btn-hazard" type="submit">

@@ -1,38 +1,38 @@
 #toolbar {
-	height: calc(100vh - 11rem);
+    height: calc(100vh - 11rem);
 	position: fixed;
 	color: white;
 	z-index: 999;
     width: 15rem;
 	top: 7rem;
 	left: 0;
-}
-
-#toolbar {
+    
 	.toolbar-items {
-		width: fit-content;
+		width: 100%;
 
 		.toolbar-row {
             pointer-events: none;
 			position: relative;
 			user-select: none;
-            width: 5rem;
+            width: 100%;
 
 			&:last-child {
 				margin-bottom: 0;
 			}
 
 			.toolbar-icon {
-                border-left: 1px solid rgb(15, 15, 15);
+                border-bottom: 4px solid rgb(15, 15, 15);
+				padding: calc(1rem + 4px) 1rem 1rem 1rem;
                 background: rgb(15, 15, 15);
 				justify-content: center;
+                align-items: baseline;
                 pointer-events: all;
+                margin-bottom: 2px;
 			    cursor: pointer;
-				padding: 1rem;
 				display: flex;
 
                 &:hover {
-                    i {
+                    .toolbar-category, i {
                         color: $green;
                     }
                 }
@@ -40,9 +40,13 @@
                 &.active {
                     border-color: $green;
 
-                    i {
+                    .toolbar-category, i {
                         color: $green;
                     }
+                }
+
+                .toolbar-category {
+                    margin-left: 0.5rem;
                 }
 
 				i {
@@ -53,12 +57,9 @@
 			}
 
 			.toolbar-item {
-                background: rgb(15, 15, 15);
                 flex-direction: column;
                 pointer-events: all;
-                width: max-content;
-                max-width: 15rem;
-                padding: 0.5rem;
+                margin-bottom: 2px;
                 display: none;
 
 				&.show {
@@ -66,25 +67,26 @@
 				}
 
 				.toolbar-subitem {
-					margin: 0.5rem 0;
+                    border: 1px solid $darkgray;
+                    background: $darkgray;
+					margin-bottom: 2px;
+                    padding: 0.5rem;
 
-                    &:first-child {
-                        margin-top: 0;
+                    &:last-child {
+                        margin-bottom: 0;
                     }
 
-					.title {
-						margin-bottom: 0.25rem;
+					.subitem-title {
+						margin-bottom: 0.5rem;
 					}
 
 					&.spoof-login {
-                        margin-top: -0.5rem;
-
 						input {
+							border: 1px solid $gray;
                             background: $darkgray;
                             color: white;
 							width: 100%;
 							outline: 0;
-							border: 0;
 						}
 					}
 
