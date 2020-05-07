@@ -9,30 +9,6 @@
 	{{ Breadcrumbs::render('thread', $thread) }}
 @endsection
 
-@can('update', $thread)
-	@section('crudToolbar')
-		<div class="crud-toolbar">
-			<button class="btn btn-default thread-edit">
-				<i class="fas fa-pen"></i>
-			</button>
-			@if ($thread->locked)
-				<button class="btn btn-default spin thread-toggle" type="button">
-					<i class="fas fa-unlock"></i>
-				</button>
-			@else
-				<button class="btn btn-default spin thread-toggle" type="button">
-					<i class="fas fa-lock"></i>
-				</button>
-			@endif
-			@can('delete', $thread)
-				<button class="btn btn-hazard spin thread-delete" type="submit">
-					<i class="fas fa-trash-alt"></i>
-				</button>
-			@endcan
-		</div>
-	@endsection
-@endcan
-
 @section('threadTitle')
 	<div class="thread-header">
 		<h4 class="thread-title">{{ $thread->title }}</h4>
@@ -318,27 +294,6 @@
 					});
 				}
 			</script>
-		@elsecan ('delete', $thread)
-			<script>
-				// Delete thread
-				function thread_delete(e) {
-					e.preventDefault();
-					$.ajax({
-						url: '{{ route("thread_delete_ajax") }}',
-						method: 'POST',
-						data: {
-							_token: '{{ Session::token() }}',
-							id: '{{ $thread->id }}',
-						},
-						success: function(response) {
-							window.location.href = response.redirect;
-						},
-						error: function(error) {
-							console.log(error);
-						}
-					});
-				}
-			</script>
 		@endcan
 	@endauth
 
@@ -347,70 +302,89 @@
 	@endif
 @endsection
 
-@section('toolbarItem')
-    @component('components.toolbar-item')
-        @slot('categoryTitle')
-            {{ __('Thread') }}
-        @endslot
+@can('update', $thread)
+    @section('toolbarItem')
+        @component('components.toolbar-item')
+            @slot('categoryTitle')
+                {{ __('Thread') }}
+            @endslot
 
-        @slot('toolbarSubitem')
-            @component('components.toolbar-subitem')
-                @slot('subitemTitle')
-                    {{ __('Lock or unlock thread') }}
-                @endslot
+            @slot('toolbarSubitem')
+                @component('components.toolbar-subitem')
+                    @slot('subitemTitle')
+                        {{ __('Lock or unlock thread') }}
+                    @endslot
 
-                @slot('content')
-                    @if ($thread->locked)
-                        <button class="btn btn-success thread-toggle" type="button">
-                            <i class="fas fa-lock-open"></i>
-                            <span>{{ __('Unlock') }}</span>
+                    @slot('content')
+                        @if ($thread->locked)
+                            <button class="btn btn-success thread-toggle" type="button">
+                                <i class="fas mr-2 fa-lock-open"></i>
+                                <span>{{ __('Unlock') }}</span>
+                            </button>
+                        @else
+                            <button class="btn btn-hazard thread-toggle" type="button">
+                                <i class="fas mr-2 fa-lock"></i>
+                                <span>{{ __('Lock') }}</span>
+                            </button>
+                        @endif
+                    @endslot
+                @endcomponent
+
+                @component('components.toolbar-subitem')
+                    @slot('subitemTitle')
+                        {{ __('Delete thread') }}
+                    @endslot
+
+                    @slot('formAction')
+                        {{ route('thread_delete', [$thread->id, $thread->slug]) }}
+                    @endslot
+
+                    @slot('content')
+                        <button class="btn btn-hazard" type="submit">
+                            <i class="fas mr-2 fa-exclamation-triangle"></i>
+                            <span>{{ __('Delete') }}</span>
                         </button>
-                    @else
-                        <button class="btn btn-hazard thread-toggle" type="button">
-                            <i class="fas fa-lock"></i>
-                            <span>{{ __('Lock') }}</span>
-                        </button>
-                    @endif
-                @endslot
-            @endcomponent
-        @endslot
-    @endcomponent
+                    @endslot
+                @endcomponent
+            @endslot
+        @endcomponent
 
-    <script>
-        $('.thread-toggle').click(function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: '{{ route("thread_toggle") }}',
-                method: 'POST',
-                data: {
-                    _token: '{{ Session::token() }}',
-                    id: '{{ $thread->id }}',
-                },
-                success: function(response) {
-                    $('.thread-toggle').removeClass('loading');
-                    ajax_alert(response);
+        <script>
+            $('.thread-toggle').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '{{ route("thread_toggle") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ Session::token() }}',
+                        id: '{{ $thread->id }}',
+                    },
+                    success: function(response) {
+                        $('.thread-toggle').removeClass('loading');
+                        ajax_alert(response);
 
-                    // Need to delay this due to .spin event handler code being fired after this 
-                    setTimeout(() => {
-                        $('.thread-toggle').removeAttr('disabled');
-                    }, 100);
+                        // Need to delay this due to .spin event handler code being fired after this 
+                        setTimeout(() => {
+                            $('.thread-toggle').removeAttr('disabled');
+                        }, 100);
 
-                    let button = $('.thread-toggle');
+                        let button = $('.thread-toggle');
 
-                    if (response.state === 'unlocked') {
-                        button.find('i').removeClass('fa-unlock-alt').addClass('fa-lock');
-                        button.removeClass('btn-success').addClass('btn-hazard');
-                        button.find('span').html('Lock');
-                    } else {
-                        button.find('i').removeClass('fa-lock').addClass('fa-unlock-alt');
-                        button.removeClass('btn-hazard').addClass('btn-success');
-                        button.find('span').html('Unlock');
+                        if (response.state === 'unlocked') {
+                            button.find('i').removeClass('fa-unlock-alt').addClass('fa-lock');
+                            button.removeClass('btn-success').addClass('btn-hazard');
+                            button.find('span').html('Lock');
+                        } else {
+                            button.find('i').removeClass('fa-lock').addClass('fa-unlock-alt');
+                            button.removeClass('btn-hazard').addClass('btn-success');
+                            button.find('span').html('Unlock');
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
                     }
-                },
-                error: function(error) {
-                    console.log(error);
-                }
+                });
             });
-        });
-    </script>
-@endsection
+        </script>
+    @endsection
+@endcan

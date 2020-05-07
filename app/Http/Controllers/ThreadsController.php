@@ -131,16 +131,20 @@ class ThreadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id, string $slug)
+    public function destroy(int $id)
     {
-		$this->authorize('delete', Thread::class);
-
 		$thread = Thread::find($id);
+		$this->authorize('delete', $thread);
+
 		$subcategory = $thread->subcategory;
 
-		foreach ($thread->posts as $post) {
-			$post->delete();
-		}
+		$thread->posts->each(function($post) {
+            $post->delete();
+        });
+
+        UserVisitedThreads::where('thread_id', $thread->id)->each(function($visit) {
+            $visit->delete();
+        });
 
 		ActivityLog::create([
 			'user_id' 	   => auth()->user()->id,
@@ -256,56 +260,6 @@ class ThreadsController extends Controller
 				'message' => __('Thread title was successfully changed'),
 				'title'	  => $thread->title,
 				'url'	  => route('thread_show', [$thread->id, $thread->slug]),
-			]);
-		}
-    }
-
-	/**
-     * Remove the specified resource from storage, using AJAX.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy_ajax(Request $request)
-    {
-		if (!logged_in()) {
-			return response()->json([
-				'type'    => 'error',
-				'message' => __('Please log in and try again'),
-			]);
-		} else if (!Thread::find(request('id'))) {
-			return response()->json([
-				'type'    => 'error',
-				'message' => __('That thread does not exist, refresh the page and try again'),
-			]);
-		} else if (!is_role('superadmin', 'moderator')) {
-			return response()->json([
-				'type'    => 'error',
-				'message' => __('Insufficient permissions'),
-			]);
-		} else {
-			$post = Post::find(request('id'));
-			$thread = $post->thread;
-
-			$subcategory = $thread->subcategory;
-			$redirect = route('subcategory_show', [$subcategory->id, $subcategory->slug]);
-
-			foreach ($thread->posts as $post) {
-				$post->delete();
-			}
-
-			ActivityLog::create([
-				'user_id' 	   => auth()->user()->id,
-				'task'	  	   => __('deleted'),
-				'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
-			]);
-
-			$thread->delete();
-			
-			return response()->json([
-				'type'     => 'success',
-				'message'  => __('Thread was successfully deleted'),
-				'redirect' => $redirect,
 			]);
 		}
     }

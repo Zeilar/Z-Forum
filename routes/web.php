@@ -28,6 +28,7 @@ Route::post('/subcategory/{id}/{slug}/thread/store', 'ThreadsController@store')-
 Route::get('/subcategory/{id}/{slug}/thread/new', 'ThreadsController@create')->name('thread_create');
 Route::post('/thread/delete', 'ThreadsController@destroy_ajax')->name('thread_delete_ajax');
 Route::post('/thread/update', 'ThreadsController@update_ajax')->name('thread_update_ajax');
+Route::post('/thread/{id}/delete', 'ThreadsController@destroy')->name('thread_delete');
 Route::get('/thread/{id}/{slug}', 'ThreadsController@show')->name('thread_show');
 Route::post('/thread/toggle', 'ThreadsController@toggle')->name('thread_toggle');
 
