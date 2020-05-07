@@ -13616,10 +13616,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #toolbar .toolbar-items .toolbar-row {
   pointer-events: none;
   position: relative;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   width: 100%;
 }
 
@@ -13637,6 +13633,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
           align-items: baseline;
   pointer-events: all;
   margin-bottom: 2px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
   display: -webkit-box;
   display: flex;
