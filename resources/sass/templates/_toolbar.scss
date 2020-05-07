@@ -1,5 +1,6 @@
 #toolbar {
     height: calc(100vh - 11rem);
+    pointer-events: none;
 	position: fixed;
 	color: white;
 	z-index: 999;

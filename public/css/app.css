@@ -13601,6 +13601,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #toolbar {
   height: calc(100vh - 11rem);
+  pointer-events: none;
   position: fixed;
   color: white;
   z-index: 999;
