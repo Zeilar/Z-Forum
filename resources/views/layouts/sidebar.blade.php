@@ -192,7 +192,7 @@
 
                             for (let i = 0; i < parsed.length; i++) {
                                 let path = parsed[i].replace(/:/g, '');
-                                s = s.replace(parsed[i], `<img src="/storage/emoticons/${path}.png">`);
+                                s = s.replace(parsed[i], `<img src="/storage/emoticons/${path}.png" title="${path}">`);
                             }
                             return message.html(s);
                         } else {
@@ -203,7 +203,6 @@
                     $('.chat-message .content').each(function() {
                         parseEmotes($(this));
                     })
-                    
                 </script>
 
                 @auth
