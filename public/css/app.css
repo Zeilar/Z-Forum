@@ -13068,7 +13068,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #settings {
-  border: 2px solid #00b365;
+  border: 1px solid #2c2c3580;
   background: #2c2c3580;
   padding: 1rem;
 }
@@ -14849,7 +14849,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #table .table-group .table-row {
-  border: 1px solid #2c2c3580;
   background: #2c2c3580;
   border-radius: 2px;
   margin: 0.25rem 0;
