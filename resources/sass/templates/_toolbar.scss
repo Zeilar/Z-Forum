@@ -20,12 +20,6 @@
 
     @include phone {
         width: calc(100% - 2rem);
-        position: unset;
-        z-index: unset;
-        height: unset;
-        margin: 1rem;
-        left: unset;
-        top: unset;
     }
     
 	.toolbar-items {
