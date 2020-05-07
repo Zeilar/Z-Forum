@@ -7,6 +7,26 @@
     width: 15rem;
 	top: 7rem;
 	left: 0;
+
+    @include desktop-down {
+        margin: 1rem auto;
+        position: unset;
+        z-index: unset;
+        height: unset;
+        left: unset;
+        width: 35%;
+        top: unset;
+    }
+
+    @include phone {
+        width: calc(100% - 2rem);
+        position: unset;
+        z-index: unset;
+        height: unset;
+        margin: 1rem;
+        left: unset;
+        top: unset;
+    }
     
 	.toolbar-items {
 		width: 100%;
