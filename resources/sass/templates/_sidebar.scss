@@ -192,14 +192,6 @@
                         color: white;
                         outline: 0;
 
-                        &.active {
-                            border-color: $green;
-                        }
-
-                        &:active {
-                            border-color: $darkgray;
-                        }
-
                         &.error {
                             border-color: red;
                         }
