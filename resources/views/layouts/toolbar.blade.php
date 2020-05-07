@@ -2,13 +2,13 @@
 	@can('delete', App\User::find(1))
 		<div id="toolbar">
 			<ul class="toolbar-items">
-				<div class="toolbar-row">
+				<li class="toolbar-row">
 					<div class="toolbar-icon">
 						<i class="fas fa-users"></i>
                         <h4 class="toolbar-category">{{ __('Users') }}</h4>
 					</div>
-					<ul class="toolbar-item">
-						<li class="toolbar-subitem spoof-login">
+					<div class="toolbar-item">
+						<div class="toolbar-subitem spoof-login">
 							<form action="{{route('spoof_login')}}" method="post">
 								@csrf
 								<div>
@@ -16,18 +16,18 @@
 									<input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
 								</div>
 							</form>
-						</li>
-					</ul>
-				</div>
+						</div>
+					</div>
+				</li>
 
 				@can('update', App\MaintenanceMode::find(1))
-					<div class="toolbar-row">
+					<li class="toolbar-row">
 						<div class="toolbar-icon">
 							<i class="fas fa-tools"></i>
                             <h4 class="toolbar-category">{{ __('Configuration') }}</h4>
 						</div>
-						<ul class="toolbar-item">
-							<li class="toolbar-subitem maintenance-mode">
+						<div class="toolbar-item">
+							<div class="toolbar-subitem maintenance-mode">
 								<h5 class="subitem-title">{{ __('Maintenance mode') }}</h5>
 								<form action="{{route('toggle_maintenance_mode')}}" method="post">
 									@csrf
@@ -40,17 +40,15 @@
 										@endif
 									</button>
 								</form>
-							</li>
-						</ul>
-					</div>					
+							</div>
+						</div>
+					</li>					
 				@endcan
 
-				@isset($toolbarItem)
-					{{ $toolbarItem }}
-				@endisset
+				@yield('toolbarItem')
 			</ul>
 		</div>
-
+        
         <script>
             $('.toolbar-icon').click(function() {
                 let item = $(this).siblings('.toolbar-item');

@@ -32,7 +32,7 @@
 				display: flex;
 
                 &:hover {
-                    .toolbar-category, i {
+                    * {
                         color: $green;
                     }
                 }
@@ -40,7 +40,7 @@
                 &.active {
                     border-color: $green;
 
-                    .toolbar-category, i {
+                    * {
                         color: $green;
                     }
                 }

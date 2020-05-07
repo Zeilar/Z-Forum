@@ -13642,8 +13642,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
-#toolbar .toolbar-items .toolbar-row .toolbar-icon:hover .toolbar-category,
-#toolbar .toolbar-items .toolbar-row .toolbar-icon:hover i {
+#toolbar .toolbar-items .toolbar-row .toolbar-icon:hover * {
   color: #00b365;
 }
 
@@ -13651,8 +13650,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border-color: #00b365;
 }
 
-#toolbar .toolbar-items .toolbar-row .toolbar-icon.active .toolbar-category,
-#toolbar .toolbar-items .toolbar-row .toolbar-icon.active i {
+#toolbar .toolbar-items .toolbar-row .toolbar-icon.active * {
   color: #00b365;
 }
 
