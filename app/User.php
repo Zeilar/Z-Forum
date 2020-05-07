@@ -85,9 +85,9 @@ class User extends Authenticatable
         return $this->hasMany(ChatMessage::class);
     }
 
-    public function is_role(string ...$role) : bool {
-        foreach ($role as $key) {
-            if (strtolower($this->role) === strtolower($key)) {
+    public function is_role(string ...$roles) : bool {
+        foreach ($roles as $role) {
+            if (strtolower($this->role) === strtolower($role)) {
                 return true;
             }
         }

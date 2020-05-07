@@ -59,10 +59,10 @@ if (!function_exists('logged_in')) {
  * @return boolean
  */
 if (!function_exists('is_role')) {
-	function is_role(string ...$role) : bool {
+	function is_role(string ...$roles) : bool {
 		if (auth()->user()) {
-			foreach ($role as $key) {
-				if (strtolower(auth()->user()->role) === strtolower($key)) {
+			foreach ($roles as $role) {
+				if (strtolower(auth()->user()->role) === strtolower($role)) {
 					return true;
 				}
 			}
