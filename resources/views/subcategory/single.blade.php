@@ -35,7 +35,7 @@
 			@foreach ($threads as $thread)	
 				{{-- Check if the thread has any admin post --}}
 				@foreach ($subcategory->posts as $post)
-					@if ($post->user->role === 'superadmin')
+					@if ($post->user->is_role('superadmin'))
 						@php $admin_post = true @endphp
 						@break
 					@endif

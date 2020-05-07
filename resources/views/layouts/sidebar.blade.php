@@ -40,7 +40,7 @@
                             @php $thread = $post->thread @endphp
                             <div class="whats-new-thread">
                                 <i class="fas fa-chevron-right"></i>
-                                <a class="whats-new-link @if($post->user->role === 'superadmin') is_superadmin @endif" href="{{
+                                <a class="whats-new-link @if($post->user->is_role('superadmin')) is_superadmin @endif" href="{{
                                     route('post_show', [
                                         $thread->id,
                                         $thread->slug,
@@ -252,7 +252,7 @@
                     @foreach ($threads as $thread)
                         <div class="latest-posts-item">
                             <i class="fas fa-chevron-right"></i>
-                            <a class="thread @if($thread->posts()->latest()->first()->user->role === 'superadmin') is_superadmin @endif"
+                            <a class="thread @if($thread->posts()->latest()->first()->user->is_role('superadmin')) is_superadmin @endif"
                                 href="{{route('thread_show', [$thread->id, $thread->slug])}}" title="{{ $thread->title }}">
                                 {{ $thread->title }}
                             </a>
@@ -271,14 +271,14 @@
 				@if ($online_users)
 					{{-- Get online superadmins --}}
 					@foreach ($online_users as $user)
-						@if ($user->role === 'superadmin')
+						@if ($user->is_role('superadmin'))
 							@php $superadmins[] = $user @endphp
 						@endif
 					@endforeach
 
 					{{-- Get online moderators --}}
 					@foreach ($online_users as $user)
-						@if ($user->role === 'moderator')
+						@if ($user->is_role('moderator'))
 							@php $moderators[] = $user @endphp
 						@endif
 					@endforeach

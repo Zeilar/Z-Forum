@@ -8,7 +8,7 @@
 	
 <article class="post" id="{{$post->id}}">
 	@empty($disablePostBanner)
-		@if ($post->user->role === 'superadmin' || $post->user->role === 'moderator')
+		@if ($post->user->is_role('moderator', 'superadmin'))
 			<div class="post-banner {{role_coloring($post->user->role)}}">
 				<span class="post-banner-role">{{ $post->user->role }}</span>
 			</div>
