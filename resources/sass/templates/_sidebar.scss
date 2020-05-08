@@ -112,13 +112,17 @@
         }
 
         &.chat {
+            @include desktop-down {
+                width: 100%;
+            }
+
             .chat-box {
                 @include scrollbarGreen();
                 overflow: auto;
                 height: 20rem;
 
                 @include desktop-down {
-                    height: 10rem;
+                    height: 15rem;
                 }
 
                 .chat-message {

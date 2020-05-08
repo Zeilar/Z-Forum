@@ -34,9 +34,9 @@
 
 			@foreach ($threads as $thread)	
 				{{-- Check if the thread has any admin post --}}
-				@foreach ($subcategory->posts as $post)
+				@foreach ($thread->posts->sortByDesc('id') as $post)
 					@if ($post->user->is_role('superadmin'))
-						@php $admin_post = true @endphp
+						@php $admin_post = $post @endphp
 						@break
 					@endif
 				@endforeach
@@ -63,6 +63,18 @@
 						<a href="{{route('thread_show', [$thread->id, $thread->slug])}}">
 							{{ $thread->title }}
 						</a>
+                        @isset($admin_post)
+                            <a class="orange-post" href="{{
+                                route('post_show', [
+                                    $thread->id,
+                                    $thread->slug,
+                                    get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
+                                    $post->id,
+                                ])
+                            }}">
+                                {{ __('Orange post') }}
+                            </a>
+                        @endisset
 					@endslot
 
 					@slot('views')
