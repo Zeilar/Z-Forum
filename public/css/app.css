@@ -12312,15 +12312,21 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 .alert {
   -webkit-animation: fadein 0.25s linear forwards;
           animation: fadein 0.25s linear forwards;
+  box-shadow: 0 0 10px 5px black;
+  width: -webkit-fill-available;
   padding: 0.5rem 1rem;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
-  position: relative;
   border-radius: 0;
+  position: fixed;
+  max-width: 50vw;
   color: white;
   display: -webkit-box;
   display: flex;
+  z-index: 90;
+  border: 0;
+  top: 5rem;
 }
 
 .alert.fade-out {
@@ -12369,7 +12375,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 .alert.success {
-  background: rgba(0, 194, 110, 0.75);
+  background: #00b365;
 }
 
 .alert.error {

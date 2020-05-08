@@ -1,11 +1,17 @@
 .alert {
 	animation: fadein 0.25s linear forwards;
+    box-shadow: 0 0 10px 5px black;
+    width: -webkit-fill-available;
 	padding: 0.5rem 1rem;
 	flex-direction: row;
-	position: relative;
 	border-radius: 0;
+	position: fixed;
+    max-width: 50vw;
 	color: white;
 	display: flex;
+    z-index: 90;
+    border: 0;
+    top: 5rem;
 
 	&.fade-out {
 		animation: fadeout 0.5s linear forwards;
@@ -30,7 +36,7 @@
 	}
 
 	&.success {
-		background: rgba(0, 194, 110, 0.75);
+		background: $green;
 	}
 
 	&.error {
