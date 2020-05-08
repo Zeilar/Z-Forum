@@ -13883,15 +13883,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   transition: transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
   margin-bottom: 0.5rem;
   white-space: nowrap;
-  -webkit-transform: scale(1);
-          transform: scale(1);
   display: -webkit-box;
   display: flex;
-}
-
-#sidebar .sidebar-item.whats-new .whats-new-thread:hover {
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
 }
 
 #sidebar .sidebar-item.whats-new .whats-new-thread:last-child {
@@ -14033,15 +14026,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   transition: transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
   margin-bottom: 0.5rem;
   white-space: nowrap;
-  -webkit-transform: scale(1);
-          transform: scale(1);
   display: -webkit-box;
   display: flex;
-}
-
-#sidebar .sidebar-item.latest-posts .latest-posts-item:hover {
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
 }
 
 #sidebar .sidebar-item.latest-posts .latest-posts-item:last-child {
