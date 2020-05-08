@@ -1,13 +1,16 @@
 #toolbar {
     height: calc(100vh - 11rem);
     pointer-events: none;
-    max-width: 12.5vw;
 	position: fixed;
 	color: white;
 	z-index: 999;
     width: 15rem;
 	top: 7rem;
 	left: 0;
+    
+    @include desktop-up {
+        max-width: 12.5vw;
+    }
 
     @include desktop-down {
         margin: 1rem auto;

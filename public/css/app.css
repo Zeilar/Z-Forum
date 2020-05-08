@@ -13628,13 +13628,18 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #toolbar {
   height: calc(100vh - 11rem);
   pointer-events: none;
-  max-width: 12.5vw;
   position: fixed;
   color: white;
   z-index: 999;
   width: 15rem;
   top: 7rem;
   left: 0;
+}
+
+@media (min-width: 1200px) {
+  #toolbar {
+    max-width: 12.5vw;
+  }
 }
 
 @media (max-width: 1199px) {
