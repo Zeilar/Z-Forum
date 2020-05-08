@@ -312,9 +312,7 @@
                         window.history.pushState('', '', response.url);
 
                         // Dispay the alert message on the top of the page
-                        if (response.type != null && response.type !== 'none') {
-                            ajax_alert(response);
-                        }
+                        if (response.type != null && response.type !== 'none') ajax_alert(response);
 
                         $('.thread-rename-submit').attr('disabled', true);
 
