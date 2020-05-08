@@ -15029,6 +15029,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   white-space: nowrap;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #table .table-group .table-row-content .__wrapper.table-title p .orange-post:hover {
