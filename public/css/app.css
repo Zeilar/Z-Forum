@@ -15026,9 +15026,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   border: 1px solid black;
   color: white !important;
   background: #db441640;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   white-space: nowrap;
-  padding: 0.25rem;
 }
 
 #table .table-group .table-row-content .__wrapper.table-title p .orange-post:hover {
