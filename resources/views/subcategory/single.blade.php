@@ -34,7 +34,7 @@
 
 			@foreach ($threads as $thread)	
 				{{-- Check if the thread has any admin post --}}
-				@foreach ($thread->posts->sortByDesc('id') as $post)
+				@foreach ($thread->posts->sortByDesc('created_at') as $post)
 					@if ($post->user->is_role('superadmin'))
 						@php $admin_post = $post @endphp
 						@break
@@ -68,8 +68,8 @@
                                 route('post_show', [
                                     $thread->id,
                                     $thread->slug,
-                                    get_item_page_number($thread->posts->sortBy('created_at'), $post->id, settings_get('posts_per_page')),
-                                    $post->id,
+                                    get_item_page_number($thread->posts->sortBy('created_at'), $admin_post->id, settings_get('posts_per_page')),
+                                    $admin_post->id,
                                 ])
                             }}">
                                 {{ __('Orange post') }}
