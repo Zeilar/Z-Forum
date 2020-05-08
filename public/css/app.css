@@ -13747,6 +13747,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-right: 0.25rem;
 }
 
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #thread-rename {
+  margin-bottom: 0.5rem;
+}
+
 #sidebar {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -15204,8 +15208,11 @@ input,
 textarea {
   -webkit-transition: box-shadow 0.15s linear;
   transition: box-shadow 0.15s linear;
+  border: 1px solid #2c2c3580;
   padding: 0.25rem 0.5rem;
   outline-color: #00b365;
+  background: #2c2c3580;
+  color: white;
 }
 
 a {

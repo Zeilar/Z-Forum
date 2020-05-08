@@ -187,114 +187,6 @@
 		@endcan
 
 		@include('js.post.controls')
-
-		@can('update', $thread)
-			<script>
-				// Init the handlers
-				thread_handlers();
-
-				// Edit thread title
-				function thread_edit() {
-					if (!$('.thread-save-toolbar').length) {
-						let title = $('.thread-title').html();
-
-						$('.thread-title').replaceWith(`
-							<fieldset style="width: ${$('#main').width()}px;">
-								<legend>
-									Title
-								</legend>
-								<input type="text" value="${title}" />
-							</fieldset>
-						`);
-						$('.thread-header').append(`
-							<div class="thread-save-toolbar">
-								<button class="btn btn-success-full spin thread-save">
-									<span>Save</span>
-                                    <i class="fas ml-2 color-white fa-check"></i>
-								</button>
-								<button class="btn btn-default thread-cancel">
-									<span>Cancel</span>
-								</button>
-							</div>
-						`);
-					}
-				}
-
-				// Cancel the edited thread and reset elements to how they were before
-				function thread_cancel(original) {					
-					// Reset thread header and edit button
-					$('.thread-header').html(original);
-					$('.thread-edit').removeAttr('disabled');
-
-					// The event handler needs to be re-initalized since the element was destroyed
-					thread_handlers();
-				}
-
-				// Save the edited post and reset elements to how they were before, but with the updated post content
-				function thread_save(original, e) {
-					e.preventDefault();
-					$.ajax({
-						url: '{{ route("thread_update_ajax") }}',
-						method: 'POST',
-						data: {
-							_token: '{{ Session::token() }}',
-							id: '{{ $thread->id }}',
-							title: $('.thread-header input').val()
-						},
-						success: function(response) {
-							// Reset post element and remove TinyMCE editor first
-							$('.thread-header').html(original);
-
-							// Insert the newly edited content into the post
-							$('.thread-title').html(response.title);
-
-							$('.thread-edit').removeAttr('disabled');
-
-							// Edit the active breadcrumb content
-							$('.breadcrumb-item.active').html(response.title);
-
-							// Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
-							window.history.pushState("", "", response.url);
-
-							// Dispay the alert message on the top of the page
-							if (response.type !== 'none') {
-								ajax_alert(response);
-							}
-
-							// The event handlers need to be reinitalized since the element was destroyed
-							thread_handlers();
-						},
-						error: function(error) {
-							console.log(error);
-						}
-					});
-				}
-
-				// Initialize post handlers in order to let them be "recursive"
-				function thread_handlers() {
-					let original = $('.thread-header').html();
-
-					$('.thread-edit').click(function() {
-						thread_edit();
-
-						$('.thread-save').click(function(e) {
-							thread_save(original, e);
-						});
-
-						$('.thread-cancel').click(function() {
-							thread_cancel(original);
-						});
-
-						// Put disabled on edit button
-						$(this).attr('disabled', true);
-					});
-
-					$('.thread-delete').click(function(e) {
-						thread_delete(e);
-					});
-				}
-			</script>
-		@endcan
 	@endauth
 
 	@if (settings_get('posts_per_page') >= 5)
@@ -310,6 +202,17 @@
             @endslot
 
             @slot('toolbarSubitem')
+                @component('components.toolbar-subitem')
+                    @slot('subitemTitle')
+                        {{ __('Rename thread') }}
+                    @endslot
+
+                    @slot('content')
+                        <input type="text" id="thread-rename" value="{{$thread->title}}">
+                        <button class="btn btn-success thread-rename-submit" disabled>{{ __('Save') }}</button>
+                    @endslot
+                @endcomponent
+
                 @component('components.toolbar-subitem')
                     @slot('subitemTitle')
                         {{ __('Lock or unlock thread') }}
@@ -350,6 +253,8 @@
         @endcomponent
 
         <script>
+            let originalTitle = '{{ $thread->title }}';
+
             $('.thread-toggle').click(function(e) {
                 e.preventDefault();
                 $.ajax({
@@ -384,6 +289,49 @@
                         console.log(error);
                     }
                 });
+            });
+
+            $('.thread-rename-submit').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '{{ route("thread_update") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ Session::token() }}',
+                        id: '{{ $thread->id }}',
+                        title: $('#thread-rename').val(),
+                    },
+                    success: function(response) {
+                        // Insert the newly edited content into the post
+                        $('.thread-title').html(response.title);
+
+                        // Edit the active breadcrumb content
+                        $('.breadcrumb-item.active').html(response.title);
+
+                        // Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
+                        window.history.pushState('', '', response.url);
+
+                        // Dispay the alert message on the top of the page
+                        if (response.type != null && response.type !== 'none') {
+                            ajax_alert(response);
+                        }
+
+                        $('.thread-rename-submit').attr('disabled', true);
+
+                        originalTitle = response.title;
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#thread-rename').on('input change', function() {
+                if ($(this).val() !== '' && $(this).val() !== originalTitle) {
+                    $('.thread-rename-submit').removeAttr('disabled');
+                } else {
+                    $('.thread-rename-submit').attr('disabled', true);
+                }
             });
         </script>
     @endsection

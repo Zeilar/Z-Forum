@@ -32,8 +32,11 @@ img, input::placeholder {
 
 input, textarea {
 	transition: box-shadow 0.15s linear;
+    border: 1px solid $darkgray;
 	padding: 0.25rem 0.5rem;
 	outline-color: $green;
+    background: $darkgray;
+    color: white;
 }
 
 a {

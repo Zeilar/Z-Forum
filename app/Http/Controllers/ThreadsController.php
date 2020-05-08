@@ -215,13 +215,11 @@ class ThreadsController extends Controller
     }
 
 	/**
-     * Update the specified resource in storage, using AJAX.
+     * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update_ajax(Request $request)
+    public function update()
     {
 		if (!logged_in()) {
 			return response()->json([
