@@ -186,12 +186,14 @@
 				&:last-child {
 					margin-bottom: 0;
 				}
-
-				.post-link {
-					flex-direction: column;
-				}
 			}
 		}
+
+        &.posts {
+            .post-link {
+                flex-direction: column;
+            }
+        }
 
 		.profile-activity-item, .profile-thread {
 			overflow-wrap: break-word;

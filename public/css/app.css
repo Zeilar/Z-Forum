@@ -13579,8 +13579,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-bottom: 0;
 }
 
-.user-profile .profile-lower.posts .post .post-link,
-.user-profile .profile-lower.likes .post .post-link {
+.user-profile .profile-lower.posts .post-link {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
