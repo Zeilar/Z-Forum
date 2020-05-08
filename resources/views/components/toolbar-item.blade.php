@@ -3,7 +3,7 @@
         @isset($icon)
             {{ $icon }}
         @endisset
-        <h4 class="toolbar-category">{{ $categoryTitle ?? '' }}</h4>
+        <h5 class="toolbar-category">{{ $categoryTitle ?? '' }}</h5>
     </div>
     <div class="toolbar-item">
         @isset($toolbarSubitem)

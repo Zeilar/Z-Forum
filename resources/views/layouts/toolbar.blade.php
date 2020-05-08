@@ -6,7 +6,7 @@
                     <li class="toolbar-row">
                         <div class="toolbar-icon">
                             <i class="fas fa-users"></i>
-                            <h4 class="toolbar-category">{{ __('Users') }}</h4>
+                            <h5 class="toolbar-category">{{ __('Users') }}</h5>
                         </div>
                         <div class="toolbar-item">
                             <div class="toolbar-subitem spoof-login">
@@ -26,7 +26,7 @@
 					<li class="toolbar-row">
 						<div class="toolbar-icon">
 							<i class="fas fa-tools"></i>
-                            <h4 class="toolbar-category">{{ __('Configuration') }}</h4>
+                            <h5 class="toolbar-category">{{ __('Configuration') }}</h5>
 						</div>
 						<div class="toolbar-item">
 							<div class="toolbar-subitem maintenance-mode">
