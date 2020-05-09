@@ -86,10 +86,10 @@ $('.toggle-sidebar').click(function() {
     $(this).toggleClass('btn-default btn-success');
 	if ($('#sidebar').hasClass('hide')) {
 		$('#sidebar').removeClass('hide').addClass('open');
-		cookieCutter.setCookie('sidebarOpen', true, false);
+		cookieCutter.set('sidebarOpen', true, false);
 	} else {
 		$('#sidebar').removeClass('open').addClass('hide');
-		cookieCutter.removeCookie('sidebarOpen');
+		cookieCutter.delete('sidebarOpen');
 	}
 });
 

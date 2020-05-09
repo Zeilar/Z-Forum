@@ -4,7 +4,7 @@ class Functions {
 	// Plays fade animatin on first visit
 	static fadeTable() {
 		let rows = $('.table-row');
-		if (!cookieCutter.getCookie('fadeTable')) {
+		if (!cookieCutter.get('fadeTable')) {
 			let delay = 0;
 			rows.each(function() {
 				setTimeout(() => {
@@ -13,7 +13,7 @@ class Functions {
 				delay += 50;
 			});
 		}
-		cookieCutter.setCookie('fadeTable', false, false);
+		cookieCutter.set('fadeTable', false, false);
 	}
 
 	// Navbar slide animation when hovering on items
@@ -85,7 +85,7 @@ class Functions {
 	static collapseCategory() {
 		$('.table-group').each(function() {
 			let rows = $(this).find('.subcategory-rows');
-			if (cookieCutter.getCookie(`hidden-${$(this).attr('id')}`)) {
+			if (cookieCutter.get(`hidden-${$(this).attr('id')}`)) {
 				$(this).find('.category-collapse i').addClass('closed');
 				rows.addClass('hidden');
 			} else {
@@ -97,10 +97,10 @@ class Functions {
 		$('.category-collapse').click(function() {
 			let id = $(this).parents('.table-group').attr('id');
 			let button = $(this).children();
-			if (cookieCutter.getCookie(`hidden-${id}`)) {
-				cookieCutter.removeCookie(`hidden-${id}`);
+			if (cookieCutter.get(`hidden-${id}`)) {
+				cookieCutter.delete(`hidden-${id}`);
 			} else {
-				cookieCutter.setCookie(`hidden-${id}`, true);
+				cookieCutter.set(`hidden-${id}`, true);
 			}
 
 			let rows = $(this).parents('.table-group').find('.subcategory-rows');
