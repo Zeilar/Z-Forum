@@ -125,10 +125,6 @@
                     word-break: break-all;
                     padding: 0.25rem;
 
-                    &:not(:first-child) {
-                        border-top: 0;
-                    }
-
                     &:nth-child(even) {
                         background: rgba(0, 0, 0, 0.45);
                     }
