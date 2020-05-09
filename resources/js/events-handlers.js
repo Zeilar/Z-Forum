@@ -96,7 +96,11 @@ $('.toolbar-toggle').click(function() {
 // Set cookie to keep track of which toolbar item to keep open
 $('.toolbar-icon').click(function() {
     const value = $(this).find('.toolbar-category').attr('data-cookie');
-    cookieCutter.set('toolbarItemOpen', value, false);
+    if (cookieCutter.get('toolbarItemOpen') === value) {
+        cookieCutter.delete('toolbarItemOpen');
+    } else {
+        cookieCutter.set('toolbarItemOpen', value, false);
+    }
 });
 
 // Reset mobile navbar search input
