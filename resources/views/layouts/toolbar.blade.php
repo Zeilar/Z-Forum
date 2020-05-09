@@ -1,7 +1,11 @@
 @auth
 	@if (auth()->user()->is_role('moderator', 'superadmin'))
 		<div id="toolbar">
-			<ul class="toolbar-items">
+            <button class="toolbar-toggle" type="button">
+                <i class="fas fa-exchange-alt @empty($_COOKIE['toolbarOpen']) color-white @endempty"></i>
+            </button>
+
+			<ul class="toolbar-items @empty($_COOKIE['toolbarOpen']) hidden @endempty">
                 @if (auth()->user()->is_role('superadmin'))
                     @component('components.toolbar-item', ['cookie' => 'users'])
                         @slot('icon')
@@ -68,17 +72,5 @@
 				@yield('toolbarItem')
 			</ul>
 		</div>
-        
-        <script>
-            $('.toolbar-icon').click(function() {
-                let item = $(this).siblings('.toolbar-item');
-                $('.toolbar-item').not(item).removeClass('show');
-                item.toggleClass('show');
-
-                let icon = $(this);
-                $('.toolbar-icon').not(icon).removeClass('active');
-                icon.toggleClass('active');
-            });
-        </script>
 	@endcan
 @endauth

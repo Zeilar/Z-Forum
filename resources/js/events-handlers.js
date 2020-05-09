@@ -75,6 +75,24 @@ $(document).click(function(e) {
     }
 });
 
+// Toolbar item collapser
+$('.toolbar-icon').click(function() {
+    let item = $(this).siblings('.toolbar-item');
+    $('.toolbar-item').not(item).removeClass('show');
+    item.toggleClass('show');
+
+    let icon = $(this);
+    $('.toolbar-icon').not(icon).removeClass('active');
+    icon.toggleClass('active');
+});
+
+// Toolbar toggler
+$('.toolbar-toggle').click(function() {
+    $('.toolbar-toggle i').toggleClass('color-white');
+    $('.toolbar-items').toggleClass('hidden');
+    cookieCutter.get('toolbarOpen') ? cookieCutter.delete('toolbarOpen') : cookieCutter.set('toolbarOpen', true, false);
+});
+
 // Set cookie to keep track of which toolbar item to keep open
 $('.toolbar-icon').click(function() {
     const value = $(this).find('.toolbar-category').attr('data-cookie');

@@ -13053,18 +13053,35 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   }
 }
 
+#toolbar .toolbar-toggle {
+  background: #0f0f0f;
+  padding: 0.5rem 0.75rem;
+  pointer-events: all;
+  margin-bottom: 2px;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+}
+
+#toolbar .toolbar-toggle i {
+  font-size: 2rem;
+  color: #00b365;
+}
+
 #toolbar .toolbar-items {
+  transition: transform 0.25s linear;
+  transform: translateX(0);
   width: 100%;
+}
+
+#toolbar .toolbar-items.hidden {
+  transform: translateX(-100%);
 }
 
 #toolbar .toolbar-items .toolbar-row {
   pointer-events: none;
   position: relative;
   width: 100%;
-}
-
-#toolbar .toolbar-items .toolbar-row:last-child {
-  margin-bottom: 0;
 }
 
 #toolbar .toolbar-items .toolbar-row .toolbar-icon {

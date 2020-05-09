@@ -129,7 +129,7 @@ class AccountController extends Controller
 			$user->remember_token = null;
 			$user->email_verified_at = null;
 			$user->last_seen = null;
-			$user->banned = null;
+			$user->suspended = null;
 			$user->created_at = null;
 			$user->updated_at = null;
 			$user->save();

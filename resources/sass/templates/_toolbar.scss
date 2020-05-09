@@ -25,18 +25,35 @@
     @include phone {
         width: calc(100% - 2rem);
     }
+
+    .toolbar-toggle {
+        background: rgb(15, 15, 15);
+        padding: 0.5rem 0.75rem;
+        pointer-events: all;
+        margin-bottom: 2px;
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+        
+        i {
+            font-size: 2rem;
+            color: $green;
+        }
+    }
     
 	.toolbar-items {
+        transition: transform 0.25s linear;
+        transform: translateX(0);
 		width: 100%;
+
+        &.hidden {
+            transform: translateX(-100%);
+        }
 
 		.toolbar-row {
             pointer-events: none;
 			position: relative;
             width: 100%;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
 
 			.toolbar-icon {
                 border-bottom: 4px solid rgb(15, 15, 15);

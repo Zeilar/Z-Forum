@@ -1,7 +1,7 @@
 @extends('head')
 
 @section('pageTitle')
-	{{ __('Log in') }}
+	{{ __('Admin login') }}
 @endsection
 
 @php
@@ -14,14 +14,8 @@
 
 <style>
 	::selection {
-		background: rgba(0, 0, 0, 0.85) !important;
-		color: rgb(0, 255, 255) !important;
-	}
-
-	body {
-		background-image: url('/storage/images/admin-login.jpg') !important;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
+		background: rgb(219, 68, 22) !important;
+		color: white !important;
 	}
 </style>
 

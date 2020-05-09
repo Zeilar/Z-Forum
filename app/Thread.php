@@ -40,4 +40,8 @@ class Thread extends Model
         $this->locked = false;
         return $this->save();
     }
+
+    public function is_locked() {
+        return $this->locked;
+    }
 }

@@ -74,8 +74,8 @@ Route::get('/password-reset/{token}', 'Auth\ResetPasswordController@showResetFor
 Route::post('/password-reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 // Auth
-Route::get('/login', 'AuthController@admin_login_page')->name('admin_login_page');
-Route::post('/login-admin', 'AuthController@admin_login')->name('admin_login');
+Route::get('/admin-login', 'AuthController@admin_login_page')->name('admin_login_page');
+Route::post('/admin-login', 'AuthController@admin_login')->name('admin_login');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/login', 'AuthController@login')->name('login');

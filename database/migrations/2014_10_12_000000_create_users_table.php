@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken()->nullable();
             $table->timestamp('email_verified_at')->nullable();
 			$table->timestamp('last_seen')->nullable()->default(\Carbon\Carbon::now());
-			$table->timestamp('banned')->nullable();
+			$table->timestamp('suspended')->nullable();
             $table->timestamps();
 			$table->string('table_name')->default('users');
         });
