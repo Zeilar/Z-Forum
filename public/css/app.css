@@ -13163,6 +13163,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 #toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-year {
   border: 1px solid #2c2c3580;
   background: #2c2c3580;
+  outline-color: #00b365;
   margin-bottom: 1rem;
   color: #00b365;
   width: 100%;
