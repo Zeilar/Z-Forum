@@ -1,7 +1,9 @@
 @isset($post)
-    @if (auth()->check() && $post->user->id === auth()->user()->id)
+    @php $user = $post->user @endphp
+    
+    @if (auth()->check() && $user->id === auth()->user()->id)
         @php $attribute = 'is_author' @endphp
-    @elseif ($post->user->id === $post->thread->user->id)
+    @elseif ($user->id === $post->thread->user->id)
         @php $attribute = 'is_op' @endphp
     @else
         @php $attribute = '' @endphp
@@ -9,29 +11,38 @@
         
     <article class="post" id="{{$post->id}}">
         @empty($disablePostBanner)
-            @if ($post->user->is_role('moderator', 'superadmin'))
-                <div class="post-banner {{role_coloring($post->user->role)}}">
-                    <span class="post-banner-role">{{ $post->user->role }}</span>
+            @if ($user->is_suspended())
+                <div class="post-banner suspended">
+                    <span class="post-banner-role">{{ __('Suspended') }}</span>
+                </div>
+            @endif
+            @if ($user->is_role('moderator', 'superadmin'))
+                <div class="post-banner {{role_coloring($user->role)}}">
+                    <span class="post-banner-role">{{ $user->role }}</span>
                 </div>
             @endif
         @endempty
 
         <div class="post-header">
             <div class="post-meta {{$attribute}}">
-                <a class="post-avatar-link" href="{{route('user_show', [$post->user->id])}}">
-                    <div class="post-avatar @if($post->user->is_online()) is_online @endif">
-                        <img class="img-fluid" src="{{$post->user->avatar}}" alt="{{ __('Post user avatar') }}" />
+                <a class="post-avatar-link" href="{{route('user_show', [$user->id])}}">
+                    <div class="post-avatar @if($user->is_online() && !$user->is_suspended()) is_online @endif">
+                        <img class="img-fluid" src="{{$user->avatar}}" alt="{{ __('Post user avatar') }}" />
 
                         <div class="avatar-meta">
-                            @if ($post->user->is_online()) 
-                                <p class="status">{{ __('Online') }}</p> 
+                            @if ($user->is_suspended())
+                                <p class="suspended">{{ __('Suspended') }}</p>
                             @else
-                                <p class="status">{{ __('Offline') }}</p>
+                                @if ($user->is_online()) 
+                                    <p class="status">{{ __('Online') }}</p> 
+                                @else
+                                    <p class="status">{{ __('Offline') }}</p>
+                                @endif
+                                @isset($user->last_seen)
+                                    @php $date = new \Carbon\Carbon($user->last_seen) @endphp
+                                    <p>{{ $date->diffForHumans() }}</p>
+                                @endisset
                             @endif
-                            @isset($post->user->last_seen)
-                                @php $date = new \Carbon\Carbon($post->user->last_seen) @endphp
-                                <p>{{ $date->diffForHumans() }}</p>
-                            @endisset
                         </div>
                     </div>
                 </a>
@@ -39,16 +50,16 @@
                 <div class="post-meta-text">
                     <div class="post-meta-left">
                         <p class="post-author">
-                            <a href="{{route('user_show', [$post->user->id])}}">
-                                @isset($post->user->username)
-                                    {{ $post->user->username }}
+                            <a href="{{route('user_show', [$user->id])}}">
+                                @isset($user->username)
+                                    {{ $user->username }}
                                 @else
                                     <i>{{ __('Deleted') }}</i>
                                 @endisset
                             </a>
                         </p>
                         <p class="post-author-rank">
-                            {{ __(ucfirst($post->user->rank)) }}
+                            {{ __(ucfirst($user->rank)) }}
                         </p>
                     </div>
                     
@@ -81,9 +92,9 @@
         </div>
         
         @empty($disablePostSignature)
-            @isset($post->user->signature)
+            @isset($user->signature)
                 <div class="post-signature">
-                    {{ $post->user->signature }}
+                    {{ $user->signature }}
                 </div>
             @endisset
         @endempty

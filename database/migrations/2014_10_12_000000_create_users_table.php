@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
 			$table->timestamp('last_seen')->nullable()->default(\Carbon\Carbon::now());
 			$table->timestamp('suspended')->nullable();
+            $table->text('suspended_reason')->nullable();
             $table->timestamps();
 			$table->string('table_name')->default('users');
         });
