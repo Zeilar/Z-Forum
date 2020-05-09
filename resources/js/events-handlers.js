@@ -132,7 +132,9 @@ $('.password-revealer').click(function() {
 	}
 });
 
+// Suspend month picker handler
 $('#suspend-month').change(function() {
+    const selectedDay = $('#suspend-day')[0].selectedIndex;
     const selectedIndex = $(this)[0].selectedIndex;
     if (selectedIndex) {
         const year = new Date().getFullYear();
@@ -143,6 +145,7 @@ $('#suspend-month').change(function() {
             html += `<option value="${i}">${i}</option>`;
         }
         $('#suspend-day').html(html);
+        $('#suspend-day')[0].selectedIndex = selectedDay;
     }
 });
 
