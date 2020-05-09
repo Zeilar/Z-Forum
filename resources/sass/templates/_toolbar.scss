@@ -67,7 +67,7 @@
 				i {
                     pointer-events: none;
                     margin-right: 0.5rem;
-					font-size: 1.5rem;
+					font-size: 1.25rem;
 					color: white;
 				}
 			}
@@ -94,24 +94,6 @@
 
 					.subitem-title {
 						margin-bottom: 0.5rem;
-					}
-
-					&.spoof-login {
-						input {
-							border: 1px solid $gray;
-                            background: $darkgray;
-                            color: white;
-							width: 100%;
-							outline: 0;
-						}
-					}
-
-					&.maintenance-mode {
-						.btn {
-							i {
-								margin-right: 0.25rem;
-							}
-						}
 					}
 
                     #thread-rename {

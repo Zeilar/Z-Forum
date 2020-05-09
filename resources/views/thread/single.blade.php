@@ -124,13 +124,9 @@
 
 				$('.reply-button').click(function() {
 					// Spawn dummy textarea for TinyMCE if it doesn't already exist, then spawn the editor
-					if ($('#reply-form').hasClass('d-none')) {
-						$('#reply-form').removeClass('d-none');
-					}
+					if ($('#reply-form').hasClass('d-none')) $('#reply-form').removeClass('d-none');
 
-					if (!$(this).hasClass('d-none')) {
-						$(this).addClass('d-none');
-					}
+					if (!$(this).hasClass('d-none')) $(this).addClass('d-none');
 					
 					tinymce.init({
 						selector: '#thread-reply',
@@ -197,6 +193,10 @@
 @can('toggle', $thread)
     @section('toolbarItem')
         @component('components.toolbar-item')
+            @slot('cookie')
+                thread
+            @endslot
+
             @slot('categoryTitle')
                 {{ __('Thread') }}
             @endslot

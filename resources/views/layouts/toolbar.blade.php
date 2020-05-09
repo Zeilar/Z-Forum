@@ -1,50 +1,76 @@
 @auth
-	@if(auth()->user()->is_role('moderator', 'superadmin'))
+	@if (auth()->user()->is_role('moderator', 'superadmin'))
 		<div id="toolbar">
 			<ul class="toolbar-items">
                 @if (auth()->user()->is_role('superadmin'))
-                    <li class="toolbar-row">
-                        <div class="toolbar-icon">
+                    @component('components.toolbar-item')
+                        @slot('cookie')
+                            users
+                        @endslot
+
+                        @slot('icon')
                             <i class="fas fa-users"></i>
-                            <h5 class="toolbar-category">{{ __('Users') }}</h5>
-                        </div>
-                        <div class="toolbar-item">
-                            <div class="toolbar-subitem spoof-login">
-                                <form action="{{route('spoof_login')}}" method="post">
-                                    @csrf
-                                    <div>
-                                        <h5 class="subitem-title">{{ __('Spoof login') }}</h5>
-                                        <input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
+                        @endslot
+
+                        @slot('categoryTitle')
+                            {{ __('Users') }}
+                        @endslot
+
+                        @slot('toolbarSubitem')
+                            @component('components.toolbar-subitem')
+                                @slot('subitemTitle')
+                                    {{ __('Spoof login') }}
+                                @endslot
+
+                                @slot('formAction')
+                                    {{ route('spoof_login') }}
+                                @endslot
+
+                                @slot('content')
+                                    <input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
+                                @endslot
+                            @endcomponent
+                        @endslot
+                    @endcomponent
                 @endif
 
 				@can('update', App\MaintenanceMode::find(1))
-					<li class="toolbar-row">
-						<div class="toolbar-icon">
-							<i class="fas fa-tools"></i>
-                            <h5 class="toolbar-category">{{ __('Configuration') }}</h5>
-						</div>
-						<div class="toolbar-item">
-							<div class="toolbar-subitem maintenance-mode">
-								<h5 class="subitem-title">{{ __('Maintenance mode') }}</h5>
-								<form action="{{route('toggle_maintenance_mode')}}" method="post">
-									@csrf
-									<button class="btn btn-hazard" type="submit">
-										<i class="fas fa-exclamation-triangle"></i>
+                    @component('components.toolbar-item')
+                        @slot('cookie')
+                            configuration
+                        @endslot
+
+                        @slot('icon')
+                            <i class="fas fa-tools"></i>
+                        @endslot
+
+                        @slot('categoryTitle')
+                            {{ __('Configuration') }}
+                        @endslot
+
+                        @slot('toolbarSubitem')
+                            @component('components.toolbar-subitem')
+                                @slot('subitemTitle')
+                                    {{ __('Maintenance mode') }}
+                                @endslot
+
+                                @slot('formAction')
+                                    {{ route('toggle_maintenance_mode') }}
+                                @endslot
+
+                                @slot('content')
+                                    <button class="btn btn-hazard" type="submit">
+										<i class="fas mr-2 fa-exclamation-triangle"></i>
 										@if (App\MaintenanceMode::find(1)->enabled)
 											{{ __('Turn OFF') }}
 										@else
 											{{ __('Turn ON') }}
 										@endif
 									</button>
-								</form>
-							</div>
-						</div>
-					</li>					
+                                @endslot
+                            @endcomponent
+                        @endslot
+                    @endcomponent				
 				@endcan
 
 				@yield('toolbarItem')

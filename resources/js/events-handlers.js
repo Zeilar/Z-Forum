@@ -75,6 +75,11 @@ $(document).click(function(e) {
     }
 });
 
+$('.toolbar-icon').click(function() {
+    const value = $(this).find('.toolbar-category').attr('data-cookie');
+    cookieCutter.set('toolbarItemOpen', value, false);
+});
+
 // Reset mobile navbar search input
 $('.mobile-search-remove').click(function() {
     $(this).siblings('#mobile-search').val('').focus();

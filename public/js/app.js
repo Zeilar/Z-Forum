@@ -37507,6 +37507,10 @@ $(document).click(function (e) {
     $('.navbar-mobile-item.search').removeClass('active');
     $('.mobile-search-remove').removeClass('active');
   }
+});
+$('.toolbar-icon').click(function () {
+  var value = $(this).find('.toolbar-category').attr('data-cookie');
+  cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].set('toolbarItemOpen', value, false);
 }); // Reset mobile navbar search input
 
 $('.mobile-search-remove').click(function () {
