@@ -11,6 +11,10 @@
 @can('suspend', $user)
     @section('toolbarItem')
         @component('components.toolbar-item', ['cookie' => 'user'])
+            @slot('icon')
+                <i class="fas fa-user"></i>
+            @endslot
+
             @slot('categoryTitle')
                 {{ $user->username }}
             @endslot

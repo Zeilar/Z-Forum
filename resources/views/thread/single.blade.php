@@ -193,6 +193,10 @@
 @can('toggle', $thread)
     @section('toolbarItem')
         @component('components.toolbar-item', ['cookie' => 'thread'])
+            @slot('icon')
+                <i class="fas fa-comment-alt"></i>
+            @endslot
+
             @slot('categoryTitle')
                 {{ __('Thread') }}
             @endslot
