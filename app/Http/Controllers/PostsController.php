@@ -97,7 +97,7 @@ class PostsController extends Controller
 				'message' => __('Please log in and try again'),
 			]);
 		} else if (auth()->user()->is_suspended()) {
-            return response()->json->([
+            return response()->json([
                 'type'    => 'error',
                 'message' => __('You are suspended'),
             ]);
