@@ -13337,13 +13337,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.chat .chat-box .chat-message {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.2);
   word-break: break-all;
   padding: 0.25rem;
 }
 
 #sidebar .sidebar-item.chat .chat-box .chat-message:nth-child(even) {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 #sidebar .sidebar-item.chat .chat-box .chat-message .message-content {
