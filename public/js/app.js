@@ -37559,6 +37559,21 @@ $('.password-revealer').click(function () {
     $(this).siblings('input').attr('type', 'password');
     $(this).children('i').attr('class', 'far fa-eye');
   }
+});
+$('#suspend-month').change(function () {
+  var selectedIndex = $(this)[0].selectedIndex;
+
+  if (selectedIndex) {
+    var year = new Date().getFullYear();
+    var months = [null, 31, new Date(year, 1, 29).getDate() === 29 ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var html = '<option></option>';
+
+    for (var i = 1; i < months[selectedIndex] + 1; i++) {
+      html += "<option value=\"".concat(i, "\">").concat(i, "</option>");
+    }
+
+    $('#suspend-day').html(html);
+  }
 }); // Error visuals when password_repeat doesn't match password
 
 $('#register_password_repeat').on('change', function () {

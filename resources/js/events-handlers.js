@@ -132,6 +132,20 @@ $('.password-revealer').click(function() {
 	}
 });
 
+$('#suspend-month').change(function() {
+    const selectedIndex = $(this)[0].selectedIndex;
+    if (selectedIndex) {
+        const year = new Date().getFullYear();
+        let months = [null, 31, new Date(year, 1, 29).getDate() === 29 ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        let html = '<option></option>';
+        for (let i = 1; i < months[selectedIndex] + 1; i++) {
+            html += `<option value="${i}">${i}</option>`;
+        }
+        $('#suspend-day').html(html);
+    }
+});
+
 // Error visuals when password_repeat doesn't match password
 $('#register_password_repeat').on('change', function() {
 	if ($(this).val() !== $('#register_password').val()) {
