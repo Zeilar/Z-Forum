@@ -116,6 +116,24 @@
                     #thread-rename {
                         margin-bottom: 0.5rem;
                     }
+
+                    .suspended {
+                        margin-bottom: 0.5rem;
+                        color: red;
+                    }
+
+                    #suspend-day, #suspend-month, #suspend-year {
+                        border: 1px solid $darkgray;
+                        background: $darkgray;
+                        margin-bottom: 1rem;
+                        color: $green;
+                        width: 100%;
+
+                        option {
+                            background: black;
+                            color: white;
+                        }
+                    }
 				}
 			}
 		}

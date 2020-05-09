@@ -89,3 +89,4 @@ Route::get('/login/github', 'AuthController@redirectToProvider')->name('login_gi
 Route::post('/toggle-maintenance-mode', 'ToolbarController@toggle_maintenance_mode')->name('toggle_maintenance_mode');
 Route::post('/spoof-login', 'ToolbarController@spoof_login')->name('spoof_login');
 Route::post('/user/{id}/suspend', 'UsersController@suspend')->name('user_suspend');
+Route::post('/user/{id}/pardon', 'UsersController@pardon')->name('user_pardon');

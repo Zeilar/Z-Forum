@@ -13153,6 +13153,28 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-bottom: 0.5rem;
 }
 
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem .suspended {
+  margin-bottom: 0.5rem;
+  color: red;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-day,
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-month,
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-year {
+  border: 1px solid #2c2c3580;
+  background: #2c2c3580;
+  margin-bottom: 1rem;
+  color: #00b365;
+  width: 100%;
+}
+
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-day option,
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-month option,
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-year option {
+  background: black;
+  color: white;
+}
+
 #sidebar {
   flex-direction: column;
   height: -webkit-fit-content;
