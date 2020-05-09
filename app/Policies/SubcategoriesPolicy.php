@@ -41,6 +41,7 @@ class SubcategoriesPolicy
      */
     public function create(User $user)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -53,6 +54,7 @@ class SubcategoriesPolicy
      */
     public function update(User $user, Subcategory $subcategory)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -65,6 +67,7 @@ class SubcategoriesPolicy
      */
     public function delete(User $user, Subcategory $subcategory)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -77,6 +80,7 @@ class SubcategoriesPolicy
      */
     public function restore(User $user, Subcategory $subcategory)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -89,6 +93,7 @@ class SubcategoriesPolicy
      */
     public function forceDelete(User $user, Subcategory $subcategory)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 }

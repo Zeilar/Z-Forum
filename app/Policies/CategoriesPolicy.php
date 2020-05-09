@@ -41,6 +41,7 @@ class CategoriesPolicy
      */
     public function create(User $user)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -53,6 +54,7 @@ class CategoriesPolicy
      */
     public function update(User $user, Category $category)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -65,6 +67,7 @@ class CategoriesPolicy
      */
     public function delete(User $user, Category $category)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -77,6 +80,7 @@ class CategoriesPolicy
      */
     public function restore(User $user, Category $category)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -89,6 +93,7 @@ class CategoriesPolicy
      */
     public function forceDelete(User $user, Category $category)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 }

@@ -41,9 +41,7 @@ class ThreadsPolicy
      */
     public function create(User $user)
     {
-        if ($user->is_suspended()) {
-            return false;
-        }
+        if ($user->is_suspended()) return false;
         return logged_in();
     }
 
@@ -56,6 +54,7 @@ class ThreadsPolicy
      */
     public function update(User $user, Thread $thread)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -68,6 +67,7 @@ class ThreadsPolicy
      */
     public function delete(User $user, Thread $thread)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -80,6 +80,7 @@ class ThreadsPolicy
      */
     public function toggle(User $user, Thread $thread)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin', 'moderator');
     }
 
@@ -92,6 +93,7 @@ class ThreadsPolicy
      */
     public function restore(User $user, Thread $thread)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -104,6 +106,7 @@ class ThreadsPolicy
      */
     public function forceDelete(User $user, Thread $thread)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 }

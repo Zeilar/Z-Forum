@@ -19,6 +19,7 @@ class MaintenanceModePolicy
      */
     public function update(User $user, MaintenanceMode $maintenanceMode)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 }

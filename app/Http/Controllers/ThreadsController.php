@@ -29,6 +29,8 @@ class ThreadsController extends Controller
      */
     public function create(int $id, string $slug)
     {
+        $this->authorize('create', Thread::class);
+
 		if (!logged_in()) {
 			return msg_error('login');
 		} else if (!item_exists(Subcategory::find($id), $slug)) {
@@ -171,7 +173,12 @@ class ThreadsController extends Controller
 				'type'    => 'error',
 				'message' => __('Please log in and try again'),
 			]);
-		} else if (!Thread::find(request('id'))) {
+		} else if (auth()->user()->is_suspended()) {
+            return response()->json([
+                'type'    => 'error',
+                'message' => __('You are suspended'),
+            ]);
+        } else if (!Thread::find(request('id'))) {
 			return response()->json([
 				'type'    => 'error',
 				'message' => __('That thread does not exist, refresh the page and try again'),
@@ -226,7 +233,12 @@ class ThreadsController extends Controller
 				'type'    => 'error',
 				'message' => __('Please log in and try again'),
 			]);
-		} else if (!Thread::find(request('id'))) {
+		} else if (auth()->user()->is_suspended()) {
+            return response()->json([
+                'type'    => 'error',
+                'message' => __('You are suspended'),
+            ]);
+        } else if (!Thread::find(request('id'))) {
 			return response()->json([
 				'type'    => 'error',
 				'message' => __('That thread does not exist, refresh the page and try again'),

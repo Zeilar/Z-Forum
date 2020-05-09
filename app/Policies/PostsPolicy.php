@@ -108,6 +108,7 @@ class PostsPolicy
      */
     public function restore(User $user, Post $post)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 
@@ -120,6 +121,7 @@ class PostsPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
+        if ($user->is_suspended()) return false;
         return $user->is_role('superadmin');
     }
 }
