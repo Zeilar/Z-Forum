@@ -108,12 +108,12 @@ $('.mobile-search-remove').click(function() {
 // Toggle sidebar
 $('.toggle-sidebar').click(function() {
     $(this).toggleClass('btn-default btn-success');
-	if ($('#sidebar').hasClass('hide')) {
+	if (cookieCutter.get('sidebarHidden')) {
 		$('#sidebar').removeClass('hide').addClass('open');
-		cookieCutter.set('sidebarOpen', true, false);
+		cookieCutter.delete('sidebarHidden');
 	} else {
 		$('#sidebar').removeClass('open').addClass('hide');
-		cookieCutter.delete('sidebarOpen');
+		cookieCutter.set('sidebarHidden', true, false);
 	}
 });
 

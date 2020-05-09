@@ -1,8 +1,8 @@
 @empty($disableSidebar)
-	@isset ($_COOKIE['sidebarOpen'])
-		@php $class = 'open' @endphp
-	@else
+	@isset($_COOKIE['sidebarHidden'])
 		@php $class = 'hide' @endphp
+	@else
+		@php $class = 'open' @endphp
 	@endisset	
 	<div class="{{$class}}" id="sidebar">
 		@auth

@@ -37537,12 +37537,12 @@ $('.mobile-search-remove').click(function () {
 $('.toggle-sidebar').click(function () {
   $(this).toggleClass('btn-default btn-success');
 
-  if ($('#sidebar').hasClass('hide')) {
+  if (cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].get('sidebarHidden')) {
     $('#sidebar').removeClass('hide').addClass('open');
-    cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].set('sidebarOpen', true, false);
+    cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('sidebarHidden');
   } else {
     $('#sidebar').removeClass('open').addClass('hide');
-    cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('sidebarOpen');
+    cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].set('sidebarHidden', true, false);
   }
 }); // Password revealer button
 
