@@ -13127,6 +13127,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   flex-direction: column;
   pointer-events: all;
   margin-bottom: 2px;
+  max-height: 26rem;
+  overflow: auto;
   display: none;
 }
 
