@@ -194,7 +194,7 @@
 	@endif
 @endsection
 
-@can('update', $thread)
+@can('toggle', $thread)
     @section('toolbarItem')
         @component('components.toolbar-item')
             @slot('categoryTitle')
@@ -202,16 +202,18 @@
             @endslot
 
             @slot('toolbarSubitem')
-                @component('components.toolbar-subitem')
-                    @slot('subitemTitle')
-                        {{ __('Rename thread') }}
-                    @endslot
+                @can('update', $thread)
+                    @component('components.toolbar-subitem')
+                        @slot('subitemTitle')
+                            {{ __('Rename thread') }}
+                        @endslot
 
-                    @slot('content')
-                        <input type="text" id="thread-rename" value="{{$thread->title}}">
-                        <button class="btn btn-success thread-rename-submit" disabled>{{ __('Save') }}</button>
-                    @endslot
-                @endcomponent
+                        @slot('content')
+                            <input type="text" id="thread-rename" value="{{$thread->title}}">
+                            <button class="btn btn-success thread-rename-submit" disabled>{{ __('Save') }}</button>
+                        @endslot
+                    @endcomponent
+                @endcan
 
                 @component('components.toolbar-subitem')
                     @slot('subitemTitle')
@@ -233,22 +235,24 @@
                     @endslot
                 @endcomponent
 
-                @component('components.toolbar-subitem')
-                    @slot('subitemTitle')
-                        {{ __('Delete thread') }}
-                    @endslot
+                @can('delete', $thread)
+                    @component('components.toolbar-subitem')
+                        @slot('subitemTitle')
+                            {{ __('Delete thread') }}
+                        @endslot
 
-                    @slot('formAction')
-                        {{ route('thread_delete', [$thread->id, $thread->slug]) }}
-                    @endslot
+                        @slot('formAction')
+                            {{ route('thread_delete', [$thread->id, $thread->slug]) }}
+                        @endslot
 
-                    @slot('content')
-                        <button class="btn btn-hazard" type="submit">
-                            <i class="fas mr-2 fa-exclamation-triangle"></i>
-                            <span>{{ __('Delete') }}</span>
-                        </button>
-                    @endslot
-                @endcomponent
+                        @slot('content')
+                            <button class="btn btn-hazard" type="submit">
+                                <i class="fas mr-2 fa-exclamation-triangle"></i>
+                                <span>{{ __('Delete') }}</span>
+                            </button>
+                        @endslot
+                    @endcomponent
+                @endcan
             @endslot
         @endcomponent
 
