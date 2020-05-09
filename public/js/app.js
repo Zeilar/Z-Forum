@@ -37507,7 +37507,8 @@ $(document).click(function (e) {
     $('.navbar-mobile-item.search').removeClass('active');
     $('.mobile-search-remove').removeClass('active');
   }
-});
+}); // Set cookie to keep track of which toolbar item to keep open
+
 $('.toolbar-icon').click(function () {
   var value = $(this).find('.toolbar-category').attr('data-cookie');
   cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].set('toolbarItemOpen', value, false);

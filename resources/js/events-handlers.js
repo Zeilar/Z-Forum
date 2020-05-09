@@ -75,6 +75,7 @@ $(document).click(function(e) {
     }
 });
 
+// Set cookie to keep track of which toolbar item to keep open
 $('.toolbar-icon').click(function() {
     const value = $(this).find('.toolbar-category').attr('data-cookie');
     cookieCutter.set('toolbarItemOpen', value, false);
