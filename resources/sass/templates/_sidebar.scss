@@ -121,7 +121,7 @@
                 }
 
                 .chat-message {
-                    background: rgba(0, 0, 0, 0.15);
+                    background: rgba(0, 0, 0, 0.35);
                     word-break: break-all;
                     padding: 0.25rem;
 
@@ -130,7 +130,7 @@
                     }
 
                     &:nth-child(even) {
-                        background: rgba(0, 0, 0, 0.35);
+                        background: rgba(0, 0, 0, 0.45);
                     }
 
                     .message-content {
