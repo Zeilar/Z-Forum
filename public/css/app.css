@@ -13275,6 +13275,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin: auto 0;
 }
 
+#sidebar .sidebar-item.chat .sidebar-title {
+  border: 0;
+}
+
 @media (max-width: 1199px) {
   #sidebar .sidebar-item.chat {
     width: 100%;
@@ -13282,6 +13286,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.chat .chat-box {
+  border: 1px solid #00b365;
   overflow: auto;
   height: 20rem;
 }
@@ -13302,6 +13307,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   #sidebar .sidebar-item.chat .chat-box {
     height: 15rem;
   }
+}
+
+#sidebar .sidebar-item.chat .chat-box .no-messages {
+  padding: 0.25rem 0;
 }
 
 #sidebar .sidebar-item.chat .chat-box .chat-message {
@@ -13339,8 +13348,6 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.chat .chat-input {
-  border-top: 2px solid #00b365;
-  padding-top: 0.5rem;
   margin-top: 0.5rem;
 }
 

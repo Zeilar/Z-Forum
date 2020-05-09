@@ -107,17 +107,26 @@
         }
 
         &.chat {
+            .sidebar-title {
+                border: 0;
+            }
+
             @include desktop-down {
                 width: 100%;
             }
 
             .chat-box {
                 @include scrollbarGreen();
+                border: 1px solid $green;
                 overflow: auto;
                 height: 20rem;
 
                 @include desktop-down {
                     height: 15rem;
+                }
+
+                .no-messages {
+                    padding: 0.25rem 0;
                 }
 
                 .chat-message {
@@ -155,8 +164,6 @@
             }
 
             .chat-input {
-                border-top: 2px solid $green;
-                padding-top: 0.5rem;
                 margin-top: 0.5rem;
 
                 form {
