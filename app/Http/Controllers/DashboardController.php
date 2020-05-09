@@ -73,7 +73,9 @@ class DashboardController extends Controller
 	{
 		if (!logged_in()) {
 			return msg_error('login');
-		}
+		} else if (auth()->user()->is_suspended()) {
+            return msg_error(__('You are suspended'));
+        }
 
 		request()->validate([
 			'title'   	=> 'required|string|min:3|max:100',

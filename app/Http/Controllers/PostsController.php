@@ -96,7 +96,12 @@ class PostsController extends Controller
 				'type'    => 'error',
 				'message' => __('Please log in and try again'),
 			]);
-		} else if (!Post::find(request('id'))) {
+		} else if (auth()->user()->is_suspended()) {
+            return response()->json->([
+                'type'    => 'error',
+                'message' => __('You are suspended'),
+            ]);
+        } else if (!Post::find(request('id'))) {
 			return response()->json([
 				'type'    => 'error',
 				'message' => __('That post does not exist, refresh the page and try again'),
@@ -158,7 +163,12 @@ class PostsController extends Controller
 				'type'    => 'error',
 				'message' => __('Please log in and try again'),
 			]);
-		} else if (!Post::find(request('id'))) {
+		} else if (auth()->user()->is_suspended()) {
+            return response()->json([
+                'type'    => 'error',
+                'message' => __('You are suspended'),
+            ]);
+        } else if (!Post::find(request('id'))) {
 			return response()->json([
 				'type'    => 'error',
 				'message' => __('That post does not exist, refresh the page and try again'),
@@ -219,7 +229,12 @@ class PostsController extends Controller
 				'type' 	  => 'error',
 				'message' => __('You must be logged in to do that'),
 			]);
-		}
+		} else if (auth()->user()->is_suspended()) {
+            return response()->json([
+                'type'    => 'error',
+                'message' => __('You are suspended'),
+            ]);
+        }
 
 		$isLiked = UserLikedPosts::where([ 'user_id' => auth()->user()->id, 'post_id' => request('id') ])->get();
 
