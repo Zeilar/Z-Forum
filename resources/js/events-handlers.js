@@ -44,22 +44,6 @@ Mouse enter
 */
 Functions.fileUploadAnimation();
 
-// Chat message emoticons parser
-$('.message-content span').each(function() {
-    let message = $(this).html();
-    let emotes = message.match('(?<=:)[a-zA-Z]+(?=:)');
-
-    // fetch(window.location.origin + '/storage/emoticons/test.jpg')
-    //     .then(response => {
-    //         if (response.status !== 404) {
-    //             console.log('exists');
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-});
-
 // Scroll to bottom of chat on every page load
 $('.chat-box').scrollTop(9999);
 
@@ -131,11 +115,6 @@ $('#register_password_repeat').on('change', function() {
 		$(this).removeClass('is-invalid');
 		$('#passwords-no-match').remove();
 	}
-});
-
-// Chat send button styler
-$('#chat-content').on('input change', function() {
-    $(this).val() !== '' ? $(this).siblings('[type=submit]').addClass('active') : $(this).siblings('[type=submit]').removeClass('active');
 });
 
 // Turn disabled off on modal submit button if all inputs are filled, otherwise turn it on

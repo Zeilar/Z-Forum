@@ -108,7 +108,11 @@
                     initChatMessageRemoveHandlers();
 
                     function initChatMessageRemoveHandlers() {
+                        if ($('.chat-message').length > 30) $('.chat-message').first().remove();
+
                         $('.chat-message-remove').click(function() {
+                            if ($('.chat-message').length > 30) $('.chat-message').first().remove();
+
                             let msgId = $(this).parents('.chat-message').attr('id');
                             msgId = msgId.replace('chat-message-', '');
                             $.ajax({
@@ -168,7 +172,7 @@
                                 }
                             });
                         }
-                    }, 500);
+                    }, 1000);
 
                     async function parseEmotes(message) {
                         let s = message.html();
@@ -208,8 +212,6 @@
                 @auth
                     <script>                        
                         $('#chat form').submit(function(e) {
-                            $(this).find('[type=submit]').removeClass('active')
-
                             e.preventDefault();
                             $.ajax({
                                 url: '{{ route("chat_send") }}',
@@ -224,6 +226,7 @@
                                         if (!$('.chat-error').length && response.message != null) {
                                             $('.chat-input').prepend(`<p class="chat-error" style="color: red;">${response.message}</p>`);
                                             setTimeout(() => {
+                                                console.log('remove on both');
                                                 $('#chat-content, .chat-input [type=submit]').removeClass('error');
                                                 $('.chat-error').remove();
                                             }, 30000);
