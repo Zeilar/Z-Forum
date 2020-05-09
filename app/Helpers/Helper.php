@@ -56,7 +56,7 @@ if (!function_exists('logged_in')) {
  * 
  * @param string $role
  * 
- * @return boolean
+ * @return mixed
  */
 if (!function_exists('is_role')) {
 	function is_role(string ...$roles) {

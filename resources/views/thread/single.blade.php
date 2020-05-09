@@ -257,8 +257,6 @@
         @endcomponent
 
         <script>
-            let originalTitle = '{{ $thread->title }}';
-
             $('.thread-toggle').click(function(e) {
                 e.preventDefault();
                 $.ajax({
@@ -294,47 +292,52 @@
                     }
                 });
             });
+        </script>
 
-            $('.thread-rename-submit').click(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '{{ route("thread_update") }}',
-                    method: 'POST',
-                    data: {
-                        _token: '{{ Session::token() }}',
-                        id: '{{ $thread->id }}',
-                        title: $('#thread-rename').val(),
-                    },
-                    success: function(response) {
-                        // Insert the newly edited content into the post
-                        $('.thread-title').html(response.title);
+        @can('update', $thread)
+            <script>
+                let originalTitle = '{{ $thread->title }}';
+                $('.thread-rename-submit').click(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: '{{ route("thread_update") }}',
+                        method: 'POST',
+                        data: {
+                            _token: '{{ Session::token() }}',
+                            id: '{{ $thread->id }}',
+                            title: $('#thread-rename').val(),
+                        },
+                        success: function(response) {
+                            // Insert the newly edited content into the post
+                            $('.thread-title').html(response.title);
 
-                        // Edit the active breadcrumb content
-                        $('.breadcrumb-item.active').html(response.title);
+                            // Edit the active breadcrumb content
+                            $('.breadcrumb-item.active').html(response.title);
 
-                        // Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
-                        window.history.pushState('', '', response.url);
+                            // Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
+                            window.history.pushState('', '', response.url);
 
-                        // Dispay the alert message on the top of the page
-                        if (response.type != null && response.type !== 'none') ajax_alert(response);
+                            // Dispay the alert message on the top of the page
+                            if (response.type != null && response.type !== 'none') ajax_alert(response);
 
+                            $('.thread-rename-submit').attr('disabled', true);
+
+                            originalTitle = response.title;
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+
+                $('#thread-rename').on('input change', function() {
+                    if ($(this).val() !== '' && $(this).val() !== originalTitle) {
+                        $('.thread-rename-submit').removeAttr('disabled');
+                    } else {
                         $('.thread-rename-submit').attr('disabled', true);
-
-                        originalTitle = response.title;
-                    },
-                    error: function(error) {
-                        console.log(error);
                     }
                 });
-            });
-
-            $('#thread-rename').on('input change', function() {
-                if ($(this).val() !== '' && $(this).val() !== originalTitle) {
-                    $('.thread-rename-submit').removeAttr('disabled');
-                } else {
-                    $('.thread-rename-submit').attr('disabled', true);
-                }
-            });
-        </script>
+            </script>
+        @endcan
     @endsection
 @endcan
