@@ -97,4 +97,8 @@ class User extends Authenticatable
     public function is_online() {
         return \Illuminate\Support\Facades\Cache::has('user-online-' . $this->id) ? true : false;
     }
+
+    public function is_banned() {
+        return $this->banned ?? false;
+    }
 }
