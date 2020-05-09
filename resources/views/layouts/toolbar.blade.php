@@ -3,11 +3,7 @@
 		<div id="toolbar">
 			<ul class="toolbar-items">
                 @if (auth()->user()->is_role('superadmin'))
-                    @component('components.toolbar-item')
-                        @slot('cookie')
-                            users
-                        @endslot
-
+                    @component('components.toolbar-item', ['cookie' => 'users'])
                         @slot('icon')
                             <i class="fas fa-users"></i>
                         @endslot
@@ -35,11 +31,7 @@
                 @endif
 
 				@can('update', App\MaintenanceMode::find(1))
-                    @component('components.toolbar-item')
-                        @slot('cookie')
-                            configuration
-                        @endslot
-
+                    @component('components.toolbar-item', ['cookie' => 'configuration'])
                         @slot('icon')
                             <i class="fas fa-tools"></i>
                         @endslot

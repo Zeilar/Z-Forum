@@ -192,11 +192,7 @@
 
 @can('toggle', $thread)
     @section('toolbarItem')
-        @component('components.toolbar-item')
-            @slot('cookie')
-                thread
-            @endslot
-
+        @component('components.toolbar-item', ['cookie' => 'thread'])
             @slot('categoryTitle')
                 {{ __('Thread') }}
             @endslot
