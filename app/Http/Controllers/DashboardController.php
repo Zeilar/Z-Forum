@@ -60,6 +60,9 @@ class DashboardController extends Controller
 	public function message_create()
 	{
 		if (logged_in()) {
+            if (auth()->user()->is_suspended()) {
+                return msg_error(__('You are suspended'));
+            }
 			return view('message.new');
 		} else {
 			return msg_error('login');

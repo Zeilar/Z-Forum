@@ -52,7 +52,24 @@ class UsersPolicy
      */
     public function update(User $user, User $model)
     {
-        //
+        return is_role('superadmin');
+    }
+
+    /**
+     * Determine whether the user can suspsned the user.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $model
+     * @return mixed
+     */
+    public function suspend(User $user, User $model)
+    {
+        if ($model->id === auth()->user()->id) {
+            return false;
+        } else if ($user->is_role('superadmin') && !is_role('superadmin')) {
+            return false;
+        }
+        return is_role('superadmin', 'moderator');
     }
 
     /**

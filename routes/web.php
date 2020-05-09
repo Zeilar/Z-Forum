@@ -48,6 +48,7 @@ Route::get('/user/{id}/posts', 'UsersController@show_posts')->name('user_posts')
 Route::get('/user/{id}/likes', 'UsersController@show_likes')->name('user_likes');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 
+
 // Search
 Route::get('/search', 'SearchController@search')->name('search');
 
@@ -87,3 +88,4 @@ Route::get('/login/github', 'AuthController@redirectToProvider')->name('login_gi
 // Toolbar
 Route::post('/toggle-maintenance-mode', 'ToolbarController@toggle_maintenance_mode')->name('toggle_maintenance_mode');
 Route::post('/spoof-login', 'ToolbarController@spoof_login')->name('spoof_login');
+Route::post('/user/{id}/suspend', 'UsersController@suspend')->name('user_suspend');

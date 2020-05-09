@@ -41,7 +41,12 @@ class ChatMessagesPolicy
      */
     public function create(User $user)
     {
-        //
+        if (!logged_in()) {
+            return false;
+        } else if ($user->is_suspended()) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -65,7 +70,9 @@ class ChatMessagesPolicy
      */
     public function delete(User $user, ChatMessage $chatMessage)
     {
-        if ($user->id === $chatMessage->user->id || is_role('moderator', 'superadmin')) {
+        if ($user->is_suspended()) {
+            return false;
+        } else if ($user->id === $chatMessage->user->id || $user->is_role('moderator', 'superadmin')) {
             return true;
         } else {
             return false;

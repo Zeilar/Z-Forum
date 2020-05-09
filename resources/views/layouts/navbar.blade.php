@@ -34,11 +34,11 @@
 								</a>
 
 								<ul class="navbar-dropdown">
-									<li class="navbar-dropdown-item">
-										<a class="navbar-dropdown-link" href="{{route('message_new')}}">
-											<span>{{ __('New') }}</span>
-										</a>
-									</li>
+                                    <li class="navbar-dropdown-item">
+                                        <a class="navbar-dropdown-link" href="{{route('message_new')}}">
+                                            <span>{{ __('New') }}</span>
+                                        </a>
+                                    </li>
 								</ul>
 							</li>
 						@else

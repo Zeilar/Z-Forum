@@ -1,5 +1,5 @@
 @auth
-	@if (auth()->user()->is_role('moderator', 'superadmin'))
+	@if (auth()->user()->is_role('moderator', 'superadmin') && !auth()->user()->is_suspended())
 		<div id="toolbar">
             <button class="toolbar-toggle" type="button">
                 <i class="fas fa-exchange-alt @empty($_COOKIE['toolbarOpen']) color-white @endempty"></i>

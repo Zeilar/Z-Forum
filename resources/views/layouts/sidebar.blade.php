@@ -93,14 +93,16 @@
                         @endforelse
                     </div>
 
-                    @auth  
-                        <div class="chat-input">
-                            <form>
-                                @csrf
-                                <input type="text" id="chat-content" autocomplete="off">
-                                <button type="submit">{{ __('Send') }}</button>
-                            </form>
-                        </div>
+                    @auth
+                        @if (!auth()->user()->is_suspended())
+                            <div class="chat-input">
+                                <form>
+                                    @csrf
+                                    <input type="text" id="chat-content" autocomplete="off">
+                                    <button type="submit">{{ __('Send') }}</button>
+                                </form>
+                            </div>
+                        @endif
                     @endauth
                 </div>
 

@@ -115,9 +115,11 @@
 		</div>
 	</div>
 	
-	<a class="btn btn-success-full" href="{{route('thread_create', [$subcategory->id, $subcategory->slug])}}">
-		<span>{{ __('Create new thread') }}</span>
-	</a>
+    @can('create', App\Thread::class)
+        <a class="btn btn-success-full" href="{{route('thread_create', [$subcategory->id, $subcategory->slug])}}">
+            <span>{{ __('Create new thread') }}</span>
+        </a>
+    @endcan
 
 	@auth
 		{{-- Which collection to mark as read --}}

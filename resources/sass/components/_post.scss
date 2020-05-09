@@ -20,6 +20,10 @@
 			background: linear-gradient(to right, $moderator, $gray);
 		}
 
+        &.is_suspended {
+			background: linear-gradient(to right, rgba(127, 0, 0, 0.5), $gray);
+		}
+
 		span {
 			text-transform: uppercase;
 			margin-right: 0.25rem;

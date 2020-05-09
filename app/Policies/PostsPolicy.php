@@ -42,7 +42,9 @@ class PostsPolicy
      */
     public function create(User $user, Thread $thread)
     {
-		if (is_role('superadmin', 'moderator')) {
+        if ($user->is_suspended()) {
+            return false;
+        } else if ($user->is_role('superadmin', 'moderator')) {
 			return true;
 		} else if ($thread->locked) {
 			return false;
@@ -60,7 +62,9 @@ class PostsPolicy
      */
     public function update(User $user, Post $post)
     {
-		if (is_role('superadmin', 'moderator')) {
+        if ($user->is_suspended()) {
+            return false;
+        } else if ($user->is_role('superadmin', 'moderator')) {
 			return true;
 		} else if ($post->thread->locked) {
 			return false;
@@ -80,7 +84,9 @@ class PostsPolicy
      */
     public function delete(User $user, Post $post)
     {
-        if (is_role('superadmin')) {
+        if ($user->is_suspended()) {
+            return false;
+        } if ($user->is_role('superadmin')) {
 			return true;
 		} else if ($post->thread->locked) {
 			return false;
@@ -102,7 +108,7 @@ class PostsPolicy
      */
     public function restore(User $user, Post $post)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 
     /**
@@ -114,6 +120,6 @@ class PostsPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 }

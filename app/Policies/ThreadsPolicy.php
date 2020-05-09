@@ -41,6 +41,9 @@ class ThreadsPolicy
      */
     public function create(User $user)
     {
+        if ($user->is_suspended()) {
+            return false;
+        }
         return logged_in();
     }
 

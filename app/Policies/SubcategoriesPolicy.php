@@ -41,7 +41,7 @@ class SubcategoriesPolicy
      */
     public function create(User $user)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 
     /**
@@ -53,7 +53,7 @@ class SubcategoriesPolicy
      */
     public function update(User $user, Subcategory $subcategory)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 
     /**
@@ -65,7 +65,7 @@ class SubcategoriesPolicy
      */
     public function delete(User $user, Subcategory $subcategory)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 
     /**
@@ -77,7 +77,7 @@ class SubcategoriesPolicy
      */
     public function restore(User $user, Subcategory $subcategory)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 
     /**
@@ -89,6 +89,6 @@ class SubcategoriesPolicy
      */
     public function forceDelete(User $user, Subcategory $subcategory)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 }

@@ -16,8 +16,13 @@ class ChatMessagesController extends Controller
         }
 
         $user = auth()->user();
-        
-        if ($user->chat_messages()->where('created_at', '>=', \Carbon\Carbon::now()->subSeconds(30))->count() >= 5) {
+
+        if ($user->is_suspended()) {
+            return response()->json([
+                'error'   => true,
+                'message' => __('You are suspended'),
+            ]);
+        } else if ($user->chat_messages()->where('created_at', '>=', \Carbon\Carbon::now()->subSeconds(30))->count() >= 5) {
             return response()->json([
                 'error'   => true,
                 'message' => __('Wait a moment before you post again'),

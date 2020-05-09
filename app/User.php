@@ -94,6 +94,18 @@ class User extends Authenticatable
         return false;
 	}
 
+    public function suspend($date) {
+        $this->suspended = $date;
+        $this->save();
+        return $this;
+    }
+
+    public function pardon() {
+        $this->suspended = null;
+        $this->save();
+        return $this;
+    }
+
     public function is_online() {
         return \Illuminate\Support\Facades\Cache::has('user-online-' . $this->id) ? true : false;
     }

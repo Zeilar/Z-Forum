@@ -19,6 +19,6 @@ class MaintenanceModePolicy
      */
     public function update(User $user, MaintenanceMode $maintenanceMode)
     {
-        return is_role('superadmin');
+        return $user->is_role('superadmin');
     }
 }

@@ -19,9 +19,11 @@
 @section('content')
 	{{ $messages->links('layouts.pagination') }}
 	
-	<a class="btn new-message btn-success-full" href="{{route('message_new')}}">
-		{{ __('Send a message') }}
-	</a>
+    @if (logged_in() && !auth()->user()->is_suspended())
+        <a class="btn new-message btn-success-full" href="{{route('message_new')}}">
+            {{ __('Send a message') }}
+        </a>
+    @endif
 
 	@if (session('success'))
 		<p class="flash-success messages">{{ session('success') }}</p>

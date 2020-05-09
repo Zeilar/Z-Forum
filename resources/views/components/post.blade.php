@@ -12,14 +12,15 @@
     <article class="post" id="{{$post->id}}">
         @empty($disablePostBanner)
             @if ($user->is_suspended())
-                <div class="post-banner suspended">
+                <div class="post-banner is_suspended">
                     <span class="post-banner-role">{{ __('Suspended') }}</span>
                 </div>
-            @endif
-            @if ($user->is_role('moderator', 'superadmin'))
-                <div class="post-banner {{role_coloring($user->role)}}">
-                    <span class="post-banner-role">{{ $user->role }}</span>
-                </div>
+            @else
+                @if ($user->is_role('moderator', 'superadmin'))
+                    <div class="post-banner {{role_coloring($user->role)}}">
+                        <span class="post-banner-role">{{ $user->role }}</span>
+                    </div>
+                @endif
             @endif
         @endempty
 

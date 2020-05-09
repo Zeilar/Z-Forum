@@ -234,4 +234,37 @@ class UsersController extends Controller
 			return view('errors.404');
 		}
 	}
+
+    public function suspend(Request $request, $id) {
+        if (empty(User::find($id))) return msg_error(__('That user does not exist'));
+
+        $this->authorize('suspend', User::find($id));
+
+        request()->validate([
+            'day'   => 'required|string',
+            'month' => 'required|string',
+            'year'  => 'required|string',
+        ]);
+
+        $date = Carbon::now();
+        $date->day = request('day');
+        $date->month = request('month');
+        $date->year = request('year');
+        
+        $user = User::find($id);
+        $user->suspend($date);
+
+        return redirect()->back();
+    }
+
+    public function pardon(Request $request, $id) {
+        if (empty(User::find($id))) return msg_error(__('That user does not exist'));
+
+        $this->authorize('suspend', User::find($id));
+        
+        $user = User::find($id);
+        $user->pardon();
+
+        return redirect()->back();
+    }
 }
