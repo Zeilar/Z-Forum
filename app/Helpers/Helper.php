@@ -157,19 +157,6 @@ if (!function_exists('msg_success')) {
 }
 
 /**
- * Check if user is online
- * 
- * @param int $id
- * 
- * @return boolean
- */
-if (!function_exists('is_user_online')) {
-	function is_user_online($id) : bool {
-		return Illuminate\Support\Facades\Cache::has('user-online-' . $id) ? true : false;
-	}
-}
-
-/**
  * Get all users who are online
  * 
  * @return array
@@ -178,9 +165,7 @@ if (!function_exists('get_online_users')) {
 	function get_online_users() : array {
 		$users = [];
 		foreach (App\User::all() as $user) {
-			if (is_user_online($user->id)) {
-				array_push($users, $user);
-			}
+			if (\Illuminate\Support\Facades\Cache::has('user-online-' . $user->id)) array_push($users, $user);
 		}
 		return $users;
 	}

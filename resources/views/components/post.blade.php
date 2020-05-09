@@ -19,11 +19,11 @@
         <div class="post-header">
             <div class="post-meta {{$attribute}}">
                 <a class="post-avatar-link" href="{{route('user_show', [$post->user->id])}}">
-                    <div class="post-avatar @if(is_user_online($post->user->id)) is_online @endif">
+                    <div class="post-avatar @if($post->user->is_online()) is_online @endif">
                         <img class="img-fluid" src="{{$post->user->avatar}}" alt="{{ __('Post user avatar') }}" />
 
                         <div class="avatar-meta">
-                            @if (is_user_online($post->user->id)) 
+                            @if ($post->user->is_online()) 
                                 <p class="status">{{ __('Online') }}</p> 
                             @else
                                 <p class="status">{{ __('Offline') }}</p>
