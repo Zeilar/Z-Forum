@@ -13158,6 +13158,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: red;
 }
 
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem .select-header {
+  margin-bottom: 0.25rem;
+}
+
 #toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-day,
 #toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-month,
 #toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #suspend-year {

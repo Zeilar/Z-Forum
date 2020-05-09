@@ -122,6 +122,10 @@
                         color: red;
                     }
 
+                    .select-header {
+                        margin-bottom: 0.25rem;
+                    }
+
                     #suspend-day, #suspend-month, #suspend-year {
                         border: 1px solid $darkgray;
                         background: $darkgray;
