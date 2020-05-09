@@ -13041,7 +13041,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 @media (max-width: 1199px) {
   #toolbar {
-    margin: 1rem auto;
+    margin-top: 1rem;
     position: unset;
     z-index: unset;
     height: unset;
@@ -13234,9 +13234,9 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   #sidebar .sidebar-item {
     width: calc(50% - 4px);
     margin-bottom: 0.5rem;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    height: auto;
   }
 }
 

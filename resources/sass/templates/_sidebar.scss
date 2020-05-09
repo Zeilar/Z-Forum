@@ -41,7 +41,9 @@
 		@include desktop-down {
 			width: calc(50% - 4px);
 			margin-bottom: 0.5rem;
-			height: fit-content;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+			height: auto;
 		}
 
 		@include phone {

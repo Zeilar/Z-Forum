@@ -13,7 +13,7 @@
     }
 
     @include desktop-down {
-        margin: 1rem auto;
+        margin-top: 1rem;
         position: unset;
         z-index: unset;
         height: unset;
