@@ -185,7 +185,7 @@ class ThreadsController extends Controller
 			$thread = Thread::find(request('id'));
 
 			if ($thread->locked) {
-				$thread->locked = false;
+				$thread->unlock();
 				$state = __('unlocked');
 
 				ActivityLog::create([
@@ -194,7 +194,7 @@ class ThreadsController extends Controller
 					'performed_on' => json_encode(['table' => 'threads', 'id' => $thread->id]),
 				]);
 			} else {
-				$thread->locked = true;
+				$thread->lock();
 				$state = __('locked');
 
 				ActivityLog::create([
