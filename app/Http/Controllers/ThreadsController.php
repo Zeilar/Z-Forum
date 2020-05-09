@@ -231,7 +231,7 @@ class ThreadsController extends Controller
 				'type'    => 'error',
 				'message' => __('That thread does not exist, refresh the page and try again'),
 			]);
-		} else if (!is_role('superadmin', 'moderator')) {
+		} else if (!is_role('superadmin')) {
 			return response()->json([
 				'type' 	  => 'error',
 				'message' => __('Insufficient permissions')
