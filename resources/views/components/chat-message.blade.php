@@ -4,11 +4,13 @@
             {{ $message->user->username }}
         </a>
         <span class="message-timestamp">{{ pretty_date($message->created_at) }}</span>
-        @can('delete', $message)
-            <button class="chat-message-remove" type="button">
-                <i class="far fa-trash-alt"></i>
-            </button>
-        @endcan
+        @if (!$message->is_deleted())
+            @can('delete', $message)
+                <button class="chat-message-remove" type="button">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            @endcan
+        @endif
     </div>
     <p class="content">{{ $message->content }}</p>
 </div>
