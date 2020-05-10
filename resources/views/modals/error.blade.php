@@ -1,4 +1,4 @@
-<div class="modal fade" id="errorModal">
+<div class="modal fade" id="errorModal" @isset(session()->all()['error']) data-error="true" @endisset>
 	<div class="modal-dialog" role="document">
 	  	<div class="modal-content">
 			<div class="modal-header bg-danger">

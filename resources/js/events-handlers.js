@@ -176,6 +176,7 @@ $('.modal-auth input').on('input', function() {
 	}
 });
 
+// Modal error events handling
 $('.modal').on('shown.bs.modal', function() {
 	if ($('.modal .is-invalid').length) {
 		$(this).find('.is-invalid').first().focus();
@@ -188,6 +189,7 @@ if ($('.modal .is-invalid').length) {
 } else if ($('.modal .success').length) {
 	$('.modal .success').parents('.modal').modal('show');
 }
+if ($('#errorModal').attr('data-error')) $('#errorModal').modal('show');
 
 // Put spinning wheel on submits buttons when pressed
 if ($('.spin').length) {
