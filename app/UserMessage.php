@@ -18,4 +18,8 @@ class UserMessage extends Model
 	public function recipient() {
 		return $this->belongsTo(User::class, 'recipient_id');
 	}
+
+    public function is_deleted() {
+        return $this->deleted_at ?? false;
+    }
 }

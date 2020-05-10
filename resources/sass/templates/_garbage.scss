@@ -4,22 +4,20 @@
         margin-left: auto;
 
         .restore-button {
-            transition: transform 0.5s ease-in-out;
-            transform: rotate(0);
-            background: none;
-            outline: 0;
-            border: 0;
+            margin-bottom: 1rem;
 
             &:hover {
-                transform: rotate(-360deg);
+                i {
+                    transform: rotate(-360deg);
+                }
             }
 
             i {
-                color: red;
+                transition: transform 0.5s ease-in-out;
+                transform: rotate(0);
             }
         }
     }
-
 
     .garbage-wrapper {
         margin-bottom: 1rem;
@@ -29,8 +27,8 @@
         }
     }
 
-    .threads, .chat-messages {
-        .thread, .chat-message {
+    .threads {
+        .thread {
             border: 1px solid $darkgray;
             margin-bottom: 0.5rem;
             background: $darkgray;
@@ -41,18 +39,13 @@
                 margin-bottom: 0;
             }
         }
+    }
 
+    .chat-messages {
         .chat-message {
-            display: block;
-
-            .message-meta {
-                display: flex;
-
-                .message-date {
-                    margin-left: 0.25rem;
-                    color: $silver;
-                }
-            }
+            border: 1px solid $darkgray;
+            margin-bottom: 0.5rem;
+            background: $darkgray;
         }
     }
 

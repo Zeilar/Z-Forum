@@ -37,12 +37,18 @@
 </div>
 
 @isset($replyButton)
-    @if ($message->author->id !== auth()->user()->id)
-        <a class="btn message-reply-button mt-2 mb-4 btn-success-full" href="{{
-            route('message_new') . '?replyTo=' . $message->author->username . '&replySubject=' . urlencode($message->title)
-        }}">
-            <span>{{ __('Reply') }}</span>
-            <i class="fas ml-2 color-white fa-reply"></i>
-        </a>
-    @endif
+    @can('create', App\UserMessage::class)
+        @if ($message->author->id !== auth()->user()->id)
+            <a class="btn message-reply-button mt-2 mb-4 btn-success-full" href="{{
+                route('message_new') . '?replyTo=' . $message->author->username . '&replySubject=' . urlencode($message->title)
+            }}">
+                <span>{{ __('Reply') }}</span>
+                <i class="fas ml-2 color-white fa-reply"></i>
+            </a>
+        @endif
+    @endcan
+@endisset
+
+@isset($deleteButton)
+    {{ $deleteButton }}
 @endisset

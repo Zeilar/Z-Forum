@@ -9,41 +9,33 @@
         @if (!count($subcategories) && !count($chat_messages) && !count($user_messages) && !count($categories) && !count($threads) && !count($posts))
             <h2 class="garbage-empty">{{ __('The garbage can is empty') }}</h2>
         @endif
-
+        
         <div class="threads garbage-wrapper">
             @foreach ($threads as $thread)
                 <div class="thread">
                     <span class="thread-title">{{ $thread->title }}</span>
-                    <form action="{{route('thread_restore', [$thread->id])}}" method="post">
-                        @csrf
-                        <button class="restore-button" type="submit">
-                            <i class="fas fa-undo"></i>
-                        </button>
-                    </form>
                 </div>
+                <form action="{{route('thread_restore', [$thread->id])}}" method="post">
+                    @csrf
+                    <button class="btn btn-hazard restore-button" type="submit">
+                        <i class="fas mr-2 fa-undo"></i>
+                        <span>{{ __('Restore') }}</span>
+                    </button>
+                </form>
             @endforeach
         </div>
 
         <div class="chat-messages garbage-wrapper">
             @if (count($chat_messages))
                 @foreach ($chat_messages as $message)
-                    <div class="chat-message">
-                        <div class="message-meta">
-                            <a class="{{role_coloring($message->user->role)}}" href="{{route('user_show', [$message->user->role])}}">
-                                {{ $message->user->username }}
-                            </a>
-                            <span class="message-date">{{ pretty_date($message->created_at) }}</span>
-                            <form action="{{route('chat_restore', [$message->id])}}" method="post">
-                                @csrf
-                                <button class="restore-button" type="submit">
-                                    <i class="fas fa-undo"></i>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="message-content">
-                            {{ $message->content }}
-                        </div>
-                    </div>
+                    @include('components.chat-message', ['message' => $message])
+                    <form action="{{route('chat_restore', [$message->id])}}" method="post">
+                        @csrf
+                        <button class="btn btn-hazard restore-button" type="submit">
+                            <i class="fas mr-2 fa-undo"></i>
+                            <span>{{ __('Restore') }}</span>
+                        </button>
+                    </form>
                 @endforeach
 
                 @include('js.parse-emotes')
@@ -53,6 +45,34 @@
                     });
                 </script>
             @endif
+        </div>
+
+        <div class="user-messages">
+            @foreach ($user_messages as $message)
+                @component('components.message', ['message' => $message])
+                    @slot('deleteButton')
+                        @can('delete', $message)
+                            @if ($message->is_deleted())
+                                <form action="{{route('message_restore', [$message->id])}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-hazard mt-2 restore-button" type="submit">
+                                        <i class="fas mr-2 fa-undo"></i>
+                                        <span>{{ __('Restore') }}</span>
+                                    </button>
+                                </form>
+                            @else
+                                <form action="{{route('message_delete', [$message->id])}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-hazard mt-2" type="submit">
+                                        <i class="fas mr-2 fa-exclamation-triangle"></i>
+                                        <span>{{ __('Delete') }}</span>
+                                    </button>
+                                </form>
+                            @endif
+                        @endcan
+                    @endslot
+                @endcomponent
+            @endforeach
         </div>
 
         <div class="posts garbage-wrapper">

@@ -4,14 +4,6 @@
 	{{ __('Messages') }}
 @endsection
 
-@php
-	$messages = DB::table('user_messages')
-		->where('author_id', $user->id)
-		->orWhere('recipient_id', $user->id)
-		->orderByDesc('created_at')
-		->paginate(settings_get('posts_per_page'))
-@endphp
-
 @section('breadcrumbs')
 	{{ Breadcrumbs::render('messages') }}
 @endsection

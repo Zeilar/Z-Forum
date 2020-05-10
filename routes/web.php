@@ -28,8 +28,8 @@ Route::post('/subcategory/{id}/{slug}/thread/store', 'ThreadsController@store')-
 Route::get('/subcategory/{id}/{slug}/thread/new', 'ThreadsController@create')->name('thread_create');
 Route::post('/thread/{id}/restore', 'ThreadsController@restore')->name('thread_restore');
 Route::post('/thread/{id}/delete', 'ThreadsController@destroy')->name('thread_delete');
-Route::post('/thread/update', 'ThreadsController@update')->name('thread_update');
 Route::get('/thread/{id}/{slug}', 'ThreadsController@show')->name('thread_show');
+Route::post('/thread/update', 'ThreadsController@update')->name('thread_update');
 Route::post('/thread/toggle', 'ThreadsController@toggle')->name('thread_toggle');
 
 // Posts
@@ -53,6 +53,8 @@ Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 Route::get('/search', 'SearchController@search')->name('search');
 
 // Dashboard
+Route::post('/messages/{id}/restore', 'DashboardController@message_restore')->name('message_restore');
+Route::post('/messages/{id}/delete', 'DashboardController@message_delete')->name('message_delete');
 Route::put('/dashboard/update', 'AccountController@update')->name('dashboard_account_update');
 Route::post('/messages/send', 'DashboardController@message_send')->name('message_send');
 Route::get('/messages/new', 'DashboardController@message_create')->name('message_new');

@@ -159,9 +159,12 @@
             @isset($deleted)
                 @can('restore', $post)
                     <div class="post-toolbar">
-                        <form action="{{route('post_restore', [$post->id])}}" method="post">
+                        <form class="m-0" action="{{route('post_restore', [$post->id])}}" method="post">
                             @csrf
-                            <button class="btn btn-success" type="submit">{{ __('Restore') }}</button>
+                            <button class="btn btn-hazard restore-button m-0" type="submit">
+                                <i class="fas mr-2 fa-undo"></i>
+                                <span>{{ __('Restore') }}</span>
+                            </button>
                         </form>
                     </div>
                 @endcan
