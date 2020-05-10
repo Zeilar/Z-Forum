@@ -22,6 +22,52 @@
             @slot('toolbarSubitem')
                 @component('components.toolbar-subitem')
                     @slot('subitemTitle')
+                        {{ __('Edit user') }}
+                    @endslot
+
+                    @slot('formAction')
+                        {{ route('user_update', [$user->id]) }}
+                    @endslot
+
+                    @slot('content')
+                        <img class="file-upload-preview img-fluid" src="{{$user->avatar}}" alt="{{ __('Profile avatar') }}">
+                        <label class="file-upload" for="avatar-upload">
+                            <i class="fas color-white fa-upload"></i>
+                            <span>{{ __('Upload file') }}</span>
+                        </label>
+                        <input type="file" id="avatar-upload" name="avatar" />
+
+                        <label>{{ __('Username') }}</label>
+                        <input type="text" name="username" value="{{$user->username}}">
+
+                        <label>{{ __('Email') }}</label>
+                        <input type="email" name="email" value="{{$user->email}}">
+
+                        <label>{{ __('Role') }}</label>
+                        @php
+                            $type = DB::select(DB::raw("SHOW COLUMNS FROM users WHERE Field = 'role'"))[0]->Type;
+                            preg_match('/^enum\((.*)\)$/', $type, $matches);
+                            $enums = [];
+                            foreach (explode(',', $matches[1]) as $value) {
+                                $v = trim($value, "'");
+                                $enums = array_add($enums, $v, $v);
+                            }
+                        @endphp
+                        <select name="role" id="user-role">
+                            @foreach ($enums as $enum)
+                                <option @if($enum === $user->role) selected @endif value="{{$enum}}">{{ ucfirst($enum) }}</option>
+                            @endforeach
+                        </select>
+
+                        <label>{{ __('Signature') }}</label>
+                        <textarea name="signature" id="user-signature" rows="3"><?= $user->signature ?></textarea>
+
+                        <button class="btn btn-hazard" type="submit">{{ __('Save') }}</button>
+                    @endslot
+                @endcomponent
+
+                @component('components.toolbar-subitem')
+                    @slot('subitemTitle')
                         {{ __('Suspension') }}
                     @endslot
 
@@ -36,9 +82,12 @@
                     @slot('content')
                         @if ($user->is_suspended())
                             <p class="suspended">{{ pretty_date($user->suspended) }}</p>
+                            @isset($user->suspended_reason)
+                                <p class="suspended-reason">{{ $user->suspended_reason }}</p>
+                            @endisset
                             <button class="btn btn-success user-pardon" type="submit">{{ __('Pardon') }}</button>
                         @else
-                            <p class="select-header">{{ __('Day') }}</p>
+                            <label>{{ __('Day') }}</label>
                             @error('day') <p style="color: red;">{{ $message }}</p> @enderror
                             <select name="day" id="suspend-day">
                                 <option></option>
@@ -49,7 +98,7 @@
                                 @endfor
                             </select>
 
-                            <p class="select-header">{{ __('Month') }}</p>
+                            <label>{{ __('Month') }}</label>
                             @error('month') <p style="color: red;">{{ $message }}</p> @enderror
                             <select name="month" id="suspend-month">
                                 <option></option>
@@ -67,7 +116,7 @@
                                 <option value="12">{{ __('December') }}</option>
                             </select>
 
-                            <p class="select-header">{{ __('Year') }}</p>
+                            <label>{{ __('Year') }}</label>
                             @error('year') <p style="color: red;">{{ $message }}</p> @enderror
                             <select name="year" id="suspend-year">
                                 <option></option>
@@ -76,6 +125,9 @@
                                     <option value="{{ $i }}">{{ $i }}</option>                                
                                 @endfor
                             </select>
+
+                            <label>{{ __('Suspension reason') }}</label>
+                            <input type="text" name="reason" autocomplete="off">
 
                             <button class="btn btn-hazard user-suspend" type="submit">{{ __('Suspend') }}</button>
                         @endif

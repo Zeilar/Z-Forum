@@ -105,7 +105,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (empty($user = User::find($id))) return msg_error(__('That user does not exist'));
+
+        request()->validate([
+            'username'  => 'required|string|min:3|max:15|unique:users|alpha_dash',
+            'email'	    => 'required|string|min:3|max:30|unique:users|email',
+            'signature' => 'nullable|max:100',
+            'avatar'	=> 'max:5120|file|image|nullable',
+        ]);
+
+        $user->update([
+            'username'  => request('username'),
+            'email'     => request('email'),
+            'role'      => request('role'),
+            'signature' => request('signature'),
+        ]);
     }
 
     /**
@@ -241,9 +255,10 @@ class UsersController extends Controller
         $this->authorize('suspend', User::find($id));
 
         request()->validate([
-            'day'   => 'required|string',
-            'month' => 'required|string',
-            'year'  => 'required|string',
+            'day'    => 'required|string',
+            'month'  => 'required|string',
+            'year'   => 'required|string',
+            'reason' => 'string|min:3|max:20',
         ]);
 
         $date = Carbon::now();
@@ -252,7 +267,7 @@ class UsersController extends Controller
         $date->year = request('year');
         
         $user = User::find($id);
-        $user->suspend($date);
+        $user->suspend($date, request('reason'));
 
         return redirect()->back();
     }

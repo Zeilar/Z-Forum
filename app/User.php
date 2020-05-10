@@ -87,22 +87,24 @@ class User extends Authenticatable
 
     public function is_role(string ...$roles) : bool {
         foreach ($roles as $role) {
-            if (strtolower($this->role) === strtolower($role)) {
-                return true;
-            }
+            if (strtolower($this->role) === strtolower($role)) return true;
         }
         return false;
 	}
 
-    public function suspend($date) {
-        $this->suspended = $date;
-        $this->save();
+    public function suspend($date, $reason) {
+        $this->update([
+            'suspended' => $date,
+            'suspended_reason' => $reason,
+        ]);
         return $this;
     }
 
     public function pardon() {
-        $this->suspended = null;
-        $this->save();
+        $this->update([
+            'suspended' => null,
+            'suspended_erason' => null,
+        ]);
         return $this;
     }
 

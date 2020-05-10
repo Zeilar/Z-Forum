@@ -120,9 +120,22 @@
                         margin-bottom: 0.5rem;
                     }
 
+                    label:not(.file-upload) {
+                        margin-top: 1rem;
+                        display: block;
+                    }
+
+                    [type=submit] {
+                        margin-top: 1rem;
+                    }
+
                     .suspended {
-                        margin-bottom: 0.5rem;
                         color: red;
+                    }
+
+                    .suspended-reason {
+                        font-style: italic;
+                        color: $silver;
                     }
 
                     .select-header {
@@ -130,17 +143,7 @@
                     }
 
                     #suspend-day, #suspend-month, #suspend-year {
-                        border: 1px solid $darkgray;
-                        background: $darkgray;
-                        outline-color: $green;
-                        margin-bottom: 1rem;
-                        color: $green;
                         width: 100%;
-
-                        option {
-                            background: black;
-                            color: white;
-                        }
                     }
 				}
 			}
