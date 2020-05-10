@@ -18,6 +18,7 @@ class CreateChatMessagesTable extends Migration
             $table->string('user_id');
             $table->text('content');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

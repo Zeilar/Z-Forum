@@ -63,6 +63,7 @@ Route::get('/dashboard', 'DashboardController@account')->name('dashboard_account
 // Tools
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 Route::post('/post/like', 'PostsController@like')->name('post_like');
+Route::get('/garbage', 'GarbageController@show');
 
 // Chat messages
 Route::post('/chat/update', 'ChatMessagesController@update')->name('chat_update');

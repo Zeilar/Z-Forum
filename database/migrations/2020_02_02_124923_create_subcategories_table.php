@@ -20,6 +20,7 @@ class CreateSubcategoriesTable extends Migration
 			$table->string('icon')->default('default.png');
 			$table->unsignedInteger('category_id');
             $table->timestamps();
+            $table->softDeletes();
 			$table->string('table_name')->default('subcategories');
         });
     }

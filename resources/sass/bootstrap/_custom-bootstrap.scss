@@ -80,8 +80,10 @@ html {
 	}
 }
 
-.modal .btn {
-	width: 100% !important;
+.modal {
+    .btn {
+        width: 100% !important;
+    }
 }
 
 .form-control {

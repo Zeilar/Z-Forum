@@ -23,6 +23,7 @@ class CreateThreadsTable extends Migration
 			$table->unsignedInteger('subcategory_id');
 			$table->unsignedInteger('category_id');
             $table->timestamps();
+            $table->softDeletes();
 			$table->string('table_name')->default('threads');
         });
     }

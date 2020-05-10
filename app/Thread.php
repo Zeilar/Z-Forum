@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    use SoftDeletes;
+
 	public function posts()
 	{
 		return $this->hasMany(Post::class);
