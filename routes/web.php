@@ -48,7 +48,6 @@ Route::get('/user/{id}/posts', 'UsersController@show_posts')->name('user_posts')
 Route::get('/user/{id}/likes', 'UsersController@show_likes')->name('user_likes');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 
-
 // Search
 Route::get('/search', 'SearchController@search')->name('search');
 
@@ -63,7 +62,6 @@ Route::get('/dashboard', 'DashboardController@account')->name('dashboard_account
 // Tools
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 Route::post('/post/like', 'PostsController@like')->name('post_like');
-Route::get('/garbage', 'GarbageController@show');
 
 // Chat messages
 Route::post('/chat/update', 'ChatMessagesController@update')->name('chat_update');
@@ -91,3 +89,7 @@ Route::post('/toggle-maintenance-mode', 'ToolbarController@toggle_maintenance_mo
 Route::post('/spoof-login', 'ToolbarController@spoof_login')->name('spoof_login');
 Route::post('/user/{id}/suspend', 'UsersController@suspend')->name('user_suspend');
 Route::post('/user/{id}/pardon', 'UsersController@pardon')->name('user_pardon');
+
+// Garbage & Restores
+Route::post('/post/{id}/restore', 'PostsController@restore')->name('post_restore');
+Route::get('/garbage', 'GarbageController@show');

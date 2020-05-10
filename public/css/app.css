@@ -13339,7 +13339,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #sidebar .sidebar-item.chat .chat-box .no-messages {
-  padding: 0.25rem 0;
+  padding: 0.25rem;
 }
 
 #sidebar .sidebar-item.chat .chat-box .chat-message {

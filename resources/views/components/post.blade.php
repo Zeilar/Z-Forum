@@ -155,6 +155,17 @@
                     </div>
                 @endcan
             @endempty
+
+            @isset($deleted)
+                @can('restore', $post)
+                    <div class="post-toolbar">
+                        <form action="{{route('post_restore', [$post->id])}}" method="post">
+                            @csrf
+                            <button class="btn btn-success" type="submit">{{ __('Restore') }}</button>
+                        </form>
+                    </div>
+                @endcan
+            @endisset
         @endauth
     </article>
 @endisset

@@ -261,4 +261,23 @@ class PostsController extends Controller
 			]);
 		}
 	}
+
+    public function restore(Request $request, $id) {
+        $post = Post::onlyTrashed()->find($id);
+
+        if (empty($post)) return msg_error(__('That post does not exist'));
+
+        $post->restore();
+
+        return redirect(route('post_show', [
+            $post->thread->id,
+            $post->thread->slug,
+            get_item_page_number(
+                $post->thread->posts,
+                $post->id,
+                settings_get('posts_per_page')
+            ),
+            $post->id,
+        ]));
+    }
 }
