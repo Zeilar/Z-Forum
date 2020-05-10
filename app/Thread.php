@@ -47,4 +47,8 @@ class Thread extends Model
     public function is_locked() {
         return $this->locked;
     }
+
+    public function is_deleted() {
+        return $this->deleted_at ?? false;
+    }
 }

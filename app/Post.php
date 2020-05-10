@@ -32,4 +32,8 @@ class Post extends Model
 	public function likes() {
 		return $this->hasMany(UserLikedPosts::class);
 	}
+
+    public function is_deleted() {
+        return $this->deleted_at ?? false;
+    }
 }

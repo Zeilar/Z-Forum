@@ -23,4 +23,8 @@ class Subcategory extends Model
 	{
 		return $this->hasMany(Post::class);
 	}
+
+    public function is_deleted() {
+        return $this->deleted_at ?? false;
+    }
 }

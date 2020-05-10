@@ -14,4 +14,8 @@ class ChatMessage extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+    
+    public function is_deleted() {
+        return $this->deleted_at ?? false;
+    }
 }
