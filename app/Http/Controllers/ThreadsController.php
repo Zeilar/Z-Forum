@@ -273,4 +273,18 @@ class ThreadsController extends Controller
 			]);
 		}
     }
+
+    public function restore(Request $request, $id) {
+        $thread = Thread::onlyTrashed()->find($id);
+
+        if (empty($thread)) return msg_error(__('That thread does not exist'));
+
+        $thread->restore();
+
+        Post::onlyTrashed()->where('thread_id', $thread->id)->each(function($post) {
+            $post->restore();
+        });
+
+        return redirect(route('thread_show', [$thread->id, $thread->slug]));
+    }
 }

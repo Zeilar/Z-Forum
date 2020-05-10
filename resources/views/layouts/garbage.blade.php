@@ -10,20 +10,21 @@
             <h2 class="garbage-empty">{{ __('The garbage can is empty') }}</h2>
         @endif
 
-        <div class="posts">
-            @foreach($posts as $post)
-                @component('components.post', [
-                    'post'				   => $post,
-                    'disablePostToolbar'   => true,
-                    'disablePostBanner'    => true,
-                    'disablePostSignature' => true,
-                    'deleted'              => true,
-                ])  
-                @endcomponent
+        <div class="threads garbage-wrapper">
+            @foreach ($threads as $thread)
+                <div class="thread">
+                    <span class="thread-title">{{ $thread->title }}</span>
+                    <form action="{{route('thread_restore', [$thread->id])}}" method="post">
+                        @csrf
+                        <button class="restore-button" type="submit">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                    </form>
+                </div>
             @endforeach
         </div>
 
-        <div class="chat-messages">
+        <div class="chat-messages garbage-wrapper">
             @if (count($chat_messages))
                 @foreach ($chat_messages as $message)
                     <div class="chat-message">
@@ -34,7 +35,7 @@
                             <span class="message-date">{{ pretty_date($message->created_at) }}</span>
                             <form action="{{route('chat_restore', [$message->id])}}" method="post">
                                 @csrf
-                                <button type="submit">
+                                <button class="restore-button" type="submit">
                                     <i class="fas fa-undo"></i>
                                 </button>
                             </form>
@@ -52,6 +53,19 @@
                     });
                 </script>
             @endif
+        </div>
+
+        <div class="posts garbage-wrapper">
+            @foreach($posts as $post)
+                @component('components.post', [
+                    'post'				   => $post,
+                    'disablePostToolbar'   => true,
+                    'disablePostBanner'    => true,
+                    'disablePostSignature' => true,
+                    'deleted'              => true,
+                ])  
+                @endcomponent
+            @endforeach
         </div>
     </div>
 @endsection

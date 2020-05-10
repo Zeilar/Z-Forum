@@ -3,7 +3,7 @@
     
     @if (auth()->check() && $user->id === auth()->user()->id)
         @php $attribute = 'is_author' @endphp
-    @elseif ($user->id === $post->thread->user->id)
+    @elseif (isset($post->thread) && $user->id === $post->thread->user->id)
         @php $attribute = 'is_op' @endphp
     @else
         @php $attribute = '' @endphp

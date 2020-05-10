@@ -13022,33 +13022,71 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: auto;
 }
 
-#garbage .chat-messages .chat-message {
-  border: 1px solid #2c2c3580;
-  background: #2c2c3580;
-  padding: 0.5rem;
+#garbage form {
+  display: inline-block;
+  margin-left: auto;
 }
 
+#garbage form .restore-button {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(0);
+  background: none;
+  outline: 0;
+  border: 0;
+}
+
+#garbage form .restore-button:hover {
+  transform: rotate(-360deg);
+}
+
+#garbage form .restore-button i {
+  color: red;
+}
+
+#garbage .garbage-wrapper {
+  margin-bottom: 1rem;
+}
+
+#garbage .garbage-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+#garbage .threads .thread,
+#garbage .threads .chat-message,
+#garbage .chat-messages .thread,
+#garbage .chat-messages .chat-message {
+  border: 1px solid #2c2c3580;
+  margin-bottom: 0.5rem;
+  background: #2c2c3580;
+  padding: 0.5rem;
+  display: flex;
+}
+
+#garbage .threads .thread:last-child,
+#garbage .threads .chat-message:last-child,
+#garbage .chat-messages .thread:last-child,
+#garbage .chat-messages .chat-message:last-child {
+  margin-bottom: 0;
+}
+
+#garbage .threads .chat-message,
+#garbage .chat-messages .chat-message {
+  display: block;
+}
+
+#garbage .threads .chat-message .message-meta,
 #garbage .chat-messages .chat-message .message-meta {
   display: flex;
 }
 
+#garbage .threads .chat-message .message-meta .message-date,
 #garbage .chat-messages .chat-message .message-meta .message-date {
   margin-left: 0.25rem;
   color: #a5abaf;
 }
 
-#garbage .chat-messages .chat-message .message-meta form {
-  display: inline-block;
-  margin-left: auto;
-}
-
-#garbage .chat-messages .chat-message .message-meta form button {
-  background: none;
-  border: 0;
-}
-
-#garbage .chat-messages .chat-message .message-meta form button i {
-  color: red;
+#garbage .posts .post:last-child {
+  margin-bottom: 0;
 }
 
 #toolbar {

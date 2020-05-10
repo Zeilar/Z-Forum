@@ -1,9 +1,49 @@
 #garbage {
-    .chat-messages {
-        .chat-message {
+    form {
+        display: inline-block;
+        margin-left: auto;
+
+        .restore-button {
+            transition: transform 0.5s ease-in-out;
+            transform: rotate(0);
+            background: none;
+            outline: 0;
+            border: 0;
+
+            &:hover {
+                transform: rotate(-360deg);
+            }
+
+            i {
+                color: red;
+            }
+        }
+    }
+
+
+    .garbage-wrapper {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .threads, .chat-messages {
+        .thread, .chat-message {
             border: 1px solid $darkgray;
+            margin-bottom: 0.5rem;
             background: $darkgray;
             padding: 0.5rem;
+            display: flex;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .chat-message {
+            display: block;
 
             .message-meta {
                 display: flex;
@@ -12,20 +52,14 @@
                     margin-left: 0.25rem;
                     color: $silver;
                 }
+            }
+        }
+    }
 
-                form {
-                    display: inline-block;
-                    margin-left: auto;
-
-                    button {
-                        background: none;
-                        border: 0;
-
-                        i {
-                            color: red;
-                        }
-                    }
-                }
+    .posts {
+        .post {
+            &:last-child {
+                margin-bottom: 0;
             }
         }
     }
