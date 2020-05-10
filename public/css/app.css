@@ -13022,6 +13022,35 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-left: auto;
 }
 
+#garbage .chat-messages .chat-message {
+  border: 1px solid #2c2c3580;
+  background: #2c2c3580;
+  padding: 0.5rem;
+}
+
+#garbage .chat-messages .chat-message .message-meta {
+  display: flex;
+}
+
+#garbage .chat-messages .chat-message .message-meta .message-date {
+  margin-left: 0.25rem;
+  color: #a5abaf;
+}
+
+#garbage .chat-messages .chat-message .message-meta form {
+  display: inline-block;
+  margin-left: auto;
+}
+
+#garbage .chat-messages .chat-message .message-meta form button {
+  background: none;
+  border: 0;
+}
+
+#garbage .chat-messages .chat-message .message-meta form button i {
+  color: red;
+}
+
 #toolbar {
   height: calc(100vh - 13rem);
   overflow: hidden;

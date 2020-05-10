@@ -64,6 +64,7 @@ Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mar
 Route::post('/post/like', 'PostsController@like')->name('post_like');
 
 // Chat messages
+Route::post('/chat/{id}/restore', 'ChatMessagesController@restore')->name('chat_restore');
 Route::post('/chat/update', 'ChatMessagesController@update')->name('chat_update');
 Route::post('/chat/remove', 'ChatMessagesController@remove')->name('chat_remove');
 Route::post('/chat/send', 'ChatMessagesController@send')->name('chat_send');

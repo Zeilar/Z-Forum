@@ -99,4 +99,14 @@ class ChatMessagesController extends Controller
             'removedMsg' => $messageId,
         ]);
     }
+
+    public function restore(Request $request, $id) {
+        $message = ChatMessage::onlyTrashed()->find($id);
+
+        if (empty($message)) return msg_error(__('That message does not exist'));
+
+        $message->restore();
+
+        return redirect()->back();
+    }
 }

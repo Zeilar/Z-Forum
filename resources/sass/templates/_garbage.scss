@@ -1,3 +1,32 @@
 #garbage {
-    
+    .chat-messages {
+        .chat-message {
+            border: 1px solid $darkgray;
+            background: $darkgray;
+            padding: 0.5rem;
+
+            .message-meta {
+                display: flex;
+
+                .message-date {
+                    margin-left: 0.25rem;
+                    color: $silver;
+                }
+
+                form {
+                    display: inline-block;
+                    margin-left: auto;
+
+                    button {
+                        background: none;
+                        border: 0;
+
+                        i {
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
