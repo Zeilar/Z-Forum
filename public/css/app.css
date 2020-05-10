@@ -12250,6 +12250,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   color: white;
 }
 
+.post-toolbar .restore-button i {
+  color: unset;
+}
+
 .post-toolbar button,
 .post-save-toolbar button {
   margin-right: 0.5rem;

@@ -300,6 +300,10 @@
 		pointer-events: none;
 		color: white;
 	}
+
+    .restore-button i {
+        color: unset;
+    }
 }
 
 .post-toolbar, .post-save-toolbar {
