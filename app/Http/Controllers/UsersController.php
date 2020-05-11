@@ -55,9 +55,9 @@ class UsersController extends Controller
         $this->authorize('create', User::class);
 
         request()->validate([
-            'username' => 'required|string|min:3|max:15|unique:users|alpha_dash',
-            'email'	   => 'required|string|min:3|max:30|unique:users|email',
-            'password' => 'required|string|min:6|max:30',
+            'username'  => 'required|string|min:3|max:15|unique:users|alpha_dash',
+            'email'	    => 'required|string|min:3|max:30|unique:users|email',
+            'password'  => 'required|string|min:6|max:30',
             'signature' => 'max:100|nullable',
             'avatar'	=> 'max:5120|file|image|nullable',
         ]);
