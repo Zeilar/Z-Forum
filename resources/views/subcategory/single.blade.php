@@ -151,12 +151,25 @@
                 @can('update', App\Subcategory::class)
                     @component('components.toolbar-subitem')
                         @slot('subitemTitle')
-                            {{ __('Rename subcategory') }}
+                            {{ __('Edit subcategory') }}
+                        @endslot
+
+                        @slot('formAction')
+                            {{ route('subcategory_update', [$subcategory->id]) }}
                         @endslot
 
                         @slot('content')
-                            <input type="text" id="subcategory-rename" value="{{$subcategory->title}}">
-                            <button class="btn btn-success subcategory-rename-submit" disabled>{{ __('Save') }}</button>
+                            <img class="file-upload-preview img-fluid" src="/storage/icons/{{$subcategory->icon}}" alt="{{ __('Subcategory icon') }}" />
+                            @error('icon') <p style="color: red;">{{ $message }}</p> @enderror
+                            <label class="file-upload" for="avatar-upload">
+                                <i class="fas color-white fa-upload"></i>
+                                <span>{{ __('Upload file') }}</span>
+                            </label>
+                            <input type="file" id="avatar-upload" name="icon" />
+
+                            <label>{{ __('Title') }}</label>
+                            <input type="text" id="subcategory-rename" name="title" value="{{$subcategory->title}}" autocomplete="off" />
+                            <button class="btn btn-success subcategory-rename-submit">{{ __('Save') }}</button>
                         @endslot
                     @endcomponent
                 @endcan
@@ -181,53 +194,5 @@
                 @endcan
             @endslot
         @endcomponent
-
-        @can('update', App\Subcategory::class)
-            @include('js.post.alert')
-
-            <script>
-                let originalTitle = '{{ $subcategory->title }}';
-                $('.subcategory-rename-submit').click(function(e) {
-                    e.preventDefault();
-                    $.ajax({
-                        url: '{{ route("subcategory_update") }}',
-                        method: 'POST',
-                        data: {
-                            _token: '{{ Session::token() }}',
-                            id: '{{ $subcategory->id }}',
-                            title: $('#subcategory-rename').val(),
-                        },
-                        success: function(response) {
-                            // Insert the newly edited content into the post
-                            $('.table-header .table-title h4').html(response.title);
-
-                            // Edit the active breadcrumb content
-                            $('.breadcrumb-item.active').html(response.title);
-
-                            // Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
-                            window.history.pushState('', '', response.url);
-
-                            // Dispay the alert message on the top of the page
-                            if (response.type != null && response.type !== 'none') ajax_alert(response);
-
-                            $('.categry-rename-submit').attr('disabled', true);
-
-                            originalTitle = response.title;
-                        },
-                        error: function(error) {
-                            console.log(error);
-                        }
-                    });
-                });
-
-                $('#subcategory-rename').on('input change', function() {
-                    if ($(this).val() !== '' && $(this).val() !== originalTitle) {
-                        $('.subcategory-rename-submit').removeAttr('disabled');
-                    } else {
-                        $('.subcategory-rename-submit').attr('disabled', true);
-                    }
-                });
-            </script>
-        @endcan
     @endsection
 @endcan

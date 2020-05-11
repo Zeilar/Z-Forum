@@ -79,52 +79,29 @@ class SubcategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request, $id)
     {
-		if (!logged_in()) {
-			return response()->json([
-				'type'    => 'error',
-				'message' => __('Please log in and try again'),
-			]);
-		} else if (auth()->user()->is_suspended()) {
-            return response()->json([
-                'type'    => 'error',
-                'message' => __('You are suspended'),
-            ]);
-        } else if (!Subcategory::find(request('id'))) {
-			return response()->json([
-				'type'    => 'error',
-				'message' => __('That subcategory does not exist, refresh the page and try again'),
-			]);
-		} else if (!is_role('superadmin')) {
-			return response()->json([
-				'type' 	  => 'error',
-				'message' => __('Insufficient permissions')
-			]);
-		} else if (request('title') === Subcategory::find(request('id'))->title) {
-			return response()->json([
-				'type' => 'none',
-			]); 
-		} else {
-			$subcategory = Subcategory::find(request('id'));
-            $subcategory->update([
-                'title' => request('title'),
-                'slug' => urlencode(request('title')),
-            ]);
+        if (empty($subcategory = Subcategory::find($id))) return msg_error(__('That subcategory does not exist'));
 
-			ActivityLog::create([
-				'user_id' 	   => auth()->user()->id,
-				'task'	  	   => __('edited'),
-				'performed_on' => json_encode(['table' => 'subcategories', 'id' => $subcategory->id]),
-			]);
+        $this->authorize('update', Subcategory::class);
 
-			return response()->json([
-				'type'	  => 'success',
-				'message' => __('Subcategory title was successfully changed'),
-				'title'	  => $subcategory->title,
-				'url'	  => route('subcategory_show', [$subcategory->id, $subcategory->slug]),
-			]);
+        request()->validate([
+            'title' => 'required|min:3|max:40',
+            'icon'	=> 'max:5120|file|image|nullable',
+        ]);
+
+        if (isset($request->icon)) {
+			$path = $request->file('icon')->store('/public/icons');
+			$path = explode('public/', $path)[1];
 		}
+
+        $subcategory->update([
+            'title' => request('title'),
+            'slug'  => urlencode(request('title')),
+            'icon'  => $path ?? $subcategory->icon,
+        ]);
+
+        return redirect(route('subcategory_show', [$subcategory->id, $subcategory->slug]));
     }
 
     /**

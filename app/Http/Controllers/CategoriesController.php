@@ -92,10 +92,20 @@ class CategoriesController extends Controller
 				'type' 	  => 'error',
 				'message' => __('Insufficient permissions')
 			]);
-		} else if (request('title') === Category::find(request('id'))->title) {
+		} else if (strlen(request('title')) < 3) {
+            return response()->json([
+				'type' 	  => 'error',
+				'message' => __('The title must be at least 3 letters long')
+			]);
+        } else if (strlen(request('title')) > 40) {
+            return response()->json([
+				'type' 	  => 'error',
+				'message' => __('The title musts be 40 or less letters longs')
+			]);
+        } else if (request('title') === Category::find(request('id'))->title) {
 			return response()->json([
 				'type' => 'none',
-			]); 
+			]);
 		} else {
 			$category = Category::find(request('id'));
             $category->update([
