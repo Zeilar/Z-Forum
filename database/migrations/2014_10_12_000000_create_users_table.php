@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
 			$table->timestamp('suspended')->nullable();
             $table->text('suspended_reason')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 			$table->string('table_name')->default('users');
         });
     }

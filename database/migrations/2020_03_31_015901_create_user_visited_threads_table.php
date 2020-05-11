@@ -18,6 +18,7 @@ class CreateUserVisitedThreadsTable extends Migration
 			$table->unsignedInteger('user_id');
 			$table->unsignedInteger('thread_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

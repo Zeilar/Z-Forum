@@ -19,8 +19,8 @@ class CreateUserMessagesTable extends Migration
 			$table->unsignedBigInteger('recipient_id')->nullable();
 			$table->string('title');
 			$table->text('content');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

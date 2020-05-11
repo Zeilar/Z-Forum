@@ -152,4 +152,34 @@ class CategoriesController extends Controller
 		
 		return redirect(route('index'));
     }
+
+    public function restore(Request $request, $id) {
+        if (empty($category = Category::onlyTrashed()->find($id))) return msg_error(__('That category does not exist'));
+
+        $this->authorize('restore', Category::class);
+        
+        $category->restore();
+
+        $category->subcategories()->onlyTrashed()->each(function($subcategory) {
+            $subcategory->restore();
+
+            $subcategory->threads()->onlyTrashed()->each(function($thread) {
+                $thread->restore();
+
+                $thread->posts()->onlyTrashed()->each(function($post) {
+                    $post->restore();
+
+                    $post->likes()->onlyTrashed()->each(function($like) {
+                        $like->restore();
+                    });
+                });
+
+                $thread->visits()->onlyTrashed()->each(function($visit) {
+                    $visit->restore();
+                });
+            });
+        });
+
+        return redirect(route('category_show', [$category->id, $category->slug]));
+    }
 }

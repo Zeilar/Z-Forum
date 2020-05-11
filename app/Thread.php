@@ -29,6 +29,11 @@ class Thread extends Model
 		return $this->belongsTo(User::class);
 	}
 
+    public function visits()
+	{
+		return $this->hasMany(UserVisitedThreads::class);
+	}
+
     public function toggle() {
         $this->locked ? $this->locked = false : true;
         return $this->save();

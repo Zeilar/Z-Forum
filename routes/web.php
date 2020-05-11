@@ -15,6 +15,7 @@
 Route::get('/', 'CategoriesController@index')->name('index');
 
 // Categories
+Route::post('/category/{id}/restore', 'CategoriesController@restore')->name('category_restore');
 Route::post('/category/{id}/delete', 'CategoriesController@destroy')->name('category_delete');
 Route::get('/category/{id}/{slug}', 'CategoriesController@show')->name('category_show');
 Route::post('/category/update', 'CategoriesController@update')->name('category_update');
@@ -22,6 +23,7 @@ Route::post('/category/store', 'CategoriesController@store')->name('category_sto
 
 // Subcategories
 Route::post('/subcategory/{id}/{slug}/store', 'SubcategoriesController@store')->name('subcategory_store');
+Route::post('/subcategory/{id}/restore', 'SubcategoriesController@restore')->name('subcategory_restore');
 Route::post('/category/{id}/{slug}/new', 'SubcategoriesController@create')->name('subcategory_create');
 Route::post('/subcategory/{id}/delete', 'SubcategoriesController@delete')->name('subcategory_delete');
 Route::post('/subcategory/{id}/update', 'SubcategoriesController@update')->name('subcategory_update');

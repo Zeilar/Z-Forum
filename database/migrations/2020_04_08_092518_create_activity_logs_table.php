@@ -19,6 +19,7 @@ class CreateActivityLogsTable extends Migration
 			$table->string('task');
 			$table->json('performed_on');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

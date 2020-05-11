@@ -18,6 +18,7 @@ class CreateUserVisitedMessagesTable extends Migration
 			$table->unsignedInteger('user_id');
 			$table->unsignedInteger('user_message_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

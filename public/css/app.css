@@ -13074,7 +13074,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #garbage form .restore-button i {
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, color 0.15s ease-in-out;
   transform: rotate(0);
 }
 
@@ -13086,7 +13086,13 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin-bottom: 0;
 }
 
-#garbage .threads .thread {
+#garbage .garbage-wrapper .garbage-title {
+  border-bottom: 2px solid #00b365;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#garbage .item {
   border: 1px solid #2c2c3580;
   margin-bottom: 0.5rem;
   background: #2c2c3580;
@@ -13094,7 +13100,7 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   display: flex;
 }
 
-#garbage .threads .thread:last-child {
+#garbage .item:last-child {
   margin-bottom: 0;
 }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\{
     UserMessage,
@@ -20,12 +21,18 @@ class GarbageController extends Controller
         if (!is_role('superadmin')) return msg_error('role');
         
         return view('layouts.garbage', [
-            'subcategories' => Subcategory::onlyTrashed()->get(),
+            'subcategories' => Subcategory::onlyTrashed()->whereHas('category', function(Builder $query) {
+                $query->where('deleted_at', null);
+            })->get(),
+            'threads' => Thread::onlyTrashed()->whereHas('subcategory', function(Builder $query) {
+                $query->where('deleted_at', null);
+            })->get(),
+            'posts' => Post::onlyTrashed()->whereHas('thread', function(Builder $query) {
+                $query->where('deleted_at', null);
+            })->get(),
             'chat_messages' => ChatMessage::onlyTrashed()->get(),
             'user_messages' => UserMessage::onlyTrashed()->get(),
-            'categories' => Category::onlyTrashed()->get(),
-            'threads' => Thread::onlyTrashed()->get(),
-            'posts' => Post::onlyTrashed()->get(),
+            'categories'    => Category::onlyTrashed()->get(),
         ]);
     }
 }
