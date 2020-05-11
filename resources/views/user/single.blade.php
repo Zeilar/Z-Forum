@@ -38,10 +38,10 @@
                         <input type="file" id="avatar-upload" name="avatar" />
 
                         <label>{{ __('Username') }}</label>
-                        <input type="text" name="username" value="{{$user->username}}">
+                        <input type="text" name="username" value="{{$user->username}}" autocomplete="off" />
 
                         <label>{{ __('Email') }}</label>
-                        <input type="email" name="email" value="{{$user->email}}">
+                        <input type="email" name="email" value="{{$user->email}}" autocomplete="off" />
 
                         <label>{{ __('Role') }}</label>
                         @php
@@ -62,7 +62,7 @@
                         <label>{{ __('Signature') }}</label>
                         <textarea name="signature" id="user-signature" rows="3"><?= $user->signature ?></textarea>
 
-                        <button class="btn btn-hazard" type="submit">{{ __('Save') }}</button>
+                        <button class="btn btn-success" type="submit">{{ __('Save') }}</button>
                     @endslot
                 @endcomponent
 

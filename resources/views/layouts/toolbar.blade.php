@@ -30,6 +30,58 @@
                                     <input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
                                 @endslot
                             @endcomponent
+
+                            @component('components.toolbar-subitem')
+                                @slot('subitemTitle')
+                                    {{ __('Create user') }}
+                                @endslot
+
+                                @slot('formAction')
+                                    {{ route('user_store') }}
+                                @endslot
+
+                                @slot('content')
+                                    <label>{{ __('Avatar') }}</label>
+                                    <label class="file-upload" for="avatar-upload">
+                                        <i class="fas color-white fa-upload"></i>
+                                        <span>{{ __('Upload file') }}</span>
+                                    </label>
+                                    <input type="file" id="avatar-upload" name="avatar" />
+
+                                    <label>{{ __('Username') }}</label>
+                                    <input type="text" name="username" autocomplete="off" />
+
+                                    <label>{{ __('Email') }}</label>
+                                    <input type="email" name="email" autocomplete="off" />
+
+                                    <label>{{ __('Role') }}</label>
+                                    @php
+                                        $type = DB::select(DB::raw("SHOW COLUMNS FROM users WHERE Field = 'role'"))[0]->Type;
+                                        preg_match('/^enum\((.*)\)$/', $type, $matches);
+                                        $enums = [];
+                                        foreach (explode(',', $matches[1]) as $value) {
+                                            $v = trim($value, "'");
+                                            $enums = array_add($enums, $v, $v);
+                                        }
+                                    @endphp
+                                    <select name="role">
+                                        @foreach ($enums as $enum)
+                                            <option value="{{$enum}}">{{ ucfirst($enum) }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <label>{{ __('Signature') }}</label>
+                                    <textarea name="signature" rows="3"></textarea>
+
+                                    <label>{{ __('Password') }}</label>
+                                    <input type="password" name="password" />
+
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="fas mr-2 fa-user-plus"></i>
+                                        <span>{{ __('Create') }}</span>
+                                    </button>
+                                @endslot
+                            @endcomponent
                         @endslot
                     @endcomponent
                 @endif

@@ -48,6 +48,7 @@ Route::get('/user/{id}/threads', 'UsersController@show_threads')->name('user_thr
 Route::get('/user/{id}/posts', 'UsersController@show_posts')->name('user_posts');
 Route::get('/user/{id}/likes', 'UsersController@show_likes')->name('user_likes');
 Route::post('/user/{id}/update', 'UsersController@update')->name('user_update');
+Route::post('/user/store', 'UsersController@store')->name('user_store');
 Route::get('/user/{id}', 'UsersController@show')->name('user_show');
 
 // Search

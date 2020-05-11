@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\UserLikedPosts;
 use App\UserMessage;
@@ -51,7 +52,32 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', User::class);
+
+        request()->validate([
+            'username' => 'required|string|min:3|max:15|unique:users|alpha_dash',
+            'email'	   => 'required|string|min:3|max:30|unique:users|email',
+            'password' => 'required|string|min:6|max:30',
+            'signature' => 'max:100|nullable',
+            'avatar'	=> 'max:5120|file|image|nullable',
+        ]);
+
+        if (isset($request->avatar)) {
+			// Store the avatar as an absolute URI path
+			$path = $request->file('avatar')->store('/public/user-avatars');
+			$path = explode('public/', $path)[1];
+			$path = route('index') . '/storage/' . $path;
+		}
+
+        $user = User::create([
+            'username'  => request('username'),
+            'email'     => request('email'),
+            'password'  => Hash::make(request('password')),
+            'signature' => request('signature'),
+            'avatar'    => $path ?? route('index') . '/storage/user-avatars/default.svg',
+        ]);
+
+        return redirect(route('user_show', [$user->id]));
     }
 
     /**
@@ -110,7 +136,7 @@ class UsersController extends Controller
         request()->validate([
             'username'  => 'required|string|min:3|max:15|unique:users|alpha_dash',
             'email'	    => 'required|string|min:3|max:30|unique:users|email',
-            'signature' => 'nullable|max:100',
+            'signature' => 'max:100|nullable',
             'avatar'	=> 'max:5120|file|image|nullable',
         ]);
 
