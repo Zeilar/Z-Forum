@@ -31,6 +31,7 @@
                         @endslot
 
                         @slot('content')
+                            @error('content') <p style="color: red;">{{ $message }}</p> @enderror
                             <textarea name="content" id="message-edit" rows="5"><?= old('content') ?? $message->content ?></textarea>
                         @endslot
                     @endcomponent

@@ -27,6 +27,7 @@
                                 @endslot
 
                                 @slot('content')
+                                    @error('user') <p style="color: red;">{{ $message }}</p> @enderror
                                     <input type="text" name="user" placeholder="{{ __('Username or ID') }}" autocomplete="off">
                                 @endslot
                             @endcomponent
@@ -42,6 +43,7 @@
 
                                 @slot('content')
                                     <label>{{ __('Avatar') }}</label>
+                                    @error('avatar') <p style="color: red;">{{ $message }}</p> @enderror
                                     <label class="file-upload" for="avatar-upload">
                                         <i class="fas color-white fa-upload"></i>
                                         <span>{{ __('Upload file') }}</span>
@@ -49,12 +51,15 @@
                                     <input type="file" id="avatar-upload" name="avatar" />
 
                                     <label>{{ __('Username') }}</label>
+                                    @error('username') <p style="color: red;">{{ $message }}</p> @enderror
                                     <input type="text" name="username" autocomplete="off" />
 
                                     <label>{{ __('Email') }}</label>
+                                    @error('email') <p style="color: red;">{{ $message }}</p> @enderror
                                     <input type="email" name="email" autocomplete="off" />
 
                                     <label>{{ __('Role') }}</label>
+                                    @error('role') <p style="color: red;">{{ $message }}</p> @enderror
                                     @php
                                         $type = DB::select(DB::raw("SHOW COLUMNS FROM users WHERE Field = 'role'"))[0]->Type;
                                         preg_match('/^enum\((.*)\)$/', $type, $matches);
@@ -71,9 +76,11 @@
                                     </select>
 
                                     <label>{{ __('Signature') }}</label>
+                                    @error('signature') <p style="color: red;">{{ $message }}</p> @enderror
                                     <textarea name="signature" rows="3"></textarea>
 
                                     <label>{{ __('Password') }}</label>
+                                    @error('password') <p style="color: red;">{{ $message }}</p> @enderror
                                     <input type="password" name="password" />
 
                                     <button class="btn btn-success" type="submit">

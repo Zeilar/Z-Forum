@@ -1,5 +1,5 @@
 <div class="toolbar-subitem">
-    <h5 class="subitem-title">{{ $subitemTitle ?? '' }}</h5>
+    <h4 class="subitem-title">{{ $subitemTitle ?? '' }}</h4>
     <form @isset($formAction) action="{{$formAction}}" @endisset method="{{ $formMethod ?? 'post' }}">
         @csrf
         @isset($content)

@@ -31,6 +31,7 @@
 
                     @slot('content')
                         <img class="file-upload-preview img-fluid" src="{{$user->avatar}}" alt="{{ __('Profile avatar') }}">
+                        @error('avatar') <p style="color: red;">{{ $message }}</p> @enderror
                         <label class="file-upload" for="avatar-upload">
                             <i class="fas color-white fa-upload"></i>
                             <span>{{ __('Upload file') }}</span>
@@ -38,12 +39,15 @@
                         <input type="file" id="avatar-upload" name="avatar" />
 
                         <label>{{ __('Username') }}</label>
+                        @error('username') <p style="color: red;">{{ $message }}</p> @enderror
                         <input type="text" name="username" value="{{$user->username}}" autocomplete="off" />
 
                         <label>{{ __('Email') }}</label>
+                        @error('email') <p style="color: red;">{{ $message }}</p> @enderror
                         <input type="email" name="email" value="{{$user->email}}" autocomplete="off" />
 
                         <label>{{ __('Role') }}</label>
+                        @error('role') <p style="color: red;">{{ $message }}</p> @enderror
                         @php
                             $type = DB::select(DB::raw("SHOW COLUMNS FROM users WHERE Field = 'role'"))[0]->Type;
                             preg_match('/^enum\((.*)\)$/', $type, $matches);
@@ -60,6 +64,7 @@
                         </select>
 
                         <label>{{ __('Signature') }}</label>
+                        @error('signature') <p style="color: red;">{{ $message }}</p> @enderror
                         <textarea name="signature" id="user-signature" rows="3"><?= $user->signature ?></textarea>
 
                         <button class="btn btn-success" type="submit">{{ __('Save') }}</button>

@@ -13,16 +13,20 @@ class ToolbarController extends Controller
 	{
 		$this->authorize('delete', User::find(1));
 
-		// If target user is equal to the logged in user, do nothing
-		if (request('id') === auth()->user()->id) return;
-
 		// Get user id via input, whether it's id directly or username
-		$id = User::find(request('user'))->id ?? User::where('username', request('user'))->first()->id ?? null;
+		$user = User::find(request('user')) ?? User::where('username', request('user'))->first() ?? null;
 
-		if (isset($id)) {
-			Auth::loginUsingId($id, true);
-		}
-		return redirect(url()->previous());
+		if (isset($user)) {
+            if ($user->id === auth()->user()->id) {
+                return msg_error(__('You are already logged in to this account'));
+            } else {
+                Auth::loginUsingId($user->id, true);
+            }
+        } else {
+            return msg_error(__('That user does not exist'));
+        }
+
+		return redirect()->back();
 	}
 
 	public function toggle_maintenance_mode(Request $request)
