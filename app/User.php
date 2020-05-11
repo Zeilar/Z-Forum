@@ -33,6 +33,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes that should be Carbon objects.
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'suspended',
+        'last_seen',
+    ];
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
