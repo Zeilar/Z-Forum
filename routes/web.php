@@ -25,9 +25,9 @@ Route::post('/category/store', 'CategoriesController@store')->name('category_sto
 Route::post('/subcategory/{id}/{slug}/store', 'SubcategoriesController@store')->name('subcategory_store');
 Route::post('/subcategory/{id}/restore', 'SubcategoriesController@restore')->name('subcategory_restore');
 Route::post('/category/{id}/{slug}/new', 'SubcategoriesController@create')->name('subcategory_create');
-Route::post('/subcategory/{id}/delete', 'SubcategoriesController@delete')->name('subcategory_delete');
-Route::post('/subcategory/{id}/update', 'SubcategoriesController@update')->name('subcategory_update');
+Route::post('/subcategory/{id}/delete', 'SubcategoriesController@destroy')->name('subcategory_delete');
 Route::get('/subcategory/{id}/{slug}', 'SubcategoriesController@show')->name('subcategory_show');
+Route::post('/subcategory/update', 'SubcategoriesController@update')->name('subcategory_update');
 
 // Threads
 Route::post('/subcategory/{id}/{slug}/thread/store', 'ThreadsController@store')->name('thread_store');

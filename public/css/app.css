@@ -13244,7 +13244,8 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 }
 
 #toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #thread-rename,
-#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #category-rename {
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #category-rename,
+#toolbar .toolbar-items .toolbar-row .toolbar-item .toolbar-subitem #subcategory-rename {
   margin-bottom: 0.5rem;
 }
 

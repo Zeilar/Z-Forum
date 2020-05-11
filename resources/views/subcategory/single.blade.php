@@ -135,3 +135,99 @@
 		</script>
 	@endauth
 @endsection
+
+@can('update', App\Subcategory::class)
+    @section('toolbarItem')
+        @component('components.toolbar-item', ['cookie' => 'subcategory'])
+            @slot('icon')
+                <i class="fas fa-tag"></i>
+            @endslot
+
+            @slot('categoryTitle')
+                {{ __('Subcategory') }}
+            @endslot
+
+            @slot('toolbarSubitem')
+                @can('update', App\Subcategory::class)
+                    @component('components.toolbar-subitem')
+                        @slot('subitemTitle')
+                            {{ __('Rename subcategory') }}
+                        @endslot
+
+                        @slot('content')
+                            <input type="text" id="subcategory-rename" value="{{$subcategory->title}}">
+                            <button class="btn btn-success subcategory-rename-submit" disabled>{{ __('Save') }}</button>
+                        @endslot
+                    @endcomponent
+                @endcan
+
+                @can('delete', App\Subcategory::class)
+                    @component('components.toolbar-subitem')
+                        @slot('subitemTitle')
+                            {{ __('Delete subcategory') }}
+                        @endslot
+
+                        @slot('formAction')
+                            {{ route('subcategory_delete', [$subcategory->id]) }}
+                        @endslot
+
+                        @slot('content')
+                            <button class="btn btn-hazard" type="submit">
+                                <i class="fas mr-2 fa-exclamation-triangle"></i>
+                                <span>{{ __('Delete') }}</span>
+                            </button>
+                        @endslot
+                    @endcomponent
+                @endcan
+            @endslot
+        @endcomponent
+
+        @can('update', App\Subcategory::class)
+            @include('js.post.alert')
+
+            <script>
+                let originalTitle = '{{ $subcategory->title }}';
+                $('.subcategory-rename-submit').click(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: '{{ route("subcategory_update") }}',
+                        method: 'POST',
+                        data: {
+                            _token: '{{ Session::token() }}',
+                            id: '{{ $subcategory->id }}',
+                            title: $('#subcategory-rename').val(),
+                        },
+                        success: function(response) {
+                            // Insert the newly edited content into the post
+                            $('.table-header .table-title h4').html(response.title);
+
+                            // Edit the active breadcrumb content
+                            $('.breadcrumb-item.active').html(response.title);
+
+                            // Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
+                            window.history.pushState('', '', response.url);
+
+                            // Dispay the alert message on the top of the page
+                            if (response.type != null && response.type !== 'none') ajax_alert(response);
+
+                            $('.categry-rename-submit').attr('disabled', true);
+
+                            originalTitle = response.title;
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+
+                $('#subcategory-rename').on('input change', function() {
+                    if ($(this).val() !== '' && $(this).val() !== originalTitle) {
+                        $('.subcategory-rename-submit').removeAttr('disabled');
+                    } else {
+                        $('.subcategory-rename-submit').attr('disabled', true);
+                    }
+                });
+            </script>
+        @endcan
+    @endsection
+@endcan

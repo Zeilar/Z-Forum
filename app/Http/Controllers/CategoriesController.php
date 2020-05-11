@@ -132,14 +132,14 @@ class CategoriesController extends Controller
         $category->subcategories->each(function($subcategory) {
             $subcategory->threads->each(function($thread) {
                 $thread->posts->each(function($post) {
-                    UserLikedPosts::where('post_id', $post->id)->each(function($like) {
+                    $post->likes()->onlyTrashed()->each(function($like) {
                         $like->delete();
                     });
 
                     $post->delete();
                 });
 
-                UserVisitedThreads::where('thread_id', $thread->id)->each(function($visit) {
+                $thread->visits()->onlyTrashed()->each(function($visit) {
                     $visit->delete();
                 });
 
