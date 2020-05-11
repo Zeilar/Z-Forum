@@ -134,3 +134,99 @@
 		</script>
 	@endauth
 @endsection
+
+@can('update', App\Category::class)
+    @section('toolbarItem')
+        @component('components.toolbar-item', ['cookie' => 'category'])
+            @slot('icon')
+                <i class="fas fa-tags"></i>
+            @endslot
+
+            @slot('categoryTitle')
+                {{ __('Category') }}
+            @endslot
+
+            @slot('toolbarSubitem')
+                @can('update', App\Category::class)
+                    @component('components.toolbar-subitem')
+                        @slot('subitemTitle')
+                            {{ __('Rename category') }}
+                        @endslot
+
+                        @slot('content')
+                            <input type="text" id="category-rename" value="{{$category->title}}">
+                            <button class="btn btn-success category-rename-submit" disabled>{{ __('Save') }}</button>
+                        @endslot
+                    @endcomponent
+                @endcan
+
+                @can('delete', App\Category::class)
+                    @component('components.toolbar-subitem')
+                        @slot('subitemTitle')
+                            {{ __('Delete category') }}
+                        @endslot
+
+                        @slot('formAction')
+                            {{ route('category_delete', [$category->id]) }}
+                        @endslot
+
+                        @slot('content')
+                            <button class="btn btn-hazard" type="submit">
+                                <i class="fas mr-2 fa-exclamation-triangle"></i>
+                                <span>{{ __('Delete') }}</span>
+                            </button>
+                        @endslot
+                    @endcomponent
+                @endcan
+            @endslot
+        @endcomponent
+
+        @can('update', App\Category::class)
+            @include('js.post.alert')
+
+            <script>
+                let originalTitle = '{{ $category->title }}';
+                $('.category-rename-submit').click(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: '{{ route("category_update") }}',
+                        method: 'POST',
+                        data: {
+                            _token: '{{ Session::token() }}',
+                            id: '{{ $category->id }}',
+                            title: $('#category-rename').val(),
+                        },
+                        success: function(response) {
+                            // Insert the newly edited content into the post
+                            $('.table-header .table-title h4').html(response.title);
+
+                            // Edit the active breadcrumb content
+                            $('.breadcrumb-item.active').html(response.title);
+
+                            // Edit the current URL state for better UX in case user reloads, otherwise it will go to the old item URL
+                            window.history.pushState('', '', response.url);
+
+                            // Dispay the alert message on the top of the page
+                            if (response.type != null && response.type !== 'none') ajax_alert(response);
+
+                            $('.categry-rename-submit').attr('disabled', true);
+
+                            originalTitle = response.title;
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+
+                $('#category-rename').on('input change', function() {
+                    if ($(this).val() !== '' && $(this).val() !== originalTitle) {
+                        $('.category-rename-submit').removeAttr('disabled');
+                    } else {
+                        $('.category-rename-submit').attr('disabled', true);
+                    }
+                });
+            </script>
+        @endcan
+    @endsection
+@endcan

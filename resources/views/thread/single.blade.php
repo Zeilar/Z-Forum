@@ -37,7 +37,7 @@
 @endsection
 
 @section('content')
-	<div class="thread @if ($thread->locked) locked @endif">
+	<div class="thread @if($thread->locked) locked @endif">
 		@auth
 			@can('create', [App\Post::class, $thread])
 				<button class="reply-button btn btn-success-full" type="button">

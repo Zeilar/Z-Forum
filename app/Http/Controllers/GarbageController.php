@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\{
+    UserMessage,
+    ChatMessage,
+	Subcategory,
+	Category,
+	Thread,
+	Post,
+};
+use DB;
 
 class GarbageController extends Controller
 {
@@ -11,12 +20,12 @@ class GarbageController extends Controller
         if (!is_role('superadmin')) return msg_error('role');
         
         return view('layouts.garbage', [
-            'subcategories' => \App\Subcategory::onlyTrashed()->get(),
-            'chat_messages' => \App\ChatMessage::onlyTrashed()->get(),
-            'user_messages' => \App\UserMessage::onlyTrashed()->get(),
-            'categories' => \App\Category::onlyTrashed()->get(),
-            'threads' => \App\Thread::onlyTrashed()->get(),
-            'posts' => \App\Post::onlyTrashed()->get(),
+            'subcategories' => Subcategory::onlyTrashed()->get(),
+            'chat_messages' => ChatMessage::onlyTrashed()->get(),
+            'user_messages' => UserMessage::onlyTrashed()->get(),
+            'categories' => Category::onlyTrashed()->get(),
+            'threads' => Thread::onlyTrashed()->get(),
+            'posts' => Post::onlyTrashed()->get(),
         ]);
     }
 }

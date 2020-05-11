@@ -15,9 +15,9 @@
 Route::get('/', 'CategoriesController@index')->name('index');
 
 // Categories
-Route::post('/category/{id}/update', 'CategoriesController@update')->name('category_update');
-Route::post('/category/{id}/delete', 'CategoriesController@delete')->name('category_delete');
+Route::post('/category/{id}/delete', 'CategoriesController@destroy')->name('category_delete');
 Route::get('/category/{id}/{slug}', 'CategoriesController@show')->name('category_show');
+Route::post('/category/update', 'CategoriesController@update')->name('category_update');
 Route::post('/category/store', 'CategoriesController@store')->name('category_store');
 
 // Subcategories

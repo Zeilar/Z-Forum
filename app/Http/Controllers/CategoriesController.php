@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\UserVisitedThreads;
+use App\UserLikedPosts;
 use App\ActivityLog;
 use App\Category;
 use App\Post;
@@ -64,14 +66,90 @@ class CategoriesController extends Controller
     }
 
 	/**
-     * Update the specified resource in storage, using AJAX.
+     * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update()
+    {
+		if (!logged_in()) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('Please log in and try again'),
+			]);
+		} else if (auth()->user()->is_suspended()) {
+            return response()->json([
+                'type'    => 'error',
+                'message' => __('You are suspended'),
+            ]);
+        } else if (!Category::find(request('id'))) {
+			return response()->json([
+				'type'    => 'error',
+				'message' => __('That category does not exist, refresh the page and try again'),
+			]);
+		} else if (!is_role('superadmin')) {
+			return response()->json([
+				'type' 	  => 'error',
+				'message' => __('Insufficient permissions')
+			]);
+		} else if (request('title') === Category::find(request('id'))->title) {
+			return response()->json([
+				'type' => 'none',
+			]); 
+		} else {
+			$category = Category::find(request('id'));
+            $category->update([
+                'title' => request('title'),
+                'slug' => urlencode(request('title')),
+            ]);
+
+			ActivityLog::create([
+				'user_id' 	   => auth()->user()->id,
+				'task'	  	   => __('edited'),
+				'performed_on' => json_encode(['table' => 'categories', 'id' => $category->id]),
+			]);
+
+			return response()->json([
+				'type'	  => 'success',
+				'message' => __('Category title was successfully changed'),
+				'title'	  => $category->title,
+				'url'	  => route('category_show', [$category->id, $category->slug]),
+			]);
+		}
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-	public function update(Request $request)
-	{
+    public function destroy(int $id)
+    {
+		$category = Category::find($id);
+		$this->authorize('delete', Category::class);
+
+        $category->subcategories->each(function($subcategory) {
+            $subcategory->threads->each(function($thread) {
+                $thread->posts->each(function($post) {
+                    UserLikedPosts::where('post_id', $post->id)->each(function($like) {
+                        $like->delete();
+                    });
+
+                    $post->delete();
+                });
+
+                UserVisitedThreads::where('thread_id', $thread->id)->each(function($visit) {
+                    $visit->delete();
+                });
+
+                $thread->delete();
+            });
+            $subcategory->delete();
+        });
+
+		$category->delete();
 		
-	}
+		return redirect(route('index'));
+    }
 }
