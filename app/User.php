@@ -103,7 +103,7 @@ class User extends Authenticatable
     public function pardon() {
         $this->update([
             'suspended' => null,
-            'suspended_erason' => null,
+            'suspended_reason' => null,
         ]);
         return $this;
     }
@@ -113,6 +113,6 @@ class User extends Authenticatable
     }
 
     public function is_suspended() {
-        return $this->suspended ?? false;
+        return $this->suspended !== null && $this->suspended->isPast();
     }
 }
