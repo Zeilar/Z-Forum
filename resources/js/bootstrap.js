@@ -1,4 +1,5 @@
 window._ = require('lodash');
+import cookieCutter from 'cookie-cutter-helpers';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -31,5 +32,6 @@ tinymce.init({
 
 // Customize scrollbar, but on PC Windows only
 if (navigator.platform === 'Win32') {
+    cookieCutter.set('custom-scrollbar', true);
 	$('html').addClass('custom-scrollbar');
 }

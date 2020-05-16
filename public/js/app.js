@@ -37388,10 +37388,14 @@ __webpack_require__(/*! ./events-handlers */ "./resources/js/events-handlers.js"
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie-cutter-helpers */ "./node_modules/cookie-cutter-helpers/index.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -37421,6 +37425,7 @@ tinymce.init({
 }); // Customize scrollbar, but on PC Windows only
 
 if (navigator.platform === 'Win32') {
+  cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].set('custom-scrollbar', true);
   $('html').addClass('custom-scrollbar');
 }
 
