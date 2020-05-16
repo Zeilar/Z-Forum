@@ -142,10 +142,10 @@ class UsersController extends Controller
         ]);
 
         $user->update([
-            'username'  => request('username'),
-            'email'     => request('email'),
-            'role'      => request('role'),
-            'signature' => request('signature'),
+            'username'  => request('username') ?? $user->username,
+            'email'     => request('email') ?? $user->email,
+            'role'      => request('role') ?? $user->role,
+            'signature' => request('signature') ?? $user->signature,
         ]);
 
         return redirect()->back();
