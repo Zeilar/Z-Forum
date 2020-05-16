@@ -72,6 +72,7 @@ class UsersController extends Controller
         $user = User::create([
             'username'  => request('username'),
             'email'     => request('email'),
+            'role'      => request('role'),
             'password'  => Hash::make(request('password')),
             'signature' => request('signature'),
             'avatar'    => $path ?? route('index') . '/storage/user-avatars/default.svg',
