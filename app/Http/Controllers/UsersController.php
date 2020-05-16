@@ -134,8 +134,8 @@ class UsersController extends Controller
         if (empty($user = User::find($id))) return msg_error(__('That user does not exist'));
 
         request()->validate([
-            'username'  => 'required|string|min:3|max:15|unique:users|alpha_dash',
-            'email'	    => 'required|string|min:3|max:30|unique:users|email',
+            'username'  => 'nullable|min:3|max:15|unique:users|alpha_dash',
+            'email'	    => 'nullable|min:3|max:30|unique:users|email',
             'signature' => 'max:100|nullable',
             'avatar'	=> 'max:5120|file|image|nullable',
         ]);
@@ -146,6 +146,8 @@ class UsersController extends Controller
             'role'      => request('role'),
             'signature' => request('signature'),
         ]);
+
+        return redirect()->back();
     }
 
     /**

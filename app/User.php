@@ -30,7 +30,6 @@ class User extends Authenticatable
      */
     protected $guarded = [
 		'password',
-        'role',
     ];
 
     /**
@@ -124,6 +123,6 @@ class User extends Authenticatable
     }
 
     public function is_suspended() {
-        return $this->suspended !== null && $this->suspended->isPast();
+        return $this->suspended !== null && !$this->suspended->isPast();
     }
 }

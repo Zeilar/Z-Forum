@@ -40,11 +40,11 @@
 
                         <label>{{ __('Username') }}</label>
                         @error('username') <p style="color: red;">{{ $message }}</p> @enderror
-                        <input type="text" name="username" value="{{$user->username}}" autocomplete="off" />
+                        <input type="text" name="username" placeholder="{{$user->username}}" autocomplete="off" />
 
                         <label>{{ __('Email') }}</label>
                         @error('email') <p style="color: red;">{{ $message }}</p> @enderror
-                        <input type="email" name="email" value="{{$user->email}}" autocomplete="off" />
+                        <input type="email" name="email" placeholder="{{$user->email}}" autocomplete="off" />
 
                         <label>{{ __('Role') }}</label>
                         @error('role') <p style="color: red;">{{ $message }}</p> @enderror
