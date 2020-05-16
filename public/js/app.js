@@ -37542,7 +37542,7 @@ $('.mobile-search-remove').click(function () {
 $('.toggle-sidebar').click(function () {
   $(this).toggleClass('btn-default btn-success');
 
-  if (cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].get('sidebarHidden')) {
+  if ($('#sidebar').hasClass('hide')) {
     $('#sidebar').removeClass('hide').addClass('open');
     cookie_cutter_helpers__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('sidebarHidden');
   } else {

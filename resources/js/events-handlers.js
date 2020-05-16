@@ -112,7 +112,7 @@ $('.mobile-search-remove').click(function() {
 // Toggle sidebar
 $('.toggle-sidebar').click(function() {
     $(this).toggleClass('btn-default btn-success');
-	if (cookieCutter.get('sidebarHidden')) {
+	if ($('#sidebar').hasClass('hide')) {
 		$('#sidebar').removeClass('hide').addClass('open');
 		cookieCutter.delete('sidebarHidden');
 	} else {
