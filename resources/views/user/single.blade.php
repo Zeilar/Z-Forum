@@ -131,7 +131,7 @@
                                 @endfor
                             </select>
 
-                            <label>{{ __('Suspension reason') }}</label>
+                            <label>{{ __('Reason') }}</label>
                             <input type="text" name="reason" autocomplete="off">
 
                             <button class="btn btn-hazard user-suspend" type="submit">{{ __('Suspend') }}</button>
