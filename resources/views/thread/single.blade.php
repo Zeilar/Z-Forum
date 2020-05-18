@@ -205,7 +205,7 @@
                 @can('update', $thread)
                     @component('components.toolbar-subitem')
                         @slot('subitemTitle')
-                            {{ __('Rename thread') }}
+                            {{ __('Title') }}
                         @endslot
 
                         @slot('content')

@@ -150,7 +150,7 @@
                 @can('update', App\Category::class)
                     @component('components.toolbar-subitem')
                         @slot('subitemTitle')
-                            {{ __('Rename category') }}
+                            {{ __('Title') }}
                         @endslot
 
                         @slot('content')

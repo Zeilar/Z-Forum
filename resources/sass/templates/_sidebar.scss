@@ -106,7 +106,7 @@
 					margin: auto 0;
 				}
                 
-                a:visited:hover {
+                a:hover, a:visited:hover {
                     color: $turqoise;
                 }
             }
@@ -200,7 +200,7 @@
 					margin: auto 0;
 				}
 
-                a:visited:hover {
+                a:hover, a:visited:hover {
                     color: $turqoise;
                 }
 			}
