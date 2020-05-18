@@ -163,7 +163,7 @@
                 @can('delete', App\Category::class)
                     @component('components.toolbar-subitem')
                         @slot('subitemTitle')
-                            {{ __('Delete category') }}
+                            {{ __('Delete') }}
                         @endslot
 
                         @slot('formAction')

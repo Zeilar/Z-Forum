@@ -238,7 +238,7 @@
                 @can('delete', $thread)
                     @component('components.toolbar-subitem')
                         @slot('subitemTitle')
-                            {{ __('Delete thread') }}
+                            {{ __('Delete') }}
                         @endslot
 
                         @slot('formAction')
