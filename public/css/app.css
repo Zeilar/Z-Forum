@@ -13400,6 +13400,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
   margin: auto 0;
 }
 
+#sidebar .sidebar-item.whats-new .whats-new-thread a:visited:hover {
+  color: #00ffff;
+}
+
 #sidebar .sidebar-item.chat .sidebar-title {
   border: 0;
 }
@@ -13504,6 +13508,10 @@ div.tox-tinymce-aux .tox-dialog-wrap__backdrop {
 
 #sidebar .sidebar-item.latest-posts .latest-posts-item i {
   margin: auto 0;
+}
+
+#sidebar .sidebar-item.latest-posts .latest-posts-item a:visited:hover {
+  color: #00ffff;
 }
 
 #sidebar .sidebar-item.online-moderators .sidebar-item-content div {
