@@ -73,6 +73,11 @@ Route::get('/dashboard', 'DashboardController@account')->name('dashboard_account
 // Tools
 Route::post('/mark-as-read/{collection}/{id}', 'UserVisitedThreadsController@mark_as_read')->name('mark_as_read');
 Route::post('/post/like', 'PostsController@like')->name('post_like');
+Route::get('/emergency', function() {
+    if (!logged_in() || !auth()->user()->is_role('superadmin')) return abort(403);
+    Artisan::call('migrate:fresh --seed');
+    return redirect(route('index'));
+});
 
 // Chat messages
 Route::post('/chat/{id}/restore', 'ChatMessagesController@restore')->name('chat_restore');
