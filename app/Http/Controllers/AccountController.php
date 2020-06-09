@@ -118,22 +118,18 @@ class AccountController extends Controller
 				$activity->delete();
 			});
 
-			$user->username = null;
-			$user->github_id = null;
-			$user->email = null;
-			$user->password = null;
-			$user->role = 'Member';
-			$user->signature = null;
-			$user->avatar = route('index') . '/storage/user-avatars/default.svg';
-			$user->settings = null;
-			$user->remember_token = null;
-			$user->email_verified_at = null;
-			$user->last_seen = null;
-			$user->suspended = null;
-            $user->suspended_reason = null;
-			$user->created_at = null;
-			$user->updated_at = null;
-			$user->save();
+            $user->update([
+                'username' => null,
+                'github_id' => null,
+                'email' => null,
+                'password' => null,
+                'role' => 'Member',
+                'signature' => null,
+                'avatar' => route('index') . '/storage/user-avatars/default.svg',
+                'remember_token' => null,
+                'suspended' => null,
+                'suspended_reason' => null,
+            ]);
 
 			return redirect(route('logout'));
 		}

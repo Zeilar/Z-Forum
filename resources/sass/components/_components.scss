@@ -8,6 +8,7 @@
 	}
 
 	::-webkit-scrollbar-thumb {
+        border: 1px solid black;
 		background: $green;
 	}
 }
@@ -23,29 +24,6 @@
 
 .mark-as-read {
 	margin-bottom: 1rem;
-}
-
-.crud-toolbar {
-	border: 1px solid $green;
-	background: $darkgray;
-	margin: 2rem 0 1rem 0;
-	padding: 0.5rem 1rem;
-	flex-direction: row;
-	width: fit-content;
-	display: flex;
-
-	i {
-		pointer-events: none;
-		color: white;
-	}
-
-	.btn {
-		margin-right: 0.5rem;
-
-		&:last-child {
-			margin-right: 0;
-		}
-	}
 }
 
 .breadcrumb {
